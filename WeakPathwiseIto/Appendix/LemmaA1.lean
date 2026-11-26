@@ -8,6 +8,7 @@ public import Mathlib
 public import WeakPathwiseIto.Bessel.CanonicalWienerSpace
 public import WeakPathwiseIto.Occupation.NormalizedQuadraticDensity
 public import WeakPathwiseIto.Appendix.GaussianMoment
+public import WeakPathwiseIto.Bessel.WienerLawExists
 
 @[expose] public section
 
@@ -19,6 +20,83 @@ open scoped ENNReal NNReal RealInnerProductSpace
 namespace WeakPathwiseIto
 
 variable {T : ℝ} {d : ℕ}
+
+namespace lemma_A_1
+
+open ProbabilityTheory
+
+/-- **Subgoal** (Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n`):
+for a fixed path, `∫_0^T |ρ_n(t)|^q dt = ∑_i (|ω(t_{i+1}) - ω(t_i)|² / Δ_i)^q Δ_i`. -/
+theorem integral_rpow_eq_sum (π : Partition T) (ω : ℝ → Rd d) {q : ℝ} (hq : 0 < q) :
+    ∫ t in Icc 0 T, |normalizedQuadraticDensity π ω t| ^ q =
+      ∑ i : Fin π.m, (‖ω (π.right i) - ω (π.left i)‖ ^ 2 / (π.right i - π.left i)) ^ q *
+        (π.right i - π.left i) := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 2a: coordinates of `B`): on `[0, T]` the canonical
+process of `ofCoords x W` is `x + ∑_i W^i(t) e_i`. -/
+theorem B_ofCoords (x : Rd d) (W : Fin d → ℝ≥0 → ℝ) (hW : ∀ i, Continuous (W i)) {t : ℝ}
+    (ht : t ∈ Icc 0 T) :
+    CanonicalWienerSpace.B (T := T) t (CanonicalWienerSpace.ofCoords x W hW) =
+      x + ∑ i, W i t.toNNReal • Rd.basisVec i := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d)`): independent
+standard normal coordinates `Y^1, …, Y^d` give `∑_i Y^i e_i ∼ N(0, I_d)`. -/
+theorem hasLaw_sum_smul_basisVec {Ω : Type*} [MeasurableSpace Ω] {Q : Measure Ω}
+    [IsProbabilityMeasure Q] {Y : Fin d → Ω → ℝ} (hind : iIndepFun Y Q)
+    (hlaw : ∀ i, HasLaw (Y i) (gaussianReal 0 1) Q) :
+    HasLaw (fun ω => ∑ i, Y i ω • Rd.basisVec i) (stdGaussian (Rd d)) Q := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d)`): for `0 ≤ s < t ≤ T`,
+`(t - s)^{-1/2} (B(t) - B(s)) ∼ N(0, I_d)` under `ℙ_x`. -/
+theorem hasLaw_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s < t) (ht : t ≤ T) :
+    HasLaw (fun ω => (t - s) ^ (-(1 / 2 : ℝ)) •
+        (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω))
+      (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B`
+over the cells of a partition are independent under `ℙ_x`. -/
+theorem iIndepFun_increments (x : Rd d) (π : Partition T) :
+    iIndepFun (fun (i : Fin π.m) (ω : CanonicalWienerSpace d T) =>
+        CanonicalWienerSpace.path ω (π.right i) - CanonicalWienerSpace.path ω (π.left i))
+      (CanonicalWienerSpace.P (T := T) x) := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in
+`L²(ℙ_x)`. -/
+theorem memLp_two (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
+    MemLp (fun ω => ∫ t in Icc 0 T,
+        |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q) 2
+      (CanonicalWienerSpace.P (T := T) x) := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 3: mean): `𝔼_x ‖ρ_{n,B}‖^q_{L^q} = c_{q,d} T`. -/
+theorem integral_eq (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
+    ∫ ω, (∫ t in Icc 0 T,
+        |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q)
+      ∂(CanonicalWienerSpace.P (T := T) x) = gaussianMoment d q * T := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 3: variance): with `b_{q,d} := Var |Z|^{2q}`,
+`Var_x ‖ρ_{n,B}‖^q_{L^q} = b_{q,d} ∑_i (Δ_i^n)² ≤ b_{q,d} T |π_n|`. -/
+theorem variance_le (x : Rd d) {q : ℝ} (hq : 1 < q) : ∃ b : ℝ, ∀ π : Partition T,
+    variance (fun ω => ∫ t in Icc 0 T,
+        |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q)
+      (CanonicalWienerSpace.P (T := T) x) ≤ b * T * π.mesh := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli): if `𝔼 X_n = c` and
+`Var X_n ≤ a_n` with `∑ a_n < ∞`, then `X_n → c` almost surely. -/
+theorem tendsto_ae_of_summable_variance {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω}
+    [IsProbabilityMeasure μ] {X : ℕ → Ω → ℝ} {c : ℝ} {a : ℕ → ℝ} (hX : ∀ n, MemLp (X n) 2 μ)
+    (hmean : ∀ n, ∫ ω, X n ω ∂μ = c) (hvar : ∀ n, variance (X n) μ ≤ a n) (ha : Summable a) :
+    ∀ᵐ ω ∂μ, Tendsto (fun n => X n ω) atTop (𝓝 c) := by
+  sorry
+
+end lemma_A_1
 
 /-- **Lemma A.1.** If `∑_{n ≥ 1} |π_n| < ∞` and `q > 1`, then
 `‖ρ_{n,B}‖^q_{L^q([0,T])} → c_{q,d} T`, `ℙ_x`-almost surely. -/

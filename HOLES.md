@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:12:01Z  
-**`sorry` occurrences:** 50 · 13 open · 39 blocked · 73 done (goals + subgoals) · goals {'open': 7, 'blocked': 23, 'done': 35} · subgoals {'open': 6, 'blocked': 16, 'done': 38} · 27 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:14:00Z  
+**`sorry` occurrences:** 59 · 12 open · 49 blocked · 73 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 25, 'done': 38} · 27 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -24,7 +24,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
-| `Appendix.LemmaA1` | Lemma A.1 | 1 | `lemma_A_1` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
@@ -52,6 +51,15 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Appendix.HeatKernel::heatKernel.riemannSum_le_integral` | subgoal of Lemma B.2 proof, eq. (35 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.scaling` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.B_ofCoords` | subgoal of Lemma A.1 proof, step 2a: coordinates of `B` | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.hasLaw_increment` | subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec` | subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments` | subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.integral_eq` | subgoal of Lemma A.1 proof, step 3: mean | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum` | subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.memLp_two` | subgoal of Lemma A.1 proof, step 3: square integrability | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance` | subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.variance_le` | subgoal of Lemma A.1 proof, step 3: variance | 1 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |
 | done | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` | subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ | 0 |
 | done | `Basic.Partition::Partition.gap_le_mesh` | subgoal of Assumption 1 mesh | 0 |
@@ -196,7 +204,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
 | done | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 0 |  |
-| open | `Appendix.LemmaA1` | Lemma A.1 | 1 |  |
+| blocked | `Appendix.LemmaA1` | Lemma A.1 | 10 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
 | done | `Appendix.PotentialProfile` | Eq. (33) | 0 |  |

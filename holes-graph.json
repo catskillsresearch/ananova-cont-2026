@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-26T18:12:01Z",
+ "updated": "2026-11-26T18:14:00Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 59,
  "counts": {
-  "open": 13,
-  "blocked": 39,
+  "open": 12,
+  "blocked": 49,
   "done": 73
  },
  "goalCounts": {
-  "open": 7,
-  "blocked": 23,
+  "open": 6,
+  "blocked": 24,
   "done": 35
  },
  "subgoalCounts": {
   "open": 6,
-  "blocked": 16,
+  "blocked": 25,
   "done": 38
  },
  "untagged": [],
@@ -511,24 +511,342 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
+   "sorryCount": 10,
    "holes": [
+    "integral_rpow_eq_sum",
+    "B_ofCoords",
+    "hasLaw_sum_smul_basisVec",
+    "hasLaw_increment",
+    "iIndepFun_increments",
+    "memLp_two",
+    "integral_eq",
+    "variance_le",
+    "tendsto_ae_of_summable_variance",
     "lemma_A_1"
    ],
    "declKinds": {
-    "theorem": 2
+    "theorem": 11
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "open",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+    "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+    "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+    "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+    "Appendix.LemmaA1::lemma_A_1.integral_eq",
+    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+    "Appendix.LemmaA1::lemma_A_1.memLp_two",
+    "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+    "Appendix.LemmaA1::lemma_A_1.variance_le",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+    "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+    "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+    "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+    "Appendix.LemmaA1::lemma_A_1.integral_eq",
+    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+    "Appendix.LemmaA1::lemma_A_1.memLp_two",
+    "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+    "Appendix.LemmaA1::lemma_A_1.variance_le",
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "10 sorry: integral_rpow_eq_sum, B_ofCoords, hasLaw_sum_smul_basisVec, hasLaw_increment, iIndepFun_increments, memLp_two, integral_eq, variance_le, tendsto_ae_of_summable_variance, lemma_A_1"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "label": "B_ofCoords",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2a: coordinates of `B`",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.B_ofCoords"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2a: coordinates of `B`): on `[0, T]` the canonical process of `ofCoords x W` is `x + ∑_i W^i(t) e_i`.",
+   "status": "blocked",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [],
-   "detail": "1 sorry: lemma_A_1"
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.B_ofCoords — subgoal of Lemma A.1 proof, step 2a: coordinates of `B` (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "label": "hasLaw_increment",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.hasLaw_increment"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d)`): for `0 ≤ s < t ≤ T`, `(t - s)^{-1/2} (B(t) - B(s)) ∼ N(0, I_d)` under `ℙ_x`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.hasLaw_increment — subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "label": "hasLaw_sum_smul_basisVec",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.hasLaw_sum_smul_basisVec"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d)`): independent standard normal coordinates `Y^1, …, Y^d` give `∑_i Y^i e_i ∼ N(0, I_d)`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.hasLaw_sum_smul_basisVec — subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "label": "iIndepFun_increments",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.iIndepFun_increments"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B` over the cells of a partition are independent under `ℙ_x`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.iIndepFun_increments — subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "label": "integral_eq",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 3: mean",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.integral_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 3: mean): `𝔼_x ‖ρ_{n,B}‖^q_{L^q} = c_{q,d} T`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.integral_eq — subgoal of Lemma A.1 proof, step 3: mean (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "label": "integral_rpow_eq_sum",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n`",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.integral_rpow_eq_sum"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n`): for a fixed path, `∫_0^T |ρ_n(t)|^q dt = ∑_i (|ω(t_{i+1}) - ω(t_i)|² / Δ_i)^q Δ_i`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.integral_rpow_eq_sum — subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "label": "memLp_two",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 3: square integrability",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.memLp_two"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in `L²(ℙ_x)`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.memLp_two — subgoal of Lemma A.1 proof, step 3: square integrability (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "label": "tendsto_ae_of_summable_variance",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.tendsto_ae_of_summable_variance"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli): if `𝔼 X_n = c` and `Var X_n ≤ a_n` with `∑ a_n < ∞`, then `X_n → c` almost surely.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.tendsto_ae_of_summable_variance — subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "label": "variance_le",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 3: variance",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.variance_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 3: variance): with `b_{q,d} := Var |Z|^{2q}`, `Var_x ‖ρ_{n,B}‖^q_{L^q} = b_{q,d} ∑_i (Δ_i^n)² ≤ b_{q,d} T |π_n|`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.variance_le — subgoal of Lemma A.1 proof, step 3: variance (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaB1",
@@ -3419,6 +3737,51 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "kind": "hard"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.div_scaling",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
@@ -3486,6 +3849,51 @@
   {
    "from": "Appendix.HeatKernel::heatKernel.scaling",
    "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "to": "Appendix.LemmaA1",
    "kind": "subgoal"
   },
   {
@@ -4165,6 +4573,51 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.IsBrownianPolar",
    "kind": "hard"
   },
@@ -4242,6 +4695,56 @@
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar",
    "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "kind": "hard"
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -4626,6 +5129,51 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le",
    "kind": "hard"
   },
   {
@@ -5112,7 +5660,39 @@
  "drawEdges": [
   {
    "from": "Appendix.GaussianMoment",
-   "to": "Appendix.LemmaA1"
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le"
   },
   {
    "from": "Appendix.HeatKernel::heatKernel.div_scaling",
@@ -5169,6 +5749,42 @@
   {
    "from": "Appendix.HeatKernel::heatKernel.scaling",
    "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_eq",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.memLp_two",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.variance_le",
+   "to": "Appendix.LemmaA1"
   },
   {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
@@ -5584,10 +6200,6 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
-   "to": "Appendix.LemmaA1"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
   },
   {
@@ -5637,6 +6249,42 @@
   {
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le"
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -5908,7 +6556,39 @@
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
-   "to": "Appendix.LemmaA1"
+   "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_eq"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_two"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.variance_le"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
