@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T21:54:25Z",
+ "updated": "2026-11-26T21:54:50Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
   "open": 10,
-  "blocked": 26,
-  "done": 184
+  "blocked": 25,
+  "done": 185
  },
  "goalCounts": {
-  "open": 5,
-  "blocked": 18,
+  "open": 6,
+  "blocked": 17,
   "done": 42
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 8,
-  "done": 142
+  "done": 143
  },
  "untagged": [],
  "legend": {
@@ -4766,17 +4766,15 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 8
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4793,10 +4791,8 @@
     "Smooth.PathOscillation",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Smooth.FollmerItoFormula::follmer_ito_formula"
-   ],
-   "detail": "1 sorry: follmer_ito_formula"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -4808,17 +4804,15 @@
    "parentGoal": "Smooth.FollmerItoFormula",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Corollary 3.2 proof, [Föl81]). Föllmer's pathwise Itô formula [Föl81], used in the proof of Corollary 3.2: for `f ∈ C^2_b` the left Riemann sums converge and `f(ω(T)) = f(ω(0)) + ∫_0^T ∇f(ω) d^π ω + ½ ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4828,7 +4822,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: follmer_ito_formula — subgoal of Corollary 3.2 proof, [Föl81] (in Smooth.FollmerItoFormula)"
+   "detail": "proved: follmer_ito_formula — subgoal of Corollary 3.2 proof, [Föl81] (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",

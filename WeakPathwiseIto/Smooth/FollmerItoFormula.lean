@@ -280,6 +280,19 @@ theorem follmer_ito_formula {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω :
       f (ω T) = f (ω 0) + follmerIntegral π (gradient f) ω T +
         1 / 2 * hQV.matrixIntegral
           (fun u i j => Rd.coord i (smoothHessian f (ω u) (Rd.basisVec j))) T := by
-  sorry
+  have hlim : Tendsto (fun n => follmerIntegral.riemannSum (π n) (gradient f) ω T) atTop
+      (𝓝 (f (ω T) - f (ω 0) - 1 / 2 * hQV.matrixIntegral
+        (fun u i j => Rd.coord i (smoothHessian f (ω u) (Rd.basisVec j))) T - 0)) := by
+    refine ((tendsto_const_nhds.sub
+      ((follmer_ito_formula.tendsto_hessian_left hω hQV hosc hf).const_mul (1 / 2))).sub
+      (follmer_ito_formula.tendsto_remainder hω hQV hosc hf)).congr fun n => ?_
+    rw [follmer_ito_formula.riemannSum_eq, follmer_ito_formula.sub_eq_sum (π n) f ω,
+      Finset.mul_sum, ← Finset.sum_sub_distrib, ← Finset.sum_sub_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  have hI := hlim.limUnder_eq
+  rw [sub_zero] at hlim hI
+  unfold follmerIntegral
+  rw [hI]
+  exact ⟨hlim, by ring⟩
 
 end WeakPathwiseIto
