@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:38:12Z",
+ "updated": "2026-11-26T21:38:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 46,
+ "sorryCount": 45,
  "counts": {
-  "open": 17,
+  "open": 16,
   "blocked": 27,
-  "done": 169
+  "done": 170
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 41
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 8,
-  "done": 128
+  "done": 129
  },
  "untagged": [],
  "legend": {
@@ -5111,9 +5111,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "norm_sub_left_le",
     "norm_taylor_le",
     "riemannSum_eq",
     "inner_apply_eq",
@@ -5148,14 +5147,13 @@
    ],
    "blockers": [
     "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
-    "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
     "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
     "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
     "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
     "Smooth.Proposition31::proposition_3_1.tendsto_main",
     "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
    ],
-   "detail": "8 sorry: norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
+   "detail": "7 sorry: norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
@@ -5227,17 +5225,15 @@
    "parentGoal": "Smooth.Proposition31",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_3_1.norm_sub_left_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Proposition 3.1 proof, (6)): for `s ∈ [t_k, t_{k+1}]`, `|ω(s) - ω(t_k)| ≤ osc(ω, π_n)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Occupation.Lemma42",
@@ -5246,7 +5242,7 @@
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_3_1.norm_sub_left_le — subgoal of Proposition 3.1 proof, (6 (in Smooth.Proposition31)"
+   "detail": "proved: proposition_3_1.norm_sub_left_le — subgoal of Proposition 3.1 proof, (6 (in Smooth.Proposition31)"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
