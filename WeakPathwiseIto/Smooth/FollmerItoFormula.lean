@@ -66,7 +66,13 @@ theorem riemannSum_eq (p : Partition T) (g : Rd d → Rd d) (ω : ℝ → Rd d) 
 /-- **Subgoal** ([Föl81] proof: telescoping `f(ω(T)) - f(ω(0)) = ∑_k (f(ω(t_{k+1})) - f(ω(t_k)))`). -/
 theorem sub_eq_sum (p : Partition T) (f : Rd d → ℝ) (ω : ℝ → Rd d) :
     f (ω T) - f (ω 0) = ∑ k, (f (ω (p.right k)) - f (ω (p.left k))) := by
-  sorry
+  have h1 := Fin.sum_univ_succ (fun j => f (ω (p.t j)))
+  have h2 := Fin.sum_univ_castSucc (fun j => f (ω (p.t j)))
+  have hT : f (ω T) = f (ω (p.t (Fin.last p.m))) := by rw [p.t_last]
+  have h0 : f (ω 0) = f (ω (p.t 0)) := by rw [p.t_zero]
+  rw [Finset.sum_sub_distrib, hT, h0]
+  change _ = ∑ k : Fin p.m, f (ω (p.t k.succ)) - ∑ k : Fin p.m, f (ω (p.t k.castSucc))
+  linarith
 
 /-- **Subgoal** ([Föl81] proof: second-order Taylor remainder): if `‖∇²f(z) - ∇²f(x)‖ ≤ ε` on the
 segment `[x, y]`, then `|f(y) - f(x) - ∇f(x)·(y-x) - ½⟨∇²f(x)(y-x), y-x⟩| ≤ ε |y-x|²`. -/
