@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:01:59Z",
+ "updated": "2026-11-26T18:02:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 52,
  "counts": {
   "open": 14,
   "blocked": 40,
-  "done": 68
+  "done": 69
  },
  "goalCounts": {
   "open": 7,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 16,
-  "done": 34
+  "done": 35
  },
  "untagged": [],
  "legend": {
@@ -70,7 +70,7 @@
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 12
+    "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
@@ -78,6 +78,7 @@
    "status": "blocked",
    "deps": [
     "Appendix.HeatKernel::heatKernel.div_scaling",
+    "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
     "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel",
     "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
     "Appendix.HeatKernel::heatKernel.integral_div_le",
@@ -128,6 +129,35 @@
    ],
    "blockers": [],
    "detail": "proved: heatKernel.div_scaling — subgoal of Lemma B.2 proof, eq. (34 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
+   "label": "integrableOn_Ioc",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eq. (35",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (35), integrability): for `d ≥ 1` and `x ≠ 0`, `s ↦ p_s(x)` is integrable on `(0, T]` (dominations from the proof of eq. (32)).",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [],
+   "detail": "proved: heatKernel.integrableOn_Ioc — subgoal of Lemma B.2 proof, eq. (35 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel",
@@ -3343,6 +3373,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
@@ -3410,6 +3445,11 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
    "kind": "hard"
   },
   {
@@ -3520,6 +3560,11 @@
   {
    "from": "Basic.Partition",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
    "kind": "hard"
   },
   {
@@ -3710,6 +3755,11 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
    "kind": "hard"
   },
   {
@@ -4149,6 +4199,11 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel",
    "kind": "hard"
   },
@@ -4225,6 +4280,11 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
    "kind": "hard"
   },
   {
@@ -4963,6 +5023,10 @@
    "to": "Appendix.HeatKernel"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
+   "to": "Appendix.HeatKernel"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel",
    "to": "Appendix.HeatKernel"
   },
@@ -5013,6 +5077,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -5181,6 +5249,10 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc"
   },
   {
    "from": "Basic.Rd",
@@ -5484,6 +5556,10 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel"
   },
   {
@@ -5537,6 +5613,10 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_Ioc"
   },
   {
    "from": "Main.GeometricMeshDecay",
