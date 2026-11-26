@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:38:05Z",
+ "updated": "2026-11-26T18:38:51Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 54,
-  "done": 77
+  "done": 78
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 35
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 30,
-  "done": 42
+  "done": 43
  },
  "untagged": [],
  "legend": {
@@ -1962,9 +1962,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 ℙ_x exists (subgoals)",
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "map_restrict_eq",
     "isLaw_unique"
    ],
    "declKinds": {
@@ -1987,10 +1986,9 @@
     "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
    ],
    "blockers": [
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
-    "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq"
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique"
    ],
-   "detail": "2 sorry: map_restrict_eq, isLaw_unique"
+   "detail": "1 sorry: isLaw_unique"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -2179,22 +2177,20 @@
    "parentGoal": "Bessel.WienerLawExists",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
-   "holes": [
-    "CanonicalWienerSpace.map_restrict_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ`): if `P` is a law of Brownian motion started at `x`, its finite-dimensional distribution on `J ⊂ [0, T]` is the image of the Brownian f.d.d. at the times `J` under `v ↦ (x + ∑_i v^i_t e_i)_{t ∈ J}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [],
-   "detail": "sorry: CanonicalWienerSpace.map_restrict_eq — subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` (in Bessel.WienerLawExists)"
+   "detail": "proved: CanonicalWienerSpace.map_restrict_eq — subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` (in Bessel.WienerLawExists)"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
