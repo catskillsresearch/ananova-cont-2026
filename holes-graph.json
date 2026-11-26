@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:25:49Z",
+ "updated": "2026-11-26T20:27:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 54,
+ "sorryCount": 53,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 36,
-  "done": 132
+  "done": 133
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 15,
-  "done": 94
+  "done": 95
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
-    "hasFDerivAt_comp_norm",
     "fderiv_fderiv_comp_norm_apply",
     "laplacian_comp_norm",
     "radial_ode_eq",
@@ -3109,7 +3108,6 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
-    "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
@@ -3118,7 +3116,7 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "10 sorry: hasFDerivAt_comp_norm, fderiv_fderiv_comp_norm_apply, laplacian_comp_norm, radial_ode_eq, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "9 sorry: fderiv_fderiv_comp_norm_apply, laplacian_comp_norm, radial_ode_eq, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3359,22 +3357,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.hasFDerivAt_comp_norm"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7b: first derivative of a radial function): for `x ≠ 0` and `f` differentiable at `|x|`, `D(f ∘ |·|)(x) = (f'(|x|)/|x|) ⟨x, ·⟩`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.hasFDerivAt_comp_norm — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.hasFDerivAt_comp_norm — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean",

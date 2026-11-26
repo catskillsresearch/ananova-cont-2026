@@ -571,7 +571,13 @@ theorem radial_eq_profile {d : ℕ} (hd : 0 < d) {u : Rd d → ℝ}
 theorem hasFDerivAt_comp_norm {d : ℕ} {f : ℝ → ℝ} {x : Rd d} (hx : x ≠ 0)
     (hf : DifferentiableAt ℝ f ‖x‖) :
     HasFDerivAt (fun z : Rd d => f ‖z‖) ((deriv f ‖x‖ / ‖x‖) • innerSL ℝ x) x := by
-  sorry
+  have hn : HasFDerivAt (fun z : Rd d => ‖z‖) (‖x‖⁻¹ • innerSL ℝ x) x := by
+    have h := hasFDerivAt_norm_rpow_of_ne hx 1
+    rw [show (1 : ℝ) - 2 = -1 by norm_num, Real.rpow_neg_one, one_mul] at h
+    simpa only [Real.rpow_one] using h
+  have h := hf.hasDerivAt.comp_hasFDerivAt x hn
+  rw [div_eq_mul_inv, ← smul_smul]
+  exact h
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7c: second derivative of a radial function): for
 `y ≠ 0` and `f` `C²` at `|y|`, with `s = |y|`,
