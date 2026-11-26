@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:33:31Z",
+ "updated": "2026-11-26T20:34:49Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 36,
-  "done": 137
+  "done": 138
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 15,
-  "done": 99
+  "done": 100
  },
  "untagged": [],
  "legend": {
@@ -3048,10 +3048,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
     "sphereMean_bounds",
-    "tendsto_sphereMean",
     "sphereMean_outside",
     "newton_ball_of_three_le",
     "newton_ball",
@@ -3108,10 +3107,9 @@
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
-    "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
-    "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
+    "Occupation.OccupationConstant::occupationConstant.sphereMean_outside"
    ],
-   "detail": "6 sorry: sphereMean_bounds, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "5 sorry: sphereMean_bounds, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3958,22 +3956,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.tendsto_sphereMean"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 8: behaviour at infinity): for `d ≥ 3` and `r > 0`, `|y|^{d-2} sphereMean d r y → 1` as `|y| → ∞`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.tendsto_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.tendsto_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",

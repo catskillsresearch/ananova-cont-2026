@@ -751,7 +751,24 @@ theorem sphereMean_bounds {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : R
 theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :
     Tendsto (fun y : Rd d => ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y) (cocompact (Rd d))
       (𝓝 1) := by
-  sorry
+  have hn := tendsto_norm_cocompact_atTop (E := Rd d)
+  have h0 : Tendsto (fun y : Rd d => r / ‖y‖) (cocompact (Rd d)) (𝓝 0) :=
+    tendsto_const_nhds.div_atTop hn
+  have hpow : Tendsto (fun t : ℝ => (1 + t) ^ (2 - (d : ℝ))) (𝓝 0) (𝓝 1) := by
+    have hcont : ContinuousAt (fun t : ℝ => (1 + t) ^ (2 - (d : ℝ))) 0 :=
+      ContinuousAt.rpow_const (by fun_prop) (Or.inl (by simp))
+    simpa using hcont.tendsto
+  have hlow : Tendsto (fun y : Rd d => (1 + r / ‖y‖) ^ (2 - (d : ℝ))) (cocompact (Rd d)) (𝓝 1) :=
+    hpow.comp h0
+  have hup : Tendsto (fun y : Rd d => (1 - r / ‖y‖) ^ (2 - (d : ℝ))) (cocompact (Rd d)) (𝓝 1) := by
+    have h0' : Tendsto (fun y : Rd d => -(r / ‖y‖)) (cocompact (Rd d)) (𝓝 0) := by
+      simpa using h0.neg
+    refine (hpow.comp h0').congr fun y => ?_
+    simp only [Function.comp_apply, sub_eq_add_neg]
+  have hev : ∀ᶠ y in cocompact (Rd d), r < ‖y‖ := hn.eventually_gt_atTop r
+  exact tendsto_of_tendsto_of_tendsto_of_le_of_le' hlow hup
+    (hev.mono fun y hy => (sphereMean_bounds hd hr hy).1)
+    (hev.mono fun y hy => (sphereMean_bounds hd hr hy).2)
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 9: Newton's shell theorem outside the sphere): for
 `d ≥ 3`, `0 < r < |y|`, `sphereMean d r y = |y|^{2-d}`. -/
