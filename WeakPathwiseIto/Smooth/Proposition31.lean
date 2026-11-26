@@ -452,7 +452,47 @@ theorem tendsto_boundary {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
     {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
       ⟪f (ω t) - f (ω ((π n).left k)), ω t - ω ((π n).left k)⟫) atTop (𝓝 0) := by
-  sorry
+  have hfd : Differentiable ℝ f := hf.1.differentiable (by norm_num)
+  obtain ⟨L, hL⟩ := hf.2 1 le_rfl
+  have hL' : ∀ y, ‖fderiv ℝ f y‖ ≤ max L 0 := fun y => by
+    rw [← norm_iteratedFDeriv_one]; exact (hL y).trans (le_max_left _ _)
+  have hcard : ∀ n, (Finset.univ.filter
+      (fun k => (π n).left k < t ∧ t < (π n).right k)).card ≤ 1 := fun n => by
+    refine Finset.card_le_one.2 fun a ha b hb => ?_
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at ha hb
+    have key : ∀ a b : Fin (π n).m, a < b → (π n).right a ≤ (π n).left b := fun a b hab =>
+      (π n).strictMono.monotone (by rw [Fin.le_def]; simp; omega)
+    rcases lt_trichotomy a b with h | h | h
+    · exact absurd ((key a b h).trans_lt hb.1) (not_lt.2 ha.2.le)
+    · exact h
+    · exact absurd ((key b a h).trans_lt ha.1) (not_lt.2 hb.2.le)
+  refine squeeze_zero_norm (a := fun n => max L 0 * pathOscillation ω (π n) ^ 2) (fun n => ?_) ?_
+  · rw [Real.norm_eq_abs]
+    have hterm : ∀ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+        |⟪f (ω t) - f (ω ((π n).left k)), ω t - ω ((π n).left k)⟫| ≤
+          max L 0 * pathOscillation ω (π n) ^ 2 := fun k hk => by
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk
+      have hs := norm_sub_left_le hω (π n) k ⟨hk.1.le, hk.2.le⟩
+      have hmv := convex_univ.norm_image_sub_le_of_norm_fderiv_le (fun y _ => hfd y)
+        (fun y _ => hL' y) (mem_univ (ω ((π n).left k))) (mem_univ (ω t))
+      calc _ ≤ ‖f (ω t) - f (ω ((π n).left k))‖ * ‖ω t - ω ((π n).left k)‖ :=
+            abs_real_inner_le_norm _ _
+        _ ≤ (max L 0 * ‖ω t - ω ((π n).left k)‖) * ‖ω t - ω ((π n).left k)‖ :=
+            mul_le_mul_of_nonneg_right hmv (norm_nonneg _)
+        _ = max L 0 * ‖ω t - ω ((π n).left k)‖ ^ 2 := by ring
+        _ ≤ max L 0 * pathOscillation ω (π n) ^ 2 :=
+            mul_le_mul_of_nonneg_left (pow_le_pow_left₀ (norm_nonneg _) hs 2) (le_max_right _ _)
+    have hnn : 0 ≤ max L 0 * pathOscillation ω (π n) ^ 2 :=
+      mul_nonneg (le_max_right _ _) (sq_nonneg _)
+    calc _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+          |⟪f (ω t) - f (ω ((π n).left k)), ω t - ω ((π n).left k)⟫| :=
+          Finset.abs_sum_le_sum_abs _ _
+      _ ≤ (Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k)).card •
+            (max L 0 * pathOscillation ω (π n) ^ 2) := Finset.sum_le_card_nsmul _ _ _ hterm
+      _ ≤ 1 • (max L 0 * pathOscillation ω (π n) ^ 2) := nsmul_le_nsmul_left hnn (hcard n)
+      _ = _ := one_nsmul _
+  · have := (hosc.pow 2).const_mul (max L 0)
+    simpa using this
 
 end proposition_3_1
 
