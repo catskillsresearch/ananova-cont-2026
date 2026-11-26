@@ -95,7 +95,57 @@ theorem hasLaw_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s < t) (ht
     HasLaw (fun ω => (t - s) ^ (-(1 / 2 : ℝ)) •
         (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω))
       (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, hind, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x
+  set g : Ω' → CanonicalWienerSpace d T := fun ω' =>
+    CanonicalWienerSpace.ofCoords x (fun i t => W i t ω') fun i => hW i ω' with hgdef
+  have hg : AEMeasurable g Q := by
+    refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun r => ?_
+    simp only [hgdef, CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  have htI : t ∈ Icc 0 T := ⟨hs.trans hst.le, ht⟩
+  have hsI : s ∈ Icc 0 T := ⟨hs, hst.le.trans ht⟩
+  set c : ℝ := (t - s) ^ (-(1 / 2 : ℝ)) with hc
+  have hBm : ∀ r ∈ Icc 0 T, Measurable (CanonicalWienerSpace.B (d := d) (T := T) r) := by
+    intro r hr
+    have : CanonicalWienerSpace.B (d := d) (T := T) r = fun ω => ω ⟨r, hr⟩ := by
+      funext ω; simp [CanonicalWienerSpace.B, hr]
+    rw [this]
+    exact ContinuousMap.measurable_eval _
+  have hF : Measurable fun ω : CanonicalWienerSpace d T =>
+      c • (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω) :=
+    ((hBm t htI).sub (hBm s hsI)).const_smul c
+  set Y : Fin d → Ω' → ℝ := fun i ω' => c * (W i t.toNNReal ω' - W i s.toNNReal ω') with hY
+  have hcomp : (fun ω => c • (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω)) ∘ g =
+      fun ω' => ∑ i, Y i ω' • Rd.basisVec i := by
+    funext ω'
+    simp only [Function.comp, hgdef]
+    rw [B_ofCoords _ _ _ htI, B_ofCoords _ _ _ hsI, add_sub_add_left_eq_sub,
+      ← Finset.sum_sub_distrib, Finset.smul_sum]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [← sub_smul, smul_smul]
+  have hYind : iIndepFun Y Q :=
+    hind.comp (fun _ (f : ℝ≥0 → ℝ) => c * (f t.toNNReal - f s.toNNReal))
+      fun _ => measurable_const.mul ((measurable_pi_apply _).sub (measurable_pi_apply _))
+  have hYlaw : ∀ i, HasLaw (Y i) (gaussianReal 0 1) Q := by
+    intro i
+    have h := gaussianReal_const_mul ((hB i).toIsPreBrownianReal.hasLaw_sub t.toNNReal s.toNNReal) c
+    have hv : (NNReal.mk (c ^ 2) (sq_nonneg _)) * nndist (t.toNNReal : ℝ) (s.toNNReal : ℝ) = 1 := by
+      ext
+      simp only [NNReal.coe_mul, NNReal.coe_mk, coe_nndist, Real.dist_eq,
+        Real.coe_toNNReal _ htI.1, Real.coe_toNNReal _ hs, NNReal.coe_one]
+      rw [abs_of_pos (by linarith), hc, ← Real.rpow_natCast, ← Real.rpow_mul (by linarith)]
+      norm_num
+      rw [Real.rpow_neg_one]
+      field_simp [show t - s ≠ 0 by linarith]
+    rw [mul_zero] at h
+    convert h using 2
+    exact hv.symm
+  have hlaw := hasLaw_sum_smul_basisVec hYind hYlaw
+  rw [hP]
+  refine ⟨hF.aemeasurable, ?_⟩
+  rw [AEMeasurable.map_map_of_aemeasurable hF.aemeasurable hg, hcomp]
+  exact hlaw.map_eq
 
 /-- **Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B`
 over the cells of a partition are independent under `ℙ_x`. -/
@@ -155,7 +205,7 @@ theorem tendsto_ae_of_summable_variance {Ω : Type*} [MeasurableSpace Ω] {μ : 
   obtain ⟨N, hN⟩ := (hω k).exists_forall_of_atTop
   refine ⟨N, fun n hn => ?_⟩
   have := hN n hn
-  simp only [mem_setOf_eq, not_le] at this
+  simp only [not_le] at this
   rw [Real.dist_eq]
   linarith
 
