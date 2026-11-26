@@ -28,6 +28,37 @@ namespace heatKernel
 
 variable {d : ℕ}
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), scaling `s = |x|² u`):
+`p_{|x|² u}(x) = |x|^{-d} · (2πu)^{-d/2} e^{-1/(2u)}`. -/
+theorem scaling (x : Rd d) (hx : x ≠ 0) {u : ℝ} (hu : 0 < u) :
+    heatKernel d (‖x‖ ^ 2 * u) x =
+      ‖x‖ ^ (-(d : ℝ)) * ((2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u))) := by
+  have hr : 0 < ‖x‖ := norm_pos_iff.2 hx
+  unfold heatKernel
+  have h1 : 2 * Real.pi * (‖x‖ ^ 2 * u) = ‖x‖ ^ 2 * (2 * Real.pi * u) := by ring
+  have h2 : (‖x‖ ^ 2) ^ (-(d : ℝ) / 2) = ‖x‖ ^ (-(d : ℝ)) := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul hr.le]
+    congr 1
+    push_cast
+    ring
+  have h3 : -‖x‖ ^ 2 / (2 * (‖x‖ ^ 2 * u)) = -1 / (2 * u) := by
+    field_simp
+  rw [h1, Real.mul_rpow (by positivity) (by positivity), h2, h3]
+  ring
+
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), unit kernel): for `d ≥ 3`,
+`u ↦ (2πu)^{-d/2} e^{-1/(2u)}` is integrable on `(0, ∞)` (substitute `v = 1/u`). -/
+theorem integrableOn_unitKernel (hd : 2 < d) :
+    IntegrableOn (fun u : ℝ => (2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)))
+      (Ioi 0) := by
+  sorry
+
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), case `d ≥ 3`):
+`∫_0^T p_s(x) ds ≤ C |x|^{2-d}` (scaling `s = |x|² u` on `(0, ∞)`). -/
+theorem integral_le_potentialProfile_of_two_lt (hd : 2 < d) (T : ℝ) : ∃ C : ℝ, ∀ x : Rd d,
+    x ≠ 0 → ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
+  sorry
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
     ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
