@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-26T21:11:17Z",
+ "updated": "2026-11-26T21:11:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 40,
  "counts": {
-  "open": 9,
-  "blocked": 30,
-  "done": 155
+  "open": 12,
+  "blocked": 26,
+  "done": 156
  },
  "goalCounts": {
   "open": 7,
-  "blocked": 19,
-  "done": 39
+  "blocked": 18,
+  "done": 40
  },
  "subgoalCounts": {
-  "open": 2,
-  "blocked": 11,
+  "open": 5,
+  "blocked": 8,
   "done": 116
  },
  "untagged": [],
@@ -2767,9 +2767,9 @@
     "theorem": 7
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2783,7 +2783,7 @@
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -3036,15 +3036,13 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.WeightedOccupationMeasure",
     "Smooth.PathOscillation"
    ],
-   "blockers": [
-    "Occupation.DiscreteOccupationDensity"
-   ],
+   "blockers": [],
    "detail": "1 sorry: lemma_4_2"
   },
   {
@@ -4167,7 +4165,6 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity",
     "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
@@ -4194,7 +4191,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 4.2 seminorm).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4202,9 +4199,7 @@
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Occupation.DiscreteOccupationDensity"
-   ],
+   "blockers": [],
    "detail": "sorry: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
   },
   {
@@ -4227,7 +4222,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4235,9 +4230,7 @@
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Occupation.DiscreteOccupationDensity"
-   ],
+   "blockers": [],
    "detail": "sorry: occupationSeminorm.le_limsup_discreteSeminorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
   },
   {
@@ -4260,7 +4253,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4268,9 +4261,7 @@
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Occupation.DiscreteOccupationDensity"
-   ],
+   "blockers": [],
    "detail": "sorry: occupationSeminorm.lintegral_le_maximal — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
