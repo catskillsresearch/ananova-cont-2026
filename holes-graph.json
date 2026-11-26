@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:05:12Z",
+ "updated": "2026-11-26T20:07:28Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 53,
+ "sorryCount": 52,
  "counts": {
-  "open": 17,
+  "open": 16,
   "blocked": 36,
-  "done": 122
+  "done": 123
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 15,
-  "done": 84
+  "done": 85
  },
  "untagged": [],
  "legend": {
@@ -3048,10 +3048,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
     "hasFDerivAt_integral_sphere",
-    "continuousOn_integral_sphere",
     "harmonicAt_sphereMean",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
@@ -3095,7 +3094,6 @@
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
-    "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
@@ -3105,7 +3103,7 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "9 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "8 sorry: hasFDerivAt_integral_sphere, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
@@ -3117,22 +3115,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.continuousOn_integral_sphere"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6b: continuity of the sphere integral): if `K` is jointly continuous on `U × S^{d-1}` with `U` open, `y ↦ ∫ K(y, ω) dσ(ω)` is continuous on `U`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.continuousOn_integral_sphere — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.continuousOn_integral_sphere — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",

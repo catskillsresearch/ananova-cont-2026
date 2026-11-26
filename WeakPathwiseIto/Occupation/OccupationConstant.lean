@@ -273,7 +273,28 @@ theorem continuousOn_integral_sphere {d : ℕ} {F : Type*} [NormedAddCommGroup F
     {K : Rd d → Metric.sphere (0 : Rd d) 1 → F}
     (hKc : ContinuousOn (Function.uncurry K) (U ×ˢ univ)) :
     ContinuousOn (fun y => ∫ ω, K y ω ∂(volume : Measure (Rd d)).toSphere) U := by
-  sorry
+  intro y hy
+  obtain ⟨ε, hε, hεU⟩ := Metric.isOpen_iff.1 hU y hy
+  have hBU : Metric.closedBall y (ε / 2) ⊆ U :=
+    (Metric.closedBall_subset_ball (half_lt_self hε)).trans hεU
+  have hcpt : IsCompact (Metric.closedBall y (ε / 2) ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1))) :=
+    (isCompact_closedBall y _).prod isCompact_univ
+  obtain ⟨C, hC⟩ := hcpt.exists_bound_of_continuousOn (hKc.mono (prod_mono hBU subset_rfl))
+  have hcont : ∀ x ∈ U, Continuous (K x) := fun x hx =>
+    hKc.comp_continuous (by fun_prop : Continuous fun ω : Metric.sphere (0 : Rd d) 1 => (x, ω))
+      (fun ω => ⟨hx, trivial⟩)
+  have hB : Metric.closedBall y (ε / 2) ∈ 𝓝 y := Metric.closedBall_mem_nhds y (half_pos hε)
+  refine (continuousAt_of_dominated (bound := fun _ => C) ?_ ?_ (integrable_const C)
+    ?_).continuousWithinAt
+  · filter_upwards [hB] with x hx
+    exact (hcont x (hBU hx)).aestronglyMeasurable
+  · filter_upwards [hB] with x hx
+    exact Filter.Eventually.of_forall fun ω => hC (x, ω) ⟨hx, trivial⟩
+  · refine Filter.Eventually.of_forall fun ω => ?_
+    have h1 : ContinuousAt (Function.uncurry K) (y, ω) :=
+      hKc.continuousAt ((hU.prod isOpen_univ).mem_nhds ⟨hy, trivial⟩)
+    have h2 : ContinuousAt (fun x : Rd d => (x, ω)) y := by fun_prop
+    exact ContinuousAt.comp (g := Function.uncurry K) (f := fun x : Rd d => (x, ω)) h1 h2
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6c: second derivative of the shifted kernel): for
 `y ≠ c`, `D²(|· - c|^p)(y)(e, e) = p(p-2)|y-c|^{p-4}⟨y-c,e⟩² + p|y-c|^{p-2}|e|²`. -/
