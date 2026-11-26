@@ -261,7 +261,15 @@ theorem norm_sub_left_le {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T)) (
 theorem norm_taylor_le {f : Rd d → Rd d} (hf : Differentiable ℝ f) {x y : Rd d} {ε : ℝ}
     (hε : ∀ z ∈ segment ℝ x y, ‖fderiv ℝ f z - fderiv ℝ f y‖ ≤ ε) :
     ‖f y - f x - fderiv ℝ f y (y - x)‖ ≤ ε * ‖y - x‖ := by
-  sorry
+  set A := fderiv ℝ f y with hA
+  have hd : ∀ z, HasFDerivAt (fun z => f z - A z) (fderiv ℝ f z - A) z := fun z =>
+    (hf z).hasFDerivAt.sub A.hasFDerivAt
+  have key := (convex_segment x y).norm_image_sub_le_of_norm_fderiv_le
+    (f := fun z => f z - A z) (C := ε) (fun z _ => (hd z).differentiableAt)
+    (fun z hz => by rw [(hd z).fderiv]; exact hε z hz) (left_mem_segment ℝ x y)
+    (right_mem_segment ℝ x y)
+  have e : f y - A y - (f x - A x) = f y - f x - A (y - x) := by rw [map_sub]; abel
+  simpa only [e] using key
 
 /-- **Subgoal** (Proposition 3.1 proof: splitting the discrete covariation): the stopped sum
 equals the sum over complete intervals `t_{k+1} ≤ t` plus the straddling interval
