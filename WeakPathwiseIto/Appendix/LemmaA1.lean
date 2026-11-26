@@ -159,7 +159,12 @@ theorem lemma_A_1 {π : ℕ → Partition T}
     ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x), Tendsto
       (fun n => ∫ t in Icc 0 T, |normalizedQuadraticDensity (π n) (CanonicalWienerSpace.path ω) t| ^ q)
       atTop (𝓝 (gaussianMoment d q * T)) := by
-  sorry
+  have := CanonicalWienerSpace.isProbabilityMeasure_P (T := T) x
+  obtain ⟨b, hb⟩ := lemma_A_1.variance_le x hq
+  have hsum : Summable fun n => b * T * (π n).mesh :=
+    ((summable_nat_add_iff (f := fun n => (π n).mesh) 1).1 hπ).mul_left (b * T)
+  exact lemma_A_1.tendsto_ae_of_summable_variance (fun n => lemma_A_1.memLp_two x (π n) hq)
+    (fun n => lemma_A_1.integral_eq x (π n) hq) (fun n => hb (π n)) hsum
 
 /-- **Lemma A.1** (consequence): `sup_n ‖ρ_{n,B}‖_{L^q([0,T])} < ∞`, `ℙ_x`-almost surely. -/
 theorem lemma_A_1_bounded {π : ℕ → Partition T}
