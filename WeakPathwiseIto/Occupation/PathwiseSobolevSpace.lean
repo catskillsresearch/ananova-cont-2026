@@ -67,7 +67,11 @@ theorem isWeakHessian_smoothHessian {F : Rd d → ℝ} (hF : ContDiff ℝ 2 F) :
 seminorm `‖·‖_{W^0_{ω,π}}` vanishes on `0`. -/
 theorem occupationSeminorm_sub_self (π : ℕ → Partition T) (ω : ℝ → Rd d)
     (G : Rd d → (Rd d →L[ℝ] Rd d)) : occupationSeminorm π ω (fun x => G x - G x) = 0 := by
-  sorry
+  have h : ∀ n, ∫⁻ x, ‖G x - G x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x) = 0 :=
+    fun n => by simp only [sub_self, enorm_eq_nnnorm, nnnorm_zero, ENNReal.coe_zero, zero_mul, lintegral_zero]
+  unfold occupationSeminorm
+  simp only [h]
+  exact limsup_const 0
 
 /-- **Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`. -/
 theorem contDiffBounded_subset (π : ℕ → Partition T) (ω : ℝ → Rd d) :

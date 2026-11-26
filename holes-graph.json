@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:42:19Z",
+ "updated": "2026-11-26T22:44:15Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 19,
-  "done": 205
+  "done": 206
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 48
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 7,
-  "done": 157
+  "done": 158
  },
  "untagged": [],
  "legend": {
@@ -4796,14 +4796,13 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Definition 4.3",
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
     "directions_single_add_single",
     "testDeriv_single_add_single",
     "integral_mul_fderiv_fderiv",
     "coord_smoothHessian",
     "isWeakHessian_smoothHessian",
-    "occupationSeminorm_sub_self",
     "contDiffBounded_subset"
    ],
    "declKinds": {
@@ -4831,10 +4830,9 @@
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
    ],
-   "detail": "7 sorry: directions_single_add_single, testDeriv_single_add_single, integral_mul_fderiv_fderiv, coord_smoothHessian, isWeakHessian_smoothHessian, occupationSeminorm_sub_self, contDiffBounded_subset"
+   "detail": "6 sorry: directions_single_add_single, testDeriv_single_add_single, integral_mul_fderiv_fderiv, coord_smoothHessian, isWeakHessian_smoothHessian, contDiffBounded_subset"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
@@ -4986,23 +4984,21 @@
    "parentGoal": "Occupation.PathwiseSobolevSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "PathwiseSobolevSpace.occupationSeminorm_sub_self"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 4.3 proof, the constant approximating sequence `F_m = F`): the seminorm `‖·‖_{W^0_{ω,π}}` vanishes on `0`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: PathwiseSobolevSpace.occupationSeminorm_sub_self — subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` (in Occupation.PathwiseSobolevSpace)"
+   "detail": "proved: PathwiseSobolevSpace.occupationSeminorm_sub_self — subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
