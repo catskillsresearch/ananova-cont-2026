@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:00:40Z  
-**`sorry` occurrences:** 52 · 14 open · 40 blocked · 67 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 7, 'blocked': 16, 'done': 33} · 28 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:01:59Z  
+**`sorry` occurrences:** 52 · 14 open · 40 blocked · 68 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 7, 'blocked': 16, 'done': 34} · 28 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -47,6 +47,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.le_inv_two_mul_add` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
+| done | `Appendix.HeatKernel::heatKernel.le_rpow_mul` | subgoal of Lemma B.2 proof, eq. (35 | 0 |
 | open | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 1 |
 | done | `Appendix.HeatKernel::heatKernel.scaling` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |

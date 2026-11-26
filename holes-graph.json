@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:00:40Z",
+ "updated": "2026-11-26T18:01:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 52,
  "counts": {
   "open": 14,
   "blocked": 40,
-  "done": 67
+  "done": 68
  },
  "goalCounts": {
   "open": 7,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 16,
-  "done": 33
+  "done": 34
  },
  "untagged": [],
  "legend": {
@@ -70,7 +70,7 @@
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 11
+    "theorem": 12
    },
    "paperGoal": false,
    "verified": false,
@@ -86,6 +86,7 @@
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two",
     "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add",
+    "Appendix.HeatKernel::heatKernel.le_rpow_mul",
     "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
     "Appendix.HeatKernel::heatKernel.scaling",
     "Appendix.PotentialProfile",
@@ -359,6 +360,35 @@
    ],
    "blockers": [],
    "detail": "proved: heatKernel.le_inv_two_mul_add — subgoal of Lemma B.2 proof, eq. (32 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
+   "label": "le_rpow_mul",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eq. (35",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (35), kernel comparison): for `0 < a ≤ s ≤ K a`, `p_a(x) ≤ K^{d/2} p_s(x)`.",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [],
+   "detail": "proved: heatKernel.le_rpow_mul — subgoal of Lemma B.2 proof, eq. (35 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
@@ -3353,6 +3383,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
@@ -3415,6 +3450,11 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
    "kind": "hard"
   },
   {
@@ -3520,6 +3560,11 @@
   {
    "from": "Basic.Partition",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
    "kind": "hard"
   },
   {
@@ -3705,6 +3750,11 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
    "kind": "hard"
   },
   {
@@ -4139,6 +4189,11 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "kind": "hard"
   },
@@ -4210,6 +4265,11 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
    "kind": "hard"
   },
   {
@@ -4935,6 +4995,10 @@
    "to": "Appendix.HeatKernel"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.le_rpow_mul",
+   "to": "Appendix.HeatKernel"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "to": "Appendix.HeatKernel"
   },
@@ -4981,6 +5045,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -5145,6 +5213,10 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul"
   },
   {
    "from": "Basic.Rd",
@@ -5444,6 +5516,10 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
   },
   {
@@ -5493,6 +5569,10 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.le_rpow_mul"
   },
   {
    "from": "Main.GeometricMeshDecay",
