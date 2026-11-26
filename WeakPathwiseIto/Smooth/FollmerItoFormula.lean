@@ -217,7 +217,55 @@ theorem tendsto_remainder {π : ℕ → Partition T} {ω : ℝ → Rd d}
         ⟪gradient f (ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
         1 / 2 * ⟪smoothHessian f (ω ((π n).left k)) (ω ((π n).right k) - ω ((π n).left k)),
           ω ((π n).right k) - ω ((π n).left k)⟫)) atTop (𝓝 0) := by
-  sorry
+  have hg := contDiffBounded_gradient hf
+  have hf2 : ContDiff ℝ 2 f := hf.1
+  have hH : Continuous (smoothHessian f) := hg.1.continuous_fderiv (by norm_num)
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  have hωC : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C := fun s hs => hC _ (mem_image_of_mem ω hs)
+  have hu := Metric.uniformContinuousOn_iff.1
+    ((isCompact_closedBall (0 : Rd d) (C + 1)).uniformContinuousOn_of_continuous hH.continuousOn)
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ M :=
+    ((lemma_4_2.tendsto_sum_sq hQV).eventually (gt_mem_nhds
+      (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+        fun n h => h.le
+  refine Metric.tendsto_nhds.2 fun ε hε => ?_
+  obtain ⟨δ, hδ, hδD⟩ := hu (ε / (2 * M)) (by positivity)
+  filter_upwards [hevS, hosc.eventually (gt_mem_nhds (lt_min hδ one_pos))] with n hn hon
+  rw [Real.dist_eq, sub_zero]
+  have hterm : ∀ k : Fin (π n).m,
+      |f (ω ((π n).right k)) - f (ω ((π n).left k)) -
+          ⟪gradient f (ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
+          1 / 2 * ⟪smoothHessian f (ω ((π n).left k)) (ω ((π n).right k) - ω ((π n).left k)),
+            ω ((π n).right k) - ω ((π n).left k)⟫| ≤
+        ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := fun k => by
+    have hΔ' : ‖ω ((π n).right k) - ω ((π n).left k)‖ < min δ 1 :=
+      (lemma_4_2.norm_increment_le hω (π n) k).trans_lt hon
+    have hl : ‖ω ((π n).left k)‖ ≤ C := hωC _ ((π n).t_mem _)
+    have hlB : ω ((π n).left k) ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+      rw [Metric.mem_closedBall, dist_zero_right]; linarith
+    refine abs_taylor2_le hf2 fun z hz => ?_
+    have hz' : z ∈ Metric.closedBall (ω ((π n).left k)) ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+      (convex_closedBall _ _).segment_subset (Metric.mem_closedBall_self (norm_nonneg _))
+        (by rw [Metric.mem_closedBall, dist_eq_norm]) hz
+    rw [Metric.mem_closedBall, dist_eq_norm] at hz'
+    have hzB : z ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+      rw [Metric.mem_closedBall, dist_zero_right]
+      calc ‖z‖ = ‖(z - ω ((π n).left k)) + ω ((π n).left k)‖ := by rw [sub_add_cancel]
+        _ ≤ ‖z - ω ((π n).left k)‖ + ‖ω ((π n).left k)‖ := norm_add_le _ _
+        _ ≤ C + 1 := by linarith [min_le_right δ 1]
+    have := hδD z hzB _ hlB (by rw [dist_eq_norm]; linarith [min_le_left δ 1])
+    rw [dist_eq_norm] at this
+    exact this.le
+  calc _ ≤ ∑ k, |_| := Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ k, ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+        Finset.sum_le_sum fun k _ => hterm k
+    _ = ε / (2 * M) * ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := by
+        rw [Finset.mul_sum]
+    _ ≤ ε / (2 * M) * M := mul_le_mul_of_nonneg_left hn (by positivity)
+    _ = ε / 2 := by field_simp
+    _ < ε := by linarith
 
 end follmer_ito_formula
 

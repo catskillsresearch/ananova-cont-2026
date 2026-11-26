@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:53:11Z",
+ "updated": "2026-11-26T21:54:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 26,
-  "done": 183
+  "done": 184
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 42
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 8,
-  "done": 141
+  "done": 142
  },
  "untagged": [],
  "legend": {
@@ -4766,9 +4766,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "tendsto_remainder",
     "follmer_ito_formula"
    ],
    "declKinds": {
@@ -4795,10 +4794,9 @@
     "Smooth.Proposition31"
    ],
    "blockers": [
-    "Smooth.FollmerItoFormula::follmer_ito_formula",
-    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
+    "Smooth.FollmerItoFormula::follmer_ito_formula"
    ],
-   "detail": "2 sorry: tendsto_remainder, follmer_ito_formula"
+   "detail": "1 sorry: follmer_ito_formula"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -5022,17 +5020,15 @@
    "parentGoal": "Smooth.FollmerItoFormula",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula.tendsto_remainder"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** ([Föl81] proof: the second-order Taylor remainders sum to `o(1)`, `≤ ρ_{∇²f}(osc) ∑ |δ_kω|²`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -5042,7 +5038,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: follmer_ito_formula.tendsto_remainder — subgoal of [Föl81] proof: the second-order Taylor remainders sum to `o(1 (in Smooth.FollmerItoFormula)"
+   "detail": "proved: follmer_ito_formula.tendsto_remainder — subgoal of [Föl81] proof: the second-order Taylor remainders sum to `o(1 (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.HasQuadraticVariation",
