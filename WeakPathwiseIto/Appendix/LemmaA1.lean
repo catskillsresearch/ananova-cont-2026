@@ -155,7 +155,19 @@ theorem hasGaussianLaw_coordIncrements {Ω' : Type*} [MeasurableSpace Ω'] {Q : 
     (hind : iIndepFun (fun i ω' t => W i t ω') Q) {m : ℕ} (t : Fin (m + 1) → ℝ≥0) :
     HasGaussianLaw (fun ω' (k : Fin m) (i : Fin d) =>
       W i (t k.succ) ω' - W i (t k.castSucc) ω') Q := by
-  sorry
+  have hi : ∀ i, HasGaussianLaw (fun ω' (k : Fin m) =>
+      W i (t k.succ) ω' - W i (t k.castSucc) ω') Q := fun i =>
+    (hB i).toIsPreBrownianReal.isGaussianProcess.hasGaussianLaw_increments
+  have hind' : iIndepFun (fun i ω' (k : Fin m) =>
+      W i (t k.succ) ω' - W i (t k.castSucc) ω') Q :=
+    hind.comp (fun _ (f : ℝ≥0 → ℝ) (k : Fin m) => f (t k.succ) - f (t k.castSucc))
+      fun _ => by fun_prop
+  have hJ := hind'.hasGaussianLaw hi
+  let L : (Fin d → Fin m → ℝ) →L[ℝ] (Fin m → Fin d → ℝ) :=
+    ContinuousLinearMap.pi fun k => ContinuousLinearMap.pi fun i =>
+      (ContinuousLinearMap.proj (R := ℝ) (φ := fun _ : Fin m => ℝ) k).comp
+        (ContinuousLinearMap.proj (R := ℝ) (φ := fun _ : Fin d => Fin m → ℝ) i)
+  exact hJ.map L
 
 /-- **Subgoal** (Lemma A.1 proof, step 2d-ii: uncorrelated): increments over different cells are
 uncorrelated (same coordinate: independent increments; different coordinates: independence). -/
