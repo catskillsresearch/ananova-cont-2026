@@ -558,6 +558,47 @@ theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y
   simp only [ContinuousLinearMap.smul_apply, smul_eq_mul]
   rw [← Finset.mul_sum, h6, mul_zero]
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7a: radial profile): a radial `u` on `ℝ^d`, `d > 0`,
+satisfies `u y = u(|y| e₀)` with `e₀` the first unit vector. -/
+theorem radial_eq_profile {d : ℕ} (hd : 0 < d) {u : Rd d → ℝ}
+    (hrad : ∀ y y' : Rd d, ‖y‖ = ‖y'‖ → u y = u y') (y : Rd d) :
+    u y = u (‖y‖ • EuclideanSpace.single (⟨0, hd⟩ : Fin d) (1 : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7b: first derivative of a radial function): for
+`x ≠ 0` and `f` differentiable at `|x|`, `D(f ∘ |·|)(x) = (f'(|x|)/|x|) ⟨x, ·⟩`. -/
+theorem hasFDerivAt_comp_norm {d : ℕ} {f : ℝ → ℝ} {x : Rd d} (hx : x ≠ 0)
+    (hf : DifferentiableAt ℝ f ‖x‖) :
+    HasFDerivAt (fun z : Rd d => f ‖z‖) ((deriv f ‖x‖ / ‖x‖) • innerSL ℝ x) x := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7c: second derivative of a radial function): for
+`y ≠ 0` and `f` `C²` at `|y|`, with `s = |y|`,
+`D²(f ∘ |·|)(y)(e, e) = (f''(s) - f'(s)/s)/s² ⟨y,e⟩² + (f'(s)/s) |e|²`. -/
+theorem fderiv_fderiv_comp_norm_apply {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy : y ≠ 0)
+    (hf : ContDiffAt ℝ 2 f ‖y‖) (e : Rd d) :
+    fderiv ℝ (fderiv ℝ (fun z : Rd d => f ‖z‖)) y e e =
+      (deriv (deriv f) ‖y‖ - deriv f ‖y‖ / ‖y‖) / ‖y‖ ^ 2 * ⟪y, e⟫ ^ 2 +
+        deriv f ‖y‖ / ‖y‖ * ‖e‖ ^ 2 := by
+  sorry
+
+open Laplacian in
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7d: Laplacian of a radial function): for `y ≠ 0` and
+`f` `C²` at `s = |y|`, `Δ(f ∘ |·|)(y) = f''(s) + (d-1)/s f'(s)`. -/
+theorem laplacian_comp_norm {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy : y ≠ 0)
+    (hf : ContDiffAt ℝ 2 f ‖y‖) :
+    Δ (fun z : Rd d => f ‖z‖) y =
+      deriv (deriv f) ‖y‖ + ((d : ℝ) - 1) / ‖y‖ * deriv f ‖y‖ := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7e: the radial Laplace ODE): for `d ≥ 3` and
+`r ≥ 0`, if `f'' + (d-1)/s f' = 0` on `(r, ∞)`, then `f = a + b s^{2-d}` there. -/
+theorem radial_ode_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {f f' f'' : ℝ → ℝ}
+    (hf : ∀ s, r < s → HasDerivAt f (f' s) s) (hf' : ∀ s, r < s → HasDerivAt f' (f'' s) s)
+    (hode : ∀ s, r < s → f'' s + ((d : ℝ) - 1) / s * f' s = 0) :
+    ∃ a b : ℝ, ∀ s, r < s → f s = a + b * s ^ (2 - (d : ℝ)) := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7: radial harmonic functions): for `d ≥ 3`, a radial
 function harmonic on `{|y| > r}` is `a + b |y|^{2-d}` there. -/
 theorem radial_harmonic_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {u : Rd d → ℝ}

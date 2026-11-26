@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:22:11Z",
+ "updated": "2026-11-26T20:24:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 55,
  "counts": {
-  "open": 14,
+  "open": 19,
   "blocked": 36,
   "done": 131
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 13,
   "blocked": 15,
   "done": 93
  },
@@ -3048,8 +3048,13 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 6,
+   "sorryCount": 11,
    "holes": [
+    "radial_eq_profile",
+    "hasFDerivAt_comp_norm",
+    "fderiv_fderiv_comp_norm_apply",
+    "laplacian_comp_norm",
+    "radial_ode_eq",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
     "sphereMean_outside",
@@ -3059,7 +3064,7 @@
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 28
+    "theorem": 33
    },
    "paperGoal": false,
    "verified": false,
@@ -3072,9 +3077,11 @@
     "Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
     "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
     "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne",
@@ -3083,12 +3090,15 @@
     "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
     "Occupation.OccupationConstant::occupationConstant.integral_reflect",
     "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry",
+    "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_one",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_two",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
+    "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
+    "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
@@ -3099,13 +3109,18 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
+    "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
+    "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
+    "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
+    "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "6 sorry: radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "11 sorry: radial_eq_profile, hasFDerivAt_comp_norm, fderiv_fderiv_comp_norm_apply, laplacian_comp_norm, radial_ode_eq, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3235,6 +3250,33 @@
    "detail": "sorry: occupationConstant.eq_inv_integral — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
+   "id": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
+   "label": "fderiv_fderiv_comp_norm_apply",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.fderiv_fderiv_comp_norm_apply"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7c: second derivative of a radial function): for `y ≠ 0` and `f` `C²` at `|y|`, with `s = |y|`, `D²(f ∘ |·|)(y)(e, e) = (f''(s) - f'(s)/s)/s² ⟨y,e⟩² + (f'(s)/s) |e|²`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.fderiv_fderiv_comp_norm_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
    "id": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
    "label": "fderiv_fderiv_norm_rpow_apply",
    "kind": "subgoal",
@@ -3308,6 +3350,33 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant.harmonicAt_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
+   "label": "hasFDerivAt_comp_norm",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.hasFDerivAt_comp_norm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7b: first derivative of a radial function): for `x ≠ 0` and `f` differentiable at `|x|`, `D(f ∘ |·|)(x) = (f'(|x|)/|x|) ⟨x, ·⟩`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.hasFDerivAt_comp_norm — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean",
@@ -3510,6 +3579,33 @@
    "detail": "proved: occupationConstant.integral_toSphere_isometry — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
+   "id": "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
+   "label": "laplacian_comp_norm",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.laplacian_comp_norm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7d: Laplacian of a radial function): for `y ≠ 0` and `f` `C²` at `s = |y|`, `Δ(f ∘ |·|)(y) = f''(s) + (d-1)/s f'(s)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.laplacian_comp_norm — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
    "id": "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
    "label": "laplacian_newtonKernel",
    "kind": "subgoal",
@@ -3639,6 +3735,33 @@
    "detail": "sorry: occupationConstant.newton_ball_of_three_le — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
+   "id": "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
+   "label": "radial_eq_profile",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.radial_eq_profile"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7a: radial profile): a radial `u` on `ℝ^d`, `d > 0`, satisfies `u y = u(|y| e₀)` with `e₀` the first unit vector.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.radial_eq_profile — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
    "id": "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
    "label": "radial_harmonic_eq",
    "kind": "subgoal",
@@ -3664,6 +3787,33 @@
    ],
    "blockers": [],
    "detail": "sorry: occupationConstant.radial_harmonic_eq — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
+   "label": "radial_ode_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.radial_ode_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7e: the radial Laplace ODE): for `d ≥ 3` and `r ≥ 0`, if `f'' + (d-1)/s f' = 0` on `(r, ∞)`, then `f = a + b s^{2-d}` there.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.radial_ode_eq — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.sphereMean",
@@ -5672,6 +5822,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
    "kind": "hard"
   },
@@ -5683,6 +5838,11 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
    "kind": "hard"
   },
   {
@@ -5727,6 +5887,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
    "kind": "hard"
   },
@@ -5752,7 +5917,17 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
    "kind": "hard"
   },
   {
@@ -6826,6 +7001,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
@@ -6837,6 +7017,11 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -6881,6 +7066,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
@@ -6906,7 +7096,17 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -7882,6 +8082,10 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply"
   },
   {
@@ -7891,6 +8095,10 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm"
   },
   {
    "from": "Basic.Rd",
@@ -7926,6 +8134,10 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel"
   },
   {
@@ -7946,7 +8158,15 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.radial_eq_profile"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.radial_ode_eq"
   },
   {
    "from": "Basic.Rd",
@@ -8657,6 +8877,10 @@
    "to": "Occupation.OccupationConstant"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
    "to": "Occupation.OccupationConstant"
   },
@@ -8666,6 +8890,10 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm",
    "to": "Occupation.OccupationConstant"
   },
   {
@@ -8701,6 +8929,10 @@
    "to": "Occupation.OccupationConstant"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
    "to": "Occupation.OccupationConstant"
   },
@@ -8721,7 +8953,15 @@
    "to": "Occupation.OccupationConstant"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.radial_eq_profile",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
    "to": "Occupation.OccupationConstant"
   },
   {
