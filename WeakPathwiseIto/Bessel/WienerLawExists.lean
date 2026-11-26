@@ -89,7 +89,12 @@ theorem aemeasurable_of_aemeasurable_eval {X Y Z : Type*} [TopologicalSpace X]
 
 /-- **Subgoal** (Section 2.2 Wiener space): `ℙ_x` is a probability measure. -/
 theorem isProbabilityMeasure_P (x : Rd d) : IsProbabilityMeasure (P (T := T) x) := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, -, hP⟩ := isLaw_P (T := T) x
+  rw [hP]
+  refine (Measure.isProbabilityMeasure_map_iff (aemeasurable_of_aemeasurable_eval fun s => ?_)).2 hQ
+  simp only [ofCoords, ContinuousMap.coe_mk]
+  exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+    ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
 
 end CanonicalWienerSpace
 
