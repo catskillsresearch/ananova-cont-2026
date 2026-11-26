@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:02:45Z",
+ "updated": "2026-11-26T20:03:53Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 55,
+ "sorryCount": 54,
  "counts": {
-  "open": 19,
+  "open": 18,
   "blocked": 36,
-  "done": 120
+  "done": 121
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 13,
+  "open": 12,
   "blocked": 15,
-  "done": 82
+  "done": 83
  },
  "untagged": [],
  "legend": {
@@ -3048,11 +3048,10 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
     "hasFDerivAt_integral_sphere",
     "continuousOn_integral_sphere",
-    "fderiv_fderiv_norm_sub_rpow_apply",
     "sum_fderiv_fderiv_newtonKernel_sub",
     "harmonicAt_sphereMean",
     "radial_harmonic_eq",
@@ -3099,7 +3098,6 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
@@ -3109,7 +3107,7 @@
     "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "11 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, fderiv_fderiv_norm_sub_rpow_apply, sum_fderiv_fderiv_newtonKernel_sub, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "10 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, sum_fderiv_fderiv_newtonKernel_sub, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
@@ -3200,22 +3198,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.fderiv_fderiv_norm_sub_rpow_apply"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6c: second derivative of the shifted kernel): for `y ≠ c`, `D²(|· - c|^p)(y)(e, e) = p(p-2)|y-c|^{p-4}⟨y-c,e⟩² + p|y-c|^{p-2}|e|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.fderiv_fderiv_norm_sub_rpow_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.fderiv_fderiv_norm_sub_rpow_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",

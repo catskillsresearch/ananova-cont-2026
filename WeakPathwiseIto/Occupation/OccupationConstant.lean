@@ -281,7 +281,11 @@ theorem fderiv_fderiv_norm_sub_rpow_apply {d : ℕ} {y c : Rd d} (hy : y ≠ c) 
     (e : Rd d) :
     fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ p)) y e e =
       p * (p - 2) * ‖y - c‖ ^ (p - 4) * ⟪y - c, e⟫ ^ 2 + p * ‖y - c‖ ^ (p - 2) * ‖e‖ ^ 2 := by
-  sorry
+  have h1 : fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ p) =
+      fun x => fderiv ℝ (fun x : Rd d => ‖x‖ ^ p) (x - c) :=
+    funext fun x => fderiv_comp_sub (f := fun x : Rd d => ‖x‖ ^ p) (x := x) c
+  rw [h1, fderiv_comp_sub (f := fderiv ℝ fun x : Rd d => ‖x‖ ^ p) (x := y) c,
+    fderiv_fderiv_norm_rpow_apply (sub_ne_zero.2 hy)]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any
 orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`. -/
