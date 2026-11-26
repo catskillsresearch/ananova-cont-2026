@@ -47,6 +47,46 @@ theorem isLaw_unique {x : Rd d} {P P' : Measure (CanonicalWienerSpace d T)} (h :
 theorem isLaw_P (x : Rd d) : IsLaw x (P (T := T) x) :=
   Classical.epsilon_spec (exists_isLaw x)
 
+/-- **Subgoal** (Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω')` in `Ω`): a map into
+`C(X, Y)` whose evaluations are all a.e.-measurable is a.e.-measurable (evaluate on a countable
+dense set, then pass to limits). -/
+theorem aemeasurable_of_aemeasurable_eval {X Y Z : Type*} [TopologicalSpace X]
+    [SecondCountableTopology X] [LocallyCompactSpace X] [TopologicalSpace Y]
+    [SecondCountableTopology Y] [RegularSpace Y] [TopologicalSpace.PseudoMetrizableSpace Y] [MeasurableSpace Y]
+    [BorelSpace Y] [MeasurableSpace Z] {μ : Measure Z} {g : Z → C(X, Y)}
+    (hg : ∀ x, AEMeasurable (fun z => g z x) μ) : AEMeasurable g μ := by
+  classical
+  rcases isEmpty_or_nonempty Z with hZ | ⟨⟨z₀⟩⟩
+  · exact Subsingleton.measurable.aemeasurable
+  obtain ⟨D, hDc, hDd⟩ := TopologicalSpace.exists_countable_dense X
+  have := hDc.to_subtype
+  set m : D → Z → Y := fun q => (hg q).mk _
+  have hm : ∀ q, Measurable (m q) := fun q => (hg q).measurable_mk
+  have hae : ∀ᵐ z ∂μ, ∀ q : D, g z q = m q z := ae_all_iff.2 fun q => (hg q).ae_eq_mk
+  set N := toMeasurable μ {z | ¬ ∀ q : D, g z q = m q z}
+  have hN : MeasurableSet N := measurableSet_toMeasurable _ _
+  have hN0 : μ N = 0 := by rw [measure_toMeasurable]; exact ae_iff.1 hae
+  have hgood : ∀ z, z ∉ N → ∀ q : D, g z q = m q z := fun z hz => by
+    by_contra h; exact hz (subset_toMeasurable _ _ h)
+  set g' : Z → C(X, Y) := fun z => if z ∈ N then g z₀ else g z
+  have hg' : Measurable g' := by
+    refine ContinuousMap.measurable_iff_eval.2 fun x => ?_
+    have hx : x ∈ closure D := hDd.closure_eq ▸ Set.mem_univ x
+    obtain ⟨u, huD, hu⟩ := mem_closure_iff_seq_limit.1 hx
+    refine measurable_of_tendsto_metrizable (f := fun n z => g' z (u n)) (fun n => ?_)
+      (tendsto_pi_nhds.2 fun z => ((g' z).continuous.tendsto x).comp hu)
+    have : (fun z => g' z (u n)) = N.piecewise (fun _ => g z₀ (u n)) (m ⟨u n, huD n⟩) := by
+      funext z
+      by_cases hz : z ∈ N
+      · simp [g', hz, Set.piecewise]
+      · simp only [g', hz, if_false, Set.piecewise]
+        exact hgood z hz ⟨u n, huD n⟩
+    rw [this]
+    exact Measurable.piecewise hN measurable_const (hm _)
+  refine ⟨g', hg', ?_⟩
+  filter_upwards [measure_eq_zero_iff_ae_notMem.1 hN0] with z hz
+  simp [g', hz]
+
 /-- **Subgoal** (Section 2.2 Wiener space): `ℙ_x` is a probability measure. -/
 theorem isProbabilityMeasure_P (x : Rd d) : IsProbabilityMeasure (P (T := T) x) := by
   sorry
