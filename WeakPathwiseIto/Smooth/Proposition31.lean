@@ -299,7 +299,22 @@ theorem riemannSum_eq (p : Partition T) (f : Rd d → Rd d) (ω : ℝ → Rd d) 
 theorem inner_apply_eq (A : Rd d →L[ℝ] Rd d) (v : Rd d) :
     ⟪A v, v⟫ = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) *
       ((Rd.coord i v + Rd.coord j v) ^ 2 - Rd.coord i v ^ 2 - Rd.coord j v ^ 2) / 2 := by
-  sorry
+  have hc : ∀ (i : Fin d) (u : Rd d), Rd.coord i u = u i := fun i u => by
+    simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+  have hexp : ∀ u : Rd d, u = ∑ j, Rd.coord j u • Rd.basisVec j := fun u => by
+    ext i
+    simp [hc, Rd.basisVec, Pi.single_apply]
+  have key : ∀ u w : Rd d, ⟪A u, w⟫ = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) *
+      (Rd.coord j u * Rd.coord i w) := fun u w => by
+    conv_lhs => rw [hexp u, hexp w]
+    simp only [map_sum, map_smul, sum_inner, inner_sum, real_inner_smul_left,
+      real_inner_smul_right]
+    refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+    simp only [Rd.coord]
+    ring
+  rw [key v v]
+  refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+  ring
 
 /-- **Subgoal** (Proposition 3.1 proof: `I_1^n(t) → ∫_0^t ⟨∇f(ω(u)), d[ω]_π(u)⟩`). -/
 theorem tendsto_main {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
