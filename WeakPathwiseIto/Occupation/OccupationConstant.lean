@@ -700,7 +700,43 @@ theorem radial_harmonic_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {u 
     (hu : ∀ y : Rd d, r < ‖y‖ → InnerProductSpace.HarmonicAt u y)
     (hrad : ∀ y y' : Rd d, ‖y‖ = ‖y'‖ → u y = u y') :
     ∃ a b : ℝ, ∀ y : Rd d, r < ‖y‖ → u y = a + b * ‖y‖ ^ (2 - (d : ℝ)) := by
-  sorry
+  have hd0 : 0 < d := by omega
+  set e₀ : Rd d := EuclideanSpace.single (⟨0, hd0⟩ : Fin d) (1 : ℝ) with he₀
+  set f : ℝ → ℝ := fun s => u (s • e₀) with hfdef
+  have hue : u = fun x : Rd d => f ‖x‖ := funext fun x => radial_eq_profile hd0 hrad x
+  have hnorm : ∀ s : ℝ, 0 < s → ‖s • e₀‖ = s := fun s hs => by
+    simp [he₀, norm_smul, abs_of_pos hs]
+  have hC2 : ∀ s, r < s → ContDiffAt ℝ 2 f s := by
+    intro s hs
+    have hs0 : 0 < s := lt_of_le_of_lt hr hs
+    have hH := hu (s • e₀) (by rw [hnorm s hs0]; exact hs)
+    exact hH.1.comp s ((contDiffAt_id.smul contDiffAt_const) : ContDiffAt ℝ 2 (fun t : ℝ => t • e₀) s)
+  have hD : ∀ s, r < s → HasDerivAt (deriv f) (deriv (deriv f) s) s := by
+    intro s hs
+    have h1 : ContDiffAt ℝ 1 (fderiv ℝ f) s := (hC2 s hs).fderiv_right (m := 1) (by norm_num)
+    have h2 : DifferentiableAt ℝ (fun t => fderiv ℝ f t 1) s :=
+      (h1.differentiableAt (by norm_num)).clm_apply (differentiableAt_const _)
+    have h3 : (fun t => fderiv ℝ f t 1) = deriv f := funext fun t => fderiv_apply_one_eq_deriv
+    rw [h3] at h2
+    exact h2.hasDerivAt
+  have hode : ∀ s, r < s → deriv (deriv f) s + ((d : ℝ) - 1) / s * deriv f s = 0 := by
+    intro s hs
+    have hs0 : 0 < s := lt_of_le_of_lt hr hs
+    have hy0 : s • e₀ ≠ 0 := by
+      intro h
+      have := hnorm s hs0
+      rw [h, norm_zero] at this
+      exact hs0.ne this
+    have hH := hu (s • e₀) (by rw [hnorm s hs0]; exact hs)
+    have hL := laplacian_comp_norm hy0 (by rw [hnorm s hs0]; exact hC2 s hs)
+    rw [hnorm s hs0, ← hue] at hL
+    rw [← hL]
+    exact hH.2.self_of_nhds
+  obtain ⟨a, b, hab⟩ := radial_ode_eq hd hr
+    (fun s hs => ((hC2 s hs).differentiableAt (by norm_num)).hasDerivAt) hD hode
+  refine ⟨a, b, fun y hy => ?_⟩
+  rw [hue]
+  exact hab ‖y‖ hy
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 8: behaviour at infinity): for `d ≥ 3` and `r > 0`,
 `|y|^{d-2} sphereMean d r y → 1` as `|y| → ∞`. -/
