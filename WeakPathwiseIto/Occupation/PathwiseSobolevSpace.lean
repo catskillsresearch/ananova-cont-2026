@@ -48,7 +48,36 @@ theorem integral_mul_fderiv_fderiv {F φ : Rd d → ℝ} (hF : ContDiff ℝ 2 F)
     (hφ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) φ) (hφc : HasCompactSupport φ) (u v : Rd d) :
     ∫ x, F x * fderiv ℝ (fun y => fderiv ℝ φ y v) x u =
       ∫ x, fderiv ℝ (fun y => fderiv ℝ F y u) x v * φ x := by
-  sorry
+  have hF1 : ContDiff ℝ 1 (fderiv ℝ F) := hF.fderiv_right (m := 1) (by norm_num)
+  have hφ2 : ContDiff ℝ 2 φ := hφ.of_le (WithTop.coe_le_coe.2 le_top)
+  have hφ1 : ContDiff ℝ 1 (fderiv ℝ φ) := hφ2.fderiv_right (m := 1) (by norm_num)
+  have hG : ContDiff ℝ 1 (fun y => fderiv ℝ F y u) := hF1.clm_apply contDiff_const
+  have hψ : ContDiff ℝ 1 (fun y => fderiv ℝ φ y v) := hφ1.clm_apply contDiff_const
+  have hψc : HasCompactSupport (fun y => fderiv ℝ φ y v) := hφc.fderiv_apply (𝕜 := ℝ) v
+  have cF : Continuous F := hF.continuous
+  have cG := hG.continuous
+  have cG' : Continuous (fun x => fderiv ℝ (fun y => fderiv ℝ F y u) x v) :=
+    (hG.continuous_fderiv one_ne_zero).clm_apply continuous_const
+  have cψ := hψ.continuous
+  have cψ' : Continuous (fun x => fderiv ℝ (fun y => fderiv ℝ φ y v) x u) :=
+    (hψ.continuous_fderiv one_ne_zero).clm_apply continuous_const
+  have cφ := hφ2.continuous
+  have h1 := integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable (μ := volume) (f := F)
+    (g := fun y => fderiv ℝ φ y v) (v := u)
+    ((cG.mul cψ).integrable_of_hasCompactSupport hψc.mul_left)
+    ((cF.mul cψ').integrable_of_hasCompactSupport (hψc.fderiv_apply (𝕜 := ℝ) u).mul_left)
+    ((cF.mul cψ).integrable_of_hasCompactSupport hψc.mul_left)
+    (fun x _ => (hF.differentiable two_ne_zero) x)
+    (fun x _ => (hψ.differentiable one_ne_zero) x)
+  have h2 := integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable (μ := volume)
+    (f := fun y => fderiv ℝ F y u) (g := φ) (v := v)
+    ((cG'.mul cφ).integrable_of_hasCompactSupport hφc.mul_left)
+    ((cG.mul cψ).integrable_of_hasCompactSupport hψc.mul_left)
+    ((cG.mul cφ).integrable_of_hasCompactSupport hφc.mul_left)
+    (fun x _ => (hG.differentiable one_ne_zero) x)
+    (fun x _ => (hφ2.differentiable two_ne_zero) x)
+  beta_reduce at h1 h2
+  rw [h1, h2, neg_neg]
 
 /-- **Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries):
 `⟨∇²F(x) e_j, e_i⟩ = ∂_j ∂_i F(x)` for `F ∈ C²`. -/
