@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:15:13Z",
+ "updated": "2026-11-26T18:15:55Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 57,
+ "sorryCount": 56,
  "counts": {
   "open": 12,
   "blocked": 49,
@@ -511,7 +511,7 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
     "hasLaw_sum_smul_basisVec",
     "hasLaw_increment",
@@ -519,7 +519,6 @@
     "memLp_two",
     "integral_eq",
     "variance_le",
-    "tendsto_ae_of_summable_variance",
     "lemma_A_1"
    ],
    "declKinds": {
@@ -556,7 +555,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "8 sorry: hasLaw_sum_smul_basisVec, hasLaw_increment, iIndepFun_increments, memLp_two, integral_eq, variance_le, tendsto_ae_of_summable_variance, lemma_A_1"
+   "detail": "7 sorry: hasLaw_sum_smul_basisVec, hasLaw_increment, iIndepFun_increments, memLp_two, integral_eq, variance_le, lemma_A_1"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -788,10 +787,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.tendsto_ae_of_summable_variance"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -808,7 +805,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.tendsto_ae_of_summable_variance — subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.tendsto_ae_of_summable_variance — subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.variance_le",

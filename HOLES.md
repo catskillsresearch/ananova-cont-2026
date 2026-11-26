@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:15:13Z  
-**`sorry` occurrences:** 57 · 12 open · 49 blocked · 73 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 25, 'done': 38} · 27 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:15:55Z  
+**`sorry` occurrences:** 56 · 12 open · 49 blocked · 73 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 25, 'done': 38} · 27 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -58,7 +58,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Appendix.LemmaA1::lemma_A_1.integral_eq` | subgoal of Lemma A.1 proof, step 3: mean | 1 |
 | blocked | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum` | subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` | 0 |
 | blocked | `Appendix.LemmaA1::lemma_A_1.memLp_two` | subgoal of Lemma A.1 proof, step 3: square integrability | 1 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance` | subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli | 1 |
+| blocked | `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance` | subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli | 0 |
 | blocked | `Appendix.LemmaA1::lemma_A_1.variance_le` | subgoal of Lemma A.1 proof, step 3: variance | 1 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |
 | done | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` | subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ | 0 |
@@ -204,7 +204,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
 | done | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 0 |  |
-| blocked | `Appendix.LemmaA1` | Lemma A.1 | 8 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
+| blocked | `Appendix.LemmaA1` | Lemma A.1 | 7 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
 | done | `Appendix.PotentialProfile` | Eq. (33) | 0 |  |
