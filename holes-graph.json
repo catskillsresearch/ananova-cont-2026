@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:09:21Z",
+ "updated": "2026-11-26T21:10:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 42,
+ "sorryCount": 41,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 31,
-  "done": 153
+  "done": 154
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 11,
-  "done": 114
+  "done": 115
  },
  "untagged": [],
  "legend": {
@@ -2760,9 +2760,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "integral_piece",
     "integral_eq"
    ],
    "declKinds": {
@@ -2786,10 +2785,9 @@
     "Occupation.OccupationConstant"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq"
    ],
-   "detail": "2 sorry: integral_piece, integral_eq"
+   "detail": "1 sorry: integral_eq"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2911,24 +2909,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.integral_piece"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.integral_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.integral_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",

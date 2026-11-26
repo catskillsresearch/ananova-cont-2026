@@ -102,7 +102,61 @@ theorem setIntegral_closedBall_eq_ball (hd : 0 < d) (r : ℝ) (g : Rd d → ℝ)
 
 /-- **Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_piece (a b : Rd d) : ∫ x, piece a b x = ‖b - a‖ ^ 2 := by
-  sorry
+  unfold piece
+  split_ifs with hab
+  · simp [hab]
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · exact absurd (Subsingleton.elim a b) hab
+  have hl : 0 < ‖b - a‖ := norm_pos_iff.2 (sub_ne_zero.2 (Ne.symm hab))
+  set l := ‖b - a‖ with hldef
+  set u : Rd d := l⁻¹ • (b - a) with hudef
+  have hba : b - a = l • u := by rw [hudef, smul_smul, mul_inv_cancel₀ hl.ne', one_smul]
+  have hu : ‖u‖ = 1 := by
+    rw [hudef, norm_smul, Real.norm_eq_abs, abs_inv, abs_of_pos hl, ← hldef, inv_mul_cancel₀ hl.ne']
+  obtain ⟨L, hL⟩ := exists_isometry_basisVec hd hu
+  obtain ⟨v, hv⟩ : ∃ v : Rd d, v = (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩ := ⟨_, rfl⟩
+  have hLv : L v = (1 / 2 : ℝ) • u := by rw [hv, map_smul, hL]
+  set m := midpoint ℝ a b with hm
+  have hma : m - a = (1 / 2 : ℝ) • (l • u) := by
+    rw [hm, midpoint_sub_left, invOf_eq_inv, hba]; norm_num
+  have hmb : m - b = -((1 / 2 : ℝ) • (l • u)) := by
+    rw [hm, midpoint_sub_right, invOf_eq_inv, show a - b = -(b - a) by abel, hba, smul_neg]
+    norm_num
+  have hnorm : ∀ w : Rd d, ‖l • L w‖ = l * ‖w‖ := fun w => by
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hl, LinearIsometryEquiv.norm_map]
+  have hpa : ∀ z : Rd d, m + l • L z - a = l • L (z + v) := fun z => by
+    rw [show m + l • L z - a = (m - a) + l • L z by abel, hma, map_add, hLv]
+    module
+  have hpb : ∀ z : Rd d, m + l • L z - b = l • L (z - v) := fun z => by
+    rw [show m + l • L z - b = (m - b) + l • L z by abel, hmb, map_sub, hLv]
+    module
+  have hdist : dist a b / 2 = l / 2 := by rw [dist_eq_norm, norm_sub_rev]
+  rw [incrementBall, integral_indicator Metric.isClosed_closedBall.measurableSet, hdist, ← hm,
+    integral_closedBall_affine m hl L]
+  rw [setIntegral_congr_fun Metric.isClosed_closedBall.measurableSet
+    (g := fun z : Rd d => occupationConstant d * l ^ (2 - (d : ℝ)) *
+      (‖z - v‖ ^ (2 - (d : ℝ)) + ‖z + v‖ ^ (2 - (d : ℝ)))) (fun z _ => by
+        simp only
+        rw [hpa, hpb, hnorm, hnorm, Real.mul_rpow hl.le (norm_nonneg _),
+          Real.mul_rpow hl.le (norm_nonneg _)]
+        ring)]
+  rw [integral_const_mul, setIntegral_closedBall_eq_ball hd]
+  have hc := occupationConstant.eq_inv_integral hd
+  rw [← hv] at hc
+  set I := ∫ x in Metric.ball (0 : Rd d) (1 / 2), (‖x - v‖ ^ (2 - (d : ℝ)) + ‖x + v‖ ^ (2 - (d : ℝ)))
+    with hI
+  have hc0 : occupationConstant d ≠ 0 := by
+    have hv0 : 0 < (volume (Metric.ball (0 : Rd d) 1)).toReal :=
+      ENNReal.toReal_pos (Metric.measure_ball_pos _ _ one_pos).ne' measure_ball_lt_top.ne
+    rw [occupationConstant]
+    positivity
+  have hI0 : I ≠ 0 := fun h => hc0 (by rw [hc, h, inv_zero])
+  have hpow : l ^ d * l ^ (2 - (d : ℝ)) = l ^ 2 := by
+    rw [← Real.rpow_natCast, ← Real.rpow_add hl, show (d : ℝ) + (2 - d) = 2 by ring]
+    norm_cast
+  calc l ^ d * (occupationConstant d * l ^ (2 - (d : ℝ)) * I)
+      = (l ^ d * l ^ (2 - (d : ℝ))) * (occupationConstant d * I) := by ring
+    _ = l ^ 2 := by rw [hpow, hc, inv_mul_cancel₀ hI0, mul_one]
 
 /-- **Subgoal** (Eq. (7)). -/
 theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
