@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T18:57:21Z",
+ "updated": "2026-11-26T18:59:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 45,
+ "sorryCount": 49,
  "counts": {
-  "open": 9,
+  "open": 13,
   "blocked": 36,
   "done": 108
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 7,
   "blocked": 15,
   "done": 70
  },
@@ -3048,13 +3048,17 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
+   "sorryCount": 5,
    "holes": [
+    "volume_ball_half",
+    "integral_reflect",
+    "integrableOn_term",
+    "newton_ball",
     "eq_inv_integral"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 1
+    "theorem": 5
    },
    "paperGoal": false,
    "verified": false,
@@ -3062,12 +3066,20 @@
    "status": "blocked",
    "deps": [
     "Basic.Rd",
-    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
+    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+    "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+    "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+    "Occupation.OccupationConstant::occupationConstant.newton_ball",
+    "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
-    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
+    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+    "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+    "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+    "Occupation.OccupationConstant::occupationConstant.newton_ball",
+    "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
-   "detail": "1 sorry: eq_inv_integral"
+   "detail": "5 sorry: volume_ball_half, integral_reflect, integrableOn_term, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3095,6 +3107,114 @@
    ],
    "blockers": [],
    "detail": "sorry: occupationConstant.eq_inv_integral — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+   "label": "integrableOn_term",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.integrableOn_term"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, step 3: local integrability): `x ↦ |x - y|^{2-d}` is integrable on a ball.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.integrableOn_term — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "label": "integral_reflect",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.integral_reflect"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, step 2: reflection `x ↦ -x`): the two terms of eq. (7) have the same integral over `B(0,1/2)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.integral_reflect — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.newton_ball",
+   "label": "newton_ball",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.newton_ball"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, step 4: Newton's theorem for a ball): for `|y| = R > 0`, `∫_{B(0,R)} |x - y|^{2-d} dx = |B(0,R)| R^{2-d}` (mean value property of the Newton kernel).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.newton_ball — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
+   "label": "volume_ball_half",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.volume_ball_half"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, step 1: ball scaling): `|B(0,1/2)| = 2^{-d} |B(0,1)|`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.volume_ball_half — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationSeminorm",
@@ -4904,6 +5024,26 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.newton_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Smooth.FollmerIntegral",
    "kind": "hard"
   },
@@ -5918,6 +6058,26 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.newton_ball",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationSeminorm",
    "to": "Occupation.ApproximatingSequence",
    "kind": "hard"
@@ -6838,6 +6998,22 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integrableOn_term"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_reflect"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.newton_ball"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Smooth.FollmerIntegral"
   },
   {
@@ -7498,6 +7674,22 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.newton_ball",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
    "to": "Occupation.OccupationConstant"
   },
   {

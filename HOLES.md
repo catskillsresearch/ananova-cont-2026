@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:57:21Z  
-**`sorry` occurrences:** 45 · 9 open · 36 blocked · 108 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 3, 'blocked': 15, 'done': 70} · 24 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:59:25Z  
+**`sorry` occurrences:** 49 · 13 open · 36 blocked · 108 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 7, 'blocked': 15, 'done': 70} · 24 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -112,6 +112,10 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp` | subgoal of Lemma A.1, finiteness of `‖ρ_n‖_{L^q}` | 0 |
 | open | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.integrableOn_term` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.integral_reflect` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.newton_ball` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.volume_ball_half` | subgoal of Eq. (7 | 1 |
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.add_le` | subgoal of Section 4.2 seminorm | 1 |
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 1 |
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 1 |
@@ -196,7 +200,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
-| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 1 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` |
+| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 5 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.integrableOn_term`, `Occupation.OccupationConstant::occupationConstant.integral_reflect`, `Occupation.OccupationConstant::occupationConstant.newton_ball`, `Occupation.OccupationConstant::occupationConstant.volume_ball_half` |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
