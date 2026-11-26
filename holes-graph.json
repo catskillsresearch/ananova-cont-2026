@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:42:35Z",
+ "updated": "2026-11-26T21:43:19Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 27,
-  "done": 174
+  "done": 175
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 41
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 8,
-  "done": 133
+  "done": 134
  },
  "untagged": [],
  "legend": {
@@ -5111,9 +5111,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "tendsto_remainder",
     "tendsto_boundary",
     "proposition_3_1"
    ],
@@ -5142,10 +5141,9 @@
     "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
    ],
    "blockers": [
-    "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
-    "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
+    "Smooth.Proposition31::proposition_3_1.tendsto_boundary"
    ],
-   "detail": "3 sorry: tendsto_remainder, tendsto_boundary, proposition_3_1"
+   "detail": "2 sorry: tendsto_boundary, proposition_3_1"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
@@ -5391,17 +5389,15 @@
    "parentGoal": "Smooth.Proposition31",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_3_1.tendsto_remainder"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Proposition 3.1 proof: `I_2^n(t) → 0`, `|δω · r| ≤ ρ_{∇f}(osc) |δω|²`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Occupation.Lemma42",
@@ -5410,7 +5406,7 @@
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_3_1.tendsto_remainder — subgoal of Proposition 3.1 proof: `I_2^n(t (in Smooth.Proposition31)"
+   "detail": "proved: proposition_3_1.tendsto_remainder — subgoal of Proposition 3.1 proof: `I_2^n(t (in Smooth.Proposition31)"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",

@@ -379,7 +379,71 @@ theorem tendsto_remainder {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
       (⟪f (ω ((π n).right k)) - f (ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
         ⟪fderiv ℝ f (ω ((π n).right k)) (ω ((π n).right k) - ω ((π n).left k)),
           ω ((π n).right k) - ω ((π n).left k)⟫)) atTop (𝓝 0) := by
-  sorry
+  have hDf : Continuous (fderiv ℝ f) := hf.1.continuous_fderiv (by norm_num)
+  have hfd : Differentiable ℝ f := hf.1.differentiable (by norm_num)
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  have hωC : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C := fun s hs => hC _ (mem_image_of_mem ω hs)
+  have hu := Metric.uniformContinuousOn_iff.1
+    ((isCompact_closedBall (0 : Rd d) (C + 1)).uniformContinuousOn_of_continuous hDf.continuousOn)
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ M :=
+    ((lemma_4_2.tendsto_sum_sq hQV).eventually (gt_mem_nhds
+      (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+        fun n h => h.le
+  refine Metric.tendsto_nhds.2 fun ε hε => ?_
+  obtain ⟨δ, hδ, hδD⟩ := hu (ε / (2 * M)) (by positivity)
+  filter_upwards [hevS, hosc.eventually (gt_mem_nhds (lt_min hδ one_pos))] with n hn hon
+  rw [Real.dist_eq, sub_zero]
+  have hterm : ∀ k : Fin (π n).m,
+      |⟪f (ω ((π n).right k)) - f (ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
+        ⟪fderiv ℝ f (ω ((π n).right k)) (ω ((π n).right k) - ω ((π n).left k)),
+          ω ((π n).right k) - ω ((π n).left k)⟫| ≤
+        ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := fun k => by
+    have hΔ := lemma_4_2.norm_increment_le hω (π n) k
+    have hΔ' : ‖ω ((π n).right k) - ω ((π n).left k)‖ < min δ 1 := hΔ.trans_lt hon
+    have hr : ‖ω ((π n).right k)‖ ≤ C := hωC _ ((π n).t_mem _)
+    have hrB : ω ((π n).right k) ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+      rw [Metric.mem_closedBall, dist_zero_right]; linarith
+    have hseg : ∀ z ∈ segment ℝ (ω ((π n).left k)) (ω ((π n).right k)),
+        ‖fderiv ℝ f z - fderiv ℝ f (ω ((π n).right k))‖ ≤ ε / (2 * M) := fun z hz => by
+      have hz' : z ∈ Metric.closedBall (ω ((π n).right k)) ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+        (convex_closedBall _ _).segment_subset
+          (by rw [Metric.mem_closedBall, dist_eq_norm, norm_sub_rev])
+          (Metric.mem_closedBall_self (norm_nonneg _)) hz
+      rw [Metric.mem_closedBall, dist_eq_norm] at hz'
+      have hzB : z ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+        rw [Metric.mem_closedBall, dist_zero_right]
+        calc ‖z‖ = ‖(z - ω ((π n).right k)) + ω ((π n).right k)‖ := by rw [sub_add_cancel]
+          _ ≤ ‖z - ω ((π n).right k)‖ + ‖ω ((π n).right k)‖ := norm_add_le _ _
+          _ ≤ C + 1 := by linarith [min_le_right δ 1]
+      have := hδD z hzB _ hrB (by rw [dist_eq_norm]; linarith [min_le_left δ 1])
+      rw [dist_eq_norm] at this
+      exact this.le
+    have htay := norm_taylor_le hfd hseg
+    rw [← inner_sub_left]
+    calc _ ≤ ‖f (ω ((π n).right k)) - f (ω ((π n).left k)) - fderiv ℝ f (ω ((π n).right k))
+          (ω ((π n).right k) - ω ((π n).left k))‖ * ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+          abs_real_inner_le_norm _ _
+      _ ≤ (ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖) *
+            ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+          mul_le_mul_of_nonneg_right htay (norm_nonneg _)
+      _ = _ := by ring
+  calc _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+        |⟪f (ω ((π n).right k)) - f (ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
+          ⟪fderiv ℝ f (ω ((π n).right k)) (ω ((π n).right k) - ω ((π n).left k)),
+            ω ((π n).right k) - ω ((π n).left k)⟫| := Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+        ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+        Finset.sum_le_sum fun k _ => hterm k
+    _ ≤ ∑ k, ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+        Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+          fun k _ _ => by positivity
+    _ = ε / (2 * M) * ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := by
+        rw [Finset.mul_sum]
+    _ ≤ ε / (2 * M) * M := mul_le_mul_of_nonneg_left hn (by positivity)
+    _ = ε / 2 := by field_simp
+    _ < ε := by linarith
 
 /-- **Subgoal** (Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes
 at most `sup |∇f| · osc(ω, π_n)² → 0`). -/
