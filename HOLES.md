@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T22:44:15Z  
-**`sorry` occurrences:** 38 · 12 open · 19 blocked · 206 done (goals + subgoals) · goals {'open': 5, 'blocked': 12, 'done': 48} · subgoals {'open': 7, 'blocked': 7, 'done': 158} · 17 file(s) with `sorry`.
+**Updated:** 2026-11-26T22:45:06Z  
+**`sorry` occurrences:** 37 · 11 open · 19 blocked · 207 done (goals + subgoals) · goals {'open': 5, 'blocked': 12, 'done': 48} · subgoals {'open': 6, 'blocked': 7, 'done': 159} · 17 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -175,7 +175,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 0 |
 | open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
-| open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries | 1 |
+| done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries | 0 |
 | open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j` | 1 |
 | open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts twice | 1 |
 | open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 1 |
@@ -281,7 +281,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
-| blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 6 | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` |
+| blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 5 | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |

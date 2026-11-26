@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:44:15Z",
+ "updated": "2026-11-26T22:45:06Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 19,
-  "done": 206
+  "done": 207
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 48
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 7,
-  "done": 158
+  "done": 159
  },
  "untagged": [],
  "legend": {
@@ -4796,12 +4796,11 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Definition 4.3",
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
     "directions_single_add_single",
     "testDeriv_single_add_single",
     "integral_mul_fderiv_fderiv",
-    "coord_smoothHessian",
     "isWeakHessian_smoothHessian",
     "contDiffBounded_subset"
    ],
@@ -4826,13 +4825,12 @@
    ],
    "blockers": [
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
    ],
-   "detail": "6 sorry: directions_single_add_single, testDeriv_single_add_single, integral_mul_fderiv_fderiv, coord_smoothHessian, isWeakHessian_smoothHessian, contDiffBounded_subset"
+   "detail": "5 sorry: directions_single_add_single, testDeriv_single_add_single, integral_mul_fderiv_fderiv, isWeakHessian_smoothHessian, contDiffBounded_subset"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
@@ -4872,23 +4870,21 @@
    "parentGoal": "Occupation.PathwiseSobolevSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "PathwiseSobolevSpace.coord_smoothHessian"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries): `⟨∇²F(x) e_j, e_i⟩ = ∂_j ∂_i F(x)` for `F ∈ C²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: PathwiseSobolevSpace.coord_smoothHessian — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries (in Occupation.PathwiseSobolevSpace)"
+   "detail": "proved: PathwiseSobolevSpace.coord_smoothHessian — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",

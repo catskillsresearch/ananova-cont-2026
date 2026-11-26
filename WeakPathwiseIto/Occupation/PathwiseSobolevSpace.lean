@@ -55,7 +55,18 @@ theorem integral_mul_fderiv_fderiv {F φ : Rd d → ℝ} (hF : ContDiff ℝ 2 F)
 theorem coord_smoothHessian {F : Rd d → ℝ} (hF : ContDiff ℝ 2 F) (i j : Fin d) (x : Rd d) :
     Rd.coord i (smoothHessian F x (Rd.basisVec j)) =
       fderiv ℝ (fun y => fderiv ℝ F y (Rd.basisVec i)) x (Rd.basisVec j) := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient F = L ∘ fderiv ℝ F := rfl
+  have hH : smoothHessian F x (Rd.basisVec j) = L (fderiv ℝ (fderiv ℝ F) x (Rd.basisVec j)) := by
+    unfold smoothHessian
+    rw [hg, L.comp_fderiv]
+    rfl
+  have hd : DifferentiableAt ℝ (fderiv ℝ F) x :=
+    (hF.fderiv_right (m := 1) (by norm_num)).differentiable (by norm_num) x
+  rw [Rd.coord, hH, fderiv_clm_apply hd (differentiableAt_const _)]
+  change ⟪(InnerProductSpace.toDual ℝ (Rd d)).symm _, _⟫ = _
+  rw [InnerProductSpace.toDual_symm_apply]
+  simp
 
 /-- **Subgoal** (Definition 4.3 proof): the classical Hessian of a `C²` function is a weak
 Hessian. -/
