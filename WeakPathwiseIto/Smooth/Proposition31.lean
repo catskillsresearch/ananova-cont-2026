@@ -55,7 +55,61 @@ theorem abs_integral_sub_grid_le {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     (hη : ∀ y ∈ Icc 0 t, ∀ z ∈ Icc 0 t, |y - z| ≤ t / K → |g y - g z| ≤ η) :
     |h.integral g t - ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
         (h.qv ((k + 1 : ℕ) * t / K) - h.qv ((k : ℕ) * t / K))| ≤ η * (h.qv t - h.qv 0) := by
-  sorry
+  have hK' : (0 : ℝ) < K := by exact_mod_cast hK
+  obtain ⟨s, hs⟩ : ∃ s : ℕ → ℝ, ∀ k : ℕ, s k = (k : ℝ) * t / K := ⟨_, fun _ => rfl⟩
+  simp_rw [← hs]
+  have hsmono : ∀ k, s k ≤ s (k + 1) := fun k => by
+    rw [hs, hs]; push_cast
+    exact div_le_div_of_nonneg_right (by nlinarith [ht.1]) hK'.le
+  have hsK : s K = t := by rw [hs]; field_simp
+  have hs0 : s 0 = 0 := by rw [hs]; simp
+  have hsnn : ∀ k, 0 ≤ s k := fun k => by rw [hs]; have := ht.1; positivity
+  have hsle : ∀ k < K, s (k + 1) ≤ t := fun k hk => by
+    rw [hs, div_le_iff₀ hK']
+    have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
+    nlinarith [ht.1]
+  have hstep : ∀ k, s (k + 1) - s k = t / K := fun k => by rw [hs, hs]; push_cast; ring
+  haveI : IsLocallyFiniteMeasure h.stieltjesMeasure := by
+    unfold HasScalarQuadraticVariation.stieltjesMeasure; infer_instance
+  have hInt : IntegrableOn g (Icc 0 T) h.stieltjesMeasure := hg.integrableOn_compact isCompact_Icc
+  have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 t := fun k hk y hy =>
+    ⟨(hsnn k).trans hy.1.le, hy.2.trans (hsle k hk)⟩
+  have hcellT : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 T := fun k hk =>
+    (hcell k hk).trans (Icc_subset_Icc le_rfl ht.2)
+  have hfin : ∀ k < K, h.stieltjesMeasure (Ioc (s k) (s (k + 1))) < ⊤ := fun k hk =>
+    (measure_mono (hcellT k hk)).trans_lt isCompact_Icc.measure_lt_top
+  have hsplit : h.integral g t =
+      ∑ k ∈ Finset.range K, ∫ u in Ioc (s k) (s (k + 1)), g u ∂h.stieltjesMeasure := by
+    have := intervalIntegral.sum_integral_adjacent_intervals (f := g) (μ := h.stieltjesMeasure)
+      (a := s) (n := K) fun k hk =>
+        (intervalIntegrable_iff_integrableOn_Ioc_of_le (hsmono k)).2 (hInt.mono_set (hcellT k hk))
+    rw [hs0, hsK, intervalIntegral.integral_of_le ht.1] at this
+    rw [HasScalarQuadraticVariation.integral, ← this]
+    exact Finset.sum_congr rfl fun k _ => intervalIntegral.integral_of_le (hsmono k)
+  have hIoc : ∀ k < K, h.stieltjesMeasure.real (Ioc (s k) (s (k + 1))) = h.qv (s (k + 1)) - h.qv (s k) :=
+    fun k hk => stieltjesMeasure_Ioc h (hsnn k) (hsmono k) ((hsle k hk).trans ht.2)
+  have hsum : ∀ k ∈ Finset.range K, g (s (k + 1)) * (h.qv (s (k + 1)) - h.qv (s k)) =
+      ∫ u in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂h.stieltjesMeasure := fun k hk => by
+    rw [setIntegral_const, smul_eq_mul, mul_comm, hIoc k (Finset.mem_range.1 hk)]
+  rw [hsplit, Finset.sum_congr rfl hsum, ← Finset.sum_sub_distrib]
+  have hcellb : ∀ k ∈ Finset.range K, |(∫ u in Ioc (s k) (s (k + 1)), g u ∂h.stieltjesMeasure) -
+      ∫ u in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂h.stieltjesMeasure| ≤
+        η * (h.qv (s (k + 1)) - h.qv (s k)) := fun k hk => by
+    have hk' := Finset.mem_range.1 hk
+    rw [← integral_sub (hInt.mono_set (hcellT k hk')) (integrableOn_const (hfin k hk').ne),
+      ← hIoc k hk', ← Real.norm_eq_abs]
+    refine norm_setIntegral_le_of_norm_le_const (hfin k hk') fun y hy => ?_
+    rw [Real.norm_eq_abs]
+    refine hη _ (hcell k hk' hy) _ ⟨hsnn _, hsle k hk'⟩ ?_
+    rw [abs_sub_comm, abs_of_nonneg (by linarith [hy.2]), ← hstep k]
+    linarith [hy.1]
+  calc _ ≤ ∑ k ∈ Finset.range K, |(∫ u in Ioc (s k) (s (k + 1)), g u ∂h.stieltjesMeasure) -
+        ∫ u in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂h.stieltjesMeasure| :=
+        Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ k ∈ Finset.range K, η * (h.qv (s (k + 1)) - h.qv (s k)) :=
+        Finset.sum_le_sum hcellb
+    _ = η * (h.qv t - h.qv 0) := by
+        rw [← Finset.mul_sum, Finset.sum_range_sub (fun k => h.qv (s k)), hsK, hs0]
 
 /-- **Subgoal** (Proposition 3.1 proof, convergence of `I_1^n`, [CF10]): for `g` continuous on
 `[0,T]` and `t ∈ [0,T]`, `∑_{t_{k+1} ≤ t} g(t_{k+1}) (x(t_{k+1}) - x(t_k))² → ∫_0^t g d[x]_π`
