@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:48:11Z  
-**`sorry` occurrences:** 43 · 15 open · 26 blocked · 179 done (goals + subgoals) · goals {'open': 5, 'blocked': 18, 'done': 42} · subgoals {'open': 10, 'blocked': 8, 'done': 137} · 20 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:49:02Z  
+**`sorry` occurrences:** 42 · 14 open · 26 blocked · 180 done (goals + subgoals) · goals {'open': 5, 'blocked': 18, 'done': 42} · subgoals {'open': 9, 'blocked': 8, 'done': 138} · 20 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -170,7 +170,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le` | subgoal of [Föl81] proof: second-order Taylor remainder | 1 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient` | subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm` | subgoal of [Föl81] proof: the Hessian of a `C²` function is symmetric | 0 |
-| open | `Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq` | subgoal of [Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one | 1 |
+| done | `Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq` | subgoal of [Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one | 0 |
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum` | subgoal of [Föl81] proof: telescoping `f(ω(T | 1 |
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left` | subgoal of [Föl81] proof: `∑_k ⟨∇²f(ω(t_k | 1 |
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder` | subgoal of [Föl81] proof: the second-order Taylor remainders sum to `o(1 | 1 |
@@ -244,7 +244,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Smooth.Corollary32` | Corollary 3.2 | 1 |  |
 | done | `Smooth.DiscreteQuadraticVariation` | Eq. (5) sums | 0 |  |
 | done | `Smooth.FollmerIntegral` | Corollary 3.2 integral | 0 |  |
-| blocked | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 6 | `Smooth.FollmerItoFormula::follmer_ito_formula`, `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le`, `Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq`, `Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder` |
+| blocked | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 5 | `Smooth.FollmerItoFormula::follmer_ito_formula`, `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le`, `Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder` |
 | done | `Smooth.HasQuadraticVariation` | Section 3 Q^π(ℝ^d) | 0 |  |
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |

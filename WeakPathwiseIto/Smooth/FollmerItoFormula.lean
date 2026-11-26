@@ -58,7 +58,10 @@ theorem hessian_symm {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) (x u v : Rd d) :
 theorem riemannSum_eq (p : Partition T) (g : Rd d → Rd d) (ω : ℝ → Rd d) :
     follmerIntegral.riemannSum p g ω T =
       ∑ k, ⟪g (ω (p.left k)), ω (p.right k) - ω (p.left k)⟫ := by
-  sorry
+  unfold follmerIntegral.riemannSum
+  refine Finset.sum_congr rfl fun k _ => ?_
+  rw [min_eq_left (show p.left k ≤ T from (p.t_mem k.castSucc).2),
+    min_eq_left (show p.right k ≤ T from (p.t_mem k.succ).2)]
 
 /-- **Subgoal** ([Föl81] proof: telescoping `f(ω(T)) - f(ω(0)) = ∑_k (f(ω(t_{k+1})) - f(ω(t_k)))`). -/
 theorem sub_eq_sum (p : Partition T) (f : Rd d → ℝ) (ω : ℝ → Rd d) :
