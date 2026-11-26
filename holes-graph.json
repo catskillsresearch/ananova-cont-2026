@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:46:25Z",
+ "updated": "2026-11-26T20:50:52Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 44,
+ "sorryCount": 47,
  "counts": {
-  "open": 12,
+  "open": 15,
   "blocked": 31,
   "done": 148
  },
@@ -13,7 +13,7 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 9,
   "blocked": 11,
   "done": 109
  },
@@ -2760,16 +2760,19 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 4,
+   "sorryCount": 7,
    "holes": [
     "piece_nonneg",
+    "integral_closedBall_affine",
+    "exists_isometry_basisVec",
+    "setIntegral_closedBall_eq_ball",
     "integral_piece",
     "integrable_piece",
     "integral_eq"
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 4
+    "theorem": 7
    },
    "paperGoal": false,
    "verified": false,
@@ -2777,20 +2780,55 @@
    "status": "blocked",
    "deps": [
     "Basic.Partition",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
    ],
-   "detail": "4 sorry: piece_nonneg, integral_piece, integrable_piece, integral_eq"
+   "detail": "7 sorry: piece_nonneg, integral_closedBall_affine, exists_isometry_basisVec, setIntegral_closedBall_eq_ball, integral_piece, integrable_piece, integral_eq"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "label": "exists_isometry_basisVec",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.exists_isometry_basisVec"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7), `integral_piece` step b: rotating `e_1` to a unit vector): for `d > 0` and `|u| = 1` there is a linear isometry `L` of `ℝ^d` with `L e_1 = u`.",
+   "status": "open",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [],
+   "detail": "sorry: discreteOccupationDensity.exists_isometry_basisVec — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
@@ -2820,6 +2858,35 @@
    ],
    "blockers": [],
    "detail": "sorry: discreteOccupationDensity.integrable_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
+   "label": "integral_closedBall_affine",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.integral_closedBall_affine"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7), `integral_piece` step a: affine change of variables on a ball): for `λ > 0` and a linear isometry `L`, `∫_{B̄(m, λ/2)} g = λ^d ∫_{B̄(0,1/2)} g(m + λ L z) dz`.",
+   "status": "open",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [],
+   "detail": "sorry: discreteOccupationDensity.integral_closedBall_affine — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
@@ -2907,6 +2974,35 @@
    ],
    "blockers": [],
    "detail": "sorry: discreteOccupationDensity.piece_nonneg — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
+   "label": "setIntegral_closedBall_eq_ball",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.setIntegral_closedBall_eq_ball"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): the set integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null).",
+   "status": "open",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [],
+   "detail": "sorry: discreteOccupationDensity.setIntegral_closedBall_eq_ball — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteSeminorm",
@@ -5582,7 +5678,17 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
    "kind": "hard"
   },
   {
@@ -5598,6 +5704,11 @@
   {
    "from": "Basic.Partition",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "kind": "hard"
   },
   {
@@ -6876,7 +6987,17 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
    "to": "Occupation.DiscreteOccupationDensity",
    "kind": "subgoal"
   },
@@ -6892,6 +7013,11 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "to": "Occupation.DiscreteOccupationDensity",
    "kind": "subgoal"
   },
@@ -6932,7 +7058,17 @@
   },
   {
    "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
    "kind": "hard"
   },
   {
@@ -6948,6 +7084,11 @@
   {
    "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "kind": "hard"
   },
   {
@@ -7057,7 +7198,17 @@
   },
   {
    "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
    "kind": "hard"
   },
   {
@@ -7073,6 +7224,11 @@
   {
    "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "kind": "hard"
   },
   {
@@ -7979,7 +8135,15 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine"
   },
   {
    "from": "Basic.Partition",
@@ -7992,6 +8156,10 @@
   {
    "from": "Basic.Partition",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
   },
   {
    "from": "Basic.Partition",
@@ -8866,7 +9034,15 @@
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
    "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
    "to": "Occupation.DiscreteOccupationDensity"
   },
   {
@@ -8879,6 +9055,10 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "to": "Occupation.DiscreteOccupationDensity"
   },
   {
@@ -8899,7 +9079,15 @@
   },
   {
    "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec"
+  },
+  {
+   "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine"
   },
   {
    "from": "Occupation.IncrementBall",
@@ -8912,6 +9100,10 @@
   {
    "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -8987,7 +9179,15 @@
   },
   {
    "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine"
   },
   {
    "from": "Occupation.OccupationConstant",
@@ -9000,6 +9200,10 @@
   {
    "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",

@@ -44,6 +44,26 @@ variable {T : ℝ} {d : ℕ}
 theorem piece_nonneg (a b x : Rd d) : 0 ≤ piece a b x := by
   sorry
 
+/-- **Subgoal** (Eq. (7), `integral_piece` step a: affine change of variables on a ball): for
+`λ > 0` and a linear isometry `L`, `∫_{B̄(m, λ/2)} g = λ^d ∫_{B̄(0,1/2)} g(m + λ L z) dz`. -/
+theorem integral_closedBall_affine (m : Rd d) {l : ℝ} (hl : 0 < l) (L : Rd d ≃ₗᵢ[ℝ] Rd d)
+    (g : Rd d → ℝ) :
+    ∫ x in Metric.closedBall m (l / 2), g x =
+      l ^ d * ∫ z in Metric.closedBall (0 : Rd d) (1 / 2), g (m + l • L z) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7), `integral_piece` step b: rotating `e_1` to a unit vector): for
+`d > 0` and `|u| = 1` there is a linear isometry `L` of `ℝ^d` with `L e_1 = u`. -/
+theorem exists_isometry_basisVec (hd : 0 < d) {u : Rd d} (hu : ‖u‖ = 1) :
+    ∃ L : Rd d ≃ₗᵢ[ℝ] Rd d, L (Rd.basisVec ⟨0, hd⟩) = u := by
+  sorry
+
+/-- **Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): the set integrals of
+any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/
+theorem setIntegral_closedBall_eq_ball (r : ℝ) (g : Rd d → ℝ) :
+    ∫ x in Metric.closedBall (0 : Rd d) r, g x = ∫ x in Metric.ball (0 : Rd d) r, g x := by
+  sorry
+
 /-- **Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_piece (a b : Rd d) : ∫ x, piece a b x = ‖b - a‖ ^ 2 := by
   sorry
