@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-26T18:24:12Z",
+ "updated": "2026-11-26T18:25:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 53,
  "counts": {
   "open": 12,
-  "blocked": 51,
+  "blocked": 52,
   "done": 73
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 6,
-  "blocked": 27,
+  "blocked": 28,
   "done": 38
  },
  "untagged": [],
@@ -519,7 +519,7 @@
     "variance_le"
    ],
    "declKinds": {
-    "theorem": 13
+    "theorem": 14
    },
    "paperGoal": false,
    "verified": false,
@@ -533,6 +533,7 @@
     "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+    "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
     "Appendix.LemmaA1::lemma_A_1.integral_eq",
     "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
     "Appendix.LemmaA1::lemma_A_1.memLp_two",
@@ -549,6 +550,7 @@
     "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+    "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
     "Appendix.LemmaA1::lemma_A_1.integral_eq",
     "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
     "Appendix.LemmaA1::lemma_A_1.memLp_two",
@@ -739,6 +741,36 @@
     "Bessel.WienerLawExists"
    ],
    "detail": "sorry: lemma_A_1.iIndepFun_increments — subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
+   "label": "iIndepFun_map_of_comp",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹`",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹`): independence of `f_i ∘ g` under `Q` gives independence of `f_i` under the image measure.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "proved: lemma_A_1.iIndepFun_map_of_comp — subgoal of Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹` (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.integral_eq",
@@ -3816,6 +3848,11 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
    "kind": "hard"
   },
@@ -3936,6 +3973,11 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
    "to": "Appendix.LemmaA1",
    "kind": "subgoal"
   },
@@ -4671,6 +4713,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_eq",
    "kind": "hard"
   },
@@ -4807,6 +4854,11 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
    "kind": "hard"
   },
   {
@@ -5247,6 +5299,11 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
    "kind": "hard"
   },
   {
@@ -5782,6 +5839,10 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_eq"
   },
   {
@@ -5878,6 +5939,10 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
    "to": "Appendix.LemmaA1"
   },
   {
@@ -6390,6 +6455,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_eq"
   },
   {
@@ -6699,6 +6768,10 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",

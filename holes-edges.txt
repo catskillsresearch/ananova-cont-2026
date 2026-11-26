@@ -6,6 +6,7 @@ Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coord
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
+Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
@@ -31,6 +32,7 @@ Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements -hard-> Appendix.Lemm
 Appendix.LemmaA1::lemma_A_1.hasLaw_increment -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.iIndepFun_increments -hard-> Appendix.LemmaA1
+Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.integral_eq -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.memLp_two -hard-> Appendix.LemmaA1
@@ -177,6 +179,7 @@ Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_c
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
+Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
@@ -205,6 +208,7 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordI
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
+Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
@@ -293,6 +297,7 @@ Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasGau
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
+Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
