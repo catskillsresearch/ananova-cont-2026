@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:41:04Z",
+ "updated": "2026-11-26T18:41:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 50,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 38,
-  "done": 95
+  "done": 96
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 16,
-  "done": 58
+  "done": 59
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
     "fourier_eq",
-    "integral_exp_slice",
     "integrableOn_profile",
     "integrable_uncurry",
     "integrable",
@@ -1580,10 +1579,9 @@
     "Bessel.BesselKernel::besselKernel.fourier_eq",
     "Bessel.BesselKernel::besselKernel.integrable",
     "Bessel.BesselKernel::besselKernel.integrableOn_profile",
-    "Bessel.BesselKernel::besselKernel.integrable_uncurry",
-    "Bessel.BesselKernel::besselKernel.integral_exp_slice"
+    "Bessel.BesselKernel::besselKernel.integrable_uncurry"
    ],
-   "detail": "6 sorry: fourier_eq, integral_exp_slice, integrableOn_profile, integrable_uncurry, integrable, asymptotic_origin"
+   "detail": "5 sorry: fourier_eq, integrableOn_profile, integrable_uncurry, integrable, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1730,22 +1728,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.integral_exp_slice"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, integrability step 1: Gaussian slice): for `δ > 0`, `∫_{ℝ^d} e^{-π|x|²/δ} dx = δ^{d/2}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.integral_exp_slice — subgoal of Definition 2.4, integrability step 1: Gaussian slice (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.integral_exp_slice — subgoal of Definition 2.4, integrability step 1: Gaussian slice (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.nonneg",

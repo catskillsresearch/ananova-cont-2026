@@ -50,7 +50,11 @@ theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
 `∫_{ℝ^d} e^{-π|x|²/δ} dx = δ^{d/2}`. -/
 theorem integral_exp_slice {δ : ℝ} (hδ : 0 < δ) :
     ∫ x : Rd d, Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) = δ ^ ((d : ℝ) / 2) := by
-  sorry
+  have h : (fun x : Rd d => Real.exp (-Real.pi * ‖x‖ ^ 2 / δ)) =
+      fun x => Real.exp (-(Real.pi / δ) * ‖x‖ ^ 2) := by
+    funext x; congr 1; ring
+  rw [h, GaussianFourier.integral_rexp_neg_mul_sq_norm (div_pos Real.pi_pos hδ),
+    finrank_euclideanSpace_fin, div_div_cancel₀ Real.pi_ne_zero]
 
 /-- **Subgoal** (Definition 2.4, integrability step 2: Gamma-type profile): for `α > 0`,
 `δ ↦ δ^{α/2 - 1} e^{-δ/(4π)}` is integrable on `(0, ∞)`. -/
