@@ -738,6 +738,14 @@ theorem radial_harmonic_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {u 
   rw [hue]
   exact hab ‖y‖ hy
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 8a: two-sided bound on the sphere mean): for `d ≥ 3`
+and `0 < r < |y|`, `(1 + r/|y|)^{2-d} ≤ |y|^{d-2} sphereMean d r y ≤ (1 - r/|y|)^{2-d}`. -/
+theorem sphereMean_bounds {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
+    (hy : r < ‖y‖) :
+    (1 + r / ‖y‖) ^ (2 - (d : ℝ)) ≤ ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y ∧
+      ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y ≤ (1 - r / ‖y‖) ^ (2 - (d : ℝ)) := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 8: behaviour at infinity): for `d ≥ 3` and `r > 0`,
 `|y|^{d-2} sphereMean d r y → 1` as `|y| → ∞`. -/
 theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :

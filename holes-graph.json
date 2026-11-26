@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:32:29Z",
+ "updated": "2026-11-26T20:33:31Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 50,
  "counts": {
-  "open": 13,
+  "open": 14,
   "blocked": 36,
   "done": 137
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 8,
   "blocked": 15,
   "done": 99
  },
@@ -3048,8 +3048,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 5,
+   "sorryCount": 6,
    "holes": [
+    "sphereMean_bounds",
     "tendsto_sphereMean",
     "sphereMean_outside",
     "newton_ball_of_three_le",
@@ -3058,7 +3059,7 @@
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 33
+    "theorem": 34
    },
    "paperGoal": false,
    "verified": false,
@@ -3094,6 +3095,7 @@
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
     "Occupation.OccupationConstant::occupationConstant.radial_ode_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
@@ -3105,10 +3107,11 @@
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
+    "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "5 sorry: tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "6 sorry: sphereMean_bounds, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3815,6 +3818,33 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant.sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
+   "label": "sphereMean_bounds",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.sphereMean_bounds"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 8a: two-sided bound on the sphere mean): for `d ≥ 3` and `0 < r < |y|`, `(1 + r/|y|)^{2-d} ≤ |y|^{d-2} sphereMean d r y ≤ (1 - r/|y|)^{2-d}`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.sphereMean_bounds — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral",
@@ -5913,6 +5943,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral",
    "kind": "hard"
   },
@@ -7092,6 +7127,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
@@ -8150,6 +8190,10 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral"
   },
   {
@@ -8942,6 +8986,10 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.sphereMean",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds",
    "to": "Occupation.OccupationConstant"
   },
   {

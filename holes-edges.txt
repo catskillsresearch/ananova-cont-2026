@@ -175,6 +175,7 @@ Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.radial_eq_pro
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.radial_ode_eq
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_bounds
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_outside
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_radial
@@ -411,6 +412,7 @@ Occupation.OccupationConstant::occupationConstant.radial_eq_profile -hard-> Occu
 Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.radial_ode_eq -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.sphereMean -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.sphereMean_bounds -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.sphereMean_outside -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.sphereMean_radial -hard-> Occupation.OccupationConstant
