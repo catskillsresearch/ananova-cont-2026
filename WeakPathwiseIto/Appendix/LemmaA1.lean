@@ -78,7 +78,16 @@ theorem hasLaw_sum_smul_basisVec {Ω : Type*} [MeasurableSpace Ω] {Q : Measure 
     [IsProbabilityMeasure Q] {Y : Fin d → Ω → ℝ} (hind : iIndepFun Y Q)
     (hlaw : ∀ i, HasLaw (Y i) (gaussianReal 0 1) Q) :
     HasLaw (fun ω => ∑ i, Y i ω • Rd.basisVec i) (stdGaussian (Rd d)) Q := by
-  sorry
+  have h1 := hind.hasLaw_pi hlaw
+  have h2 : HasLaw (fun v : Fin d → ℝ => ∑ i, v i • Rd.basisVec i) (stdGaussian (Rd d))
+      (Measure.pi fun _ : Fin d => gaussianReal 0 1) := by
+    refine ⟨(continuous_finset_sum _ fun i _ =>
+      (continuous_apply i).smul continuous_const).measurable.aemeasurable, ?_⟩
+    rw [stdGaussian_eq_map_pi_orthonormalBasis (EuclideanSpace.basisFun (Fin d) ℝ)]
+    congr 1
+    funext v
+    simp [Rd.basisVec, EuclideanSpace.basisFun_apply]
+  exact h2.comp h1
 
 /-- **Subgoal** (Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d)`): for `0 ≤ s < t ≤ T`,
 `(t - s)^{-1/2} (B(t) - B(s)) ∼ N(0, I_d)` under `ℙ_x`. -/
