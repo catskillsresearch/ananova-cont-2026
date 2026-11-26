@@ -625,7 +625,22 @@ theorem laplacian_comp_norm {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy : y ≠ 0
     (hf : ContDiffAt ℝ 2 f ‖y‖) :
     Δ (fun z : Rd d => f ‖z‖) y =
       deriv (deriv f) ‖y‖ + ((d : ℝ) - 1) / ‖y‖ * deriv f ‖y‖ := by
-  sorry
+  set b := stdOrthonormalBasis ℝ (Rd d) with hbdef
+  have hs : 0 < ‖y‖ := norm_pos_iff.2 hy
+  rw [InnerProductSpace.laplacian_eq_iteratedFDeriv_orthonormalBasis _ b]
+  simp only [iteratedFDeriv_two_apply, Matrix.cons_val_zero, Matrix.cons_val_one]
+  simp_rw [fderiv_fderiv_comp_norm_apply hy hf]
+  rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+  have hb : ∀ i, ‖b i‖ = 1 := b.orthonormal.1
+  have hsum : ∑ i, ⟪y, b i⟫ ^ 2 = ‖y‖ ^ 2 := by
+    rw [← real_inner_self_eq_norm_sq, ← b.sum_inner_mul_inner y y]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [sq, real_inner_comm (b i) y]
+  simp only [hb, one_pow, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one,
+    Fintype.card_fin, finrank_euclideanSpace_fin]
+  rw [hsum]
+  field_simp
+  ring
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7e: the radial Laplace ODE): for `d ≥ 3` and
 `r ≥ 0`, if `f'' + (d-1)/s f' = 0` on `(r, ∞)`, then `f = a + b s^{2-d}` there. -/
