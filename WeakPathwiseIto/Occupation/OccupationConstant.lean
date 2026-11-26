@@ -913,7 +913,14 @@ theorem volume_ball_eq {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 ≤ R) :
 `∫_0^R ρ^{d-1} c dρ = c R^d / d`. -/
 theorem integral_Ioo_pow_mul {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) (c : ℝ) :
     ∫ ρ in Ioo 0 R, ρ ^ (d - 1) * c = c * R ^ d / d := by
-  sorry
+  rw [← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le hR.le,
+    intervalIntegral.integral_mul_const, integral_pow, Nat.sub_add_cancel hd]
+  have hc : ((d - 1 : ℕ) : ℝ) + 1 = d := by
+    rw [Nat.cast_sub hd]
+    push_cast
+    ring
+  rw [hc, zero_pow (by omega), sub_zero]
+  ring
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10: integrating over shells): Newton's theorem for a
 ball, `d ≥ 3`. -/

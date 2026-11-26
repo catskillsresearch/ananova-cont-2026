@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:43:10Z",
+ "updated": "2026-11-26T20:44:00Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 36,
-  "done": 144
+  "done": 145
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 15,
-  "done": 106
+  "done": 107
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "integral_Ioo_pow_mul",
     "newton_ball_of_three_le",
     "eq_inv_integral"
    ],
@@ -3106,10 +3105,9 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le"
    ],
-   "detail": "3 sorry: integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
+   "detail": "2 sorry: newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3498,22 +3496,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.integral_Ioo_pow_mul"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10d: radial integral): for `d > 0` and `R > 0`, `∫_0^R ρ^{d-1} c dρ = c R^d / d`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.integral_Ioo_pow_mul — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.integral_Ioo_pow_mul — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
