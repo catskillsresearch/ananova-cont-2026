@@ -25,7 +25,9 @@ namespace occupationConstant
 theorem volume_ball_half {d : ℕ} (hd : 0 < d) :
     (volume (Metric.ball (0 : Rd d) (1 / 2))).toReal =
       (1 / 2 : ℝ) ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  sorry
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  rw [Measure.addHaar_ball volume (0 : Rd d) (by norm_num : (0 : ℝ) ≤ 1 / 2),
+    finrank_euclideanSpace_fin, ENNReal.toReal_mul, ENNReal.toReal_ofReal (by positivity)]
 
 /-- **Subgoal** (Eq. (7) c_d, step 2: reflection `x ↦ -x`): the two terms of eq. (7) have the
 same integral over `B(0,1/2)`. -/

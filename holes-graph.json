@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:59:25Z",
+ "updated": "2026-11-26T19:00:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 36,
-  "done": 108
+  "done": 109
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 15,
-  "done": 70
+  "done": 71
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "volume_ball_half",
     "integral_reflect",
     "integrableOn_term",
     "newton_ball",
@@ -3076,10 +3075,9 @@
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
     "Occupation.OccupationConstant::occupationConstant.integral_reflect",
-    "Occupation.OccupationConstant::occupationConstant.newton_ball",
-    "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
+    "Occupation.OccupationConstant::occupationConstant.newton_ball"
    ],
-   "detail": "5 sorry: volume_ball_half, integral_reflect, integrableOn_term, newton_ball, eq_inv_integral"
+   "detail": "4 sorry: integral_reflect, integrableOn_term, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3199,22 +3197,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.volume_ball_half"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, step 1: ball scaling): `|B(0,1/2)| = 2^{-d} |B(0,1)|`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.volume_ball_half — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.volume_ball_half — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationSeminorm",
