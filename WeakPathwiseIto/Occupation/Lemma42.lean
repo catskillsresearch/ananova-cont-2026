@@ -87,7 +87,34 @@ theorem traceMeasure_Ioc (hQV : HasQuadraticVariation π ω) {a b : ℝ} (ha : 0
     (hab : a ≤ b) (hb : b ≤ T) :
     hQV.traceMeasure.real (Ioc a b) = hQV.trace b - hQV.trace a ∧
       hQV.traceMeasure {0} = 0 := by
-  sorry
+  have hT : 0 ≤ T := (π 0).nonneg
+  have hcl : ∀ i, Continuous (hQV.coord i).qvExt := fun i => by
+    unfold HasScalarQuadraticVariation.qvExt
+    exact (hQV.coord i).continuousOn.comp_continuous
+      (by fun_prop : Continuous fun t : ℝ => max 0 (min t T))
+      (fun t => ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩)
+  have hc : Continuous hQV.traceExt := by
+    unfold HasQuadraticVariation.traceExt
+    exact continuous_finset_sum _ fun i _ => hcl i
+  set F := hQV.traceExt_monotone.stieltjesFunction with hFdef
+  have hF : ∀ x, F x = hQV.traceExt x := fun x => by
+    rw [hFdef, Monotone.stieltjesFunction_eq]
+    exact (hQV.traceExt_monotone.continuousWithinAt_Ioi_iff_rightLim_eq).1 hc.continuousWithinAt
+  have hFc : Continuous F := by
+    have : (F : ℝ → ℝ) = hQV.traceExt := funext hF
+    rw [this]; exact hc
+  have hclamp : ∀ t ∈ Icc 0 T, hQV.traceExt t = hQV.trace t := fun t ht => by
+    unfold HasQuadraticVariation.traceExt HasQuadraticVariation.trace
+      HasScalarQuadraticVariation.qvExt
+    rw [min_eq_left ht.2, max_eq_right ht.1]
+  have hmeas : hQV.traceMeasure = F.measure := rfl
+  constructor
+  · rw [Measure.real_def, hmeas, StieltjesFunction.measure_Ioc, hF, hF,
+      ENNReal.toReal_ofReal (sub_nonneg.2 (hQV.traceExt_monotone hab)),
+      hclamp b ⟨ha.trans hab, hb⟩, hclamp a ⟨ha, hab.trans hb⟩]
+  · rw [hmeas, StieltjesFunction.measure_singleton,
+      (F.mono.continuousWithinAt_Iio_iff_leftLim_eq).1 hFc.continuousWithinAt, sub_self,
+      ENNReal.ofReal_zero]
 
 /-- **Subgoal** (Lemma 4.2 proof: Riemann–Stieltjes convergence): for `g` continuous on `[0, T]`,
 `∑_i g(t_{i+1}) |ω(t_{i+1}) - ω(t_i)|² → ∫_{[0,T]} g d tr[ω]_π` (weak convergence of the
