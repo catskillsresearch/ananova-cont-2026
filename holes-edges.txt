@@ -11,6 +11,7 @@ Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one -hard-> Appendi
 Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.le_inv_two_mul_add -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.le_rpow_mul -hard-> Appendix.HeatKernel
+Appendix.HeatKernel::heatKernel.riemannSum_le_integral -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.scaling -hard-> Appendix.HeatKernel
 Appendix.LemmaB2::lemma_B_2_literal -hard-> Appendix.LemmaB2
@@ -26,6 +27,7 @@ Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.integral_le_po
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.le_inv_two_mul_add
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.le_rpow_mul
+Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_integral
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.scaling
 Appendix.PotentialProfile -hard-> Appendix.LemmaB1
@@ -49,6 +51,7 @@ Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialPro
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.le_inv_two_mul_add
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.le_rpow_mul
+Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_integral
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.scaling
 Basic.Partition -hard-> Main.BalancedPartitions
@@ -88,6 +91,7 @@ Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_on
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.le_inv_two_mul_add
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.le_rpow_mul
+Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_integral
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.scaling
 Basic.Rd -hard-> Basic.IsCubeOrBall
@@ -176,6 +180,7 @@ Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integral_le_pote
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.le_inv_two_mul_add
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.le_rpow_mul
+Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_integral
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.scaling
 Main.BalancedPartitions -hard-> Appendix.LemmaB2
@@ -193,6 +198,7 @@ Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integral_le_pote
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.le_inv_two_mul_add
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.le_rpow_mul
+Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_integral
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.scaling
 Main.GeometricMeshDecay -hard-> Appendix.LemmaB2
