@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:17:00Z",
+ "updated": "2026-11-26T20:19:45Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 52,
  "counts": {
-  "open": 15,
+  "open": 16,
   "blocked": 36,
   "done": 129
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 10,
   "blocked": 15,
   "done": 91
  },
@@ -3048,8 +3048,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 7,
+   "sorryCount": 8,
    "holes": [
+    "clm_integral_sphere",
     "harmonicAt_sphereMean",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
@@ -3060,7 +3061,7 @@
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 27
+    "theorem": 28
    },
    "paperGoal": false,
    "verified": false,
@@ -3068,6 +3069,7 @@
    "status": "blocked",
    "deps": [
     "Basic.Rd",
+    "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
     "Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
@@ -3098,6 +3100,7 @@
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
+    "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
@@ -3106,7 +3109,34 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "7 sorry: harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "8 sorry: clm_integral_sphere, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
+   "label": "clm_integral_sphere",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.clm_integral_sphere"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6j: continuous linear maps commute with the sphere integral): for `φ` continuous on `S^{d-1}` and `L` continuous linear, `L (∫ φ dσ) = ∫ L (φ ω) dσ(ω)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.clm_integral_sphere — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
@@ -5625,6 +5655,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
    "kind": "hard"
   },
@@ -6774,6 +6809,11 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
@@ -7830,6 +7870,10 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow"
   },
   {
@@ -8599,6 +8643,10 @@
   {
    "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
+   "to": "Occupation.OccupationConstant"
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",

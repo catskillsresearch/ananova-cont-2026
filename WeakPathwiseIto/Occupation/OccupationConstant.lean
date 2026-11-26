@@ -474,6 +474,16 @@ theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
   exact ((h2.comp hg.continuousOn hmaps).const_smul
     ((volume : Measure (Rd d)).toSphere.real univ)⁻¹)
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6j: continuous linear maps commute with the sphere
+integral): for `φ` continuous on `S^{d-1}` and `L` continuous linear,
+`L (∫ φ dσ) = ∫ L (φ ω) dσ(ω)`. -/
+theorem clm_integral_sphere {d : ℕ} {F G : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
+    [CompleteSpace F] [NormedAddCommGroup G] [NormedSpace ℝ G] [CompleteSpace G]
+    (L : F →L[ℝ] G) {φ : Metric.sphere (0 : Rd d) 1 → F} (hφ : Continuous φ) :
+    L (∫ ω, φ ω ∂(volume : Measure (Rd d)).toSphere) =
+      ∫ ω, L (φ ω) ∂(volume : Measure (Rd d)).toSphere := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
 theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}

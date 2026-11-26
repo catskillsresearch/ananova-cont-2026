@@ -147,6 +147,7 @@ Basic.Rd -hard-> Occupation.IncrementBall
 Basic.Rd -hard-> Occupation.NormalizedQuadraticDensity
 Basic.Rd -hard-> Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp
 Basic.Rd -hard-> Occupation.OccupationConstant
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.clm_integral_sphere
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere
@@ -377,6 +378,7 @@ Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::disc
 Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq
 Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece
 Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg
+Occupation.OccupationConstant::occupationConstant.clm_integral_sphere -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere -hard-> Occupation.OccupationConstant
