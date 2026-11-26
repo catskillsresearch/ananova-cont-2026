@@ -363,6 +363,37 @@ theorem lintegral_piece_le (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
           ENNReal.ofReal (occupationConstant d) from rfl]
         ring
 
+/-- **Subgoal** (Eq. (10) proof: increments are bounded by the oscillation):
+`|ω(t_{i+1}) - ω(t_i)| ≤ osc(ω, π_n)`. (Same statement as `lemma_4_2.norm_increment_le`,
+restated here so that this module does not import `Occupation.Lemma42`.) -/
+theorem norm_increment_le {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) (i : Fin p.m) :
+    ‖ω (p.right i) - ω (p.left i)‖ ≤ pathOscillation ω p := by
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  set C' := max C 0 with hC'
+  have hsub : ∀ j : Fin p.m, Icc (p.left j) (p.right j) ⊆ Icc 0 T := fun j s hs =>
+    ⟨(p.t_mem j.castSucc).1.trans hs.1, hs.2.trans (p.t_mem j.succ).2⟩
+  have hb : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C' := fun s hs =>
+    (hC _ (Set.mem_image_of_mem ω hs)).trans (le_max_left _ _)
+  have h3 : ∀ (j : Fin p.m) (s : ℝ),
+      (⨆ (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) ≤ 2 * C' := by
+    intro j s
+    refine Real.iSup_le (fun hs => ?_) (by positivity)
+    have h1 := hb s (hsub j hs)
+    have h2 := hb (p.left j) (hsub j ⟨le_rfl, (p.left_lt_right j).le⟩)
+    calc ‖ω s - ω (p.left j)‖ ≤ ‖ω s‖ + ‖ω (p.left j)‖ := norm_sub_le _ _
+      _ ≤ 2 * C' := by linarith
+  have hbdd2 : ∀ j : Fin p.m, BddAbove (range fun s : ℝ =>
+      ⨆ (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) :=
+    fun j => ⟨2 * C', Set.forall_mem_range.2 (h3 j)⟩
+  have hbdd1 : BddAbove (range fun j : Fin p.m => ⨆ (s : ℝ)
+      (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) :=
+    (Set.finite_range _).bddAbove
+  have hmem : p.right i ∈ Icc (p.left i) (p.right i) := ⟨(p.left_lt_right i).le, le_rfl⟩
+  unfold pathOscillation
+  refine le_ciSup_of_le hbdd1 i (le_ciSup_of_le (hbdd2 i) (p.right i) ?_)
+  exact le_ciSup (f := fun _ : p.right i ∈ Icc (p.left i) (p.right i) =>
+    ‖ω (p.right i) - ω (p.left i)‖) (Set.finite_range _).bddAbove hmem
+
 end eq_10
 
 /-- **Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then
@@ -374,7 +405,39 @@ theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T)
     ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity π ω x) ≤
       C * ∑ i : Fin π.m, (localMaximalFunction 1 f (ω (π.right i)) +
         localMaximalFunction 1 f (ω (π.left i))) * ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) := by
-  sorry
+  obtain ⟨C, hC⟩ := eq_10.lintegral_piece_le d
+  refine ⟨C, fun π ω f hω hf hosc => ?_⟩
+  have hc : 0 ≤ occupationConstant d := by unfold occupationConstant; positivity
+  have hnn : ∀ (a b x : Rd d), 0 ≤ discreteOccupationDensity.piece a b x := by
+    intro a b x
+    unfold discreteOccupationDensity.piece
+    split_ifs
+    · exact le_rfl
+    · exact indicator_nonneg (fun y _ => mul_nonneg hc (by positivity)) _
+  have hmeas : ∀ (a b : Rd d), Measurable (discreteOccupationDensity.piece a b) := by
+    intro a b
+    unfold discreteOccupationDensity.piece
+    split_ifs
+    · exact measurable_const
+    · exact Measurable.indicator (by fun_prop) measurableSet_closedBall
+  have hfm : AEStronglyMeasurable f := hf.aestronglyMeasurable
+  calc ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity π ω x)
+      = ∫⁻ x, ∑ i : Fin π.m, ‖f x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) := by
+        congr 1; funext x
+        rw [discreteOccupationDensity, ENNReal.ofReal_sum_of_nonneg (fun i _ => hnn _ _ x),
+          Finset.mul_sum]
+    _ = ∑ i : Fin π.m, ∫⁻ x, ‖f x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) :=
+        lintegral_finset_sum' _ (fun i _ =>
+          hfm.enorm.mul (ENNReal.measurable_ofReal.comp (hmeas _ _)).aemeasurable)
+    _ ≤ ∑ i : Fin π.m, C * ((localMaximalFunction 1 f (ω (π.right i)) +
+          localMaximalFunction 1 f (ω (π.left i))) *
+            ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2)) := by
+        gcongr with i
+        rw [← mul_assoc]
+        exact hC f _ _ hfm ((eq_10.norm_increment_le hω π i).trans hosc)
+    _ = _ := by rw [Finset.mul_sum]
 
 /-- **Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with
 `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.

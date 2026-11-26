@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:31:35Z",
+ "updated": "2026-11-26T22:33:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 25,
-  "done": 195
+  "done": 197
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 8,
-  "done": 151
+  "done": 153
  },
  "untagged": [],
  "legend": {
@@ -4390,14 +4390,13 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_le_maximal",
     "le_limsup_discreteSeminorm"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 9
+    "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
@@ -4413,6 +4412,7 @@
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
@@ -4420,10 +4420,9 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
-    "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
+    "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
    ],
-   "detail": "2 sorry: lintegral_le_maximal, le_limsup_discreteSeminorm"
+   "detail": "1 sorry: le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4600,6 +4599,35 @@
    "detail": "proved: occupationSeminorm.eq_10.lintegral_shell_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
+   "label": "norm_increment_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof: increments are bounded by the oscillation): `|ω(t_{i+1}) - ω(t_i)| ≤ osc(ω, π_n)`. (Same statement as `lemma_4_2.norm_increment_le`, restated here so that this module does not import `Occupation.Lemma42`.)",
+   "status": "done",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "proved: occupationSeminorm.eq_10.norm_increment_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "label": "volume_ball_eq",
    "kind": "subgoal",
@@ -4669,17 +4697,15 @@
    "parentGoal": "Occupation.OccupationSeminorm",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationSeminorm.lintegral_le_maximal"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`. The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`); without it `osc(ω, π_n) ≤ 1` can hold vacuously (the `iSup` of an unbounded family is `0`) and (10) fails.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4688,7 +4714,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: occupationSeminorm.lintegral_le_maximal — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+   "detail": "proved: occupationSeminorm.lintegral_le_maximal — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace",
@@ -8104,6 +8130,11 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "kind": "hard"
   },
@@ -8195,6 +8226,11 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
    "kind": "hard"
   },
   {
@@ -8460,6 +8496,11 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
    "kind": "hard"
   },
   {
@@ -8749,6 +8790,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
    "to": "Occupation.OccupationSeminorm",
    "kind": "subgoal"
   },
@@ -9249,6 +9295,11 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "kind": "hard"
   },
@@ -9660,6 +9711,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
    "kind": "hard"
   },
   {
@@ -11036,6 +11092,10 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
   },
   {
@@ -11101,6 +11161,10 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
@@ -11297,6 +11361,10 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -11524,6 +11592,10 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
    "to": "Occupation.OccupationSeminorm"
   },
   {
@@ -11792,6 +11864,10 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
   },
   {
@@ -11997,6 +12073,10 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
