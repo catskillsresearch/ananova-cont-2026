@@ -395,7 +395,24 @@ integral of the kernel Hessian is continuous on `{|y| ≠ r}`. -/
 theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
     ContinuousOn (fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere)
       {y | ‖y‖ ≠ r} := by
-  sorry
+  have hU : IsOpen {y : Rd d | ‖y‖ ≠ r} := isOpen_ne_fun continuous_norm continuous_const
+  have hV : IsOpen {z : Rd d | z ≠ 0} := isOpen_ne
+  have h2 : ContinuousOn (fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))))
+      {z : Rd d | z ≠ 0} :=
+    (((contDiffOn_norm_rpow (n := 2) (2 - (d : ℝ))).fderiv_of_isOpen hV
+      (m := 1) (by norm_num)).continuousOn_fderiv_of_isOpen hV le_rfl)
+  have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
+      p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
+    rintro ⟨y, ω⟩ ⟨hy, -⟩
+    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    rintro rfl
+    apply hy
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
+  refine continuousOn_integral_sphere hU ?_
+  have hg : Continuous fun p : Rd d × Metric.sphere (0 : Rd d) 1 => p.1 - r • (p.2 : Rd d) := by
+    fun_prop
+  exact ((h2.comp hg.continuousOn hmaps).const_smul
+    ((volume : Measure (Rd d)).toSphere.real univ)⁻¹)
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
