@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T17:40:48Z",
+ "updated": "2026-11-26T17:44:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 55,
+ "sorryCount": 54,
  "counts": {
-  "open": 17,
-  "blocked": 41,
-  "done": 54
+  "open": 16,
+  "blocked": 40,
+  "done": 56
  },
  "goalCounts": {
   "open": 7,
-  "blocked": 25,
-  "done": 33
+  "blocked": 24,
+  "done": 34
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 16,
-  "done": 21
+  "done": 22
  },
  "untagged": [],
  "legend": {
@@ -1903,8 +1903,7 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity",
-    "Occupation.WeightedOccupationMeasure"
+    "Occupation.DiscreteOccupationDensity"
    ],
    "detail": "1 sorry: lemma_4_2"
   },
@@ -2254,26 +2253,22 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2 μ^T_ω",
    "file": "WeakPathwiseIto/Occupation/WeightedOccupationMeasure.lean",
-   "sorryCount": 1,
-   "holes": [
-    "integral_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
     "Smooth.HasQuadraticVariation"
    ],
-   "blockers": [
-    "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq"
-   ],
-   "detail": "1 sorry: integral_eq"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
@@ -2285,22 +2280,20 @@
    "parentGoal": "Occupation.WeightedOccupationMeasure",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/WeightedOccupationMeasure.lean",
-   "sorryCount": 1,
-   "holes": [
-    "weightedOccupationMeasure.integral_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 4.2). `∫ φ dμ^T_ω = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for continuous `φ`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Smooth.HasQuadraticVariation"
    ],
    "blockers": [],
-   "detail": "sorry: weightedOccupationMeasure.integral_eq — subgoal of Lemma 4.2 (in Occupation.WeightedOccupationMeasure)"
+   "detail": "proved: weightedOccupationMeasure.integral_eq — subgoal of Lemma 4.2 (in Occupation.WeightedOccupationMeasure)"
   },
   {
    "id": "Smooth.Corollary32",

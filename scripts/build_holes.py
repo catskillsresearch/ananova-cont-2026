@@ -85,6 +85,7 @@ VERIFIED: set[str] = {
     "Smooth.PathOscillation",
     "Main.GeometricMeshDecay",
     "Smooth.HasQuadraticVariation",
+    "Occupation.WeightedOccupationMeasure",
 }
 
 # Paper labels for modules that carry a numbered result or definition.

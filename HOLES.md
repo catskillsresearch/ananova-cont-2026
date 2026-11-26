@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T17:40:48Z  
-**`sorry` occurrences:** 55 · 17 open · 41 blocked · 54 done (goals + subgoals) · goals {'open': 7, 'blocked': 25, 'done': 33} · subgoals {'open': 10, 'blocked': 16, 'done': 21} · 29 file(s) with `sorry`.
+**Updated:** 2026-11-26T17:44:17Z  
+**`sorry` occurrences:** 54 · 16 open · 40 blocked · 56 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 9, 'blocked': 16, 'done': 22} · 28 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -76,7 +76,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 1 |
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 1 |
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
-| open | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 1 |
+| done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 1 |
 | done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross` | subgoal of Section 3 Q^π(ℝ^d | 0 |
 | done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt` | subgoal of Lemma 4.2 trace measure | 0 |
@@ -154,14 +154,14 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 4 | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg`, `Occupation.OccupationConstant` |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
-| blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity`, `Occupation.WeightedOccupationMeasure` |
+| blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 1 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |
-| blocked | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 1 | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` |
+| done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
 ### §5 Main results
 
