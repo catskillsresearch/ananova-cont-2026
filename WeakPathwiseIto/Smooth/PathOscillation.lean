@@ -34,7 +34,36 @@ def Vanishes (ω : ℝ → Rd d) (π : ℕ → Partition T) : Prop :=
 theorem vanishes_of_mesh {ω : ℝ → Rd d} {π : ℕ → Partition T}
     (hω : ContinuousOn ω (Icc 0 T)) (hπ : Tendsto (fun n => (π n).mesh) atTop (𝓝 0)) :
     Vanishes ω π := by
-  sorry
+  have hu := isCompact_Icc.uniformContinuousOn_of_continuous hω
+  rw [Metric.uniformContinuousOn_iff] at hu
+  rw [Vanishes, Metric.tendsto_atTop]
+  intro ε hε
+  obtain ⟨δ, hδ, hδε⟩ := hu (ε / 2) (by positivity)
+  obtain ⟨N, hN⟩ := Metric.tendsto_atTop.1 hπ δ hδ
+  refine ⟨N, fun n hn => ?_⟩
+  have hmesh : (π n).mesh < δ := by
+    have := hN n hn
+    rw [Real.dist_eq, sub_zero] at this
+    exact (le_abs_self _).trans_lt this
+  have hle : pathOscillation ω (π n) ≤ ε / 2 := by
+    refine Real.iSup_le (fun i => Real.iSup_le (fun s => Real.iSup_le (fun hs => ?_)
+      (by positivity)) (by positivity)) (by positivity)
+    have hl := (π n).t_mem i.castSucc
+    have hr := (π n).t_mem i.succ
+    have hs1 : (π n).left i ≤ s := hs.1
+    have hs2 : s ≤ (π n).right i := hs.2
+    have hl' : (π n).left i ∈ Icc 0 T := hl
+    have hr' : (π n).right i ∈ Icc 0 T := hr
+    have hsT : s ∈ Icc 0 T := ⟨hl'.1.trans hs1, hs2.trans hr'.2⟩
+    have hgap := (π n).gap_le_mesh i
+    have := hδε s hsT ((π n).left i) hl' (by
+      rw [Real.dist_eq, abs_of_nonneg (by linarith)]; linarith)
+    rw [dist_eq_norm] at this
+    exact this.le
+  have h0 : 0 ≤ pathOscillation ω (π n) :=
+    Real.iSup_nonneg fun i => Real.iSup_nonneg fun s => Real.iSup_nonneg fun _ => norm_nonneg _
+  rw [Real.dist_eq, sub_zero, abs_of_nonneg h0]
+  linarith
 
 end pathOscillation
 
