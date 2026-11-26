@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:27:08Z",
+ "updated": "2026-11-26T20:28:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 53,
+ "sorryCount": 52,
  "counts": {
-  "open": 17,
+  "open": 16,
   "blocked": 36,
-  "done": 133
+  "done": 134
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 15,
-  "done": 95
+  "done": 96
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
-    "fderiv_fderiv_comp_norm_apply",
     "laplacian_comp_norm",
     "radial_ode_eq",
     "radial_harmonic_eq",
@@ -3107,7 +3106,6 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",
     "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
@@ -3116,7 +3114,7 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "9 sorry: fderiv_fderiv_comp_norm_apply, laplacian_comp_norm, radial_ode_eq, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "8 sorry: laplacian_comp_norm, radial_ode_eq, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3255,22 +3253,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.fderiv_fderiv_comp_norm_apply"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 7c: second derivative of a radial function): for `y ≠ 0` and `f` `C²` at `|y|`, with `s = |y|`, `D²(f ∘ |·|)(y)(e, e) = (f''(s) - f'(s)/s)/s² ⟨y,e⟩² + (f'(s)/s) |e|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.fderiv_fderiv_comp_norm_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.fderiv_fderiv_comp_norm_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",

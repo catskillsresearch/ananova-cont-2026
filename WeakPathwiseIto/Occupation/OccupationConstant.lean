@@ -587,7 +587,36 @@ theorem fderiv_fderiv_comp_norm_apply {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy
     fderiv ℝ (fderiv ℝ (fun z : Rd d => f ‖z‖)) y e e =
       (deriv (deriv f) ‖y‖ - deriv f ‖y‖ / ‖y‖) / ‖y‖ ^ 2 * ⟪y, e⟫ ^ 2 +
         deriv f ‖y‖ / ‖y‖ * ‖e‖ ^ 2 := by
-  sorry
+  have hs : 0 < ‖y‖ := norm_pos_iff.2 hy
+  have hev_f : ∀ᶠ w in 𝓝 y, DifferentiableAt ℝ f ‖w‖ := by
+    have h1 : ∀ᶠ t in 𝓝 ‖y‖, ContDiffAt ℝ 2 f t := hf.eventually (by simp)
+    have h2 := (continuous_norm.tendsto y).eventually h1
+    exact h2.mono fun w hw => hw.differentiableAt (by norm_num)
+  have hev : fderiv ℝ (fun z : Rd d => f ‖z‖) =ᶠ[𝓝 y]
+      fun w => (deriv f ‖w‖ / ‖w‖) • innerSL ℝ w := by
+    filter_upwards [hev_f, eventually_ne_nhds hy] with w hw hw0
+    exact (hasFDerivAt_comp_norm hw0 hw).fderiv
+  have hD : HasDerivAt (deriv f) (deriv (deriv f) ‖y‖) ‖y‖ := by
+    have h1 : ContDiffAt ℝ 1 (fderiv ℝ f) ‖y‖ := hf.fderiv_right (m := 1) (by norm_num)
+    have h2 : DifferentiableAt ℝ (fun t => fderiv ℝ f t 1) ‖y‖ :=
+      (h1.differentiableAt (by norm_num)).clm_apply (differentiableAt_const _)
+    have h3 : (fun t => fderiv ℝ f t 1) = deriv f := funext fun t => fderiv_apply_one_eq_deriv
+    rw [h3] at h2
+    exact h2.hasDerivAt
+  have hg : HasDerivAt (fun t => deriv f t / t)
+      ((deriv (deriv f) ‖y‖ * ‖y‖ - deriv f ‖y‖ * 1) / ‖y‖ ^ 2) ‖y‖ :=
+    hD.div (hasDerivAt_id ‖y‖) hs.ne'
+  have h3 := hasFDerivAt_comp_norm hy hg.differentiableAt
+  have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) y := (innerSL ℝ).hasFDerivAt
+  have h4 : HasFDerivAt (fun w : Rd d => (deriv f ‖w‖ / ‖w‖) • innerSL ℝ w) _ y := h3.smul hI
+  rw [hev.fderiv_eq, h4.fderiv]
+  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
+  have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
+    rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
+  rw [hg.deriv, he]
+  field_simp
+  ring
 
 open Laplacian in
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7d: Laplacian of a radial function): for `y ≠ 0` and
