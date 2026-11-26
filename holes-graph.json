@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T22:39:46Z",
+ "updated": "2026-11-26T22:42:19Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 39,
  "counts": {
-  "open": 7,
+  "open": 13,
   "blocked": 19,
   "done": 205
  },
@@ -13,7 +13,7 @@
   "done": 48
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 8,
   "blocked": 7,
   "done": 157
  },
@@ -4796,13 +4796,19 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Definition 4.3",
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 1,
+   "sorryCount": 7,
    "holes": [
+    "directions_single_add_single",
+    "testDeriv_single_add_single",
+    "integral_mul_fderiv_fderiv",
+    "coord_smoothHessian",
+    "isWeakHessian_smoothHessian",
+    "occupationSeminorm_sub_self",
     "contDiffBounded_subset"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 1
+    "theorem": 7
    },
    "paperGoal": false,
    "verified": false,
@@ -4811,12 +4817,24 @@
    "deps": [
     "Occupation.ApproximatingSequence",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
    ],
-   "detail": "1 sorry: contDiffBounded_subset"
+   "detail": "7 sorry: directions_single_add_single, testDeriv_single_add_single, integral_mul_fderiv_fderiv, coord_smoothHessian, isWeakHessian_smoothHessian, occupationSeminorm_sub_self, contDiffBounded_subset"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
@@ -4845,6 +4863,174 @@
    ],
    "blockers": [],
    "detail": "sorry: PathwiseSobolevSpace.contDiffBounded_subset — subgoal of Definition 4.3 (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+   "label": "coord_smoothHessian",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.coord_smoothHessian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries): `⟨∇²F(x) e_j, e_i⟩ = ∂_j ∂_i F(x)` for `F ∈ C²`.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.coord_smoothHessian — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+   "label": "directions_single_add_single",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j`",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.directions_single_add_single"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j`): for `i ≤ j` the direction list of `e_i + e_j` is `[e_i, e_j]`.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.directions_single_add_single — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j` (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+   "label": "integral_mul_fderiv_fderiv",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts twice",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.integral_mul_fderiv_fderiv"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts twice): `∫ F ∂_u ∂_v φ = ∫ (∂_v ∂_u F) φ` for `F ∈ C²` and a smooth compactly supported `φ`.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.integral_mul_fderiv_fderiv — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts twice (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+   "label": "isWeakHessian_smoothHessian",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.isWeakHessian_smoothHessian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof): the classical Hessian of a `C²` function is a weak Hessian.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.isWeakHessian_smoothHessian — subgoal of Definition 4.3 proof (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+   "label": "occupationSeminorm_sub_self",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F`",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.occupationSeminorm_sub_self"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof, the constant approximating sequence `F_m = F`): the seminorm `‖·‖_{W^0_{ω,π}}` vanishes on `0`.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.occupationSeminorm_sub_self — subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` (in Occupation.PathwiseSobolevSpace)"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
+   "label": "testDeriv_single_add_single",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.testDeriv_single_add_single"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative): `D^{e_i + e_j} φ = ∂_i ∂_j φ` for a smooth `φ`.",
+   "status": "open",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: PathwiseSobolevSpace.testDeriv_single_add_single — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.Remark44",
@@ -8109,6 +8295,36 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45",
    "kind": "hard"
@@ -8955,6 +9171,36 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
    "to": "Occupation.PathwiseSobolevSpace",
    "kind": "subgoal"
   },
@@ -9806,6 +10052,36 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
    "kind": "hard"
   },
   {
@@ -11187,6 +11463,30 @@
    "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
   },
   {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self"
+  },
+  {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
+  },
+  {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45"
   },
@@ -11831,6 +12131,30 @@
    "to": "Occupation.PathwiseSobolevSpace"
   },
   {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
    "from": "Occupation.Remark44",
    "to": "Occupation.Remark45"
   },
@@ -12257,6 +12581,30 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
   },
   {
    "from": "Sobolev.IsWeakHessian",
