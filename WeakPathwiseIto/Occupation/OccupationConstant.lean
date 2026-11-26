@@ -210,7 +210,20 @@ theorem hasFDerivAt_norm_rpow_of_ne {d : ℕ} {x : Rd d} (hx : x ≠ 0) (p : ℝ
 theorem fderiv_fderiv_norm_rpow_apply {d : ℕ} {z : Rd d} (hz : z ≠ 0) (p : ℝ) (e : Rd d) :
     fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x‖ ^ p)) z e e =
       p * (p - 2) * ‖z‖ ^ (p - 4) * ⟪z, e⟫ ^ 2 + p * ‖z‖ ^ (p - 2) * ‖e‖ ^ 2 := by
-  sorry
+  have hev : fderiv ℝ (fun x : Rd d => ‖x‖ ^ p) =ᶠ[𝓝 z]
+      fun w => (p * ‖w‖ ^ (p - 2)) • innerSL ℝ w := by
+    filter_upwards [eventually_ne_nhds hz] with w hw
+    exact (hasFDerivAt_norm_rpow_of_ne hw p).fderiv
+  have hc := (hasFDerivAt_norm_rpow_of_ne hz (p - 2)).const_mul p
+  have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) z := (innerSL ℝ).hasFDerivAt
+  have h2 : HasFDerivAt (fun w : Rd d => (p * ‖w‖ ^ (p - 2)) • innerSL ℝ w) _ z := hc.smul hI
+  rw [hev.fderiv_eq, h2.fderiv]
+  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
+  have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
+    rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
+  rw [show p - 2 - 2 = p - 4 by ring, he]
+  ring
 
 open Laplacian in
 /-- **Subgoal** (Eq. (7) c_d, Newton step 5: the Newton kernel is harmonic): for `d ≥ 3` and
