@@ -555,7 +555,28 @@ theorem le_limsup_discreteSeminorm {p q : ℝ} (hpq : p.HolderConjugate q) (π :
     (f : Rd d → ℝ) (hf : LocallyIntegrable f) : ∃ C : ℝ≥0∞, C < ⊤ ∧
     occupationSeminorm π ω f ≤
       C * limsup (fun n => discreteSeminorm (π n) p (localMaximalFunction 1 f) ω) atTop := by
-  sorry
+  obtain ⟨C10, hC10⟩ := lintegral_le_maximal (T := T) d
+  obtain ⟨K, hKtop, hK⟩ := hρ
+  have hp1 : 1 < p := hpq.lt
+  have hq : 0 < q := hpq.symm.pos
+  have h2 : (2 : ℝ≥0∞) ^ ((p - 1) / p) < ⊤ :=
+    ENNReal.rpow_lt_top_of_nonneg (div_nonneg (by linarith) (by linarith)) ENNReal.ofNat_ne_top
+  refine ⟨(C10 : ℝ≥0∞) * 2 ^ ((p - 1) / p) * K,
+    ENNReal.mul_lt_top (ENNReal.mul_lt_top ENNReal.coe_lt_top h2) hKtop, ?_⟩
+  have hev : ∀ᶠ n in atTop, pathOscillation ω (π n) ≤ 1 := hosc.eventually (Iic_mem_nhds one_pos)
+  unfold occupationSeminorm
+  rw [← ENNReal.limsup_const_mul_of_ne_top
+    (ENNReal.mul_lt_top (ENNReal.mul_lt_top ENNReal.coe_lt_top h2) hKtop).ne]
+  refine limsup_le_limsup (hev.mono fun n hn => ?_)
+  calc ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x)
+      ≤ C10 * ∑ i : Fin (π n).m, (localMaximalFunction 1 f (ω ((π n).right i)) +
+          localMaximalFunction 1 f (ω ((π n).left i))) *
+            ENNReal.ofReal (‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2) := hC10 (π n) ω f hω hf hn
+    _ ≤ C10 * ((2 ^ ((p - 1) / p) * discreteSeminorm (π n) p (localMaximalFunction 1 f) ω) * K) := by
+        gcongr
+        exact (eq_11.sum_le_holder hpq (π n) ω _).trans (mul_le_mul' (eq_11.sum_rpow_le hp1.le _ _ _)
+          ((eq_11.sum_rpow_le_eLpNorm hq _ _).trans (hK n)))
+    _ = _ := by ring
 
 end occupationSeminorm
 

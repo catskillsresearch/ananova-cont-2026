@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T22:38:51Z  
-**`sorry` occurrences:** 34 · 6 open · 25 blocked · 200 done (goals + subgoals) · goals {'open': 4, 'blocked': 17, 'done': 44} · subgoals {'open': 2, 'blocked': 8, 'done': 156} · 18 file(s) with `sorry`.
+**Updated:** 2026-11-26T22:39:46Z  
+**`sorry` occurrences:** 33 · 7 open · 19 blocked · 205 done (goals + subgoals) · goals {'open': 5, 'blocked': 12, 'done': 48} · subgoals {'open': 2, 'blocked': 7, 'done': 157} · 17 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -16,7 +16,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | Status | Module | Paper | `sorry` | Holes |
 |---|---|---|---|---|
-| blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
+| open | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `theorem_5_2`, `theorem_5_2_deterministic` |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `proposition_5_3` |
 
@@ -25,6 +25,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
+| `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -171,9 +172,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder` | subgoal of Eq. (11 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le` | subgoal of Eq. (11 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm` | subgoal of Eq. (11 | 0 |
-| open | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 1 |
+| done | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 0 |
-| blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
+| open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
 | done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
 | done | `Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq` | subgoal of Corollary 3.2 proof, "by Proposition 3.1" | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 0 |
@@ -265,7 +266,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Occupation.ApproximatingSequence` | Eq. (8) | 0 | `Occupation.OccupationSeminorm` |
+| done | `Occupation.ApproximatingSequence` | Eq. (8) | 0 |  |
 | done | `Occupation.DiscreteLocalTime` | Remark 4.5 λ^{n,±}_T [DOS18] | 0 |  |
 | done | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
@@ -273,8 +274,8 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.Lemma42` | Lemma 4.2 | 0 |  |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
-| blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 1 | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` |
-| blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
+| done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
+| blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
@@ -286,12 +287,12 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
-| blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52`, `Main.WeakCovariation`, `Main.WeakPathwiseIntegral` |
+| blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
-| blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `Main.WeakCovariation`, `Main.WeakPathwiseIntegral` |
+| open | `Main.Theorem51` | Theorem 5.1 | 3 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Occupation.PathwiseSobolevSpace` |
-| blocked | `Main.WeakCovariation` | Eq. (15) | 0 | `Occupation.ApproximatingSequence` |
-| blocked | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 | `Occupation.ApproximatingSequence` |
+| done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
+| done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 
 ### Appendices A–B
 

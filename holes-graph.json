@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T22:38:51Z",
+ "updated": "2026-11-26T22:39:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
-  "open": 6,
-  "blocked": 25,
-  "done": 200
+  "open": 7,
+  "blocked": 19,
+  "done": 205
  },
  "goalCounts": {
-  "open": 4,
-  "blocked": 17,
-  "done": 44
+  "open": 5,
+  "blocked": 12,
+  "done": 48
  },
  "subgoalCounts": {
   "open": 2,
-  "blocked": 8,
-  "done": 156
+  "blocked": 7,
+  "done": 157
  },
  "untagged": [],
  "legend": {
@@ -2556,9 +2556,7 @@
     "Sobolev.MemWLoc"
    ],
    "blockers": [
-    "Main.Theorem52",
-    "Main.WeakCovariation",
-    "Main.WeakPathwiseIntegral"
+    "Main.Theorem52"
    ],
    "detail": "1 sorry: proposition_5_3"
   },
@@ -2608,7 +2606,7 @@
    "paperGoal": true,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.WeakCovariation",
     "Main.WeakPathwiseIntegral",
@@ -2616,10 +2614,7 @@
     "Smooth.PathOscillation",
     "Sobolev.IsWeakHessian"
    ],
-   "blockers": [
-    "Main.WeakCovariation",
-    "Main.WeakPathwiseIntegral"
-   ],
+   "blockers": [],
    "detail": "3 sorry: theorem_5_1_tendsto, theorem_5_1_unique, theorem_5_1"
   },
   {
@@ -2669,14 +2664,12 @@
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Smooth.PathwiseCovariation"
    ],
-   "blockers": [
-    "Occupation.ApproximatingSequence"
-   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -2694,14 +2687,12 @@
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Smooth.FollmerIntegral"
    ],
-   "blockers": [
-    "Occupation.ApproximatingSequence"
-   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -2719,16 +2710,14 @@
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Occupation.OccupationSeminorm",
     "Sobolev.MemW"
    ],
-   "blockers": [
-    "Occupation.OccupationSeminorm"
-   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -4390,18 +4379,16 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "le_limsup_discreteSeminorm"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
     "theorem": 13
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4422,10 +4409,8 @@
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
-   ],
-   "detail": "1 sorry: le_limsup_discreteSeminorm"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4756,17 +4741,15 @@
    "parentGoal": "Occupation.OccupationSeminorm",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationSeminorm.le_limsup_discreteSeminorm"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`. The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`), needed for (10).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4775,7 +4758,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: occupationSeminorm.le_limsup_discreteSeminorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
+   "detail": "proved: occupationSeminorm.le_limsup_discreteSeminorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
@@ -4831,7 +4814,6 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [
-    "Occupation.ApproximatingSequence",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
    ],
    "detail": "1 sorry: contDiffBounded_subset"
@@ -4856,14 +4838,12 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Sobolev.IsWeakHessian"
    ],
-   "blockers": [
-    "Occupation.ApproximatingSequence"
-   ],
+   "blockers": [],
    "detail": "sorry: PathwiseSobolevSpace.contDiffBounded_subset — subgoal of Definition 4.3 (in Occupation.PathwiseSobolevSpace)"
   },
   {
