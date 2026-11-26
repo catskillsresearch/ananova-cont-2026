@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:03:53Z",
+ "updated": "2026-11-26T20:05:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 54,
+ "sorryCount": 53,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 36,
-  "done": 121
+  "done": 122
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 15,
-  "done": 83
+  "done": 84
  },
  "untagged": [],
  "legend": {
@@ -3048,11 +3048,10 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
     "hasFDerivAt_integral_sphere",
     "continuousOn_integral_sphere",
-    "sum_fderiv_fderiv_newtonKernel_sub",
     "harmonicAt_sphereMean",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
@@ -3104,10 +3103,9 @@
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
-    "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "10 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, sum_fderiv_fderiv_newtonKernel_sub, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "9 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
@@ -3635,22 +3633,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.sum_fderiv_fderiv_newtonKernel_sub"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.sum_fderiv_fderiv_newtonKernel_sub — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.sum_fderiv_fderiv_newtonKernel_sub — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",

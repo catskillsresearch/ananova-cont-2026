@@ -292,7 +292,26 @@ orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ 
 theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
     {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ (Rd d)) :
     ∑ i, fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ (2 - (d : ℝ)))) y (b i) (b i) = 0 := by
-  sorry
+  set z := y - c with hzdef
+  have hz0 : 0 < ‖z‖ := norm_pos_iff.2 (sub_ne_zero.2 hy)
+  simp_rw [fderiv_fderiv_norm_sub_rpow_apply hy]
+  rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+  have hb : ∀ i, ‖b i‖ = 1 := b.orthonormal.1
+  have hs : ∑ i, ⟪z, b i⟫ ^ 2 = ‖z‖ ^ 2 := by
+    rw [← real_inner_self_eq_norm_sq, ← b.sum_inner_mul_inner z z]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [sq, real_inner_comm (b i) z]
+  have hcard : (Fintype.card ι : ℝ) = d := by
+    rw [← Module.finrank_eq_card_basis b.toBasis, finrank_euclideanSpace_fin]
+  simp only [hb, one_pow, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one, hcard]
+  rw [hs]
+  have hpow : ‖z‖ ^ (2 - (d : ℝ) - 4) * ‖z‖ ^ 2 = ‖z‖ ^ (2 - (d : ℝ) - 2) := by
+    rw [← Real.rpow_natCast, ← Real.rpow_add hz0]
+    congr 1
+    push_cast
+    ring
+  rw [mul_assoc _ (‖z‖ ^ (2 - (d : ℝ) - 4)), hpow]
+  ring
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
