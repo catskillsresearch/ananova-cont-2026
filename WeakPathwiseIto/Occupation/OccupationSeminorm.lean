@@ -173,7 +173,34 @@ theorem lintegral_shell_le (hd : 3 ≤ d) (f : Rd d → ℝ) (a : Rd d) {ρ : �
         ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) ≤
       ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) *
         volume (Metric.ball a (ρ / 2 ^ k)) * localMaximalFunction 1 f a := by
-  sorry
+  have hpos : 0 < ρ / 2 ^ (k + 1) := by positivity
+  have hpos' : 0 < ρ / 2 ^ k := by positivity
+  have hle1 : ρ / 2 ^ k ≤ 1 :=
+    (div_le_self hρ.le (one_le_pow₀ (by norm_num : (1 : ℝ) ≤ 2))).trans hρ1
+  have he : 2 - (d : ℝ) ≤ 0 := by
+    have : (3 : ℝ) ≤ d := by exact_mod_cast hd
+    linarith
+  have hS : MeasurableSet {x : Rd d | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k} :=
+    (measurableSet_lt measurable_const (measurable_norm.comp (measurable_id.sub_const a))).inter
+      (measurableSet_le (measurable_norm.comp (measurable_id.sub_const a)) measurable_const)
+  have hsub : {x : Rd d | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k} ⊆
+      Metric.closedBall a (ρ / 2 ^ k) := fun x hx => by
+    rw [Metric.mem_closedBall, dist_eq_norm]; exact hx.2
+  calc _ ≤ ∫⁻ x in {x | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k},
+        ‖f x‖ₑ * ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) :=
+        setLIntegral_mono' hS fun x hx =>
+          mul_le_mul_right (ENNReal.ofReal_le_ofReal
+            (Real.rpow_le_rpow_of_nonpos hpos hx.1.le he)) _
+    _ = (∫⁻ x in {x | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k}, ‖f x‖ₑ) *
+          ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) :=
+        lintegral_mul_const' _ _ ENNReal.ofReal_ne_top
+    _ ≤ (∫⁻ x in Metric.closedBall a (ρ / 2 ^ k), ‖f x‖ₑ) *
+          ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) :=
+        mul_le_mul_left (lintegral_mono_set hsub) _
+    _ ≤ (volume (Metric.ball a (ρ / 2 ^ k)) * localMaximalFunction 1 f a) *
+          ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) :=
+        mul_le_mul_left (lintegral_closedBall_le f a hpos' hle1) _
+    _ = _ := by ring
 
 /-- **Subgoal** (Eq. (10) proof, `d ≥ 3`): summing the dyadic shells (a geometric series),
 `∫_{B̄(a,ρ)} |f| |x-a|^{2-d} ≤ C ρ² M_1 f(a)`. -/
