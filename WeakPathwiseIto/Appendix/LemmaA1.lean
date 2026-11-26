@@ -125,7 +125,30 @@ theorem tendsto_ae_of_summable_variance {Ω : Type*} [MeasurableSpace Ω] {μ : 
     [IsProbabilityMeasure μ] {X : ℕ → Ω → ℝ} {c : ℝ} {a : ℕ → ℝ} (hX : ∀ n, MemLp (X n) 2 μ)
     (hmean : ∀ n, ∫ ω, X n ω ∂μ = c) (hvar : ∀ n, variance (X n) μ ≤ a n) (ha : Summable a) :
     ∀ᵐ ω ∂μ, Tendsto (fun n => X n ω) atTop (𝓝 c) := by
-  sorry
+  have ha0 : ∀ n, 0 ≤ a n := fun n => (variance_nonneg _ _).trans (hvar n)
+  have hk : ∀ k : ℕ, ∀ᵐ ω ∂μ, ∀ᶠ n in atTop,
+      ω ∉ {ω | (1 / ((k : ℝ) + 1)) ≤ |X n ω - c|} := by
+    intro k
+    set ε : ℝ := 1 / ((k : ℝ) + 1)
+    have hε : 0 < ε := by positivity
+    refine ae_eventually_notMem (ne_top_of_le_ne_top (b := ∑' n, ENNReal.ofReal (a n / ε ^ 2)) ?_
+      (ENNReal.tsum_le_tsum fun n => ?_))
+    · rw [← ENNReal.ofReal_tsum_of_nonneg (fun n => div_nonneg (ha0 n) (sq_nonneg _))
+        (ha.div_const _)]
+      exact ENNReal.ofReal_ne_top
+    · have := meas_ge_le_variance_div_sq (hX n) hε
+      rw [hmean n] at this
+      exact this.trans (ENNReal.ofReal_le_ofReal (div_le_div_of_nonneg_right (hvar n) (sq_nonneg _)))
+  filter_upwards [ae_all_iff.2 hk] with ω hω
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  obtain ⟨k, hk⟩ := exists_nat_one_div_lt hε
+  obtain ⟨N, hN⟩ := (hω k).exists_forall_of_atTop
+  refine ⟨N, fun n hn => ?_⟩
+  have := hN n hn
+  simp only [mem_setOf_eq, not_le] at this
+  rw [Real.dist_eq]
+  linarith
 
 end lemma_A_1
 
