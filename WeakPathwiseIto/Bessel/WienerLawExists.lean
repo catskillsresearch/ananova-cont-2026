@@ -156,7 +156,8 @@ theorem map_restrict_eq {x : Rd d} {P : Measure (CanonicalWienerSpace d T)} (h :
 dimensional distributions determine the law on `C([0, T], ℝ^d)`). -/
 theorem isLaw_unique {x : Rd d} {P P' : Measure (CanonicalWienerSpace d T)} (h : IsLaw x P)
     (h' : IsLaw x P') : P = P' := by
-  sorry
+  apply ext_of_map_coe
+  exact IsProjectiveLimit.unique (fun J => map_restrict_eq h J) (fun J => map_restrict_eq h' J)
 
 /-- **Subgoal** (Section 2.2 Wiener space): `ℙ_x` is the law of Brownian motion started at `x`. -/
 theorem isLaw_P (x : Rd d) : IsLaw x (P (T := T) x) :=

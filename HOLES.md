@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:38:51Z  
-**`sorry` occurrences:** 49 · 12 open · 54 blocked · 78 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 30, 'done': 43} · 26 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:39:21Z  
+**`sorry` occurrences:** 48 · 11 open · 38 blocked · 95 done (goals + subgoals) · goals {'open': 6, 'blocked': 22, 'done': 37} · subgoals {'open': 5, 'blocked': 16, 'done': 58} · 25 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -51,20 +51,20 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Appendix.HeatKernel::heatKernel.riemannSum_le_integral` | subgoal of Lemma B.2 proof, eq. (35 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.scaling` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.B_ofCoords` | subgoal of Lemma A.1 proof, step 2a: coordinates of `B` | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero` | subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements` | subgoal of Lemma A.1 proof, step 2d-i: jointly Gaussian | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.hasLaw_increment` | subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec` | subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments` | subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp` | subgoal of Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹` | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.integral_eq` | subgoal of Lemma A.1 proof, step 3: mean | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum` | subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm` | subgoal of Lemma A.1 proof, step 1 in terms of `Z_i^n` | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian` | subgoal of Lemma A.1 proof, step 3: Gaussian moments are finite | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.memLp_two` | subgoal of Lemma A.1 proof, step 3: square integrability | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance` | subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli | 0 |
-| blocked | `Appendix.LemmaA1::lemma_A_1.variance_le` | subgoal of Lemma A.1 proof, step 3: variance | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.B_ofCoords` | subgoal of Lemma A.1 proof, step 2a: coordinates of `B` | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero` | subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements` | subgoal of Lemma A.1 proof, step 2d-i: jointly Gaussian | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.hasLaw_increment` | subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec` | subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments` | subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp` | subgoal of Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹` | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.integral_eq` | subgoal of Lemma A.1 proof, step 3: mean | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum` | subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm` | subgoal of Lemma A.1 proof, step 1 in terms of `Z_i^n` | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian` | subgoal of Lemma A.1 proof, step 3: Gaussian moments are finite | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.memLp_two` | subgoal of Lemma A.1 proof, step 3: square integrability | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance` | subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli | 0 |
+| done | `Appendix.LemmaA1::lemma_A_1.variance_le` | subgoal of Lemma A.1 proof, step 3: variance | 0 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |
 | done | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` | subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ | 0 |
 | done | `Basic.Partition::Partition.gap_le_mesh` | subgoal of Assumption 1 mesh | 0 |
@@ -89,7 +89,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw` | subgoal of Section 2.2 Wiener space | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe` | subgoal of Section 2.2 Wiener space, uniqueness step 2 | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P` | subgoal of Section 2.2 Wiener space | 0 |
-| open | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 1 |
+| done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict` | subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` | subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` | 0 |
@@ -160,7 +160,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
-| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 1 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` |
+| done | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 0 |  |
 
 ### §3 Smooth change of variable
 
@@ -214,7 +214,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
 | done | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 0 |  |
-| blocked | `Appendix.LemmaA1` | Lemma A.1 | 0 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero`, `Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm`, `Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
+| done | `Appendix.LemmaA1` | Lemma A.1 | 0 |  |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
 | done | `Appendix.PotentialProfile` | Eq. (33) | 0 |  |

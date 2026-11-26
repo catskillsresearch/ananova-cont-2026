@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T18:38:51Z",
+ "updated": "2026-11-26T18:39:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 12,
-  "blocked": 54,
-  "done": 78
+  "open": 11,
+  "blocked": 38,
+  "done": 95
  },
  "goalCounts": {
   "open": 6,
-  "blocked": 24,
-  "done": 35
+  "blocked": 22,
+  "done": 37
  },
  "subgoalCounts": {
-  "open": 6,
-  "blocked": 30,
-  "done": 43
+  "open": 5,
+  "blocked": 16,
+  "done": 58
  },
  "untagged": [],
  "legend": {
@@ -519,7 +519,7 @@
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -540,23 +540,7 @@
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
-    "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
-    "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
-    "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
-    "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
-    "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
-    "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
-    "Appendix.LemmaA1::lemma_A_1.integral_eq",
-    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
-    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
-    "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
-    "Appendix.LemmaA1::lemma_A_1.memLp_two",
-    "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
-    "Appendix.LemmaA1::lemma_A_1.variance_le",
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -577,16 +561,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2a: coordinates of `B`): on `[0, T]` the canonical process of `ofCoords x W` is `x + ∑_i W^i(t) e_i`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.B_ofCoords — subgoal of Lemma A.1 proof, step 2a: coordinates of `B` (in Appendix.LemmaA1)"
   },
   {
@@ -607,16 +589,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2d-ii: uncorrelated): increments over different cells are uncorrelated (same coordinate: independent increments; different coordinates: independence).",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.covariance_coordIncrements_eq_zero — subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated (in Appendix.LemmaA1)"
   },
   {
@@ -637,16 +617,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2d-i: jointly Gaussian): for independent real Brownian motions `W^1, …, W^d` and times `t_0 ≤ ⋯ ≤ t_m`, all coordinate increments `W^i(t_{k+1}) - W^i(t_k)` are jointly Gaussian.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.hasGaussianLaw_coordIncrements — subgoal of Lemma A.1 proof, step 2d-i: jointly Gaussian (in Appendix.LemmaA1)"
   },
   {
@@ -667,16 +645,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d)`): for `0 ≤ s < t ≤ T`, `(t - s)^{-1/2} (B(t) - B(s)) ∼ N(0, I_d)` under `ℙ_x`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.hasLaw_increment — subgoal of Lemma A.1 proof, step 2c: `Z_i^n ∼ N(0, I_d (in Appendix.LemmaA1)"
   },
   {
@@ -697,16 +673,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d)`): independent standard normal coordinates `Y^1, …, Y^d` give `∑_i Y^i e_i ∼ N(0, I_d)`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.hasLaw_sum_smul_basisVec — subgoal of Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d (in Appendix.LemmaA1)"
   },
   {
@@ -727,16 +701,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B` over the cells of a partition are independent under `ℙ_x`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.iIndepFun_increments — subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent (in Appendix.LemmaA1)"
   },
   {
@@ -757,16 +729,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹`): independence of `f_i ∘ g` under `Q` gives independence of `f_i` under the image measure.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.iIndepFun_map_of_comp — subgoal of Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹` (in Appendix.LemmaA1)"
   },
   {
@@ -787,16 +757,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 3: mean): `𝔼_x ‖ρ_{n,B}‖^q_{L^q} = c_{q,d} T`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.integral_eq — subgoal of Lemma A.1 proof, step 3: mean (in Appendix.LemmaA1)"
   },
   {
@@ -817,16 +785,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n`): for a fixed path, `∫_0^T |ρ_n(t)|^q dt = ∑_i (|ω(t_{i+1}) - ω(t_i)|² / Δ_i)^q Δ_i`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.integral_rpow_eq_sum — subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` (in Appendix.LemmaA1)"
   },
   {
@@ -847,16 +813,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 1 in terms of `Z_i^n`): along `ℙ_x`-paths, `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` with `Z_i^n = (Δ_i^n)^{-1/2}(B(t_{i+1}) - B(t_i))`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.integral_rpow_eq_sum_norm — subgoal of Lemma A.1 proof, step 1 in terms of `Z_i^n` (in Appendix.LemmaA1)"
   },
   {
@@ -877,16 +841,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 3: Gaussian moments are finite): for `p ≥ 0`, `z ↦ |z|^p` is in every `L^r(N(0, I_d))`, `r < ∞`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.memLp_norm_rpow_stdGaussian — subgoal of Lemma A.1 proof, step 3: Gaussian moments are finite (in Appendix.LemmaA1)"
   },
   {
@@ -907,16 +869,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in `L²(ℙ_x)`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.memLp_two — subgoal of Lemma A.1 proof, step 3: square integrability (in Appendix.LemmaA1)"
   },
   {
@@ -937,16 +897,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli): if `𝔼 X_n = c` and `Var X_n ≤ a_n` with `∑ a_n < ∞`, then `X_n → c` almost surely.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.tendsto_ae_of_summable_variance — subgoal of Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli (in Appendix.LemmaA1)"
   },
   {
@@ -967,16 +925,14 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma A.1 proof, step 3: variance): with `b_{q,d} := Var |Z|^{2q}`, `Var_x ‖ρ_{n,B}‖^q_{L^q} = b_{q,d} ∑_i (Δ_i^n)² ≤ b_{q,d} T |π_n|`.",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists"
-   ],
+   "blockers": [],
    "detail": "proved: lemma_A_1.variance_le — subgoal of Lemma A.1 proof, step 3: variance (in Appendix.LemmaA1)"
   },
   {
@@ -1962,17 +1918,15 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 ℙ_x exists (subgoals)",
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
-   "holes": [
-    "isLaw_unique"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 9
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -1985,10 +1939,8 @@
     "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
     "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
    ],
-   "blockers": [
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique"
-   ],
-   "detail": "1 sorry: isLaw_unique"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -2100,22 +2052,20 @@
    "parentGoal": "Bessel.WienerLawExists",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
-   "holes": [
-    "CanonicalWienerSpace.isLaw_unique"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 2.2 Wiener space): the law of Brownian motion is unique (finite dimensional distributions determine the law on `C([0, T], ℝ^d)`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [],
-   "detail": "sorry: CanonicalWienerSpace.isLaw_unique — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+   "detail": "proved: CanonicalWienerSpace.isLaw_unique — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
