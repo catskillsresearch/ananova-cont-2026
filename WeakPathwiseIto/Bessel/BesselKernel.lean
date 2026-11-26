@@ -98,7 +98,8 @@ theorem integrable_uncurry (hα : 0 < α) :
 
 /-- **Subgoal** (Definition 2.4). -/
 theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
-  sorry
+  unfold besselKernel
+  exact ((integrable_uncurry hα).integral_prod_left).const_mul _
 
 /-- **Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`. -/
 theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ ∧

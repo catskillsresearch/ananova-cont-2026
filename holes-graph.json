@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:43:24Z",
+ "updated": "2026-11-26T18:43:56Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 47,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 38,
-  "done": 98
+  "done": 99
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 16,
-  "done": 61
+  "done": 62
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "fourier_eq",
-    "integrable",
     "asymptotic_origin"
    ],
    "declKinds": {
@@ -1574,10 +1573,9 @@
    ],
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
-    "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.integrable"
+    "Bessel.BesselKernel::besselKernel.fourier_eq"
    ],
-   "detail": "3 sorry: fourier_eq, integrable, asymptotic_origin"
+   "detail": "2 sorry: fourier_eq, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1643,22 +1641,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.integrable"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.integrable — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.integrable — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.integrableOn_profile",

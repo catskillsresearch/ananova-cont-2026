@@ -31,7 +31,7 @@ status:
   scope: >-
     Blueprint: every paper definition is stated as a Lean def/structure and every numbered
     result as a theorem with a sorry proof. Proofs not started.
-  sorry_count: 48
+  sorry_count: 47
   sorry_in_definitions: 0
   axioms:
   - propext
