@@ -12,7 +12,7 @@ public import WeakPathwiseIto.Basic.Rd
 noncomputable section
 
 open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
+open scoped ENNReal NNReal RealInnerProductSpace Pointwise
 
 namespace WeakPathwiseIto
 
@@ -144,7 +144,44 @@ theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {f : R
 theorem integral_toSphere_isometry {d : ℕ} (L : Rd d ≃ₗᵢ[ℝ] Rd d) (g : Rd d → ℝ) :
     ∫ ω, g (L (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere =
       ∫ ω, g (ω : Rd d) ∂(volume : Measure (Rd d)).toSphere := by
-  sorry
+  have hS : ∀ (M : Rd d ≃ₗᵢ[ℝ] Rd d) (ω : Metric.sphere (0 : Rd d) 1),
+      M (ω : Rd d) ∈ Metric.sphere (0 : Rd d) 1 := fun M ω => by
+    rw [mem_sphere_zero_iff_norm, M.norm_map]; exact norm_eq_of_mem_sphere ω
+  set Ls : Metric.sphere (0 : Rd d) 1 → Metric.sphere (0 : Rd d) 1 := fun ω => ⟨L ω, hS L ω⟩
+    with hLs
+  set Ls' : Metric.sphere (0 : Rd d) 1 → Metric.sphere (0 : Rd d) 1 :=
+    fun ω => ⟨L.symm ω, hS L.symm ω⟩ with hLs'
+  have hmeas : Measurable Ls :=
+    ((L.continuous.comp continuous_subtype_val).subtype_mk _).measurable
+  have hmeas' : Measurable Ls' :=
+    ((L.symm.continuous.comp continuous_subtype_val).subtype_mk _).measurable
+  have hinv : Function.LeftInverse Ls' Ls := fun ω => Subtype.ext (L.symm_apply_apply _)
+  have hinv' : Function.RightInverse Ls' Ls := fun ω => Subtype.ext (L.apply_symm_apply _)
+  have hemb : MeasurableEmbedding Ls := MeasurableEmbedding.of_measurable_inverse hmeas
+    (by rw [hinv'.surjective.range_eq]; exact MeasurableSet.univ) hmeas' hinv
+  have hset : ∀ s : Set (Metric.sphere (0 : Rd d) 1),
+      Ioo (0 : ℝ) 1 • ((↑) '' (Ls ⁻¹' s) : Set (Rd d)) = L ⁻¹' (Ioo (0 : ℝ) 1 • ((↑) '' s)) := by
+    intro s
+    ext x
+    simp only [Set.mem_smul, Set.mem_image, Set.mem_preimage]
+    constructor
+    · rintro ⟨a, ha, _, ⟨ω, hω, rfl⟩, rfl⟩
+      exact ⟨a, ha, _, ⟨Ls ω, hω, rfl⟩, by rw [L.map_smul]⟩
+    · rintro ⟨a, ha, _, ⟨ω', hω', rfl⟩, hx⟩
+      refine ⟨a, ha, _, ⟨Ls' ω', ?_, rfl⟩, ?_⟩
+      · rw [hinv' ω']; exact hω'
+      · apply L.injective
+        rw [L.map_smul, ← hx]
+        exact congrArg (a • ·) (L.apply_symm_apply _)
+  have hL : MeasurePreserving (L.toHomeomorph.toMeasurableEquiv) := L.measurePreserving
+  have hmp : MeasurePreserving Ls (volume : Measure (Rd d)).toSphere
+      (volume : Measure (Rd d)).toSphere := by
+    refine ⟨hmeas, Measure.ext fun s hs => ?_⟩
+    rw [Measure.map_apply hmeas hs, Measure.toSphere_apply' _ (hmeas hs),
+      Measure.toSphere_apply' _ hs, hset]
+    congr 1
+    exact hL.measure_preimage_equiv _
+  exact hmp.integral_comp hemb (fun ω => g (ω : Rd d))
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 4: the sphere mean is radial): `sphereMean d r y` only
 depends on `|y|`. -/
