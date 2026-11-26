@@ -34,7 +34,16 @@ same integral over `B(0,1/2)`. -/
 theorem integral_reflect {d : ℕ} (hd : 0 < d) :
     ∫ x in Metric.ball (0 : Rd d) (1 / 2), ‖x + (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩‖ ^ (2 - (d : ℝ)) =
       ∫ x in Metric.ball (0 : Rd d) (1 / 2), ‖x - (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩‖ ^ (2 - (d : ℝ)) := by
-  sorry
+  set v : Rd d := (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩
+  have hm : MeasurePreserving (fun x : Rd d => -x) volume volume :=
+    (LinearIsometryEquiv.neg ℝ (E := Rd d)).measurePreserving
+  have h := hm.setIntegral_preimage_emb (Homeomorph.neg (Rd d)).measurableEmbedding
+    (fun y => ‖y - v‖ ^ (2 - (d : ℝ))) (Metric.ball 0 (1 / 2))
+  have hs : (fun x : Rd d => -x) ⁻¹' Metric.ball 0 (1 / 2) = Metric.ball 0 (1 / 2) := by
+    ext x; simp
+  rw [← h, hs]
+  refine setIntegral_congr_fun measurableSet_ball fun x _ => ?_
+  rw [show -x - v = -(x + v) by abel, norm_neg]
 
 /-- **Subgoal** (Eq. (7) c_d, step 3: local integrability): `x ↦ |x - y|^{2-d}` is integrable on
 a ball. -/

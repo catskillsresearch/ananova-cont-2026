@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T19:00:09Z",
+ "updated": "2026-11-26T19:01:49Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 47,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 36,
-  "done": 109
+  "done": 110
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 15,
-  "done": 71
+  "done": 72
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "integral_reflect",
     "integrableOn_term",
     "newton_ball",
     "eq_inv_integral"
@@ -3074,10 +3073,9 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
-    "Occupation.OccupationConstant::occupationConstant.integral_reflect",
     "Occupation.OccupationConstant::occupationConstant.newton_ball"
    ],
-   "detail": "4 sorry: integral_reflect, integrableOn_term, newton_ball, eq_inv_integral"
+   "detail": "3 sorry: integrableOn_term, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3143,22 +3141,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.integral_reflect"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, step 2: reflection `x ↦ -x`): the two terms of eq. (7) have the same integral over `B(0,1/2)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.integral_reflect — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.integral_reflect — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.newton_ball",
