@@ -324,7 +324,52 @@ theorem tendsto_main {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
       ⟪fderiv ℝ f (ω ((π n).right k)) (ω ((π n).right k) - ω ((π n).left k)),
         ω ((π n).right k) - ω ((π n).left k)⟫) atTop
       (𝓝 (hQV.matrixIntegral (fun u i j => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) t)) := by
-  sorry
+  have hDf : Continuous (fderiv ℝ f) := hf.1.continuous_fderiv (by norm_num)
+  have hGc : ∀ i j : Fin d,
+      ContinuousOn (fun u => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) (Icc 0 T) :=
+    fun i j => by
+      have h1 : Continuous fun A : Rd d →L[ℝ] Rd d => Rd.coord i (A (Rd.basisVec j)) := by
+        unfold Rd.coord; fun_prop
+      exact h1.comp_continuousOn (hDf.comp_continuousOn hω)
+  have hcsub : ∀ (i : Fin d) (a b : Rd d), Rd.coord i (a - b) = Rd.coord i a - Rd.coord i b :=
+    fun i a b => by simp [Rd.coord, inner_sub_left]
+  have hlim : Tendsto (fun n => ∑ i, ∑ j,
+      ((∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+          Rd.coord i (fderiv ℝ f (ω ((π n).right k)) (Rd.basisVec j)) *
+            ((fun s => Rd.coord i (ω s) + Rd.coord j (ω s)) ((π n).right k) -
+              (fun s => Rd.coord i (ω s) + Rd.coord j (ω s)) ((π n).left k)) ^ 2) -
+        (∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+          Rd.coord i (fderiv ℝ f (ω ((π n).right k)) (Rd.basisVec j)) *
+            ((fun s => Rd.coord i (ω s)) ((π n).right k) -
+              (fun s => Rd.coord i (ω s)) ((π n).left k)) ^ 2) -
+        (∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+          Rd.coord i (fderiv ℝ f (ω ((π n).right k)) (Rd.basisVec j)) *
+            ((fun s => Rd.coord j (ω s)) ((π n).right k) -
+              (fun s => Rd.coord j (ω s)) ((π n).left k)) ^ 2)) / 2) atTop
+      (𝓝 (hQV.matrixIntegral (fun u i j => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) t)) := by
+    unfold HasQuadraticVariation.matrixIntegral
+    exact tendsto_finset_sum _ fun i _ => tendsto_finset_sum _ fun j _ =>
+      (((tendsto_riemannStieltjes (hQV.pair i j) (hGc i j) ht).sub
+        (tendsto_riemannStieltjes (hQV.coord i) (hGc i j) ht)).sub
+        (tendsto_riemannStieltjes (hQV.coord j) (hGc i j) ht)).div_const 2
+  refine hlim.congr fun n => ?_
+  have e : ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+      ⟪fderiv ℝ f (ω ((π n).right k)) (ω ((π n).right k) - ω ((π n).left k)),
+        ω ((π n).right k) - ω ((π n).left k)⟫ =
+      ∑ i, ∑ j, ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+        Rd.coord i (fderiv ℝ f (ω ((π n).right k)) (Rd.basisVec j)) *
+          ((Rd.coord i (ω ((π n).right k) - ω ((π n).left k)) +
+              Rd.coord j (ω ((π n).right k) - ω ((π n).left k))) ^ 2 -
+            Rd.coord i (ω ((π n).right k) - ω ((π n).left k)) ^ 2 -
+            Rd.coord j (ω ((π n).right k) - ω ((π n).left k)) ^ 2) / 2 := by
+    rw [Finset.sum_congr rfl fun k _ => inner_apply_eq _ _]
+    exact Finset.sum_comm.trans (Finset.sum_congr rfl fun i _ => Finset.sum_comm)
+  rw [e]
+  refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+  rw [← Finset.sum_sub_distrib, ← Finset.sum_sub_distrib, Finset.sum_div]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  simp only [hcsub]
+  ring
 
 /-- **Subgoal** (Proposition 3.1 proof: `I_2^n(t) → 0`, `|δω · r| ≤ ρ_{∇f}(osc) |δω|²`). -/
 theorem tendsto_remainder {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))

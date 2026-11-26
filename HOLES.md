@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:40:26Z  
-**`sorry` occurrences:** 42 · 13 open · 27 blocked · 173 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 8, 'blocked': 8, 'done': 132} · 21 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:42:35Z  
+**`sorry` occurrences:** 41 · 12 open · 27 blocked · 174 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 7, 'blocked': 8, 'done': 133} · 21 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -181,7 +181,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.riemannSum_eq` | subgoal of Proposition 3.1 proof: splitting the discrete covariation | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc` | subgoal of Proposition 3.1 proof: Stieltjes measure of an interval | 0 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_boundary` | subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n | 1 |
-| open | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 1 |
+| done | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 0 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 1 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
 
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
-| blocked | `Smooth.Proposition31` | Proposition 3.1 | 4 | `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder` |
+| blocked | `Smooth.Proposition31` | Proposition 3.1 | 3 | `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder` |
 
 ### §4 Occupation measures and 𝓦²_{ω,π}
 
