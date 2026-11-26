@@ -332,6 +332,48 @@ theorem le_rpow_mul (x : Rd d) {a s K : ℝ} (ha : 0 < a) (has : a ≤ s) (hsK :
         mul_le_mul e2 e1 (Real.exp_pos _).le (by positivity)
     _ = _ := by ring
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (35), integrability): for `d ≥ 1` and `x ≠ 0`,
+`s ↦ p_s(x)` is integrable on `(0, T]` (dominations from the proof of eq. (32)). -/
+theorem integrableOn_Ioc (hd : 0 < d) {x : Rd d} (hx : x ≠ 0) (T : ℝ) :
+    IntegrableOn (fun s => heatKernel d s x) (Ioc 0 T) := by
+  rcases le_or_gt T 0 with hT | hT
+  · simp [Ioc_eq_empty_of_le hT]
+  have hr : 0 < ‖x‖ := norm_pos_iff.2 hx
+  have hmeas : AEStronglyMeasurable (fun s => heatKernel d s x) (volume.restrict (Ioc 0 T)) :=
+    (by unfold heatKernel; fun_prop : Measurable fun s => heatKernel d s x).aestronglyMeasurable
+  have hnn : ∀ s ∈ Ioc (0 : ℝ) T, ‖heatKernel d s x‖ = heatKernel d s x := fun s hs => by
+    have : (0 : ℝ) < s := hs.1
+    exact Real.norm_of_nonneg (by unfold heatKernel; positivity)
+  rcases Nat.lt_or_ge 2 d with h3 | h3
+  · have hb : 0 < ‖x‖ ^ 2 := by positivity
+    have hscale : EqOn (fun u => heatKernel d (‖x‖ ^ 2 * u) x) (fun u => ‖x‖ ^ (-(d : ℝ)) *
+        ((2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)))) (Ioi 0) :=
+      fun u hu => scaling x hx hu
+    have := (integrableOn_Ioi_comp_mul_left_iff (fun s => heatKernel d s x) 0 hb).1
+      (IntegrableOn.congr_fun ((integrableOn_unitKernel h3).const_mul _) hscale.symm
+        measurableSet_Ioi)
+    rw [mul_zero] at this
+    exact this.mono_set Ioc_subset_Ioi_self
+  interval_cases d
+  · have hi := (intervalIntegrable_iff_integrableOn_Ioc_of_le hT.le).1
+      (intervalIntegral.intervalIntegrable_rpow' (r := -(1 : ℝ) / 2) (by norm_num))
+    have hg : IntegrableOn (fun s : ℝ => (2 * Real.pi * s) ^ (-(1 : ℝ) / 2)) (Ioc 0 T) :=
+      IntegrableOn.congr_fun (hi.const_mul ((2 * Real.pi) ^ (-(1 : ℝ) / 2)))
+        (fun s hs => (Real.mul_rpow (by positivity) hs.1.le).symm) measurableSet_Ioc
+    refine Integrable.mono' hg hmeas (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_)
+    rw [hnn s hs]
+    have hs0 : (0 : ℝ) < s := hs.1
+    simp only [heatKernel, Nat.cast_one]
+    refine mul_le_of_le_one_right (by positivity) (Real.exp_le_one_iff.2 ?_)
+    exact div_nonpos_of_nonpos_of_nonneg (neg_nonpos.2 (by positivity)) (by positivity)
+  · have hgc : ContinuousOn (fun s : ℝ => 1 / Real.pi / (2 * s + ‖x‖ ^ 2)) (Icc 0 T) :=
+      continuousOn_const.div (by fun_prop)
+        (fun s hs => by have : (0 : ℝ) ≤ s := hs.1; positivity)
+    refine Integrable.mono' ((hgc.integrableOn_Icc).mono_set Ioc_subset_Icc_self) hmeas
+      (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_)
+    rw [hnn s hs]
+    exact le_inv_two_mul_add x hs.1
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
