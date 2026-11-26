@@ -64,7 +64,19 @@ theorem tendsto_cross (i j : Fin d) {t : ℝ} (ht : t ∈ Icc 0 T) :
       (Rd.coord i (ω ((π n).right k)) - Rd.coord i (ω ((π n).left k))) *
         (Rd.coord j (ω ((π n).right k)) - Rd.coord j (ω ((π n).left k))))
       atTop (𝓝 (h.covariation i j t)) := by
-  sorry
+  have e : ∀ n, (∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+      (Rd.coord i (ω ((π n).right k)) - Rd.coord i (ω ((π n).left k))) *
+        (Rd.coord j (ω ((π n).right k)) - Rd.coord j (ω ((π n).left k)))) =
+      (discreteQuadraticVariation (π n) (fun t => Rd.coord i (ω t) + Rd.coord j (ω t)) t -
+        discreteQuadraticVariation (π n) (fun t => Rd.coord i (ω t)) t -
+        discreteQuadraticVariation (π n) (fun t => Rd.coord j (ω t)) t) / 2 := by
+    intro n
+    unfold discreteQuadraticVariation
+    rw [← Finset.sum_sub_distrib, ← Finset.sum_sub_distrib, Finset.sum_div]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  refine Tendsto.congr (fun n => (e n).symm) ?_
+  exact ((((h.pair i j).tendsto t ht).sub ((h.coord i).tendsto t ht)).sub
+    ((h.coord j).tendsto t ht)).div_const 2
 
 end HasQuadraticVariation
 
