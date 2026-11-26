@@ -51,7 +51,25 @@ theorem scaling (x : Rd d) (hx : x ≠ 0) {u : ℝ} (hu : 0 < u) :
 theorem integrableOn_unitKernel (hd : 2 < d) :
     IntegrableOn (fun u : ℝ => (2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)))
       (Ioi 0) := by
-  sorry
+  rw [← integrableOn_Ioi_comp_rpow_iff' _ (p := -1) (by norm_num)]
+  have hs : (-1 : ℝ) < (d : ℝ) / 2 - 2 := by
+    have : (3 : ℝ) ≤ d := by exact_mod_cast hd
+    linarith
+  refine IntegrableOn.congr_fun
+    ((integrableOn_rpow_mul_exp_neg_mul_rpow hs one_pos (by norm_num : (0 : ℝ) < 1 / 2)).const_mul
+      ((2 * Real.pi) ^ (-(d : ℝ) / 2))) (fun v hv => ?_) measurableSet_Ioi
+  have hv : 0 < v := hv
+  simp only [smul_eq_mul, Real.rpow_neg_one, Real.rpow_one]
+  rw [show (-1 : ℝ) - 1 = -2 by norm_num, Real.rpow_neg hv.le]
+  have hp : (2 * Real.pi * v⁻¹) ^ (-(d : ℝ) / 2) =
+      (2 * Real.pi) ^ (-(d : ℝ) / 2) * v ^ ((d : ℝ) / 2) := by
+    rw [Real.mul_rpow (by positivity) (by positivity), Real.inv_rpow hv.le, neg_div,
+      Real.rpow_neg hv.le, inv_inv]
+  have he : Real.exp (-1 / (2 * v⁻¹)) = Real.exp (-(1 / 2) * v) := by
+    congr 1
+    field_simp
+  rw [hp, he, Real.rpow_sub hv, Real.rpow_two]
+  field_simp
 
 /-- **Subgoal** (Lemma B.2 proof, eq. (32), case `d ≥ 3`):
 `∫_0^T p_s(x) ds ≤ C |x|^{2-d}` (scaling `s = |x|² u` on `(0, ∞)`). -/
