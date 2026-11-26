@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:49:12Z  
-**`sorry` occurrences:** 46 · 9 open · 38 blocked · 103 done (goals + subgoals) · goals {'open': 6, 'blocked': 22, 'done': 37} · subgoals {'open': 3, 'blocked': 16, 'done': 66} · 25 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:50:15Z  
+**`sorry` occurrences:** 49 · 12 open · 38 blocked · 103 done (goals + subgoals) · goals {'open': 6, 'blocked': 22, 'done': 37} · subgoals {'open': 6, 'blocked': 16, 'done': 66} · 25 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -80,11 +80,14 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.BesselCapacity::besselCapacity.iUnion_le` | subgoal of Definition 2.7, countable subadditivity [Fuk93] | 1 |
 | done | `Bessel.BesselKernel::besselKernel.asymptotic_origin` | subgoal of Definition 2.4 | 0 |
 | open | `Bessel.BesselKernel::besselKernel.fourier_eq` | subgoal of Definition 2.4 | 1 |
+| open | `Bessel.BesselKernel::besselKernel.fourier_fubini` | subgoal of Definition 2.4, Fourier transform step 2: Fubini | 1 |
+| open | `Bessel.BesselKernel::besselKernel.fourier_slice` | subgoal of Definition 2.4, Fourier transform step 1: Gaussian Fourier transform | 1 |
 | done | `Bessel.BesselKernel::besselKernel.integrable` | subgoal of Definition 2.4 | 0 |
 | done | `Bessel.BesselKernel::besselKernel.integrableOn_profile` | subgoal of Definition 2.4, integrability step 2: Gamma-type profile | 0 |
 | done | `Bessel.BesselKernel::besselKernel.integrable_uncurry` | subgoal of Definition 2.4, integrability step 3: Tonelli | 0 |
 | done | `Bessel.BesselKernel::besselKernel.integral_comp_div` | subgoal of Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u` | 0 |
 | done | `Bessel.BesselKernel::besselKernel.integral_exp_slice` | subgoal of Definition 2.4, integrability step 1: Gaussian slice | 0 |
+| open | `Bessel.BesselKernel::besselKernel.integral_profile_exp` | subgoal of Definition 2.4, Fourier transform step 3: Gamma integral | 1 |
 | done | `Bessel.BesselKernel::besselKernel.mul_eq_integral` | subgoal of Definition 2.4, behaviour at the origin, step 2: rescaled kernel | 0 |
 | done | `Bessel.BesselKernel::besselKernel.nonneg` | subgoal of Definition 2.4 | 0 |
 | done | `Bessel.BesselKernel::besselKernel.tendsto_integral` | subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence | 0 |
@@ -160,7 +163,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | blocked | `Bessel.BesselCapacity` | Definition 2.7 | 4 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselSpace` |
-| blocked | `Bessel.BesselKernel` | Definition 2.4 | 1 | `Bessel.BesselKernel::besselKernel.fourier_eq` |
+| blocked | `Bessel.BesselKernel` | Definition 2.4 | 4 | `Bessel.BesselKernel::besselKernel.fourier_eq`, `Bessel.BesselKernel::besselKernel.fourier_fubini`, `Bessel.BesselKernel::besselKernel.fourier_slice`, `Bessel.BesselKernel::besselKernel.integral_profile_exp` |
 | blocked | `Bessel.BesselSpace` | Definition 2.5 | 1 | `Bessel.BesselKernel`, `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |

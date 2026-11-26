@@ -29,6 +29,33 @@ namespace besselKernel
 
 variable {d : ℕ} {α : ℝ}
 
+/-- **Subgoal** (Definition 2.4, Fourier transform step 1: Gaussian Fourier transform): for
+`δ > 0`, `∫ e^{-2πi x·ξ} e^{-π|x|²/δ} dx = δ^{d/2} e^{-πδ|ξ|²}`. -/
+theorem fourier_slice {δ : ℝ} (hδ : 0 < δ) (ξ : Rd d) :
+    ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+        (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
+      ((δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2) : ℝ) : ℂ) := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of
+`g_α` is the subordination integral of the Fourier transforms of the Gaussian slices. -/
+theorem fourier_fubini (hα : 0 < α) (ξ : Rd d) :
+    ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
+      ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ : ℝ) : ℂ) *
+        ∫ δ in Ioi (0 : ℝ), ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) *
+          ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+            (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, Fourier transform step 3: Gamma integral):
+`∫_0^∞ e^{-δ/(4π)} δ^{(α-d)/2} δ^{-1} δ^{d/2} e^{-πδ|ξ|²} dδ = (4π)^{α/2} Γ(α/2) (1 + 4π²|ξ|²)^{-α/2}`. -/
+theorem integral_profile_exp (hα : 0 < α) (ξ : Rd d) :
+    ∫ δ in Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
+        (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
+      (4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2) *
+        (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) := by
+  sorry
+
 /-- **Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
 `(1 + 4π²|ξ|²)^{-α/2}`. -/
 theorem fourier_eq (hα : 0 < α) (ξ : Rd d) :

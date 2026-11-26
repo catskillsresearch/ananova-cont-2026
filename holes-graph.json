@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T18:49:12Z",
+ "updated": "2026-11-26T18:50:15Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 46,
+ "sorryCount": 49,
  "counts": {
-  "open": 9,
+  "open": 12,
   "blocked": 38,
   "done": 103
  },
@@ -13,7 +13,7 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 6,
   "blocked": 16,
   "done": 66
  },
@@ -1548,13 +1548,16 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
+   "sorryCount": 4,
    "holes": [
+    "fourier_slice",
+    "fourier_fubini",
+    "integral_profile_exp",
     "fourier_eq"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 10
+    "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
@@ -1564,19 +1567,25 @@
     "Basic.Rd",
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
+    "Bessel.BesselKernel::besselKernel.fourier_fubini",
+    "Bessel.BesselKernel::besselKernel.fourier_slice",
     "Bessel.BesselKernel::besselKernel.integrable",
     "Bessel.BesselKernel::besselKernel.integrableOn_profile",
     "Bessel.BesselKernel::besselKernel.integrable_uncurry",
     "Bessel.BesselKernel::besselKernel.integral_comp_div",
     "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+    "Bessel.BesselKernel::besselKernel.integral_profile_exp",
     "Bessel.BesselKernel::besselKernel.mul_eq_integral",
     "Bessel.BesselKernel::besselKernel.nonneg",
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
    "blockers": [
-    "Bessel.BesselKernel::besselKernel.fourier_eq"
+    "Bessel.BesselKernel::besselKernel.fourier_eq",
+    "Bessel.BesselKernel::besselKernel.fourier_fubini",
+    "Bessel.BesselKernel::besselKernel.fourier_slice",
+    "Bessel.BesselKernel::besselKernel.integral_profile_exp"
    ],
-   "detail": "1 sorry: fourier_eq"
+   "detail": "4 sorry: fourier_slice, fourier_fubini, integral_profile_exp, fourier_eq"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1629,6 +1638,60 @@
    ],
    "blockers": [],
    "detail": "sorry: besselKernel.fourier_eq — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.fourier_fubini",
+   "label": "fourier_fubini",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, Fourier transform step 2: Fubini",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.fourier_fubini"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of `g_α` is the subordination integral of the Fourier transforms of the Gaussian slices.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.fourier_fubini — subgoal of Definition 2.4, Fourier transform step 2: Fubini (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.fourier_slice",
+   "label": "fourier_slice",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, Fourier transform step 1: Gaussian Fourier transform",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.fourier_slice"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, Fourier transform step 1: Gaussian Fourier transform): for `δ > 0`, `∫ e^{-2πi x·ξ} e^{-π|x|²/δ} dx = δ^{d/2} e^{-πδ|ξ|²}`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.fourier_slice — subgoal of Definition 2.4, Fourier transform step 1: Gaussian Fourier transform (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.integrable",
@@ -1754,6 +1817,33 @@
    ],
    "blockers": [],
    "detail": "proved: besselKernel.integral_exp_slice — subgoal of Definition 2.4, integrability step 1: Gaussian slice (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.integral_profile_exp",
+   "label": "integral_profile_exp",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, Fourier transform step 3: Gamma integral",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integral_profile_exp"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, Fourier transform step 3: Gamma integral): `∫_0^∞ e^{-δ/(4π)} δ^{(α-d)/2} δ^{-1} δ^{d/2} e^{-πδ|ξ|²} dδ = (4π)^{α/2} Γ(α/2) (1 + 4π²|ξ|²)^{-α/2}`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integral_profile_exp — subgoal of Definition 2.4, Fourier transform step 3: Gamma integral (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
@@ -4745,6 +4835,16 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_fubini",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_slice",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integrable",
    "kind": "hard"
   },
@@ -4766,6 +4866,11 @@
   {
    "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_profile_exp",
    "kind": "hard"
   },
   {
@@ -4964,6 +5069,16 @@
    "kind": "subgoal"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_fubini",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_slice",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.integrable",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
@@ -4985,6 +5100,11 @@
   },
   {
    "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integral_profile_exp",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
   },
@@ -6675,6 +6795,14 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_fubini"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_slice"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integrable"
   },
   {
@@ -6692,6 +6820,10 @@
   {
    "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_profile_exp"
   },
   {
    "from": "Basic.Rd",
@@ -6822,6 +6954,14 @@
    "to": "Bessel.BesselKernel"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_fubini",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_slice",
+   "to": "Bessel.BesselKernel"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.integrable",
    "to": "Bessel.BesselKernel"
   },
@@ -6839,6 +6979,10 @@
   },
   {
    "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integral_profile_exp",
    "to": "Bessel.BesselKernel"
   },
   {
