@@ -252,6 +252,44 @@ theorem laplacian_newtonKernel {d : ℕ} (hd : 3 ≤ d) {z : Rd d} (hz : z ≠ 0
   rw [mul_assoc _ (‖z‖ ^ (2 - (d : ℝ) - 4)), hpow]
   ring
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6a: differentiation under the sphere integral): if
+`K(·, ω)` has derivative `K'(·, ω)` on an open `U`, with `K` and `K'` jointly continuous on
+`U × S^{d-1}`, then `y ↦ ∫ K(y, ω) dσ(ω)` has derivative `∫ K'(y, ω) dσ(ω)` on `U`. -/
+theorem hasFDerivAt_integral_sphere {d : ℕ} {F : Type*} [NormedAddCommGroup F]
+    [NormedSpace ℝ F] [CompleteSpace F] {U : Set (Rd d)} (hU : IsOpen U)
+    {K : Rd d → Metric.sphere (0 : Rd d) 1 → F}
+    {K' : Rd d → Metric.sphere (0 : Rd d) 1 → (Rd d →L[ℝ] F)}
+    (hK : ∀ ω, ∀ y ∈ U, HasFDerivAt (fun y => K y ω) (K' y ω) y)
+    (hKc : ContinuousOn (Function.uncurry K) (U ×ˢ univ))
+    (hK'c : ContinuousOn (Function.uncurry K') (U ×ˢ univ)) {y : Rd d} (hy : y ∈ U) :
+    HasFDerivAt (fun y => ∫ ω, K y ω ∂(volume : Measure (Rd d)).toSphere)
+      (∫ ω, K' y ω ∂(volume : Measure (Rd d)).toSphere) y := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6b: continuity of the sphere integral): if `K` is
+jointly continuous on `U × S^{d-1}` with `U` open, `y ↦ ∫ K(y, ω) dσ(ω)` is continuous on `U`. -/
+theorem continuousOn_integral_sphere {d : ℕ} {F : Type*} [NormedAddCommGroup F]
+    [NormedSpace ℝ F] [CompleteSpace F] {U : Set (Rd d)} (hU : IsOpen U)
+    {K : Rd d → Metric.sphere (0 : Rd d) 1 → F}
+    (hKc : ContinuousOn (Function.uncurry K) (U ×ˢ univ)) :
+    ContinuousOn (fun y => ∫ ω, K y ω ∂(volume : Measure (Rd d)).toSphere) U := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6c: second derivative of the shifted kernel): for
+`y ≠ c`, `D²(|· - c|^p)(y)(e, e) = p(p-2)|y-c|^{p-4}⟨y-c,e⟩² + p|y-c|^{p-2}|e|²`. -/
+theorem fderiv_fderiv_norm_sub_rpow_apply {d : ℕ} {y c : Rd d} (hy : y ≠ c) (p : ℝ)
+    (e : Rd d) :
+    fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ p)) y e e =
+      p * (p - 2) * ‖y - c‖ ^ (p - 4) * ⟪y - c, e⟫ ^ 2 + p * ‖y - c‖ ^ (p - 2) * ‖e‖ ^ 2 := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any
+orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`. -/
+theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
+    {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ (Rd d)) :
+    ∑ i, fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ (2 - (d : ℝ)))) y (b i) (b i) = 0 := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
 theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}

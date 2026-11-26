@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:01:02Z",
+ "updated": "2026-11-26T20:02:45Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 55,
  "counts": {
-  "open": 15,
+  "open": 19,
   "blocked": 36,
   "done": 120
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 13,
   "blocked": 15,
   "done": 82
  },
@@ -3048,8 +3048,12 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 7,
+   "sorryCount": 11,
    "holes": [
+    "hasFDerivAt_integral_sphere",
+    "continuousOn_integral_sphere",
+    "fderiv_fderiv_norm_sub_rpow_apply",
+    "sum_fderiv_fderiv_newtonKernel_sub",
     "harmonicAt_sphereMean",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
@@ -3060,7 +3064,7 @@
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 18
+    "theorem": 22
    },
    "paperGoal": false,
    "verified": false,
@@ -3068,9 +3072,12 @@
    "status": "blocked",
    "deps": [
     "Basic.Rd",
+    "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply",
+    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne",
     "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
     "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
@@ -3085,19 +3092,51 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
+    "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
+    "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+    "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
+    "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "7 sorry: harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "11 sorry: hasFDerivAt_integral_sphere, continuousOn_integral_sphere, fderiv_fderiv_norm_sub_rpow_apply, sum_fderiv_fderiv_newtonKernel_sub, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
+   "label": "continuousOn_integral_sphere",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.continuousOn_integral_sphere"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6b: continuity of the sphere integral): if `K` is jointly continuous on `U × S^{d-1}` with `U` open, `y ↦ ∫ K(y, ω) dσ(ω)` is continuous on `U`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.continuousOn_integral_sphere — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3152,6 +3191,33 @@
    "detail": "proved: occupationConstant.fderiv_fderiv_norm_rpow_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
+   "id": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
+   "label": "fderiv_fderiv_norm_sub_rpow_apply",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.fderiv_fderiv_norm_sub_rpow_apply"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6c: second derivative of the shifted kernel): for `y ≠ c`, `D²(|· - c|^p)(y)(e, e) = p(p-2)|y-c|^{p-4}⟨y-c,e⟩² + p|y-c|^{p-2}|e|²`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.fderiv_fderiv_norm_sub_rpow_apply — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
    "id": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
    "label": "harmonicAt_sphereMean",
    "kind": "subgoal",
@@ -3177,6 +3243,33 @@
    ],
    "blockers": [],
    "detail": "sorry: occupationConstant.harmonicAt_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
+   "label": "hasFDerivAt_integral_sphere",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.hasFDerivAt_integral_sphere"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6a: differentiation under the sphere integral): if `K(·, ω)` has derivative `K'(·, ω)` on an open `U`, with `K` and `K'` jointly continuous on `U × S^{d-1}`, then `y ↦ ∫ K(y, ω) dσ(ω)` has derivative `∫ K'(y, ω) dσ(ω)` on `U`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.hasFDerivAt_integral_sphere — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne",
@@ -3535,6 +3628,33 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant.sphereMean_radial — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
+   "label": "sum_fderiv_fderiv_newtonKernel_sub",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.sum_fderiv_fderiv_newtonKernel_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.sum_fderiv_fderiv_newtonKernel_sub — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
@@ -5391,6 +5511,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
    "kind": "hard"
   },
@@ -5401,7 +5526,17 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
    "kind": "hard"
   },
   {
@@ -5472,6 +5607,11 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
    "kind": "hard"
   },
   {
@@ -6495,6 +6635,11 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
@@ -6505,7 +6650,17 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -6576,6 +6731,11 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -7506,6 +7666,10 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
   },
   {
@@ -7514,7 +7678,15 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere"
   },
   {
    "from": "Basic.Rd",
@@ -7571,6 +7743,10 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.sphereMean_radial"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub"
   },
   {
    "from": "Basic.Rd",
@@ -8241,6 +8417,10 @@
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
    "to": "Occupation.OccupationConstant"
   },
@@ -8249,7 +8429,15 @@
    "to": "Occupation.OccupationConstant"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere",
    "to": "Occupation.OccupationConstant"
   },
   {
@@ -8306,6 +8494,10 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
    "to": "Occupation.OccupationConstant"
   },
   {
