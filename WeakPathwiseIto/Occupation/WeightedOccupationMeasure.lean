@@ -31,7 +31,8 @@ variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
 theorem integral_eq (hω : ContinuousOn ω (Icc 0 T)) (h : HasQuadraticVariation π ω)
     {φ : Rd d → ℝ} (hφ : Continuous φ) :
     ∫ x, φ x ∂weightedOccupationMeasure h = ∫ t in Icc 0 T, φ (ω t) ∂h.traceMeasure := by
-  sorry
+  unfold weightedOccupationMeasure
+  exact integral_map (hω.aemeasurable measurableSet_Icc) hφ.aestronglyMeasurable
 
 end weightedOccupationMeasure
 
