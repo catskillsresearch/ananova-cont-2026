@@ -49,7 +49,23 @@ theorem integral_reflect {d : ℕ} (hd : 0 < d) :
 a ball. -/
 theorem integrableOn_term {d : ℕ} (y : Rd d) (R : ℝ) :
     IntegrableOn (fun x : Rd d => ‖x - y‖ ^ (2 - (d : ℝ))) (Metric.ball 0 R) := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · have h0 : ∀ x : Rd 0, x - y = 0 := fun x => Subsingleton.elim _ _
+    convert (integrableOn_zero : IntegrableOn (fun _ : Rd 0 => (0 : ℝ)) (Metric.ball 0 R) volume) using 1
+    funext x
+    rw [h0, norm_zero, Nat.cast_zero, sub_zero, Real.zero_rpow two_ne_zero]
+  have hfin : Module.finrank ℝ (Rd d) = d := finrank_euclideanSpace_fin
+  have hg : IntegrableOn (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (Metric.ball 0 (R + ‖y‖)) := by
+    refine integrableOn_ball_of_norm_le_rpow (C := 1) (α := (d : ℝ) - 2) (by rw [hfin]; exact hd)
+      (by rw [hfin]; linarith) (Eventually.of_forall fun z => ?_)
+      (measurable_norm.pow_const _).aestronglyMeasurable
+    rw [Real.norm_of_nonneg (Real.rpow_nonneg (norm_nonneg _) _), one_mul, neg_sub]
+  have hm := measurePreserving_sub_right (volume : Measure (Rd d)) y
+  have h := (hm.integrableOn_comp_preimage (measurableEmbedding_subRight y)).2 hg
+  refine h.mono_set fun x hx => ?_
+  simp only [Metric.mem_ball, dist_zero_right, Set.mem_preimage] at hx ⊢
+  calc ‖x - y‖ ≤ ‖x‖ + ‖y‖ := norm_sub_le _ _
+    _ < R + ‖y‖ := by linarith
 
 /-- **Subgoal** (Eq. (7) c_d, step 4: Newton's theorem for a ball): for `|y| = R > 0`,
 `∫_{B(0,R)} |x - y|^{2-d} dx = |B(0,R)| R^{2-d}` (mean value property of the Newton kernel). -/

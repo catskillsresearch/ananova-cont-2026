@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T19:01:49Z",
+ "updated": "2026-11-26T19:03:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 36,
-  "done": 110
+  "done": 111
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 15,
-  "done": 72
+  "done": 73
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "integrableOn_term",
     "newton_ball",
     "eq_inv_integral"
    ],
@@ -3072,10 +3071,9 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
     "Occupation.OccupationConstant::occupationConstant.newton_ball"
    ],
-   "detail": "3 sorry: integrableOn_term, newton_ball, eq_inv_integral"
+   "detail": "2 sorry: newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3114,22 +3112,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.integrableOn_term"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, step 3: local integrability): `x ↦ |x - y|^{2-d}` is integrable on a ball.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.integrableOn_term — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.integrableOn_term — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
