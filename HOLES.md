@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T17:55:40Z  
-**`sorry` occurrences:** 53 · 15 open · 40 blocked · 63 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 8, 'blocked': 16, 'done': 29} · 28 file(s) with `sorry`.
+**Updated:** 2026-11-26T17:57:54Z  
+**`sorry` occurrences:** 52 · 14 open · 40 blocked · 66 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 7, 'blocked': 16, 'done': 32} · 28 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -42,9 +42,11 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Appendix.HeatKernel::heatKernel.integrableOn_unitKernel` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.integrableOn_unitProfile` | subgoal of Lemma B.2 proof, eq. (34 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.integral_div_le` | subgoal of Lemma B.2 proof, eqs. (32 | 0 |
-| open | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 1 |
+| done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
+| done | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
+| done | `Appendix.HeatKernel::heatKernel.le_inv_two_mul_add` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | open | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 1 |
 | done | `Appendix.HeatKernel::heatKernel.scaling` | subgoal of Lemma B.2 proof, eq. (32 | 0 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |
@@ -188,7 +190,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
-| blocked | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 2 | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile`, `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` |
+| blocked | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 1 | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` |
 | open | `Appendix.LemmaA1` | Lemma A.1 | 2 |  |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
