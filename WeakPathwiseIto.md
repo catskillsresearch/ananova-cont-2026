@@ -92,6 +92,12 @@ own text.
 * **Corollary 3.2** carries hypothesis (6). This is not an addition: Section 3 states
   "in the sequel we will fix a sequence of partitions $\pi$ and assume that (6)", so (6) is a
   standing assumption of Proposition 3.1 and Corollary 3.2.
+* **Section 4.2 seminorm helpers** (`occupationSeminorm.add_le`, estimates (10) and (11)) carry
+  the paper's standing assumptions explicitly: `add_le` assumes `f, g` a.e.-strongly measurable
+  (the seminorm is only applied to Hessians of Sobolev functions; for non-measurable integrands
+  Lean's `∫⁻` is merely superadditive, and Bernstein-set indicators give a counterexample), and
+  (10), (11) assume `ω` continuous on $[0,T]$ (Section 4.1 takes $\omega\in C[0,T]$; without it the
+  oscillation `iSup` can vanish vacuously and (10) fails).
 * **Canonical Wiener space.** $\Omega = C([0,T],\mathbb R^d)$ (Borel), $B$ the coordinate
   process, and $\mathbb P_x$ the law of $d$-dimensional Brownian motion from $x$
   (`CanonicalWienerSpace.P`, chosen by `Classical.epsilon` among the laws `IsLaw x`, i.e.
