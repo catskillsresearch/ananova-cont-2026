@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-26T21:27:27Z",
+ "updated": "2026-11-26T21:35:20Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 49,
  "counts": {
-  "open": 11,
-  "blocked": 26,
+  "open": 20,
+  "blocked": 27,
   "done": 166
  },
  "goalCounts": {
-  "open": 6,
-  "blocked": 18,
+  "open": 5,
+  "blocked": 19,
   "done": 41
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 15,
   "blocked": 8,
   "done": 125
  },
@@ -5111,25 +5111,367 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 11,
+   "holes": [
+    "stieltjesMeasure_Ioc",
+    "abs_integral_sub_grid_le",
+    "tendsto_riemannStieltjes",
+    "norm_sub_left_le",
+    "norm_taylor_le",
+    "riemannSum_eq",
+    "inner_apply_eq",
+    "tendsto_main",
+    "tendsto_remainder",
+    "tendsto_boundary",
+    "proposition_3_1"
+   ],
+   "declKinds": {
+    "theorem": 11
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation",
+    "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+    "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+    "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+    "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+    "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+    "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+    "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+    "Smooth.Proposition31::proposition_3_1.tendsto_main",
+    "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+    "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+   ],
+   "blockers": [
+    "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+    "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+    "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+    "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+    "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+    "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+    "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+    "Smooth.Proposition31::proposition_3_1.tendsto_main",
+    "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+    "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+   ],
+   "detail": "11 sorry: stieltjesMeasure_Ioc, abs_integral_sub_grid_le, tendsto_riemannStieltjes, norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "label": "abs_integral_sub_grid_le",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof, convergence of `I_1^n`, grid step",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
    "sorryCount": 1,
    "holes": [
-    "proposition_3_1"
+    "proposition_3_1.abs_integral_sub_grid_le"
    ],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
-   "kind": "goal",
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof, convergence of `I_1^n`, grid step): with the grid `s_k = k t / K` and `g` continuous on `[0,T]` varying by at most `η` over distances `≤ t/K` in `[0,t]`, `|∫_0^t g d[x]_π - ∑_{k<K} g(s_{k+1}) ([x](s_{k+1}) - [x](s_k))| ≤ η ([x](t) - [x](0))`.",
    "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "1 sorry: proposition_3_1"
+   "detail": "sorry: proposition_3_1.abs_integral_sub_grid_le — subgoal of Proposition 3.1 proof, convergence of `I_1^n`, grid step (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "label": "inner_apply_eq",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.inner_apply_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization): `⟨A v, v⟩ = ∑_{i,j} A_{ij} ((v_i + v_j)² - v_i² - v_j²) / 2`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.inner_apply_eq — subgoal of Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "label": "norm_sub_left_le",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof, (6",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.norm_sub_left_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof, (6)): for `s ∈ [t_k, t_{k+1}]`, `|ω(s) - ω(t_k)| ≤ osc(ω, π_n)`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.norm_sub_left_le — subgoal of Proposition 3.1 proof, (6 (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "label": "norm_taylor_le",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n`",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.norm_taylor_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n`): if `|∇f(z) - ∇f(y)| ≤ ε` on the segment `[x, y]`, then `|f(y) - f(x) - ∇f(y)(y - x)| ≤ ε |y - x|`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.norm_taylor_le — subgoal of Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n` (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "label": "riemannSum_eq",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof: splitting the discrete covariation",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.riemannSum_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof: splitting the discrete covariation): the stopped sum equals the sum over complete intervals `t_{k+1} ≤ t` plus the straddling interval `t_k < t < t_{k+1}`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.riemannSum_eq — subgoal of Proposition 3.1 proof: splitting the discrete covariation (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "label": "stieltjesMeasure_Ioc",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof: Stieltjes measure of an interval",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.stieltjesMeasure_Ioc"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof: Stieltjes measure of an interval): for `0 ≤ a ≤ b ≤ T`, `d[x]_π((a, b]) = [x]_π(b) - [x]_π(a)`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.stieltjesMeasure_Ioc — subgoal of Proposition 3.1 proof: Stieltjes measure of an interval (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "label": "tendsto_boundary",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.tendsto_boundary"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n)² → 0`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.tendsto_boundary — subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "label": "tendsto_main",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof: `I_1^n(t",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.tendsto_main"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof: `I_1^n(t) → ∫_0^t ⟨∇f(ω(u)), d[ω]_π(u)⟩`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.tendsto_main — subgoal of Proposition 3.1 proof: `I_1^n(t (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "label": "tendsto_remainder",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof: `I_2^n(t",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.tendsto_remainder"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof: `I_2^n(t) → 0`, `|δω · r| ≤ ρ_{∇f}(osc) |δω|²`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.tendsto_remainder — subgoal of Proposition 3.1 proof: `I_2^n(t (in Smooth.Proposition31)"
+  },
+  {
+   "id": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "label": "tendsto_riemannStieltjes",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10]",
+   "parentGoal": "Smooth.Proposition31",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_3_1.tendsto_riemannStieltjes"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Proposition 3.1 proof, convergence of `I_1^n`, [CF10]): for `g` continuous on `[0,T]` and `t ∈ [0,T]`, `∑_{t_{k+1} ≤ t} g(t_{k+1}) (x(t_{k+1}) - x(t_k))² → ∫_0^t g d[x]_π` (weak convergence of the discrete quadratic-variation measures).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Occupation.Lemma42",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_3_1.tendsto_riemannStieltjes — subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] (in Smooth.Proposition31)"
   },
   {
    "id": "Sobolev.IsLebesguePoint",
@@ -5760,6 +6102,56 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Smooth.Proposition31",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
    "kind": "hard"
   },
   {
@@ -7348,6 +7740,61 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
    "to": "Occupation.Lemma42",
    "kind": "subgoal"
@@ -7903,6 +8350,56 @@
    "kind": "hard"
   },
   {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
    "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
    "to": "Smooth.HasQuadraticVariation",
    "kind": "subgoal"
@@ -8058,6 +8555,56 @@
    "kind": "hard"
   },
   {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
    "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
    "to": "Smooth.PathOscillation",
    "kind": "subgoal"
@@ -8076,6 +8623,106 @@
    "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31",
    "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "to": "Smooth.Proposition31",
+   "kind": "subgoal"
   },
   {
    "from": "Sobolev.IsLebesguePoint",
@@ -8490,7 +9137,43 @@
   },
   {
    "from": "Basic.ContDiffBounded",
-   "to": "Smooth.Proposition31"
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
   },
   {
    "from": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
@@ -9529,6 +10212,46 @@
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
   },
   {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+  },
+  {
    "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
    "to": "Occupation.Lemma42"
   },
@@ -9937,10 +10660,6 @@
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
-   "from": "Smooth.HasQuadraticVariation",
-   "to": "Smooth.Proposition31"
-  },
-  {
    "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
    "to": "Smooth.HasQuadraticVariation"
   },
@@ -10037,10 +10756,6 @@
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
-   "from": "Smooth.PathOscillation",
-   "to": "Smooth.Proposition31"
-  },
-  {
    "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
    "to": "Smooth.PathOscillation"
   },
@@ -10054,6 +10769,82 @@
   },
   {
    "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.inner_apply_eq"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.norm_taylor_le"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.riemannSum_eq"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_boundary"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_main"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_main",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
+   "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
    "to": "Smooth.Proposition31"
   },
   {

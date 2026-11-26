@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:27:27Z  
-**`sorry` occurrences:** 39 · 11 open · 26 blocked · 166 done (goals + subgoals) · goals {'open': 6, 'blocked': 18, 'done': 41} · subgoals {'open': 5, 'blocked': 8, 'done': 125} · 21 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:35:20Z  
+**`sorry` occurrences:** 49 · 20 open · 27 blocked · 166 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 15, 'blocked': 8, 'done': 125} · 21 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,7 +26,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
-| `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -175,6 +174,16 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt` | subgoal of Eq. (5 | 0 |
 | done | `Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone` | subgoal of Eq. (5 | 0 |
 | done | `Smooth.PathOscillation::pathOscillation.vanishes_of_mesh` | subgoal of Eq. (6 | 0 |
+| open | `Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, grid step | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.inner_apply_eq` | subgoal of Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.norm_sub_left_le` | subgoal of Proposition 3.1 proof, (6 | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.norm_taylor_le` | subgoal of Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n` | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.riemannSum_eq` | subgoal of Proposition 3.1 proof: splitting the discrete covariation | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc` | subgoal of Proposition 3.1 proof: Stieltjes measure of an interval | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.tendsto_boundary` | subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 1 |
+| open | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 1 |
 
 ## All modules by section
 
@@ -233,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
-| open | `Smooth.Proposition31` | Proposition 3.1 | 1 |  |
+| blocked | `Smooth.Proposition31` | Proposition 3.1 | 11 | `Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le`, `Smooth.Proposition31::proposition_3_1.inner_apply_eq`, `Smooth.Proposition31::proposition_3_1.norm_sub_left_le`, `Smooth.Proposition31::proposition_3_1.norm_taylor_le`, `Smooth.Proposition31::proposition_3_1.riemannSum_eq`, `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc`, `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder`, `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` |
 
 ### §4 Occupation measures and 𝓦²_{ω,π}
 
