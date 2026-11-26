@@ -162,8 +162,10 @@ Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.hasFDerivAt_i
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integrableOn_term
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_ball_polar
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_reflect
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel
@@ -181,6 +183,8 @@ Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_ou
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sphereMean_radial
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.toSphere_real_univ
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.volume_ball_eq
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.volume_ball_half
 Basic.Rd -hard-> Smooth.FollmerIntegral
 Basic.Rd -hard-> Smooth.HasQuadraticVariation
@@ -399,8 +403,10 @@ Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere -h
 Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integrableOn_term -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integral_ball_polar -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integral_reflect -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel -hard-> Occupation.OccupationConstant
@@ -418,6 +424,8 @@ Occupation.OccupationConstant::occupationConstant.sphereMean_outside -hard-> Occ
 Occupation.OccupationConstant::occupationConstant.sphereMean_radial -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.toSphere_real_univ -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.volume_ball_eq -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.volume_ball_half -hard-> Occupation.OccupationConstant
 Occupation.OccupationSeminorm -hard-> Occupation.ApproximatingSequence
 Occupation.OccupationSeminorm::occupationSeminorm.add_le -hard-> Occupation.OccupationSeminorm

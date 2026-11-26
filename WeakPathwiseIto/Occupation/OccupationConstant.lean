@@ -876,6 +876,34 @@ theorem sphereMean_outside {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : 
   have hb : b = 1 := tendsto_nhds_unique h3 hT
   rw [hab y hy, ha, hb, zero_add, one_mul]
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 10a: total sphere measure): for `d > 0`,
+`σ(S^{d-1}) = d |B(0,1)|`, and it is positive. -/
+theorem toSphere_real_univ {d : ℕ} (hd : 0 < d) :
+    (volume : Measure (Rd d)).toSphere.real univ =
+        d * (volume (Metric.ball (0 : Rd d) 1)).toReal ∧
+      0 < (volume : Measure (Rd d)).toSphere.real univ := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 10b: sphere integral as a sphere mean): for `d > 0`,
+`∫ |ρω - y|^{2-d} dσ(ω) = σ(S^{d-1}) sphereMean d ρ y`. -/
+theorem integral_sphere_eq_sphereMean {d : ℕ} (hd : 0 < d) (ρ : ℝ) (y : Rd d) :
+    ∫ ω, ‖ρ • (ω : Rd d) - y‖ ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere =
+      (volume : Measure (Rd d)).toSphere.real univ * sphereMean d ρ y := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 10c: volume of a ball): for `d > 0` and `R ≥ 0`,
+`|B(0,R)| = R^d |B(0,1)|`. -/
+theorem volume_ball_eq {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 ≤ R) :
+    (volume (Metric.ball (0 : Rd d) R)).toReal =
+      R ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 10d: radial integral): for `d > 0` and `R > 0`,
+`∫_0^R ρ^{d-1} c dρ = c R^d / d`. -/
+theorem integral_Ioo_pow_mul {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) (c : ℝ) :
+    ∫ ρ in Ioo 0 R, ρ ^ (d - 1) * c = c * R ^ d / d := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10: integrating over shells): Newton's theorem for a
 ball, `d ≥ 3`. -/
 theorem newton_ball_of_three_le {d : ℕ} (hd : 3 ≤ d) {R : ℝ} (hR : 0 < R) {y : Rd d}

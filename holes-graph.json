@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T20:38:38Z",
+ "updated": "2026-11-26T20:40:14Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 46,
+ "sorryCount": 50,
  "counts": {
-  "open": 10,
+  "open": 14,
   "blocked": 36,
   "done": 141
  },
@@ -13,7 +13,7 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 8,
   "blocked": 15,
   "done": 103
  },
@@ -3048,14 +3048,18 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 2,
+   "sorryCount": 6,
    "holes": [
+    "toSphere_real_univ",
+    "integral_sphere_eq_sphereMean",
+    "volume_ball_eq",
+    "integral_Ioo_pow_mul",
     "newton_ball_of_three_le",
     "eq_inv_integral"
    ],
    "declKinds": {
     "def": 2,
-    "theorem": 34
+    "theorem": 38
    },
    "paperGoal": false,
    "verified": false,
@@ -3078,8 +3082,10 @@
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne",
     "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.integrableOn_term",
+    "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
     "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
     "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+    "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry",
     "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm",
     "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
@@ -3097,13 +3103,19 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
     "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+    "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le"
+    "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
+    "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
+    "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
+    "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+    "Occupation.OccupationConstant::occupationConstant.volume_ball_eq"
    ],
-   "detail": "2 sorry: newton_ball_of_three_le, eq_inv_integral"
+   "detail": "6 sorry: toSphere_real_univ, integral_sphere_eq_sphereMean, volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3483,6 +3495,33 @@
    "detail": "proved: occupationConstant.integrableOn_term — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
+   "id": "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
+   "label": "integral_Ioo_pow_mul",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.integral_Ioo_pow_mul"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10d: radial integral): for `d > 0` and `R > 0`, `∫_0^R ρ^{d-1} c dρ = c R^d / d`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.integral_Ioo_pow_mul — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
    "label": "integral_ball_polar",
    "kind": "subgoal",
@@ -3531,6 +3570,33 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant.integral_reflect — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
+   "label": "integral_sphere_eq_sphereMean",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.integral_sphere_eq_sphereMean"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10b: sphere integral as a sphere mean): for `d > 0`, `∫ |ρω - y|^{2-d} dσ(ω) = σ(S^{d-1}) sphereMean d ρ y`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.integral_sphere_eq_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry",
@@ -3958,6 +4024,60 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant.tendsto_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+   "label": "toSphere_real_univ",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.toSphere_real_univ"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10a: total sphere measure): for `d > 0`, `σ(S^{d-1}) = d |B(0,1)|`, and it is positive.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.toSphere_real_univ — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
+   "label": "volume_ball_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.volume_ball_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10c: volume of a ball): for `d > 0` and `R ≥ 0`, `|B(0,R)| = R^d |B(0,1)|`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationConstant.volume_ball_eq — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
@@ -5862,12 +5982,22 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
    "kind": "hard"
   },
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
    "kind": "hard"
   },
   {
@@ -5953,6 +6083,16 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
    "kind": "hard"
   },
   {
@@ -7046,12 +7186,22 @@
    "kind": "subgoal"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -7137,6 +7287,16 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
   },
@@ -8122,11 +8282,19 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar"
   },
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.integral_reflect"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean"
   },
   {
    "from": "Basic.Rd",
@@ -8195,6 +8363,14 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq"
   },
   {
    "from": "Basic.Rd",
@@ -8921,11 +9097,19 @@
    "to": "Occupation.OccupationConstant"
   },
   {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
    "from": "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
    "to": "Occupation.OccupationConstant"
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
    "to": "Occupation.OccupationConstant"
   },
   {
@@ -8994,6 +9178,14 @@
   },
   {
    "from": "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
+   "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
    "to": "Occupation.OccupationConstant"
   },
   {
