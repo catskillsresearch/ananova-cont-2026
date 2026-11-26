@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:54:36Z",
+ "updated": "2026-11-26T18:56:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 38,
-  "done": 105
+  "done": 106
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 16,
-  "done": 68
+  "done": 69
  },
  "untagged": [],
  "legend": {
@@ -1548,9 +1548,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "fourier_fubini",
     "fourier_eq"
    ],
    "declKinds": {
@@ -1578,10 +1577,9 @@
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
    "blockers": [
-    "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.fourier_fubini"
+    "Bessel.BesselKernel::besselKernel.fourier_eq"
    ],
-   "detail": "2 sorry: fourier_fubini, fourier_eq"
+   "detail": "1 sorry: fourier_eq"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1645,22 +1643,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.fourier_fubini"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of `g_α` is the subordination integral of the Fourier transforms of the Gaussian slices.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.fourier_fubini — subgoal of Definition 2.4, Fourier transform step 2: Fubini (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.fourier_fubini — subgoal of Definition 2.4, Fourier transform step 2: Fubini (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.fourier_slice",

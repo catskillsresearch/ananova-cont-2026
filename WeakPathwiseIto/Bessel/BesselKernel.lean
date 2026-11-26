@@ -29,84 +29,6 @@ namespace besselKernel
 
 variable {d : ℕ} {α : ℝ}
 
-/-- **Subgoal** (Definition 2.4, Fourier transform step 1: Gaussian Fourier transform): for
-`δ > 0`, `∫ e^{-2πi x·ξ} e^{-π|x|²/δ} dx = δ^{d/2} e^{-πδ|ξ|²}`. -/
-theorem fourier_slice {δ : ℝ} (hδ : 0 < δ) (ξ : Rd d) :
-    ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
-        (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
-      ((δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2) : ℝ) : ℂ) := by
-  have hδc : (δ : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hδ.ne'
-  have hπc : (Real.pi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 Real.pi_ne_zero
-  have hb : 0 < ((Real.pi / δ : ℝ) : ℂ).re := by
-    rw [Complex.ofReal_re]; exact div_pos Real.pi_pos hδ
-  have h := GaussianFourier.integral_cexp_neg_mul_sq_norm_add (V := Rd d) hb
-    (-2 * Real.pi * Complex.I) ξ
-  have hint : ∀ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
-      (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
-      Complex.exp (-((Real.pi / δ : ℝ) : ℂ) * (‖x‖ : ℂ) ^ 2 +
-        (-2 * Real.pi * Complex.I) * (⟪ξ, x⟫ : ℂ)) := fun x => by
-    rw [Complex.ofReal_exp, ← Complex.exp_add, real_inner_comm]
-    congr 1
-    push_cast
-    field_simp
-    ring
-  simp_rw [hint]
-  rw [h, finrank_euclideanSpace_fin, Complex.ofReal_mul, Complex.ofReal_exp,
-    Complex.ofReal_cpow hδ.le]
-  congr 1
-  · congr 1
-    · push_cast; field_simp
-    · push_cast; ring
-  · congr 1
-    push_cast
-    field_simp
-    rw [Complex.I_sq]
-    ring
-
-/-- **Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of
-`g_α` is the subordination integral of the Fourier transforms of the Gaussian slices. -/
-theorem fourier_fubini (hα : 0 < α) (ξ : Rd d) :
-    ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
-      ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ : ℝ) : ℂ) *
-        ∫ δ in Ioi (0 : ℝ), ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) *
-          ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
-            (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) := by
-  sorry
-
-/-- **Subgoal** (Definition 2.4, Fourier transform step 3: Gamma integral):
-`∫_0^∞ e^{-δ/(4π)} δ^{(α-d)/2} δ^{-1} δ^{d/2} e^{-πδ|ξ|²} dδ = (4π)^{α/2} Γ(α/2) (1 + 4π²|ξ|²)^{-α/2}`. -/
-theorem integral_profile_exp (hα : 0 < α) (ξ : Rd d) :
-    ∫ δ in Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
-        (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
-      (4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2) *
-        (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) := by
-  set r : ℝ := 1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2 with hr_def
-  have hr : 0 < r := by positivity
-  have key : ∀ δ ∈ Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
-      (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
-      δ ^ (α / 2 - 1) * Real.exp (-(r * δ)) := by
-    intro δ hδ
-    have hδ' : (0 : ℝ) < δ := hδ
-    rw [show α / 2 - 1 = ((α - d) / 2 + (d : ℝ) / 2) - 1 by ring, Real.rpow_sub_one hδ'.ne',
-      Real.rpow_add hδ', hr_def,
-      show -((1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2) * δ) =
-        -δ / (4 * Real.pi) + -Real.pi * δ * ‖ξ‖ ^ 2 by field_simp; ring, Real.exp_add]
-    field_simp
-  rw [setIntegral_congr_fun measurableSet_Ioi key,
-    Real.integral_rpow_mul_exp_neg_mul_Ioi (by linarith : 0 < α / 2) hr]
-  have hA : 0 < 1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2 := by positivity
-  rw [show 1 / r = 4 * Real.pi / (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) by
-      rw [hr_def]; field_simp,
-    Real.div_rpow (by positivity) hA.le, Real.rpow_neg hA.le]
-  ring
-
-/-- **Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
-`(1 + 4π²|ξ|²)^{-α/2}`. -/
-theorem fourier_eq (hα : 0 < α) (ξ : Rd d) :
-    ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
-      (((1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) : ℝ) : ℂ) := by
-  sorry
-
 /-- **Subgoal** (Definition 2.4). -/
 theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
   unfold besselKernel
@@ -273,6 +195,125 @@ theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ 
     eventually_mem_nhdsWithin.mono fun x hx => (mul_eq_integral hx).symm
   rw [← mul_assoc]
   exact ((tendsto_integral hαd).const_mul _).congr' hev
+
+/-- **Subgoal** (Definition 2.4, Fourier transform step 1: Gaussian Fourier transform): for
+`δ > 0`, `∫ e^{-2πi x·ξ} e^{-π|x|²/δ} dx = δ^{d/2} e^{-πδ|ξ|²}`. -/
+theorem fourier_slice {δ : ℝ} (hδ : 0 < δ) (ξ : Rd d) :
+    ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+        (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
+      ((δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2) : ℝ) : ℂ) := by
+  have hδc : (δ : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hδ.ne'
+  have hπc : (Real.pi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 Real.pi_ne_zero
+  have hb : 0 < ((Real.pi / δ : ℝ) : ℂ).re := by
+    rw [Complex.ofReal_re]; exact div_pos Real.pi_pos hδ
+  have h := GaussianFourier.integral_cexp_neg_mul_sq_norm_add (V := Rd d) hb
+    (-2 * Real.pi * Complex.I) ξ
+  have hint : ∀ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+      (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
+      Complex.exp (-((Real.pi / δ : ℝ) : ℂ) * (‖x‖ : ℂ) ^ 2 +
+        (-2 * Real.pi * Complex.I) * (⟪ξ, x⟫ : ℂ)) := fun x => by
+    rw [Complex.ofReal_exp, ← Complex.exp_add, real_inner_comm]
+    congr 1
+    push_cast
+    field_simp
+    ring
+  simp_rw [hint]
+  rw [h, finrank_euclideanSpace_fin, Complex.ofReal_mul, Complex.ofReal_exp,
+    Complex.ofReal_cpow hδ.le]
+  congr 1
+  · congr 1
+    · push_cast; field_simp
+    · push_cast; ring
+  · congr 1
+    push_cast
+    field_simp
+    rw [Complex.I_sq]
+    ring
+
+/-- **Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of
+`g_α` is the subordination integral of the Fourier transforms of the Gaussian slices. -/
+theorem fourier_fubini (hα : 0 < α) (ξ : Rd d) :
+    ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
+      ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ : ℝ) : ℂ) *
+        ∫ δ in Ioi (0 : ℝ), ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) *
+          ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+            (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) := by
+  have hE : ∀ x : Rd d, ‖Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I)‖ = 1 := fun x => by
+    rw [Complex.norm_exp]; simp
+  have hH : Integrable (Function.uncurry fun (x : Rd d) (δ : ℝ) =>
+      Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+        ((Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) * Real.exp (-δ / (4 * Real.pi)) *
+          δ ^ ((α - d) / 2) / δ : ℝ) : ℂ))
+      ((volume : Measure (Rd d)).prod (volume.restrict (Ioi 0))) := by
+    refine (integrable_uncurry hα).norm.mono' ?_ (Eventually.of_forall fun p => ?_)
+    · have hc : Continuous fun p : Rd d × ℝ =>
+          Complex.exp (-(2 * Real.pi * ⟪p.1, ξ⟫ : ℝ) * Complex.I) := by fun_prop
+      exact hc.aestronglyMeasurable.mul (integrable_uncurry hα).ofReal.aestronglyMeasurable
+    · simp only [Function.uncurry]
+      rw [norm_mul, hE, one_mul, Complex.norm_real]
+  have h1 : ∀ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+      (besselKernel d α x : ℂ) = ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ : ℝ) : ℂ) *
+        ∫ δ in Ioi (0 : ℝ), Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+          ((Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) * Real.exp (-δ / (4 * Real.pi)) *
+            δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) := fun x => by
+    unfold besselKernel
+    have hc : ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ *
+        ∫ δ in Ioi (0 : ℝ), Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) * Real.exp (-δ / (4 * Real.pi)) *
+          δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) =
+        ((((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ : ℝ) : ℂ) *
+          ∫ δ in Ioi (0 : ℝ), ((Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) *
+            Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) := by
+      rw [integral_complex_ofReal, Complex.ofReal_mul]
+    rw [hc, integral_const_mul]
+    ring
+  have h2 : ∀ δ : ℝ, ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+      ((Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) * Real.exp (-δ / (4 * Real.pi)) *
+        δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) =
+      ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) *
+        ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+          (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) := fun δ => by
+    rw [← integral_const_mul]
+    refine integral_congr_ae (Eventually.of_forall fun x => ?_)
+    simp only
+    push_cast
+    ring
+  simp_rw [h1]
+  rw [integral_const_mul, integral_integral_swap hH]
+  simp_rw [h2]
+
+/-- **Subgoal** (Definition 2.4, Fourier transform step 3: Gamma integral):
+`∫_0^∞ e^{-δ/(4π)} δ^{(α-d)/2} δ^{-1} δ^{d/2} e^{-πδ|ξ|²} dδ = (4π)^{α/2} Γ(α/2) (1 + 4π²|ξ|²)^{-α/2}`. -/
+theorem integral_profile_exp (hα : 0 < α) (ξ : Rd d) :
+    ∫ δ in Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
+        (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
+      (4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2) *
+        (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) := by
+  set r : ℝ := 1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2 with hr_def
+  have hr : 0 < r := by positivity
+  have key : ∀ δ ∈ Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
+      (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
+      δ ^ (α / 2 - 1) * Real.exp (-(r * δ)) := by
+    intro δ hδ
+    have hδ' : (0 : ℝ) < δ := hδ
+    rw [show α / 2 - 1 = ((α - d) / 2 + (d : ℝ) / 2) - 1 by ring, Real.rpow_sub_one hδ'.ne',
+      Real.rpow_add hδ', hr_def,
+      show -((1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2) * δ) =
+        -δ / (4 * Real.pi) + -Real.pi * δ * ‖ξ‖ ^ 2 by field_simp; ring, Real.exp_add]
+    field_simp
+  rw [setIntegral_congr_fun measurableSet_Ioi key,
+    Real.integral_rpow_mul_exp_neg_mul_Ioi (by linarith : 0 < α / 2) hr]
+  have hA : 0 < 1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2 := by positivity
+  rw [show 1 / r = 4 * Real.pi / (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) by
+      rw [hr_def]; field_simp,
+    Real.div_rpow (by positivity) hA.le, Real.rpow_neg hA.le]
+  ring
+
+/-- **Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
+`(1 + 4π²|ξ|²)^{-α/2}`. -/
+theorem fourier_eq (hα : 0 < α) (ξ : Rd d) :
+    ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
+      (((1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) : ℝ) : ℂ) := by
+  sorry
 
 end besselKernel
 
