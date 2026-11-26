@@ -108,14 +108,23 @@ def closure() -> list[str]:
     return order
 
 
+def prune_all(bodies: list[str], compared: set[str]) -> list[str]:
+    """Iterate `prune` to a fixed point, so lemmas only used by pruned lemmas also go."""
+    while True:
+        alltext = "\n".join(bodies)
+        new = [prune(b, compared, alltext) for b in bodies]
+        if new == bodies:
+            return bodies
+        bodies = new
+
+
 def main() -> None:
     cfg = json.loads((ROOT / "comparator.json").read_text(encoding="utf-8"))
     parts = [HEADER, f"namespace {LIB}\n"]
     mods = closure()
     compared = set(cfg["theorem_names"])
-    alltext = "\n".join(body_of(m) for m in mods)
-    for m in mods:
-        body = prune(body_of(m), compared, alltext)
+    bodies = prune_all([body_of(m) for m in mods], compared)
+    for m, body in zip(mods, bodies):
         parts.append(f"\n/-! ## `{LIB}.{m}` -/\n\n{RESET}\n\nsection\n\n{body}\n\nend\n")
     parts.append(f"\nend {LIB}\n")
     OUT.parent.mkdir(parents=True, exist_ok=True)
