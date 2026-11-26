@@ -105,6 +105,30 @@ theorem integral_le_potentialProfile_of_two_lt (hd : 2 < d) (T : ℝ) : ∃ C : 
           Real.rpow_sub hr, Real.rpow_neg hr.le, Real.rpow_two]
         field_simp
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), case `d = 1`): `∫_0^T p_s(x) ds ≤ C`, since
+`p_s(x) ≤ (2πs)^{-1/2}` and `s^{-1/2}` is integrable on `(0, T]`. -/
+theorem integral_le_potentialProfile_one (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 1,
+    x ≠ 0 → ∫ s in Ioc 0 T, heatKernel 1 s x ≤ C * potentialProfile 1 ‖x‖ := by
+  rcases le_or_gt T 0 with hT | hT
+  · exact ⟨0, fun x _ => by simp [Ioc_eq_empty_of_le hT]⟩
+  refine ⟨∫ s in Ioc 0 T, (2 * Real.pi * s) ^ (-(1 : ℝ) / 2), fun x _ => ?_⟩
+  have hg : IntegrableOn (fun s : ℝ => (2 * Real.pi * s) ^ (-(1 : ℝ) / 2)) (Ioc 0 T) := by
+    have hi := (intervalIntegrable_iff_integrableOn_Ioc_of_le hT.le).1
+      (intervalIntegral.intervalIntegrable_rpow' (r := -(1 : ℝ) / 2) (by norm_num))
+    refine IntegrableOn.congr_fun (hi.const_mul ((2 * Real.pi) ^ (-(1 : ℝ) / 2)))
+      (fun s hs => ?_) measurableSet_Ioc
+    exact (Real.mul_rpow (by positivity) hs.1.le).symm
+  simp only [potentialProfile, if_true, mul_one]
+  refine integral_mono_of_nonneg (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_) hg
+    (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_)
+  · have : (0 : ℝ) < s := hs.1
+    simp only [heatKernel]
+    positivity
+  · have hs0 : (0 : ℝ) < s := hs.1
+    simp only [heatKernel, Nat.cast_one]
+    refine mul_le_of_le_one_right (by positivity) (Real.exp_le_one_iff.2 ?_)
+    exact div_nonpos_of_nonpos_of_nonneg (neg_nonpos.2 (by positivity)) (by positivity)
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
     ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
