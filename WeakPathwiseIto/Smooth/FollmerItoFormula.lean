@@ -142,7 +142,71 @@ theorem tendsto_hessian_left {π : ℕ → Partition T} {ω : ℝ → Rd d}
         (ω ((π n).right k) - ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫) atTop
       (𝓝 (hQV.matrixIntegral
         (fun u i j => Rd.coord i (smoothHessian f (ω u) (Rd.basisVec j))) T)) := by
-  sorry
+  have hg := contDiffBounded_gradient hf
+  have hT : T ∈ Icc 0 T := ⟨(π 0).nonneg, le_rfl⟩
+  have hR := proposition_3_1.tendsto_main hω hQV hg hT
+  have hall : ∀ n, Finset.univ.filter (fun k => (π n).right k ≤ T) = Finset.univ := fun n =>
+    Finset.filter_true_of_mem fun k _ => ((π n).t_mem k.succ).2
+  simp only [hall] at hR
+  have hH : Continuous (smoothHessian f) := hg.1.continuous_fderiv (by norm_num)
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  have hωC : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C := fun s hs => hC _ (mem_image_of_mem ω hs)
+  have hu := Metric.uniformContinuousOn_iff.1
+    ((isCompact_closedBall (0 : Rd d) C).uniformContinuousOn_of_continuous hH.continuousOn)
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ M :=
+    ((lemma_4_2.tendsto_sum_sq hQV).eventually (gt_mem_nhds
+      (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+        fun n h => h.le
+  have hdiff : Tendsto (fun n => ∑ k, (⟪smoothHessian f (ω ((π n).left k))
+        (ω ((π n).right k) - ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
+      ⟪smoothHessian f (ω ((π n).right k))
+        (ω ((π n).right k) - ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫))
+      atTop (𝓝 0) := by
+    refine Metric.tendsto_nhds.2 fun ε hε => ?_
+    obtain ⟨δ, hδ, hδD⟩ := hu (ε / (2 * M)) (by positivity)
+    filter_upwards [hevS, hosc.eventually (gt_mem_nhds hδ)] with n hn hon
+    rw [Real.dist_eq, sub_zero]
+    have hterm : ∀ k : Fin (π n).m, |⟪smoothHessian f (ω ((π n).left k))
+        (ω ((π n).right k) - ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫ -
+      ⟪smoothHessian f (ω ((π n).right k))
+        (ω ((π n).right k) - ω ((π n).left k)), ω ((π n).right k) - ω ((π n).left k)⟫| ≤
+        ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := fun k => by
+      have hΔ := (lemma_4_2.norm_increment_le hω (π n) k).trans_lt hon
+      have hlB : ω ((π n).left k) ∈ Metric.closedBall (0 : Rd d) C := by
+        rw [Metric.mem_closedBall, dist_zero_right]; exact hωC _ ((π n).t_mem _)
+      have hrB : ω ((π n).right k) ∈ Metric.closedBall (0 : Rd d) C := by
+        rw [Metric.mem_closedBall, dist_zero_right]; exact hωC _ ((π n).t_mem _)
+      have hD := hδD _ hlB _ hrB (by rw [dist_eq_norm, norm_sub_rev]; exact hΔ)
+      rw [dist_eq_norm] at hD
+      rw [← inner_sub_left, ← sub_apply]
+      calc _ ≤ ‖(smoothHessian f (ω ((π n).left k)) - smoothHessian f (ω ((π n).right k)))
+            (ω ((π n).right k) - ω ((π n).left k))‖ * ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+            abs_real_inner_le_norm _ _
+        _ ≤ (‖smoothHessian f (ω ((π n).left k)) - smoothHessian f (ω ((π n).right k))‖ *
+            ‖ω ((π n).right k) - ω ((π n).left k)‖) * ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+            mul_le_mul_of_nonneg_right (ContinuousLinearMap.le_opNorm _ _) (norm_nonneg _)
+        _ ≤ (ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖) *
+            ‖ω ((π n).right k) - ω ((π n).left k)‖ :=
+            mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right hD.le (norm_nonneg _))
+              (norm_nonneg _)
+        _ = _ := by ring
+    calc _ ≤ ∑ k, |_| := Finset.abs_sum_le_sum_abs _ _
+      _ ≤ ∑ k, ε / (2 * M) * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+          Finset.sum_le_sum fun k _ => hterm k
+      _ = ε / (2 * M) * ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := by
+          rw [Finset.mul_sum]
+      _ ≤ ε / (2 * M) * M := mul_le_mul_of_nonneg_left hn (by positivity)
+      _ = ε / 2 := by field_simp
+      _ < ε := by linarith
+  have h := hdiff.add hR
+  rw [zero_add] at h
+  refine h.congr fun n => ?_
+  rw [← Finset.sum_add_distrib]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  simp only [smoothHessian]
+  ring
 
 /-- **Subgoal** ([Föl81] proof: the second-order Taylor remainders sum to `o(1)`,
 `≤ ρ_{∇²f}(osc) ∑ |δ_kω|²`). -/

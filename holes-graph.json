@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:51:56Z",
+ "updated": "2026-11-26T21:53:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 26,
-  "done": 182
+  "done": 183
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 42
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 8,
-  "done": 140
+  "done": 141
  },
  "untagged": [],
  "legend": {
@@ -4766,9 +4766,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "tendsto_hessian_left",
     "tendsto_remainder",
     "follmer_ito_formula"
    ],
@@ -4797,10 +4796,9 @@
    ],
    "blockers": [
     "Smooth.FollmerItoFormula::follmer_ito_formula",
-    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
     "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
    ],
-   "detail": "3 sorry: tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
+   "detail": "2 sorry: tendsto_remainder, follmer_ito_formula"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -4994,17 +4992,15 @@
    "parentGoal": "Smooth.FollmerItoFormula",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula.tendsto_hessian_left"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** ([Föl81] proof: `∑_k ⟨∇²f(ω(t_k)) δ_kω, δ_kω⟩ → ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -5014,7 +5010,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: follmer_ito_formula.tendsto_hessian_left — subgoal of [Föl81] proof: `∑_k ⟨∇²f(ω(t_k (in Smooth.FollmerItoFormula)"
+   "detail": "proved: follmer_ito_formula.tendsto_hessian_left — subgoal of [Föl81] proof: `∑_k ⟨∇²f(ω(t_k (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
