@@ -36,7 +36,35 @@ the statement is false, since Lean's `∫⁻` is only superadditive on non-measu
 theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) {f g : Rd d → F}
     (hf : AEStronglyMeasurable f) (hg : AEStronglyMeasurable g) :
     occupationSeminorm π ω (f + g) ≤ occupationSeminorm π ω f + occupationSeminorm π ω g := by
-  sorry
+  unfold occupationSeminorm
+  have hL : ∀ n, AEMeasurable (fun x => ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) :=
+    fun n => by
+      unfold discreteOccupationDensity
+      exact (integrable_finset_sum _ fun i _ =>
+        discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
+  have key : ∀ u v : ℕ → ℝ≥0∞, limsup (u + v) atTop ≤ limsup u atTop + limsup v atTop := by
+    intro u v
+    refine ENNReal.le_of_forall_pos_le_add fun ε hε hlt => ?_
+    have h2 : (ε : ℝ≥0∞) / 2 ≠ 0 := (ENNReal.half_pos (ENNReal.coe_ne_zero.2 hε.ne')).ne'
+    have hu : limsup u atTop < limsup u atTop + (ε : ℝ≥0∞) / 2 :=
+      ENNReal.lt_add_right (ENNReal.add_lt_top.1 hlt).1.ne h2
+    have hv : limsup v atTop < limsup v atTop + (ε : ℝ≥0∞) / 2 :=
+      ENNReal.lt_add_right (ENNReal.add_lt_top.1 hlt).2.ne h2
+    refine limsup_le_of_le (by isBoundedDefault) ?_
+    filter_upwards [eventually_lt_of_limsup_lt hu, eventually_lt_of_limsup_lt hv] with n h1 h3
+    calc (u + v) n = u n + v n := rfl
+      _ ≤ (limsup u atTop + (ε : ℝ≥0∞) / 2) + (limsup v atTop + (ε : ℝ≥0∞) / 2) :=
+          add_le_add h1.le h3.le
+      _ = limsup u atTop + limsup v atTop + ε := by
+          rw [add_add_add_comm, ENNReal.add_halves]
+  refine (limsup_le_limsup (Eventually.of_forall fun n => ?_)).trans (key _ _)
+  rw [Pi.add_apply]
+  calc _ ≤ ∫⁻ x, (‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x) +
+        ‖g x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) :=
+        lintegral_mono fun x => by
+          rw [← add_mul, Pi.add_apply]
+          exact mul_le_mul_left (enorm_add_le (f x) (g x)) _
+    _ = _ := lintegral_add_left' (hf.enorm.mul (hL n)) _
 
 /-- **Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then
 `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`.

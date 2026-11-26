@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:16:29Z",
+ "updated": "2026-11-26T22:19:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 25,
-  "done": 188
+  "done": 189
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 8,
-  "done": 144
+  "done": 145
  },
  "untagged": [],
  "legend": {
@@ -4390,9 +4390,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "add_le",
     "lintegral_le_maximal",
     "le_limsup_discreteSeminorm"
    ],
@@ -4415,11 +4414,10 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
    ],
-   "detail": "3 sorry: add_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
+   "detail": "2 sorry: lintegral_le_maximal, le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4431,17 +4429,15 @@
    "parentGoal": "Occupation.OccupationSeminorm",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationSeminorm.add_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 4.2 seminorm): subadditivity. The measurability hypotheses are the paper's standing assumption (the seminorm is only applied to Hessians of Sobolev functions); without them the statement is false, since Lean's `∫⁻` is only superadditive on non-measurable integrands (e.g. indicators of a Bernstein set and its complement).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4450,7 +4446,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
+   "detail": "proved: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
