@@ -148,7 +148,67 @@ theorem le_inv_two_mul_add (x : Rd 2) {s : ℝ} (hs : 0 < s) :
 `∫_0^T p_s(x) ds ≤ (2π)^{-1} log(1 + 2T/|x|²) ≤ C (1 + log⁺(1/|x|))`. -/
 theorem integral_le_potentialProfile_two (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 2,
     x ≠ 0 → ∫ s in Ioc 0 T, heatKernel 2 s x ≤ C * potentialProfile 2 ‖x‖ := by
-  sorry
+  rcases le_or_gt T 0 with hT | hT
+  · exact ⟨0, fun x _ => by simp [Ioc_eq_empty_of_le hT]⟩
+  refine ⟨1 / (2 * Real.pi) * (Real.log (1 + 2 * T) + 2), fun x hx => ?_⟩
+  have hr : 0 < ‖x‖ := norm_pos_iff.2 hx
+  have hb : 0 < ‖x‖ ^ 2 := by positivity
+  set g : ℝ → ℝ := fun s => 1 / Real.pi / (2 * s + ‖x‖ ^ 2) with hgdef
+  have hgc : ContinuousOn g (Icc 0 T) := continuousOn_const.div (by fun_prop)
+    (fun s hs => by have : (0 : ℝ) ≤ s := hs.1; positivity)
+  have hg : IntegrableOn g (Ioc 0 T) := (hgc.integrableOn_Icc).mono_set Ioc_subset_Icc_self
+  have h1 : ∫ s in Ioc 0 T, heatKernel 2 s x ≤ ∫ s in Ioc 0 T, g s :=
+    integral_mono_of_nonneg (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => by
+      have : (0 : ℝ) < s := hs.1
+      simp only [heatKernel]
+      positivity) hg
+      (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => le_inv_two_mul_add x hs.1)
+  have hF : ∀ s ∈ uIcc 0 T, HasDerivAt (fun s => 1 / (2 * Real.pi) * Real.log (2 * s + ‖x‖ ^ 2))
+      (g s) s := by
+    intro s hs
+    rw [uIcc_of_le hT.le] at hs
+    have hpos : 0 < 2 * s + ‖x‖ ^ 2 := by have : (0 : ℝ) ≤ s := hs.1; positivity
+    have := (((hasDerivAt_id s).const_mul 2).add_const (‖x‖ ^ 2)).log hpos.ne' |>.const_mul
+      (1 / (2 * Real.pi))
+    convert this using 1
+    · rfl
+    · show 1 / Real.pi / (2 * s + ‖x‖ ^ 2) = _
+      simp only [id]
+      field_simp
+  have h2 : ∫ s in Ioc 0 T, g s =
+      1 / (2 * Real.pi) * (Real.log (2 * T + ‖x‖ ^ 2) - Real.log (‖x‖ ^ 2)) := by
+    rw [← intervalIntegral.integral_of_le hT.le,
+      intervalIntegral.integral_eq_sub_of_hasDerivAt hF
+        (hgc.intervalIntegrable_of_Icc hT.le)]
+    simp only [mul_zero, zero_add]
+    ring
+  have hL0 : 0 ≤ Real.log (1 + 2 * T) := Real.log_nonneg (by linarith)
+  set m := max 0 (Real.log (1 / ‖x‖)) with hm
+  have hm0 : 0 ≤ m := le_max_left _ _
+  have hlog : Real.log (2 * T + ‖x‖ ^ 2) - Real.log (‖x‖ ^ 2) ≤ Real.log (1 + 2 * T) + 2 * m := by
+    rw [← Real.log_div (by positivity) hb.ne']
+    rcases le_or_gt 1 ‖x‖ with h1r | h1r
+    · have : (2 * T + ‖x‖ ^ 2) / ‖x‖ ^ 2 ≤ 1 + 2 * T := by
+        have : 1 ≤ ‖x‖ ^ 2 := one_le_pow₀ h1r
+        rw [div_le_iff₀ hb]; nlinarith
+      linarith [Real.log_le_log (by positivity) this]
+    · have : (2 * T + ‖x‖ ^ 2) / ‖x‖ ^ 2 ≤ (1 + 2 * T) * (1 / ‖x‖) ^ 2 := by
+        rw [div_le_iff₀ hb, one_div, inv_pow, mul_assoc, inv_mul_cancel₀ hb.ne', mul_one]
+        nlinarith
+      have hl := Real.log_le_log (by positivity) this
+      rw [Real.log_mul (by positivity) (by positivity), Real.log_pow] at hl
+      have : Real.log (1 / ‖x‖) ≤ m := le_max_right _ _
+      push_cast at hl
+      linarith
+  have hν : potentialProfile 2 ‖x‖ = 1 + m := by simp [potentialProfile, hm]
+  rw [hν]
+  calc ∫ s in Ioc 0 T, heatKernel 2 s x ≤ _ := h1
+    _ = _ := h2
+    _ ≤ 1 / (2 * Real.pi) * (Real.log (1 + 2 * T) + 2 * m) := by gcongr
+    _ ≤ 1 / (2 * Real.pi) * (Real.log (1 + 2 * T) + 2) * (1 + m) := by
+        rw [mul_assoc]
+        gcongr
+        nlinarith
 
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
