@@ -129,6 +129,27 @@ theorem integral_le_potentialProfile_one (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 1,
     refine mul_le_of_le_one_right (by positivity) (Real.exp_le_one_iff.2 ?_)
     exact div_nonpos_of_nonpos_of_nonneg (neg_nonpos.2 (by positivity)) (by positivity)
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), case `d = 2`, pointwise step): since
+`e^{-y} ≤ 1/(1+y)`, `p_s(x) ≤ π^{-1} / (2s + |x|²)` for `s > 0`. -/
+theorem le_inv_two_mul_add (x : Rd 2) {s : ℝ} (hs : 0 < s) :
+    heatKernel 2 s x ≤ 1 / Real.pi / (2 * s + ‖x‖ ^ 2) := by
+  unfold heatKernel
+  have ha : 0 ≤ ‖x‖ ^ 2 / (2 * s) := by positivity
+  rw [show (-((2 : ℕ) : ℝ)) / 2 = -1 by norm_num, Real.rpow_neg_one, neg_div, Real.exp_neg]
+  calc (2 * Real.pi * s)⁻¹ * (Real.exp (‖x‖ ^ 2 / (2 * s)))⁻¹
+      ≤ (2 * Real.pi * s)⁻¹ * (‖x‖ ^ 2 / (2 * s) + 1)⁻¹ := by
+        gcongr
+        exact Real.add_one_le_exp _
+    _ = 1 / Real.pi / (2 * s + ‖x‖ ^ 2) := by
+        field_simp
+        ring
+
+/-- **Subgoal** (Lemma B.2 proof, eq. (32), case `d = 2`):
+`∫_0^T p_s(x) ds ≤ (2π)^{-1} log(1 + 2T/|x|²) ≤ C (1 + log⁺(1/|x|))`. -/
+theorem integral_le_potentialProfile_two (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 2,
+    x ≠ 0 → ∫ s in Ioc 0 T, heatKernel 2 s x ≤ C * potentialProfile 2 ‖x‖ := by
+  sorry
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
     ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
