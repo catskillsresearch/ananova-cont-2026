@@ -148,7 +148,9 @@ Basic.Rd -hard-> Occupation.NormalizedQuadraticDensity
 Basic.Rd -hard-> Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp
 Basic.Rd -hard-> Occupation.OccupationConstant
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.eq_inv_integral
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean
+Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integrableOn_term
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_ball_polar
 Basic.Rd -hard-> Occupation.OccupationConstant::occupationConstant.integral_reflect
@@ -367,7 +369,9 @@ Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::disc
 Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece
 Occupation.OccupationConstant -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg
 Occupation.OccupationConstant::occupationConstant.eq_inv_integral -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean -hard-> Occupation.OccupationConstant
+Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integrableOn_term -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integral_ball_polar -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.integral_reflect -hard-> Occupation.OccupationConstant

@@ -196,6 +196,19 @@ theorem sphereMean_radial {d : ℕ} (r : ℝ) {y y' : Rd d} (h : ‖y‖ = ‖y'
   simp only
   rw [← hLy, ← L.map_smul, ← L.map_sub, L.norm_map]
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 5a: first derivative of `|x|^p` off the origin): for
+`x ≠ 0` and any real `p`, `D(|·|^p)(x) = p |x|^{p-2} ⟨x, ·⟩`. -/
+theorem hasFDerivAt_norm_rpow_of_ne {d : ℕ} {x : Rd d} (hx : x ≠ 0) (p : ℝ) :
+    HasFDerivAt (fun x : Rd d => ‖x‖ ^ p) ((p * ‖x‖ ^ (p - 2)) • innerSL ℝ x) x := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 5b: second derivative of `|x|^p` off the origin): for
+`z ≠ 0`, `D²(|·|^p)(z)(e, e) = p(p-2)|z|^{p-4}⟨z,e⟩² + p|z|^{p-2}|e|²`. -/
+theorem fderiv_fderiv_norm_rpow_apply {d : ℕ} {z : Rd d} (hz : z ≠ 0) (p : ℝ) (e : Rd d) :
+    fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x‖ ^ p)) z e e =
+      p * (p - 2) * ‖z‖ ^ (p - 4) * ⟪z, e⟫ ^ 2 + p * ‖z‖ ^ (p - 2) * ‖e‖ ^ 2 := by
+  sorry
+
 open Laplacian in
 /-- **Subgoal** (Eq. (7) c_d, Newton step 5: the Newton kernel is harmonic): for `d ≥ 3` and
 `z ≠ 0`, `Δ |z|^{2-d} = 0`. -/
