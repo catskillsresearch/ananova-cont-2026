@@ -648,7 +648,51 @@ theorem radial_ode_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {f f' f'
     (hf : ∀ s, r < s → HasDerivAt f (f' s) s) (hf' : ∀ s, r < s → HasDerivAt f' (f'' s) s)
     (hode : ∀ s, r < s → f'' s + ((d : ℝ) - 1) / s * f' s = 0) :
     ∃ a b : ℝ, ∀ s, r < s → f s = a + b * s ^ (2 - (d : ℝ)) := by
-  sorry
+  have hpos : ∀ s, r < s → 0 < s := fun s hs => lt_of_le_of_lt hr hs
+  have hg : ∀ s, r < s → HasDerivAt (fun t => t ^ ((d : ℝ) - 1) * f' t)
+      (((d : ℝ) - 1) * s ^ ((d : ℝ) - 1 - 1) * f' s + s ^ ((d : ℝ) - 1) * f'' s) s :=
+    fun s hs => (Real.hasDerivAt_rpow_const (Or.inl (hpos s hs).ne')).mul (hf' s hs)
+  have hg0 : ∀ s, r < s →
+      ((d : ℝ) - 1) * s ^ ((d : ℝ) - 1 - 1) * f' s + s ^ ((d : ℝ) - 1) * f'' s = 0 := by
+    intro s hs
+    have h0 := hode s hs
+    have hs0 := hpos s hs
+    have hpow : s ^ ((d : ℝ) - 1) = s ^ ((d : ℝ) - 1 - 1) * s := by
+      rw [← Real.rpow_add_one hs0.ne']
+      ring_nf
+    have h2 : f'' s = -(((d : ℝ) - 1) / s * f' s) := by linarith
+    rw [hpow, h2]
+    field_simp
+    ring
+  obtain ⟨B, hB⟩ := isOpen_Ioi.exists_is_const_of_deriv_eq_zero isPreconnected_Ioi
+    (fun s hs => (hg s hs).differentiableAt.differentiableWithinAt)
+    (fun s hs => by rw [(hg s hs).deriv, hg0 s hs]; rfl)
+  have hf'eq : ∀ s, r < s → f' s = B * s ^ (1 - (d : ℝ)) := by
+    intro s hs
+    have h1 := hB s hs
+    have hs0 := hpos s hs
+    calc f' s = (s ^ (1 - (d : ℝ)) * s ^ ((d : ℝ) - 1)) * f' s := by
+          rw [← Real.rpow_add hs0, show 1 - (d : ℝ) + ((d : ℝ) - 1) = 0 by ring, Real.rpow_zero,
+            one_mul]
+      _ = B * s ^ (1 - (d : ℝ)) := by rw [← h1]; ring
+  have h2d : (2 - (d : ℝ)) ≠ 0 := by
+    have : (3 : ℝ) ≤ d := by exact_mod_cast hd
+    linarith
+  set c := B / (2 - (d : ℝ)) with hc
+  have hh : ∀ s, r < s → HasDerivAt (fun t => f t - c * t ^ (2 - (d : ℝ)))
+      (f' s - c * ((2 - (d : ℝ)) * s ^ (2 - (d : ℝ) - 1))) s :=
+    fun s hs => (hf s hs).sub ((Real.hasDerivAt_rpow_const (Or.inl (hpos s hs).ne')).const_mul c)
+  have hh0 : ∀ s, r < s → f' s - c * ((2 - (d : ℝ)) * s ^ (2 - (d : ℝ) - 1)) = 0 := by
+    intro s hs
+    rw [hf'eq s hs, show (2 - (d : ℝ) - 1) = 1 - (d : ℝ) by ring, hc]
+    field_simp
+    ring
+  obtain ⟨a, ha⟩ := isOpen_Ioi.exists_is_const_of_deriv_eq_zero isPreconnected_Ioi
+    (fun s hs => (hh s hs).differentiableAt.differentiableWithinAt)
+    (fun s hs => by rw [(hh s hs).deriv, hh0 s hs]; rfl)
+  refine ⟨a, c, fun s hs => ?_⟩
+  have h1 := ha s hs
+  linarith
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7: radial harmonic functions): for `d ≥ 3`, a radial
 function harmonic on `{|y| > r}` is `a + b |y|^{2-d}` there. -/
