@@ -928,7 +928,15 @@ theorem newton_ball_of_three_le {d : ℕ} (hd : 3 ≤ d) {R : ℝ} (hR : 0 < R) 
     (hy : ‖y‖ = R) :
     ∫ x in Metric.ball (0 : Rd d) R, ‖x - y‖ ^ (2 - (d : ℝ)) =
       (volume (Metric.ball (0 : Rd d) R)).toReal * R ^ (2 - (d : ℝ)) := by
-  sorry
+  have hd0 : 0 < d := by omega
+  rw [integral_ball_polar hd0 hR (integrableOn_term y R),
+    setIntegral_congr_fun measurableSet_Ioo (g := fun ρ : ℝ => ρ ^ (d - 1) *
+      ((volume : Measure (Rd d)).toSphere.real univ * R ^ (2 - (d : ℝ)))) (fun ρ hρ => by
+        simp only
+        rw [integral_sphere_eq_sphereMean hd0, sphereMean_outside hd hρ.1 (hy.symm ▸ hρ.2), hy]),
+    integral_Ioo_pow_mul hd0 hR, (toSphere_real_univ hd0).1, volume_ball_eq hd0 hR.le]
+  have h3 : (d : ℝ) ≠ 0 := by exact_mod_cast hd0.ne'
+  field_simp
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 11: `d = 1`): Newton's theorem for an interval. -/
 theorem newton_ball_dim_one {R : ℝ} (hR : 0 < R) {y : Rd 1} (hy : ‖y‖ = R) :
