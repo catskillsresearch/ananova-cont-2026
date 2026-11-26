@@ -6,6 +6,13 @@
 One node per `.lean` module under `WeakPathwiseIto/` (the root barrel `WeakPathwiseIto.lean` is
 omitted). A hard edge `B -> A` means module `A` directly imports module `B`.
 
+Subgoals. Every helper `theorem`/`lemma` (one whose docstring does not open with a bold paper
+label such as `**Theorem 5.1**`) and every `def`/`structure` whose docstring opens with
+`**Subgoal**` becomes its own node `Module::Name`, with a `subgoal` edge into the module that
+declares it (the parent goal depends on it). Label a subgoal by opening its docstring with
+`**Subgoal** (<paper item>)`; untagged helpers are still put on the board (labelled from their
+module) and listed as warnings, so nothing a goal depends on is ever missing from the board.
+
 Status rules:
   * done    = listed in VERIFIED, file has no `sorry`, and every direct import is done;
   * open    = not done, and every direct import is done (work on it next);
@@ -70,6 +77,10 @@ VERIFIED: set[str] = {
     "Main.IsItoIntegral",
     "Appendix.GaussianMoment",
     "Appendix.PotentialProfile",
+    "Basic.IsCubeOrBall",
+    "Basic.WeakLpTendsto",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.DiscreteLocalTime",
 }
 
 # Paper labels for modules that carry a numbered result or definition.
@@ -128,6 +139,12 @@ PAPER_LABEL: dict[str, str] = {
     "Appendix.HeatKernel": "Eqs. (32), (34), (35)",
     "Appendix.LemmaB1": "Lemma B.1",
     "Appendix.LemmaB2": "Lemma B.2",
+    "Basic.IsCubeOrBall": "Section 2.1 cube or ball Q",
+    "Basic.WeakLpTendsto": "Remarks 4.4/4.5 weak L^r convergence",
+    "Bessel.WienerLawExists": "Section 2.2 ℙ_x exists (subgoals)",
+    "Occupation.DiscreteLocalTime": "Remark 4.5 λ^{n,±}_T [DOS18]",
+    "Occupation.Remark45": "Remark 4.5",
+    "Main.Remark54": "Remark 5.4",
 }
 
 SECTIONS = {
@@ -178,6 +195,53 @@ def sorry_decls(code: str) -> list[str]:
     return names
 
 
+PAPER_BOLD_RE = re.compile(r"^\*\*(Theorem|Lemma|Proposition|Corollary|Remark|Assumption|Definition|Eq)")
+SUBGOAL_RE = re.compile(r"^\*\*Subgoal\*\*\s*(?:\(([^)]*)\))?")
+DOC_DECL_RE = re.compile(
+    r"(?:/--(?P<doc>(?:(?!-/).)*?)-/\s*)?(?:set_option[^\n]*\bin\s*\n\s*)?(?:open scoped[^\n]*\bin\s*\n\s*)?"
+    r"(?:@\[[^\]]*\]\s*)?(?:private\s+|protected\s+|noncomputable\s+)*"
+    r"(?P<kind>theorem|lemma|def|abbrev|structure)\s+(?P<name>[^\s:({\[]+)", re.S)
+NS_RE = re.compile(r"^(namespace|end)\s+([A-Za-z0-9_.']+)\s*$", re.M)
+
+
+def declarations(raw: str):
+    """(kind, full name, docstring, body) for each top-level declaration of a module."""
+    ns_events = [(m.start(), m.group(1), m.group(2)) for m in NS_RE.finditer(raw)]
+    found = list(DOC_DECL_RE.finditer(raw))
+    out = []
+    for k, m in enumerate(found):
+        start = m.start("kind")
+        end = found[k + 1].start() if k + 1 < len(found) else len(raw)
+        stack = []
+        for pos, ev, name in ns_events:
+            if pos > start:
+                break
+            if ev == "namespace":
+                stack.append(name)
+            elif stack and stack[-1] == name:
+                stack.pop()
+        prefix = ".".join(x for x in stack if x != LIB)
+        full = f"{prefix}.{m.group('name')}" if prefix else m.group("name")
+        doc = " ".join((m.group("doc") or "").split())
+        out.append((m.group("kind"), full, doc, strip_lean_comments(raw[start:end])))
+    return out
+
+
+def subgoals_of(mod: str, raw: str):
+    subs = []
+    for kind, name, doc, body in declarations(raw):
+        tag = SUBGOAL_RE.match(doc)
+        if kind in ("theorem", "lemma"):
+            if PAPER_BOLD_RE.match(doc) and not tag:
+                continue
+        elif not tag:
+            continue
+        parent = (tag.group(1) if tag and tag.group(1) else None)
+        subs.append({"name": name, "kind": kind, "parentLabel": parent, "tagged": bool(tag),
+                     "sorryCount": len(SORRY_RE.findall(body)), "doc": doc})
+    return subs
+
+
 def discover():
     nodes, edges = {}, []
     for path in sorted(LEAN_ROOT.rglob("*.lean")):
@@ -202,8 +266,28 @@ def discover():
         }
         for dep in IMPORT_RE.findall(raw):
             edges.append((dep, mod))
+        nodes[mod]["subgoals"] = subgoals_of(mod, raw)
     edges = [(a, b) for a, b in edges if a in nodes and b in nodes]
-    return nodes, sorted(set(edges))
+    sub_edges = []
+    for mod in list(nodes):
+        n = nodes[mod]
+        n["kind"] = "goal"
+        for sg in n.pop("subgoals"):
+            sid = f"{mod}::{sg['name']}"
+            parent = sg["parentLabel"] or n["paper"] or mod
+            nodes[sid] = {
+                "id": sid, "label": sg["name"].split(".")[-1], "kind": "subgoal",
+                "section": n["section"], "sectionTitle": n["sectionTitle"],
+                "paper": f"subgoal of {parent}", "parentGoal": mod, "tagged": sg["tagged"],
+                "file": n["file"], "sorryCount": sg["sorryCount"],
+                "holes": [sg["name"]] if sg["sorryCount"] else [], "declKinds": {sg["kind"]: 1},
+                "paperGoal": False, "verified": True, "doc": sg["doc"],
+            }
+            sub_edges.append((sid, mod))
+            for a, b in edges:
+                if b == mod:
+                    sub_edges.append((a, sid))
+    return nodes, sorted(set(edges)), sorted(set(sub_edges))
 
 
 def transitive_reduction(nodes, edges):
@@ -225,7 +309,8 @@ def transitive_reduction(nodes, edges):
 
 
 def build():
-    nodes, edges = discover()
+    nodes, edges, sub_edges = discover()
+    edges = sorted(set(edges) | set(sub_edges))
     deps = defaultdict(set)
     for a, b in edges:
         deps[b].add(a)
@@ -248,28 +333,41 @@ def build():
         n["status"] = status[m]
         n["deps"] = sorted(deps[m])
         n["blockers"] = sorted(d for d in deps[m] if status[d] != "done")
-        if n["sorryCount"]:
+        if n["kind"] == "subgoal":
+            n["detail"] = (("sorry: " if n["sorryCount"] else "proved: ") + n["id"].split("::")[1]
+                           + f" — {n['paper']} (in {n['parentGoal']})"
+                           + ("" if n["tagged"] else " [UNTAGGED: add **Subgoal** (…) to its docstring]"))
+        elif n["sorryCount"]:
             n["detail"] = f"{n['sorryCount']} sorry: " + ", ".join(n["holes"])
         elif not n["verified"]:
             n["detail"] = "No sorry; not yet in VERIFIED (build + review, then add)."
         else:
             n["detail"] = "Verified (builds, no sorry)."
     red = transitive_reduction(nodes, edges)
-    total = sum(n["sorryCount"] for n in nodes.values())
+    total = sum(n["sorryCount"] for n in nodes.values() if n["kind"] == "goal")
     counts = {s: sum(1 for n in nodes.values() if n["status"] == s) for s in ("open", "blocked", "done")}
+    goal_counts = {s: sum(1 for n in nodes.values() if n["kind"] == "goal" and n["status"] == s)
+                   for s in ("open", "blocked", "done")}
+    sub_counts = {s: sum(1 for n in nodes.values() if n["kind"] == "subgoal" and n["status"] == s)
+                  for s in ("open", "blocked", "done")}
     return {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable "
                  "functions, arXiv:2608.07365v2",
         "sorryCount": total,
         "counts": counts,
+        "goalCounts": goal_counts,
+        "subgoalCounts": sub_counts,
+        "untagged": sorted(n["id"] for n in nodes.values() if n["kind"] == "subgoal" and not n["tagged"]),
         "legend": {
             "open": "All imported modules done — prove / verify next",
             "blocked": "Waiting on unfinished imported modules",
             "done": "Verified (listed in VERIFIED, no sorry, deps done)",
         },
         "notes": [
-            "File-level board: one node per WeakPathwiseIto .lean module (root barrel omitted).",
+            "Goals: one node per WeakPathwiseIto .lean module (root barrel omitted). Subgoals: one "
+            "node per helper lemma/def (Module::Name), with a dashed outline and an edge into "
+            "the goal that depends on it.",
             "Hard edge B→A: A directly imports B. Drawn edges are transitively reduced; "
             "status uses all direct imports.",
             "Paper goals: " + ", ".join(PAPER_GOALS) + ".",
@@ -277,7 +375,8 @@ def build():
         ],
         "paperGoals": PAPER_GOALS,
         "nodes": [nodes[m] for m in sorted(nodes)],
-        "edges": [{"from": a, "to": b, "kind": "hard"} for a, b in edges],
+        "edges": [{"from": a, "to": b, "kind": "subgoal" if "::" in a and b in nodes and "::" not in b
+                   and nodes[a].get("parentGoal") == b else "hard"} for a, b in edges],
         "drawEdges": [{"from": a, "to": b} for a, b in red],
     }
 
@@ -294,7 +393,8 @@ def write_md(data):
         "",
         f"**Updated:** {data['updated']}  ",
         f"**`sorry` occurrences:** {data['sorryCount']} · {c['open']} open · {c['blocked']} blocked · "
-        f"{c['done']} done · {sum(1 for n in nodes if n['sorryCount'])} file(s) with `sorry`.",
+        f"{c['done']} done (goals + subgoals) · goals {data['goalCounts']} · subgoals {data['subgoalCounts']} · "
+        f"{sum(1 for n in nodes if n['sorryCount'] and n['kind'] == 'goal')} file(s) with `sorry`.",
         "",
         "**Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).",
         "",
@@ -314,7 +414,7 @@ def write_md(data):
         L.append(f"| {n['status']} | `{g}` | {n['paper'] or ''} | {n['sorryCount']} | "
                  f"{', '.join('`'+h+'`' for h in n['holes'])} |")
     L += ["", "## Open now", ""]
-    opens = [n for n in nodes if n["status"] == "open"]
+    opens = [n for n in nodes if n["status"] == "open" and n["kind"] == "goal"]
     if opens:
         L += ["| Module | Paper | `sorry` | Holes |", "|---|---|---|---|"]
         for n in opens:
@@ -322,9 +422,17 @@ def write_md(data):
                      f"{', '.join('`'+h+'`' for h in n['holes']) or '(review → VERIFIED)'} |")
     else:
         L.append("_None._")
+    L += ["", "## Subgoals (helper lemmas/defs)", "",
+          "Each helper a goal depends on is its own board node `Module::Name`. Label it by opening "
+          "its docstring with `**Subgoal** (<paper item>)`.", "",
+          "| Status | Subgoal | Label | `sorry` |", "|---|---|---|---|"]
+    for n in nodes:
+        if n["kind"] == "subgoal":
+            L.append(f"| {n['status']} | `{n['id']}` | {n['paper']}{'' if n['tagged'] else ' (untagged)'} | "
+                     f"{n['sorryCount']} |")
     L += ["", "## All modules by section", ""]
     for sec, title in SECTIONS.items():
-        mods = [n for n in nodes if n["section"] == sec]
+        mods = [n for n in nodes if n["section"] == sec and n["kind"] == "goal"]
         if not mods:
             continue
         L += [f"### {title}", "", "| Status | Module | Paper | `sorry` | Blocked by |", "|---|---|---|---|---|"]
@@ -361,8 +469,13 @@ def main():
     write_edges(data)
     embed_html(data)
     c = data["counts"]
-    print(f"{len(data['nodes'])} modules, {data['sorryCount']} sorry: "
-          f"{c['open']} open, {c['blocked']} blocked, {c['done']} done")
+    g = data["goalCounts"]; sc = data["subgoalCounts"]
+    print(f"{sum(1 for n in data['nodes'] if n['kind'] == 'goal')} modules, "
+          f"{sum(1 for n in data['nodes'] if n['kind'] == 'subgoal')} subgoals, {data['sorryCount']} sorry; "
+          f"goals {g['open']} open / {g['blocked']} blocked / {g['done']} done; "
+          f"subgoals {sc['open']} open / {sc['blocked']} blocked / {sc['done']} done")
+    for u in data["untagged"]:
+        print("warning: untagged subgoal", u)
 
 
 if __name__ == "__main__":

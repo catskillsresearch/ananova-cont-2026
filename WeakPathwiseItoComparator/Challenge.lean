@@ -87,6 +87,22 @@ def mesh : ℝ := ⨆ i : Fin π.m, (π.right i - π.left i)
 /-- Smallest gap `|π|_ := min_i (t_{i+1} - t_i)` (Assumption 1). -/
 def minGap : ℝ := ⨅ i : Fin π.m, (π.right i - π.left i)
 
+/-- **Subgoal** (Section 3 partitions): the horizon of a partition of `[0, T]` is nonnegative. -/
+theorem nonneg (π : Partition T) : 0 ≤ T := by
+  have h := π.strictMono.monotone (Fin.zero_le (Fin.last π.m))
+  rwa [π.t_zero, π.t_last] at h
+
+/-- The time-reversed partition `←π := {T - t_i : t_i ∈ π}` (Remarks 4.1 and 4.5), indexed
+increasingly: `←t_j = T - t_{m-j}`. -/
+def reverse : Partition T where
+  m := π.m
+  t := fun j => T - π.t (Fin.rev j)
+  strictMono := fun a b hab => by
+    have : π.t (Fin.rev b) < π.t (Fin.rev a) := π.strictMono (Fin.rev_lt_rev.mpr hab)
+    linarith
+  t_zero := by simp [π.t_last]
+  t_last := by simp [π.t_zero]
+
 end Partition
 
 end
@@ -112,23 +128,33 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 section
 
 /-- A real path `x` has finite quadratic variation along `π = (π_n)` (eq. (5), [Föl81]):
-the discrete quadratic variations converge for every `t ∈ [0, T]` to `[x]_π(t)`, and
-`t ↦ [x]_π(t)` is continuous and increasing. (The witness `qv` is taken globally continuous
-and monotone; this is equivalent, extending constantly outside `[0, T]`.) -/
+for every `t ∈ [0, T]` the discrete quadratic variations converge to `[x]_π(t)`, and
+`t ↦ [x]_π(t)` is continuous and increasing on `[0, T]`. -/
 structure HasScalarQuadraticVariation {T : ℝ} (π : ℕ → Partition T) (x : ℝ → ℝ) where
-  /-- The quadratic variation `[x]_π`. -/
+  /-- The quadratic variation `[x]_π` (only its values on `[0, T]` matter). -/
   qv : ℝ → ℝ
   tendsto : ∀ t ∈ Icc 0 T,
     Tendsto (fun n => discreteQuadraticVariation (π n) x t) atTop (𝓝 (qv t))
-  continuous : Continuous qv
-  monotone : Monotone qv
+  continuousOn : ContinuousOn qv (Icc 0 T)
+  monotoneOn : MonotoneOn qv (Icc 0 T)
 
 namespace HasScalarQuadraticVariation
 
 variable {T : ℝ} {π : ℕ → Partition T} {x : ℝ → ℝ} (h : HasScalarQuadraticVariation π x)
 
+/-- **Subgoal** (Eq. (5) Stieltjes measure): `[x]_π` extended constantly outside `[0, T]`,
+`t ↦ [x]_π(max 0 (min t T))`, a monotone function on `ℝ` carrying the measure `d[x]_π`. -/
+def qvExt (t : ℝ) : ℝ := h.qv (max 0 (min t T))
+
+/-- **Subgoal** (Eq. (5) Stieltjes measure): the extension `qvExt` is monotone. -/
+theorem qvExt_monotone : Monotone h.qvExt := by
+  have hT : 0 ≤ T := (π 0).nonneg
+  intro a b hab
+  exact h.monotoneOn ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩
+    ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩ (max_le_max le_rfl (min_le_min hab le_rfl))
+
 /-- The Stieltjes measure `d[x]_π`. -/
-def stieltjesMeasure : Measure ℝ := h.monotone.stieltjesFunction.measure
+def stieltjesMeasure : Measure ℝ := h.qvExt_monotone.stieltjesFunction.measure
 
 /-- The Riemann–Stieltjes integral `∫_0^t g(u) d[x]_π(u)`. -/
 def integral (g : ℝ → ℝ) (t : ℝ) : ℝ := ∫ u in Ioc 0 t, g u ∂h.stieltjesMeasure
@@ -162,11 +188,15 @@ def covariation (i j : Fin d) (t : ℝ) : ℝ :=
 /-- The trace `tr [ω]_π(t) = ∑_i [ω^i]_π(t)`. -/
 def trace (t : ℝ) : ℝ := ∑ i, (h.coord i).qv t
 
-theorem trace_monotone : Monotone h.trace := fun _ _ hab =>
-  Finset.sum_le_sum fun i _ => (h.coord i).monotone hab
+/-- **Subgoal** (Lemma 4.2 trace measure): `tr [ω]_π` extended constantly outside `[0, T]`. -/
+def traceExt (t : ℝ) : ℝ := ∑ i, (h.coord i).qvExt t
+
+/-- **Subgoal** (Lemma 4.2 trace measure): the extended trace is monotone. -/
+theorem traceExt_monotone : Monotone h.traceExt := fun _ _ hab =>
+  Finset.sum_le_sum fun i _ => (h.coord i).qvExt_monotone hab
 
 /-- The Stieltjes measure `d tr[ω]_π`. -/
-def traceMeasure : Measure ℝ := h.trace_monotone.stieltjesFunction.measure
+def traceMeasure : Measure ℝ := h.traceExt_monotone.stieltjesFunction.measure
 
 /-- The matrix Stieltjes integral `∫_0^t ⟨G(u), d[ω]_π(u)⟩ = ∑_{i,j} ∫_0^t G_{ij}(u) d[ω]_{ij}(u)`,
 computed by polarization. -/
@@ -309,6 +339,20 @@ def MemW {d : ℕ} (k : ℕ) (p : ℝ≥0∞) (f : Rd d → ℝ) : Prop :=
   MemLp f p ∧ ∀ α : Fin d → ℕ, IsWeakDerivative.order α ≤ k →
     ∃ g : Rd d → ℝ, IsWeakDerivative α f g ∧ MemLp g p
 
+namespace MemW
+
+/-- The finite set of multi-indices `α ∈ ℕ^d` with `|α| ≤ k`. -/
+def multiIndices (d k : ℕ) : Finset (Fin d → ℕ) :=
+  ((Finset.univ : Finset (Fin d → Fin (k + 1))).image fun α i => (α i : ℕ)).filter
+    fun α => IsWeakDerivative.order α ≤ k
+
+/-- The Sobolev norm `‖f‖_{W^{k,p}} := ∑_{|α| ≤ k} ‖D^α f‖_{L^p}` (Theorem 2.6), `D^0 f = f`.
+Weak derivatives are unique a.e., so the infimum over versions is the norm of any version. -/
+def norm {d : ℕ} (k : ℕ) (p : ℝ≥0∞) (f : Rd d → ℝ) : ℝ≥0∞ :=
+  ∑ α ∈ multiIndices d k, ⨅ (g : Rd d → ℝ) (_ : IsWeakDerivative α f g), eLpNorm g p volume
+
+end MemW
+
 end
 
 /-! ## `WeakPathwiseIto.Occupation.OccupationConstant` -/
@@ -448,15 +492,15 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-/-- An approximating sequence for `F` with weak Hessian `H` along `(ω, π)` (eq. (8)):
+/-- An approximating sequence for `F` with weak Hessian `H` along `(ω, π)` (eq. (8)), indexed by `m ≥ 1` (the value at `m = 0` is unconstrained):
 `F_m ∈ C^2_b ∩ W^{2,1}`, `F_m(ω(t)) → F(ω(t))` for all `t ∈ [0, T]`, and
 `‖∇²F_m - ∇²F‖_{W^0_{ω,π}} → 0`. -/
 structure ApproximatingSequence {T : ℝ} {d : ℕ} (π : ℕ → Partition T) (ω : ℝ → Rd d)
     (F : Rd d → ℝ) (H : Rd d → (Rd d →L[ℝ] Rd d)) where
-  /-- The approximating functions `F_m`. -/
+  /-- The approximating functions `F_m`, `m ≥ 1`. -/
   seq : ℕ → Rd d → ℝ
-  smooth : ∀ m, ContDiffBounded 2 (seq m)
-  sobolev : ∀ m, MemW 2 1 (seq m)
+  smooth : ∀ m, 1 ≤ m → ContDiffBounded 2 (seq m)
+  sobolev : ∀ m, 1 ≤ m → MemW 2 1 (seq m)
   tendsto_path : ∀ t ∈ Icc 0 T, Tendsto (fun m => seq m (ω t)) atTop (𝓝 (F (ω t)))
   tendsto_hessian :
     Tendsto (fun m => occupationSeminorm π ω (fun x => smoothHessian (seq m) x - H x)) atTop (𝓝 0)
@@ -561,28 +605,41 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-/-- The canonical Wiener space `(Ω, B, ℙ_x)` (Section 2.2): paths `ω : ℝ_{≥0} → ℝ^d` with
-coordinate process `B(t)(ω) = ω(t)`, and for each `x` a probability `ℙ_x` under which `B` is a
-continuous `d`-dimensional Brownian motion started at `x` (independent standard real Brownian
-coordinates). -/
-structure CanonicalWienerSpace (d : ℕ) where
-  /-- The law `ℙ_x` of Brownian motion started at `x`. -/
-  P : Rd d → Measure (ℝ≥0 → Rd d)
-  isProbability : ∀ x, IsProbabilityMeasure (P x)
-  start : ∀ x, ∀ᵐ ω ∂(P x), ω 0 = x
-  continuous : ∀ x, ∀ᵐ ω ∂(P x), Continuous ω
-  coord_brownian : ∀ x (i : Fin d),
-    ProbabilityTheory.IsBrownianReal (fun t ω => Rd.coord i (ω t - x)) (P x)
-  coord_indep : ∀ x, ProbabilityTheory.iIndepFun
-    (fun (i : Fin d) (ω : ℝ≥0 → Rd d) (t : ℝ≥0) => Rd.coord i (ω t)) (P x)
+/-- The canonical path space `Ω := C([0, T], ℝ^d)` of Section 2.2, with its Borel σ-algebra. -/
+abbrev CanonicalWienerSpace (d : ℕ) (T : ℝ) : Type := C(Icc (0 : ℝ) T, Rd d)
 
 namespace CanonicalWienerSpace
 
-variable {d : ℕ}
+variable {d : ℕ} {T : ℝ}
 
-/-- A Brownian path viewed as a path `ℝ → ℝ^d` (constant on `(-∞, 0]`), to which the
-pathwise theory along partitions of `[0, T]` applies. -/
-def pathOn (ω : ℝ≥0 → Rd d) : ℝ → Rd d := fun t => ω t.toNNReal
+/-- The canonical coordinate process `B(t)(ω) := ω(t)` for `t ∈ [0, T]` (and `0` off `[0, T]`). -/
+def B (t : ℝ) (ω : CanonicalWienerSpace d T) : Rd d := if h : t ∈ Icc 0 T then ω ⟨t, h⟩ else 0
+
+/-- The path `t ↦ B(t)(ω)`, as a path `ℝ → ℝ^d` for the pathwise theory along partitions of
+`[0, T]`. -/
+def path (ω : CanonicalWienerSpace d T) : ℝ → Rd d := fun t => B t ω
+
+/-- The element `t ↦ x + ∑_i W^i(t) e_i` of `Ω` built from `d` continuous real paths `W^i`. -/
+def ofCoords (x : Rd d) (W : Fin d → ℝ≥0 → ℝ) (hW : ∀ i, Continuous (W i)) :
+    CanonicalWienerSpace d T :=
+  ⟨fun s => x + ∑ i, W i (s : ℝ).toNNReal • Rd.basisVec i,
+    continuous_const.add (continuous_finset_sum _ fun i _ =>
+      ((hW i).comp (continuous_real_toNNReal.comp continuous_subtype_val)).smul continuous_const)⟩
+
+/-- `P` is the law of `d`-dimensional Brownian motion started at `x`, on `Ω`: the image of a
+probability `Q` under `ω' ↦ (t ↦ x + ∑_i W^i_t(ω') e_i)` for independent real Brownian motions
+`W^1, …, W^d` (Mathlib's `ProbabilityTheory.IsBrownianReal`) with continuous paths. -/
+def IsLaw (x : Rd d) (P : Measure (CanonicalWienerSpace d T)) : Prop :=
+  ∃ (Ω' : Type) (_ : MeasurableSpace Ω') (Q : Measure Ω') (W : Fin d → ℝ≥0 → Ω' → ℝ)
+    (hW : ∀ i ω', Continuous fun t => W i t ω'),
+    IsProbabilityMeasure Q ∧ (∀ i, ProbabilityTheory.IsBrownianReal (W i) Q) ∧
+    ProbabilityTheory.iIndepFun (fun i ω' t => W i t ω') Q ∧
+    P = Q.map fun ω' => ofCoords x (fun i t => W i t ω') fun i => hW i ω'
+
+/-- The law `ℙ_x` of Brownian motion started at `x` on the canonical space
+`Ω = C([0, T], ℝ^d)` (Section 2.2): the measure satisfying `IsLaw x`, which exists and is
+unique (`CanonicalWienerSpace.exists_isLaw`, `CanonicalWienerSpace.isLaw_unique`). -/
+def P (x : Rd d) : Measure (CanonicalWienerSpace d T) := Classical.epsilon (IsLaw x)
 
 end CanonicalWienerSpace
 
@@ -606,6 +663,10 @@ def besselKernel (d : ℕ) (α : ℝ) (x : Rd d) : ℝ :=
 namespace besselKernel
 
 variable {d : ℕ} {α : ℝ}
+
+/-- **Subgoal** (Definition 2.4). -/
+theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
+  sorry
 
 end besselKernel
 
@@ -671,14 +732,14 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-/-- A polar set for Brownian motion (Definition 2.8):
-`ℙ_x(B(t) ∈ E for some t > 0) = 0` for all `x ∈ ℝ^d`. -/
-def IsBrownianPolar {d : ℕ} (W : CanonicalWienerSpace d) (S : Set (Rd d)) : Prop :=
-  ∀ x, W.P x {ω | ∃ t : ℝ≥0, 0 < t ∧ ω t ∈ S} = 0
+/-- A polar set for Brownian motion (Definition 2.8), on the canonical space
+`Ω = C([0, T], ℝ^d)`: `ℙ_x(B(t) ∈ E for some t > 0) = 0` for all `x ∈ ℝ^d`. -/
+def IsBrownianPolar (d : ℕ) (T : ℝ) (S : Set (Rd d)) : Prop :=
+  ∀ x, CanonicalWienerSpace.P (T := T) x {ω | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ S} = 0
 
 namespace IsBrownianPolar
 
-variable {d : ℕ} (W : CanonicalWienerSpace d)
+variable {d : ℕ} {T : ℝ}
 
 end IsBrownianPolar
 
@@ -737,9 +798,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-/-- **Assumption 1** (balanced partitions), eq. (26): `sup_n |π_n| / |π_n|_ < ∞`. -/
+/-- **Assumption 1** (balanced partitions), eq. (26): `M₁ := sup_{n ≥ 1} |π_n| / |π_n|_ < ∞`. -/
 def BalancedPartitions {T : ℝ} (π : ℕ → Partition T) : Prop :=
-  ∃ M₁ : ℝ, ∀ n, (π n).mesh / (π n).minGap ≤ M₁
+  ∃ M₁ : ℝ, ∀ n, 1 ≤ n → (π n).mesh / (π n).minGap ≤ M₁
 
 end
 
@@ -749,9 +810,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-/-- **Assumption 2**, eq. (27): there is `M₂ > 1` with `M₂ ≤ |π_n| / |π_{n+1}|` for all `n`. -/
+/-- **Assumption 2**, eq. (27): there is `M₂ > 1` with `M₂ ≤ |π_n| / |π_{n+1}|` for all `n ≥ 1`. -/
 def GeometricMeshDecay {T : ℝ} (π : ℕ → Partition T) : Prop :=
-  ∃ M₂ : ℝ, 1 < M₂ ∧ ∀ n, M₂ ≤ (π n).mesh / (π (n + 1)).mesh
+  ∃ M₂ : ℝ, 1 < M₂ ∧ ∀ n, 1 ≤ n → M₂ ≤ (π n).mesh / (π (n + 1)).mesh
 
 namespace GeometricMeshDecay
 
@@ -772,24 +833,24 @@ variable {T : ℝ} {d : ℕ}
 /-- **Theorem 5.2.** Let `π` satisfy Assumptions 1 and 2 and
 `F ∈ W^{2+,p}(ℝ^d) ∩ W^{2,1}(ℝ^d)`, `1 < p < ∞`. Then there is a polar set `E` such that for
 every starting point `x₀ ∉ E`, `ℙ_{x₀}(F ∈ 𝓦^2_{B,π}) = 1`. -/
-theorem theorem_5_2 (W : CanonicalWienerSpace d) {π : ℕ → Partition T} (hT : 0 < T)
+theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) :
-    ∃ E : Set (Rd d), IsBrownianPolar W E ∧ ∀ x₀ ∉ E,
-      ∀ᵐ ω ∂(W.P x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.pathOn ω) := by
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
+      ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.path ω) := by
   sorry
 
 /-- **Theorem 5.2** (equivalent form): for `x₀ ∉ E` a single deterministic sequence
 `F_m ∈ C^2_b ∩ W^{2,1}` works `ℙ_{x₀}`-almost surely. -/
-theorem theorem_5_2_deterministic (W : CanonicalWienerSpace d) {π : ℕ → Partition T}
+theorem theorem_5_2_deterministic {π : ℕ → Partition T}
     (hT : 0 < T) (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) :
-    ∃ E : Set (Rd d), IsBrownianPolar W E ∧ ∀ x₀ ∉ E,
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
-        (∀ m, ContDiffBounded 2 (Fm m) ∧ MemW 2 1 (Fm m)) ∧ ∀ᵐ ω ∂(W.P x₀),
-          (∀ t ∈ Icc 0 T, Tendsto (fun m => Fm m (CanonicalWienerSpace.pathOn ω t)) atTop
-            (𝓝 (F (CanonicalWienerSpace.pathOn ω t)))) ∧
-          Tendsto (fun m => occupationSeminorm π (CanonicalWienerSpace.pathOn ω)
+        (∀ m, 1 ≤ m → ContDiffBounded 2 (Fm m) ∧ MemW 2 1 (Fm m)) ∧ ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀),
+          (∀ t ∈ Icc 0 T, Tendsto (fun m => Fm m (CanonicalWienerSpace.path ω t)) atTop
+            (𝓝 (F (CanonicalWienerSpace.path ω t)))) ∧
+          Tendsto (fun m => occupationSeminorm π (CanonicalWienerSpace.path ω)
             (fun x => smoothHessian (Fm m) x - H x)) atTop (𝓝 0) := by
   sorry
 
@@ -803,40 +864,44 @@ section
 
 namespace IsItoIntegral
 
-variable {d : ℕ}
+variable {d : ℕ} {T : ℝ}
 
 set_option warn.classDefReducibility false in
-/-- The natural `σ`-algebra `𝓕_u = σ(B(v) : v ≤ u)` of the canonical process. -/
-def naturalSigma (d : ℕ) (u : ℝ≥0) : MeasurableSpace (ℝ≥0 → Rd d) :=
-  MeasurableSpace.comap (fun ω (v : Iic u) => ω v) inferInstance
+/-- The natural `σ`-algebra `𝓕_u = σ(B(v) : 0 ≤ v ≤ u)` of the canonical process on `Ω`. -/
+def naturalSigma (d : ℕ) (T u : ℝ) : MeasurableSpace (CanonicalWienerSpace d T) :=
+  MeasurableSpace.comap (fun ω (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ u}) => ω v) inferInstance
 
 /-- Value at time `u` of the elementary predictable integrand
 `∑_j ξ_j 1_{(s_j, s_{j+1}]}(u)`. -/
-def elementaryValue {k : ℕ} (s : Fin (k + 1) → ℝ≥0) (ξ : Fin k → (ℝ≥0 → Rd d) → Rd d)
-    (u : ℝ≥0) (ω : ℝ≥0 → Rd d) : Rd d :=
+def elementaryValue {k : ℕ} (s : Fin (k + 1) → ℝ) (ξ : Fin k → CanonicalWienerSpace d T → Rd d)
+    (u : ℝ) (ω : CanonicalWienerSpace d T) : Rd d :=
   ∑ j : Fin k, (Ioc (s j.castSucc) (s j.succ)).indicator (fun _ => ξ j ω) u
 
 /-- Elementary stochastic integral `∑_j ⟨ξ_j, B(s_{j+1}) - B(s_j)⟩`. -/
-def elementaryIntegral {k : ℕ} (s : Fin (k + 1) → ℝ≥0) (ξ : Fin k → (ℝ≥0 → Rd d) → Rd d)
-    (ω : ℝ≥0 → Rd d) : ℝ :=
-  ∑ j : Fin k, ⟪ξ j ω, ω (s j.succ) - ω (s j.castSucc)⟫
+def elementaryIntegral {k : ℕ} (s : Fin (k + 1) → ℝ)
+    (ξ : Fin k → CanonicalWienerSpace d T → Rd d) (ω : CanonicalWienerSpace d T) : ℝ :=
+  ∑ j : Fin k, ⟪ξ j ω, CanonicalWienerSpace.path ω (s j.succ) -
+    CanonicalWienerSpace.path ω (s j.castSucc)⟫
 
 end IsItoIntegral
 
-/-- `I` is (a version of) the stochastic Itô integral `∫_0^t G(B(s)) dB(s)` under `ℙ_x`
-(used in Proposition 5.3): there are elementary predictable integrands `H_n` on `[0, t]` with
-`∫_0^t |H_n(s) - G(B(s))|² ds → 0` in `ℙ_x`-probability whose elementary integrals converge to
-`I` in `ℙ_x`-probability. -/
-def IsItoIntegral {d : ℕ} (W : CanonicalWienerSpace d) (x : Rd d) (G : Rd d → Rd d) (t : ℝ≥0)
-    (I : (ℝ≥0 → Rd d) → ℝ) : Prop :=
-  ∃ (k : ℕ → ℕ) (s : ∀ n, Fin (k n + 1) → ℝ≥0) (ξ : ∀ n, Fin (k n) → (ℝ≥0 → Rd d) → Rd d),
+/-- `I` is (a version of) the stochastic Itô integral `∫_0^t G(B(s)) · dB(s)` under `ℙ_x`
+(Proposition 5.3), for the `d`-dimensional Brownian motion `B` and its natural filtration: there
+are elementary predictable integrands `H_n` on `[0, t]` with `∫_0^t |H_n(s) - G(B(s))|² ds → 0`
+in `ℙ_x`-probability whose elementary integrals converge to `I` in `ℙ_x`-probability (the
+localised `L²_loc` Itô integral, [KS91, §3.2.D], [RY99, IV.2]). -/
+def IsItoIntegral {d : ℕ} {T : ℝ} (x : Rd d) (G : Rd d → Rd d) (t : ℝ)
+    (I : CanonicalWienerSpace d T → ℝ) : Prop :=
+  ∃ (k : ℕ → ℕ) (s : ∀ n, Fin (k n + 1) → ℝ)
+    (ξ : ∀ n, Fin (k n) → CanonicalWienerSpace d T → Rd d),
     (∀ n, Monotone (s n) ∧ s n 0 = 0 ∧ s n (Fin.last (k n)) = t) ∧
-    (∀ n j, Measurable[IsItoIntegral.naturalSigma d (s n j.castSucc)] (ξ n j)) ∧
-    TendstoInMeasure (W.P x)
-      (fun n ω => ∫ u in (0 : ℝ)..(t : ℝ),
-        ‖IsItoIntegral.elementaryValue (s n) (ξ n) u.toNNReal ω - G (ω u.toNNReal)‖ ^ 2)
+    (∀ n j, Measurable[IsItoIntegral.naturalSigma d T (s n j.castSucc)] (ξ n j)) ∧
+    TendstoInMeasure (CanonicalWienerSpace.P x)
+      (fun n ω => ∫ u in (0 : ℝ)..t,
+        ‖IsItoIntegral.elementaryValue (s n) (ξ n) u ω - G (CanonicalWienerSpace.path ω u)‖ ^ 2)
       atTop (fun _ => 0) ∧
-    TendstoInMeasure (W.P x) (fun n => IsItoIntegral.elementaryIntegral (s n) (ξ n)) atTop I
+    TendstoInMeasure (CanonicalWienerSpace.P x)
+      (fun n => IsItoIntegral.elementaryIntegral (s n) (ξ n)) atTop I
 
 end
 
@@ -881,16 +946,16 @@ and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradi
 polar set `E` of starting points, the pathwise integral of Theorem 5.1 agrees `ℙ_x`-a.s. with
 the stochastic Itô integral, and for every `t ∈ [0, T]`
 `F(B(t)) - F(B(0)) = ∫_0^t ∇F(B(s)) dB(s) + ½ [∇F(B), B]_π(t)`, `ℙ_x`-a.s. -/
-theorem proposition_5_3 (W : CanonicalWienerSpace d) {π : ℕ → Partition T} (hT : 0 < T)
+theorem proposition_5_3 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) (hFloc : MemWLoc 1 2 F)
     {G : Rd d → Rd d} (hG : IsWeakGradient F G) :
-    ∃ E : Set (Rd d), IsBrownianPolar W E ∧ ∀ x₀ ∉ E,
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
-        ∀ t ∈ Icc 0 T, ∃ I : (ℝ≥0 → Rd d) → ℝ, IsItoIntegral W x₀ G t.toNNReal I ∧
-          ∀ᵐ ω ∂(W.P x₀), ∃ A : ApproximatingSequence π (CanonicalWienerSpace.pathOn ω) F H,
+        ∀ t ∈ Icc 0 T, ∃ I : CanonicalWienerSpace d T → ℝ, IsItoIntegral x₀ G t I ∧
+          ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∃ A : ApproximatingSequence π (CanonicalWienerSpace.path ω) F H,
             A.seq = Fm ∧ weakPathwiseIntegral A t = I ω ∧
-            F (ω t.toNNReal) - F (ω 0) = I ω + 1 / 2 * weakCovariation A t := by
+            F (CanonicalWienerSpace.path ω t) - F (CanonicalWienerSpace.path ω 0) = I ω + 1 / 2 * weakCovariation A t := by
   sorry
 
 end

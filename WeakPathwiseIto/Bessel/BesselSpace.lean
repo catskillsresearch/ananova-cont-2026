@@ -37,7 +37,7 @@ variable {d : ℕ}
 def norm (α : ℝ) (p : ℝ≥0∞) (F : Rd d → ℝ) : ℝ≥0∞ :=
   ⨅ (f : Rd d → ℝ) (_ : MemLp f p) (_ : F =ᵐ[volume] potential d α f), eLpNorm f p volume
 
-/-- Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`. -/
+/-- **Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`. -/
 theorem eLpNorm_potential_le {α : ℝ} (hα : 0 < α) {p : ℝ≥0∞} (hp : 1 ≤ p) {f : Rd d → ℝ}
     (hf : MemLp f p) :
     eLpNorm (potential d α f) p volume ≤ eLpNorm (besselKernel d α) 1 volume * eLpNorm f p volume := by

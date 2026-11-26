@@ -30,7 +30,7 @@ variable {T : ℝ} {d : ℕ}
 def Vanishes (ω : ℝ → Rd d) (π : ℕ → Partition T) : Prop :=
   Tendsto (fun n => pathOscillation ω (π n)) atTop (𝓝 0)
 
-/-- Section 3: if `|π_n| → 0` and `ω` is continuous, condition (6) holds. -/
+/-- **Subgoal** (Eq. (6)). Section 3: if `|π_n| → 0` and `ω` is continuous, condition (6) holds. -/
 theorem vanishes_of_mesh {ω : ℝ → Rd d} {π : ℕ → Partition T}
     (hω : ContinuousOn ω (Icc 0 T)) (hπ : Tendsto (fun n => (π n).mesh) atTop (𝓝 0)) :
     Vanishes ω π := by

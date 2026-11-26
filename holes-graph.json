@@ -1,19 +1,30 @@
 {
- "updated": "2026-11-26T16:54:21Z",
+ "updated": "2026-11-26T17:21:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 52,
+ "sorryCount": 62,
  "counts": {
-  "open": 10,
-  "blocked": 25,
-  "done": 24
+  "open": 17,
+  "blocked": 52,
+  "done": 38
  },
+ "goalCounts": {
+  "open": 5,
+  "blocked": 31,
+  "done": 29
+ },
+ "subgoalCounts": {
+  "open": 12,
+  "blocked": 21,
+  "done": 9
+ },
+ "untagged": [],
  "legend": {
   "open": "All imported modules done — prove / verify next",
   "blocked": "Waiting on unfinished imported modules",
   "done": "Verified (listed in VERIFIED, no sorry, deps done)"
  },
  "notes": [
-  "File-level board: one node per WeakPathwiseIto .lean module (root barrel omitted).",
+  "Goals: one node per WeakPathwiseIto .lean module (root barrel omitted). Subgoals: one node per helper lemma/def (Module::Name), with a dashed outline and an edge into the goal that depends on it.",
   "Hard edge B→A: A directly imports B. Drawn edges are transitively reduced; status uses all direct imports.",
   "Paper goals: Main.Theorem51, Main.Theorem52, Main.Proposition53.",
   "Regenerate with: python3 scripts/build_holes.py"
@@ -38,6 +49,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -64,6 +76,46 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Appendix.HeatKernel::heatKernel.integral_div_le",
+    "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+    "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [
+    "Appendix.HeatKernel::heatKernel.integral_div_le",
+    "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+    "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+    "Main.GeometricMeshDecay"
+   ],
+   "detail": "3 sorry: integral_le_potentialProfile, integral_div_le, riemannSum_le_potentialProfile"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "label": "integral_div_le",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eqs. (32",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "heatKernel.integral_div_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`.",
    "status": "blocked",
    "deps": [
     "Appendix.PotentialProfile",
@@ -75,7 +127,73 @@
    "blockers": [
     "Main.GeometricMeshDecay"
    ],
-   "detail": "3 sorry: integral_le_potentialProfile, integral_div_le, riemannSum_le_potentialProfile"
+   "detail": "sorry: heatKernel.integral_div_le — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "label": "integral_le_potentialProfile",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eqs. (32",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "heatKernel.integral_le_potentialProfile"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [
+    "Main.GeometricMeshDecay"
+   ],
+   "detail": "sorry: heatKernel.integral_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+   "label": "riemannSum_le_potentialProfile",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eqs. (32",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "heatKernel.riemannSum_le_potentialProfile"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2, `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [
+    "Main.GeometricMeshDecay"
+   ],
+   "detail": "sorry: heatKernel.riemannSum_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.LemmaA1",
@@ -94,15 +212,14 @@
    },
    "paperGoal": false,
    "verified": false,
-   "status": "blocked",
+   "kind": "goal",
+   "status": "open",
    "deps": [
     "Appendix.GaussianMoment",
     "Bessel.CanonicalWienerSpace",
     "Occupation.NormalizedQuadraticDensity"
    ],
-   "blockers": [
-    "Bessel.CanonicalWienerSpace"
-   ],
+   "blockers": [],
    "detail": "2 sorry: lemma_A_1, lemma_A_1_bounded"
   },
   {
@@ -121,6 +238,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Appendix.PotentialProfile",
@@ -143,10 +261,44 @@
     "lemma_B_2"
    ],
    "declKinds": {
-    "theorem": 1
+    "theorem": 2
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Appendix.LemmaB2::lemma_B_2_literal",
+    "Bessel.IsBrownianPolar",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay",
+    "Occupation.DiscreteSeminorm"
+   ],
+   "blockers": [
+    "Appendix.LemmaB2::lemma_B_2_literal",
+    "Bessel.IsBrownianPolar",
+    "Main.GeometricMeshDecay"
+   ],
+   "detail": "1 sorry: lemma_B_2"
+  },
+  {
+   "id": "Appendix.LemmaB2::lemma_B_2_literal",
+   "label": "lemma_B_2_literal",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2, literal reading",
+   "parentGoal": "Appendix.LemmaB2",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaB2.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2, literal reading): the conclusion of Lemma B.2 with `‖h‖_{n,1,B}` read literally as printed, `∫_0^T ∑_i (|h(B(t_i))| + |h(B(t_{i+1}))|)(t_{i+1} - t_i) dt` (an integral of a function constant in `t`, i.e. `T` times the Riemann sum).",
    "status": "blocked",
    "deps": [
     "Bessel.IsBrownianPolar",
@@ -158,7 +310,7 @@
     "Bessel.IsBrownianPolar",
     "Main.GeometricMeshDecay"
    ],
-   "detail": "1 sorry: lemma_B_2"
+   "detail": "proved: lemma_B_2_literal — subgoal of Lemma B.2, literal reading (in Appendix.LemmaB2)"
   },
   {
    "id": "Appendix.PotentialProfile",
@@ -174,6 +326,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [],
    "blockers": [],
@@ -193,6 +346,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [],
    "blockers": [],
@@ -215,10 +369,62 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.FunctionOscillation::functionOscillation.tendsto_zero"
+   ],
+   "blockers": [
+    "Basic.FunctionOscillation::functionOscillation.tendsto_zero"
+   ],
+   "detail": "1 sorry: tendsto_zero"
+  },
+  {
+   "id": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
+   "label": "tendsto_zero",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ",
+   "parentGoal": "Basic.FunctionOscillation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/FunctionOscillation.lean",
+   "sorryCount": 1,
+   "holes": [
+    "functionOscillation.tendsto_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, Section 4 osc(φ,δ)). `osc(φ, δ) → 0` as `δ → 0` for a continuous compactly supported `φ`.",
    "status": "open",
    "deps": [],
    "blockers": [],
-   "detail": "1 sorry: tendsto_zero"
+   "detail": "sorry: functionOscillation.tendsto_zero — subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ (in Basic.FunctionOscillation)"
+  },
+  {
+   "id": "Basic.IsCubeOrBall",
+   "label": "IsCubeOrBall",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "Section 2.1 cube or ball Q",
+   "file": "WeakPathwiseIto/Basic/IsCubeOrBall.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 3
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Basic.Partition",
@@ -231,15 +437,65 @@
    "holes": [],
    "declKinds": {
     "structure": 1,
-    "def": 4,
+    "def": 5,
+    "theorem": 2
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Partition::Partition.left_lt_right",
+    "Basic.Partition::Partition.nonneg"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Basic.Partition::Partition.left_lt_right",
+   "label": "left_lt_right",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Section 3 partitions",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
+   "doc": "**Subgoal** (Section 3 partitions).",
    "status": "done",
    "deps": [],
    "blockers": [],
-   "detail": "Verified (builds, no sorry)."
+   "detail": "proved: Partition.left_lt_right — subgoal of Section 3 partitions (in Basic.Partition)"
+  },
+  {
+   "id": "Basic.Partition::Partition.nonneg",
+   "label": "nonneg",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Section 3 partitions",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 3 partitions): the horizon of a partition of `[0, T]` is nonnegative.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.nonneg — subgoal of Section 3 partitions (in Basic.Partition)"
   },
   {
    "id": "Basic.Rd",
@@ -256,6 +512,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [],
    "blockers": [],
@@ -275,6 +532,29 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Basic.WeakLpTendsto",
+   "label": "WeakLpTendsto",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "Remarks 4.4/4.5 weak L^r convergence",
+   "file": "WeakPathwiseIto/Basic/WeakLpTendsto.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -302,6 +582,44 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+    "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+    "Bessel.BesselSpace"
+   ],
+   "blockers": [
+    "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+    "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+    "Bessel.BesselSpace"
+   ],
+   "detail": "4 sorry: iUnion_le, IsNull.iUnion, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+   "label": "iUnion",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable unions",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.IsNull.iUnion"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar.",
    "status": "blocked",
    "deps": [
     "Bessel.BesselSpace"
@@ -309,7 +627,94 @@
    "blockers": [
     "Bessel.BesselSpace"
    ],
-   "detail": "4 sorry: iUnion_le, IsNull.iUnion, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "sorry: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity)"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+   "label": "one_two_of_two_one",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Lemma B.1 proof, [AM71]",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.IsNull.one_two_of_two_one"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.1 proof, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Lemma B.1: every `(2, 1)`-polar set is `(1, 2)`-polar.",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselSpace"
+   ],
+   "blockers": [
+    "Bessel.BesselSpace"
+   ],
+   "detail": "sorry: besselCapacity.IsNull.one_two_of_two_one — subgoal of Lemma B.1 proof, [AM71] (in Bessel.BesselCapacity)"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+   "label": "one_two_of_two_p",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Appendix C proof of Theorem 5.2, [AM71]",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.IsNull.one_two_of_two_p"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C proof of Theorem 5.2, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Appendix C: for `p > 1`, every `(2, p)`-polar set is `(1, 2)`-polar.",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselSpace"
+   ],
+   "blockers": [
+    "Bessel.BesselSpace"
+   ],
+   "detail": "sorry: besselCapacity.IsNull.one_two_of_two_p — subgoal of Appendix C proof of Theorem 5.2, [AM71] (in Bessel.BesselCapacity)"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "label": "iUnion_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity [Fuk93]",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.iUnion_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93].",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselSpace"
+   ],
+   "blockers": [
+    "Bessel.BesselSpace"
+   ],
+   "detail": "sorry: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity)"
   },
   {
    "id": "Bessel.BesselKernel",
@@ -331,12 +736,130 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Rd",
+    "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+    "Bessel.BesselKernel::besselKernel.fourier_eq",
+    "Bessel.BesselKernel::besselKernel.integrable",
+    "Bessel.BesselKernel::besselKernel.nonneg"
+   ],
+   "blockers": [
+    "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+    "Bessel.BesselKernel::besselKernel.fourier_eq",
+    "Bessel.BesselKernel::besselKernel.integrable",
+    "Bessel.BesselKernel::besselKernel.nonneg"
+   ],
+   "detail": "4 sorry: fourier_eq, nonneg, integrable, asymptotic_origin"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+   "label": "asymptotic_origin",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.asymptotic_origin"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`.",
    "status": "open",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "4 sorry: fourier_eq, nonneg, integrable, asymptotic_origin"
+   "detail": "sorry: besselKernel.asymptotic_origin — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.fourier_eq",
+   "label": "fourier_eq",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.fourier_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals `(1 + 4π²|ξ|²)^{-α/2}`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.fourier_eq — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.integrable",
+   "label": "integrable",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integrable"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integrable — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.nonneg",
+   "label": "nonneg",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.nonneg"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.nonneg — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselSpace",
@@ -355,6 +878,38 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselKernel",
+    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+   ],
+   "blockers": [
+    "Bessel.BesselKernel",
+    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+   ],
+   "detail": "1 sorry: eLpNorm_potential_le"
+  },
+  {
+   "id": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "label": "eLpNorm_potential_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young's inequality",
+   "parentGoal": "Bessel.BesselSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.eLpNorm_potential_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`.",
    "status": "blocked",
    "deps": [
     "Bessel.BesselKernel"
@@ -362,7 +917,7 @@
    "blockers": [
     "Bessel.BesselKernel"
    ],
-   "detail": "1 sorry: eLpNorm_potential_le"
+   "detail": "sorry: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.CanonicalWienerSpace",
@@ -371,23 +926,21 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 Wiener space",
    "file": "WeakPathwiseIto/Bessel/CanonicalWienerSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "nonempty"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
-    "structure": 1,
-    "def": 1,
-    "theorem": 1
+    "abbrev": 1,
+    "def": 5
    },
    "paperGoal": false,
-   "verified": false,
-   "status": "open",
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "1 sorry: nonempty"
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.IsBrownianPolar",
@@ -407,16 +960,80 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselCapacity",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+    "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull"
+   ],
+   "blockers": [
+    "Bessel.BesselCapacity",
+    "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+    "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull"
+   ],
+   "detail": "2 sorry: iff_isNull, iUnion"
+  },
+  {
+   "id": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+   "label": "iUnion",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.8, countable unions",
+   "parentGoal": "Bessel.IsBrownianPolar",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/IsBrownianPolar.lean",
+   "sorryCount": 1,
+   "holes": [
+    "IsBrownianPolar.iUnion"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.8, countable unions). A countable union of polar sets is polar.",
    "status": "blocked",
    "deps": [
     "Bessel.BesselCapacity",
     "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [
+    "Bessel.BesselCapacity"
+   ],
+   "detail": "sorry: IsBrownianPolar.iUnion — subgoal of Definition 2.8, countable unions (in Bessel.IsBrownianPolar)"
+  },
+  {
+   "id": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
+   "label": "iff_isNull",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.8, [Fuk93, p. 25]",
+   "parentGoal": "Bessel.IsBrownianPolar",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/IsBrownianPolar.lean",
+   "sorryCount": 1,
+   "holes": [
+    "IsBrownianPolar.iff_isNull"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.8, [Fuk93, p. 25]). [Fuk93, p. 25]: `E` is polar iff `E` is `(1, 2)`-polar.",
+   "status": "blocked",
+   "deps": [
     "Bessel.BesselCapacity",
     "Bessel.CanonicalWienerSpace"
    ],
-   "detail": "2 sorry: iff_isNull, iUnion"
+   "blockers": [
+    "Bessel.BesselCapacity"
+   ],
+   "detail": "sorry: IsBrownianPolar.iff_isNull — subgoal of Definition 2.8, [Fuk93, p. 25] (in Bessel.IsBrownianPolar)"
   },
   {
    "id": "Bessel.Theorem26",
@@ -434,6 +1051,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Bessel.BesselSpace",
@@ -460,6 +1078,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Bessel.BesselCapacity",
@@ -470,6 +1089,142 @@
     "Bessel.BesselCapacity"
    ],
    "detail": "1 sorry: theorem_2_9"
+  },
+  {
+   "id": "Bessel.WienerLawExists",
+   "label": "WienerLawExists",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "Section 2.2 ℙ_x exists (subgoals)",
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 2,
+   "holes": [
+    "isLaw_unique",
+    "isProbabilityMeasure_P"
+   ],
+   "declKinds": {
+    "theorem": 4
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
+   ],
+   "detail": "2 sorry: isLaw_unique, isProbabilityMeasure_P"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+   "label": "exists_isLaw",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space): the law `ℙ_x` of Brownian motion started at `x` exists on `C([0, T], ℝ^d)`. To be proved from the vendored `BrownianMotion` construction (`ProbabilityTheory.brownian`, `isBrownianReal_brownian`, `continuous_brownian`) on the product `Measure.pi` of `d` copies of `gaussianLimit`.",
+   "status": "done",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "proved: CanonicalWienerSpace.exists_isLaw — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
+   "label": "isLaw_P",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space): `ℙ_x` is the law of Brownian motion started at `x`.",
+   "status": "done",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "proved: CanonicalWienerSpace.isLaw_P — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+   "label": "isLaw_unique",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.isLaw_unique"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space): the law of Brownian motion is unique (finite dimensional distributions determine the law on `C([0, T], ℝ^d)`).",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.isLaw_unique — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "label": "isProbabilityMeasure_P",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.isProbabilityMeasure_P"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space): `ℙ_x` is a probability measure.",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.isProbabilityMeasure_P — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
   },
   {
    "id": "Main.BalancedPartitions",
@@ -485,6 +1240,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition"
@@ -510,12 +1266,72 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+    "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
+   ],
+   "blockers": [
+    "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+    "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
+   ],
+   "detail": "2 sorry: summable_mesh, sum_inv_mesh_le"
+  },
+  {
+   "id": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+   "label": "sum_inv_mesh_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Assumption 2, eq. (31",
+   "parentGoal": "Main.GeometricMeshDecay",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
+   "sorryCount": 1,
+   "holes": [
+    "GeometricMeshDecay.sum_inv_mesh_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Assumption 2, eq. (31)). Eq. (31): `1/|π_1| + ⋯ + 1/|π_n| ≤ M₃ / |π_n|`.",
    "status": "open",
    "deps": [
     "Basic.Partition"
    ],
    "blockers": [],
-   "detail": "2 sorry: summable_mesh, sum_inv_mesh_le"
+   "detail": "sorry: GeometricMeshDecay.sum_inv_mesh_le — subgoal of Assumption 2, eq. (31 (in Main.GeometricMeshDecay)"
+  },
+  {
+   "id": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
+   "label": "summable_mesh",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Assumption 2, eq. (30",
+   "parentGoal": "Main.GeometricMeshDecay",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
+   "sorryCount": 1,
+   "holes": [
+    "GeometricMeshDecay.summable_mesh"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Assumption 2, eq. (30)). Eq. (30): `∑_{n ≥ 1} |π_n| < ∞`.",
+   "status": "open",
+   "deps": [
+    "Basic.Partition"
+   ],
+   "blockers": [],
+   "detail": "sorry: GeometricMeshDecay.summable_mesh — subgoal of Assumption 2, eq. (30 (in Main.GeometricMeshDecay)"
   },
   {
    "id": "Main.IsItoIntegral",
@@ -531,13 +1347,12 @@
    },
    "paperGoal": false,
    "verified": true,
-   "status": "blocked",
+   "kind": "goal",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
    ],
-   "blockers": [
-    "Bessel.CanonicalWienerSpace"
-   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -556,6 +1371,7 @@
    },
    "paperGoal": true,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Main.IsItoIntegral",
@@ -566,12 +1382,38 @@
     "Sobolev.MemWLoc"
    ],
    "blockers": [
-    "Main.IsItoIntegral",
     "Main.Theorem52",
     "Main.WeakCovariation",
     "Main.WeakPathwiseIntegral"
    ],
    "detail": "1 sorry: proposition_5_3"
+  },
+  {
+   "id": "Main.Remark54",
+   "label": "Remark54",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "Remark 5.4",
+   "file": "WeakPathwiseIto/Main/Remark54.lean",
+   "sorryCount": 3,
+   "holes": [
+    "remark_5_4_dim_one",
+    "remark_5_4_not_implied",
+    "remark_5_4_sufficient"
+   ],
+   "declKinds": {
+    "theorem": 4
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "open",
+   "deps": [
+    "Sobolev.MemW2Plus",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [],
+   "detail": "3 sorry: remark_5_4_dim_one, remark_5_4_not_implied, remark_5_4_sufficient"
   },
   {
    "id": "Main.Theorem51",
@@ -591,6 +1433,7 @@
    },
    "paperGoal": true,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Main.WeakCovariation",
@@ -624,6 +1467,7 @@
    },
    "paperGoal": true,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Bessel.IsBrownianPolar",
@@ -653,6 +1497,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Occupation.ApproximatingSequence",
@@ -677,6 +1522,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Occupation.ApproximatingSequence",
@@ -701,6 +1547,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -711,6 +1558,28 @@
    "blockers": [
     "Occupation.OccupationSeminorm"
    ],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Occupation.DiscreteLocalTime",
+   "label": "DiscreteLocalTime",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "Remark 4.5 λ^{n,±}_T [DOS18]",
+   "file": "WeakPathwiseIto/Occupation/DiscreteLocalTime.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 3
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Partition"
+   ],
+   "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
@@ -733,6 +1602,46 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+    "Occupation.OccupationConstant"
+   ],
+   "detail": "4 sorry: piece_nonneg, integral_piece, integrable_piece, integral_eq"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "label": "integrable_piece",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.integrable_piece"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7)).",
    "status": "blocked",
    "deps": [
     "Basic.Partition",
@@ -742,7 +1651,100 @@
    "blockers": [
     "Occupation.OccupationConstant"
    ],
-   "detail": "4 sorry: piece_nonneg, integral_piece, integrable_piece, integral_eq"
+   "detail": "sorry: discreteOccupationDensity.integrable_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "label": "integral_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.integral_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`.",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [
+    "Occupation.OccupationConstant"
+   ],
+   "detail": "sorry: discreteOccupationDensity.integral_eq — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "label": "integral_piece",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.integral_piece"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`.",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [
+    "Occupation.OccupationConstant"
+   ],
+   "detail": "sorry: discreteOccupationDensity.integral_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+  },
+  {
+   "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "label": "piece_nonneg",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.DiscreteOccupationDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "discreteOccupationDensity.piece_nonneg"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7)).",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Occupation.IncrementBall",
+    "Occupation.OccupationConstant"
+   ],
+   "blockers": [
+    "Occupation.OccupationConstant"
+   ],
+   "detail": "sorry: discreteOccupationDensity.piece_nonneg — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteSeminorm",
@@ -758,6 +1760,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition",
@@ -780,6 +1783,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -803,6 +1807,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
@@ -830,6 +1835,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition",
@@ -855,12 +1861,43 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Rd",
+    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
+   ],
+   "blockers": [
+    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
+   ],
+   "detail": "1 sorry: eq_inv_integral"
+  },
+  {
+   "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+   "label": "eq_inv_integral",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (7",
+   "parentGoal": "Occupation.OccupationConstant",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationConstant.eq_inv_integral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (7) c_d). Eq. (7): `c_d = [∫_{B(0,1/2)} (|x - e_1/2|^{2-d} + |x + e_1/2|^{2-d}) dx]⁻¹`.",
    "status": "open",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "1 sorry: eq_inv_integral"
+   "detail": "sorry: occupationConstant.eq_inv_integral — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationSeminorm",
@@ -881,6 +1918,47 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+    "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+    "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+    "Smooth.PathOscillation"
+   ],
+   "detail": "3 sorry: add_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "label": "add_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Section 4.2 seminorm",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.add_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 4.2 seminorm).",
    "status": "blocked",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
@@ -893,7 +1971,75 @@
     "Occupation.DiscreteOccupationDensity",
     "Smooth.PathOscillation"
    ],
-   "detail": "3 sorry: add_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
+   "detail": "sorry: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "label": "le_limsup_discreteSeminorm",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (11",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.le_limsup_discreteSeminorm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.",
+   "status": "blocked",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [
+    "Occupation.DiscreteOccupationDensity",
+    "Smooth.PathOscillation"
+   ],
+   "detail": "sorry: occupationSeminorm.le_limsup_discreteSeminorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "label": "lintegral_le_maximal",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.lintegral_le_maximal"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`.",
+   "status": "blocked",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [
+    "Occupation.DiscreteOccupationDensity",
+    "Smooth.PathOscillation"
+   ],
+   "detail": "sorry: occupationSeminorm.lintegral_le_maximal — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace",
@@ -912,6 +2058,39 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Occupation.ApproximatingSequence",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [
+    "Occupation.ApproximatingSequence",
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
+   ],
+   "detail": "1 sorry: contDiffBounded_subset"
+  },
+  {
+   "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "label": "contDiffBounded_subset",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Definition 4.3",
+   "parentGoal": "Occupation.PathwiseSobolevSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "PathwiseSobolevSpace.contDiffBounded_subset"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`.",
    "status": "blocked",
    "deps": [
     "Occupation.ApproximatingSequence",
@@ -920,7 +2099,7 @@
    "blockers": [
     "Occupation.ApproximatingSequence"
    ],
-   "detail": "1 sorry: contDiffBounded_subset"
+   "detail": "sorry: PathwiseSobolevSpace.contDiffBounded_subset — subgoal of Definition 4.3 (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.Remark44",
@@ -929,25 +2108,63 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Remark 4.4",
    "file": "WeakPathwiseIto/Occupation/Remark44.lean",
-   "sorryCount": 1,
+   "sorryCount": 3,
    "holes": [
+    "remark_4_4_density",
+    "remark_4_4_seminorm",
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 1
+    "theorem": 3
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
+    "Basic.WeakLpTendsto",
     "Occupation.PathwiseSobolevSpace",
-    "Smooth.HasQuadraticVariation"
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
    ],
    "blockers": [
     "Occupation.PathwiseSobolevSpace",
-    "Smooth.HasQuadraticVariation"
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
    ],
-   "detail": "1 sorry: remark_4_4"
+   "detail": "3 sorry: remark_4_4_density, remark_4_4_seminorm, remark_4_4"
+  },
+  {
+   "id": "Occupation.Remark45",
+   "label": "Remark45",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "Remark 4.5",
+   "file": "WeakPathwiseIto/Occupation/Remark45.lean",
+   "sorryCount": 4,
+   "holes": [
+    "remark_4_5_identity",
+    "remark_4_5_seminorm",
+    "remark_4_5_subset",
+    "remark_4_5_bounded"
+   ],
+   "declKinds": {
+    "theorem": 5
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.Theorem51",
+    "Occupation.DiscreteLocalTime",
+    "Occupation.Remark44"
+   ],
+   "blockers": [
+    "Main.Theorem51",
+    "Occupation.Remark44"
+   ],
+   "detail": "4 sorry: remark_4_5_identity, remark_4_5_seminorm, remark_4_5_subset, remark_4_5_bounded"
   },
   {
    "id": "Occupation.WeightedOccupationMeasure",
@@ -966,6 +2183,38 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+    "Smooth.HasQuadraticVariation"
+   ],
+   "blockers": [
+    "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+    "Smooth.HasQuadraticVariation"
+   ],
+   "detail": "1 sorry: integral_eq"
+  },
+  {
+   "id": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+   "label": "integral_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2",
+   "parentGoal": "Occupation.WeightedOccupationMeasure",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/WeightedOccupationMeasure.lean",
+   "sorryCount": 1,
+   "holes": [
+    "weightedOccupationMeasure.integral_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2). `∫ φ dμ^T_ω = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for continuous `φ`.",
    "status": "blocked",
    "deps": [
     "Smooth.HasQuadraticVariation"
@@ -973,7 +2222,7 @@
    "blockers": [
     "Smooth.HasQuadraticVariation"
    ],
-   "detail": "1 sorry: integral_eq"
+   "detail": "sorry: weightedOccupationMeasure.integral_eq — subgoal of Lemma 4.2 (in Occupation.WeightedOccupationMeasure)"
   },
   {
    "id": "Smooth.Corollary32",
@@ -991,6 +2240,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -1019,6 +2269,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition"
@@ -1040,6 +2291,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition",
@@ -1064,6 +2316,43 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.FollmerItoFormula::follmer_ito_formula",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [
+    "Smooth.FollmerItoFormula::follmer_ito_formula",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "detail": "1 sorry: follmer_ito_formula"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "label": "follmer_ito_formula",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Corollary 3.2 proof, [Föl81]",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Corollary 3.2 proof, [Föl81]). Föllmer's pathwise Itô formula [Föl81], used in the proof of Corollary 3.2: for `f ∈ C^2_b` the left Riemann sums converge and `f(ω(T)) = f(ω(0)) + ∫_0^T ∇f(ω) d^π ω + ½ ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`.",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -1076,7 +2365,7 @@
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation"
    ],
-   "detail": "1 sorry: follmer_ito_formula"
+   "detail": "sorry: follmer_ito_formula — subgoal of Corollary 3.2 proof, [Föl81] (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.HasQuadraticVariation",
@@ -1091,18 +2380,131 @@
    ],
    "declKinds": {
     "structure": 1,
-    "def": 4,
-    "theorem": 2
+    "def": 5,
+    "theorem": 3
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Rd",
+    "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
+    "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+    "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+    "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+    "Smooth.HasScalarQuadraticVariation"
+   ],
+   "blockers": [
+    "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross"
+   ],
+   "detail": "1 sorry: tendsto_cross"
+  },
+  {
+   "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
+   "label": "tendsto_cross",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Section 3 Q^π(ℝ^d",
+   "parentGoal": "Smooth.HasQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
+   "sorryCount": 1,
+   "holes": [
+    "HasQuadraticVariation.tendsto_cross"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 3 Q^π(ℝ^d)). Section 3: the discrete cross sums `∑_{t_{k+1} ≤ t} (ω^i(t_{k+1}) - ω^i(t_k))(ω^j(t_{k+1}) - ω^j(t_k))` converge to `[ω]_{ij}(t)`.",
    "status": "open",
    "deps": [
     "Basic.Rd",
     "Smooth.HasScalarQuadraticVariation"
    ],
    "blockers": [],
-   "detail": "1 sorry: tendsto_cross"
+   "detail": "sorry: HasQuadraticVariation.tendsto_cross — subgoal of Section 3 Q^π(ℝ^d (in Smooth.HasQuadraticVariation)"
+  },
+  {
+   "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+   "label": "traceExt",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Lemma 4.2 trace measure",
+   "parentGoal": "Smooth.HasQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 trace measure): `tr [ω]_π` extended constantly outside `[0, T]`.",
+   "status": "done",
+   "deps": [
+    "Basic.Rd",
+    "Smooth.HasScalarQuadraticVariation"
+   ],
+   "blockers": [],
+   "detail": "proved: HasQuadraticVariation.traceExt — subgoal of Lemma 4.2 trace measure (in Smooth.HasQuadraticVariation)"
+  },
+  {
+   "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+   "label": "traceExt_monotone",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Lemma 4.2 trace measure",
+   "parentGoal": "Smooth.HasQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 trace measure): the extended trace is monotone.",
+   "status": "done",
+   "deps": [
+    "Basic.Rd",
+    "Smooth.HasScalarQuadraticVariation"
+   ],
+   "blockers": [],
+   "detail": "proved: HasQuadraticVariation.traceExt_monotone — subgoal of Lemma 4.2 trace measure (in Smooth.HasQuadraticVariation)"
+  },
+  {
+   "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+   "label": "trace_monotoneOn",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Lemma 4.2 trace measure",
+   "parentGoal": "Smooth.HasQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 trace measure): `tr [ω]_π` is increasing on `[0, T]`.",
+   "status": "done",
+   "deps": [
+    "Basic.Rd",
+    "Smooth.HasScalarQuadraticVariation"
+   ],
+   "blockers": [],
+   "detail": "proved: HasQuadraticVariation.trace_monotoneOn — subgoal of Lemma 4.2 trace measure (in Smooth.HasQuadraticVariation)"
   },
   {
    "id": "Smooth.HasScalarQuadraticVariation",
@@ -1115,16 +2517,70 @@
    "holes": [],
    "declKinds": {
     "structure": 1,
-    "def": 2
+    "def": 3,
+    "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Smooth.DiscreteQuadraticVariation",
+    "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt",
+    "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt",
+   "label": "qvExt",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Eq. (5",
+   "parentGoal": "Smooth.HasScalarQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasScalarQuadraticVariation.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (5) Stieltjes measure): `[x]_π` extended constantly outside `[0, T]`, `t ↦ [x]_π(max 0 (min t T))`, a monotone function on `ℝ` carrying the measure `d[x]_π`.",
    "status": "done",
    "deps": [
     "Smooth.DiscreteQuadraticVariation"
    ],
    "blockers": [],
-   "detail": "Verified (builds, no sorry)."
+   "detail": "proved: HasScalarQuadraticVariation.qvExt — subgoal of Eq. (5 (in Smooth.HasScalarQuadraticVariation)"
+  },
+  {
+   "id": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone",
+   "label": "qvExt_monotone",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Eq. (5",
+   "parentGoal": "Smooth.HasScalarQuadraticVariation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/HasScalarQuadraticVariation.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (5) Stieltjes measure): the extension `qvExt` is monotone.",
+   "status": "done",
+   "deps": [
+    "Smooth.DiscreteQuadraticVariation"
+   ],
+   "blockers": [],
+   "detail": "proved: HasScalarQuadraticVariation.qvExt_monotone — subgoal of Eq. (5 (in Smooth.HasScalarQuadraticVariation)"
   },
   {
    "id": "Smooth.PathOscillation",
@@ -1143,13 +2599,45 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Partition",
+    "Basic.Rd",
+    "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
+   ],
+   "blockers": [
+    "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
+   ],
+   "detail": "1 sorry: vanishes_of_mesh"
+  },
+  {
+   "id": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
+   "label": "vanishes_of_mesh",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Eq. (6",
+   "parentGoal": "Smooth.PathOscillation",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/PathOscillation.lean",
+   "sorryCount": 1,
+   "holes": [
+    "pathOscillation.vanishes_of_mesh"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (6)). Section 3: if `|π_n| → 0` and `ω` is continuous, condition (6) holds.",
    "status": "open",
    "deps": [
     "Basic.Partition",
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "1 sorry: vanishes_of_mesh"
+   "detail": "sorry: pathOscillation.vanishes_of_mesh — subgoal of Eq. (6 (in Smooth.PathOscillation)"
   },
   {
    "id": "Smooth.PathwiseCovariation",
@@ -1165,6 +2653,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Partition",
@@ -1189,6 +2678,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -1216,6 +2706,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -1237,6 +2728,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -1258,6 +2750,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.IsWeakDerivative"
@@ -1279,6 +2772,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.IsWeakDerivative"
@@ -1302,8 +2796,10 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "open",
    "deps": [
+    "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
@@ -1323,6 +2819,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -1340,10 +2837,11 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "def": 1
+    "def": 3
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.IsWeakDerivative"
@@ -1365,6 +2863,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.MemW2PlusS"
@@ -1386,6 +2885,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.IsWeakHessian",
@@ -1408,6 +2908,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Sobolev.IsWeakDerivative"
@@ -1429,6 +2930,7 @@
    },
    "paperGoal": false,
    "verified": true,
+   "kind": "goal",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -1453,8 +2955,10 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "open",
    "deps": [
+    "Basic.IsCubeOrBall",
     "Sobolev.IsWeakGradient",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW",
@@ -1480,6 +2984,7 @@
    },
    "paperGoal": false,
    "verified": false,
+   "kind": "goal",
    "status": "open",
    "deps": [
     "Sobolev.IsWeakGradient",
@@ -1499,8 +3004,43 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaB2::lemma_B_2_literal",
+   "to": "Appendix.LemmaB2",
+   "kind": "subgoal"
+  },
+  {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "kind": "hard"
   },
   {
@@ -1525,12 +3065,47 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Smooth.Proposition31",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
+   "to": "Basic.FunctionOscillation",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21",
    "kind": "hard"
   },
   {
    "from": "Basic.Partition",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "kind": "hard"
   },
   {
@@ -1545,7 +3120,42 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteLocalTime",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
    "kind": "hard"
   },
   {
@@ -1575,8 +3185,23 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Smooth.PathwiseCovariation",
    "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition::Partition.left_lt_right",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Basic.Partition::Partition.nonneg",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
   },
   {
    "from": "Basic.Rd",
@@ -1590,12 +3215,57 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Basic.IsCubeOrBall",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Basic.SmoothHessian",
    "kind": "hard"
   },
   {
    "from": "Basic.Rd",
+   "to": "Basic.WeakLpTendsto",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.nonneg",
    "kind": "hard"
   },
   {
@@ -1625,6 +3295,11 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Smooth.FollmerIntegral",
    "kind": "hard"
   },
@@ -1635,7 +3310,32 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Smooth.PathOscillation",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
    "kind": "hard"
   },
   {
@@ -1674,8 +3374,28 @@
    "kind": "hard"
   },
   {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselCapacity",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselCapacity",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "kind": "hard"
   },
   {
@@ -1684,9 +3404,54 @@
    "kind": "hard"
   },
   {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselKernel",
    "to": "Bessel.BesselSpace",
    "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselKernel",
+   "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_eq",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrable",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.nonneg",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
   },
   {
    "from": "Bessel.BesselSpace",
@@ -1695,8 +3460,33 @@
   },
   {
    "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
    "to": "Bessel.Theorem26",
    "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "to": "Bessel.BesselSpace",
+   "kind": "subgoal"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
@@ -1706,6 +3496,41 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.IsBrownianPolar",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
    "kind": "hard"
   },
   {
@@ -1725,12 +3550,62 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52",
    "kind": "hard"
   },
   {
+   "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+   "to": "Bessel.IsBrownianPolar",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
+   "to": "Bessel.IsBrownianPolar",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "kind": "hard"
   },
   {
@@ -1740,6 +3615,11 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Main.Theorem52",
    "kind": "hard"
   },
@@ -1750,17 +3630,52 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Appendix.LemmaB2",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal",
    "kind": "hard"
   },
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52",
    "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+   "to": "Main.GeometricMeshDecay",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
+   "to": "Main.GeometricMeshDecay",
+   "kind": "subgoal"
   },
   {
    "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51",
+   "to": "Occupation.Remark45",
    "kind": "hard"
   },
   {
@@ -1804,6 +3719,16 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.ApproximatingSequence",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.Lemma42",
    "kind": "hard"
@@ -1814,8 +3739,48 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Appendix.LemmaB2",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal",
    "kind": "hard"
   },
   {
@@ -1824,8 +3789,43 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
    "kind": "hard"
   },
   {
@@ -1839,14 +3839,69 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity",
    "kind": "hard"
   },
   {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+   "to": "Occupation.OccupationConstant",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationSeminorm",
    "to": "Occupation.ApproximatingSequence",
    "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
@@ -1859,13 +3914,38 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "to": "Occupation.PathwiseSobolevSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.WeightedOccupationMeasure",
    "to": "Occupation.Lemma42",
    "kind": "hard"
   },
   {
+   "from": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+   "to": "Occupation.WeightedOccupationMeasure",
+   "kind": "subgoal"
+  },
+  {
    "from": "Smooth.DiscreteQuadraticVariation",
    "to": "Smooth.HasScalarQuadraticVariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.DiscreteQuadraticVariation",
+   "to": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.DiscreteQuadraticVariation",
+   "to": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone",
    "kind": "hard"
   },
   {
@@ -1884,6 +3964,16 @@
    "kind": "hard"
   },
   {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Main.Theorem51",
    "kind": "hard"
@@ -1900,6 +3990,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.Corollary32",
    "kind": "hard"
   },
@@ -1910,13 +4005,68 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.Proposition31",
    "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
+   "to": "Smooth.HasQuadraticVariation",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+   "to": "Smooth.HasQuadraticVariation",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+   "to": "Smooth.HasQuadraticVariation",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+   "to": "Smooth.HasQuadraticVariation",
+   "kind": "subgoal"
   },
   {
    "from": "Smooth.HasScalarQuadraticVariation",
    "to": "Smooth.HasQuadraticVariation",
    "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt",
+   "to": "Smooth.HasScalarQuadraticVariation",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone",
+   "to": "Smooth.HasScalarQuadraticVariation",
+   "kind": "subgoal"
   },
   {
    "from": "Smooth.PathOscillation",
@@ -1935,6 +4085,26 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Smooth.Corollary32",
    "kind": "hard"
   },
@@ -1945,8 +4115,18 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Smooth.Proposition31",
    "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
+   "to": "Smooth.PathOscillation",
+   "kind": "subgoal"
   },
   {
    "from": "Smooth.PathwiseCovariation",
@@ -2015,6 +4195,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.MemW2PlusS",
    "kind": "hard"
   },
@@ -2031,6 +4216,21 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
    "kind": "hard"
   },
   {
@@ -2075,6 +4275,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Remark54",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52",
    "kind": "hard"
   },
@@ -2086,6 +4291,11 @@
   {
    "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Remark54",
    "kind": "hard"
   },
   {
@@ -2105,8 +4315,32 @@
    "to": "Appendix.LemmaA1"
   },
   {
-   "from": "Appendix.PotentialProfile",
+   "from": "Appendix.HeatKernel::heatKernel.integral_div_le",
    "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
+   "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
+   "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.LemmaB2::lemma_B_2_literal",
+   "to": "Appendix.LemmaB2"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -2122,11 +4356,23 @@
   },
   {
    "from": "Basic.ContDiffBounded",
-   "to": "Smooth.FollmerItoFormula"
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
    "from": "Basic.ContDiffBounded",
    "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
+   "to": "Basic.FunctionOscillation"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21"
   },
   {
    "from": "Basic.Partition",
@@ -2134,11 +4380,31 @@
   },
   {
    "from": "Basic.Partition",
-   "to": "Main.GeometricMeshDecay"
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le"
   },
   {
    "from": "Basic.Partition",
-   "to": "Occupation.DiscreteOccupationDensity"
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteLocalTime"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
   },
   {
    "from": "Basic.Partition",
@@ -2158,11 +4424,19 @@
   },
   {
    "from": "Basic.Partition",
-   "to": "Smooth.PathOscillation"
+   "to": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
   },
   {
    "from": "Basic.Partition",
    "to": "Smooth.PathwiseCovariation"
+  },
+  {
+   "from": "Basic.Partition::Partition.left_lt_right",
+   "to": "Basic.Partition"
+  },
+  {
+   "from": "Basic.Partition::Partition.nonneg",
+   "to": "Basic.Partition"
   },
   {
    "from": "Basic.Rd",
@@ -2170,7 +4444,19 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Appendix.HeatKernel"
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Basic.IsCubeOrBall"
   },
   {
    "from": "Basic.Rd",
@@ -2178,7 +4464,23 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Bessel.BesselKernel"
+   "to": "Basic.WeakLpTendsto"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.asymptotic_origin"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.fourier_eq"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrable"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.nonneg"
   },
   {
    "from": "Basic.Rd",
@@ -2198,7 +4500,7 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Occupation.OccupationConstant"
+   "to": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
   },
   {
    "from": "Basic.Rd",
@@ -2206,11 +4508,23 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Smooth.HasQuadraticVariation"
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross"
   },
   {
    "from": "Basic.Rd",
-   "to": "Smooth.PathOscillation"
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
   },
   {
    "from": "Basic.Rd",
@@ -2238,27 +4552,83 @@
   },
   {
    "from": "Basic.SmoothHessian",
-   "to": "Smooth.FollmerItoFormula"
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44"
   },
   {
    "from": "Bessel.BesselCapacity",
-   "to": "Bessel.IsBrownianPolar"
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
+  },
+  {
+   "from": "Bessel.BesselCapacity",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull"
   },
   {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.Theorem29"
   },
   {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
    "from": "Bessel.BesselKernel",
-   "to": "Bessel.BesselSpace"
+   "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.fourier_eq",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrable",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.nonneg",
+   "to": "Bessel.BesselKernel"
   },
   {
    "from": "Bessel.BesselSpace",
-   "to": "Bessel.BesselCapacity"
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le"
   },
   {
    "from": "Bessel.BesselSpace",
    "to": "Bessel.Theorem26"
+  },
+  {
+   "from": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "to": "Bessel.BesselSpace"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
@@ -2266,7 +4636,27 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
-   "to": "Bessel.IsBrownianPolar"
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
@@ -2278,19 +4668,51 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
-   "to": "Appendix.LemmaB2"
+   "to": "Appendix.LemmaB2::lemma_B_2_literal"
   },
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52"
   },
   {
-   "from": "Main.BalancedPartitions",
-   "to": "Appendix.HeatKernel"
+   "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
+   "to": "Bessel.IsBrownianPolar"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
+   "to": "Bessel.IsBrownianPolar"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "to": "Bessel.WienerLawExists"
   },
   {
    "from": "Main.BalancedPartitions",
-   "to": "Appendix.LemmaB2"
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal"
   },
   {
    "from": "Main.BalancedPartitions",
@@ -2298,19 +4720,39 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
-   "to": "Appendix.HeatKernel"
+   "to": "Appendix.HeatKernel::heatKernel.integral_div_le"
   },
   {
    "from": "Main.GeometricMeshDecay",
-   "to": "Appendix.LemmaB2"
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.LemmaB2::lemma_B_2_literal"
   },
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
+   "to": "Main.GeometricMeshDecay"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
+   "to": "Main.GeometricMeshDecay"
   },
   {
    "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Main.Theorem51",
+   "to": "Occupation.Remark45"
   },
   {
    "from": "Main.Theorem52",
@@ -2342,7 +4784,11 @@
   },
   {
    "from": "Occupation.ApproximatingSequence",
-   "to": "Occupation.PathwiseSobolevSpace"
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45"
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
@@ -2350,19 +4796,63 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
-   "to": "Occupation.OccupationSeminorm"
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
+   "to": "Occupation.DiscreteOccupationDensity"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
+   "to": "Occupation.DiscreteOccupationDensity"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
-   "to": "Appendix.LemmaB2"
+   "to": "Appendix.LemmaB2::lemma_B_2_literal"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
-   "to": "Occupation.OccupationSeminorm"
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
    "from": "Occupation.IncrementBall",
-   "to": "Occupation.DiscreteOccupationDensity"
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
+  },
+  {
+   "from": "Occupation.IncrementBall",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -2370,15 +4860,51 @@
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
-   "to": "Occupation.OccupationSeminorm"
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
    "from": "Occupation.OccupationConstant",
-   "to": "Occupation.DiscreteOccupationDensity"
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
+  },
+  {
+   "from": "Occupation.OccupationConstant",
+   "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
+  },
+  {
+   "from": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
+   "to": "Occupation.OccupationConstant"
   },
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Occupation.ApproximatingSequence"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
+   "to": "Occupation.OccupationSeminorm"
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
@@ -2389,12 +4915,28 @@
    "to": "Occupation.Remark44"
   },
   {
+   "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
+   "to": "Occupation.PathwiseSobolevSpace"
+  },
+  {
+   "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45"
+  },
+  {
    "from": "Occupation.WeightedOccupationMeasure",
    "to": "Occupation.Lemma42"
   },
   {
+   "from": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
+   "to": "Occupation.WeightedOccupationMeasure"
+  },
+  {
    "from": "Smooth.DiscreteQuadraticVariation",
-   "to": "Smooth.HasScalarQuadraticVariation"
+   "to": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt"
+  },
+  {
+   "from": "Smooth.DiscreteQuadraticVariation",
+   "to": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone"
   },
   {
    "from": "Smooth.FollmerIntegral",
@@ -2406,6 +4948,10 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula",
    "to": "Smooth.FollmerItoFormula"
   },
   {
@@ -2418,7 +4964,7 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
-   "to": "Occupation.WeightedOccupationMeasure"
+   "to": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq"
   },
   {
    "from": "Smooth.HasQuadraticVariation",
@@ -2426,15 +4972,51 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
-   "to": "Smooth.FollmerItoFormula"
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.Proposition31"
   },
   {
-   "from": "Smooth.HasScalarQuadraticVariation",
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
    "to": "Smooth.HasQuadraticVariation"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
+   "to": "Smooth.HasQuadraticVariation"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone",
+   "to": "Smooth.HasQuadraticVariation"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
+   "to": "Smooth.HasQuadraticVariation"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation",
+   "to": "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt",
+   "to": "Smooth.HasScalarQuadraticVariation"
+  },
+  {
+   "from": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone",
+   "to": "Smooth.HasScalarQuadraticVariation"
   },
   {
    "from": "Smooth.PathOscillation",
@@ -2442,7 +5024,15 @@
   },
   {
    "from": "Smooth.PathOscillation",
-   "to": "Occupation.OccupationSeminorm"
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
    "from": "Smooth.PathOscillation",
@@ -2450,11 +5040,15 @@
   },
   {
    "from": "Smooth.PathOscillation",
-   "to": "Smooth.FollmerItoFormula"
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
    "from": "Smooth.PathOscillation",
    "to": "Smooth.Proposition31"
+  },
+  {
+   "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
+   "to": "Smooth.PathOscillation"
   },
   {
    "from": "Smooth.PathwiseCovariation",
@@ -2506,7 +5100,7 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
-   "to": "Occupation.PathwiseSobolevSpace"
+   "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
   },
   {
    "from": "Sobolev.IsWeakHessian",
@@ -2522,7 +5116,15 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
-   "to": "Occupation.OccupationSeminorm"
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
@@ -2558,6 +5160,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Remark54"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52"
   },
   {
@@ -2567,6 +5173,10 @@
   {
    "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Remark54"
   },
   {
    "from": "Sobolev.PreciseRepresentative",

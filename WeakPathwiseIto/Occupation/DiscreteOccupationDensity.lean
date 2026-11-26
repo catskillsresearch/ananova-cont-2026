@@ -40,17 +40,19 @@ namespace discreteOccupationDensity
 
 variable {T : ℝ} {d : ℕ}
 
+/-- **Subgoal** (Eq. (7)). -/
 theorem piece_nonneg (a b x : Rd d) : 0 ≤ piece a b x := by
   sorry
 
-/-- By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`. -/
+/-- **Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_piece (a b : Rd d) : ∫ x, piece a b x = ‖b - a‖ ^ 2 := by
   sorry
 
+/-- **Subgoal** (Eq. (7)). -/
 theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
   sorry
 
-/-- `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`. -/
+/-- **Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_eq (π : Partition T) (ω : ℝ → Rd d) :
     ∫ x, discreteOccupationDensity π ω x = ∑ i : Fin π.m, ‖ω (π.right i) - ω (π.left i)‖ ^ 2 := by
   sorry

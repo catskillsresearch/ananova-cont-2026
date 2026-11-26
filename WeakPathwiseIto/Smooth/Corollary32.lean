@@ -20,7 +20,8 @@ open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace WeakPathwiseIto
 
-/-- **Corollary 3.2.** For `ω ∈ C([0,T], ℝ^d) ∩ Q^π` (with (6)) and `f ∈ C^2_b(ℝ^d, ℝ)`, the
+/-- **Corollary 3.2.** For `ω ∈ C([0,T], ℝ^d) ∩ Q^π` (the paper states (6) as a standing assumption of Section 3,
+"in the sequel we will fix a sequence of partitions π and assume (6)", so it is a hypothesis here) and `f ∈ C^2_b(ℝ^d, ℝ)`, the
 left Riemann sums of `∇f(ω)` converge and
 `f(ω(T)) = f(ω(0)) + ∫_0^T ∇f(ω) d^π ω + ½ [∇f(ω), ω]_π(T)`. -/
 theorem corollary_3_2 {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}

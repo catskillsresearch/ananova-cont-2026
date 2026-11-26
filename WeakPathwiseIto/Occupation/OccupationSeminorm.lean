@@ -29,11 +29,12 @@ namespace occupationSeminorm
 
 variable {T : ℝ} {d : ℕ} {F : Type*} [NormedAddCommGroup F]
 
+/-- **Subgoal** (Section 4.2 seminorm). -/
 theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) (f g : Rd d → F) :
     occupationSeminorm π ω (f + g) ≤ occupationSeminorm π ω f + occupationSeminorm π ω g := by
   sorry
 
-/-- Estimate (10): if `osc(ω, π_n) ≤ 1` then
+/-- **Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then
 `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T) (ω : ℝ → Rd d)
     (f : Rd d → ℝ), LocallyIntegrable f → pathOscillation ω π ≤ 1 →
@@ -42,7 +43,7 @@ theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T)
         localMaximalFunction 1 f (ω (π.left i))) * ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) := by
   sorry
 
-/-- Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with
+/-- **Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with
 `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`. -/
 theorem le_limsup_discreteSeminorm {p q : ℝ} (hpq : p.HolderConjugate q) (π : ℕ → Partition T)
     (ω : ℝ → Rd d) (hosc : pathOscillation.Vanishes ω π)

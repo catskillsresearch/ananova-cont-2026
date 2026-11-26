@@ -27,7 +27,7 @@ namespace weightedOccupationMeasure
 
 variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
 
-/-- `∫ φ dμ^T_ω = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for continuous `φ`. -/
+/-- **Subgoal** (Lemma 4.2). `∫ φ dμ^T_ω = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for continuous `φ`. -/
 theorem integral_eq (hω : ContinuousOn ω (Icc 0 T)) (h : HasQuadraticVariation π ω)
     {φ : Rd d → ℝ} (hφ : Continuous φ) :
     ∫ x, φ x ∂weightedOccupationMeasure h = ∫ t in Icc 0 T, φ (ω t) ∂h.traceMeasure := by

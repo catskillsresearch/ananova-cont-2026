@@ -31,6 +31,14 @@ references) from other formalizations was copied.
 
 Details: `vendor/SOURCES`.
 
+### Where vendored and upstream code is used
+
+| Use | Source | How |
+|---|---|---|
+| Brownian motion predicate in `CanonicalWienerSpace.IsLaw` | Mathlib `ProbabilityTheory.IsBrownianReal` (upstreamed from RemyDegenne/brownian-motion) | imported from Mathlib |
+| Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged (outside the Mathlib-only Challenge closure) |
+| Itô integral | `vendor/formal-mathfin` `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
+
 ## Borrowed unchanged tooling (kept at the path the tooling requires)
 
 These generic Palomar-check scripts resolve the project root as `$(dirname $0)/..`, so they

@@ -16,8 +16,8 @@ open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace WeakPathwiseIto
 
-/-- **Assumption 1** (balanced partitions), eq. (26): `sup_n |π_n| / |π_n|_ < ∞`. -/
+/-- **Assumption 1** (balanced partitions), eq. (26): `M₁ := sup_{n ≥ 1} |π_n| / |π_n|_ < ∞`. -/
 def BalancedPartitions {T : ℝ} (π : ℕ → Partition T) : Prop :=
-  ∃ M₁ : ℝ, ∀ n, (π n).mesh / (π n).minGap ≤ M₁
+  ∃ M₁ : ℝ, ∀ n, 1 ≤ n → (π n).mesh / (π n).minGap ≤ M₁
 
 end WeakPathwiseIto

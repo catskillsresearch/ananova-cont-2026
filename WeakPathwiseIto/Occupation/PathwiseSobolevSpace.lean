@@ -27,7 +27,7 @@ namespace PathwiseSobolevSpace
 
 variable {T : ℝ} {d : ℕ}
 
-/-- Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`. -/
+/-- **Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`. -/
 theorem contDiffBounded_subset (π : ℕ → Partition T) (ω : ℝ → Rd d) :
     {F : Rd d → ℝ | ContDiffBounded 2 F ∧ MemW 2 1 F} ⊆ PathwiseSobolevSpace π ω := by
   sorry

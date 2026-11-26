@@ -20,7 +20,7 @@ open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace WeakPathwiseIto
 
-/-- Föllmer's pathwise Itô formula [Föl81], used in the proof of Corollary 3.2: for
+/-- **Subgoal** (Corollary 3.2 proof, [Föl81]). Föllmer's pathwise Itô formula [Föl81], used in the proof of Corollary 3.2: for
 `f ∈ C^2_b` the left Riemann sums converge and
 `f(ω(T)) = f(ω(0)) + ∫_0^T ∇f(ω) d^π ω + ½ ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`. -/
 theorem follmer_ito_formula {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}

@@ -29,22 +29,22 @@ variable {d : ℕ}
 /-- `S` is `(α, p)`-polar: `B_{α,p}(S) = 0` (Definition 2.7). -/
 def IsNull (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : Prop := besselCapacity d α p S = 0
 
-/-- Countable subadditivity of the Bessel capacity [Fuk93]. -/
+/-- **Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93]. -/
 theorem iUnion_le (α : ℝ) (p : ℝ≥0∞) (S : ℕ → Set (Rd d)) :
     besselCapacity d α p (⋃ n, S n) ≤ ∑' n, besselCapacity d α p (S n) := by
   sorry
 
-/-- A countable union of `(α, p)`-polar sets is `(α, p)`-polar. -/
+/-- **Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar. -/
 theorem IsNull.iUnion {α : ℝ} {p : ℝ≥0∞} {S : ℕ → Set (Rd d)} (h : ∀ n, IsNull d α (p) (S n)) :
     IsNull d α p (⋃ n, S n) := by
   sorry
 
-/-- Inclusion of exceptional classes [AM71, Thm. 1], as used in Lemma B.1:
+/-- **Subgoal** (Lemma B.1 proof, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Lemma B.1:
 every `(2, 1)`-polar set is `(1, 2)`-polar. -/
 theorem IsNull.one_two_of_two_one {S : Set (Rd d)} (h : IsNull d 2 1 S) : IsNull d 1 2 S := by
   sorry
 
-/-- Inclusion of exceptional classes [AM71, Thm. 1], as used in Appendix C:
+/-- **Subgoal** (Appendix C proof of Theorem 5.2, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Appendix C:
 for `p > 1`, every `(2, p)`-polar set is `(1, 2)`-polar. -/
 theorem IsNull.one_two_of_two_p {p : ℝ} (hp : 1 < p) {S : Set (Rd d)}
     (h : IsNull d 2 (ENNReal.ofReal p) S) : IsNull d 1 2 S := by

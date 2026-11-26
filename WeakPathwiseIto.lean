@@ -3,7 +3,6 @@ Copyright (c) 2026 Lars Warren Ericson. All rights reserved.
 Released under Apache-2.0 license as described in file LICENSE.
 -/
 module
-
 public import WeakPathwiseIto.Appendix.GaussianMoment
 public import WeakPathwiseIto.Appendix.HeatKernel
 public import WeakPathwiseIto.Appendix.LemmaA1
@@ -12,9 +11,11 @@ public import WeakPathwiseIto.Appendix.LemmaB2
 public import WeakPathwiseIto.Appendix.PotentialProfile
 public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.FunctionOscillation
+public import WeakPathwiseIto.Basic.IsCubeOrBall
 public import WeakPathwiseIto.Basic.Partition
 public import WeakPathwiseIto.Basic.Rd
 public import WeakPathwiseIto.Basic.SmoothHessian
+public import WeakPathwiseIto.Basic.WeakLpTendsto
 public import WeakPathwiseIto.Bessel.BesselCapacity
 public import WeakPathwiseIto.Bessel.BesselKernel
 public import WeakPathwiseIto.Bessel.BesselSpace
@@ -22,15 +23,18 @@ public import WeakPathwiseIto.Bessel.CanonicalWienerSpace
 public import WeakPathwiseIto.Bessel.IsBrownianPolar
 public import WeakPathwiseIto.Bessel.Theorem26
 public import WeakPathwiseIto.Bessel.Theorem29
+public import WeakPathwiseIto.Bessel.WienerLawExists
 public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
+public import WeakPathwiseIto.Main.Remark54
 public import WeakPathwiseIto.Main.Theorem51
 public import WeakPathwiseIto.Main.Theorem52
 public import WeakPathwiseIto.Main.WeakCovariation
 public import WeakPathwiseIto.Main.WeakPathwiseIntegral
 public import WeakPathwiseIto.Occupation.ApproximatingSequence
+public import WeakPathwiseIto.Occupation.DiscreteLocalTime
 public import WeakPathwiseIto.Occupation.DiscreteOccupationDensity
 public import WeakPathwiseIto.Occupation.DiscreteSeminorm
 public import WeakPathwiseIto.Occupation.IncrementBall
@@ -40,6 +44,7 @@ public import WeakPathwiseIto.Occupation.OccupationConstant
 public import WeakPathwiseIto.Occupation.OccupationSeminorm
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Occupation.Remark44
+public import WeakPathwiseIto.Occupation.Remark45
 public import WeakPathwiseIto.Occupation.WeightedOccupationMeasure
 public import WeakPathwiseIto.Smooth.Corollary32
 public import WeakPathwiseIto.Smooth.DiscreteQuadraticVariation
@@ -63,3 +68,4 @@ public import WeakPathwiseIto.Sobolev.MemWLoc
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.Theorem21
 public import WeakPathwiseIto.Sobolev.Theorem23
+

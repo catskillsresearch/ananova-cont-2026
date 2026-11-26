@@ -28,16 +28,16 @@ and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradi
 polar set `E` of starting points, the pathwise integral of Theorem 5.1 agrees `ℙ_x`-a.s. with
 the stochastic Itô integral, and for every `t ∈ [0, T]`
 `F(B(t)) - F(B(0)) = ∫_0^t ∇F(B(s)) dB(s) + ½ [∇F(B), B]_π(t)`, `ℙ_x`-a.s. -/
-theorem proposition_5_3 (W : CanonicalWienerSpace d) {π : ℕ → Partition T} (hT : 0 < T)
+theorem proposition_5_3 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) (hFloc : MemWLoc 1 2 F)
     {G : Rd d → Rd d} (hG : IsWeakGradient F G) :
-    ∃ E : Set (Rd d), IsBrownianPolar W E ∧ ∀ x₀ ∉ E,
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
-        ∀ t ∈ Icc 0 T, ∃ I : (ℝ≥0 → Rd d) → ℝ, IsItoIntegral W x₀ G t.toNNReal I ∧
-          ∀ᵐ ω ∂(W.P x₀), ∃ A : ApproximatingSequence π (CanonicalWienerSpace.pathOn ω) F H,
+        ∀ t ∈ Icc 0 T, ∃ I : CanonicalWienerSpace d T → ℝ, IsItoIntegral x₀ G t I ∧
+          ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∃ A : ApproximatingSequence π (CanonicalWienerSpace.path ω) F H,
             A.seq = Fm ∧ weakPathwiseIntegral A t = I ω ∧
-            F (ω t.toNNReal) - F (ω 0) = I ω + 1 / 2 * weakCovariation A t := by
+            F (CanonicalWienerSpace.path ω t) - F (CanonicalWienerSpace.path ω 0) = I ω + 1 / 2 * weakCovariation A t := by
   sorry
 
 end WeakPathwiseIto

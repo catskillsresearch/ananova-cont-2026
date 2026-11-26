@@ -29,20 +29,22 @@ namespace besselKernel
 
 variable {d : ℕ} {α : ℝ}
 
-/-- Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
+/-- **Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
 `(1 + 4π²|ξ|²)^{-α/2}`. -/
 theorem fourier_eq (hα : 0 < α) (ξ : Rd d) :
     ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
       (((1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) : ℝ) : ℂ) := by
   sorry
 
+/-- **Subgoal** (Definition 2.4). -/
 theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
   sorry
 
+/-- **Subgoal** (Definition 2.4). -/
 theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
   sorry
 
-/-- Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`. -/
+/-- **Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`. -/
 theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ ∧
     Tendsto (fun x : Rd d => ‖x‖ ^ ((d : ℝ) - α) * besselKernel d α x) (𝓝[≠] 0)
       (𝓝 γ⁻¹) := by

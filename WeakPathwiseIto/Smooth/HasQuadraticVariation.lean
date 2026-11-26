@@ -36,11 +36,19 @@ def covariation (i j : Fin d) (t : ℝ) : ℝ :=
 /-- The trace `tr [ω]_π(t) = ∑_i [ω^i]_π(t)`. -/
 def trace (t : ℝ) : ℝ := ∑ i, (h.coord i).qv t
 
-theorem trace_monotone : Monotone h.trace := fun _ _ hab =>
-  Finset.sum_le_sum fun i _ => (h.coord i).monotone hab
+/-- **Subgoal** (Lemma 4.2 trace measure): `tr [ω]_π` is increasing on `[0, T]`. -/
+theorem trace_monotoneOn : MonotoneOn h.trace (Icc 0 T) := fun _ ha _ hb hab =>
+  Finset.sum_le_sum fun i _ => (h.coord i).monotoneOn ha hb hab
+
+/-- **Subgoal** (Lemma 4.2 trace measure): `tr [ω]_π` extended constantly outside `[0, T]`. -/
+def traceExt (t : ℝ) : ℝ := ∑ i, (h.coord i).qvExt t
+
+/-- **Subgoal** (Lemma 4.2 trace measure): the extended trace is monotone. -/
+theorem traceExt_monotone : Monotone h.traceExt := fun _ _ hab =>
+  Finset.sum_le_sum fun i _ => (h.coord i).qvExt_monotone hab
 
 /-- The Stieltjes measure `d tr[ω]_π`. -/
-def traceMeasure : Measure ℝ := h.trace_monotone.stieltjesFunction.measure
+def traceMeasure : Measure ℝ := h.traceExt_monotone.stieltjesFunction.measure
 
 /-- The matrix Stieltjes integral `∫_0^t ⟨G(u), d[ω]_π(u)⟩ = ∑_{i,j} ∫_0^t G_{ij}(u) d[ω]_{ij}(u)`,
 computed by polarization. -/
@@ -49,7 +57,7 @@ def matrixIntegral (G : ℝ → Fin d → Fin d → ℝ) (t : ℝ) : ℝ :=
     (h.coord j).integral (fun u => G u i j) t) / 2
 
 open scoped Classical in
-/-- Section 3: the discrete cross sums
+/-- **Subgoal** (Section 3 Q^π(ℝ^d)). Section 3: the discrete cross sums
 `∑_{t_{k+1} ≤ t} (ω^i(t_{k+1}) - ω^i(t_k))(ω^j(t_{k+1}) - ω^j(t_k))` converge to `[ω]_{ij}(t)`. -/
 theorem tendsto_cross (i j : Fin d) {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),

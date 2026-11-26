@@ -31,16 +31,18 @@ starting points (Theorem 5.2), and the pathwise integral agrees with the Itô in
 
 | Paper | Lean declaration | File |
 |---|---|---|
-| Partitions, mesh | `Partition`, `Partition.mesh`, `Partition.minGap` | `Basic/Partition.lean` |
+| Partitions, mesh, reversed partition | `Partition`, `Partition.mesh`, `Partition.minGap`, `Partition.reverse` | `Basic/Partition.lean` |
+| Cube or ball $Q$ (Section 2.1) | `IsCubeOrBall` | `Basic/IsCubeOrBall.lean` |
+| Weak / weak-* $L^r$ convergence | `WeakLpTendsto` | `Basic/WeakLpTendsto.lean` |
 | $C^k_b$ | `ContDiffBounded` | `Basic/ContDiffBounded.lean` |
-| Weak derivative, $W^{k,p}$, $W^{k,p}_{loc}$ | `IsWeakDerivative`, `MemW`, `MemWLoc` | `Sobolev/` |
+| Weak derivative, $W^{k,p}$ (and its norm), $W^{k,p}_{loc}$ | `IsWeakDerivative`, `MemW`, `MemW.norm`, `MemWLoc` | `Sobolev/` |
 | Weak gradient / Hessian | `IsWeakGradient`, `IsWeakHessian` | `Sobolev/` |
 | $W^{2+s,p}$, $W^{2+,p}$ | `MemW2PlusS`, `MemW2Plus` | `Sobolev/` |
 | Eq. (3) precise representative | `preciseRepresentative` | `Sobolev/PreciseRepresentative.lean` |
 | Maximal function $M_R f$ | `localMaximalFunction` | `Sobolev/LocalMaximalFunction.lean` |
 | Theorem 2.1, Lemma 2.2, Theorem 2.3 | `theorem_2_1_first/second`, `lemma_2_2`, `theorem_2_3_first/second` | `Sobolev/` |
 | Definitions 2.4, 2.5, 2.7, 2.8 | `besselKernel`, `BesselSpace`, `besselCapacity`, `IsBrownianPolar` | `Bessel/` |
-| Canonical Wiener space | `CanonicalWienerSpace` | `Bessel/CanonicalWienerSpace.lean` |
+| Canonical Wiener space $(\Omega, B, \mathbb P_x)$ | `CanonicalWienerSpace`, `.B`, `.path`, `.IsLaw`, `.P` (existence proved in `WienerLawExists`) | `Bessel/` |
 | Theorems 2.6, 2.9 | `theorem_2_6`, `theorem_2_9` | `Bessel/` |
 | Eq. (5), $Q^\pi$ | `discreteQuadraticVariation`, `HasScalarQuadraticVariation`, `HasQuadraticVariation` | `Smooth/` |
 | Eq. (6) | `pathOscillation`, `pathOscillation.Vanishes` | `Smooth/PathOscillation.lean` |
@@ -50,29 +52,90 @@ starting points (Theorem 5.2), and the pathwise integral agrees with the Itô in
 | Lemma 4.2 | `weightedOccupationMeasure`, `lemma_4_2` | `Occupation/` |
 | Seminorm, (10), (11) | `occupationSeminorm` (+ `lintegral_le_maximal`, `le_limsup_discreteSeminorm`) | `Occupation/OccupationSeminorm.lean` |
 | Eq. (8), Definition 4.3 | `ApproximatingSequence`, `PathwiseSobolevSpace` | `Occupation/` |
-| Remark 4.4 | `remark_4_4` | `Occupation/Remark44.lean` |
+| Remark 4.4 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` | `Occupation/Remark44.lean` |
+| Remark 4.5 | `discreteLocalTime` [DOS18]; `remark_4_5_identity`, `_seminorm`, `_subset`, `_bounded`, `_local_time` | `Occupation/` |
 | Eqs. (15), (16) | `weakCovariation`, `weakPathwiseIntegral` | `Main/` |
 | Theorem 5.1 | `theorem_5_1`, `theorem_5_1_tendsto`, `theorem_5_1_unique` | `Main/Theorem51.lean` |
 | Assumptions 1, 2 | `BalancedPartitions`, `GeometricMeshDecay` | `Main/` |
 | Theorem 5.2 | `theorem_5_2`, `theorem_5_2_deterministic` | `Main/Theorem52.lean` |
 | Itô integral | `IsItoIntegral` | `Main/IsItoIntegral.lean` |
 | Proposition 5.3 | `proposition_5_3` | `Main/Proposition53.lean` |
+| Remark 5.4 | `remark_5_4_dim_one`, `_not_implied`, `_sufficient`, `_two_le` | `Main/Remark54.lean` |
 | Eq. (28), Lemma A.1 | `normalizedQuadraticDensity`, `gaussianMoment`, `lemma_A_1` | `Occupation/`, `Appendix/` |
-| Eqs. (32)–(35), Lemmas B.1, B.2 | `heatKernel`, `potentialProfile`, `lemma_B_1`, `lemma_B_2` | `Appendix/` |
+| Eqs. (32)–(35), Lemmas B.1, B.2 | `heatKernel`, `potentialProfile`, `lemma_B_1`, `lemma_B_2` (+ `lemma_B_2_literal`) | `Appendix/` |
 
 # Modelling choices
 
+Statements are meant to have exactly the strength of the paper's: no hypothesis is added or
+dropped and no conclusion weakened, except where noted below and justified from the paper's
+own text.
+
 * $\mathbb R^d$ is `EuclideanSpace ℝ (Fin d)`; Hessians are maps `ℝ^d →L[ℝ] ℝ^d`, with the
-  operator norm in the seminorm.
+  operator norm in the seminorm. For $d = 1$ (Remarks 4.5, 5.4) $\mathbb R$ is identified with
+  $\mathbb R^1$ through the coordinate.
 * Sobolev spaces are defined from weak derivatives against smooth compactly supported test
-  functions. The Bessel kernel is defined by Stein's subordination integral; the Fourier
-  characterisation of Definition 2.4 is the lemma `besselKernel.fourier_eq`.
-* Quadratic covariation is obtained by polarization from the scalar quadratic variations of
-  $\omega^i$ and $\omega^i + \omega^j$, exactly as in Section 3.
-* The Itô integral in Proposition 5.3 is characterised as the limit in probability of
-  elementary predictable integrals (`IsItoIntegral`).
-* In Lemma B.2 the norm $\|h\|_{n,1,B}$ is read as the Riemann sum
-  $\sum_i (|h(B(t_i))| + |h(B(t_{i+1}))|)(t_{i+1}-t_i)$ (the displayed $\int_0^T$ is taken to
-  be a typo); it is the $p = 1$ case of the seminorm $\|h\|_{n,p,\omega}$ of Section 4.2.
+  functions; $\|f\|_{W^{k,p}} = \sum_{|\alpha|\le k}\|D^\alpha f\|_{L^p}$ (any of the standard
+  equivalent norms gives the same Theorem 2.6). The Bessel kernel is defined by Stein's
+  subordination integral; the Fourier characterisation of Definition 2.4 is
+  `besselKernel.fourier_eq`.
+* **Theorem 2.1 / Lemma 2.2** quantify over every $Q$ that is a cube or a ball, as in the
+  paper (`IsCubeOrBall`: open or closed Euclidean balls and open or closed axis-parallel cubes).
+* **Theorem 2.6** states both the equality of spaces and the equivalence of the norms.
+* **Quadratic variation** (eq. (5)): the limit exists for every $t \in [0,T]$ and
+  $t \mapsto [x]_\pi(t)$ is continuous and increasing **on $[0,T]$** (`ContinuousOn`,
+  `MonotoneOn`), as in the paper; the Stieltjes measure uses the constant extension
+  `qvExt`. Covariation is obtained by polarization exactly as in Section 3.
+* **Indexing.** Partitions $(\pi_n)_{n\ge1}$ and approximating sequences $(F_m)_{m\ge1}$ are
+  Lean sequences on $\mathbb N$ whose entry at $0$ is unconstrained: Assumptions 1 and 2,
+  eq. (31), the summability of Lemma A.1 and the conditions in eq. (8), Theorem 5.2 and
+  Lemma B.2 are imposed for $n, m \ge 1$ only; limits along `atTop` ignore the $0$-th entry.
+* **Corollary 3.2** carries hypothesis (6). This is not an addition: Section 3 states
+  "in the sequel we will fix a sequence of partitions $\pi$ and assume that (6)", so (6) is a
+  standing assumption of Proposition 3.1 and Corollary 3.2.
+* **Canonical Wiener space.** $\Omega = C([0,T],\mathbb R^d)$ (Borel), $B$ the coordinate
+  process, and $\mathbb P_x$ the law of $d$-dimensional Brownian motion from $x$
+  (`CanonicalWienerSpace.P`, chosen by `Classical.epsilon` among the laws `IsLaw x`, i.e.
+  images of $d$ independent Mathlib `IsBrownianReal` motions). Its existence
+  (`exists_isLaw`) is **proved** from the vendored `BrownianMotion` construction
+  (`brownian`, `gaussianLimit`) — this proof lives outside the Challenge closure because the
+  Challenge must import Mathlib only. Polar sets (Definition 2.8) refer to times $t\in(0,T]$
+  of this $\Omega$.
+* **Itô integral (Proposition 5.3): custom, documented.** The vendored MathFin integral
+  (`ItoIntegralCLM`, `localItoIntegral`, `predItoIntegral`) integrates scalar integrands
+  against one real Brownian motion, adapted to *that* motion's natural filtration, and needs
+  integrands that are bounded or have (a.s.) continuous paths. The paper's
+  $\int_0^t\nabla F(B(s))\cdot dB(s)$ is a $d$-dimensional integral, adapted to the joint
+  filtration of $B$, of an integrand $\nabla F(B)$ that for $F \in W^{1,2}_{loc}$ is only
+  locally square integrable (not continuous). No vendored definition matches, so
+  `IsItoIntegral` is our own: $I$ is the limit in probability of elementary predictable
+  integrals $\int H_n\,dB$ with $\int_0^t|H_n - \nabla F(B)|^2 ds \to 0$ in probability (the
+  standard $L^2_{loc}$ Itô integral, [KS91, §3.2.D], [RY99, IV.2]). The Brownian motion itself
+  is Mathlib's `IsBrownianReal`.
+* **Lemma B.2 typo.** The paper prints
+  $\|h\|_{n,1,B} := \int_0^T \sum_i (|h(B(t_i))| + |h(B(t_{i+1}))|)(t_{i+1}-t_i)$. The
+  integrand does not depend on the integration variable, so the literal reading is $T$ times
+  the Riemann sum. We state `lemma_B_2` with the Riemann sum (the $p = 1$ case of
+  $\|h\|_{n,p,\omega}$ of Section 4.2, which is how Appendix C uses it), and prove
+  `lemma_B_2_literal` (the literal reading) from it; for $T > 0$ the two conclusions are
+  equivalent, so the typo does not change the strength of the lemma.
+* **Remark 4.4** is stated for $r \in (1,\infty]$ (weak-* for $r = \infty$, `WeakLpTendsto`):
+  the density identity, the explicit seminorm and the inclusion. Its last paragraph ("does not
+  in general characterise all of $\mathcal W^2_{\omega,\pi}$") is an informal comment and is
+  not formalised.
+* **Remark 4.5** ($d = 1$): the identity $L^{\pi_n}_\omega = \tfrac12(\lambda^{n,+}_T +
+  \lambda^{n,-}_T)$ a.e. (with [DOS18]'s discrete local times as the paper describes them),
+  the convergence/seminorm statement, the inclusion, the bounded local-time case
+  ($\sup_n\|L^{\pi_n}_\omega\|_\infty<\infty$ and $\mathcal W^2_{\omega,\pi} = W^{2,1}(\mathbb R)$)
+  and the comparison with DOS. Two readings are made explicit: $F$ is its continuous
+  representative ("$W^{2,1}(\mathbb R)\subset C^1(\mathbb R)$"), and "whenever both pathwise
+  constructions apply" is the hypothesis that the DOS formula holds with the same pathwise
+  integral (eq. (16)).
+* **Remark 5.4**: the $d = 1$ characterisation of $W^{1,2}_{loc}$, the non-implication, the
+  sufficient condition $1 + s > d(1/p - 1/2)$ and the case $p \ge 2$ (proved from the
+  sufficient condition). The comparison with the hypotheses of [FP00] is informal and not
+  formalised.
+* Section 3 defines the mesh as $\sup\{|t_{i+1}-t_i|, i = 1,\dots,m(n)-1\}$ (omitting the first
+  interval), while Assumption 1 uses $\max_i$; we use $\max_i$ throughout (the Section 3 mesh
+  is only used in the remark that $|\pi_n|\to 0$ implies (6)).
 
 # Main statements (Lean)

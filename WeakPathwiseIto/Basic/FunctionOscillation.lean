@@ -22,7 +22,7 @@ def functionOscillation {E F : Type*} [PseudoMetricSpace E] [NormedAddCommGroup 
 
 namespace functionOscillation
 
-/-- `osc(φ, δ) → 0` as `δ → 0` for a continuous compactly supported `φ`. -/
+/-- **Subgoal** (Theorem 5.1 proof, Section 4 osc(φ,δ)). `osc(φ, δ) → 0` as `δ → 0` for a continuous compactly supported `φ`. -/
 theorem tendsto_zero {E F : Type*} [MetricSpace E] [NormedAddCommGroup F] {φ : E → F}
     (hφ : Continuous φ) (hc : HasCompactSupport φ) :
     Tendsto (functionOscillation φ) (𝓝[>] 0) (𝓝 0) := by

@@ -26,6 +26,18 @@ In the **same turn**:
 
 Do not mark verified on a failed or incomplete build.
 
+## Subgoals (binding)
+
+Any helper a goal depends on (a lemma or auxiliary def used in a proof or a statement) must be
+labelled and on the board:
+
+* name it clearly and open its docstring with `**Subgoal** (<paper item>)`, e.g.
+  `/-- **Subgoal** (Lemma 4.2 trace measure): ... -/`;
+* `scripts/build_holes.py` turns every helper `theorem`/`lemma` (docstring not opening with a
+  bold paper label such as `**Theorem 5.1**`) and every `**Subgoal**`-tagged `def` into a node
+  `Module::Name` with an edge into its parent goal; untagged helpers still appear and are
+  printed as warnings — fix those before committing.
+
 ## Holes board vs imports
 
 One node per file under `WeakPathwiseIto/`, edges from **direct**

@@ -28,17 +28,17 @@ namespace heatKernel
 
 variable {d : ℕ}
 
-/-- Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
+/-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
     ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
   sorry
 
-/-- Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`. -/
+/-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`. -/
 theorem integral_div_le (T : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 →
     ∫ s in Ioc 0 T, heatKernel d s x / s ≤ C * ‖x‖ ^ (-(d : ℝ)) := by
   sorry
 
-/-- Eq. (35) [FP00]: under Assumptions 1 and 2,
+/-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) (R : ℝ) :

@@ -1,0 +1,90 @@
+/-
+Copyright (c) 2026 Lars Warren Ericson. All rights reserved.
+Released under Apache-2.0 license as described in file LICENSE.
+-/
+module
+
+public import Mathlib
+public import WeakPathwiseIto.Occupation.Remark44
+public import WeakPathwiseIto.Occupation.DiscreteLocalTime
+public import WeakPathwiseIto.Main.Theorem51
+
+@[expose] public section
+
+noncomputable section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace WeakPathwiseIto
+
+variable {T : ℝ} {π : ℕ → Partition T} {ω : ℝ → Rd 1}
+
+/-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
+endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
+`λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed
+path along the reversed partition. (`ℝ` is identified with `ℝ^1` through the coordinate.) -/
+theorem remark_4_5_identity (p : Partition T) (ω : ℝ → Rd 1) :
+    (fun v => discreteOccupationDensity p ω v) =ᵐ[volume] fun v =>
+      1 / 2 * (discreteLocalTime p (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v) +
+        discreteLocalTime.reversed p (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) := by
+  sorry
+
+/-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
+discrete local-time sequences converge to the same terminal local time,
+`λ^{n,±}_T ⇀ ℓ_T` in `L^r(ℝ)`, then `𝓛^{π_n}_ω ⇀ ℓ_T` in `L^r(ℝ)` and
+`‖h‖_{W^0_{ω,π}} = ∫ |h(u)| ℓ_T(u) du` for `h ∈ L^{r'}(ℝ)`. -/
+theorem remark_4_5_seminorm (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
+    (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd 1 → ℝ}
+    (hplus : WeakLpTendsto r
+      (fun n v => discreteLocalTime (π n) (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) ℓ)
+    (hminus : WeakLpTendsto r
+      (fun n v => discreteLocalTime.reversed (π n) (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) ℓ) :
+    WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ ∧
+      ∀ (h : Rd 1 → Rd 1 →L[ℝ] Rd 1), MemLp h r.conjExponent →
+        occupationSeminorm π ω h = ∫⁻ v, ‖h v‖ₑ * ENNReal.ofReal (ℓ v) := by
+  sorry
+
+/-- **Remark 4.5** (inclusion). Under the hypotheses of `remark_4_5_seminorm`,
+`{F ∈ W^{2,1}(ℝ) : F'' ∈ L^{r'}(ℝ)} ⊆ 𝓦^2_{ω,π}`; `F` is taken to be its continuous
+representative (`W^{2,1}(ℝ) ⊂ C^1(ℝ)`), which is what makes the trace condition automatic. -/
+theorem remark_4_5_subset (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
+    (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd 1 → ℝ}
+    (hplus : WeakLpTendsto r
+      (fun n v => discreteLocalTime (π n) (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) ℓ)
+    (hminus : WeakLpTendsto r
+      (fun n v => discreteLocalTime.reversed (π n) (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) ℓ)
+    {F : Rd 1 → ℝ} (hF : MemW 2 1 F) (hFc : Continuous F) {H : Rd 1 → (Rd 1 →L[ℝ] Rd 1)}
+    (hH : IsWeakHessian F H) (hHr : MemLp H r.conjExponent) :
+    F ∈ PathwiseSobolevSpace π ω := by
+  sorry
+
+/-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
+`L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`
+(for continuous representatives). -/
+theorem remark_4_5_bounded (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
+    (hosc : pathOscillation.Vanishes ω π) {ℓ : Rd 1 → ℝ}
+    (hweak : WeakLpTendsto ⊤ (fun n => discreteOccupationDensity (π n) ω) ℓ) :
+    (∃ K : ℝ≥0∞, K < ⊤ ∧ ∀ n, 1 ≤ n →
+        eLpNorm (discreteOccupationDensity (π n) ω) ⊤ volume ≤ K) ∧
+      ∀ F : Rd 1 → ℝ, Continuous F → (F ∈ PathwiseSobolevSpace π ω ↔ MemW 2 1 F) := by
+  sorry
+
+/-- **Remark 4.5** (comparison with Davis–Obłój–Siorpaes). For `d = 1`, if a local time
+`(ℓ_t)_{t ∈ [0,T]}` exists in the sense of [DOS18] and the DOS change-of-variable formula
+`F(ω(t)) - F(ω(0)) = ∫_0^t F'(ω(s)) d^π ω(s) + ½ ∫ ℓ_t(u) F''(u) du` applies to the same `F`,
+with the same pathwise integral (eq. (16)), then
+`[F'(ω), ω]_π(t) = ∫ ℓ_t(u) F''(u) du` for `t ∈ [0, T]`. -/
+theorem remark_4_5_local_time (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd 1 → ℝ} (hF : MemW 2 1 F)
+    {H : Rd 1 → (Rd 1 →L[ℝ] Rd 1)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H)
+    (ℓ : ℝ → Rd 1 → ℝ)
+    (hDOS : ∀ t ∈ Icc 0 T, F (ω t) - F (ω 0) = weakPathwiseIntegral A t +
+      1 / 2 * ∫ v, ℓ t v * Rd.coord 0 (H v (Rd.basisVec 0))) :
+    ∀ t ∈ Icc 0 T, weakCovariation A t = ∫ v, ℓ t v * Rd.coord 0 (H v (Rd.basisVec 0)) := by
+  intro t ht
+  have h51 := theorem_5_1 hω hQV hosc hF hH A t ht
+  have hd := hDOS t ht
+  linarith
+
+end WeakPathwiseIto
