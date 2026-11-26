@@ -936,7 +936,11 @@ theorem newton_ball_dim_two {R : ℝ} {y : Rd 2} :
 theorem newton_ball {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {y : Rd d} (hy : ‖y‖ = R) :
     ∫ x in Metric.ball (0 : Rd d) R, ‖x - y‖ ^ (2 - (d : ℝ)) =
       (volume (Metric.ball (0 : Rd d) R)).toReal * R ^ (2 - (d : ℝ)) := by
-  sorry
+  rcases Nat.lt_or_ge d 3 with h3 | h3
+  · interval_cases d
+    · exact newton_ball_dim_one hR hy
+    · exact newton_ball_dim_two
+  · exact newton_ball_of_three_le h3 hR hy
 
 /-- **Subgoal** (Eq. (7) c_d). Eq. (7): `c_d = [∫_{B(0,1/2)} (|x - e_1/2|^{2-d} + |x + e_1/2|^{2-d}) dx]⁻¹`. -/
 theorem eq_inv_integral {d : ℕ} (hd : 0 < d) :

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:38:02Z",
+ "updated": "2026-11-26T20:38:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 36,
-  "done": 140
+  "done": 141
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 15,
-  "done": 102
+  "done": 103
  },
  "untagged": [],
  "legend": {
@@ -3048,10 +3048,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "newton_ball_of_three_le",
-    "newton_ball",
     "eq_inv_integral"
    ],
    "declKinds": {
@@ -3102,10 +3101,9 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le"
    ],
-   "detail": "3 sorry: newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "2 sorry: newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3619,22 +3617,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.newton_ball"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, step 4 = Newton step 13: Newton's theorem for a ball): for `|y| = R > 0`, `∫_{B(0,R)} |x - y|^{2-d} dx = |B(0,R)| R^{2-d}` (mean value property of the Newton kernel).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.newton_ball — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.newton_ball — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_one",
