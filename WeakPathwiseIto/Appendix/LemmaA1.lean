@@ -35,6 +35,17 @@ theorem lemma_A_1_bounded {π : ℕ → Partition T}
     ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x), ∃ K : ℝ≥0∞, K < ⊤ ∧ ∀ n,
       eLpNorm (normalizedQuadraticDensity (π n) (CanonicalWienerSpace.path ω))
         (ENNReal.ofReal q) (volume.restrict (Icc 0 T)) ≤ K := by
-  sorry
+  filter_upwards [lemma_A_1 hπ hq x] with ω hω
+  obtain ⟨B, hB⟩ := hω.bddAbove_range
+  refine ⟨ENNReal.ofReal (max B 0 ^ q⁻¹), ENNReal.ofReal_lt_top, fun n => ?_⟩
+  have hq0 : ENNReal.ofReal q ≠ 0 := by
+    rw [Ne, ENNReal.ofReal_eq_zero, not_le]; linarith
+  rw [(normalizedQuadraticDensity.memLp (π n) _ _).eLpNorm_eq_integral_rpow_norm hq0
+    ENNReal.ofReal_ne_top, ENNReal.toReal_ofReal (by linarith)]
+  refine ENNReal.ofReal_le_ofReal (Real.rpow_le_rpow (integral_nonneg fun _ => by positivity) ?_
+    (by have : 0 < q := by linarith
+        positivity))
+  simp only [Real.norm_eq_abs]
+  exact (hB ⟨n, rfl⟩).trans (le_max_left _ _)
 
 end WeakPathwiseIto
