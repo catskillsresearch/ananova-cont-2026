@@ -189,6 +189,19 @@ theorem covariance_coordIncrements_eq_zero {Ω' : Type*} [MeasurableSpace Ω'] {
       (by fun_prop) (by fun_prop)
     exact h.covariance_eq_zero (hmem _ _ _) (hmem _ _ _)
 
+/-- **Subgoal** (Lemma A.1 proof, step 2d-iii: transport to `ℙ_x = Q ∘ g⁻¹`): independence of
+`f_i ∘ g` under `Q` gives independence of `f_i` under the image measure. -/
+theorem iIndepFun_map_of_comp {Ω Ω' ι : Type*} [MeasurableSpace Ω] [MeasurableSpace Ω']
+    [Fintype ι] {β : ι → Type*} [∀ i, MeasurableSpace (β i)] {Q : Measure Ω'}
+    [IsProbabilityMeasure Q] {g : Ω' → Ω} (hg : AEMeasurable g Q) {f : ∀ i, Ω → β i}
+    (hf : ∀ i, Measurable (f i)) (h : iIndepFun (fun i => f i ∘ g) Q) :
+    iIndepFun f (Q.map g) := by
+  have : IsProbabilityMeasure (Q.map g) := (Measure.isProbabilityMeasure_map_iff hg).2 inferInstance
+  rw [iIndepFun_iff_map_fun_eq_pi_map fun i => (hf i).aemeasurable,
+    AEMeasurable.map_map_of_aemeasurable (measurable_pi_iff.2 fun i => hf i).aemeasurable hg]
+  simp_rw [AEMeasurable.map_map_of_aemeasurable (hf _).aemeasurable hg]
+  exact h.map_fun_eq_pi_map fun i => (hf i).comp_aemeasurable hg
+
 /-- **Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B`
 over the cells of a partition are independent under `ℙ_x`. -/
 theorem iIndepFun_increments (x : Rd d) (π : Partition T) :
