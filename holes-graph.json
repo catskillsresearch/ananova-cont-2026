@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:07:27Z",
+ "updated": "2026-11-26T18:12:01Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 50,
  "counts": {
   "open": 13,
   "blocked": 39,
@@ -511,10 +511,9 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lemma_A_1",
-    "lemma_A_1_bounded"
+    "lemma_A_1"
    ],
    "declKinds": {
     "theorem": 2
@@ -529,7 +528,7 @@
     "Occupation.NormalizedQuadraticDensity"
    ],
    "blockers": [],
-   "detail": "2 sorry: lemma_A_1, lemma_A_1_bounded"
+   "detail": "1 sorry: lemma_A_1"
   },
   {
    "id": "Appendix.LemmaB1",

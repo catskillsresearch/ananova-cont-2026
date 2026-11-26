@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:07:27Z  
-**`sorry` occurrences:** 51 · 13 open · 39 blocked · 73 done (goals + subgoals) · goals {'open': 7, 'blocked': 23, 'done': 35} · subgoals {'open': 6, 'blocked': 16, 'done': 38} · 27 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:12:01Z  
+**`sorry` occurrences:** 50 · 13 open · 39 blocked · 73 done (goals + subgoals) · goals {'open': 7, 'blocked': 23, 'done': 35} · subgoals {'open': 6, 'blocked': 16, 'done': 38} · 27 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -24,7 +24,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
-| `Appendix.LemmaA1` | Lemma A.1 | 2 | `lemma_A_1`, `lemma_A_1_bounded` |
+| `Appendix.LemmaA1` | Lemma A.1 | 1 | `lemma_A_1` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
@@ -196,7 +196,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
 | done | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 0 |  |
-| open | `Appendix.LemmaA1` | Lemma A.1 | 2 |  |
+| open | `Appendix.LemmaA1` | Lemma A.1 | 1 |  |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
 | done | `Appendix.PotentialProfile` | Eq. (33) | 0 |  |
