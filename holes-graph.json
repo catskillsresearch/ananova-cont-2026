@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T17:37:51Z",
+ "updated": "2026-11-26T17:40:48Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 56,
+ "sorryCount": 55,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 41,
-  "done": 52
+  "done": 54
  },
  "goalCounts": {
   "open": 7,
@@ -13,9 +13,9 @@
   "done": 33
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 16,
-  "done": 19
+  "done": 21
  },
  "untagged": [],
  "legend": {
@@ -1150,13 +1150,12 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 ℙ_x exists (subgoals)",
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "isLaw_unique",
-    "isProbabilityMeasure_P"
+    "isLaw_unique"
    ],
    "declKinds": {
-    "theorem": 4
+    "theorem": 5
    },
    "paperGoal": false,
    "verified": false,
@@ -1164,16 +1163,41 @@
    "status": "blocked",
    "deps": [
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
     "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
     "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
     "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
     "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
    ],
    "blockers": [
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique"
    ],
-   "detail": "2 sorry: isLaw_unique, isProbabilityMeasure_P"
+   "detail": "1 sorry: isLaw_unique"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
+   "label": "aemeasurable_of_aemeasurable_eval",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω'",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω')` in `Ω`): a map into `C(X, Y)` whose evaluations are all a.e.-measurable is a.e.-measurable (evaluate on a countable dense set, then pass to limits).",
+   "status": "done",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "proved: CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval — subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω' (in Bessel.WienerLawExists)"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
@@ -1262,22 +1286,20 @@
    "parentGoal": "Bessel.WienerLawExists",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
-   "holes": [
-    "CanonicalWienerSpace.isProbabilityMeasure_P"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 2.2 Wiener space): `ℙ_x` is a probability measure.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [],
-   "detail": "sorry: CanonicalWienerSpace.isProbabilityMeasure_P — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+   "detail": "proved: CanonicalWienerSpace.isProbabilityMeasure_P — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
   },
   {
    "id": "Main.BalancedPartitions",
@@ -3568,6 +3590,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
    "kind": "hard"
   },
@@ -3619,6 +3646,11 @@
   {
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
+   "to": "Bessel.WienerLawExists",
    "kind": "subgoal"
   },
   {
@@ -4718,6 +4750,10 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw"
   },
   {
@@ -4755,6 +4791,10 @@
   {
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
+   "to": "Bessel.WienerLawExists"
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",

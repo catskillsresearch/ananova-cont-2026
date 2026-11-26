@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T17:37:51Z  
-**`sorry` occurrences:** 56 · 18 open · 41 blocked · 52 done (goals + subgoals) · goals {'open': 7, 'blocked': 25, 'done': 33} · subgoals {'open': 11, 'blocked': 16, 'done': 19} · 29 file(s) with `sorry`.
+**Updated:** 2026-11-26T17:40:48Z  
+**`sorry` occurrences:** 55 · 17 open · 41 blocked · 54 done (goals + subgoals) · goals {'open': 7, 'blocked': 25, 'done': 33} · subgoals {'open': 10, 'blocked': 16, 'done': 21} · 29 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -59,10 +59,11 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` | subgoal of Definition 2.5, Young's inequality | 1 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion` | subgoal of Definition 2.8, countable unions | 1 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` | subgoal of Definition 2.8, [Fuk93, p. 25] | 1 |
+| done | `Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval` | subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω' | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw` | subgoal of Section 2.2 Wiener space | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P` | subgoal of Section 2.2 Wiener space | 0 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 1 |
-| open | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 1 |
+| done | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
@@ -128,7 +129,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
-| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 2 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique`, `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` |
+| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 1 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` |
 
 ### §3 Smooth change of variable
 

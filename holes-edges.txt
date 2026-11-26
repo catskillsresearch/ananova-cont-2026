@@ -106,6 +106,7 @@ Bessel.CanonicalWienerSpace -hard-> Bessel.IsBrownianPolar
 Bessel.CanonicalWienerSpace -hard-> Bessel.IsBrownianPolar::IsBrownianPolar.iUnion
 Bessel.CanonicalWienerSpace -hard-> Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists
+Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique
@@ -117,6 +118,7 @@ Bessel.IsBrownianPolar -hard-> Appendix.LemmaB2::lemma_B_2_literal
 Bessel.IsBrownianPolar -hard-> Main.Theorem52
 Bessel.IsBrownianPolar::IsBrownianPolar.iUnion -hard-> Bessel.IsBrownianPolar
 Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull -hard-> Bessel.IsBrownianPolar
+Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique -hard-> Bessel.WienerLawExists
