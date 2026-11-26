@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T17:57:54Z",
+ "updated": "2026-11-26T18:00:40Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 52,
  "counts": {
   "open": 14,
   "blocked": 40,
-  "done": 66
+  "done": 67
  },
  "goalCounts": {
   "open": 7,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 16,
-  "done": 32
+  "done": 33
  },
  "untagged": [],
  "legend": {
@@ -655,7 +655,7 @@
    "declKinds": {
     "structure": 1,
     "def": 5,
-    "theorem": 5
+    "theorem": 6
    },
    "paperGoal": false,
    "verified": true,
@@ -666,6 +666,7 @@
     "Basic.Partition::Partition.left_lt_right",
     "Basic.Partition::Partition.mesh_nonneg",
     "Basic.Partition::Partition.nonneg",
+    "Basic.Partition::Partition.right_le_mul_left",
     "Basic.Partition::Partition.t_mem"
    ],
    "blockers": [],
@@ -762,6 +763,29 @@
    "deps": [],
    "blockers": [],
    "detail": "proved: Partition.nonneg — subgoal of Section 3 partitions (in Basic.Partition)"
+  },
+  {
+   "id": "Basic.Partition::Partition.right_le_mul_left",
+   "label": "right_le_mul_left",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Lemma B.2 proof, eq. (35",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (35), ratio step): for `t_i > 0`, `t_{i+1} ≤ (1 + |π| / |π|_) t_i`, since `t_{i+1} - t_i ≤ |π|` and `t_i ≥ t_i - t_{i-1} ≥ |π|_`.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.right_le_mul_left — subgoal of Lemma B.2 proof, eq. (35 (in Basic.Partition)"
   },
   {
    "id": "Basic.Partition::Partition.t_mem",
@@ -3619,6 +3643,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Basic.Partition::Partition.right_le_mul_left",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
    "from": "Basic.Partition::Partition.t_mem",
    "to": "Basic.Partition",
    "kind": "subgoal"
@@ -5067,6 +5096,10 @@
   },
   {
    "from": "Basic.Partition::Partition.nonneg",
+   "to": "Basic.Partition"
+  },
+  {
+   "from": "Basic.Partition::Partition.right_le_mul_left",
    "to": "Basic.Partition"
   },
   {

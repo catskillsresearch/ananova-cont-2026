@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T17:57:54Z  
-**`sorry` occurrences:** 52 · 14 open · 40 blocked · 66 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 7, 'blocked': 16, 'done': 32} · 28 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:00:40Z  
+**`sorry` occurrences:** 52 · 14 open · 40 blocked · 67 done (goals + subgoals) · goals {'open': 7, 'blocked': 24, 'done': 34} · subgoals {'open': 7, 'blocked': 16, 'done': 33} · 28 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -55,6 +55,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Basic.Partition::Partition.left_lt_right` | subgoal of Section 3 partitions | 0 |
 | done | `Basic.Partition::Partition.mesh_nonneg` | subgoal of Assumption 1 mesh | 0 |
 | done | `Basic.Partition::Partition.nonneg` | subgoal of Section 3 partitions | 0 |
+| done | `Basic.Partition::Partition.right_le_mul_left` | subgoal of Lemma B.2 proof, eq. (35 | 0 |
 | done | `Basic.Partition::Partition.t_mem` | subgoal of Section 3 partitions | 0 |
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion` | subgoal of Definition 2.7, countable unions | 1 |
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one` | subgoal of Lemma B.1 proof, [AM71] | 1 |

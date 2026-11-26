@@ -67,6 +67,7 @@ Basic.Partition::Partition.gap_le_mesh -hard-> Basic.Partition
 Basic.Partition::Partition.left_lt_right -hard-> Basic.Partition
 Basic.Partition::Partition.mesh_nonneg -hard-> Basic.Partition
 Basic.Partition::Partition.nonneg -hard-> Basic.Partition
+Basic.Partition::Partition.right_le_mul_left -hard-> Basic.Partition
 Basic.Partition::Partition.t_mem -hard-> Basic.Partition
 Basic.Rd -hard-> Appendix.GaussianMoment
 Basic.Rd -hard-> Appendix.HeatKernel
