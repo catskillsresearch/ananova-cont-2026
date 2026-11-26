@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:17:45Z  
-**`sorry` occurrences:** 43 · 14 open · 27 blocked · 160 done (goals + subgoals) · goals {'open': 6, 'blocked': 19, 'done': 40} · subgoals {'open': 8, 'blocked': 8, 'done': 120} · 22 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:19:08Z  
+**`sorry` occurrences:** 42 · 14 open · 27 blocked · 160 done (goals + subgoals) · goals {'open': 6, 'blocked': 19, 'done': 40} · subgoals {'open': 8, 'blocked': 8, 'done': 120} · 22 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
-| blocked | `Occupation.Lemma42` | Lemma 4.2 | 4 | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le`, `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_left` |
+| blocked | `Occupation.Lemma42` | Lemma 4.2 | 3 | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le`, `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_left` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |

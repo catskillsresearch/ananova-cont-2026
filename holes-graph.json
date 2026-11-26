@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T21:17:45Z",
+ "updated": "2026-11-26T21:19:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 43,
+ "sorryCount": 42,
  "counts": {
   "open": 14,
   "blocked": 27,
@@ -3026,12 +3026,11 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2",
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "tendsto_riemannStieltjes",
     "abs_integral_sub_le",
-    "tendsto_sum_left",
-    "lemma_4_2"
+    "tendsto_sum_left"
    ],
    "declKinds": {
     "theorem": 8
@@ -3057,7 +3056,7 @@
     "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
     "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
    ],
-   "detail": "4 sorry: tendsto_riemannStieltjes, abs_integral_sub_le, tendsto_sum_left, lemma_4_2"
+   "detail": "3 sorry: tendsto_riemannStieltjes, abs_integral_sub_le, tendsto_sum_left"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",

@@ -132,7 +132,7 @@ theorem tendsto_riemannStieltjes (hQV : HasQuadraticVariation π ω) {g : ℝ �
 theorem abs_integral_sub_le (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) {φ : Rd d → ℝ}
     (hφ : Continuous φ) (hφc : HasCompactSupport φ) {ε : ℝ}
     (hmod : ∀ x y, ‖x - y‖ ≤ pathOscillation ω p → |φ x - φ y| ≤ ε) :
-    |∫ x, φ x * discreteOccupationDensity p ω x -
+    |(∫ x, φ x * discreteOccupationDensity p ω x) -
         ∑ i, φ (ω (p.left i)) * ‖ω (p.right i) - ω (p.left i)‖ ^ 2| ≤
       ε * ∑ i, ‖ω (p.right i) - ω (p.left i)‖ ^ 2 := by
   sorry
@@ -157,6 +157,35 @@ theorem lemma_4_2 {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → R
     (hφc : HasCompactSupport φ) :
     Tendsto (fun n => ∫ x, φ x * discreteOccupationDensity (π n) ω x) atTop
       (𝓝 (∫ x, φ x ∂weightedOccupationMeasure hQV)) := by
-  sorry
+  rw [weightedOccupationMeasure.integral_eq hω hQV hφ]
+  set S : ℕ → ℝ := fun n => ∑ i, ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 with hSdef
+  set b : ℕ → ℝ := fun n =>
+    ∑ i, φ (ω ((π n).left i)) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 with hbdef
+  set a : ℕ → ℝ := fun n => ∫ x, φ x * discreteOccupationDensity (π n) ω x with hadef
+  have hS := lemma_4_2.tendsto_sum_sq hQV
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, S n ≤ M := (hS.eventually (gt_mem_nhds
+    (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono fun n h => h.le
+  have hu := hφc.uniformContinuous_of_continuous hφ
+  have hdiff : Tendsto (fun n => a n - b n) atTop (𝓝 0) := by
+    refine Metric.tendsto_nhds.2 fun ε hε => ?_
+    obtain ⟨δ, hδ, hδφ⟩ := Metric.uniformContinuous_iff.1 hu (ε / (2 * M)) (by positivity)
+    filter_upwards [hevS, hosc.eventually (gt_mem_nhds hδ)] with n hn hon
+    have hmod : ∀ x y, ‖x - y‖ ≤ pathOscillation ω (π n) → |φ x - φ y| ≤ ε / (2 * M) :=
+      fun x y hxy => by
+        have := hδφ (show dist x y < δ by rw [dist_eq_norm]; linarith)
+        rw [Real.dist_eq] at this
+        exact this.le
+    have hle := lemma_4_2.abs_integral_sub_le hω (π n) hφ hφc hmod
+    have hS0 : 0 ≤ S n := Finset.sum_nonneg fun i _ => sq_nonneg _
+    rw [Real.dist_eq, sub_zero]
+    calc |a n - b n| ≤ ε / (2 * M) * S n := by simp only [hadef, hbdef, hSdef]; exact hle
+      _ ≤ ε / (2 * M) * M := mul_le_mul_of_nonneg_left hn (by positivity)
+      _ = ε / 2 := by field_simp
+      _ < ε := by linarith
+  have h := (lemma_4_2.tendsto_sum_left hω hQV hosc hφ hφc).add hdiff
+  rw [add_zero] at h
+  exact h.congr fun n => by simp only [hadef, hbdef]; ring
 
 end WeakPathwiseIto
