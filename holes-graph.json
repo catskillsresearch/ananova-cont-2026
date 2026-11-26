@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:24:42Z",
+ "updated": "2026-11-26T21:26:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 27,
-  "done": 163
+  "done": 164
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 40
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 8,
-  "done": 123
+  "done": 124
  },
  "untagged": [],
  "legend": {
@@ -3026,9 +3026,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2",
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "tendsto_riemannStieltjes",
     "tendsto_sum_left"
    ],
    "declKinds": {
@@ -3053,10 +3052,9 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [
-    "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
     "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
    ],
-   "detail": "2 sorry: tendsto_riemannStieltjes, tendsto_sum_left"
+   "detail": "1 sorry: tendsto_sum_left"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
@@ -3203,24 +3201,22 @@
    "parentGoal": "Occupation.Lemma42",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_4_2.tendsto_riemannStieltjes"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 4.2 proof: Riemann–Stieltjes convergence): for `g` continuous on `[0, T]`, `∑_i g(t_{i+1}) |ω(t_{i+1}) - ω(t_i)|² → ∫_{[0,T]} g d tr[ω]_π` (weak convergence of the discrete quadratic-variation measures, from pointwise convergence of their distribution functions to the continuous `tr[ω]_π`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.WeightedOccupationMeasure",
     "Smooth.PathOscillation"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_4_2.tendsto_riemannStieltjes — subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence (in Occupation.Lemma42)"
+   "detail": "proved: lemma_4_2.tendsto_riemannStieltjes — subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence (in Occupation.Lemma42)"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",

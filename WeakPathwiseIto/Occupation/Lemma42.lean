@@ -277,7 +277,75 @@ theorem tendsto_riemannStieltjes (hQV : HasQuadraticVariation π ω) {g : ℝ �
     (hg : ContinuousOn g (Icc 0 T)) :
     Tendsto (fun n => ∑ i, g ((π n).right i) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)
       atTop (𝓝 (∫ t in Icc 0 T, g t ∂hQV.traceMeasure)) := by
-  sorry
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  have hT : 0 ≤ T := (π 0).nonneg
+  obtain ⟨B, hB, hB1, hB2⟩ : ∃ B : ℝ, 0 < B ∧ hQV.trace T + 1 ≤ B ∧
+      hQV.trace T - hQV.trace 0 ≤ B :=
+    ⟨|hQV.trace T| + 1 + |hQV.trace T - hQV.trace 0|, by positivity,
+      by linarith [le_abs_self (hQV.trace T), abs_nonneg (hQV.trace T - hQV.trace 0)],
+      by linarith [le_abs_self (hQV.trace T - hQV.trace 0), abs_nonneg (hQV.trace T)]⟩
+  obtain ⟨η, hη, hηB⟩ : ∃ η : ℝ, 0 < η ∧ η * B = ε / 4 :=
+    ⟨ε / 4 / B, by positivity, by field_simp⟩
+  obtain ⟨δ, hδ, hgδ⟩ :=
+    Metric.uniformContinuousOn_iff.1 (isCompact_Icc.uniformContinuousOn_of_continuous hg) η hη
+  obtain ⟨K, hK⟩ := exists_nat_gt (T / δ)
+  have hKr : (0 : ℝ) < K := (div_nonneg hT hδ.le).trans_lt hK
+  have hK0 : 0 < K := by exact_mod_cast hKr
+  have hTK : T / K < δ := by
+    rw [div_lt_iff₀ hKr]
+    have := (div_lt_iff₀ hδ).1 hK
+    linarith
+  have hη' : ∀ x ∈ Icc 0 T, ∀ y ∈ Icc 0 T, |x - y| ≤ T / K → |g x - g y| ≤ η :=
+    fun x hx y hy hxy => by
+      have := hgδ x hx y hy (by rw [Real.dist_eq]; exact hxy.trans_lt hTK)
+      rw [Real.dist_eq] at this
+      exact this.le
+  have hmem : ∀ j : ℕ, j ≤ K → (j : ℝ) * T / K ∈ Icc 0 T := fun j hj => by
+    refine ⟨by positivity, ?_⟩
+    rw [div_le_iff₀ hKr]
+    have : (j : ℝ) ≤ K := by exact_mod_cast hj
+    nlinarith
+  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+    ((tendsto_discreteTrace hQV (hmem (k + 1) (Finset.mem_range.1 hk))).sub
+      (tendsto_discreteTrace hQV (hmem k (Finset.mem_range.1 hk).le))).const_mul
+        (g ((k + 1 : ℕ) * T / K))
+  obtain ⟨N1, hN1⟩ := Metric.tendsto_atTop.1 hgridlim (ε / 4) (by positivity)
+  obtain ⟨N2, hN2⟩ := eventually_atTop.1 ((tendsto_sum_sq hQV).eventually
+    (gt_mem_nhds (show hQV.trace T < hQV.trace T + 1 by linarith)))
+  refine ⟨max N1 N2, fun n hn => ?_⟩
+  have e1 := abs_sum_sub_grid_le (r := (π n).right)
+    (w := fun i => ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)
+    (fun i => ⟨((π n).t_mem i.castSucc).1.trans_lt ((π n).left_lt_right i),
+      ((π n).t_mem i.succ).2⟩) (fun i => by positivity) hK0 hη'
+  have e2 := abs_integral_sub_grid_le hQV hK0 hg hη'
+  have e3 := hN1 n (le_of_max_le_left hn)
+  rw [Real.dist_eq] at e3
+  have e4 := hN2 n (le_of_max_le_right hn)
+  have hS0 : 0 ≤ ∑ i, ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 :=
+    Finset.sum_nonneg fun i _ => by positivity
+  have h5 : η * ∑ i, ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 ≤ ε / 4 := by
+    rw [← hηB]; exact mul_le_mul_of_nonneg_left (by linarith) hη.le
+  have h6 : η * (hQV.trace T - hQV.trace 0) ≤ ε / 4 := by
+    rw [← hηB]; exact mul_le_mul_of_nonneg_left hB2 hη.le
+  rw [Real.dist_eq]
+  rw [abs_sub_comm] at e2
+  have t1 := abs_sub_le (∑ i, g ((π n).right i) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)
+    (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
+      (∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ (k + 1 : ℕ) * T / K),
+        ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 -
+       ∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ (k : ℕ) * T / K),
+        ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2))
+    (∫ t in Icc 0 T, g t ∂hQV.traceMeasure)
+  have t2 := abs_sub_le (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
+      (∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ (k + 1 : ℕ) * T / K),
+        ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 -
+       ∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ (k : ℕ) * T / K),
+        ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2))
+    (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
+      (hQV.trace ((k + 1 : ℕ) * T / K) - hQV.trace ((k : ℕ) * T / K)))
+    (∫ t in Icc 0 T, g t ∂hQV.traceMeasure)
+  linarith
 
 /-- **Subgoal** (Lemma 4.2 proof, first display): if `|φ(x) - φ(y)| ≤ ε` whenever
 `|x - y| ≤ osc(ω, π_n)`, then
