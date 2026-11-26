@@ -117,7 +117,21 @@ theorem coord_smoothHessian {F : Rd d → ℝ} (hF : ContDiff ℝ 2 F) (i j : Fi
 Hessian. -/
 theorem isWeakHessian_smoothHessian {F : Rd d → ℝ} (hF : ContDiff ℝ 2 F) :
     IsWeakHessian F (smoothHessian F) := by
-  sorry
+  intro i j
+  have hF1 : ContDiff ℝ 1 (fderiv ℝ F) := hF.fderiv_right (m := 1) (by norm_num)
+  have hG : ContDiff ℝ 1 (fun y => fderiv ℝ F y (Rd.basisVec i)) := hF1.clm_apply contDiff_const
+  have hg : (fun x => Rd.coord i (smoothHessian F x (Rd.basisVec j))) =
+      fun x => fderiv ℝ (fun y => fderiv ℝ F y (Rd.basisVec i)) x (Rd.basisVec j) :=
+    funext fun x => coord_smoothHessian hF i j x
+  have hord : IsWeakDerivative.order (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) = 2 := by
+    simp [IsWeakDerivative.order, Finset.sum_add_distrib]
+  rw [hg]
+  refine ⟨hF.continuous.locallyIntegrable,
+    ((hG.continuous_fderiv one_ne_zero).clm_apply continuous_const).locallyIntegrable,
+    fun φ hφ hφc => ?_⟩
+  simp_rw [testDeriv_single_add_single hφ, hord]
+  rw [integral_mul_fderiv_fderiv hF hφ hφc]
+  norm_num
 
 /-- **Subgoal** (Definition 4.3 proof, the constant approximating sequence `F_m = F`): the
 seminorm `‖·‖_{W^0_{ω,π}}` vanishes on `0`. -/
