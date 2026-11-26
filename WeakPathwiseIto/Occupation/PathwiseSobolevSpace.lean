@@ -146,7 +146,15 @@ theorem occupationSeminorm_sub_self (π : ℕ → Partition T) (ω : ℝ → Rd 
 /-- **Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`. -/
 theorem contDiffBounded_subset (π : ℕ → Partition T) (ω : ℝ → Rd d) :
     {F : Rd d → ℝ | ContDiffBounded 2 F ∧ MemW 2 1 F} ⊆ PathwiseSobolevSpace π ω := by
-  sorry
+  rintro F ⟨hFb, hW⟩
+  refine ⟨hW, smoothHessian F, isWeakHessian_smoothHessian hFb.1, ⟨{
+    seq := fun _ => F
+    smooth := fun _ _ => hFb
+    sobolev := fun _ _ => hW
+    tendsto_path := fun _ _ => tendsto_const_nhds
+    tendsto_hessian := by
+      simp only [occupationSeminorm_sub_self]
+      exact tendsto_const_nhds }⟩⟩
 
 end PathwiseSobolevSpace
 

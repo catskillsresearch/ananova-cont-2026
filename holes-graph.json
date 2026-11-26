@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:47:39Z",
+ "updated": "2026-11-26T22:47:58Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 19,
-  "done": 210
+  "done": 211
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 48
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 162
+  "done": 163
  },
  "untagged": [],
  "legend": {
@@ -4796,10 +4796,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Definition 4.3",
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "directions_single_add_single",
-    "contDiffBounded_subset"
+    "directions_single_add_single"
    ],
    "declKinds": {
     "def": 1,
@@ -4821,10 +4820,9 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single"
    ],
-   "detail": "2 sorry: directions_single_add_single, contDiffBounded_subset"
+   "detail": "1 sorry: directions_single_add_single"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
@@ -4836,23 +4834,21 @@
    "parentGoal": "Occupation.PathwiseSobolevSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "PathwiseSobolevSpace.contDiffBounded_subset"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 4.3). Section 4.2: `C^2_b(ℝ^d) ∩ W^{2,1}(ℝ^d) ⊂ 𝓦^2_{ω,π}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: PathwiseSobolevSpace.contDiffBounded_subset — subgoal of Definition 4.3 (in Occupation.PathwiseSobolevSpace)"
+   "detail": "proved: PathwiseSobolevSpace.contDiffBounded_subset — subgoal of Definition 4.3 (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian",
