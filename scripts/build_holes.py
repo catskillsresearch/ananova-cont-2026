@@ -86,6 +86,7 @@ VERIFIED: set[str] = {
     "Main.GeometricMeshDecay",
     "Smooth.HasQuadraticVariation",
     "Occupation.WeightedOccupationMeasure",
+    "Appendix.HeatKernel",
 }
 
 # Paper labels for modules that carry a numbered result or definition.

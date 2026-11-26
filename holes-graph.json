@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T18:04:31Z",
+ "updated": "2026-11-26T18:05:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 52,
+ "sorryCount": 51,
  "counts": {
-  "open": 14,
-  "blocked": 40,
-  "done": 70
+  "open": 13,
+  "blocked": 39,
+  "done": 72
  },
  "goalCounts": {
   "open": 7,
-  "blocked": 24,
-  "done": 34
+  "blocked": 23,
+  "done": 35
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 16,
-  "done": 36
+  "done": 37
  },
  "untagged": [],
  "legend": {
@@ -64,18 +64,16 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Eqs. (32), (34), (35)",
    "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "riemannSum_le_potentialProfile"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
     "theorem": 14
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Appendix.HeatKernel::heatKernel.div_scaling",
     "Appendix.HeatKernel::heatKernel.integrableOn_Ioc",
@@ -97,10 +95,8 @@
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay"
    ],
-   "blockers": [
-    "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
-   ],
-   "detail": "1 sorry: riemannSum_le_potentialProfile"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.div_scaling",
@@ -460,17 +456,15 @@
    "parentGoal": "Appendix.HeatKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "heatKernel.riemannSum_le_potentialProfile"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2, `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.Partition",
@@ -479,7 +473,7 @@
     "Main.GeometricMeshDecay"
    ],
    "blockers": [],
-   "detail": "sorry: heatKernel.riemannSum_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
+   "detail": "proved: heatKernel.riemannSum_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.scaling",
