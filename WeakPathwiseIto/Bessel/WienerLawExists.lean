@@ -55,7 +55,14 @@ the law of the coordinate process `(B(t))_{t ∈ [0, T]}` on the product space. 
 theorem ext_of_map_coe {μ ν : Measure (CanonicalWienerSpace d T)}
     (h : μ.map (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d)) =
       ν.map (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d))) : μ = ν := by
-  sorry
+  have hm : Measurable fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d) :=
+    measurable_pi_iff.2 fun t => ContinuousMap.measurable_eval t
+  ext s hs
+  have hs' : MeasurableSet[MeasurableSpace.comap
+      (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d)) MeasurableSpace.pi] s :=
+    measurableSpace_eq_comap_coe (d := d) (T := T) ▸ hs
+  obtain ⟨S, hS, rfl⟩ := hs'
+  rw [← Measure.map_apply hm hS, h, Measure.map_apply hm hS]
 
 /-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of
 `d` independent Brownian motions): for independent real Brownian motions `W^1, …, W^d` and a
