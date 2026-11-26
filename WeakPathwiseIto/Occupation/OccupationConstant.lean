@@ -563,7 +563,8 @@ satisfies `u y = u(|y| e₀)` with `e₀` the first unit vector. -/
 theorem radial_eq_profile {d : ℕ} (hd : 0 < d) {u : Rd d → ℝ}
     (hrad : ∀ y y' : Rd d, ‖y‖ = ‖y'‖ → u y = u y') (y : Rd d) :
     u y = u (‖y‖ • EuclideanSpace.single (⟨0, hd⟩ : Fin d) (1 : ℝ)) := by
-  sorry
+  apply hrad
+  simp [norm_smul]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7b: first derivative of a radial function): for
 `x ≠ 0` and `f` differentiable at `|x|`, `D(f ∘ |·|)(x) = (f'(|x|)/|x|) ⟨x, ·⟩`. -/
