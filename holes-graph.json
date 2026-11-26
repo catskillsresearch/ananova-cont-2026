@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:46:27Z",
+ "updated": "2026-11-26T21:47:49Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 45,
+ "sorryCount": 44,
  "counts": {
-  "open": 17,
+  "open": 16,
   "blocked": 26,
-  "done": 177
+  "done": 178
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 42
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 8,
-  "done": 135
+  "done": 136
  },
  "untagged": [],
  "legend": {
@@ -4766,9 +4766,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "contDiffBounded_gradient",
     "hessian_symm",
     "riemannSum_eq",
     "sub_eq_sum",
@@ -4803,14 +4802,13 @@
    "blockers": [
     "Smooth.FollmerItoFormula::follmer_ito_formula",
     "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
-    "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
     "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
     "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
     "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
     "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
     "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
    ],
-   "detail": "8 sorry: contDiffBounded_gradient, hessian_symm, riemannSum_eq, sub_eq_sum, abs_taylor2_le, tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
+   "detail": "7 sorry: hessian_symm, riemannSum_eq, sub_eq_sum, abs_taylor2_le, tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -4886,17 +4884,15 @@
    "parentGoal": "Smooth.FollmerItoFormula",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula.contDiffBounded_gradient"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** ([Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4906,7 +4902,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: follmer_ito_formula.contDiffBounded_gradient — subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` (in Smooth.FollmerItoFormula)"
+   "detail": "proved: follmer_ito_formula.contDiffBounded_gradient — subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",

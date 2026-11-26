@@ -28,7 +28,15 @@ variable {T : ℝ} {d : ℕ}
 /-- **Subgoal** ([Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b`). -/
 theorem contDiffBounded_gradient {f : Rd d → ℝ} (hf : ContDiffBounded 2 f) :
     ContDiffBounded 1 (gradient f) := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient f = L ∘ fderiv ℝ f := rfl
+  have hD : ContDiff ℝ 1 (fderiv ℝ f) := hf.1.fderiv_right (m := 1) (by norm_num)
+  refine ⟨?_, fun i hi => ?_⟩
+  · rw [hg]; exact L.contDiff.comp hD
+  · obtain ⟨C, hC⟩ := hf.2 (i + 1) (by omega)
+    refine ⟨C, fun x => ?_⟩
+    rw [hg, L.norm_iteratedFDeriv_comp_left, norm_iteratedFDeriv_fderiv]
+    exact hC x
 
 /-- **Subgoal** ([Föl81] proof: the Hessian of a `C²` function is symmetric). -/
 theorem hessian_symm {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) (x u v : Rd d) :
