@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T22:19:13Z",
+ "updated": "2026-11-26T22:19:58Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 40,
  "counts": {
-  "open": 7,
+  "open": 12,
   "blocked": 25,
   "done": 189
  },
@@ -13,7 +13,7 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 8,
   "blocked": 8,
   "done": 145
  },
@@ -4390,14 +4390,19 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 2,
+   "sorryCount": 7,
    "holes": [
+    "lintegral_closedBall_le",
+    "lintegral_kernel_le_of_le_two",
+    "lintegral_shell_le",
+    "lintegral_kernel_le_of_three_le",
+    "lintegral_piece_le",
     "lintegral_le_maximal",
     "le_limsup_discreteSeminorm"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 3
+    "theorem": 8
    },
    "paperGoal": false,
    "verified": false,
@@ -4408,16 +4413,26 @@
     "Occupation.DiscreteSeminorm",
     "Occupation.NormalizedQuadraticDensity",
     "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
    ],
-   "detail": "2 sorry: lintegral_le_maximal, le_limsup_discreteSeminorm"
+   "detail": "7 sorry: lintegral_closedBall_le, lintegral_kernel_le_of_le_two, lintegral_shell_le, lintegral_kernel_le_of_three_le, lintegral_piece_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4447,6 +4462,161 @@
    ],
    "blockers": [],
    "detail": "proved: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "label": "lintegral_closedBall_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_10.lintegral_closedBall_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, maximal function on a closed ball): for `0 < ρ ≤ 1`, `∫_{B̄(a,ρ)} |f| ≤ |B(a,ρ)| M_1 f(a)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_10.lintegral_closedBall_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "label": "lintegral_kernel_le_of_le_two",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, `d ≤ 2`): on `B̄(a,ρ)` the kernel `|x-a|^{2-d}` is at most `ρ^{2-d}`, so `∫_{B̄(a,ρ)} |f| |x-a|^{2-d} ≤ C ρ² M_1 f(a)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "label": "lintegral_kernel_le_of_three_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, `d ≥ 3`): summing the dyadic shells (a geometric series), `∫_{B̄(a,ρ)} |f| |x-a|^{2-d} ≤ C ρ² M_1 f(a)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "label": "lintegral_piece_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_10.lintegral_piece_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, one increment): if `|b - a| ≤ 1` then `∫ |f| 𝓛^{n,i}_ω ≤ C (M_1 f(b) + M_1 f(a)) |b - a|²`, since `Q ⊆ B̄(a,|b-a|) ∩ B̄(b,|b-a|)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_10.lintegral_piece_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "label": "lintegral_shell_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_10.lintegral_shell_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, `d ≥ 3`, dyadic shell): on the shell `ρ 2^{-(k+1)} < |x-a| ≤ ρ 2^{-k}` the kernel is at most `(ρ 2^{-(k+1)})^{2-d}`, so the integral is at most `(ρ 2^{-(k+1)})^{2-d} |B(a, ρ 2^{-k})| M_1 f(a)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_10.lintegral_shell_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
@@ -7899,6 +8069,31 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -7960,6 +8155,31 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
    "kind": "hard"
   },
   {
@@ -8195,6 +8415,31 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
    "kind": "hard"
   },
   {
@@ -8454,6 +8699,31 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
    "to": "Occupation.OccupationSeminorm",
    "kind": "subgoal"
   },
@@ -8924,6 +9194,31 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -9305,6 +9600,31 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
    "kind": "hard"
   },
   {
@@ -10656,6 +10976,26 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -10697,6 +11037,26 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
@@ -10869,6 +11229,26 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -11072,6 +11452,26 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
    "to": "Occupation.OccupationSeminorm"
   },
   {
@@ -11316,6 +11716,26 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -11497,6 +11917,26 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
