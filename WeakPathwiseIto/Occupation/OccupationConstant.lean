@@ -842,7 +842,39 @@ theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :
 `d ≥ 3`, `0 < r < |y|`, `sphereMean d r y = |y|^{2-d}`. -/
 theorem sphereMean_outside {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
     (hy : r < ‖y‖) : sphereMean d r y = ‖y‖ ^ (2 - (d : ℝ)) := by
-  sorry
+  haveI : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
+  obtain ⟨a, b, hab⟩ := radial_harmonic_eq hd hr.le
+    (fun z hz => harmonicAt_sphereMean hd hr hz.ne') (fun z z' h => sphereMean_radial r h)
+  have hn := tendsto_norm_cocompact_atTop (E := Rd d)
+  have hev : ∀ᶠ z in cocompact (Rd d), r < ‖z‖ := hn.eventually_gt_atTop r
+  have hid : ∀ t : ℝ, 0 < t → t ^ ((d : ℝ) - 2) * t ^ (2 - (d : ℝ)) = 1 := fun t ht => by
+    rw [← Real.rpow_add ht, show (d : ℝ) - 2 + (2 - (d : ℝ)) = 0 by ring, Real.rpow_zero]
+  have hz : Tendsto (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (cocompact (Rd d)) (𝓝 0) := by
+    have hpos : 0 < (d : ℝ) - 2 := by
+      have : (3 : ℝ) ≤ d := by exact_mod_cast hd
+      linarith
+    refine ((tendsto_rpow_neg_atTop hpos).comp hn).congr fun z => ?_
+    simp only [Function.comp_apply, neg_sub]
+  have hT := tendsto_sphereMean hd hr
+  have h1 : Tendsto (sphereMean d r) (cocompact (Rd d)) (𝓝 a) := by
+    have h := tendsto_const_nhds (x := a) |>.add (hz.const_mul b)
+    rw [mul_zero, add_zero] at h
+    exact h.congr' (hev.mono fun z hz' => (hab z hz').symm)
+  have h2 : Tendsto (sphereMean d r) (cocompact (Rd d)) (𝓝 0) := by
+    have h := hz.mul hT
+    rw [zero_mul] at h
+    refine h.congr' (hev.mono fun z hz' => ?_)
+    have hz0 : 0 < ‖z‖ := hr.trans hz'
+    rw [← mul_assoc, mul_comm (‖z‖ ^ (2 - (d : ℝ))), hid _ hz0, one_mul]
+  have ha : a = 0 := tendsto_nhds_unique h1 h2
+  have h3 : Tendsto (fun z : Rd d => ‖z‖ ^ ((d : ℝ) - 2) * sphereMean d r z) (cocompact (Rd d))
+      (𝓝 b) := by
+    refine tendsto_const_nhds.congr' (hev.mono fun z hz' => ?_)
+    have hz0 : 0 < ‖z‖ := hr.trans hz'
+    show b = ‖z‖ ^ ((d : ℝ) - 2) * sphereMean d r z
+    rw [hab z hz', ha, zero_add, mul_left_comm, hid _ hz0, mul_one]
+  have hb : b = 1 := tendsto_nhds_unique h3 hT
+  rw [hab y hy, ha, hb, zero_add, one_mul]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10: integrating over shells): Newton's theorem for a
 ball, `d ≥ 3`. -/

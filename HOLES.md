@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T20:36:27Z  
-**`sorry` occurrences:** 48 · 12 open · 36 blocked · 139 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 6, 'blocked': 15, 'done': 101} · 24 file(s) with `sorry`.
+**Updated:** 2026-11-26T20:38:02Z  
+**`sorry` occurrences:** 47 · 11 open · 36 blocked · 140 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 5, 'blocked': 15, 'done': 102} · 24 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -141,7 +141,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean_bounds` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral` | subgoal of Eq. (7 | 0 |
-| open | `Occupation.OccupationConstant::occupationConstant.sphereMean_outside` | subgoal of Eq. (7 | 1 |
+| done | `Occupation.OccupationConstant::occupationConstant.sphereMean_outside` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean_radial` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean` | subgoal of Eq. (7 | 0 |
@@ -230,7 +230,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
-| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 4 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.newton_ball`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le`, `Occupation.OccupationConstant::occupationConstant.sphereMean_outside` |
+| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 3 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.newton_ball`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le` |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
