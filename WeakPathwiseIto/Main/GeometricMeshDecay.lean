@@ -57,7 +57,27 @@ theorem summable_mesh (hT : 0 < T) (h : GeometricMeshDecay π) : Summable fun n 
 /-- **Subgoal** (Assumption 2, eq. (31)). Eq. (31): `1/|π_1| + ⋯ + 1/|π_n| ≤ M₃ / |π_n|`. -/
 theorem sum_inv_mesh_le (hT : 0 < T) (h : GeometricMeshDecay π) : ∃ M₃ : ℝ, ∀ n, 1 ≤ n →
     ∑ k ∈ Finset.Icc 1 n, 1 / (π k).mesh ≤ M₃ / (π n).mesh := by
-  sorry
+  obtain ⟨M₂, hM, hM'⟩ := h
+  have hM1 : 0 < M₂ - 1 := by linarith
+  have hM0 : 0 < M₂ := by linarith
+  refine ⟨M₂ / (M₂ - 1), fun n hn => ?_⟩
+  induction n, hn using Nat.le_induction with
+  | base =>
+    simp only [Finset.Icc_self, Finset.sum_singleton]
+    have : (1 : ℝ) ≤ M₂ / (M₂ - 1) := by rw [le_div_iff₀ hM1]; linarith
+    exact div_le_div_of_nonneg_right this (π 1).mesh_nonneg
+  | succ k hk ih =>
+    rw [Finset.sum_Icc_succ_top (by omega)]
+    obtain ⟨hp, hle⟩ := mesh_succ hM hM' hk
+    have hne : (π (k + 1)).mesh ≠ 0 := hp.ne'
+    calc _ ≤ M₂ / (M₂ - 1) / (π k).mesh + 1 / (π (k + 1)).mesh := by linarith
+      _ ≤ M₂ / (M₂ - 1) / (M₂ * (π (k + 1)).mesh) + 1 / (π (k + 1)).mesh :=
+          by
+          have := div_le_div_of_nonneg_left (div_nonneg hM0.le hM1.le) (mul_pos hM0 hp) hle
+          linarith
+      _ = M₂ / (M₂ - 1) / (π (k + 1)).mesh := by
+          field_simp
+          ring
 
 end GeometricMeshDecay
 
