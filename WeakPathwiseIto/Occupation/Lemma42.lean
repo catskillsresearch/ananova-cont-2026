@@ -209,7 +209,65 @@ theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (
     |(∫ t in Icc 0 T, g t ∂hQV.traceMeasure) - ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
         (hQV.trace ((k + 1 : ℕ) * T / K) - hQV.trace ((k : ℕ) * T / K))| ≤
       η * (hQV.trace T - hQV.trace 0) := by
-  sorry
+  have hT : 0 ≤ T := (π 0).nonneg
+  have hK' : (0 : ℝ) < K := by exact_mod_cast hK
+  obtain ⟨s, hs⟩ : ∃ s : ℕ → ℝ, ∀ k : ℕ, s k = (k : ℝ) * T / K := ⟨_, fun _ => rfl⟩
+  simp_rw [← hs]
+  have hsmono : ∀ k, s k ≤ s (k + 1) := fun k => by
+    rw [hs, hs]; push_cast
+    exact div_le_div_of_nonneg_right (by nlinarith) hK'.le
+  have hsK : s K = T := by rw [hs]; field_simp
+  have hs0 : s 0 = 0 := by rw [hs]; simp
+  have hsnn : ∀ k, 0 ≤ s k := fun k => by rw [hs]; positivity
+  have hsle : ∀ k < K, s (k + 1) ≤ T := fun k hk => by
+    rw [hs, div_le_iff₀ hK']
+    have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
+    nlinarith
+  have hstep : ∀ k, s (k + 1) - s k = T / K := fun k => by rw [hs, hs]; push_cast; ring
+  haveI : IsLocallyFiniteMeasure hQV.traceMeasure := by
+    unfold HasQuadraticVariation.traceMeasure; infer_instance
+  have hInt : IntegrableOn g (Icc 0 T) hQV.traceMeasure := hg.integrableOn_compact isCompact_Icc
+  have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 T := fun k hk x hx =>
+    ⟨(hsnn k).trans hx.1.le, hx.2.trans (hsle k hk)⟩
+  have hfin : ∀ k < K, hQV.traceMeasure (Ioc (s k) (s (k + 1))) < ⊤ := fun k hk =>
+    (measure_mono (hcell k hk)).trans_lt isCompact_Icc.measure_lt_top
+  have h0 : hQV.traceMeasure {0} = 0 := (traceMeasure_Ioc hQV le_rfl le_rfl hT).2
+  have hIcc : ∫ t in Icc 0 T, g t ∂hQV.traceMeasure = ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure := by
+    refine setIntegral_congr_set (ae_eq_set.2 ⟨measure_mono_null (fun x hx => ?_) h0, ?_⟩)
+    · simp only [mem_diff, mem_Icc, mem_Ioc, not_and] at hx
+      exact Set.mem_singleton_iff.2 (le_antisymm (not_lt.1 fun h => hx.2 h hx.1.2) hx.1.1)
+    · rw [sdiff_eq_empty.2 Ioc_subset_Icc_self, measure_empty]
+  have hsplit : ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure =
+      ∑ k ∈ Finset.range K, ∫ t in Ioc (s k) (s (k + 1)), g t ∂hQV.traceMeasure := by
+    have := intervalIntegral.sum_integral_adjacent_intervals (f := g) (μ := hQV.traceMeasure)
+      (a := s) (n := K) fun k hk =>
+        (intervalIntegrable_iff_integrableOn_Ioc_of_le (hsmono k)).2 (hInt.mono_set (hcell k hk))
+    rw [hs0, hsK, intervalIntegral.integral_of_le hT] at this
+    rw [← this]
+    exact Finset.sum_congr rfl fun k _ => intervalIntegral.integral_of_le (hsmono k)
+  have hsum : ∀ k ∈ Finset.range K, g (s (k + 1)) * (hQV.trace (s (k + 1)) - hQV.trace (s k)) =
+      ∫ t in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂hQV.traceMeasure := fun k hk => by
+    rw [setIntegral_const, smul_eq_mul, mul_comm,
+      (traceMeasure_Ioc hQV (hsnn k) (hsmono k) (hsle k (Finset.mem_range.1 hk))).1]
+  rw [hIcc, hsplit, Finset.sum_congr rfl hsum, ← Finset.sum_sub_distrib]
+  have hcellb : ∀ k ∈ Finset.range K, |(∫ t in Ioc (s k) (s (k + 1)), g t ∂hQV.traceMeasure) -
+      ∫ t in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂hQV.traceMeasure| ≤
+        η * (hQV.trace (s (k + 1)) - hQV.trace (s k)) := fun k hk => by
+    have hk' := Finset.mem_range.1 hk
+    rw [← integral_sub (hInt.mono_set (hcell k hk')) (integrableOn_const (hfin k hk').ne),
+      ← (traceMeasure_Ioc hQV (hsnn k) (hsmono k) (hsle k hk')).1, ← Real.norm_eq_abs]
+    refine norm_setIntegral_le_of_norm_le_const (hfin k hk') fun x hx => ?_
+    rw [Real.norm_eq_abs]
+    refine hη _ (hcell k hk' hx) _ ⟨hsnn _, hsle k hk'⟩ ?_
+    rw [abs_sub_comm, abs_of_nonneg (by linarith [hx.2]), ← hstep k]
+    linarith [hx.1]
+  calc _ ≤ ∑ k ∈ Finset.range K, |(∫ t in Ioc (s k) (s (k + 1)), g t ∂hQV.traceMeasure) -
+        ∫ t in Ioc (s k) (s (k + 1)), g (s (k + 1)) ∂hQV.traceMeasure| :=
+        Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ k ∈ Finset.range K, η * (hQV.trace (s (k + 1)) - hQV.trace (s k)) :=
+        Finset.sum_le_sum hcellb
+    _ = η * (hQV.trace T - hQV.trace 0) := by
+        rw [← Finset.mul_sum, Finset.sum_range_sub (fun k => hQV.trace (s k)), hsK, hs0]
 
 /-- **Subgoal** (Lemma 4.2 proof: Riemann–Stieltjes convergence): for `g` continuous on `[0, T]`,
 `∑_i g(t_{i+1}) |ω(t_{i+1}) - ω(t_i)|² → ∫_{[0,T]} g d tr[ω]_π` (weak convergence of the
