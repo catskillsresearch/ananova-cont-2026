@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:39:05Z  
-**`sorry` occurrences:** 44 · 15 open · 27 blocked · 171 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 10, 'blocked': 8, 'done': 130} · 21 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:39:48Z  
+**`sorry` occurrences:** 43 · 14 open · 27 blocked · 172 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 9, 'blocked': 8, 'done': 131} · 21 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -178,7 +178,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Smooth.Proposition31::proposition_3_1.inner_apply_eq` | subgoal of Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization | 1 |
 | done | `Smooth.Proposition31::proposition_3_1.norm_sub_left_le` | subgoal of Proposition 3.1 proof, (6 | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.norm_taylor_le` | subgoal of Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n` | 0 |
-| open | `Smooth.Proposition31::proposition_3_1.riemannSum_eq` | subgoal of Proposition 3.1 proof: splitting the discrete covariation | 1 |
+| done | `Smooth.Proposition31::proposition_3_1.riemannSum_eq` | subgoal of Proposition 3.1 proof: splitting the discrete covariation | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc` | subgoal of Proposition 3.1 proof: Stieltjes measure of an interval | 0 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_boundary` | subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n | 1 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 1 |
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
-| blocked | `Smooth.Proposition31` | Proposition 3.1 | 6 | `Smooth.Proposition31::proposition_3_1.inner_apply_eq`, `Smooth.Proposition31::proposition_3_1.riemannSum_eq`, `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder` |
+| blocked | `Smooth.Proposition31` | Proposition 3.1 | 5 | `Smooth.Proposition31::proposition_3_1.inner_apply_eq`, `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder` |
 
 ### §4 Occupation measures and 𝓦²_{ω,π}
 

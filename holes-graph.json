@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:39:05Z",
+ "updated": "2026-11-26T21:39:48Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 44,
+ "sorryCount": 43,
  "counts": {
-  "open": 15,
+  "open": 14,
   "blocked": 27,
-  "done": 171
+  "done": 172
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 41
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 8,
-  "done": 130
+  "done": 131
  },
  "untagged": [],
  "legend": {
@@ -5111,9 +5111,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "riemannSum_eq",
     "inner_apply_eq",
     "tendsto_main",
     "tendsto_remainder",
@@ -5146,12 +5145,11 @@
    ],
    "blockers": [
     "Smooth.Proposition31::proposition_3_1.inner_apply_eq",
-    "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
     "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
     "Smooth.Proposition31::proposition_3_1.tendsto_main",
     "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
    ],
-   "detail": "6 sorry: riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
+   "detail": "5 sorry: inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
@@ -5281,17 +5279,15 @@
    "parentGoal": "Smooth.Proposition31",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_3_1.riemannSum_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Proposition 3.1 proof: splitting the discrete covariation): the stopped sum equals the sum over complete intervals `t_{k+1} ≤ t` plus the straddling interval `t_k < t < t_{k+1}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Occupation.Lemma42",
@@ -5300,7 +5296,7 @@
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_3_1.riemannSum_eq — subgoal of Proposition 3.1 proof: splitting the discrete covariation (in Smooth.Proposition31)"
+   "detail": "proved: proposition_3_1.riemannSum_eq — subgoal of Proposition 3.1 proof: splitting the discrete covariation (in Smooth.Proposition31)"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",

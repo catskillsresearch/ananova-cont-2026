@@ -280,7 +280,19 @@ theorem riemannSum_eq (p : Partition T) (f : Rd d → Rd d) (ω : ℝ → Rd d) 
         ⟪f (ω (p.right k)) - f (ω (p.left k)), ω (p.right k) - ω (p.left k)⟫ +
       ∑ k ∈ Finset.univ.filter (fun k => p.left k < t ∧ t < p.right k),
         ⟪f (ω t) - f (ω (p.left k)), ω t - ω (p.left k)⟫ := by
-  sorry
+  unfold pathwiseCovariation.riemannSum
+  rw [Finset.sum_filter, Finset.sum_filter, ← Finset.sum_add_distrib]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  have hlr := p.left_lt_right k
+  by_cases h1 : p.right k ≤ t
+  · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
+    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+  · by_cases h3 : p.left k < t
+    · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
+      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+    · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
+      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3)]
+      simp
 
 /-- **Subgoal** (Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization):
 `⟨A v, v⟩ = ∑_{i,j} A_{ij} ((v_i + v_j)² - v_i² - v_j²) / 2`. -/
