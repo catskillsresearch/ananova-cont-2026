@@ -35,7 +35,33 @@ theorem fourier_slice {δ : ℝ} (hδ : 0 < δ) (ξ : Rd d) :
     ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
         (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
       ((δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2) : ℝ) : ℂ) := by
-  sorry
+  have hδc : (δ : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hδ.ne'
+  have hπc : (Real.pi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 Real.pi_ne_zero
+  have hb : 0 < ((Real.pi / δ : ℝ) : ℂ).re := by
+    rw [Complex.ofReal_re]; exact div_pos Real.pi_pos hδ
+  have h := GaussianFourier.integral_cexp_neg_mul_sq_norm_add (V := Rd d) hb
+    (-2 * Real.pi * Complex.I) ξ
+  have hint : ∀ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+      (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
+      Complex.exp (-((Real.pi / δ : ℝ) : ℂ) * (‖x‖ : ℂ) ^ 2 +
+        (-2 * Real.pi * Complex.I) * (⟪ξ, x⟫ : ℂ)) := fun x => by
+    rw [Complex.ofReal_exp, ← Complex.exp_add, real_inner_comm]
+    congr 1
+    push_cast
+    field_simp
+    ring
+  simp_rw [hint]
+  rw [h, finrank_euclideanSpace_fin, Complex.ofReal_mul, Complex.ofReal_exp,
+    Complex.ofReal_cpow hδ.le]
+  congr 1
+  · congr 1
+    · push_cast; field_simp
+    · push_cast; ring
+  · congr 1
+    push_cast
+    field_simp
+    rw [Complex.I_sq]
+    ring
 
 /-- **Subgoal** (Definition 2.4, Fourier transform step 2: Fubini): the Fourier transform of
 `g_α` is the subordination integral of the Fourier transforms of the Gaussian slices. -/

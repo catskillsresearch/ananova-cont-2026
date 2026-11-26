@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:50:15Z",
+ "updated": "2026-11-26T18:51:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 38,
-  "done": 103
+  "done": 104
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 16,
-  "done": 66
+  "done": 67
  },
  "untagged": [],
  "legend": {
@@ -1548,9 +1548,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "fourier_slice",
     "fourier_fubini",
     "integral_profile_exp",
     "fourier_eq"
@@ -1582,10 +1581,9 @@
    "blockers": [
     "Bessel.BesselKernel::besselKernel.fourier_eq",
     "Bessel.BesselKernel::besselKernel.fourier_fubini",
-    "Bessel.BesselKernel::besselKernel.fourier_slice",
     "Bessel.BesselKernel::besselKernel.integral_profile_exp"
    ],
-   "detail": "4 sorry: fourier_slice, fourier_fubini, integral_profile_exp, fourier_eq"
+   "detail": "3 sorry: fourier_fubini, integral_profile_exp, fourier_eq"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1676,22 +1674,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.fourier_slice"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, Fourier transform step 1: Gaussian Fourier transform): for `δ > 0`, `∫ e^{-2πi x·ξ} e^{-π|x|²/δ} dx = δ^{d/2} e^{-πδ|ξ|²}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.fourier_slice — subgoal of Definition 2.4, Fourier transform step 1: Gaussian Fourier transform (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.fourier_slice — subgoal of Definition 2.4, Fourier transform step 1: Gaussian Fourier transform (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.integrable",
