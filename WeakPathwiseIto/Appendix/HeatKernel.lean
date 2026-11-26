@@ -300,6 +300,38 @@ theorem integral_div_le (T : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 →
         rw [setIntegral_congr_fun measurableSet_Ioi hscale, integral_const_mul]
         field_simp
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (35), kernel comparison): for `0 < a ≤ s ≤ K a`,
+`p_a(x) ≤ K^{d/2} p_s(x)`. -/
+theorem le_rpow_mul (x : Rd d) {a s K : ℝ} (ha : 0 < a) (has : a ≤ s) (hsK : s ≤ K * a) :
+    heatKernel d a x ≤ K ^ ((d : ℝ) / 2) * heatKernel d s x := by
+  have hs : 0 < s := ha.trans_le has
+  have hK : 0 < K := by
+    by_contra h
+    push_neg at h
+    nlinarith
+  unfold heatKernel
+  have e1 : Real.exp (-‖x‖ ^ 2 / (2 * a)) ≤ Real.exp (-‖x‖ ^ 2 / (2 * s)) := by
+    rw [Real.exp_le_exp, neg_div, neg_div, neg_le_neg_iff]
+    exact div_le_div_of_nonneg_left (sq_nonneg _) (by positivity) (by linarith)
+  have e2 : (2 * Real.pi * a) ^ (-(d : ℝ) / 2) ≤
+      K ^ ((d : ℝ) / 2) * (2 * Real.pi * s) ^ (-(d : ℝ) / 2) := by
+    have h3 : K ^ ((d : ℝ) / 2) * (2 * Real.pi * s) ^ (-(d : ℝ) / 2) =
+        (2 * Real.pi * s / K) ^ (-(d : ℝ) / 2) := by
+      have h4 : (K⁻¹) ^ (-(d : ℝ) / 2) = K ^ ((d : ℝ) / 2) := by
+        rw [Real.inv_rpow hK.le, neg_div, Real.rpow_neg hK.le, inv_inv]
+      rw [div_eq_mul_inv (2 * Real.pi * s) K,
+        Real.mul_rpow (x := 2 * Real.pi * s) (by positivity) (by positivity), h4, mul_comm]
+    rw [h3]
+    refine Real.rpow_le_rpow_of_nonpos (by positivity) ?_ (by
+      have : (0 : ℝ) ≤ d := Nat.cast_nonneg d
+      linarith)
+    rw [div_le_iff₀ hK]
+    nlinarith [Real.pi_pos]
+  calc (2 * Real.pi * a) ^ (-(d : ℝ) / 2) * Real.exp (-‖x‖ ^ 2 / (2 * a))
+      ≤ K ^ ((d : ℝ) / 2) * (2 * Real.pi * s) ^ (-(d : ℝ) / 2) * Real.exp (-‖x‖ ^ 2 / (2 * s)) :=
+        mul_le_mul e2 e1 (Real.exp_pos _).le (by positivity)
+    _ = _ := by ring
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
