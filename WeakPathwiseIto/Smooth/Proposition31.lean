@@ -503,6 +503,13 @@ theorem proposition_3_1 {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ
     (hosc : pathOscillation.Vanishes ω π) {f : Rd d → Rd d} (hf : ContDiffBounded 1 f) :
     ∀ t ∈ Icc 0 T, Tendsto (fun n => pathwiseCovariation.riemannSum (π n) f ω t) atTop
       (𝓝 (hQV.matrixIntegral (fun u i j => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) t)) := by
-  sorry
+  intro t ht
+  have h := ((proposition_3_1.tendsto_remainder hω hQV hosc hf t).add
+    (proposition_3_1.tendsto_main hω hQV hf ht)).add (proposition_3_1.tendsto_boundary hω hosc hf ht)
+  rw [zero_add, add_zero] at h
+  refine h.congr fun n => ?_
+  rw [proposition_3_1.riemannSum_eq]
+  simp only [Finset.sum_sub_distrib]
+  ring
 
 end WeakPathwiseIto
