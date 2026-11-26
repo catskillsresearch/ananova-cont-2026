@@ -29,7 +29,23 @@ variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T}
 theorem stieltjesMeasure_Ioc {x : ℝ → ℝ} (h : HasScalarQuadraticVariation π x) {a b : ℝ}
     (ha : 0 ≤ a) (hab : a ≤ b) (hb : b ≤ T) :
     h.stieltjesMeasure.real (Ioc a b) = h.qv b - h.qv a := by
-  sorry
+  have hT : 0 ≤ T := (π 0).nonneg
+  have hc : Continuous h.qvExt := by
+    unfold HasScalarQuadraticVariation.qvExt
+    exact h.continuousOn.comp_continuous
+      (by fun_prop : Continuous fun t : ℝ => max 0 (min t T))
+      (fun t => ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩)
+  set F := h.qvExt_monotone.stieltjesFunction with hFdef
+  have hF : ∀ y, F y = h.qvExt y := fun y => by
+    rw [hFdef, Monotone.stieltjesFunction_eq]
+    exact (h.qvExt_monotone.continuousWithinAt_Ioi_iff_rightLim_eq).1 hc.continuousWithinAt
+  have hclamp : ∀ s ∈ Icc 0 T, h.qvExt s = h.qv s := fun s hs => by
+    unfold HasScalarQuadraticVariation.qvExt
+    rw [min_eq_left hs.2, max_eq_right hs.1]
+  have hmeas : h.stieltjesMeasure = F.measure := rfl
+  rw [Measure.real_def, hmeas, StieltjesFunction.measure_Ioc, hF, hF,
+    ENNReal.toReal_ofReal (sub_nonneg.2 (h.qvExt_monotone hab)),
+    hclamp b ⟨ha.trans hab, hb⟩, hclamp a ⟨ha, hab.trans hb⟩]
 
 /-- **Subgoal** (Proposition 3.1 proof, convergence of `I_1^n`, grid step): with the grid
 `s_k = k t / K` and `g` continuous on `[0,T]` varying by at most `η` over distances `≤ t/K` in

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:35:20Z",
+ "updated": "2026-11-26T21:36:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 20,
+  "open": 19,
   "blocked": 27,
-  "done": 166
+  "done": 167
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 41
  },
  "subgoalCounts": {
-  "open": 15,
+  "open": 14,
   "blocked": 8,
-  "done": 125
+  "done": 126
  },
  "untagged": [],
  "legend": {
@@ -5111,9 +5111,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
-    "stieltjesMeasure_Ioc",
     "abs_integral_sub_grid_le",
     "tendsto_riemannStieltjes",
     "norm_sub_left_le",
@@ -5155,13 +5154,12 @@
     "Smooth.Proposition31::proposition_3_1.norm_sub_left_le",
     "Smooth.Proposition31::proposition_3_1.norm_taylor_le",
     "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
-    "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc",
     "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
     "Smooth.Proposition31::proposition_3_1.tendsto_main",
     "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
     "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
    ],
-   "detail": "11 sorry: stieltjesMeasure_Ioc, abs_integral_sub_grid_le, tendsto_riemannStieltjes, norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
+   "detail": "10 sorry: abs_integral_sub_grid_le, tendsto_riemannStieltjes, norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
@@ -5328,17 +5326,15 @@
    "parentGoal": "Smooth.Proposition31",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_3_1.stieltjesMeasure_Ioc"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Proposition 3.1 proof: Stieltjes measure of an interval): for `0 ≤ a ≤ b ≤ T`, `d[x]_π((a, b]) = [x]_π(b) - [x]_π(a)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Occupation.Lemma42",
@@ -5347,7 +5343,7 @@
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_3_1.stieltjesMeasure_Ioc — subgoal of Proposition 3.1 proof: Stieltjes measure of an interval (in Smooth.Proposition31)"
+   "detail": "proved: proposition_3_1.stieltjesMeasure_Ioc — subgoal of Proposition 3.1 proof: Stieltjes measure of an interval (in Smooth.Proposition31)"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.tendsto_boundary",

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:35:20Z  
-**`sorry` occurrences:** 49 · 20 open · 27 blocked · 166 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 15, 'blocked': 8, 'done': 125} · 21 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:36:12Z  
+**`sorry` occurrences:** 48 · 19 open · 27 blocked · 167 done (goals + subgoals) · goals {'open': 5, 'blocked': 19, 'done': 41} · subgoals {'open': 14, 'blocked': 8, 'done': 126} · 21 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -179,7 +179,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Smooth.Proposition31::proposition_3_1.norm_sub_left_le` | subgoal of Proposition 3.1 proof, (6 | 1 |
 | open | `Smooth.Proposition31::proposition_3_1.norm_taylor_le` | subgoal of Proposition 3.1 proof, Newton–Leibniz remainder `r_k^n` | 1 |
 | open | `Smooth.Proposition31::proposition_3_1.riemannSum_eq` | subgoal of Proposition 3.1 proof: splitting the discrete covariation | 1 |
-| open | `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc` | subgoal of Proposition 3.1 proof: Stieltjes measure of an interval | 1 |
+| done | `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc` | subgoal of Proposition 3.1 proof: Stieltjes measure of an interval | 0 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_boundary` | subgoal of Proposition 3.1 proof: the straddling interval `t_k < t < t_{k+1}` contributes at most `sup |∇f| · osc(ω, π_n | 1 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 1 |
 | open | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 1 |
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
-| blocked | `Smooth.Proposition31` | Proposition 3.1 | 11 | `Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le`, `Smooth.Proposition31::proposition_3_1.inner_apply_eq`, `Smooth.Proposition31::proposition_3_1.norm_sub_left_le`, `Smooth.Proposition31::proposition_3_1.norm_taylor_le`, `Smooth.Proposition31::proposition_3_1.riemannSum_eq`, `Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc`, `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder`, `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` |
+| blocked | `Smooth.Proposition31` | Proposition 3.1 | 10 | `Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le`, `Smooth.Proposition31::proposition_3_1.inner_apply_eq`, `Smooth.Proposition31::proposition_3_1.norm_sub_left_le`, `Smooth.Proposition31::proposition_3_1.norm_taylor_le`, `Smooth.Proposition31::proposition_3_1.riemannSum_eq`, `Smooth.Proposition31::proposition_3_1.tendsto_boundary`, `Smooth.Proposition31::proposition_3_1.tendsto_main`, `Smooth.Proposition31::proposition_3_1.tendsto_remainder`, `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` |
 
 ### §4 Occupation measures and 𝓦²_{ω,π}
 
