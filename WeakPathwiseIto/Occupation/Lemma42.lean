@@ -47,7 +47,9 @@ theorem tendsto_discreteTrace (hQV : HasQuadraticVariation π ω) {t : ℝ} (ht 
 theorem tendsto_sum_sq (hQV : HasQuadraticVariation π ω) :
     Tendsto (fun n => ∑ i, ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2) atTop
       (𝓝 (hQV.trace T)) := by
-  sorry
+  have hT : T ∈ Icc 0 T := ⟨(π 0).nonneg, le_rfl⟩
+  refine (tendsto_discreteTrace hQV hT).congr fun n => ?_
+  rw [Finset.filter_true_of_mem fun i _ => ((π n).t_mem i.succ).2]
 
 /-- **Subgoal** (Lemma 4.2 proof: increments are bounded by the oscillation):
 `|ω(t_{i+1}) - ω(t_i)| ≤ osc(ω, π_n)`. -/
