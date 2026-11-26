@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T21:55:22Z",
+ "updated": "2026-11-26T21:55:52Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
   "open": 9,
-  "blocked": 26,
-  "done": 186
+  "blocked": 25,
+  "done": 187
  },
  "goalCounts": {
-  "open": 4,
-  "blocked": 18,
+  "open": 5,
+  "blocked": 17,
   "done": 43
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 8,
-  "done": 143
+  "done": 144
  },
  "untagged": [],
  "legend": {
@@ -4693,9 +4693,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Corollary 3.2",
    "file": "WeakPathwiseIto/Smooth/Corollary32.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "pathwiseCovariation_eq",
     "corollary_3_2"
    ],
    "declKinds": {
@@ -4704,7 +4703,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
@@ -4715,10 +4714,8 @@
     "Smooth.PathwiseCovariation",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq"
-   ],
-   "detail": "2 sorry: pathwiseCovariation_eq, corollary_3_2"
+   "blockers": [],
+   "detail": "1 sorry: corollary_3_2"
   },
   {
    "id": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
@@ -4730,17 +4727,15 @@
    "parentGoal": "Smooth.Corollary32",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Corollary32.lean",
-   "sorryCount": 1,
-   "holes": [
-    "corollary_3_2.pathwiseCovariation_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Corollary 3.2 proof, \"by Proposition 3.1\"): for `f ∈ C^2_b`, `[∇f(ω), ω]_π(T) = ∫_0^T ⟨∇²f(ω(t)), d[ω]_π(t)⟩`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Smooth.FollmerIntegral",
@@ -4751,7 +4746,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: corollary_3_2.pathwiseCovariation_eq — subgoal of Corollary 3.2 proof, \"by Proposition 3.1\" (in Smooth.Corollary32)"
+   "detail": "proved: corollary_3_2.pathwiseCovariation_eq — subgoal of Corollary 3.2 proof, \"by Proposition 3.1\" (in Smooth.Corollary32)"
   },
   {
    "id": "Smooth.DiscreteQuadraticVariation",

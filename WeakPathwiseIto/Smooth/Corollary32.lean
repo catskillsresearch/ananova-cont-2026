@@ -31,7 +31,10 @@ theorem pathwiseCovariation_eq {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {�
     (hosc : pathOscillation.Vanishes ω π) {f : Rd d → ℝ} (hf : ContDiffBounded 2 f) :
     pathwiseCovariation π (gradient f) ω T = hQV.matrixIntegral
       (fun u i j => Rd.coord i (smoothHessian f (ω u) (Rd.basisVec j))) T := by
-  sorry
+  have h := proposition_3_1 hω hQV hosc (follmer_ito_formula.contDiffBounded_gradient hf) T
+    ⟨(π 0).nonneg, le_rfl⟩
+  unfold pathwiseCovariation
+  exact h.limUnder_eq
 
 end corollary_3_2
 
