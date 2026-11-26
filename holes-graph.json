@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:20:25Z",
+ "updated": "2026-11-26T20:22:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 50,
  "counts": {
-  "open": 15,
+  "open": 14,
   "blocked": 36,
-  "done": 130
+  "done": 131
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 15,
-  "done": 92
+  "done": 93
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "harmonicAt_sphereMean",
     "radial_harmonic_eq",
     "tendsto_sphereMean",
     "sphereMean_outside",
@@ -3100,14 +3099,13 @@
    ],
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
-    "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "7 sorry: harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "6 sorry: radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3126,7 +3124,7 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6j: continuous linear maps commute with the sphere integral): for `φ` continuous on `S^{d-1}` and `L` continuous linear, `L (∫ φ dσ) = ∫ L (φ ω) dσ(ω)`.",
+   "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6j: continuous linear maps commute with the sphere integral): for `φ : S^{d-1} → L(ℝ^d, F)` continuous and `L` continuous linear, `L (∫ φ dσ) = ∫ L (φ ω) dσ(ω)`.",
    "status": "done",
    "deps": [
     "Basic.Rd"
@@ -3296,22 +3294,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.harmonicAt_sphereMean"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.harmonicAt_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.harmonicAt_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean",

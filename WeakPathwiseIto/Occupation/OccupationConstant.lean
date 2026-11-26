@@ -475,11 +475,12 @@ theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
     ((volume : Measure (Rd d)).toSphere.real univ)⁻¹)
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6j: continuous linear maps commute with the sphere
-integral): for `φ` continuous on `S^{d-1}` and `L` continuous linear,
+integral): for `φ : S^{d-1} → L(ℝ^d, F)` continuous and `L` continuous linear,
 `L (∫ φ dσ) = ∫ L (φ ω) dσ(ω)`. -/
 theorem clm_integral_sphere {d : ℕ} {F G : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
     [CompleteSpace F] [NormedAddCommGroup G] [NormedSpace ℝ G] [CompleteSpace G]
-    (L : F →L[ℝ] G) {φ : Metric.sphere (0 : Rd d) 1 → F} (hφ : Continuous φ) :
+    (L : (Rd d →L[ℝ] F) →L[ℝ] G) {φ : Metric.sphere (0 : Rd d) 1 → (Rd d →L[ℝ] F)}
+    (hφ : Continuous φ) :
     L (∫ ω, φ ω ∂(volume : Measure (Rd d)).toSphere) =
       ∫ ω, L (φ ω) ∂(volume : Measure (Rd d)).toSphere := by
   obtain ⟨C, hC⟩ := (isCompact_univ (X := Metric.sphere (0 : Rd d) 1)).exists_bound_of_continuousOn
@@ -492,7 +493,70 @@ theorem clm_integral_sphere {d : ℕ} {F G : Type*} [NormedAddCommGroup F] [Norm
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
 theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
     (hy : ‖y‖ ≠ r) : InnerProductSpace.HarmonicAt (sphereMean d r) y := by
-  sorry
+  set S := ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ with hS
+  set N := fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)) with hN
+  set U := {y : Rd d | ‖y‖ ≠ r} with hUdef
+  have hU : IsOpen U := isOpen_ne_fun continuous_norm continuous_const
+  have hV : IsOpen {z : Rd d | z ≠ 0} := isOpen_ne
+  have hne : ∀ z ∈ U, ∀ ω : Metric.sphere (0 : Rd d) 1, z ≠ r • (ω : Rd d) := by
+    intro z hz ω h
+    apply hz
+    rw [h, norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
+  set G1 := fun y : Rd d => ∫ ω, S • fderiv ℝ N (y - r • (ω : Rd d))
+    ∂(volume : Measure (Rd d)).toSphere with hG1
+  set G2 := fun y : Rd d => ∫ ω, S • fderiv ℝ (fderiv ℝ N) (y - r • (ω : Rd d))
+    ∂(volume : Measure (Rd d)).toSphere with hG2
+  have hD1 : ∀ z ∈ U, fderiv ℝ (sphereMean d r) z = G1 z := fun z hz =>
+    (hasFDerivAt_sphereMean hr hz).fderiv
+  have hD2 : ∀ z ∈ U, fderiv ℝ G1 z = G2 z := fun z hz =>
+    (hasFDerivAt_fderiv_sphereMean hr hz).fderiv
+  have hcd : ContDiffOn ℝ 2 (sphereMean d r) U := by
+    rw [show (2 : WithTop ℕ∞) = 1 + 1 by norm_num, contDiffOn_succ_iff_fderiv_of_isOpen hU]
+    refine ⟨fun z hz => (hasFDerivAt_sphereMean hr hz).differentiableAt.differentiableWithinAt,
+      by simp, ?_⟩
+    refine ContDiffOn.congr ?_ hD1
+    rw [show (1 : WithTop ℕ∞) = 0 + 1 by norm_num, contDiffOn_succ_iff_fderiv_of_isOpen hU]
+    refine ⟨fun z hz =>
+      (hasFDerivAt_fderiv_sphereMean hr hz).differentiableAt.differentiableWithinAt, by simp, ?_⟩
+    rw [contDiffOn_zero]
+    exact (continuousOn_fderiv_fderiv_sphereMean hr).congr hD2
+  refine ⟨hcd.contDiffAt (hU.mem_nhds hy), ?_⟩
+  filter_upwards [hU.mem_nhds hy] with z hz
+  set b := stdOrthonormalBasis ℝ (Rd d) with hbdef
+  rw [InnerProductSpace.laplacian_eq_iteratedFDeriv_orthonormalBasis _ b]
+  simp only [iteratedFDeriv_two_apply, Matrix.cons_val_zero, Matrix.cons_val_one, Pi.zero_apply]
+  have hF : fderiv ℝ (fderiv ℝ (sphereMean d r)) z = G2 z := by
+    rw [Filter.EventuallyEq.fderiv_eq (Filter.eventually_of_mem (hU.mem_nhds hz) hD1)]
+    exact hD2 z hz
+  rw [hF]
+  have h2 := contDiffOn_norm_rpow (d := d) (n := 2) (2 - (d : ℝ))
+  have hH : ContinuousOn (fderiv ℝ (fderiv ℝ N)) {z : Rd d | z ≠ 0} :=
+    (h2.fderiv_of_isOpen hV (m := 1) (by norm_num)).continuousOn_fderiv_of_isOpen hV le_rfl
+  have hmem : ∀ ω : Metric.sphere (0 : Rd d) 1, z - r • (ω : Rd d) ∈ {z : Rd d | z ≠ 0} :=
+    fun ω => by simpa [sub_eq_zero] using hne z hz ω
+  set T : (Rd d →L[ℝ] Rd d →L[ℝ] ℝ) →L[ℝ] ℝ := ∑ i, (ContinuousLinearMap.apply ℝ ℝ (b i)).comp
+    (ContinuousLinearMap.apply ℝ (Rd d →L[ℝ] ℝ) (b i)) with hT
+  have hTapp : ∀ Φ : Rd d →L[ℝ] Rd d →L[ℝ] ℝ, T Φ = ∑ i, Φ (b i) (b i) := fun Φ => by
+    simp [hT]
+  rw [← hTapp]
+  show T (∫ ω, S • fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere) = 0
+  rw [clm_integral_sphere T (φ := fun ω : Metric.sphere (0 : Rd d) 1 =>
+    S • fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d)))
+    ((hH.comp_continuous (f := fun ω : Metric.sphere (0 : Rd d) 1 => z - r • (ω : Rd d))
+      (by fun_prop) hmem).const_smul S)]
+  refine (integral_congr_ae (Filter.Eventually.of_forall fun ω => ?_)).trans (integral_zero _ _)
+  have h6 := sum_fderiv_fderiv_newtonKernel_sub hd (hne z hz ω) b
+  have hcomp : fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - r • (ω : Rd d)‖ ^ (2 - (d : ℝ)))) z =
+      fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d)) := by
+    have h1 : fderiv ℝ (fun x : Rd d => ‖x - r • (ω : Rd d)‖ ^ (2 - (d : ℝ))) =
+        fun x => fderiv ℝ N (x - r • (ω : Rd d)) :=
+      funext fun x => fderiv_comp_sub (f := N) (x := x) (r • (ω : Rd d))
+    rw [h1, fderiv_comp_sub (f := fderiv ℝ N) (x := z) (r • (ω : Rd d))]
+  rw [hcomp] at h6
+  show T (S • fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d))) = 0
+  rw [hTapp]
+  simp only [ContinuousLinearMap.smul_apply, smul_eq_mul]
+  rw [← Finset.mul_sum, h6, mul_zero]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7: radial harmonic functions): for `d ≥ 3`, a radial
 function harmonic on `{|y| > r}` is `a + b |y|^{2-d}` there. -/
