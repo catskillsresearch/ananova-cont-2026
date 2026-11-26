@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:25:17Z",
+ "updated": "2026-11-26T18:26:34Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 53,
+ "sorryCount": 52,
  "counts": {
   "open": 12,
   "blocked": 52,
@@ -511,9 +511,8 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "iIndepFun_increments",
     "memLp_two",
     "integral_eq",
     "variance_le"
@@ -558,7 +557,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "4 sorry: iIndepFun_increments, memLp_two, integral_eq, variance_le"
+   "detail": "3 sorry: memLp_two, integral_eq, variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -720,10 +719,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.iIndepFun_increments"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -740,7 +737,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.iIndepFun_increments — subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.iIndepFun_increments — subgoal of Lemma A.1 proof, step 2d: the `Z_i^n` are independent (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
