@@ -321,7 +321,48 @@ theorem variance_le (x : Rd d) {q : ℝ} (hq : 1 < q) : ∃ b : ℝ, ∀ π : Pa
     variance (fun ω => ∫ t in Icc 0 T,
         |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q)
       (CanonicalWienerSpace.P (T := T) x) ≤ b * T * π.mesh := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  set f : Rd d → ℝ := fun z => ‖z‖ ^ (2 * q) with hfdef
+  have hf : Continuous f := continuous_norm.rpow_const fun _ => Or.inr (by positivity)
+  refine ⟨Var[id; (stdGaussian (Rd d)).map f], fun π => ?_⟩
+  set b := Var[id; (stdGaussian (Rd d)).map f] with hbdef
+  have hb : 0 ≤ b := variance_nonneg _ _
+  have hZ : ∀ i : Fin π.m, HasLaw (fun ω => (π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω))
+      (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := fun i =>
+    hasLaw_increment x (π.t_mem _).1 (π.left_lt_right i) (π.t_mem _).2
+  have hfZ : ∀ i : Fin π.m, Var[fun ω => f ((π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω));
+      CanonicalWienerSpace.P (T := T) x] = b := fun i =>
+    (HasLaw.comp (X := fun ω => (π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+        (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω))
+      ({ aemeasurable := hf.measurable.aemeasurable, map_eq := rfl } :
+        HasLaw f ((stdGaussian (Rd d)).map f) (stdGaussian (Rd d))) (hZ i)).variance_eq
+  set Y : Fin π.m → CanonicalWienerSpace d T → ℝ := fun i ω =>
+    f ((π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)) *
+      (π.right i - π.left i) with hYdef
+  have hX : (fun ω => ∫ t in Icc 0 T,
+      |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q) =
+      ∑ i ∈ Finset.univ, Y i := by
+    funext ω
+    rw [integral_rpow_eq_sum_norm π hq0, Finset.sum_apply]
+  have hmem : ∀ i ∈ (Finset.univ : Finset (Fin π.m)), MemLp (Y i) 2
+      (CanonicalWienerSpace.P (T := T) x) := fun i _ =>
+    ((hZ i).memLp_comp (f := f) (memLp_norm_rpow_stdGaussian (by positivity) (by simp))).mul_const _
+  have hind : iIndepFun Y (CanonicalWienerSpace.P (T := T) x) :=
+    (iIndepFun_increments x π).comp
+      (fun i v => f ((π.right i - π.left i) ^ (-(1 / 2 : ℝ)) • v) * (π.right i - π.left i))
+      fun i => ((hf.comp (continuous_const_smul _)).mul continuous_const).measurable
+  rw [hX, IndepFun.variance_sum hmem fun i _ j _ hij => hind.indepFun hij]
+  simp_rw [hYdef, variance_mul_const, hfZ]
+  calc ∑ i : Fin π.m, b * (π.right i - π.left i) ^ 2
+      ≤ ∑ i : Fin π.m, b * π.mesh * (π.right i - π.left i) := by
+        refine Finset.sum_le_sum fun i _ => ?_
+        have h0 : 0 ≤ π.right i - π.left i := (sub_pos.2 (π.left_lt_right i)).le
+        rw [sq, ← mul_assoc]
+        exact mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left (π.gap_le_mesh i) hb) h0
+    _ = b * T * π.mesh := by rw [← Finset.mul_sum, π.sum_gap]; ring
 
 /-- **Subgoal** (Lemma A.1 proof, step 4: Chebyshev + Borel–Cantelli): if `𝔼 X_n = c` and
 `Var X_n ≤ a_n` with `∑ a_n < ∞`, then `X_n → c` almost surely. -/

@@ -87,6 +87,7 @@ VERIFIED: set[str] = {
     "Smooth.HasQuadraticVariation",
     "Occupation.WeightedOccupationMeasure",
     "Appendix.HeatKernel",
+    "Appendix.LemmaA1",
 }
 
 # Paper labels for modules that carry a numbered result or definition.

@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:31:44Z",
+ "updated": "2026-11-26T18:32:48Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
   "open": 12,
   "blocked": 54,
@@ -511,15 +511,13 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "variance_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 16
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
    "status": "blocked",
    "deps": [
@@ -559,7 +557,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "1 sorry: variance_le"
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -961,10 +959,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.variance_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -981,7 +977,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.variance_le — subgoal of Lemma A.1 proof, step 3: variance (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.variance_le — subgoal of Lemma A.1 proof, step 3: variance (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaB1",
