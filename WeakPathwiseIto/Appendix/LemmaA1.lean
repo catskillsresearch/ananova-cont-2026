@@ -280,7 +280,15 @@ theorem memLp_two (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
     MemLp (fun ω => ∫ t in Icc 0 T,
         |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q) 2
       (CanonicalWienerSpace.P (T := T) x) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hZ : ∀ i : Fin π.m, HasLaw (fun ω => (π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω))
+      (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := fun i =>
+    hasLaw_increment x (π.t_mem _).1 (π.left_lt_right i) (π.t_mem _).2
+  simp_rw [integral_rpow_eq_sum_norm π hq0]
+  refine memLp_finset_sum _ fun i _ => ?_
+  exact ((hZ i).memLp_comp (f := fun z : Rd d => ‖z‖ ^ (2 * q))
+    (memLp_norm_rpow_stdGaussian (by positivity) (by simp))).mul_const _
 
 /-- **Subgoal** (Lemma A.1 proof, step 3: mean): `𝔼_x ‖ρ_{n,B}‖^q_{L^q} = c_{q,d} T`. -/
 theorem integral_eq (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :

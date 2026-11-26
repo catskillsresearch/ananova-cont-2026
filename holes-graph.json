@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:31:14Z",
+ "updated": "2026-11-26T18:31:44Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 50,
  "counts": {
   "open": 12,
   "blocked": 54,
@@ -511,9 +511,8 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "memLp_two",
     "variance_le"
    ],
    "declKinds": {
@@ -560,7 +559,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "2 sorry: memLp_two, variance_le"
+   "detail": "1 sorry: variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -902,10 +901,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.memLp_two"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -922,7 +919,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.memLp_two — subgoal of Lemma A.1 proof, step 3: square integrability (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.memLp_two — subgoal of Lemma A.1 proof, step 3: square integrability (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
