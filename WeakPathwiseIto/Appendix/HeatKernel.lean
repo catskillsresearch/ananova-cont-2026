@@ -374,6 +374,61 @@ theorem integrableOn_Ioc (hd : 0 < d) {x : Rd d} (hx : x ≠ 0) (T : ℝ) :
     rw [hnn s hs]
     exact le_inv_two_mul_add x hs.1
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (35), Riemann sum vs integral): if `t_{i+1} ≤ K t_i`
+whenever `t_i > 0`, then `∑_i p_{t_i}(x)(t_{i+1} - t_i) ≤ K^{d/2} ∫_0^T p_s(x) ds`. -/
+theorem riemannSum_le_integral {T : ℝ} (π : Partition T) (hd : 0 < d) {x : Rd d} (hx : x ≠ 0)
+    {K : ℝ} (hK1 : 1 ≤ K) (hK : ∀ i, 0 < π.left i → π.right i ≤ K * π.left i) :
+    ∑ i : Fin π.m, heatKernel d (π.left i) x * (π.right i - π.left i) ≤
+      K ^ ((d : ℝ) / 2) * ∫ s in Ioc 0 T, heatKernel d s x := by
+  have hfi := integrableOn_Ioc hd hx T
+  have hnn : ∀ s : ℝ, 0 < s → 0 ≤ heatKernel d s x := fun s hs => by
+    unfold heatKernel; positivity
+  have hKd : 0 ≤ K ^ ((d : ℝ) / 2) := Real.rpow_nonneg (by linarith) _
+  have hl0 : ∀ i, 0 ≤ π.left i := fun i => (π.t_mem _).1
+  have hsub : ∀ i, Ioc (π.left i) (π.right i) ⊆ Ioc 0 T := fun i s hs =>
+    ⟨(hl0 i).trans_lt hs.1, hs.2.trans (π.t_mem _).2⟩
+  have hterm : ∀ i, heatKernel d (π.left i) x * (π.right i - π.left i) ≤
+      K ^ ((d : ℝ) / 2) * ∫ s in Ioc (π.left i) (π.right i), heatKernel d s x := by
+    intro i
+    have hlr := π.left_lt_right i
+    by_cases hl : 0 < π.left i
+    · have hc : ∫ _ in Ioc (π.left i) (π.right i), heatKernel d (π.left i) x =
+          heatKernel d (π.left i) x * (π.right i - π.left i) := by
+        rw [setIntegral_const, measureReal_def, Real.volume_Ioc, ENNReal.toReal_ofReal (by linarith), smul_eq_mul,
+          mul_comm]
+      rw [← hc, ← integral_const_mul]
+      exact setIntegral_mono_on (integrableOn_const (hs := measure_Ioc_lt_top.ne)) ((hfi.mono_set (hsub i)).const_mul _)
+        measurableSet_Ioc fun s hs => le_rpow_mul x hl hs.1.le (hs.2.trans (hK i hl))
+    · have h0 : π.left i = 0 := le_antisymm (not_lt.1 hl) (hl0 i)
+      have hz : heatKernel d 0 x = 0 := by
+        unfold heatKernel
+        rw [mul_zero, Real.zero_rpow (by
+          have : (0 : ℝ) < d := by exact_mod_cast hd
+          intro h; linarith), zero_mul]
+      rw [h0, hz, zero_mul]
+      exact mul_nonneg hKd (setIntegral_nonneg measurableSet_Ioc fun s hs =>
+        hnn s hs.1)
+  have hdisj : Pairwise (Function.onFun Disjoint fun i : Fin π.m => Ioc (π.left i) (π.right i)) := by
+    have key : ∀ i j : Fin π.m, i < j → Disjoint (Ioc (π.left i) (π.right i))
+        (Ioc (π.left j) (π.right j)) := fun i j hij => by
+      refine Set.disjoint_left.2 fun s h1 h2 => ?_
+      have : π.right i ≤ π.left j :=
+        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+      linarith [h1.2, h2.1]
+    intro i j hij
+    rcases lt_or_gt_of_ne hij with h | h
+    · exact key i j h
+    · exact (key j i h).symm
+  calc _ ≤ ∑ i : Fin π.m, K ^ ((d : ℝ) / 2) * ∫ s in Ioc (π.left i) (π.right i), heatKernel d s x :=
+        Finset.sum_le_sum fun i _ => hterm i
+    _ = K ^ ((d : ℝ) / 2) * ∫ s in ⋃ i, Ioc (π.left i) (π.right i), heatKernel d s x := by
+        rw [← Finset.mul_sum, integral_iUnion_fintype (fun _ => measurableSet_Ioc) hdisj
+          fun i => hfi.mono_set (hsub i)]
+    _ ≤ _ := by
+        exact mul_le_mul_of_nonneg_left (setIntegral_mono_set hfi (ae_restrict_of_forall_mem
+          measurableSet_Ioc fun s hs => hnn s hs.1) (Eventually.of_forall (Set.iUnion_subset hsub)))
+          hKd
+
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
