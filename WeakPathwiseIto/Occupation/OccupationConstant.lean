@@ -141,7 +141,40 @@ theorem newton_ball_of_three_le {d : ℕ} (hd : 3 ≤ d) {R : ℝ} (hR : 0 < R) 
 theorem newton_ball_dim_one {R : ℝ} (hR : 0 < R) {y : Rd 1} (hy : ‖y‖ = R) :
     ∫ x in Metric.ball (0 : Rd 1) R, ‖x - y‖ ^ (2 - ((1 : ℕ) : ℝ)) =
       (volume (Metric.ball (0 : Rd 1) R)).toReal * R ^ (2 - ((1 : ℕ) : ℝ)) := by
-  sorry
+  set e : Rd 1 ≃ᵐ ℝ := (MeasurableEquiv.toLp 2 (Fin 1 → ℝ)).symm.trans
+    (MeasurableEquiv.funUnique (Fin 1) ℝ) with he
+  have hmp : MeasurePreserving e :=
+    (EuclideanSpace.volume_preserving_symm_measurableEquiv_toLp (Fin 1)).trans
+      (volume_preserving_funUnique (Fin 1) ℝ)
+  have hnorm : ∀ x : Rd 1, ‖x‖ = |e x| := fun x => by
+    simp [he, EuclideanSpace.norm_eq, Real.sqrt_sq_eq_abs]
+  have hsub : ∀ x : Rd 1, e (x - y) = e x - e y := fun x => by simp [he]
+  have hball : e.symm ⁻¹' Metric.ball 0 R = Ioo (-R) R := by
+    ext t
+    simp only [Set.mem_preimage, Metric.mem_ball, dist_zero_right, hnorm,
+      MeasurableEquiv.apply_symm_apply, Set.mem_Ioo, abs_lt]
+  have h1 : (2 - ((1 : ℕ) : ℝ)) = 1 := by norm_num
+  have hvol : volume (Metric.ball (0 : Rd 1) R) = volume (Ioo (-R) R) := by
+    rw [← hball, hmp.symm.measure_preimage measurableSet_ball.nullMeasurableSet]
+  have hint := hmp.symm.setIntegral_preimage_emb e.symm.measurableEmbedding
+    (fun x : Rd 1 => ‖x - y‖ ^ (2 - ((1 : ℕ) : ℝ))) (Metric.ball 0 R)
+  rw [← hint, hball, hvol, Real.volume_Ioo, ENNReal.toReal_ofReal (by linarith), h1,
+    Real.rpow_one]
+  simp only [Real.rpow_one, hnorm, hsub, MeasurableEquiv.apply_symm_apply]
+  rw [hnorm] at hy
+  rcases (abs_eq hR.le).1 hy with hc | hc
+  · rw [hc, setIntegral_congr_fun measurableSet_Ioo (g := fun t => R - t)
+      (fun t ht => by rw [abs_of_nonpos (by linarith [ht.2])]; ring),
+      ← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le (by linarith),
+      intervalIntegral.integral_sub intervalIntegrable_const intervalIntegral.intervalIntegrable_id,
+      intervalIntegral.integral_const, integral_id, smul_eq_mul]
+    ring
+  · rw [hc, setIntegral_congr_fun measurableSet_Ioo (g := fun t => t + R)
+      (fun t ht => by rw [sub_neg_eq_add, abs_of_nonneg (by linarith [ht.1])]),
+      ← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le (by linarith),
+      intervalIntegral.integral_add intervalIntegral.intervalIntegrable_id intervalIntegrable_const,
+      intervalIntegral.integral_const, integral_id, smul_eq_mul]
+    ring
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 12: `d = 2`): the kernel is `1`. -/
 theorem newton_ball_dim_two {R : ℝ} {y : Rd 2} :
