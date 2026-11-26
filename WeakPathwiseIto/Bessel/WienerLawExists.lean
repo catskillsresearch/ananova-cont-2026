@@ -45,7 +45,10 @@ theorem measurableSpace_eq_comap_coe :
     (inferInstance : MeasurableSpace (CanonicalWienerSpace d T)) =
       MeasurableSpace.comap (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d))
         MeasurableSpace.pi := by
-  sorry
+  change ContinuousMap.measurableSpace = _
+  rw [ContinuousMap.measurableSpace_eq_iSup_comap_eval]
+  simp only [MeasurableSpace.pi, MeasurableSpace.comap_iSup, MeasurableSpace.comap_comp]
+  rfl
 
 /-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 2): a measure on `Ω` is determined by
 the law of the coordinate process `(B(t))_{t ∈ [0, T]}` on the product space. -/
