@@ -55,7 +55,31 @@ theorem tendsto_sum_sq (hQV : HasQuadraticVariation π ω) :
 `|ω(t_{i+1}) - ω(t_i)| ≤ osc(ω, π_n)`. -/
 theorem norm_increment_le (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) (i : Fin p.m) :
     ‖ω (p.right i) - ω (p.left i)‖ ≤ pathOscillation ω p := by
-  sorry
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  set C' := max C 0 with hC'
+  have hsub : ∀ j : Fin p.m, Icc (p.left j) (p.right j) ⊆ Icc 0 T := fun j s hs =>
+    ⟨(p.t_mem j.castSucc).1.trans hs.1, hs.2.trans (p.t_mem j.succ).2⟩
+  have hb : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C' := fun s hs =>
+    (hC _ (Set.mem_image_of_mem ω hs)).trans (le_max_left _ _)
+  have h3 : ∀ (j : Fin p.m) (s : ℝ),
+      (⨆ (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) ≤ 2 * C' := by
+    intro j s
+    refine Real.iSup_le (fun hs => ?_) (by positivity)
+    have h1 := hb s (hsub j hs)
+    have h2 := hb (p.left j) (hsub j ⟨le_rfl, (p.left_lt_right j).le⟩)
+    calc ‖ω s - ω (p.left j)‖ ≤ ‖ω s‖ + ‖ω (p.left j)‖ := norm_sub_le _ _
+      _ ≤ 2 * C' := by linarith
+  have hbdd2 : ∀ j : Fin p.m, BddAbove (range fun s : ℝ =>
+      ⨆ (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) :=
+    fun j => ⟨2 * C', Set.forall_mem_range.2 (h3 j)⟩
+  have hbdd1 : BddAbove (range fun j : Fin p.m => ⨆ (s : ℝ)
+      (_ : s ∈ Icc (p.left j) (p.right j)), ‖ω s - ω (p.left j)‖) :=
+    (Set.finite_range _).bddAbove
+  have hmem : p.right i ∈ Icc (p.left i) (p.right i) := ⟨(p.left_lt_right i).le, le_rfl⟩
+  unfold pathOscillation
+  refine le_ciSup_of_le hbdd1 i (le_ciSup_of_le (hbdd2 i) (p.right i) ?_)
+  exact le_ciSup (f := fun _ : p.right i ∈ Icc (p.left i) (p.right i) =>
+    ‖ω (p.right i) - ω (p.left i)‖) (Set.finite_range _).bddAbove hmem
 
 /-- **Subgoal** (Lemma 4.2 proof: Stieltjes measure of an interval): for `0 ≤ a ≤ b ≤ T`,
 `d tr[ω]_π((a, b]) = tr[ω]_π(b) - tr[ω]_π(a)`, and `d tr[ω]_π` does not charge `{0}`. -/

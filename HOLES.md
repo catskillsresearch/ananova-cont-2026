@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:16:33Z  
-**`sorry` occurrences:** 45 · 16 open · 27 blocked · 158 done (goals + subgoals) · goals {'open': 6, 'blocked': 19, 'done': 40} · subgoals {'open': 10, 'blocked': 8, 'done': 118} · 22 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:16:57Z  
+**`sorry` occurrences:** 44 · 15 open · 27 blocked · 159 done (goals + subgoals) · goals {'open': 6, 'blocked': 19, 'done': 40} · subgoals {'open': 9, 'blocked': 8, 'done': 119} · 22 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -114,7 +114,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball` | subgoal of Eq. (7 | 0 |
 | open | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le` | subgoal of Lemma 4.2 proof, first display | 1 |
-| open | `Occupation.Lemma42::lemma_4_2.norm_increment_le` | subgoal of Lemma 4.2 proof: increments are bounded by the oscillation | 1 |
+| done | `Occupation.Lemma42::lemma_4_2.norm_increment_le` | subgoal of Lemma 4.2 proof: increments are bounded by the oscillation | 0 |
 | done | `Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace` | subgoal of Lemma 4.2 proof: discrete trace | 0 |
 | open | `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes` | subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence | 1 |
 | open | `Occupation.Lemma42::lemma_4_2.tendsto_sum_left` | subgoal of Lemma 4.2 proof, last display | 1 |
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
-| blocked | `Occupation.Lemma42` | Lemma 4.2 | 6 | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le`, `Occupation.Lemma42::lemma_4_2.norm_increment_le`, `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_left`, `Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc` |
+| blocked | `Occupation.Lemma42` | Lemma 4.2 | 5 | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le`, `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_left`, `Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
