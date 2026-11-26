@@ -255,7 +255,17 @@ theorem integral_rpow_eq_sum_norm (π : Partition T) {q : ℝ} (hq : 0 < q)
       ∑ i : Fin π.m, ‖(π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
           (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)‖ ^ (2 * q) *
         (π.right i - π.left i) := by
-  sorry
+  rw [integral_rpow_eq_sum π (CanonicalWienerSpace.path ω) hq]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  congr 1
+  set Δ := π.right i - π.left i with hΔ
+  have hΔ0 : 0 < Δ := sub_pos.2 (π.left_lt_right i)
+  set v := CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω with hv
+  change (‖v‖ ^ 2 / Δ) ^ q = _
+  rw [norm_smul, Real.norm_of_nonneg (Real.rpow_nonneg hΔ0.le _),
+    Real.mul_rpow (Real.rpow_nonneg hΔ0.le _) (norm_nonneg _), ← Real.rpow_mul hΔ0.le,
+    Real.rpow_mul (norm_nonneg _), Real.div_rpow (sq_nonneg _) hΔ0.le, Real.rpow_two,
+    show -(1 / 2 : ℝ) * (2 * q) = -q by ring, Real.rpow_neg hΔ0.le, div_eq_inv_mul]
 
 /-- **Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in
 `L²(ℙ_x)`. -/
