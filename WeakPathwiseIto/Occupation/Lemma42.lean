@@ -129,7 +129,75 @@ theorem abs_sum_sub_grid_le {ι : Type*} [Fintype ι] {r w : ι → ℝ} (hr : �
         (∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k + 1 : ℕ) * T / K), w i -
           ∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k : ℕ) * T / K), w i)| ≤
       η * ∑ i, w i := by
-  sorry
+  rcases isEmpty_or_nonempty ι with hι | ⟨⟨i0⟩⟩
+  · simp
+  have hT : 0 ≤ T := ((hr i0).1.trans_le (hr i0).2).le
+  have hK' : (0 : ℝ) < K := by exact_mod_cast hK
+  obtain ⟨s, hs⟩ : ∃ s : ℕ → ℝ, ∀ k : ℕ, s k = (k : ℝ) * T / K := ⟨_, fun _ => rfl⟩
+  simp_rw [← hs]
+  have hsmono : ∀ k, s k ≤ s (k + 1) := fun k => by
+    rw [hs, hs]; push_cast
+    exact div_le_div_of_nonneg_right (by nlinarith) hK'.le
+  have hsK : s K = T := by rw [hs]; field_simp
+  have hs0 : s 0 = 0 := by rw [hs]; simp
+  have hstep : ∀ k, s (k + 1) - s k = T / K := fun k => by rw [hs, hs]; push_cast; ring
+  have hsnn : ∀ k, 0 ≤ s k := fun k => by rw [hs]; positivity
+  have hsle : ∀ k < K, s (k + 1) ≤ T := fun k hk => by
+    rw [hs, div_le_iff₀ hK']
+    have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
+    nlinarith
+  set c : ℕ → ι → ℝ := fun k i =>
+    (if r i ≤ s (k + 1) then 1 else 0) - (if r i ≤ s k then 1 else 0) with hc
+  have hsum_c : ∀ i, ∑ k ∈ Finset.range K, c k i = 1 := fun i => by
+    simp only [hc]
+    rw [Finset.sum_range_sub (fun k => if r i ≤ s k then (1 : ℝ) else 0), hsK, hs0,
+      if_pos (hr i).2, if_neg (not_le.2 (hr i).1)]
+    norm_num
+  have hW : ∀ k, ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s (k + 1)), w i -
+      ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s k), w i = ∑ i, c k i * w i := fun k => by
+    rw [Finset.sum_filter, Finset.sum_filter, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp only [hc]
+    split_ifs <;> ring
+  simp_rw [hW]
+  have h1 : ∀ i, g (r i) * w i = ∑ k ∈ Finset.range K, c k i * g (r i) * w i := fun i => by
+    rw [← Finset.sum_mul, ← Finset.sum_mul, hsum_c, one_mul]
+  have key : ∑ i, g (r i) * w i - ∑ k ∈ Finset.range K, g (s (k + 1)) * ∑ i, c k i * w i =
+      ∑ i, ∑ k ∈ Finset.range K, c k i * (g (r i) - g (s (k + 1))) * w i := by
+    rw [Finset.sum_congr rfl fun i _ => h1 i]
+    simp_rw [Finset.mul_sum]
+    rw [Finset.sum_comm (s := Finset.range K), ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun k _ => ?_
+    ring
+  have hterm : ∀ i, ∀ k ∈ Finset.range K,
+      |c k i * (g (r i) - g (s (k + 1))) * w i| ≤ c k i * η * w i := by
+    intro i k hk
+    have hkK := Finset.mem_range.1 hk
+    have hw0 := hw i
+    by_cases h1 : r i ≤ s (k + 1) <;> by_cases h2 : r i ≤ s k
+    · simp [hc, h1, h2]
+    · have hcv : c k i = 1 := by simp [hc, h1, h2]
+      rw [hcv, one_mul, one_mul, abs_mul, abs_of_nonneg hw0]
+      refine mul_le_mul_of_nonneg_right (hη _ ⟨(hr i).1.le, (hr i).2⟩ _
+        ⟨hsnn _, hsle k hkK⟩ ?_) hw0
+      rw [abs_sub_comm, abs_of_nonneg (by linarith), ← hstep k]
+      linarith [not_le.1 h2]
+    · exact absurd (h2.trans (hsmono k)) h1
+    · simp [hc, h1, h2]
+  rw [key]
+  calc |∑ i, ∑ k ∈ Finset.range K, c k i * (g (r i) - g (s (k + 1))) * w i|
+      ≤ ∑ i, ∑ k ∈ Finset.range K, |c k i * (g (r i) - g (s (k + 1))) * w i| :=
+        (Finset.abs_sum_le_sum_abs _ _).trans
+          (Finset.sum_le_sum fun i _ => Finset.abs_sum_le_sum_abs _ _)
+    _ ≤ ∑ i, ∑ k ∈ Finset.range K, c k i * η * w i :=
+        Finset.sum_le_sum fun i _ => Finset.sum_le_sum fun k hk => hterm i k hk
+    _ = η * ∑ i, w i := by
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun i _ => ?_
+        rw [← Finset.sum_mul, ← Finset.sum_mul, hsum_c]
+        ring
 
 /-- **Subgoal** (Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step b: the Stieltjes
 integral): with the grid `s_k = kT/K` and `g` continuous on `[0,T]` varying by at most `η`
