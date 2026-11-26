@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-26T17:37:28Z",
+ "updated": "2026-11-26T17:37:51Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 56,
  "counts": {
-  "open": 15,
-  "blocked": 48,
-  "done": 48
+  "open": 18,
+  "blocked": 41,
+  "done": 52
  },
  "goalCounts": {
-  "open": 9,
-  "blocked": 27,
-  "done": 29
+  "open": 7,
+  "blocked": 25,
+  "done": 33
  },
  "subgoalCounts": {
-  "open": 6,
-  "blocked": 21,
+  "open": 11,
+  "blocked": 16,
   "done": 19
  },
  "untagged": [],
@@ -91,8 +91,7 @@
    "blockers": [
     "Appendix.HeatKernel::heatKernel.integral_div_le",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
-    "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
-    "Main.GeometricMeshDecay"
+    "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
    ],
    "detail": "3 sorry: integral_le_potentialProfile, integral_div_le, riemannSum_le_potentialProfile"
   },
@@ -116,7 +115,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.Partition",
@@ -124,9 +123,7 @@
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay"
    ],
-   "blockers": [
-    "Main.GeometricMeshDecay"
-   ],
+   "blockers": [],
    "detail": "sorry: heatKernel.integral_div_le — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
@@ -149,7 +146,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.Partition",
@@ -157,9 +154,7 @@
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay"
    ],
-   "blockers": [
-    "Main.GeometricMeshDecay"
-   ],
+   "blockers": [],
    "detail": "sorry: heatKernel.integral_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
@@ -182,7 +177,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2, `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.Partition",
@@ -190,9 +185,7 @@
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay"
    ],
-   "blockers": [
-    "Main.GeometricMeshDecay"
-   ],
+   "blockers": [],
    "detail": "sorry: heatKernel.riemannSum_le_potentialProfile — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
@@ -276,8 +269,7 @@
    ],
    "blockers": [
     "Appendix.LemmaB2::lemma_B_2_literal",
-    "Bessel.IsBrownianPolar",
-    "Main.GeometricMeshDecay"
+    "Bessel.IsBrownianPolar"
    ],
    "detail": "1 sorry: lemma_B_2"
   },
@@ -307,8 +299,7 @@
     "Occupation.DiscreteSeminorm"
    ],
    "blockers": [
-    "Bessel.IsBrownianPolar",
-    "Main.GeometricMeshDecay"
+    "Bessel.IsBrownianPolar"
    ],
    "detail": "proved: lemma_B_2_literal — subgoal of Lemma B.2, literal reading (in Appendix.LemmaB2)"
   },
@@ -366,14 +357,14 @@
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.FunctionOscillation::functionOscillation.tendsto_zero"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
@@ -1324,9 +1315,9 @@
     "theorem": 3
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
@@ -1334,7 +1325,7 @@
     "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
@@ -1522,9 +1513,7 @@
    ],
    "blockers": [
     "Main.WeakCovariation",
-    "Main.WeakPathwiseIntegral",
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
+    "Main.WeakPathwiseIntegral"
    ],
    "detail": "3 sorry: theorem_5_1_tendsto, theorem_5_1_unique, theorem_5_1"
   },
@@ -1556,7 +1545,6 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Main.GeometricMeshDecay",
     "Occupation.PathwiseSobolevSpace"
    ],
    "detail": "2 sorry: theorem_5_2, theorem_5_2_deterministic"
@@ -1894,8 +1882,7 @@
    ],
    "blockers": [
     "Occupation.DiscreteOccupationDensity",
-    "Occupation.WeightedOccupationMeasure",
-    "Smooth.PathOscillation"
+    "Occupation.WeightedOccupationMeasure"
    ],
    "detail": "1 sorry: lemma_4_2"
   },
@@ -2012,8 +1999,7 @@
     "Occupation.DiscreteOccupationDensity",
     "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
-    "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
-    "Smooth.PathOscillation"
+    "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
    ],
    "detail": "3 sorry: add_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
   },
@@ -2046,8 +2032,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity",
-    "Smooth.PathOscillation"
+    "Occupation.DiscreteOccupationDensity"
    ],
    "detail": "sorry: occupationSeminorm.add_le — subgoal of Section 4.2 seminorm (in Occupation.OccupationSeminorm)"
   },
@@ -2080,8 +2065,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity",
-    "Smooth.PathOscillation"
+    "Occupation.DiscreteOccupationDensity"
    ],
    "detail": "sorry: occupationSeminorm.le_limsup_discreteSeminorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
   },
@@ -2114,8 +2098,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity",
-    "Smooth.PathOscillation"
+    "Occupation.DiscreteOccupationDensity"
    ],
    "detail": "sorry: occupationSeminorm.lintegral_le_maximal — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
@@ -2206,9 +2189,7 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [
-    "Occupation.PathwiseSobolevSpace",
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
+    "Occupation.PathwiseSobolevSpace"
    ],
    "detail": "3 sorry: remark_4_4_density, remark_4_4_seminorm, remark_4_4"
   },
@@ -2268,8 +2249,7 @@
     "Smooth.HasQuadraticVariation"
    ],
    "blockers": [
-    "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
-    "Smooth.HasQuadraticVariation"
+    "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq"
    ],
    "detail": "1 sorry: integral_eq"
   },
@@ -2293,13 +2273,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 4.2). `∫ φ dμ^T_ω = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for continuous `φ`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Smooth.HasQuadraticVariation"
    ],
-   "blockers": [
-    "Smooth.HasQuadraticVariation"
-   ],
+   "blockers": [],
    "detail": "sorry: weightedOccupationMeasure.integral_eq — subgoal of Lemma 4.2 (in Occupation.WeightedOccupationMeasure)"
   },
   {
@@ -2319,7 +2297,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Smooth.FollmerIntegral",
@@ -2327,10 +2305,7 @@
     "Smooth.PathOscillation",
     "Smooth.PathwiseCovariation"
    ],
-   "blockers": [
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
-   ],
+   "blockers": [],
    "detail": "1 sorry: corollary_3_2"
   },
   {
@@ -2405,9 +2380,7 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [
-    "Smooth.FollmerItoFormula::follmer_ito_formula",
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
+    "Smooth.FollmerItoFormula::follmer_ito_formula"
    ],
    "detail": "1 sorry: follmer_ito_formula"
   },
@@ -2431,7 +2404,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Corollary 3.2 proof, [Föl81]). Föllmer's pathwise Itô formula [Föl81], used in the proof of Corollary 3.2: for `f ∈ C^2_b` the left Riemann sums converge and `f(ω(T)) = f(ω(0)) + ∫_0^T ∇f(ω) d^π ω + ½ ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -2439,10 +2412,7 @@
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation"
    ],
-   "blockers": [
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
-   ],
+   "blockers": [],
    "detail": "sorry: follmer_ito_formula — subgoal of Corollary 3.2 proof, [Föl81] (in Smooth.FollmerItoFormula)"
   },
   {
@@ -2460,9 +2430,9 @@
     "theorem": 3
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd",
     "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -2472,7 +2442,7 @@
     "Smooth.HasScalarQuadraticVariation"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -2668,16 +2638,16 @@
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Basic.Rd",
     "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
@@ -2745,17 +2715,14 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.PathwiseCovariation"
    ],
-   "blockers": [
-    "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
-   ],
+   "blockers": [],
    "detail": "1 sorry: proposition_3_1"
   },
   {

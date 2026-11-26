@@ -81,6 +81,10 @@ VERIFIED: set[str] = {
     "Basic.WeakLpTendsto",
     "Bessel.CanonicalWienerSpace",
     "Occupation.DiscreteLocalTime",
+    "Basic.FunctionOscillation",
+    "Smooth.PathOscillation",
+    "Main.GeometricMeshDecay",
+    "Smooth.HasQuadraticVariation",
 }
 
 # Paper labels for modules that carry a numbered result or definition.
