@@ -452,7 +452,21 @@ theorem sum_le_holder {p q : ℝ} (hpq : p.HolderConjugate q) (π : Partition T)
           ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p) ^ (1 / p) *
         (∑ i : Fin π.m, (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
           (π.right i - π.left i)) * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹) ^ q) ^ (1 / q) := by
-  sorry
+  refine le_trans (le_of_eq (Finset.sum_congr rfl fun i _ => ?_)) (ENNReal.inner_le_Lp_mul_Lq _ _ _ hpq)
+  have hΔ : 0 < π.right i - π.left i := sub_pos.2 (π.left_lt_right i)
+  have h0 : ENNReal.ofReal (π.right i - π.left i) ≠ 0 := by
+    rw [Ne, ENNReal.ofReal_eq_zero, not_le]; exact hΔ
+  have hτ : ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹ * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹ =
+      ENNReal.ofReal (π.right i - π.left i) := by
+    rw [← ENNReal.rpow_add _ _ h0 ENNReal.ofReal_ne_top, hpq.inv_add_inv_eq_one, ENNReal.rpow_one]
+  calc (h (ω (π.right i)) + h (ω (π.left i))) * ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2)
+      = (h (ω (π.right i)) + h (ω (π.left i))) * (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
+          (π.right i - π.left i)) * ENNReal.ofReal (π.right i - π.left i)) := by
+        rw [← ENNReal.ofReal_mul (by positivity), div_mul_cancel₀ _ hΔ.ne']
+    _ = (h (ω (π.right i)) + h (ω (π.left i))) * (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
+        (π.right i - π.left i)) * (ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹ *
+          ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹)) := by rw [hτ]
+    _ = _ := by ring
 
 /-- **Subgoal** (Eq. (11) proof, `‖H_n‖_{L^p} ≤ C_p ‖M_1 f‖_{n,p,ω}`): with `C_p = 2^{(p-1)/p}`,
 from `(x + y)^p ≤ 2^{p-1} (x^p + y^p)`. -/
