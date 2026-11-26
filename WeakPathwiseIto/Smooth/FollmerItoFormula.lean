@@ -41,7 +41,18 @@ theorem contDiffBounded_gradient {f : Rd d → ℝ} (hf : ContDiffBounded 2 f) :
 /-- **Subgoal** ([Föl81] proof: the Hessian of a `C²` function is symmetric). -/
 theorem hessian_symm {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) (x u v : Rd d) :
     ⟪smoothHessian f x u, v⟫ = ⟪u, smoothHessian f x v⟫ := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient f = L ∘ fderiv ℝ f := rfl
+  have hH : ∀ w, smoothHessian f x w = L (fderiv ℝ (fderiv ℝ f) x w) := fun w => by
+    unfold smoothHessian
+    rw [hg, L.comp_fderiv]
+    rfl
+  have hs := hf.contDiffAt.isSymmSndFDerivAt (x := x) (by simp)
+  rw [hH, hH]
+  change ⟪(InnerProductSpace.toDual ℝ (Rd d)).symm _, v⟫ =
+    ⟪u, (InnerProductSpace.toDual ℝ (Rd d)).symm _⟫
+  rw [InnerProductSpace.toDual_symm_apply, real_inner_comm, InnerProductSpace.toDual_symm_apply]
+  exact hs u v
 
 /-- **Subgoal** ([Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one). -/
 theorem riemannSum_eq (p : Partition T) (g : Rd d → Rd d) (ω : ℝ → Rd d) :
