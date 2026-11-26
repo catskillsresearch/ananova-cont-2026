@@ -230,7 +230,27 @@ open Laplacian in
 `z ≠ 0`, `Δ |z|^{2-d} = 0`. -/
 theorem laplacian_newtonKernel {d : ℕ} (hd : 3 ≤ d) {z : Rd d} (hz : z ≠ 0) :
     Δ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) z = 0 := by
-  sorry
+  set b := stdOrthonormalBasis ℝ (Rd d) with hbdef
+  have hz0 : 0 < ‖z‖ := norm_pos_iff.2 hz
+  rw [InnerProductSpace.laplacian_eq_iteratedFDeriv_orthonormalBasis _ b]
+  simp only [iteratedFDeriv_two_apply, Matrix.cons_val_zero, Matrix.cons_val_one]
+  simp_rw [fderiv_fderiv_norm_rpow_apply hz]
+  rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+  have hb : ∀ i, ‖b i‖ = 1 := b.orthonormal.1
+  have hs : ∑ i, ⟪z, b i⟫ ^ 2 = ‖z‖ ^ 2 := by
+    rw [← real_inner_self_eq_norm_sq, ← b.sum_inner_mul_inner z z]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [sq, real_inner_comm (b i) z]
+  simp only [hb, one_pow, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one,
+    Fintype.card_fin, finrank_euclideanSpace_fin]
+  rw [hs]
+  have hpow : ‖z‖ ^ (2 - (d : ℝ) - 4) * ‖z‖ ^ 2 = ‖z‖ ^ (2 - (d : ℝ) - 2) := by
+    rw [← Real.rpow_natCast, ← Real.rpow_add hz0]
+    congr 1
+    push_cast
+    ring
+  rw [mul_assoc _ (‖z‖ ^ (2 - (d : ℝ) - 4)), hpow]
+  ring
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
