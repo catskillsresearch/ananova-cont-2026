@@ -898,7 +898,7 @@ theorem toSphere_real_univ {d : ℕ} (hd : 0 < d) :
 theorem integral_sphere_eq_sphereMean {d : ℕ} (hd : 0 < d) (ρ : ℝ) (y : Rd d) :
     ∫ ω, ‖ρ • (ω : Rd d) - y‖ ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere =
       (volume : Measure (Rd d)).toSphere.real univ * sphereMean d ρ y := by
-  sorry
+  rw [sphereMean, ← mul_assoc, mul_inv_cancel₀ (toSphere_real_univ hd).2.ne', one_mul]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10c: volume of a ball): for `d > 0` and `R ≥ 0`,
 `|B(0,R)| = R^d |B(0,1)|`. -/

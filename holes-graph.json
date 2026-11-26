@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:41:36Z",
+ "updated": "2026-11-26T20:42:24Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 36,
-  "done": 142
+  "done": 143
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 15,
-  "done": 104
+  "done": 105
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "integral_sphere_eq_sphereMean",
     "volume_ball_eq",
     "integral_Ioo_pow_mul",
     "newton_ball_of_three_le",
@@ -3109,11 +3108,10 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
-    "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.volume_ball_eq"
    ],
-   "detail": "5 sorry: integral_sphere_eq_sphereMean, volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
+   "detail": "4 sorry: volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3579,22 +3577,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.integral_sphere_eq_sphereMean"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10b: sphere integral as a sphere mean): for `d > 0`, `∫ |ρω - y|^{2-d} dσ(ω) = σ(S^{d-1}) sphereMean d ρ y`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.integral_sphere_eq_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.integral_sphere_eq_sphereMean — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry",
