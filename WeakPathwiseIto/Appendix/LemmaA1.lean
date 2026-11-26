@@ -208,7 +208,38 @@ theorem iIndepFun_increments (x : Rd d) (π : Partition T) :
     iIndepFun (fun (i : Fin π.m) (ω : CanonicalWienerSpace d T) =>
         CanonicalWienerSpace.path ω (π.right i) - CanonicalWienerSpace.path ω (π.left i))
       (CanonicalWienerSpace.P (T := T) x) := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, hind, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x
+  set g : Ω' → CanonicalWienerSpace d T := fun ω' =>
+    CanonicalWienerSpace.ofCoords x (fun i t => W i t ω') fun i => hW i ω' with hgdef
+  have hg : AEMeasurable g Q := by
+    refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun r => ?_
+    simp only [hgdef, CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  have hBm : ∀ r ∈ Icc 0 T, Measurable (CanonicalWienerSpace.B (d := d) (T := T) r) := by
+    intro r hr
+    have : CanonicalWienerSpace.B (d := d) (T := T) r = fun ω => ω ⟨r, hr⟩ := by
+      funext ω; simp [CanonicalWienerSpace.B, hr]
+    rw [this]
+    exact ContinuousMap.measurable_eval _
+  set t' : Fin (π.m + 1) → ℝ≥0 := fun k => (π.t k).toNNReal with ht'def
+  have ht' : Monotone t' := fun a b hab => Real.toNNReal_le_toNNReal (π.strictMono.monotone hab)
+  have hX := (hasGaussianLaw_coordIncrements hB hind t').iIndepFun_of_covariance_eval
+    fun k l hkl i j => covariance_coordIncrements_eq_zero hB hind ht' hkl i j
+  have hY := hX.comp (fun _ (v : Fin d → ℝ) => ∑ i, v i • Rd.basisVec i) fun _ => by fun_prop
+  rw [hP]
+  refine iIndepFun_map_of_comp hg (fun k => ?_) ?_
+  · exact (hBm _ (π.t_mem _)).sub (hBm _ (π.t_mem _))
+  · convert hY using 1
+    funext k ω'
+    simp only [Function.comp, hgdef, CanonicalWienerSpace.path]
+    rw [B_ofCoords (t := π.right k) _ _ _ (π.t_mem k.succ),
+      B_ofCoords (t := π.left k) _ _ _ (π.t_mem k.castSucc),
+      add_sub_add_left_eq_sub,
+      ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [← sub_smul]
+    rfl
 
 /-- **Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in
 `L²(ℙ_x)`. -/
