@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:23:56Z",
+ "updated": "2026-11-26T22:24:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 25,
-  "done": 191
+  "done": 192
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 8,
-  "done": 147
+  "done": 148
  },
  "untagged": [],
  "legend": {
@@ -4390,9 +4390,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "lintegral_kernel_le_of_le_two",
     "lintegral_shell_le",
     "lintegral_kernel_le_of_three_le",
     "lintegral_piece_le",
@@ -4424,14 +4423,13 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
    ],
-   "detail": "6 sorry: lintegral_kernel_le_of_le_two, lintegral_shell_le, lintegral_kernel_le_of_three_le, lintegral_piece_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
+   "detail": "5 sorry: lintegral_shell_le, lintegral_kernel_le_of_three_le, lintegral_piece_le, lintegral_le_maximal, le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4501,17 +4499,15 @@
    "parentGoal": "Occupation.OccupationSeminorm",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (10) proof, `d ≤ 2`): on `B̄(a,ρ)` the kernel `|x-a|^{2-d}` is at most `ρ^{2-d}`, so `∫_{B̄(a,ρ)} |f| |x-a|^{2-d} ≤ C ρ² M_1 f(a)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4520,7 +4516,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+   "detail": "proved: occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",

@@ -141,7 +141,28 @@ theorem lintegral_kernel_le_of_le_two (hd : d ≤ 2) : ∃ C : ℝ≥0, ∀ (f :
     {ρ : ℝ}, 0 < ρ → ρ ≤ 1 →
     ∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) ≤
       C * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a := by
-  sorry
+  refine ⟨(volume (Metric.ball (0 : Rd d) 1)).toNNReal, fun f a ρ hρ hρ1 => ?_⟩
+  have hC : ((volume (Metric.ball (0 : Rd d) 1)).toNNReal : ℝ≥0∞) =
+      volume (Metric.ball (0 : Rd d) 1) := ENNReal.coe_toNNReal measure_ball_lt_top.ne
+  have he : (0 : ℝ) ≤ 2 - (d : ℝ) := by
+    have : (d : ℝ) ≤ 2 := by exact_mod_cast hd
+    linarith
+  calc _ ≤ ∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (ρ ^ (2 - (d : ℝ))) :=
+        setLIntegral_mono' Metric.isClosed_closedBall.measurableSet fun x hx => by
+          rw [Metric.mem_closedBall, dist_eq_norm] at hx
+          exact mul_le_mul_right (ENNReal.ofReal_le_ofReal
+            (Real.rpow_le_rpow (norm_nonneg _) hx he)) _
+    _ = (∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ) * ENNReal.ofReal (ρ ^ (2 - (d : ℝ))) :=
+        lintegral_mul_const' _ _ ENNReal.ofReal_ne_top
+    _ ≤ (volume (Metric.ball a ρ) * localMaximalFunction 1 f a) *
+          ENNReal.ofReal (ρ ^ (2 - (d : ℝ))) :=
+        mul_le_mul_left (lintegral_closedBall_le f a hρ hρ1) _
+    _ = _ := by
+        have hsplit : ρ ^ 2 = ρ ^ (2 - (d : ℝ)) * ρ ^ d := by
+          rw [← Real.rpow_natCast ρ d, ← Real.rpow_add hρ]; norm_num
+        rw [volume_ball_eq a hρ, hC, hsplit,
+          ENNReal.ofReal_mul (Real.rpow_nonneg hρ.le _)]
+        ring
 
 /-- **Subgoal** (Eq. (10) proof, `d ≥ 3`, dyadic shell): on the shell
 `ρ 2^{-(k+1)} < |x-a| ≤ ρ 2^{-k}` the kernel is at most `(ρ 2^{-(k+1)})^{2-d}`, so the integral
