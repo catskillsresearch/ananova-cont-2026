@@ -73,7 +73,14 @@ theorem map_coords_restrict {Ω' : Type*} [MeasurableSpace Ω'] {Q : Measure Ω'
     (hind : ProbabilityTheory.iIndepFun (fun i ω' t => W i t ω') Q) (I : Finset ℝ≥0) :
     Q.map (fun ω' (i : Fin d) (s : I) => W i s ω') =
       Measure.pi fun _ : Fin d => ProbabilityTheory.BrownianReal.projectiveFamily I := by
-  sorry
+  have hR : ∀ i, AEMeasurable (fun ω' (s : I) => W i s ω') Q := fun i =>
+    ((hB i).toIsPreBrownianReal.hasLaw I).aemeasurable
+  have hind' : ProbabilityTheory.iIndepFun (fun i ω' (s : I) => W i s ω') Q :=
+    hind.comp (fun _ f (s : I) => f s) fun _ => measurable_pi_iff.2 fun s => measurable_pi_apply _
+  rw [(ProbabilityTheory.iIndepFun_iff_map_fun_eq_pi_map hR).1 hind']
+  congr 1
+  funext i
+  exact ((hB i).toIsPreBrownianReal.hasLaw I).map_eq
 
 /-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ`): if `P` is a law of
 Brownian motion started at `x`, its finite-dimensional distribution on `J ⊂ [0, T]` is the image

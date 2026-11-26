@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:37:16Z  
-**`sorry` occurrences:** 51 · 14 open · 54 blocked · 76 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 8, 'blocked': 30, 'done': 41} · 26 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:38:05Z  
+**`sorry` occurrences:** 50 · 13 open · 54 blocked · 77 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 7, 'blocked': 30, 'done': 42} · 26 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -91,7 +91,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P` | subgoal of Section 2.2 Wiener space | 0 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 0 |
-| open | `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict` | subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions | 1 |
+| done | `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict` | subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions | 0 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` | subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe` | subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
@@ -160,7 +160,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
-| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 3 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique`, `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict`, `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` |
+| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 2 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique`, `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` |
 
 ### §3 Smooth change of variable
 

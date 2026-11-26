@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:37:16Z",
+ "updated": "2026-11-26T18:38:05Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 51,
+ "sorryCount": 50,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 54,
-  "done": 76
+  "done": 77
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 35
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 30,
-  "done": 41
+  "done": 42
  },
  "untagged": [],
  "legend": {
@@ -1962,9 +1962,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 ℙ_x exists (subgoals)",
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "map_coords_restrict",
     "map_restrict_eq",
     "isLaw_unique"
    ],
@@ -1989,10 +1988,9 @@
    ],
    "blockers": [
     "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
-    "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
     "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq"
    ],
-   "detail": "3 sorry: map_coords_restrict, map_restrict_eq, isLaw_unique"
+   "detail": "2 sorry: map_restrict_eq, isLaw_unique"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -2156,22 +2154,20 @@
    "parentGoal": "Bessel.WienerLawExists",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
-   "holes": [
-    "CanonicalWienerSpace.map_coords_restrict"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions): for independent real Brownian motions `W^1, …, W^d` and a finite set of times `I`, `(W^i_s)_{i, s ∈ I}` has law `⊗_i` (Brownian f.d.d. on `I`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [],
-   "detail": "sorry: CanonicalWienerSpace.map_coords_restrict — subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions (in Bessel.WienerLawExists)"
+   "detail": "proved: CanonicalWienerSpace.map_coords_restrict — subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions (in Bessel.WienerLawExists)"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
