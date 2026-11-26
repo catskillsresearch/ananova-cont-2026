@@ -241,6 +241,22 @@ theorem iIndepFun_increments (x : Rd d) (π : Partition T) :
     rw [← sub_smul]
     rfl
 
+/-- **Subgoal** (Lemma A.1 proof, step 3: Gaussian moments are finite): for `p ≥ 0`,
+`z ↦ |z|^p` is in every `L^r(N(0, I_d))`, `r < ∞`. -/
+theorem memLp_norm_rpow_stdGaussian {p : ℝ} (hp : 0 ≤ p) {r : ℝ≥0∞} (hr : r ≠ ∞) :
+    MemLp (fun z : Rd d => ‖z‖ ^ p) r (stdGaussian (Rd d)) := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 1 in terms of `Z_i^n`): along `ℙ_x`-paths,
+`‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` with `Z_i^n = (Δ_i^n)^{-1/2}(B(t_{i+1}) - B(t_i))`. -/
+theorem integral_rpow_eq_sum_norm (π : Partition T) {q : ℝ} (hq : 0 < q)
+    (ω : CanonicalWienerSpace d T) :
+    ∫ t in Icc 0 T, |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q =
+      ∑ i : Fin π.m, ‖(π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+          (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)‖ ^ (2 * q) *
+        (π.right i - π.left i) := by
+  sorry
+
 /-- **Subgoal** (Lemma A.1 proof, step 3: square integrability): `‖ρ_{n,B}‖^q_{L^q}` is in
 `L²(ℙ_x)`. -/
 theorem memLp_two (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :

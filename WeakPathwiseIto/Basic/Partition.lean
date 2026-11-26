@@ -89,6 +89,11 @@ theorem right_le_mul_left (i : Fin π.m) (hi : 0 < π.left i) :
   have h2 := mul_le_mul_of_nonneg_left hleft (div_nonneg π.mesh_nonneg hminpos.le)
   linarith
 
+/-- **Subgoal** (Lemma A.1 proof, step 3: `∑_i Δ_i^n = T`): the gaps of a partition of `[0, T]`
+sum to `T`. -/
+theorem sum_gap : ∑ i : Fin π.m, (π.right i - π.left i) = T := by
+  sorry
+
 /-- **Subgoal** (Section 3 partitions): the horizon of a partition of `[0, T]` is nonnegative. -/
 theorem nonneg (π : Partition T) : 0 ≤ T := by
   have h := π.strictMono.monotone (Fin.zero_le (Fin.last π.m))
