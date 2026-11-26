@@ -379,7 +379,35 @@ kernel derivative. -/
 theorem hasFDerivAt_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d} (hy : ‖y‖ ≠ r) :
     HasFDerivAt (sphereMean d r)
       (∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere) y := by
-  sorry
+  have hU : IsOpen {y : Rd d | ‖y‖ ≠ r} := isOpen_ne_fun continuous_norm continuous_const
+  have hV : IsOpen {z : Rd d | z ≠ 0} := isOpen_ne
+  have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
+      p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
+    rintro ⟨y, ω⟩ ⟨hy, -⟩
+    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    rintro rfl
+    apply hy
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
+  have hg : Continuous fun p : Rd d × Metric.sphere (0 : Rd d) 1 => p.1 - r • (p.2 : Rd d) := by
+    fun_prop
+  have h2 := contDiffOn_norm_rpow (d := d) (n := 2) (2 - (d : ℝ))
+  have h0 : ContinuousOn (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) {z : Rd d | z ≠ 0} := h2.continuousOn
+  have h1 : ContinuousOn (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) {z : Rd d | z ≠ 0} :=
+    h2.continuousOn_fderiv_of_isOpen hV (by norm_num)
+  rw [sphereMean_eq_integral]
+  refine hasFDerivAt_integral_sphere (F := ℝ)
+    (K := fun y ω => ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+      ‖y - r • (ω : Rd d)‖ ^ (2 - (d : ℝ)))
+    (K' := fun y ω => ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ •
+      fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d))) hU (fun ω x hx => ?_) ?_ ?_ hy
+  · have hx0 : x - r • (ω : Rd d) ∈ {z : Rd d | z ≠ 0} := hmaps (x, ω) ⟨hx, trivial⟩
+    have hd : DifferentiableAt ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (x - r • (ω : Rd d)) :=
+      (h2.differentiableOn (by norm_num) _ hx0).differentiableAt (hV.mem_nhds hx0)
+    have := (hd.hasFDerivAt.comp x ((hasFDerivAt_id x).sub_const (r • (ω : Rd d)))).const_mul
+      ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
+    simpa using this
+  · exact (h0.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
+  · exact (h1.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6h: second derivative of the sphere mean): off the
 sphere, the derivative from 6g is differentiable with derivative the sphere integral of the
