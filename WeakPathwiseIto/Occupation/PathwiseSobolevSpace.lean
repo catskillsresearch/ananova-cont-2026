@@ -40,7 +40,23 @@ theorem testDeriv_single_add_single {φ : Rd d → ℝ} (hφ : ContDiff ℝ ((�
     (i j : Fin d) (x : Rd d) :
     IsWeakDerivative.testDeriv (Pi.single i 1 + Pi.single j 1) φ x =
       fderiv ℝ (fun y => fderiv ℝ φ y (Rd.basisVec j)) x (Rd.basisVec i) := by
-  sorry
+  have key : ∀ (a b : Rd d) (l : List (Rd d)), l = [a, b] →
+      iteratedFDeriv ℝ l.length φ x (fun k => l.get k) = fderiv ℝ (fderiv ℝ φ) x a b := by
+    rintro a b l rfl
+    exact iteratedFDeriv_two_apply _ _ _
+  have hd : DifferentiableAt ℝ (fderiv ℝ φ) x :=
+    ((hφ.of_le (WithTop.coe_le_coe.2 le_top) : ContDiff ℝ 2 φ).fderiv_right (m := 1)
+      (by norm_num)).differentiable one_ne_zero x
+  have hR : fderiv ℝ (fun y => fderiv ℝ φ y (Rd.basisVec j)) x (Rd.basisVec i) =
+      fderiv ℝ (fderiv ℝ φ) x (Rd.basisVec i) (Rd.basisVec j) := by
+    rw [fderiv_clm_apply hd (differentiableAt_const _)]
+    simp
+  rw [hR]
+  rcases le_total i j with h | h
+  · exact key _ _ _ (directions_single_add_single h)
+  · rw [add_comm]
+    rw [IsWeakDerivative.testDeriv, key _ _ _ (directions_single_add_single h)]
+    exact hφ.contDiffAt.isSymmSndFDerivAt (by simp) _ _
 
 /-- **Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts
 twice): `∫ F ∂_u ∂_v φ = ∫ (∂_v ∂_u F) φ` for `F ∈ C²` and a smooth compactly supported `φ`. -/

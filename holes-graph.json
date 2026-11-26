@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:46:33Z",
+ "updated": "2026-11-26T22:47:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 19,
-  "done": 208
+  "done": 209
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 48
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 160
+  "done": 161
  },
  "untagged": [],
  "legend": {
@@ -4796,10 +4796,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Definition 4.3",
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "directions_single_add_single",
-    "testDeriv_single_add_single",
     "isWeakHessian_smoothHessian",
     "contDiffBounded_subset"
    ],
@@ -4825,10 +4824,9 @@
    "blockers": [
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
     "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single",
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian",
-    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single"
+    "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian"
    ],
-   "detail": "4 sorry: directions_single_add_single, testDeriv_single_add_single, isWeakHessian_smoothHessian, contDiffBounded_subset"
+   "detail": "3 sorry: directions_single_add_single, isWeakHessian_smoothHessian, contDiffBounded_subset"
   },
   {
    "id": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
@@ -5002,23 +5000,21 @@
    "parentGoal": "Occupation.PathwiseSobolevSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/PathwiseSobolevSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "PathwiseSobolevSpace.testDeriv_single_add_single"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative): `D^{e_i + e_j} φ = ∂_i ∂_j φ` for a smooth `φ`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.ApproximatingSequence",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: PathwiseSobolevSpace.testDeriv_single_add_single — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative (in Occupation.PathwiseSobolevSpace)"
+   "detail": "proved: PathwiseSobolevSpace.testDeriv_single_add_single — subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative (in Occupation.PathwiseSobolevSpace)"
   },
   {
    "id": "Occupation.Remark44",
