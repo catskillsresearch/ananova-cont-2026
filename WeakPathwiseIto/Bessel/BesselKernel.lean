@@ -46,6 +46,27 @@ theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
   exact div_nonneg (mul_nonneg (mul_nonneg (Real.exp_pos _).le (Real.exp_pos _).le)
     (Real.rpow_nonneg hδ'.le _)) hδ'.le
 
+/-- **Subgoal** (Definition 2.4, integrability step 1: Gaussian slice): for `δ > 0`,
+`∫_{ℝ^d} e^{-π|x|²/δ} dx = δ^{d/2}`. -/
+theorem integral_exp_slice {δ : ℝ} (hδ : 0 < δ) :
+    ∫ x : Rd d, Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) = δ ^ ((d : ℝ) / 2) := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, integrability step 2: Gamma-type profile): for `α > 0`,
+`δ ↦ δ^{α/2 - 1} e^{-δ/(4π)}` is integrable on `(0, ∞)`. -/
+theorem integrableOn_profile (hα : 0 < α) :
+    IntegrableOn (fun δ : ℝ => δ ^ (α / 2 - 1) * Real.exp (-(1 / (4 * Real.pi)) * δ ^ (1 : ℝ)))
+      (Ioi 0) := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, integrability step 3: Tonelli): the subordination integrand
+`(x, δ) ↦ e^{-π|x|²/δ} e^{-δ/(4π)} δ^{(α-d)/2} / δ` is integrable on `ℝ^d × (0, ∞)`. -/
+theorem integrable_uncurry (hα : 0 < α) :
+    Integrable (fun p : Rd d × ℝ => Real.exp (-Real.pi * ‖p.1‖ ^ 2 / p.2) *
+        Real.exp (-p.2 / (4 * Real.pi)) * p.2 ^ ((α - d) / 2) / p.2)
+      ((volume : Measure (Rd d)).prod (volume.restrict (Ioi 0))) := by
+  sorry
+
 /-- **Subgoal** (Definition 2.4). -/
 theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
   sorry

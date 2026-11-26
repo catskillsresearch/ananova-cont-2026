@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T18:39:21Z",
+ "updated": "2026-11-26T18:41:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 51,
  "counts": {
-  "open": 11,
+  "open": 14,
   "blocked": 38,
   "done": 95
  },
@@ -13,7 +13,7 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 8,
   "blocked": 16,
   "done": 58
  },
@@ -1548,15 +1548,18 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 3,
+   "sorryCount": 6,
    "holes": [
     "fourier_eq",
+    "integral_exp_slice",
+    "integrableOn_profile",
+    "integrable_uncurry",
     "integrable",
     "asymptotic_origin"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 4
+    "theorem": 7
    },
    "paperGoal": false,
    "verified": false,
@@ -1567,14 +1570,20 @@
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
     "Bessel.BesselKernel::besselKernel.integrable",
+    "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+    "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+    "Bessel.BesselKernel::besselKernel.integral_exp_slice",
     "Bessel.BesselKernel::besselKernel.nonneg"
    ],
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.integrable"
+    "Bessel.BesselKernel::besselKernel.integrable",
+    "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+    "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+    "Bessel.BesselKernel::besselKernel.integral_exp_slice"
    ],
-   "detail": "3 sorry: fourier_eq, integrable, asymptotic_origin"
+   "detail": "6 sorry: fourier_eq, integral_exp_slice, integrableOn_profile, integrable_uncurry, integrable, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1656,6 +1665,87 @@
    ],
    "blockers": [],
    "detail": "sorry: besselKernel.integrable — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+   "label": "integrableOn_profile",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, integrability step 2: Gamma-type profile",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integrableOn_profile"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, integrability step 2: Gamma-type profile): for `α > 0`, `δ ↦ δ^{α/2 - 1} e^{-δ/(4π)}` is integrable on `(0, ∞)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integrableOn_profile — subgoal of Definition 2.4, integrability step 2: Gamma-type profile (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+   "label": "integrable_uncurry",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, integrability step 3: Tonelli",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integrable_uncurry"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, integrability step 3: Tonelli): the subordination integrand `(x, δ) ↦ e^{-π|x|²/δ} e^{-δ/(4π)} δ^{(α-d)/2} / δ` is integrable on `ℝ^d × (0, ∞)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integrable_uncurry — subgoal of Definition 2.4, integrability step 3: Tonelli (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+   "label": "integral_exp_slice",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, integrability step 1: Gaussian slice",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integral_exp_slice"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, integrability step 1: Gaussian slice): for `δ > 0`, `∫_{ℝ^d} e^{-π|x|²/δ} dx = δ^{d/2}`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integral_exp_slice — subgoal of Definition 2.4, integrability step 1: Gaussian slice (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.nonneg",
@@ -4602,6 +4692,21 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.nonneg",
    "kind": "hard"
   },
@@ -4787,6 +4892,21 @@
   },
   {
    "from": "Bessel.BesselKernel::besselKernel.integrable",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
   },
@@ -6471,6 +6591,18 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrableOn_profile"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integrable_uncurry"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.nonneg"
   },
   {
@@ -6591,6 +6723,18 @@
   },
   {
    "from": "Bessel.BesselKernel::besselKernel.integrable",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrableOn_profile",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "to": "Bessel.BesselKernel"
   },
   {
