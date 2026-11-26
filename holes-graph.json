@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T20:44:46Z",
+ "updated": "2026-11-26T20:46:02Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 45,
+ "sorryCount": 44,
  "counts": {
   "open": 9,
-  "blocked": 36,
-  "done": 146
+  "blocked": 35,
+  "done": 147
  },
  "goalCounts": {
-  "open": 6,
-  "blocked": 21,
+  "open": 7,
+  "blocked": 20,
   "done": 38
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 15,
-  "done": 108
+  "done": 109
  },
  "untagged": [],
  "legend": {
@@ -3048,10 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "eq_inv_integral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 2,
     "theorem": 38
@@ -3059,7 +3057,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Rd",
     "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3102,10 +3100,8 @@
     "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
-   "blockers": [
-    "Occupation.OccupationConstant::occupationConstant.eq_inv_integral"
-   ],
-   "detail": "1 sorry: eq_inv_integral"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3217,22 +3213,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.eq_inv_integral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d). Eq. (7): `c_d = [∫_{B(0,1/2)} (|x - e_1/2|^{2-d} + |x + e_1/2|^{2-d}) dx]⁻¹`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.eq_inv_integral — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.eq_inv_integral — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply",

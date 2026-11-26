@@ -1001,7 +1001,26 @@ theorem eq_inv_integral {d : ℕ} (hd : 0 < d) :
     occupationConstant d = (∫ x in Metric.ball (0 : Rd d) (1 / 2),
       (‖x - (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩‖ ^ (2 - (d : ℝ)) +
         ‖x + (1 / 2 : ℝ) • Rd.basisVec ⟨0, hd⟩‖ ^ (2 - (d : ℝ))))⁻¹ := by
-  sorry
+  set e : Rd d := Rd.basisVec ⟨0, hd⟩ with he
+  have hnorm : ‖(1 / 2 : ℝ) • e‖ = 1 / 2 := by
+    rw [he, Rd.basisVec, norm_smul]
+    simp
+  have hB : IntegrableOn (fun x : Rd d => ‖x + (1 / 2 : ℝ) • e‖ ^ (2 - (d : ℝ)))
+      (Metric.ball 0 (1 / 2)) := by
+    have h := integrableOn_term (-((1 / 2 : ℝ) • e)) (1 / 2)
+    simpa only [sub_neg_eq_add] using h
+  rw [integral_add (integrableOn_term _ _) hB, integral_reflect hd,
+    newton_ball hd (by norm_num) hnorm, volume_ball_half hd, occupationConstant]
+  have hv : 0 < (volume (Metric.ball (0 : Rd d) 1)).toReal :=
+    ENNReal.toReal_pos (Metric.measure_ball_pos _ _ one_pos).ne' measure_ball_lt_top.ne
+  have hpow : (1 / 2 : ℝ) ^ d * (1 / 2 : ℝ) ^ (2 - (d : ℝ)) = 1 / 4 := by
+    rw [← Real.rpow_natCast, ← Real.rpow_add (by norm_num), show (d : ℝ) + (2 - d) = 2 by ring]
+    norm_num
+  rw [show (1 / 2 : ℝ) ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal * (1 / 2 : ℝ) ^ (2 - (d : ℝ))
+      = (1 / 2 : ℝ) ^ d * (1 / 2 : ℝ) ^ (2 - (d : ℝ)) * (volume (Metric.ball (0 : Rd d) 1)).toReal
+      by ring, hpow]
+  field_simp
+  ring
 
 end occupationConstant
 

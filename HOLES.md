@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T20:44:46Z  
-**`sorry` occurrences:** 45 · 9 open · 36 blocked · 146 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 3, 'blocked': 15, 'done': 108} · 24 file(s) with `sorry`.
+**Updated:** 2026-11-26T20:46:02Z  
+**`sorry` occurrences:** 44 · 9 open · 35 blocked · 147 done (goals + subgoals) · goals {'open': 7, 'blocked': 20, 'done': 38} · subgoals {'open': 2, 'blocked': 15, 'done': 109} · 23 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,6 +25,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
+| `Occupation.OccupationConstant` | Eq. (7) c_d | 0 | (review → VERIFIED) |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
@@ -115,7 +116,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere` | subgoal of Eq. (7 | 0 |
-| open | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` | subgoal of Eq. (7 | 1 |
+| done | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply` | subgoal of Eq. (7 | 0 |
@@ -234,7 +235,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
-| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 1 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` |
+| open | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
