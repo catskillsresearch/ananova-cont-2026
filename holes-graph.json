@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T19:47:45Z",
+ "updated": "2026-11-26T19:49:06Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 57,
+ "sorryCount": 56,
  "counts": {
-  "open": 21,
+  "open": 20,
   "blocked": 36,
-  "done": 112
+  "done": 113
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 15,
+  "open": 14,
   "blocked": 15,
-  "done": 74
+  "done": 75
  },
  "untagged": [],
  "legend": {
@@ -3048,7 +3048,7 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 13,
+   "sorryCount": 12,
    "holes": [
     "integral_ball_polar",
     "integral_toSphere_isometry",
@@ -3060,7 +3060,6 @@
     "sphereMean_outside",
     "newton_ball_of_three_le",
     "newton_ball_dim_one",
-    "newton_ball_dim_two",
     "newton_ball",
     "eq_inv_integral"
    ],
@@ -3100,14 +3099,13 @@
     "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_one",
-    "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_two",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
     "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "13 sorry: integral_ball_polar, integral_toSphere_isometry, sphereMean_radial, laplacian_newtonKernel, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball_dim_one, newton_ball_dim_two, newton_ball, eq_inv_integral"
+   "detail": "12 sorry: integral_ball_polar, integral_toSphere_isometry, sphereMean_radial, laplacian_newtonKernel, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball_dim_one, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3358,22 +3356,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.newton_ball_dim_two"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 12: `d = 2`): the kernel is `1`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.newton_ball_dim_two — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.newton_ball_dim_two — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",

@@ -147,7 +147,9 @@ theorem newton_ball_dim_one {R : ℝ} (hR : 0 < R) {y : Rd 1} (hy : ‖y‖ = R)
 theorem newton_ball_dim_two {R : ℝ} {y : Rd 2} :
     ∫ x in Metric.ball (0 : Rd 2) R, ‖x - y‖ ^ (2 - ((2 : ℕ) : ℝ)) =
       (volume (Metric.ball (0 : Rd 2) R)).toReal * R ^ (2 - ((2 : ℕ) : ℝ)) := by
-  sorry
+  have h0 : (2 - ((2 : ℕ) : ℝ)) = 0 := by norm_num
+  simp only [h0, Real.rpow_zero, mul_one]
+  rw [setIntegral_const, smul_eq_mul, mul_one, Measure.real_def]
 
 /-- **Subgoal** (Eq. (7) c_d, step 4 = Newton step 13: Newton's theorem for a ball): for `|y| = R > 0`,
 `∫_{B(0,R)} |x - y|^{2-d} dx = |B(0,R)| R^{2-d}` (mean value property of the Newton kernel). -/
