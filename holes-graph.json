@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:05:12Z",
+ "updated": "2026-11-26T18:07:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 51,
  "counts": {
   "open": 13,
   "blocked": 39,
-  "done": 72
+  "done": 73
  },
  "goalCounts": {
   "open": 7,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 6,
   "blocked": 16,
-  "done": 37
+  "done": 38
  },
  "untagged": [],
  "legend": {
@@ -2257,7 +2257,8 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "def": 1
+    "def": 1,
+    "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
@@ -2265,10 +2266,37 @@
    "status": "done",
    "deps": [
     "Basic.Partition",
-    "Basic.Rd"
+    "Basic.Rd",
+    "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp",
+   "label": "memLp",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma A.1, finiteness of `‖ρ_n‖_{L^q}`",
+   "parentGoal": "Occupation.NormalizedQuadraticDensity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/NormalizedQuadraticDensity.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1, finiteness of `‖ρ_n‖_{L^q}`): `ρ_{n,ω}` is a bounded measurable step function, hence in every `L^p([0, T])`.",
+   "status": "done",
+   "deps": [
+    "Basic.Partition",
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "proved: normalizedQuadraticDensity.memLp — subgoal of Lemma A.1, finiteness of `‖ρ_n‖_{L^q}` (in Occupation.NormalizedQuadraticDensity)"
   },
   {
    "id": "Occupation.OccupationConstant",
@@ -3728,6 +3756,11 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Smooth.DiscreteQuadraticVariation",
    "kind": "hard"
   },
@@ -3919,6 +3952,11 @@
   {
    "from": "Basic.Rd",
    "to": "Occupation.NormalizedQuadraticDensity",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp",
    "kind": "hard"
   },
   {
@@ -4612,6 +4650,11 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp",
+   "to": "Occupation.NormalizedQuadraticDensity",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.OccupationConstant",
    "to": "Occupation.DiscreteOccupationDensity",
    "kind": "hard"
@@ -5262,7 +5305,7 @@
   },
   {
    "from": "Basic.Partition",
-   "to": "Occupation.NormalizedQuadraticDensity"
+   "to": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp"
   },
   {
    "from": "Basic.Partition",
@@ -5406,7 +5449,7 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Occupation.NormalizedQuadraticDensity"
+   "to": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp"
   },
   {
    "from": "Basic.Rd",
@@ -5879,6 +5922,10 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp",
+   "to": "Occupation.NormalizedQuadraticDensity"
   },
   {
    "from": "Occupation.OccupationConstant",
