@@ -245,7 +245,14 @@ theorem iIndepFun_increments (x : Rd d) (π : Partition T) :
 `z ↦ |z|^p` is in every `L^r(N(0, I_d))`, `r < ∞`. -/
 theorem memLp_norm_rpow_stdGaussian {p : ℝ} (hp : 0 ≤ p) {r : ℝ≥0∞} (hr : r ≠ ∞) :
     MemLp (fun z : Rd d => ‖z‖ ^ p) r (stdGaussian (Rd d)) := by
-  sorry
+  rcases hp.eq_or_lt with rfl | hp0
+  · simp only [Real.rpow_zero]
+    exact memLp_const 1
+  have hq0 : ENNReal.ofReal p ≠ 0 := by simpa using hp0
+  have h := (IsGaussian.memLp_id (stdGaussian (Rd d)) (ENNReal.ofReal p * r)
+    (ENNReal.mul_ne_top ENNReal.ofReal_ne_top hr)).norm_rpow_div (ENNReal.ofReal p)
+  rw [ENNReal.toReal_ofReal hp, mul_comm, ENNReal.mul_div_cancel_right hq0 ENNReal.ofReal_ne_top] at h
+  exact h
 
 /-- **Subgoal** (Lemma A.1 proof, step 1 in terms of `Z_i^n`): along `ℙ_x`-paths,
 `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` with `Z_i^n = (Δ_i^n)^{-1/2}(B(t_{i+1}) - B(t_i))`. -/
