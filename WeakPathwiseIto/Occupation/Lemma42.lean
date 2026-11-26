@@ -135,7 +135,63 @@ theorem abs_integral_sub_le (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) 
     |(∫ x, φ x * discreteOccupationDensity p ω x) -
         ∑ i, φ (ω (p.left i)) * ‖ω (p.right i) - ω (p.left i)‖ ^ 2| ≤
       ε * ∑ i, ‖ω (p.right i) - ω (p.left i)‖ ^ 2 := by
-  sorry
+  set A : Fin p.m → Rd d := fun i => ω (p.left i) with hA
+  set B : Fin p.m → Rd d := fun i => ω (p.right i) with hB
+  obtain ⟨C, hC⟩ := hφ.bounded_above_of_compact_support hφc
+  have hball : ∀ i x, x ∈ incrementBall (A i) (B i) → ‖x - A i‖ ≤ ‖B i - A i‖ := by
+    intro i x hx
+    rw [incrementBall, Metric.mem_closedBall] at hx
+    have h1 := dist_triangle x (midpoint ℝ (A i) (B i)) (A i)
+    rw [dist_midpoint_left (𝕜 := ℝ)] at h1
+    rw [← dist_eq_norm, ← dist_eq_norm, dist_comm (B i)]
+    have h2 : ‖(2 : ℝ)‖⁻¹ * dist (A i) (B i) = dist (A i) (B i) / 2 := by
+      rw [Real.norm_two]; ring
+    linarith
+  have hP : ∀ i x, |(φ x - φ (A i)) * discreteOccupationDensity.piece (A i) (B i) x| ≤
+      ε * discreteOccupationDensity.piece (A i) (B i) x := by
+    intro i x
+    have hP0 := discreteOccupationDensity.piece_nonneg (A i) (B i) x
+    rcases eq_or_ne (discreteOccupationDensity.piece (A i) (B i) x) 0 with h0 | h0
+    · rw [h0, mul_zero, mul_zero, abs_zero]
+    have hx : x ∈ incrementBall (A i) (B i) := by
+      by_contra hx
+      apply h0
+      unfold discreteOccupationDensity.piece
+      split_ifs
+      · rfl
+      · exact Set.indicator_of_notMem hx _
+    rw [abs_mul, abs_of_nonneg hP0]
+    exact mul_le_mul_of_nonneg_right
+      (hmod x (A i) ((hball i x hx).trans (norm_increment_le hω p i))) hP0
+  have hint : ∀ i, Integrable (fun x => φ x * discreteOccupationDensity.piece (A i) (B i) x) :=
+    fun i => (discreteOccupationDensity.integrable_piece _ _).bdd_mul hφ.aestronglyMeasurable
+      (Filter.Eventually.of_forall hC)
+  have e1 : (∫ x, φ x * discreteOccupationDensity p ω x) =
+      ∑ i, ∫ x, φ x * discreteOccupationDensity.piece (A i) (B i) x := by
+    unfold discreteOccupationDensity
+    simp_rw [Finset.mul_sum]
+    exact integral_finset_sum _ fun i _ => hint i
+  have e2 : ∀ i, φ (A i) * ‖B i - A i‖ ^ 2 =
+      ∫ x, φ (A i) * discreteOccupationDensity.piece (A i) (B i) x := fun i => by
+    rw [integral_const_mul, discreteOccupationDensity.integral_piece]
+  have e3 : ∀ i, (∫ x, φ x * discreteOccupationDensity.piece (A i) (B i) x) -
+      ∫ x, φ (A i) * discreteOccupationDensity.piece (A i) (B i) x =
+      ∫ x, (φ x - φ (A i)) * discreteOccupationDensity.piece (A i) (B i) x := fun i => by
+    rw [← integral_sub (hint i) ((discreteOccupationDensity.integrable_piece _ _).const_mul _)]
+    congr 1
+    funext x
+    ring
+  have hbound : ∀ i, |∫ x, (φ x - φ (A i)) * discreteOccupationDensity.piece (A i) (B i) x| ≤
+      ε * ‖B i - A i‖ ^ 2 := fun i => by
+    rw [← Real.norm_eq_abs, ← discreteOccupationDensity.integral_piece, ← integral_const_mul]
+    exact norm_integral_le_of_norm_le
+      ((discreteOccupationDensity.integrable_piece _ _).const_mul ε)
+      (Filter.Eventually.of_forall fun x => by rw [Real.norm_eq_abs]; exact hP i x)
+  show |(∫ x, φ x * discreteOccupationDensity p ω x) - ∑ i, φ (A i) * ‖B i - A i‖ ^ 2| ≤
+    ε * ∑ i, ‖B i - A i‖ ^ 2
+  rw [e1, Finset.sum_congr rfl fun i _ => e2 i, ← Finset.sum_sub_distrib,
+    Finset.sum_congr rfl fun i _ => e3 i, Finset.mul_sum]
+  exact (Finset.abs_sum_le_sum_abs _ _).trans (Finset.sum_le_sum fun i _ => hbound i)
 
 /-- **Subgoal** (Lemma 4.2 proof, last display): with `φ` uniformly continuous and (6),
 `∑_i φ(ω(t_i)) |ω(t_{i+1}) - ω(t_i)|² → ∫_0^T φ(ω(t)) d tr[ω]_π(t)`. -/
