@@ -72,6 +72,7 @@ def body_of(mod: str) -> str:
 
 
 THM_RE = re.compile(r"^(?:theorem|lemma)\s+([^\s:({\[]+)", re.M)
+SUBGOAL_DEF_RE = re.compile(r"^(?:noncomputable\s+)?def\s+([^\s:({\[]+)", re.M)
 
 
 def prune(body: str, compared: set[str], keep_text: str) -> str:
@@ -80,6 +81,9 @@ def prune(body: str, compared: set[str], keep_text: str) -> str:
     out = []
     for ch in chunks:
         m = THM_RE.search(ch)
+        if not m and "**Subgoal**" in ch:
+            # helper defs labelled as subgoals are pruned like helper lemmas
+            m = SUBGOAL_DEF_RE.search(ch)
         if m:
             name = m.group(1)
             short = name.split(".")[-1]
