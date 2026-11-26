@@ -416,7 +416,39 @@ theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d
     (hy : ‖y‖ ≠ r) :
     HasFDerivAt (fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere)
       (∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere) y := by
-  sorry
+  have hU : IsOpen {y : Rd d | ‖y‖ ≠ r} := isOpen_ne_fun continuous_norm continuous_const
+  have hV : IsOpen {z : Rd d | z ≠ 0} := isOpen_ne
+  have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
+      p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
+    rintro ⟨y, ω⟩ ⟨hy, -⟩
+    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    rintro rfl
+    apply hy
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
+  have hg : Continuous fun p : Rd d × Metric.sphere (0 : Rd d) 1 => p.1 - r • (p.2 : Rd d) := by
+    fun_prop
+  have h3 := contDiffOn_norm_rpow (d := d) (n := 2) (2 - (d : ℝ))
+  have h2 : ContDiffOn ℝ 1 (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) {z : Rd d | z ≠ 0} :=
+    h3.fderiv_of_isOpen hV (by norm_num)
+  have h0 := h2.continuousOn
+  have h1 : ContinuousOn (fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))))
+      {z : Rd d | z ≠ 0} :=
+    h2.continuousOn_fderiv_of_isOpen hV le_rfl
+  refine hasFDerivAt_integral_sphere
+      (K := fun y ω => ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ •
+        fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d)))
+      (K' := fun y ω => ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ •
+        fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) (y - r • (ω : Rd d)))
+      hU (fun ω x hx => ?_) ?_ ?_ hy
+  · have hx0 : x - r • (ω : Rd d) ∈ {z : Rd d | z ≠ 0} := hmaps (x, ω) ⟨hx, trivial⟩
+    have hd : DifferentiableAt ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))))
+        (x - r • (ω : Rd d)) :=
+      (h2.differentiableOn one_ne_zero _ hx0).differentiableAt (hV.mem_nhds hx0)
+    have := (hd.hasFDerivAt.comp x ((hasFDerivAt_id x).sub_const (r • (ω : Rd d)))).const_smul
+      ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
+    convert this using 1 <;> first | rfl | simp
+  · exact (h0.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
+  · exact (h1.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6i: continuity of the second derivative): the sphere
 integral of the kernel Hessian is continuous on `{|y| ≠ r}`. -/
