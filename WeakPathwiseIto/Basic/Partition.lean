@@ -92,7 +92,17 @@ theorem right_le_mul_left (i : Fin π.m) (hi : 0 < π.left i) :
 /-- **Subgoal** (Lemma A.1 proof, step 3: `∑_i Δ_i^n = T`): the gaps of a partition of `[0, T]`
 sum to `T`. -/
 theorem sum_gap : ∑ i : Fin π.m, (π.right i - π.left i) = T := by
-  sorry
+  set g : ℕ → ℝ := fun k => if h : k ≤ π.m then π.t ⟨k, by omega⟩ else T with hg
+  have h1 : ∑ i : Fin π.m, (π.right i - π.left i) = ∑ i : Fin π.m, (g (i + 1) - g i) := by
+    refine Finset.sum_congr rfl fun i _ => ?_
+    have h1 : (i : ℕ) + 1 ≤ π.m := i.isLt
+    have h2 : (i : ℕ) ≤ π.m := i.isLt.le
+    simp only [hg, dif_pos h1, dif_pos h2, right, left]
+    rfl
+  rw [h1, Fin.sum_univ_eq_sum_range (fun k => g (k + 1) - g k), Finset.sum_range_sub]
+  simp only [hg, dif_pos le_rfl, dif_pos (Nat.zero_le _)]
+  rw [show (⟨π.m, by omega⟩ : Fin (π.m + 1)) = Fin.last π.m from rfl, π.t_last,
+    show (⟨0, by omega⟩ : Fin (π.m + 1)) = 0 from rfl, π.t_zero, sub_zero]
 
 /-- **Subgoal** (Section 3 partitions): the horizon of a partition of `[0, T]` is nonnegative. -/
 theorem nonneg (π : Partition T) : 0 ≤ T := by
