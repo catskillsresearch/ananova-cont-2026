@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T18:43:56Z",
+ "updated": "2026-11-26T18:45:43Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 50,
  "counts": {
-  "open": 10,
+  "open": 13,
   "blocked": 38,
   "done": 99
  },
@@ -13,7 +13,7 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 7,
   "blocked": 16,
   "done": 62
  },
@@ -1548,14 +1548,17 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 2,
+   "sorryCount": 5,
    "holes": [
     "fourier_eq",
+    "integral_comp_div",
+    "mul_eq_integral",
+    "tendsto_integral",
     "asymptotic_origin"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 7
+    "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
@@ -1568,14 +1571,20 @@
     "Bessel.BesselKernel::besselKernel.integrable",
     "Bessel.BesselKernel::besselKernel.integrableOn_profile",
     "Bessel.BesselKernel::besselKernel.integrable_uncurry",
+    "Bessel.BesselKernel::besselKernel.integral_comp_div",
     "Bessel.BesselKernel::besselKernel.integral_exp_slice",
-    "Bessel.BesselKernel::besselKernel.nonneg"
+    "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+    "Bessel.BesselKernel::besselKernel.nonneg",
+    "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
-    "Bessel.BesselKernel::besselKernel.fourier_eq"
+    "Bessel.BesselKernel::besselKernel.fourier_eq",
+    "Bessel.BesselKernel::besselKernel.integral_comp_div",
+    "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+    "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
-   "detail": "2 sorry: fourier_eq, asymptotic_origin"
+   "detail": "5 sorry: fourier_eq, integral_comp_div, mul_eq_integral, tendsto_integral, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1707,6 +1716,33 @@
    "detail": "proved: besselKernel.integrable_uncurry — subgoal of Definition 2.4, integrability step 3: Tonelli (in Bessel.BesselKernel)"
   },
   {
+   "id": "Bessel.BesselKernel::besselKernel.integral_comp_div",
+   "label": "integral_comp_div",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u`",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.integral_comp_div"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u`): for `a > 0`, `∫_0^∞ g(δ) dδ = ∫_0^∞ g(a/u) a/u² du`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.integral_comp_div — subgoal of Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u` (in Bessel.BesselKernel)"
+  },
+  {
    "id": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "label": "integral_exp_slice",
    "kind": "subgoal",
@@ -1732,6 +1768,33 @@
    "detail": "proved: besselKernel.integral_exp_slice — subgoal of Definition 2.4, integrability step 1: Gaussian slice (in Bessel.BesselKernel)"
   },
   {
+   "id": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+   "label": "mul_eq_integral",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, behaviour at the origin, step 2: rescaled kernel",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.mul_eq_integral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 2: rescaled kernel): for `x ≠ 0`, with `δ = π|x|²/u`, `|x|^{d-α} g_α(x) = ((4π)^{α/2} Γ(α/2))⁻¹ π^{(α-d)/2} ∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.mul_eq_integral — subgoal of Definition 2.4, behaviour at the origin, step 2: rescaled kernel (in Bessel.BesselKernel)"
+  },
+  {
    "id": "Bessel.BesselKernel::besselKernel.nonneg",
    "label": "nonneg",
    "kind": "subgoal",
@@ -1755,6 +1818,33 @@
    ],
    "blockers": [],
    "detail": "proved: besselKernel.nonneg — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+  },
+  {
+   "id": "Bessel.BesselKernel::besselKernel.tendsto_integral",
+   "label": "tendsto_integral",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence",
+   "parentGoal": "Bessel.BesselKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselKernel.tendsto_integral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 3: dominated convergence): for `α < d`, as `x → 0`, `∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du → Γ((d-α)/2)`.",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselKernel.tendsto_integral — subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselSpace",
@@ -4686,12 +4776,27 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_comp_div",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "kind": "hard"
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.nonneg",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.tendsto_integral",
    "kind": "hard"
   },
   {
@@ -4890,12 +4995,27 @@
    "kind": "subgoal"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.integral_comp_div",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.nonneg",
+   "to": "Bessel.BesselKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.tendsto_integral",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
   },
@@ -6583,11 +6703,23 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.integral_comp_div"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.integral_exp_slice"
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.mul_eq_integral"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Bessel.BesselKernel::besselKernel.nonneg"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.BesselKernel::besselKernel.tendsto_integral"
   },
   {
    "from": "Basic.Rd",
@@ -6718,11 +6850,23 @@
    "to": "Bessel.BesselKernel"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.integral_comp_div",
+   "to": "Bessel.BesselKernel"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
    "to": "Bessel.BesselKernel"
   },
   {
+   "from": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
+   "to": "Bessel.BesselKernel"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.nonneg",
+   "to": "Bessel.BesselKernel"
+  },
+  {
+   "from": "Bessel.BesselKernel::besselKernel.tendsto_integral",
    "to": "Bessel.BesselKernel"
   },
   {

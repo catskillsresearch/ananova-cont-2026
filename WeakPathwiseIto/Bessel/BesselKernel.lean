@@ -101,6 +101,29 @@ theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
   unfold besselKernel
   exact ((integrable_uncurry hα).integral_prod_left).const_mul _
 
+/-- **Subgoal** (Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u`): for
+`a > 0`, `∫_0^∞ g(δ) dδ = ∫_0^∞ g(a/u) a/u² du`. -/
+theorem integral_comp_div (g : ℝ → ℝ) {a : ℝ} (ha : 0 < a) :
+    ∫ u in Ioi (0 : ℝ), a / u ^ 2 * g (a / u) = ∫ δ in Ioi (0 : ℝ), g δ := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, behaviour at the origin, step 2: rescaled kernel): for `x ≠ 0`,
+with `δ = π|x|²/u`,
+`|x|^{d-α} g_α(x) = ((4π)^{α/2} Γ(α/2))⁻¹ π^{(α-d)/2} ∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du`. -/
+theorem mul_eq_integral {x : Rd d} (hx : x ≠ 0) :
+    ‖x‖ ^ ((d : ℝ) - α) * besselKernel d α x =
+      ((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ * Real.pi ^ ((α - d) / 2) *
+        ∫ u in Ioi (0 : ℝ), Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+          u ^ (((d : ℝ) - α) / 2 - 1) := by
+  sorry
+
+/-- **Subgoal** (Definition 2.4, behaviour at the origin, step 3: dominated convergence): for
+`α < d`, as `x → 0`, `∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du → Γ((d-α)/2)`. -/
+theorem tendsto_integral (hαd : α < d) :
+    Tendsto (fun x : Rd d => ∫ u in Ioi (0 : ℝ), Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+        u ^ (((d : ℝ) - α) / 2 - 1)) (𝓝[≠] 0) (𝓝 (Real.Gamma (((d : ℝ) - α) / 2))) := by
+  sorry
+
 /-- **Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`. -/
 theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ ∧
     Tendsto (fun x : Rd d => ‖x‖ ^ ((d : ℝ) - α) * besselKernel d α x) (𝓝[≠] 0)

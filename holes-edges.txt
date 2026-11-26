@@ -133,8 +133,11 @@ Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.fourier_eq
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.integrable
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.integrableOn_profile
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.integrable_uncurry
+Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.integral_comp_div
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.integral_exp_slice
+Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.mul_eq_integral
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.nonneg
+Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.tendsto_integral
 Basic.Rd -hard-> Bessel.CanonicalWienerSpace
 Basic.Rd -hard-> Occupation.DiscreteSeminorm
 Basic.Rd -hard-> Occupation.IncrementBall
@@ -174,8 +177,11 @@ Bessel.BesselKernel::besselKernel.fourier_eq -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.integrable -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.integrableOn_profile -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.integrable_uncurry -hard-> Bessel.BesselKernel
+Bessel.BesselKernel::besselKernel.integral_comp_div -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.integral_exp_slice -hard-> Bessel.BesselKernel
+Bessel.BesselKernel::besselKernel.mul_eq_integral -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.nonneg -hard-> Bessel.BesselKernel
+Bessel.BesselKernel::besselKernel.tendsto_integral -hard-> Bessel.BesselKernel
 Bessel.BesselSpace -hard-> Bessel.BesselCapacity
 Bessel.BesselSpace -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.iUnion
 Bessel.BesselSpace -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one
