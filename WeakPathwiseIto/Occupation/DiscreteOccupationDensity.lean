@@ -61,7 +61,10 @@ theorem integral_closedBall_affine (m : Rd d) {l : ℝ} (hl : 0 < l) (L : Rd d �
 `d > 0` and `|u| = 1` there is a linear isometry `L` of `ℝ^d` with `L e_1 = u`. -/
 theorem exists_isometry_basisVec (hd : 0 < d) {u : Rd d} (hu : ‖u‖ = 1) :
     ∃ L : Rd d ≃ₗᵢ[ℝ] Rd d, L (Rd.basisVec ⟨0, hd⟩) = u := by
-  sorry
+  have he : ‖Rd.basisVec (⟨0, hd⟩ : Fin d)‖ = ‖u‖ := by
+    rw [hu, Rd.basisVec]
+    simp
+  exact ⟨_, Submodule.reflection_sub he⟩
 
 /-- **Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): for `d > 0`, the set
 integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/

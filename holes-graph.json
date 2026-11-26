@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:53:29Z",
+ "updated": "2026-11-26T20:54:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 44,
+ "sorryCount": 43,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 31,
-  "done": 151
+  "done": 152
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 11,
-  "done": 112
+  "done": 113
  },
  "untagged": [],
  "legend": {
@@ -2760,10 +2760,9 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "integral_closedBall_affine",
-    "exists_isometry_basisVec",
     "integral_piece",
     "integral_eq"
    ],
@@ -2788,12 +2787,11 @@
     "Occupation.OccupationConstant"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
    ],
-   "detail": "4 sorry: integral_closedBall_affine, exists_isometry_basisVec, integral_piece, integral_eq"
+   "detail": "3 sorry: integral_closedBall_affine, integral_piece, integral_eq"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2805,24 +2803,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.exists_isometry_basisVec"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7), `integral_piece` step b: rotating `e_1` to a unit vector): for `d > 0` and `|u| = 1` there is a linear isometry `L` of `ℝ^d` with `L e_1 = u`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.exists_isometry_basisVec — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.exists_isometry_basisVec — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
