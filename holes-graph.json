@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-26T21:27:03Z",
+ "updated": "2026-11-26T21:27:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 39,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 26,
-  "done": 165
+  "done": 166
  },
  "goalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 18,
-  "done": 40
+  "done": 41
  },
  "subgoalCounts": {
   "open": 5,
@@ -3032,9 +3032,9 @@
     "theorem": 10
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
@@ -3050,7 +3050,7 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",

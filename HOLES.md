@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:27:03Z  
-**`sorry` occurrences:** 39 · 12 open · 26 blocked · 165 done (goals + subgoals) · goals {'open': 7, 'blocked': 18, 'done': 40} · subgoals {'open': 5, 'blocked': 8, 'done': 125} · 21 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:27:27Z  
+**`sorry` occurrences:** 39 · 11 open · 26 blocked · 166 done (goals + subgoals) · goals {'open': 6, 'blocked': 18, 'done': 41} · subgoals {'open': 5, 'blocked': 8, 'done': 125} · 21 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,7 +25,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Occupation.Lemma42` | Lemma 4.2 | 0 | (review → VERIFIED) |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
@@ -245,7 +244,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
-| open | `Occupation.Lemma42` | Lemma 4.2 | 0 |  |
+| done | `Occupation.Lemma42` | Lemma 4.2 | 0 |  |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
