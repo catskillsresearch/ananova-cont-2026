@@ -82,7 +82,33 @@ theorem integrableOn_unitProfile (hd : 0 < d) :
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`. -/
 theorem integral_div_le (T : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 →
     ∫ s in Ioc 0 T, heatKernel d s x / s ≤ C * ‖x‖ ^ (-(d : ℝ)) := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · exact ⟨0, fun x hx => (hx (Subsingleton.elim _ _)).elim⟩
+  refine ⟨∫ u in Ioi 0, (2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)) / u,
+    fun x hx => ?_⟩
+  have hr : 0 < ‖x‖ := norm_pos_iff.2 hx
+  have hb : 0 < ‖x‖ ^ 2 := by positivity
+  set f : ℝ → ℝ := fun s => heatKernel d s x / s with hf
+  have hscale : EqOn (fun u => f (‖x‖ ^ 2 * u)) (fun u => ‖x‖ ^ (-(d : ℝ)) / ‖x‖ ^ 2 *
+      ((2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)) / u)) (Ioi 0) :=
+    fun u hu => div_scaling x hx hu
+  have hfi : IntegrableOn f (Ioi 0) := by
+    have := (integrableOn_Ioi_comp_mul_left_iff f 0 hb).1
+      (IntegrableOn.congr_fun ((integrableOn_unitProfile hd).const_mul _) hscale.symm measurableSet_Ioi)
+    simpa using this
+  have hnn : ∀ s ∈ Ioi (0 : ℝ), 0 ≤ f s := fun s hs => by
+    have hs : (0 : ℝ) < s := hs
+    simp only [hf, heatKernel]
+    positivity
+  calc ∫ s in Ioc 0 T, f s ≤ ∫ s in Ioi 0, f s :=
+        setIntegral_mono_set hfi (ae_restrict_of_forall_mem measurableSet_Ioi hnn)
+          Ioc_subset_Ioi_self.eventuallyLE
+    _ = ‖x‖ ^ 2 * ∫ u in Ioi 0, f (‖x‖ ^ 2 * u) := by
+        rw [integral_comp_mul_left_Ioi f 0 hb, mul_zero, smul_eq_mul, ← mul_assoc,
+          mul_inv_cancel₀ hb.ne', one_mul]
+    _ = _ := by
+        rw [setIntegral_congr_fun measurableSet_Ioi hscale, integral_const_mul]
+        field_simp
 
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
