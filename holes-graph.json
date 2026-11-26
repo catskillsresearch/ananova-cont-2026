@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:47:59Z",
+ "updated": "2026-11-26T18:48:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 47,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 38,
-  "done": 101
+  "done": 102
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 16,
-  "done": 64
+  "done": 65
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "fourier_eq",
-    "tendsto_integral",
     "asymptotic_origin"
    ],
    "declKinds": {
@@ -1577,10 +1576,9 @@
    ],
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
-    "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.tendsto_integral"
+    "Bessel.BesselKernel::besselKernel.fourier_eq"
    ],
-   "detail": "3 sorry: fourier_eq, tendsto_integral, asymptotic_origin"
+   "detail": "2 sorry: fourier_eq, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1821,22 +1819,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.tendsto_integral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 3: dominated convergence): for `α < d`, as `x → 0`, `∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du → Γ((d-α)/2)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.tendsto_integral — subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.tendsto_integral — subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselSpace",

@@ -158,7 +158,30 @@ theorem mul_eq_integral {x : Rd d} (hx : x ≠ 0) :
 theorem tendsto_integral (hαd : α < d) :
     Tendsto (fun x : Rd d => ∫ u in Ioi (0 : ℝ), Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
         u ^ (((d : ℝ) - α) / 2 - 1)) (𝓝[≠] 0) (𝓝 (Real.Gamma (((d : ℝ) - α) / 2))) := by
-  sorry
+  have hs : 0 < ((d : ℝ) - α) / 2 := by linarith
+  rw [Real.Gamma_eq_integral hs]
+  refine tendsto_integral_filter_of_dominated_convergence
+    (fun u => Real.exp (-u) * u ^ (((d : ℝ) - α) / 2 - 1)) ?_ ?_ (Real.GammaIntegral_convergent hs) ?_
+  · refine Eventually.of_forall fun x => ?_
+    have : Measurable fun u : ℝ => Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+        u ^ (((d : ℝ) - α) / 2 - 1) := by fun_prop
+    exact this.aestronglyMeasurable
+  · refine Eventually.of_forall fun x => ?_
+    filter_upwards [ae_restrict_mem measurableSet_Ioi] with u hu
+    have hu' : (0 : ℝ) < u := hu
+    have h1 : Real.exp (-‖x‖ ^ 2 / (4 * u)) ≤ 1 :=
+      Real.exp_le_one_iff.2 (div_nonpos_of_nonpos_of_nonneg (by nlinarith [sq_nonneg ‖x‖])
+        (by positivity))
+    rw [Real.norm_of_nonneg (by positivity)]
+    have h2 : 0 ≤ Real.exp (-u) * u ^ (((d : ℝ) - α) / 2 - 1) := by positivity
+    calc Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) * u ^ (((d : ℝ) - α) / 2 - 1)
+        = Real.exp (-‖x‖ ^ 2 / (4 * u)) * (Real.exp (-u) * u ^ (((d : ℝ) - α) / 2 - 1)) := by ring
+      _ ≤ 1 * (Real.exp (-u) * u ^ (((d : ℝ) - α) / 2 - 1)) := mul_le_mul_of_nonneg_right h1 h2
+      _ = _ := one_mul _
+  · filter_upwards [ae_restrict_mem measurableSet_Ioi] with u hu
+    have hc : Continuous fun x : Rd d => Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+        u ^ (((d : ℝ) - α) / 2 - 1) := by fun_prop
+    simpa using (hc.tendsto 0).mono_left nhdsWithin_le_nhds
 
 /-- **Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`. -/
 theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ ∧
