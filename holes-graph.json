@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:37:08Z",
+ "updated": "2026-11-26T21:38:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 27,
-  "done": 168
+  "done": 169
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 41
  },
  "subgoalCounts": {
-  "open": 13,
+  "open": 12,
   "blocked": 8,
-  "done": 127
+  "done": 128
  },
  "untagged": [],
  "legend": {
@@ -5111,9 +5111,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Proposition 3.1",
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
-    "tendsto_riemannStieltjes",
     "norm_sub_left_le",
     "norm_taylor_le",
     "riemannSum_eq",
@@ -5154,10 +5153,9 @@
     "Smooth.Proposition31::proposition_3_1.riemannSum_eq",
     "Smooth.Proposition31::proposition_3_1.tendsto_boundary",
     "Smooth.Proposition31::proposition_3_1.tendsto_main",
-    "Smooth.Proposition31::proposition_3_1.tendsto_remainder",
-    "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+    "Smooth.Proposition31::proposition_3_1.tendsto_remainder"
    ],
-   "detail": "9 sorry: tendsto_riemannStieltjes, norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
+   "detail": "8 sorry: norm_sub_left_le, norm_taylor_le, riemannSum_eq, inner_apply_eq, tendsto_main, tendsto_remainder, tendsto_boundary, proposition_3_1"
   },
   {
    "id": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
@@ -5444,17 +5442,15 @@
    "parentGoal": "Smooth.Proposition31",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/Proposition31.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_3_1.tendsto_riemannStieltjes"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Proposition 3.1 proof, convergence of `I_1^n`, [CF10]): for `g` continuous on `[0,T]` and `t ∈ [0,T]`, `∑_{t_{k+1} ≤ t} g(t_{k+1}) (x(t_{k+1}) - x(t_k))² → ∫_0^t g d[x]_π` (weak convergence of the discrete quadratic-variation measures).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Occupation.Lemma42",
@@ -5463,7 +5459,7 @@
     "Smooth.PathwiseCovariation"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_3_1.tendsto_riemannStieltjes — subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] (in Smooth.Proposition31)"
+   "detail": "proved: proposition_3_1.tendsto_riemannStieltjes — subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] (in Smooth.Proposition31)"
   },
   {
    "id": "Sobolev.IsLebesguePoint",

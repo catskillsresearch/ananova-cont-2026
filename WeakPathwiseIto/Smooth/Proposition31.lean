@@ -119,7 +119,112 @@ theorem tendsto_riemannStieltjes {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     Tendsto (fun n => ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
       g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2)
       atTop (𝓝 (h.integral g t)) := by
-  sorry
+  have hT : 0 ≤ T := (π 0).nonneg
+  have hpos : ∀ n (k : Fin (π n).m), 0 < (π n).right k := fun n k =>
+    ((π n).t_mem k.castSucc).1.trans_lt ((π n).left_lt_right k)
+  rcases ht.1.eq_or_lt with h0 | htpos
+  · subst h0
+    have : ∀ n, (∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ 0),
+        g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2) = 0 := fun n => by
+      rw [Finset.filter_false_of_mem fun k _ => not_le.2 (hpos n k), Finset.sum_empty]
+    simp only [this, HasScalarQuadraticVariation.integral, Ioc_self, Measure.restrict_empty,
+      integral_zero_measure]
+    exact tendsto_const_nhds
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  obtain ⟨B, hB, hB1, hB2⟩ : ∃ B : ℝ, 0 < B ∧ h.qv t + 1 ≤ B ∧ h.qv t - h.qv 0 ≤ B :=
+    ⟨|h.qv t| + 1 + |h.qv t - h.qv 0|, by positivity,
+      by linarith [le_abs_self (h.qv t), abs_nonneg (h.qv t - h.qv 0)],
+      by linarith [le_abs_self (h.qv t - h.qv 0), abs_nonneg (h.qv t)]⟩
+  obtain ⟨η, hη, hηB⟩ : ∃ η : ℝ, 0 < η ∧ η * B = ε / 4 :=
+    ⟨ε / 4 / B, by positivity, by field_simp⟩
+  obtain ⟨δ, hδ, hgδ⟩ :=
+    Metric.uniformContinuousOn_iff.1 (isCompact_Icc.uniformContinuousOn_of_continuous hg) η hη
+  obtain ⟨K, hK⟩ := exists_nat_gt (t / δ)
+  have hKr : (0 : ℝ) < K := (div_nonneg ht.1 hδ.le).trans_lt hK
+  have hK0 : 0 < K := by exact_mod_cast hKr
+  have htK : t / K < δ := by
+    rw [div_lt_iff₀ hKr]
+    have := (div_lt_iff₀ hδ).1 hK
+    linarith
+  have hsub : Icc 0 t ⊆ Icc 0 T := Icc_subset_Icc le_rfl ht.2
+  have hη' : ∀ y ∈ Icc 0 t, ∀ z ∈ Icc 0 t, |y - z| ≤ t / K → |g y - g z| ≤ η :=
+    fun y hy z hz hyz => by
+      have := hgδ y (hsub hy) z (hsub hz) (by rw [Real.dist_eq]; exact hyz.trans_lt htK)
+      rw [Real.dist_eq] at this
+      exact this.le
+  have hmem : ∀ j : ℕ, j ≤ K → (j : ℝ) * t / K ∈ Icc 0 t := fun j hj => by
+    refine ⟨by have := ht.1; positivity, ?_⟩
+    rw [div_le_iff₀ hKr]
+    have : (j : ℝ) ≤ K := by exact_mod_cast hj
+    nlinarith [ht.1]
+  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+    ((h.tendsto _ (hsub (hmem (k + 1) (Finset.mem_range.1 hk)))).sub
+      (h.tendsto _ (hsub (hmem k (Finset.mem_range.1 hk).le)))).const_mul
+        (g ((k + 1 : ℕ) * t / K))
+  obtain ⟨N1, hN1⟩ := Metric.tendsto_atTop.1 hgridlim (ε / 4) (by positivity)
+  obtain ⟨N2, hN2⟩ := eventually_atTop.1 ((h.tendsto t ht).eventually
+    (gt_mem_nhds (show h.qv t < h.qv t + 1 by linarith)))
+  refine ⟨max N1 N2, fun n hn => ?_⟩
+  set r : Fin (π n).m → ℝ := fun k => min ((π n).right k) t with hr
+  set w : Fin (π n).m → ℝ := fun k =>
+    if (π n).right k ≤ t then (x ((π n).right k) - x ((π n).left k)) ^ 2 else 0 with hw
+  have hinner : ∀ s ≤ t, ∑ k ∈ Finset.univ.filter (fun k => r k ≤ s), w k =
+      discreteQuadraticVariation (π n) x s := fun s hs => by
+    unfold discreteQuadraticVariation
+    rw [Finset.sum_filter, Finset.sum_filter]
+    refine Finset.sum_congr rfl fun k _ => ?_
+    by_cases h1 : (π n).right k ≤ t
+    · simp only [hr, hw, min_eq_left h1, if_pos h1]
+    · have h2 : ¬ (π n).right k ≤ s := fun h' => h1 (h'.trans hs)
+      simp only [hr, hw, if_neg h1, if_neg h2, ite_self]
+  have hA : ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+      g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2 = ∑ k, g (r k) * w k := by
+    rw [Finset.sum_filter]
+    refine Finset.sum_congr rfl fun k _ => ?_
+    by_cases h1 : (π n).right k ≤ t
+    · simp only [hr, hw, min_eq_left h1, if_pos h1]
+    · simp only [hw, if_neg h1, mul_zero]
+  have hSw : ∑ k, w k = discreteQuadraticVariation (π n) x t := by
+    rw [← hinner t le_rfl, Finset.filter_true_of_mem fun k _ => min_le_right _ _]
+  have e1 := lemma_4_2.abs_sum_sub_grid_le (T := t) (r := r) (w := w)
+    (fun k => ⟨lt_min (hpos n k) htpos, min_le_right _ _⟩)
+    (fun k => by simp only [hw]; split_ifs <;> positivity) hK0 hη'
+  have hgrid : ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
+      (∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k + 1 : ℕ) * t / K), w i -
+        ∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k : ℕ) * t / K), w i) =
+      ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
+        (discreteQuadraticVariation (π n) x ((k + 1 : ℕ) * t / K) -
+          discreteQuadraticVariation (π n) x ((k : ℕ) * t / K)) :=
+    Finset.sum_congr rfl fun k hk => by
+      rw [hinner _ (hmem (k + 1) (Finset.mem_range.1 hk)).2,
+        hinner _ (hmem k (Finset.mem_range.1 hk).le).2]
+  rw [← hA, hSw, hgrid] at e1
+  have e2 := abs_integral_sub_grid_le h ht hK0 hg hη'
+  have e3 := hN1 n (le_of_max_le_left hn)
+  rw [Real.dist_eq] at e3
+  have e4 := hN2 n (le_of_max_le_right hn)
+  have hS0 : 0 ≤ discreteQuadraticVariation (π n) x t :=
+    Finset.sum_nonneg fun i _ => sq_nonneg _
+  have h5 : η * discreteQuadraticVariation (π n) x t ≤ ε / 4 := by
+    rw [← hηB]; exact mul_le_mul_of_nonneg_left (by linarith) hη.le
+  have h6 : η * (h.qv t - h.qv 0) ≤ ε / 4 := by
+    rw [← hηB]; exact mul_le_mul_of_nonneg_left hB2 hη.le
+  rw [Real.dist_eq]
+  rw [abs_sub_comm] at e2
+  have t1 := abs_sub_le (∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+      g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2)
+    (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
+      (discreteQuadraticVariation (π n) x ((k + 1 : ℕ) * t / K) -
+        discreteQuadraticVariation (π n) x ((k : ℕ) * t / K)))
+    (h.integral g t)
+  have t2 := abs_sub_le (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
+      (discreteQuadraticVariation (π n) x ((k + 1 : ℕ) * t / K) -
+        discreteQuadraticVariation (π n) x ((k : ℕ) * t / K)))
+    (∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * t / K) *
+      (h.qv ((k + 1 : ℕ) * t / K) - h.qv ((k : ℕ) * t / K)))
+    (h.integral g t)
+  linarith
 
 /-- **Subgoal** (Proposition 3.1 proof, (6)): for `s ∈ [t_k, t_{k+1}]`,
 `|ω(s) - ω(t_k)| ≤ osc(ω, π_n)`. -/
