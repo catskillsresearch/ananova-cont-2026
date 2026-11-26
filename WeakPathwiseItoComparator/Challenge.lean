@@ -666,7 +666,13 @@ variable {d : ℕ} {α : ℝ}
 
 /-- **Subgoal** (Definition 2.4). -/
 theorem nonneg (hα : 0 < α) (x : Rd d) : 0 ≤ besselKernel d α x := by
-  sorry
+  unfold besselKernel
+  refine mul_nonneg (inv_nonneg.2 (mul_pos (Real.rpow_pos_of_pos (by positivity) _)
+    (Real.Gamma_pos_of_pos (by linarith))).le) ?_
+  refine setIntegral_nonneg measurableSet_Ioi fun δ hδ => ?_
+  have hδ' : 0 < δ := hδ
+  exact div_nonneg (mul_nonneg (mul_nonneg (Real.exp_pos _).le (Real.exp_pos _).le)
+    (Real.rpow_nonneg hδ'.le _)) hδ'.le
 
 end besselKernel
 

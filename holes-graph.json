@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T17:21:27Z",
+ "updated": "2026-11-26T17:37:28Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 62,
+ "sorryCount": 56,
  "counts": {
-  "open": 17,
-  "blocked": 52,
-  "done": 38
+  "open": 15,
+  "blocked": 48,
+  "done": 48
  },
  "goalCounts": {
-  "open": 5,
-  "blocked": 31,
+  "open": 9,
+  "blocked": 27,
   "done": 29
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 6,
   "blocked": 21,
-  "done": 9
+  "done": 19
  },
  "untagged": [],
  "legend": {
@@ -359,10 +359,8 @@
    "sectionTitle": "Preliminaries",
    "paper": "Section 4 osc(φ,δ)",
    "file": "WeakPathwiseIto/Basic/FunctionOscillation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "tendsto_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
     "theorem": 1
@@ -370,14 +368,12 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.FunctionOscillation::functionOscillation.tendsto_zero"
    ],
-   "blockers": [
-    "Basic.FunctionOscillation::functionOscillation.tendsto_zero"
-   ],
-   "detail": "1 sorry: tendsto_zero"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Basic.FunctionOscillation::functionOscillation.tendsto_zero",
@@ -389,20 +385,18 @@
    "parentGoal": "Basic.FunctionOscillation",
    "tagged": true,
    "file": "WeakPathwiseIto/Basic/FunctionOscillation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "functionOscillation.tendsto_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, Section 4 osc(φ,δ)). `osc(φ, δ) → 0` as `δ → 0` for a continuous compactly supported `φ`.",
-   "status": "open",
+   "status": "done",
    "deps": [],
    "blockers": [],
-   "detail": "sorry: functionOscillation.tendsto_zero — subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ (in Basic.FunctionOscillation)"
+   "detail": "proved: functionOscillation.tendsto_zero — subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ (in Basic.FunctionOscillation)"
   },
   {
    "id": "Basic.IsCubeOrBall",
@@ -438,18 +432,44 @@
    "declKinds": {
     "structure": 1,
     "def": 5,
-    "theorem": 2
+    "theorem": 5
    },
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
    "status": "done",
    "deps": [
+    "Basic.Partition::Partition.gap_le_mesh",
     "Basic.Partition::Partition.left_lt_right",
-    "Basic.Partition::Partition.nonneg"
+    "Basic.Partition::Partition.mesh_nonneg",
+    "Basic.Partition::Partition.nonneg",
+    "Basic.Partition::Partition.t_mem"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Basic.Partition::Partition.gap_le_mesh",
+   "label": "gap_le_mesh",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Assumption 1 mesh",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Assumption 1 mesh): every gap is at most the mesh.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.gap_le_mesh — subgoal of Assumption 1 mesh (in Basic.Partition)"
   },
   {
    "id": "Basic.Partition::Partition.left_lt_right",
@@ -475,6 +495,29 @@
    "detail": "proved: Partition.left_lt_right — subgoal of Section 3 partitions (in Basic.Partition)"
   },
   {
+   "id": "Basic.Partition::Partition.mesh_nonneg",
+   "label": "mesh_nonneg",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Assumption 1 mesh",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Assumption 1 mesh): the mesh is nonnegative.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.mesh_nonneg — subgoal of Assumption 1 mesh (in Basic.Partition)"
+  },
+  {
    "id": "Basic.Partition::Partition.nonneg",
    "label": "nonneg",
    "kind": "subgoal",
@@ -496,6 +539,29 @@
    "deps": [],
    "blockers": [],
    "detail": "proved: Partition.nonneg — subgoal of Section 3 partitions (in Basic.Partition)"
+  },
+  {
+   "id": "Basic.Partition::Partition.t_mem",
+   "label": "t_mem",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Section 3 partitions",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 3 partitions): partition points lie in `[0, T]`.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.t_mem — subgoal of Section 3 partitions (in Basic.Partition)"
   },
   {
    "id": "Basic.Rd",
@@ -723,10 +789,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "fourier_eq",
-    "nonneg",
     "integrable",
     "asymptotic_origin"
    ],
@@ -748,10 +813,9 @@
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.integrable",
-    "Bessel.BesselKernel::besselKernel.nonneg"
+    "Bessel.BesselKernel::besselKernel.integrable"
    ],
-   "detail": "4 sorry: fourier_eq, nonneg, integrable, asymptotic_origin"
+   "detail": "3 sorry: fourier_eq, integrable, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -844,22 +908,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.nonneg"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.nonneg — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.nonneg — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselSpace",
@@ -1255,29 +1317,49 @@
    "sectionTitle": "§5 Main results",
    "paper": "Assumption 2, (30), (31)",
    "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
-   "sorryCount": 2,
-   "holes": [
-    "summable_mesh",
-    "sum_inv_mesh_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
-    "theorem": 2
+    "theorem": 3
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
+    "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
     "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
     "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
    ],
-   "blockers": [
-    "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
-    "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+  },
+  {
+   "id": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
+   "label": "mesh_succ",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Assumption 2, eqs. (30",
+   "parentGoal": "Main.GeometricMeshDecay",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Assumption 2, eqs. (30)–(31)): for `n ≥ 1`, `0 < |π_{n+1}|` and `M₂ |π_{n+1}| ≤ |π_n|`.",
+   "status": "done",
+   "deps": [
+    "Basic.Partition"
    ],
-   "detail": "2 sorry: summable_mesh, sum_inv_mesh_le"
+   "blockers": [],
+   "detail": "proved: GeometricMeshDecay.mesh_succ — subgoal of Assumption 2, eqs. (30 (in Main.GeometricMeshDecay)"
   },
   {
    "id": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
@@ -1289,22 +1371,20 @@
    "parentGoal": "Main.GeometricMeshDecay",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
-   "sorryCount": 1,
-   "holes": [
-    "GeometricMeshDecay.sum_inv_mesh_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Assumption 2, eq. (31)). Eq. (31): `1/|π_1| + ⋯ + 1/|π_n| ≤ M₃ / |π_n|`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition"
    ],
    "blockers": [],
-   "detail": "sorry: GeometricMeshDecay.sum_inv_mesh_le — subgoal of Assumption 2, eq. (31 (in Main.GeometricMeshDecay)"
+   "detail": "proved: GeometricMeshDecay.sum_inv_mesh_le — subgoal of Assumption 2, eq. (31 (in Main.GeometricMeshDecay)"
   },
   {
    "id": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
@@ -1316,22 +1396,20 @@
    "parentGoal": "Main.GeometricMeshDecay",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/GeometricMeshDecay.lean",
-   "sorryCount": 1,
-   "holes": [
-    "GeometricMeshDecay.summable_mesh"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Assumption 2, eq. (30)). Eq. (30): `∑_{n ≥ 1} |π_n| < ∞`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition"
    ],
    "blockers": [],
-   "detail": "sorry: GeometricMeshDecay.summable_mesh — subgoal of Assumption 2, eq. (30 (in Main.GeometricMeshDecay)"
+   "detail": "proved: GeometricMeshDecay.summable_mesh — subgoal of Assumption 2, eq. (30 (in Main.GeometricMeshDecay)"
   },
   {
    "id": "Main.IsItoIntegral",
@@ -2374,10 +2452,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Section 3 Q^π(ℝ^d)",
    "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "tendsto_cross"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "structure": 1,
     "def": 5,
@@ -2386,7 +2462,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Rd",
     "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -2395,10 +2471,8 @@
     "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn",
     "Smooth.HasScalarQuadraticVariation"
    ],
-   "blockers": [
-    "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross"
-   ],
-   "detail": "1 sorry: tendsto_cross"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -2410,23 +2484,21 @@
    "parentGoal": "Smooth.HasQuadraticVariation",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/HasQuadraticVariation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "HasQuadraticVariation.tendsto_cross"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Section 3 Q^π(ℝ^d)). Section 3: the discrete cross sums `∑_{t_{k+1} ≤ t} (ω^i(t_{k+1}) - ω^i(t_k))(ω^j(t_{k+1}) - ω^j(t_k))` converge to `[ω]_{ij}(t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd",
     "Smooth.HasScalarQuadraticVariation"
    ],
    "blockers": [],
-   "detail": "sorry: HasQuadraticVariation.tendsto_cross — subgoal of Section 3 Q^π(ℝ^d (in Smooth.HasQuadraticVariation)"
+   "detail": "proved: HasQuadraticVariation.tendsto_cross — subgoal of Section 3 Q^π(ℝ^d (in Smooth.HasQuadraticVariation)"
   },
   {
    "id": "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt",
@@ -2589,10 +2661,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Eq. (6)",
    "file": "WeakPathwiseIto/Smooth/PathOscillation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "vanishes_of_mesh"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 2,
     "theorem": 1
@@ -2600,16 +2670,14 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Basic.Rd",
     "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
    ],
-   "blockers": [
-    "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh"
-   ],
-   "detail": "1 sorry: vanishes_of_mesh"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
@@ -2621,23 +2689,21 @@
    "parentGoal": "Smooth.PathOscillation",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/PathOscillation.lean",
-   "sorryCount": 1,
-   "holes": [
-    "pathOscillation.vanishes_of_mesh"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (6)). Section 3: if `|π_n| → 0` and `ω` is continuous, condition (6) holds.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: pathOscillation.vanishes_of_mesh — subgoal of Eq. (6 (in Smooth.PathOscillation)"
+   "detail": "proved: pathOscillation.vanishes_of_mesh — subgoal of Eq. (6 (in Smooth.PathOscillation)"
   },
   {
    "id": "Smooth.PathwiseCovariation",
@@ -3120,6 +3186,11 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
    "kind": "hard"
   },
@@ -3194,12 +3265,27 @@
    "kind": "hard"
   },
   {
+   "from": "Basic.Partition::Partition.gap_le_mesh",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
    "from": "Basic.Partition::Partition.left_lt_right",
    "to": "Basic.Partition",
    "kind": "subgoal"
   },
   {
+   "from": "Basic.Partition::Partition.mesh_nonneg",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
    "from": "Basic.Partition::Partition.nonneg",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Basic.Partition::Partition.t_mem",
    "to": "Basic.Partition",
    "kind": "subgoal"
   },
@@ -3657,6 +3743,11 @@
    "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52",
    "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
+   "to": "Main.GeometricMeshDecay",
+   "kind": "subgoal"
   },
   {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",
@@ -4380,6 +4471,10 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le"
   },
   {
@@ -4431,11 +4526,23 @@
    "to": "Smooth.PathwiseCovariation"
   },
   {
+   "from": "Basic.Partition::Partition.gap_le_mesh",
+   "to": "Basic.Partition"
+  },
+  {
    "from": "Basic.Partition::Partition.left_lt_right",
    "to": "Basic.Partition"
   },
   {
+   "from": "Basic.Partition::Partition.mesh_nonneg",
+   "to": "Basic.Partition"
+  },
+  {
    "from": "Basic.Partition::Partition.nonneg",
+   "to": "Basic.Partition"
+  },
+  {
+   "from": "Basic.Partition::Partition.t_mem",
    "to": "Basic.Partition"
   },
   {
@@ -4737,6 +4844,10 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52"
+  },
+  {
+   "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
+   "to": "Main.GeometricMeshDecay"
   },
   {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le",

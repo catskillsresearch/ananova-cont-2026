@@ -23,6 +23,7 @@ Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialPro
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
 Basic.Partition -hard-> Main.BalancedPartitions
 Basic.Partition -hard-> Main.GeometricMeshDecay
+Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh
 Basic.Partition -hard-> Occupation.DiscreteLocalTime
@@ -38,8 +39,11 @@ Basic.Partition -hard-> Smooth.FollmerIntegral
 Basic.Partition -hard-> Smooth.PathOscillation
 Basic.Partition -hard-> Smooth.PathOscillation::pathOscillation.vanishes_of_mesh
 Basic.Partition -hard-> Smooth.PathwiseCovariation
+Basic.Partition::Partition.gap_le_mesh -hard-> Basic.Partition
 Basic.Partition::Partition.left_lt_right -hard-> Basic.Partition
+Basic.Partition::Partition.mesh_nonneg -hard-> Basic.Partition
 Basic.Partition::Partition.nonneg -hard-> Basic.Partition
+Basic.Partition::Partition.t_mem -hard-> Basic.Partition
 Basic.Rd -hard-> Appendix.GaussianMoment
 Basic.Rd -hard-> Appendix.HeatKernel
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
@@ -131,6 +135,7 @@ Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_po
 Main.GeometricMeshDecay -hard-> Appendix.LemmaB2
 Main.GeometricMeshDecay -hard-> Appendix.LemmaB2::lemma_B_2_literal
 Main.GeometricMeshDecay -hard-> Main.Theorem52
+Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh -hard-> Main.GeometricMeshDecay
 Main.IsItoIntegral -hard-> Main.Proposition53

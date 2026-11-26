@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T17:21:27Z  
-**`sorry` occurrences:** 62 · 17 open · 52 blocked · 38 done (goals + subgoals) · goals {'open': 5, 'blocked': 31, 'done': 29} · subgoals {'open': 12, 'blocked': 21, 'done': 9} · 33 file(s) with `sorry`.
+**Updated:** 2026-11-26T17:37:28Z  
+**`sorry` occurrences:** 56 · 15 open · 48 blocked · 48 done (goals + subgoals) · goals {'open': 9, 'blocked': 27, 'done': 29} · subgoals {'open': 6, 'blocked': 21, 'done': 19} · 29 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,7 +25,11 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Appendix.LemmaA1` | Lemma A.1 | 2 | `lemma_A_1`, `lemma_A_1_bounded` |
+| `Basic.FunctionOscillation` | Section 4 osc(φ,δ) | 0 | (review → VERIFIED) |
+| `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 | (review → VERIFIED) |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
+| `Smooth.HasQuadraticVariation` | Section 3 Q^π(ℝ^d) | 0 | (review → VERIFIED) |
+| `Smooth.PathOscillation` | Eq. (6) | 0 | (review → VERIFIED) |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -40,9 +44,12 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Appendix.HeatKernel::heatKernel.integral_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 1 |
 | blocked | `Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile` | subgoal of Lemma B.2 proof, eqs. (32 | 1 |
 | blocked | `Appendix.LemmaB2::lemma_B_2_literal` | subgoal of Lemma B.2, literal reading | 0 |
-| open | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` | subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ | 1 |
+| done | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` | subgoal of Theorem 5.1 proof, Section 4 osc(φ,δ | 0 |
+| done | `Basic.Partition::Partition.gap_le_mesh` | subgoal of Assumption 1 mesh | 0 |
 | done | `Basic.Partition::Partition.left_lt_right` | subgoal of Section 3 partitions | 0 |
+| done | `Basic.Partition::Partition.mesh_nonneg` | subgoal of Assumption 1 mesh | 0 |
 | done | `Basic.Partition::Partition.nonneg` | subgoal of Section 3 partitions | 0 |
+| done | `Basic.Partition::Partition.t_mem` | subgoal of Section 3 partitions | 0 |
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion` | subgoal of Definition 2.7, countable unions | 1 |
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one` | subgoal of Lemma B.1 proof, [AM71] | 1 |
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p` | subgoal of Appendix C proof of Theorem 5.2, [AM71] | 1 |
@@ -50,7 +57,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Bessel.BesselKernel::besselKernel.asymptotic_origin` | subgoal of Definition 2.4 | 1 |
 | open | `Bessel.BesselKernel::besselKernel.fourier_eq` | subgoal of Definition 2.4 | 1 |
 | open | `Bessel.BesselKernel::besselKernel.integrable` | subgoal of Definition 2.4 | 1 |
-| open | `Bessel.BesselKernel::besselKernel.nonneg` | subgoal of Definition 2.4 | 1 |
+| done | `Bessel.BesselKernel::besselKernel.nonneg` | subgoal of Definition 2.4 | 0 |
 | blocked | `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` | subgoal of Definition 2.5, Young's inequality | 1 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion` | subgoal of Definition 2.8, countable unions | 1 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` | subgoal of Definition 2.8, [Fuk93, p. 25] | 1 |
@@ -58,8 +65,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P` | subgoal of Section 2.2 Wiener space | 0 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 1 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 1 |
-| open | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 1 |
-| open | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 1 |
+| done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
+| done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
+| done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 1 |
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq` | subgoal of Eq. (7 | 1 |
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece` | subgoal of Eq. (7 | 1 |
@@ -71,13 +79,13 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
 | blocked | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 1 |
 | blocked | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 1 |
-| open | `Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross` | subgoal of Section 3 Q^π(ℝ^d | 1 |
+| done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross` | subgoal of Section 3 Q^π(ℝ^d | 0 |
 | done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt` | subgoal of Lemma 4.2 trace measure | 0 |
 | done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone` | subgoal of Lemma 4.2 trace measure | 0 |
 | done | `Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn` | subgoal of Lemma 4.2 trace measure | 0 |
 | done | `Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt` | subgoal of Eq. (5 | 0 |
 | done | `Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone` | subgoal of Eq. (5 | 0 |
-| open | `Smooth.PathOscillation::pathOscillation.vanishes_of_mesh` | subgoal of Eq. (6 | 1 |
+| done | `Smooth.PathOscillation::pathOscillation.vanishes_of_mesh` | subgoal of Eq. (6 | 0 |
 
 ## All modules by section
 
@@ -86,7 +94,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Basic.ContDiffBounded` | C^k_b | 0 |  |
-| blocked | `Basic.FunctionOscillation` | Section 4 osc(φ,δ) | 1 | `Basic.FunctionOscillation::functionOscillation.tendsto_zero` |
+| open | `Basic.FunctionOscillation` | Section 4 osc(φ,δ) | 0 |  |
 | done | `Basic.IsCubeOrBall` | Section 2.1 cube or ball Q | 0 |  |
 | done | `Basic.Partition` | Section 3 (partitions) | 0 |  |
 | done | `Basic.Rd` |  | 0 |  |
@@ -116,7 +124,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | blocked | `Bessel.BesselCapacity` | Definition 2.7 | 4 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselSpace` |
-| blocked | `Bessel.BesselKernel` | Definition 2.4 | 4 | `Bessel.BesselKernel::besselKernel.asymptotic_origin`, `Bessel.BesselKernel::besselKernel.fourier_eq`, `Bessel.BesselKernel::besselKernel.integrable`, `Bessel.BesselKernel::besselKernel.nonneg` |
+| blocked | `Bessel.BesselKernel` | Definition 2.4 | 3 | `Bessel.BesselKernel::besselKernel.asymptotic_origin`, `Bessel.BesselKernel::besselKernel.fourier_eq`, `Bessel.BesselKernel::besselKernel.integrable` |
 | blocked | `Bessel.BesselSpace` | Definition 2.5 | 1 | `Bessel.BesselKernel`, `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
@@ -132,9 +140,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.DiscreteQuadraticVariation` | Eq. (5) sums | 0 |  |
 | done | `Smooth.FollmerIntegral` | Corollary 3.2 integral | 0 |  |
 | blocked | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 1 | `Smooth.FollmerItoFormula::follmer_ito_formula`, `Smooth.HasQuadraticVariation`, `Smooth.PathOscillation` |
-| blocked | `Smooth.HasQuadraticVariation` | Section 3 Q^π(ℝ^d) | 1 | `Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross` |
+| open | `Smooth.HasQuadraticVariation` | Section 3 Q^π(ℝ^d) | 0 |  |
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
-| blocked | `Smooth.PathOscillation` | Eq. (6) | 1 | `Smooth.PathOscillation::pathOscillation.vanishes_of_mesh` |
+| open | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
 | blocked | `Smooth.Proposition31` | Proposition 3.1 | 1 | `Smooth.HasQuadraticVariation`, `Smooth.PathOscillation` |
 
@@ -161,7 +169,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
-| blocked | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 2 | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le`, `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` |
+| open | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52`, `Main.WeakCovariation`, `Main.WeakPathwiseIntegral` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
