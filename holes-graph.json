@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:46:39Z",
+ "updated": "2026-11-26T18:47:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 48,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 38,
-  "done": 100
+  "done": 101
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 16,
-  "done": 63
+  "done": 64
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "fourier_eq",
-    "mul_eq_integral",
     "tendsto_integral",
     "asymptotic_origin"
    ],
@@ -1579,10 +1578,9 @@
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.mul_eq_integral",
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
-   "detail": "4 sorry: fourier_eq, mul_eq_integral, tendsto_integral, asymptotic_origin"
+   "detail": "3 sorry: fourier_eq, tendsto_integral, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1773,22 +1771,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.mul_eq_integral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 2: rescaled kernel): for `x ≠ 0`, with `δ = π|x|²/u`, `|x|^{d-α} g_α(x) = ((4π)^{α/2} Γ(α/2))⁻¹ π^{(α-d)/2} ∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.mul_eq_integral — subgoal of Definition 2.4, behaviour at the origin, step 2: rescaled kernel (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.mul_eq_integral — subgoal of Definition 2.4, behaviour at the origin, step 2: rescaled kernel (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.nonneg",

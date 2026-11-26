@@ -125,7 +125,33 @@ theorem mul_eq_integral {x : Rd d} (hx : x ≠ 0) :
       ((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ * Real.pi ^ ((α - d) / 2) *
         ∫ u in Ioi (0 : ℝ), Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
           u ^ (((d : ℝ) - α) / 2 - 1) := by
-  sorry
+  have hxn : 0 < ‖x‖ := norm_pos_iff.2 hx
+  set a : ℝ := Real.pi * ‖x‖ ^ 2 with ha_def
+  have ha : 0 < a := by positivity
+  have h := integral_comp_div (fun δ => Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) *
+    Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ) ha
+  have key : ∀ u ∈ Ioi (0 : ℝ), a / u ^ 2 * (Real.exp (-Real.pi * ‖x‖ ^ 2 / (a / u)) *
+      Real.exp (-(a / u) / (4 * Real.pi)) * (a / u) ^ ((α - d) / 2) / (a / u)) =
+      a ^ ((α - d) / 2) * (Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+        u ^ (((d : ℝ) - α) / 2 - 1)) := by
+    intro u hu
+    have hu' : (0 : ℝ) < u := hu
+    have e1 : -Real.pi * ‖x‖ ^ 2 / (a / u) = -u := by
+      rw [ha_def]; field_simp
+    have e2 : -(a / u) / (4 * Real.pi) = -‖x‖ ^ 2 / (4 * u) := by
+      rw [ha_def]; field_simp
+    have hus : 0 < u ^ ((α - d) / 2) := Real.rpow_pos_of_pos hu' _
+    rw [e1, e2, Real.div_rpow ha.le hu'.le, show ((d : ℝ) - α) / 2 - 1 = -((α - d) / 2) - 1 by ring,
+      Real.rpow_sub_one hu'.ne', Real.rpow_neg hu'.le]
+    field_simp
+  have hscal : ‖x‖ ^ ((d : ℝ) - α) * a ^ ((α - d) / 2) = Real.pi ^ ((α - d) / 2) := by
+    rw [ha_def, Real.mul_rpow Real.pi_pos.le (sq_nonneg _), ← Real.rpow_natCast ‖x‖ 2,
+      ← Real.rpow_mul hxn.le, mul_left_comm, ← Real.rpow_add hxn,
+      show ((d : ℝ) - α) + ((2 : ℕ) : ℝ) * ((α - d) / 2) = 0 by push_cast; ring,
+      Real.rpow_zero, mul_one]
+  unfold besselKernel
+  rw [← h, setIntegral_congr_fun measurableSet_Ioi key, integral_const_mul, ← hscal]
+  ring
 
 /-- **Subgoal** (Definition 2.4, behaviour at the origin, step 3: dominated convergence): for
 `α < d`, as `x → 0`, `∫_0^∞ e^{-u} e^{-|x|²/(4u)} u^{(d-α)/2-1} du → Γ((d-α)/2)`. -/
