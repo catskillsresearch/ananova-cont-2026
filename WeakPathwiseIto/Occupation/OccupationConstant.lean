@@ -905,7 +905,9 @@ theorem integral_sphere_eq_sphereMean {d : ℕ} (hd : 0 < d) (ρ : ℝ) (y : Rd 
 theorem volume_ball_eq {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 ≤ R) :
     (volume (Metric.ball (0 : Rd d) R)).toReal =
       R ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  sorry
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  rw [Measure.addHaar_ball volume (0 : Rd d) hR, finrank_euclideanSpace_fin, ENNReal.toReal_mul,
+    ENNReal.toReal_ofReal (by positivity)]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10d: radial integral): for `d > 0` and `R > 0`,
 `∫_0^R ρ^{d-1} c dρ = c R^d / d`. -/

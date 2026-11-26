@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:42:24Z",
+ "updated": "2026-11-26T20:43:10Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 47,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 36,
-  "done": 143
+  "done": 144
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 15,
-  "done": 105
+  "done": 106
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "volume_ball_eq",
     "integral_Ioo_pow_mul",
     "newton_ball_of_three_le",
     "eq_inv_integral"
@@ -3108,10 +3107,9 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
-    "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
-    "Occupation.OccupationConstant::occupationConstant.volume_ball_eq"
+    "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le"
    ],
-   "detail": "4 sorry: volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
+   "detail": "3 sorry: integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -4054,22 +4052,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.volume_ball_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10c: volume of a ball): for `d > 0` and `R ≥ 0`, `|B(0,R)| = R^d |B(0,1)|`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.volume_ball_eq — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.volume_ball_eq — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
