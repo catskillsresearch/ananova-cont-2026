@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-26T20:46:02Z",
+ "updated": "2026-11-26T20:46:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 44,
  "counts": {
-  "open": 9,
-  "blocked": 35,
-  "done": 147
+  "open": 12,
+  "blocked": 31,
+  "done": 148
  },
  "goalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 20,
-  "done": 38
+  "done": 39
  },
  "subgoalCounts": {
-  "open": 2,
-  "blocked": 15,
+  "open": 6,
+  "blocked": 11,
   "done": 109
  },
  "untagged": [],
@@ -2788,8 +2788,7 @@
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
-    "Occupation.OccupationConstant"
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg"
    ],
    "detail": "4 sorry: piece_nonneg, integral_piece, integrable_piece, integral_eq"
   },
@@ -2813,15 +2812,13 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
-   "blockers": [
-    "Occupation.OccupationConstant"
-   ],
+   "blockers": [],
    "detail": "sorry: discreteOccupationDensity.integrable_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
@@ -2844,15 +2841,13 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
-   "blockers": [
-    "Occupation.OccupationConstant"
-   ],
+   "blockers": [],
    "detail": "sorry: discreteOccupationDensity.integral_eq — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
@@ -2875,15 +2870,13 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
-   "blockers": [
-    "Occupation.OccupationConstant"
-   ],
+   "blockers": [],
    "detail": "sorry: discreteOccupationDensity.integral_piece — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
@@ -2906,15 +2899,13 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
-   "blockers": [
-    "Occupation.OccupationConstant"
-   ],
+   "blockers": [],
    "detail": "sorry: discreteOccupationDensity.piece_nonneg — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
@@ -3055,9 +3046,9 @@
     "theorem": 38
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd",
     "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -3101,7 +3092,7 @@
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
