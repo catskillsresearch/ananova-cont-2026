@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:30:34Z",
+ "updated": "2026-11-26T18:31:14Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 52,
+ "sorryCount": 51,
  "counts": {
   "open": 12,
   "blocked": 54,
@@ -511,10 +511,9 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "memLp_two",
-    "integral_eq",
     "variance_le"
    ],
    "declKinds": {
@@ -561,7 +560,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "3 sorry: memLp_two, integral_eq, variance_le"
+   "detail": "2 sorry: memLp_two, variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -783,10 +782,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.integral_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -803,7 +800,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.integral_eq — subgoal of Lemma A.1 proof, step 3: mean (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.integral_eq — subgoal of Lemma A.1 proof, step 3: mean (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",

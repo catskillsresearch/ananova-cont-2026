@@ -287,7 +287,25 @@ theorem integral_eq (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
     ∫ ω, (∫ t in Icc 0 T,
         |normalizedQuadraticDensity π (CanonicalWienerSpace.path ω) t| ^ q)
       ∂(CanonicalWienerSpace.P (T := T) x) = gaussianMoment d q * T := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hZ : ∀ i : Fin π.m, HasLaw (fun ω => (π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω))
+      (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := fun i =>
+    hasLaw_increment x (π.t_mem _).1 (π.left_lt_right i) (π.t_mem _).2
+  have hf : Continuous fun z : Rd d => ‖z‖ ^ (2 * q) :=
+    continuous_norm.rpow_const fun _ => Or.inr (by positivity)
+  have hint : ∀ i : Fin π.m, Integrable (fun ω => ‖(π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)‖ ^ (2 * q))
+      (CanonicalWienerSpace.P (T := T) x) := fun i =>
+    (hZ i).integrable_comp (f := fun z : Rd d => ‖z‖ ^ (2 * q))
+      (memLp_one_iff_integrable.1 (memLp_norm_rpow_stdGaussian (by positivity) ENNReal.one_ne_top))
+  simp_rw [integral_rpow_eq_sum_norm π hq0]
+  rw [integral_finset_sum _ fun i _ => (hint i).mul_const _]
+  have hmom : ∀ i : Fin π.m, ∫ ω, ‖(π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
+      (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)‖ ^ (2 * q)
+      ∂(CanonicalWienerSpace.P (T := T) x) = gaussianMoment d q := fun i =>
+    (hZ i).integral_comp (f := fun z : Rd d => ‖z‖ ^ (2 * q)) hf.aestronglyMeasurable
+  simp_rw [integral_mul_const, hmom, ← Finset.mul_sum, π.sum_gap]
 
 /-- **Subgoal** (Lemma A.1 proof, step 3: variance): with `b_{q,d} := Var |Z|^{2q}`,
 `Var_x ‖ρ_{n,B}‖^q_{L^q} = b_{q,d} ∑_i (Δ_i^n)² ≤ b_{q,d} T |π_n|`. -/
