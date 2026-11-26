@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T18:56:25Z",
+ "updated": "2026-11-26T18:57:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 46,
+ "sorryCount": 45,
  "counts": {
   "open": 9,
-  "blocked": 38,
-  "done": 106
+  "blocked": 36,
+  "done": 108
  },
  "goalCounts": {
   "open": 6,
-  "blocked": 22,
-  "done": 37
+  "blocked": 21,
+  "done": 38
  },
  "subgoalCounts": {
   "open": 3,
-  "blocked": 16,
-  "done": 69
+  "blocked": 15,
+  "done": 70
  },
  "untagged": [],
  "legend": {
@@ -1548,18 +1548,16 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "fourier_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 1,
     "theorem": 13
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Basic.Rd",
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1576,10 +1574,8 @@
     "Bessel.BesselKernel::besselKernel.nonneg",
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
-   "blockers": [
-    "Bessel.BesselKernel::besselKernel.fourier_eq"
-   ],
-   "detail": "1 sorry: fourier_eq"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1616,22 +1612,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.fourier_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals `(1 + 4π²|ξ|²)^{-α/2}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.fourier_eq — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.fourier_eq — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.fourier_fubini",
@@ -1932,7 +1926,6 @@
     "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
    ],
    "blockers": [
-    "Bessel.BesselKernel",
     "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
    ],
    "detail": "1 sorry: eLpNorm_potential_le"
@@ -1957,13 +1950,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselKernel"
    ],
-   "blockers": [
-    "Bessel.BesselKernel"
-   ],
+   "blockers": [],
    "detail": "sorry: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
   },
   {

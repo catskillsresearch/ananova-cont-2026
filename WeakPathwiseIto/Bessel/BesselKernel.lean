@@ -313,7 +313,19 @@ theorem integral_profile_exp (hα : 0 < α) (ξ : Rd d) :
 theorem fourier_eq (hα : 0 < α) (ξ : Rd d) :
     ∫ x, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) * (besselKernel d α x : ℂ) =
       (((1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) : ℝ) : ℂ) := by
-  sorry
+  have key : ∀ δ ∈ Ioi (0 : ℝ), ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ : ℝ) : ℂ) *
+      ∫ x : Rd d, Complex.exp (-(2 * Real.pi * ⟪x, ξ⟫ : ℝ) * Complex.I) *
+        (Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) : ℂ) =
+      ((Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
+        (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) : ℝ) : ℂ) := fun δ hδ => by
+    rw [fourier_slice hδ ξ,
+      Complex.ofReal_mul (Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ)]
+  have hc : (4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2) ≠ 0 :=
+    (mul_pos (Real.rpow_pos_of_pos (by positivity) _) (Real.Gamma_pos_of_pos (by linarith))).ne'
+  rw [fourier_fubini hα ξ, setIntegral_congr_fun measurableSet_Ioi key, integral_complex_ofReal,
+    integral_profile_exp hα ξ, ← Complex.ofReal_mul]
+  congr 1
+  field_simp
 
 end besselKernel
 

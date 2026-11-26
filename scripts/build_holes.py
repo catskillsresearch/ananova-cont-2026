@@ -89,6 +89,7 @@ VERIFIED: set[str] = {
     "Appendix.HeatKernel",
     "Appendix.LemmaA1",
     "Bessel.WienerLawExists",
+    "Bessel.BesselKernel",
 }
 
 # Paper labels for modules that carry a numbered result or definition.
