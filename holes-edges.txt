@@ -390,6 +390,9 @@ Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occu
 Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq
+Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder
+Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le
+Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm
 Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Occupation.DiscreteOccupationDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec -hard-> Occupation.DiscreteOccupationDensity
@@ -410,6 +413,9 @@ Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSem
 Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le
 Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le
 Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq
+Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder
+Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le
+Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm
 Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Occupation.DiscreteSeminorm -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity
@@ -464,6 +470,9 @@ Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occ
 Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le
 Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le
 Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq
+Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder
+Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le
+Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm
 Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Occupation.NormalizedQuadraticDensity -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp -hard-> Occupation.NormalizedQuadraticDensity
@@ -523,6 +532,9 @@ Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le -hard
 Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le -hard-> Occupation.OccupationSeminorm
 Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le -hard-> Occupation.OccupationSeminorm
 Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq -hard-> Occupation.OccupationSeminorm
+Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder -hard-> Occupation.OccupationSeminorm
+Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le -hard-> Occupation.OccupationSeminorm
+Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm -hard-> Occupation.OccupationSeminorm
 Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm -hard-> Occupation.OccupationSeminorm
 Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal -hard-> Occupation.OccupationSeminorm
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52
@@ -623,6 +635,9 @@ Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq
+Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder
+Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le
+Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Smooth.PathOscillation -hard-> Occupation.Remark44
@@ -707,6 +722,9 @@ Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSe
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq
+Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder
+Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le
+Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22

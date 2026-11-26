@@ -439,6 +439,39 @@ theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T)
         exact hC f _ _ hfm ((eq_10.norm_increment_le hω π i).trans hosc)
     _ = _ := by rw [Finset.mul_sum]
 
+namespace eq_11
+
+/-- **Subgoal** (Eq. (11) proof, Hölder): the right-hand side of (10) is the pairing
+`∫_0^T H_n ρ_{n,ω} dt = ∑_i a_i b_i` with `a_i = (h(ω(t_{i+1})) + h(ω(t_i))) Δt_i^{1/p}`,
+`b_i = (|Δω_i|²/Δt_i) Δt_i^{1/q}`, so Hölder's inequality bounds it by `‖a‖_p ‖b‖_q`. -/
+theorem sum_le_holder {p q : ℝ} (hpq : p.HolderConjugate q) (π : Partition T) (ω : ℝ → Rd d)
+    (h : Rd d → ℝ≥0∞) :
+    ∑ i : Fin π.m, (h (ω (π.right i)) + h (ω (π.left i))) *
+        ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) ≤
+      (∑ i : Fin π.m, ((h (ω (π.right i)) + h (ω (π.left i))) *
+          ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p) ^ (1 / p) *
+        (∑ i : Fin π.m, (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
+          (π.right i - π.left i)) * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹) ^ q) ^ (1 / q) := by
+  sorry
+
+/-- **Subgoal** (Eq. (11) proof, `‖H_n‖_{L^p} ≤ C_p ‖M_1 f‖_{n,p,ω}`): with `C_p = 2^{(p-1)/p}`,
+from `(x + y)^p ≤ 2^{p-1} (x^p + y^p)`. -/
+theorem sum_rpow_le {p : ℝ} (hp : 1 ≤ p) (π : Partition T) (ω : ℝ → Rd d) (h : Rd d → ℝ≥0∞) :
+    (∑ i : Fin π.m, ((h (ω (π.right i)) + h (ω (π.left i))) *
+        ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p) ^ (1 / p) ≤
+      2 ^ ((p - 1) / p) * discreteSeminorm π p h ω := by
+  sorry
+
+/-- **Subgoal** (Eq. (11) proof, `‖ρ_{n,ω}‖_{L^q([0,T])}`): the discrete `ℓ^q` norm of the
+`b_i` is (at most) the `L^q([0,T])` norm of the step function `ρ_{n,ω}`. -/
+theorem sum_rpow_le_eLpNorm {q : ℝ} (hq : 0 < q) (π : Partition T) (ω : ℝ → Rd d) :
+    (∑ i : Fin π.m, (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
+        (π.right i - π.left i)) * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹) ^ q) ^ (1 / q) ≤
+      eLpNorm (normalizedQuadraticDensity π ω) (ENNReal.ofReal q) (volume.restrict (Icc 0 T)) := by
+  sorry
+
+end eq_11
+
 /-- **Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with
 `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.
 The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`), needed

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T22:33:38Z",
+ "updated": "2026-11-26T22:35:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 37,
  "counts": {
-  "open": 6,
+  "open": 9,
   "blocked": 25,
   "done": 197
  },
@@ -13,7 +13,7 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 5,
   "blocked": 8,
   "done": 153
  },
@@ -4390,13 +4390,16 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
+   "sorryCount": 4,
    "holes": [
+    "sum_le_holder",
+    "sum_rpow_le",
+    "sum_rpow_le_eLpNorm",
     "le_limsup_discreteSeminorm"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 10
+    "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
@@ -4414,15 +4417,21 @@
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
     "Smooth.PathOscillation",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
    ],
-   "detail": "1 sorry: le_limsup_discreteSeminorm"
+   "detail": "4 sorry: sum_le_holder, sum_rpow_le, sum_rpow_le_eLpNorm, le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4655,6 +4664,99 @@
    ],
    "blockers": [],
    "detail": "proved: occupationSeminorm.eq_10.volume_ball_eq — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "label": "sum_le_holder",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (11",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_11.sum_le_holder"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (11) proof, Hölder): the right-hand side of (10) is the pairing `∫_0^T H_n ρ_{n,ω} dt = ∑_i a_i b_i` with `a_i = (h(ω(t_{i+1})) + h(ω(t_i))) Δt_i^{1/p}`, `b_i = (|Δω_i|²/Δt_i) Δt_i^{1/q}`, so Hölder's inequality bounds it by `‖a‖_p ‖b‖_q`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_11.sum_le_holder — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "label": "sum_rpow_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (11",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_11.sum_rpow_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (11) proof, `‖H_n‖_{L^p} ≤ C_p ‖M_1 f‖_{n,p,ω}`): with `C_p = 2^{(p-1)/p}`, from `(x + y)^p ≤ 2^{p-1} (x^p + y^p)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_11.sum_rpow_le — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
+   "label": "sum_rpow_le_eLpNorm",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (11",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 1,
+   "holes": [
+    "occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (11) proof, `‖ρ_{n,ω}‖_{L^q([0,T])}`): the discrete `ℓ^q` norm of the `b_i` is (at most) the `L^q([0,T])` norm of the step function `ρ_{n,ω}`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: occupationSeminorm.eq_11.sum_rpow_le_eLpNorm — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
@@ -8140,6 +8242,21 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -8236,6 +8353,21 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
    "kind": "hard"
   },
   {
@@ -8506,6 +8638,21 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
    "kind": "hard"
   },
   {
@@ -8800,6 +8947,21 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
    "to": "Occupation.OccupationSeminorm",
    "kind": "subgoal"
   },
@@ -9305,6 +9467,21 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -9721,6 +9898,21 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
    "kind": "hard"
   },
   {
@@ -11100,6 +11292,18 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -11169,6 +11373,18 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
@@ -11369,6 +11585,18 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -11600,6 +11828,18 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
    "to": "Occupation.OccupationSeminorm"
   },
   {
@@ -11872,6 +12112,18 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -12081,6 +12333,18 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
