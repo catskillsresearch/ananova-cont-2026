@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T17:54:55Z",
+ "updated": "2026-11-26T17:55:40Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 53,
  "counts": {
   "open": 15,
   "blocked": 40,
-  "done": 62
+  "done": 63
  },
  "goalCounts": {
   "open": 7,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 8,
   "blocked": 16,
-  "done": 28
+  "done": 29
  },
  "untagged": [],
  "legend": {
@@ -71,7 +71,7 @@
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 8
+    "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
@@ -84,6 +84,7 @@
     "Appendix.HeatKernel::heatKernel.integral_div_le",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt",
+    "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
     "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
     "Appendix.HeatKernel::heatKernel.scaling",
     "Appendix.PotentialProfile",
@@ -273,6 +274,35 @@
    ],
    "blockers": [],
    "detail": "proved: heatKernel.integral_le_potentialProfile_of_two_lt — subgoal of Lemma B.2 proof, eq. (32 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
+   "label": "integral_le_potentialProfile_one",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eq. (32",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (32), case `d = 1`): `∫_0^T p_s(x) ds ≤ C`, since `p_s(x) ≤ (2πs)^{-1/2}` and `s^{-1/2}` is integrable on `(0, T]`.",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [],
+   "detail": "proved: heatKernel.integral_le_potentialProfile_one — subgoal of Lemma B.2 proof, eq. (32 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
@@ -3228,6 +3258,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
@@ -3275,6 +3310,11 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
    "kind": "hard"
   },
   {
@@ -3365,6 +3405,11 @@
   {
    "from": "Basic.Partition",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
    "kind": "hard"
   },
   {
@@ -3530,6 +3575,11 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
    "kind": "hard"
   },
   {
@@ -3949,6 +3999,11 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "kind": "hard"
   },
@@ -4005,6 +4060,11 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
    "kind": "hard"
   },
   {
@@ -4718,6 +4778,10 @@
    "to": "Appendix.HeatKernel"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one",
+   "to": "Appendix.HeatKernel"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
    "to": "Appendix.HeatKernel"
   },
@@ -4752,6 +4816,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -4900,6 +4968,10 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one"
   },
   {
    "from": "Basic.Rd",
@@ -5187,6 +5259,10 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
   },
   {
@@ -5224,6 +5300,10 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one"
   },
   {
    "from": "Main.GeometricMeshDecay",
