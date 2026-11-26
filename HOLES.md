@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T22:22:43Z  
-**`sorry` occurrences:** 39 · 11 open · 25 blocked · 190 done (goals + subgoals) · goals {'open': 4, 'blocked': 17, 'done': 44} · subgoals {'open': 7, 'blocked': 8, 'done': 146} · 18 file(s) with `sorry`.
+**Updated:** 2026-11-26T22:23:56Z  
+**`sorry` occurrences:** 39 · 11 open · 25 blocked · 191 done (goals + subgoals) · goals {'open': 4, 'blocked': 17, 'done': 44} · subgoals {'open': 7, 'blocked': 8, 'done': 147} · 18 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -166,6 +166,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le` | subgoal of Eq. (10 | 1 |
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le` | subgoal of Eq. (10 | 1 |
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le` | subgoal of Eq. (10 | 1 |
+| done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq` | subgoal of Eq. (10 | 0 |
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 1 |
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 1 |
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |

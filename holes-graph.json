@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:22:43Z",
+ "updated": "2026-11-26T22:23:56Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 39,
  "counts": {
   "open": 11,
   "blocked": 25,
-  "done": 190
+  "done": 191
  },
  "goalCounts": {
   "open": 4,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 8,
-  "done": 146
+  "done": 147
  },
  "untagged": [],
  "legend": {
@@ -4401,7 +4401,7 @@
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 8
+    "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
@@ -4417,6 +4417,7 @@
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+    "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal",
     "Smooth.PathOscillation",
@@ -4613,6 +4614,35 @@
    ],
    "blockers": [],
    "detail": "sorry: occupationSeminorm.eq_10.lintegral_shell_le — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
+  },
+  {
+   "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "label": "volume_ball_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Eq. (10",
+   "parentGoal": "Occupation.OccupationSeminorm",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Eq. (10) proof, scaling of balls): `|B(a,ρ)| = ρ^d |B(0,1)|` for `ρ > 0`, in every dimension (including `d = 0`).",
+   "status": "done",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.DiscreteSeminorm",
+    "Occupation.NormalizedQuadraticDensity",
+    "Smooth.PathOscillation",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "proved: occupationSeminorm.eq_10.volume_ball_eq — subgoal of Eq. (10 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
@@ -8090,6 +8120,11 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -8176,6 +8211,11 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "kind": "hard"
   },
   {
@@ -8436,6 +8476,11 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "kind": "hard"
   },
   {
@@ -8720,6 +8765,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "to": "Occupation.OccupationSeminorm",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "to": "Occupation.OccupationSeminorm",
    "kind": "subgoal"
   },
@@ -9215,6 +9265,11 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm",
    "kind": "hard"
   },
@@ -9621,6 +9676,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "kind": "hard"
   },
   {
@@ -10992,6 +11052,10 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -11053,6 +11117,10 @@
   {
    "from": "Occupation.DiscreteSeminorm",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Occupation.DiscreteSeminorm",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
   },
   {
    "from": "Occupation.DiscreteSeminorm",
@@ -11245,6 +11313,10 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -11468,6 +11540,10 @@
   },
   {
    "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le",
+   "to": "Occupation.OccupationSeminorm"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq",
    "to": "Occupation.OccupationSeminorm"
   },
   {
@@ -11732,6 +11808,10 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
   },
   {
@@ -11933,6 +12013,10 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",

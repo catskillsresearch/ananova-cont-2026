@@ -123,6 +123,18 @@ theorem lintegral_closedBall_le (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ} (hρ : 
   rw [← measure_mul_laverage, Measure.restrict_apply_univ]
   exact mul_le_mul' (measure_mono (Metric.ball_subset_ball (by linarith))) hM
 
+/-- **Subgoal** (Eq. (10) proof, scaling of balls): `|B(a,ρ)| = ρ^d |B(0,1)|` for `ρ > 0`, in every
+dimension (including `d = 0`). -/
+theorem volume_ball_eq (a : Rd d) {ρ : ℝ} (hρ : 0 < ρ) :
+    volume (Metric.ball a ρ) = ENNReal.ofReal (ρ ^ d) * volume (Metric.ball (0 : Rd d) 1) := by
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · have h : ∀ (b : Rd 0) (r : ℝ), 0 < r → Metric.ball b r = univ := fun b r hr => by
+      ext x
+      simp [Metric.mem_ball, EuclideanSpace.dist_eq, hr]
+    rw [h a ρ hρ, h 0 1 one_pos, pow_zero, ENNReal.ofReal_one, one_mul]
+  · haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+    rw [Measure.addHaar_ball volume a hρ.le, finrank_euclideanSpace_fin]
+
 /-- **Subgoal** (Eq. (10) proof, `d ≤ 2`): on `B̄(a,ρ)` the kernel `|x-a|^{2-d}` is at most
 `ρ^{2-d}`, so `∫_{B̄(a,ρ)} |f| |x-a|^{2-d} ≤ C ρ² M_1 f(a)`. -/
 theorem lintegral_kernel_le_of_le_two (hd : d ≤ 2) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (a : Rd d)
