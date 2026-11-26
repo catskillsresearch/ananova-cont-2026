@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T22:37:40Z  
-**`sorry` occurrences:** 35 · 7 open · 25 blocked · 199 done (goals + subgoals) · goals {'open': 4, 'blocked': 17, 'done': 44} · subgoals {'open': 3, 'blocked': 8, 'done': 155} · 18 file(s) with `sorry`.
+**Updated:** 2026-11-26T22:38:51Z  
+**`sorry` occurrences:** 34 · 6 open · 25 blocked · 200 done (goals + subgoals) · goals {'open': 4, 'blocked': 17, 'done': 44} · subgoals {'open': 2, 'blocked': 8, 'done': 156} · 18 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -170,7 +170,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq` | subgoal of Eq. (10 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder` | subgoal of Eq. (11 | 0 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le` | subgoal of Eq. (11 | 0 |
-| open | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm` | subgoal of Eq. (11 | 1 |
+| done | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm` | subgoal of Eq. (11 | 0 |
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` | subgoal of Eq. (11 | 1 |
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 0 |
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
@@ -273,7 +273,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.Lemma42` | Lemma 4.2 | 0 |  |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
-| blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 2 | `Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` |
+| blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 1 | `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |

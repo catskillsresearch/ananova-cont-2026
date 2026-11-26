@@ -502,7 +502,45 @@ theorem sum_rpow_le_eLpNorm {q : ℝ} (hq : 0 < q) (π : Partition T) (ω : ℝ 
     (∑ i : Fin π.m, (ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2 /
         (π.right i - π.left i)) * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹) ^ q) ^ (1 / q) ≤
       eLpNorm (normalizedQuadraticDensity π ω) (ENNReal.ofReal q) (volume.restrict (Icc 0 T)) := by
-  sorry
+  have hq0 : ENNReal.ofReal q ≠ 0 := by
+    rw [Ne, ENNReal.ofReal_eq_zero, not_le]; exact hq
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hq0 ENNReal.ofReal_ne_top
+    (normalizedQuadraticDensity.memLp π ω 1).aestronglyMeasurable, ENNReal.toReal_ofReal hq.le]
+  gcongr
+  set c : Fin π.m → ℝ := fun i => ‖ω (π.right i) - ω (π.left i)‖ ^ 2 / (π.right i - π.left i)
+    with hcdef
+  have hc : ∀ i, 0 ≤ c i := fun i =>
+    div_nonneg (sq_nonneg _) (sub_pos.2 (π.left_lt_right i)).le
+  have hdisj : Pairwise (Function.onFun Disjoint fun i : Fin π.m => Ico (π.left i) (π.right i)) := by
+    have key : ∀ i j : Fin π.m, i < j → Disjoint (Ico (π.left i) (π.right i))
+        (Ico (π.left j) (π.right j)) := fun i j hij => by
+      refine Set.disjoint_left.2 fun s h1 h2 => ?_
+      have : π.right i ≤ π.left j :=
+        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+      linarith [h1.2, h2.1]
+    intro i j hij
+    rcases lt_or_gt_of_ne hij with h | h
+    · exact key i j h
+    · exact (key j i h).symm
+  have hsub : (⋃ i, Ico (π.left i) (π.right i)) ⊆ Icc 0 T :=
+    iUnion_subset fun i t ht => ⟨(π.t_mem i.castSucc).1.trans ht.1,
+      ht.2.le.trans (π.t_mem i.succ).2⟩
+  have hval : ∀ i, ∀ t ∈ Ico (π.left i) (π.right i), normalizedQuadraticDensity π ω t = c i := by
+    intro i t ht
+    unfold normalizedQuadraticDensity
+    rw [Finset.sum_eq_single i (fun j _ hji =>
+      indicator_of_notMem (Set.disjoint_left.1 (hdisj hji).symm ht) _) (by simp),
+      indicator_of_mem ht]
+  calc ∑ i : Fin π.m, (ENNReal.ofReal (c i) * ENNReal.ofReal (π.right i - π.left i) ^ q⁻¹) ^ q
+      = ∑ i : Fin π.m, ∫⁻ t in Ico (π.left i) (π.right i), ‖normalizedQuadraticDensity π ω t‖ₑ ^ q := by
+        refine Finset.sum_congr rfl fun i _ => ?_
+        rw [setLIntegral_congr_fun (g := fun _ => ‖c i‖ₑ ^ q) measurableSet_Ico
+          (fun t ht => by simp only [hval i t ht]), setLIntegral_const, Real.volume_Ico,
+          Real.enorm_eq_ofReal (hc i), ENNReal.mul_rpow_of_nonneg _ _ hq.le, ← ENNReal.rpow_mul,
+          inv_mul_cancel₀ hq.ne', ENNReal.rpow_one]
+    _ = ∫⁻ t in ⋃ i, Ico (π.left i) (π.right i), ‖normalizedQuadraticDensity π ω t‖ₑ ^ q := by
+        rw [lintegral_iUnion (fun _ => measurableSet_Ico) hdisj, tsum_fintype]
+    _ ≤ _ := lintegral_mono_set hsub
 
 end eq_11
 
