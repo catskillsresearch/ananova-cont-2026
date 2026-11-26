@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:40:14Z",
+ "updated": "2026-11-26T20:41:36Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 36,
-  "done": 141
+  "done": 142
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 15,
-  "done": 103
+  "done": 104
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "toSphere_real_univ",
     "integral_sphere_eq_sphereMean",
     "volume_ball_eq",
     "integral_Ioo_pow_mul",
@@ -3112,10 +3111,9 @@
     "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul",
     "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le",
-    "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ",
     "Occupation.OccupationConstant::occupationConstant.volume_ball_eq"
    ],
-   "detail": "6 sorry: toSphere_real_univ, integral_sphere_eq_sphereMean, volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
+   "detail": "5 sorry: integral_sphere_eq_sphereMean, volume_ball_eq, integral_Ioo_pow_mul, newton_ball_of_three_le, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere",
@@ -4035,22 +4033,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.toSphere_real_univ"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 10a: total sphere measure): for `d > 0`, `σ(S^{d-1}) = d |B(0,1)|`, and it is positive.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.toSphere_real_univ — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.toSphere_real_univ — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.volume_ball_eq",

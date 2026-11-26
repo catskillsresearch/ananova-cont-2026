@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T20:40:14Z  
-**`sorry` occurrences:** 50 · 14 open · 36 blocked · 141 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 8, 'blocked': 15, 'done': 103} · 24 file(s) with `sorry`.
+**Updated:** 2026-11-26T20:41:36Z  
+**`sorry` occurrences:** 49 · 13 open · 36 blocked · 142 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 7, 'blocked': 15, 'done': 104} · 24 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -147,7 +147,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean_radial` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean` | subgoal of Eq. (7 | 0 |
-| open | `Occupation.OccupationConstant::occupationConstant.toSphere_real_univ` | subgoal of Eq. (7 | 1 |
+| done | `Occupation.OccupationConstant::occupationConstant.toSphere_real_univ` | subgoal of Eq. (7 | 0 |
 | open | `Occupation.OccupationConstant::occupationConstant.volume_ball_eq` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.volume_ball_half` | subgoal of Eq. (7 | 0 |
 | blocked | `Occupation.OccupationSeminorm::occupationSeminorm.add_le` | subgoal of Section 4.2 seminorm | 1 |
@@ -234,7 +234,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
-| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 6 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul`, `Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le`, `Occupation.OccupationConstant::occupationConstant.toSphere_real_univ`, `Occupation.OccupationConstant::occupationConstant.volume_ball_eq` |
+| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 5 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul`, `Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le`, `Occupation.OccupationConstant::occupationConstant.volume_ball_eq` |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |

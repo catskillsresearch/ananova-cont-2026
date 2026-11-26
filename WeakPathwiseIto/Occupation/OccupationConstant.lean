@@ -882,7 +882,16 @@ theorem toSphere_real_univ {d : ℕ} (hd : 0 < d) :
     (volume : Measure (Rd d)).toSphere.real univ =
         d * (volume (Metric.ball (0 : Rd d) 1)).toReal ∧
       0 < (volume : Measure (Rd d)).toSphere.real univ := by
-  sorry
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have h1 : (volume : Measure (Rd d)).toSphere.real univ =
+      d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
+    rw [Measure.toSphere_real_apply_univ, finrank_euclideanSpace_fin, Measure.real_def]
+  refine ⟨h1, ?_⟩
+  rw [h1]
+  have h2 : 0 < (volume (Metric.ball (0 : Rd d) 1)).toReal :=
+    ENNReal.toReal_pos (Metric.measure_ball_pos _ _ one_pos).ne' measure_ball_lt_top.ne
+  have h3 : (0 : ℝ) < d := by exact_mod_cast hd
+  positivity
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 10b: sphere integral as a sphere mean): for `d > 0`,
 `∫ |ρω - y|^{2-d} dσ(ω) = σ(S^{d-1}) sphereMean d ρ y`. -/
