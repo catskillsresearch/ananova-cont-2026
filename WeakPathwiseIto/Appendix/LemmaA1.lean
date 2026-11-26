@@ -165,7 +165,17 @@ theorem covariance_coordIncrements_eq_zero {Ω' : Type*} [MeasurableSpace Ω'] {
     (ht : Monotone t) {k l : Fin m} (hkl : k ≠ l) (i j : Fin d) :
     cov[fun ω' => W i (t k.succ) ω' - W i (t k.castSucc) ω',
       fun ω' => W j (t l.succ) ω' - W j (t l.castSucc) ω'; Q] = 0 := by
-  sorry
+  have hmem : ∀ (i : Fin d) (a b : ℝ≥0), MemLp (fun ω' => W i a ω' - W i b ω') 2 Q :=
+    fun i a b => ((hB i).toIsPreBrownianReal.hasLaw_sub a b).hasGaussianLaw.memLp_two
+  by_cases hij : i = j
+  · subst hij
+    exact (((hB i).toIsPreBrownianReal.hasIndepIncrements m t ht).indepFun hkl).covariance_eq_zero
+      (hmem _ _ _) (hmem _ _ _)
+  · have h := (hind.indepFun hij).comp
+      (φ := fun f : ℝ≥0 → ℝ => f (t k.succ) - f (t k.castSucc))
+      (ψ := fun f : ℝ≥0 → ℝ => f (t l.succ) - f (t l.castSucc))
+      (by fun_prop) (by fun_prop)
+    exact h.covariance_eq_zero (hmem _ _ _) (hmem _ _ _)
 
 /-- **Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B`
 over the cells of a partition are independent under `ℙ_x`. -/
