@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:15:55Z  
-**`sorry` occurrences:** 56 · 12 open · 49 blocked · 73 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 25, 'done': 38} · 27 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:16:30Z  
+**`sorry` occurrences:** 55 · 12 open · 49 blocked · 73 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 25, 'done': 38} · 27 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -204,7 +204,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | done | `Appendix.GaussianMoment` | Lemma A.1 c_{q,d} | 0 |  |
 | done | `Appendix.HeatKernel` | Eqs. (32), (34), (35) | 0 |  |
-| blocked | `Appendix.LemmaA1` | Lemma A.1 | 7 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
+| blocked | `Appendix.LemmaA1` | Lemma A.1 | 6 | `Appendix.LemmaA1::lemma_A_1.B_ofCoords`, `Appendix.LemmaA1::lemma_A_1.hasLaw_increment`, `Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec`, `Appendix.LemmaA1::lemma_A_1.iIndepFun_increments`, `Appendix.LemmaA1::lemma_A_1.integral_eq`, `Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum`, `Appendix.LemmaA1::lemma_A_1.memLp_two`, `Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance`, `Appendix.LemmaA1::lemma_A_1.variance_le`, `Bessel.WienerLawExists` |
 | blocked | `Appendix.LemmaB1` | Lemma B.1 | 1 | `Bessel.IsBrownianPolar` |
 | blocked | `Appendix.LemmaB2` | Lemma B.2 | 1 | `Appendix.LemmaB2::lemma_B_2_literal`, `Bessel.IsBrownianPolar` |
 | done | `Appendix.PotentialProfile` | Eq. (33) | 0 |  |
