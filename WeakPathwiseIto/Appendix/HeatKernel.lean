@@ -213,7 +213,15 @@ theorem integral_le_potentialProfile_two (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 2,
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
     ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
-  sorry
+  rcases Nat.lt_or_ge 2 d with hd | hd
+  · obtain ⟨C, hC⟩ := integral_le_potentialProfile_of_two_lt hd T
+    exact ⟨C, fun x hx _ => hC x hx⟩
+  · interval_cases d
+    · exact ⟨0, fun x hx => (hx (Subsingleton.elim _ _)).elim⟩
+    · obtain ⟨C, hC⟩ := integral_le_potentialProfile_one T
+      exact ⟨C, fun x hx _ => hC x hx⟩
+    · obtain ⟨C, hC⟩ := integral_le_potentialProfile_two T
+      exact ⟨C, fun x hx _ => hC x hx⟩
 
 /-- **Subgoal** (Lemma B.2 proof, eq. (34), scaling `s = |x|² u`):
 `p_{|x|² u}(x) / (|x|² u) = |x|^{-d} |x|^{-2} · (2πu)^{-d/2} e^{-1/(2u)} / u`. -/
