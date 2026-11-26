@@ -75,7 +75,23 @@ theorem integral_piece (a b : Rd d) : ∫ x, piece a b x = ‖b - a‖ ^ 2 := by
 
 /-- **Subgoal** (Eq. (7)). -/
 theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
-  sorry
+  unfold piece
+  split_ifs
+  · exact integrable_zero _ _ _
+  · have hmeas : MeasurableSet (incrementBall a b) := Metric.isClosed_closedBall.measurableSet
+    rw [integrable_indicator_iff hmeas]
+    set R : ℝ := ‖midpoint ℝ a b‖ + dist a b / 2 + 1 with hR
+    have hsub : incrementBall a b ⊆ Metric.ball 0 R := fun x hx => by
+      rw [incrementBall, Metric.mem_closedBall, dist_eq_norm] at hx
+      rw [mem_ball_zero_iff]
+      calc ‖x‖ = ‖(x - midpoint ℝ a b) + midpoint ℝ a b‖ := by rw [sub_add_cancel]
+        _ ≤ ‖x - midpoint ℝ a b‖ + ‖midpoint ℝ a b‖ := norm_add_le _ _
+        _ < R := by rw [hR]; linarith
+    have h : IntegrableOn (fun x : Rd d => occupationConstant d *
+        (‖x - a‖ ^ (2 - (d : ℝ)) + ‖x - b‖ ^ (2 - (d : ℝ)))) (Metric.ball 0 R) :=
+      Integrable.const_mul ((occupationConstant.integrableOn_term a R).add
+        (occupationConstant.integrableOn_term b R)) _
+    exact h.mono_set hsub
 
 /-- **Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_eq (π : Partition T) (ω : ℝ → Rd d) :

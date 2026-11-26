@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T20:51:34Z  
-**`sorry` occurrences:** 46 · 14 open · 31 blocked · 149 done (goals + subgoals) · goals {'open': 6, 'blocked': 20, 'done': 39} · subgoals {'open': 8, 'blocked': 11, 'done': 110} · 23 file(s) with `sorry`.
+**Updated:** 2026-11-26T20:52:35Z  
+**`sorry` occurrences:** 45 · 13 open · 31 blocked · 150 done (goals + subgoals) · goals {'open': 6, 'blocked': 20, 'done': 39} · subgoals {'open': 7, 'blocked': 11, 'done': 111} · 23 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -107,7 +107,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
 | open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec` | subgoal of Eq. (7 | 1 |
-| open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 1 |
+| done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 0 |
 | open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine` | subgoal of Eq. (7 | 1 |
 | open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq` | subgoal of Eq. (7 | 1 |
 | open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece` | subgoal of Eq. (7 | 1 |
@@ -232,7 +232,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | blocked | `Occupation.ApproximatingSequence` | Eq. (8) | 0 | `Occupation.OccupationSeminorm` |
 | done | `Occupation.DiscreteLocalTime` | Remark 4.5 λ^{n,±}_T [DOS18] | 0 |  |
-| blocked | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 6 | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball` |
+| blocked | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 5 | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece`, `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball` |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
