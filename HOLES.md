@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:45:08Z  
-**`sorry` occurrences:** 38 · 11 open · 26 blocked · 176 done (goals + subgoals) · goals {'open': 6, 'blocked': 18, 'done': 41} · subgoals {'open': 5, 'blocked': 8, 'done': 135} · 20 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:45:13Z  
+**`sorry` occurrences:** 38 · 10 open · 26 blocked · 177 done (goals + subgoals) · goals {'open': 5, 'blocked': 18, 'done': 42} · subgoals {'open': 5, 'blocked': 8, 'done': 135} · 20 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,7 +26,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
-| `Smooth.Proposition31` | Proposition 3.1 | 0 | (review → VERIFIED) |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -243,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |
 | done | `Smooth.PathwiseCovariation` | Proposition 3.1 covariation | 0 |  |
-| open | `Smooth.Proposition31` | Proposition 3.1 | 0 |  |
+| done | `Smooth.Proposition31` | Proposition 3.1 | 0 |  |
 
 ### §4 Occupation measures and 𝓦²_{ω,π}
 
