@@ -1,6 +1,8 @@
 # Direct import WeakPathwiseIto deps (for blocking / build order)
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.B_ofCoords
+Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero
+Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
@@ -24,6 +26,8 @@ Appendix.HeatKernel::heatKernel.riemannSum_le_integral -hard-> Appendix.HeatKern
 Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.scaling -hard-> Appendix.HeatKernel
 Appendix.LemmaA1::lemma_A_1.B_ofCoords -hard-> Appendix.LemmaA1
+Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero -hard-> Appendix.LemmaA1
+Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.hasLaw_increment -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.iIndepFun_increments -hard-> Appendix.LemmaA1
@@ -168,6 +172,8 @@ Bessel.BesselSpace -hard-> Bessel.Theorem26
 Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le -hard-> Bessel.BesselSpace
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.B_ofCoords
+Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero
+Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
@@ -194,6 +200,8 @@ Bessel.IsBrownianPolar::IsBrownianPolar.iUnion -hard-> Bessel.IsBrownianPolar
 Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull -hard-> Bessel.IsBrownianPolar
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.B_ofCoords
+Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero
+Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
@@ -280,6 +288,8 @@ Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteO
 Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.B_ofCoords
+Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero
+Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_increment
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments

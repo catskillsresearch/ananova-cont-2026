@@ -147,6 +147,26 @@ theorem hasLaw_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s < t) (ht
   rw [AEMeasurable.map_map_of_aemeasurable hF.aemeasurable hg, hcomp]
   exact hlaw.map_eq
 
+/-- **Subgoal** (Lemma A.1 proof, step 2d-i: jointly Gaussian): for independent real Brownian
+motions `W^1, …, W^d` and times `t_0 ≤ ⋯ ≤ t_m`, all coordinate increments
+`W^i(t_{k+1}) - W^i(t_k)` are jointly Gaussian. -/
+theorem hasGaussianLaw_coordIncrements {Ω' : Type*} [MeasurableSpace Ω'] {Q : Measure Ω'}
+    [IsProbabilityMeasure Q] {W : Fin d → ℝ≥0 → Ω' → ℝ} (hB : ∀ i, IsBrownianReal (W i) Q)
+    (hind : iIndepFun (fun i ω' t => W i t ω') Q) {m : ℕ} (t : Fin (m + 1) → ℝ≥0) :
+    HasGaussianLaw (fun ω' (k : Fin m) (i : Fin d) =>
+      W i (t k.succ) ω' - W i (t k.castSucc) ω') Q := by
+  sorry
+
+/-- **Subgoal** (Lemma A.1 proof, step 2d-ii: uncorrelated): increments over different cells are
+uncorrelated (same coordinate: independent increments; different coordinates: independence). -/
+theorem covariance_coordIncrements_eq_zero {Ω' : Type*} [MeasurableSpace Ω'] {Q : Measure Ω'}
+    [IsProbabilityMeasure Q] {W : Fin d → ℝ≥0 → Ω' → ℝ} (hB : ∀ i, IsBrownianReal (W i) Q)
+    (hind : iIndepFun (fun i ω' t => W i t ω') Q) {m : ℕ} {t : Fin (m + 1) → ℝ≥0}
+    (ht : Monotone t) {k l : Fin m} (hkl : k ≠ l) (i j : Fin d) :
+    cov[fun ω' => W i (t k.succ) ω' - W i (t k.castSucc) ω',
+      fun ω' => W j (t l.succ) ω' - W j (t l.castSucc) ω'; Q] = 0 := by
+  sorry
+
 /-- **Subgoal** (Lemma A.1 proof, step 2d: the `Z_i^n` are independent): the increments of `B`
 over the cells of a partition are independent under `ℙ_x`. -/
 theorem iIndepFun_increments (x : Rd d) (π : Partition T) :

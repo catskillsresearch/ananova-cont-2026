@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-26T18:20:12Z",
+ "updated": "2026-11-26T18:22:03Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 53,
+ "sorryCount": 55,
  "counts": {
   "open": 12,
-  "blocked": 49,
+  "blocked": 51,
   "done": 73
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 6,
-  "blocked": 25,
+  "blocked": 27,
   "done": 38
  },
  "untagged": [],
@@ -511,15 +511,17 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 4,
+   "sorryCount": 6,
    "holes": [
+    "hasGaussianLaw_coordIncrements",
+    "covariance_coordIncrements_eq_zero",
     "iIndepFun_increments",
     "memLp_two",
     "integral_eq",
     "variance_le"
    ],
    "declKinds": {
-    "theorem": 11
+    "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
@@ -528,6 +530,8 @@
    "deps": [
     "Appendix.GaussianMoment",
     "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+    "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+    "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
@@ -542,6 +546,8 @@
    ],
    "blockers": [
     "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+    "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+    "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
     "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec",
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments",
@@ -552,7 +558,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "4 sorry: iIndepFun_increments, memLp_two, integral_eq, variance_le"
+   "detail": "6 sorry: hasGaussianLaw_coordIncrements, covariance_coordIncrements_eq_zero, iIndepFun_increments, memLp_two, integral_eq, variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -583,6 +589,70 @@
     "Bessel.WienerLawExists"
    ],
    "detail": "proved: lemma_A_1.B_ofCoords — subgoal of Lemma A.1 proof, step 2a: coordinates of `B` (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "label": "covariance_coordIncrements_eq_zero",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.covariance_coordIncrements_eq_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2d-ii: uncorrelated): increments over different cells are uncorrelated (same coordinate: independent increments; different coordinates: independence).",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.covariance_coordIncrements_eq_zero — subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
+   "label": "hasGaussianLaw_coordIncrements",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 2d-i: jointly Gaussian",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.hasGaussianLaw_coordIncrements"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 2d-i: jointly Gaussian): for independent real Brownian motions `W^1, …, W^d` and times `t_0 ≤ ⋯ ≤ t_m`, all coordinate increments `W^i(t_{k+1}) - W^i(t_k)` are jointly Gaussian.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.hasGaussianLaw_coordIncrements — subgoal of Lemma A.1 proof, step 2d-i: jointly Gaussian (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
@@ -3727,6 +3797,16 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
    "kind": "hard"
   },
@@ -3837,6 +3917,16 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
    "to": "Appendix.LemmaA1",
    "kind": "subgoal"
   },
@@ -4562,6 +4652,16 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment",
    "kind": "hard"
   },
@@ -4688,6 +4788,16 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
    "kind": "hard"
   },
   {
@@ -5118,6 +5228,16 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
    "kind": "hard"
   },
   {
@@ -5648,6 +5768,14 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment"
   },
   {
@@ -5736,6 +5864,14 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
    "to": "Appendix.LemmaA1"
   },
   {
@@ -6240,6 +6376,14 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.hasLaw_increment"
   },
   {
@@ -6541,6 +6685,14 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.B_ofCoords"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
