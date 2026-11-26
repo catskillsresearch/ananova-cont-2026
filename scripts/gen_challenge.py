@@ -113,9 +113,16 @@ def prune_all(bodies: list[str], compared: set[str]) -> list[str]:
     while True:
         alltext = "\n".join(bodies)
         new = [prune(b, compared, alltext) for b in bodies]
+        new = [re.sub(r"\n{3,}", "\n\n", re.sub(r"(?m)^namespace (\S+)\n\s*\nend \1$", "", b))
+               for b in new]
         if new == bodies:
             return bodies
         bodies = new
+
+
+def tidy(body: str) -> str:
+    """Collapse runs of blank lines left by pruned chunks."""
+    return re.sub(r"\n[ \t]*\n(?:[ \t]*\n)+", "\n\n", body).strip("\n")
 
 
 def main() -> None:
@@ -125,7 +132,7 @@ def main() -> None:
     compared = set(cfg["theorem_names"])
     bodies = prune_all([body_of(m) for m in mods], compared)
     for m, body in zip(mods, bodies):
-        parts.append(f"\n/-! ## `{LIB}.{m}` -/\n\n{RESET}\n\nsection\n\n{body}\n\nend\n")
+        parts.append(f"\n/-! ## `{LIB}.{m}` -/\n\n{RESET}\n\nsection\n\n{tidy(body)}\n\nend\n")
     parts.append(f"\nend {LIB}\n")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("".join(parts), encoding="utf-8")

@@ -364,10 +364,6 @@ section
 /-- The normalising constant `c_d := 2 / |B(0,1)|` of eq. (7). -/
 def occupationConstant (d : ℕ) : ℝ := 2 / (volume (Metric.ball (0 : Rd d) 1)).toReal
 
-namespace occupationConstant
-
-end occupationConstant
-
 end
 
 /-! ## `WeakPathwiseIto.Occupation.IncrementBall` -/
