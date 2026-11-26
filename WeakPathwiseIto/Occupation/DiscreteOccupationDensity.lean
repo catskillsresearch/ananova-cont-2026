@@ -55,7 +55,30 @@ theorem integral_closedBall_affine (m : Rd d) {l : ℝ} (hl : 0 < l) (L : Rd d �
     (g : Rd d → ℝ) :
     ∫ x in Metric.closedBall m (l / 2), g x =
       l ^ d * ∫ z in Metric.closedBall (0 : Rd d) (1 / 2), g (m + l • L z) := by
-  sorry
+  rw [← integral_indicator Metric.isClosed_closedBall.measurableSet,
+    ← integral_indicator Metric.isClosed_closedBall.measurableSet]
+  set F := (Metric.closedBall m (l / 2)).indicator g with hF
+  have hl' : 0 < l ^ d := pow_pos hl d
+  have h1 : ∫ x, F x = ∫ y, F (m + y) := (integral_add_left_eq_self F m).symm
+  have h2 : ∫ y, F (m + y) = l ^ d * ∫ w, F (m + l • w) := by
+    rw [Measure.integral_comp_smul volume (fun y => F (m + y)) l, finrank_euclideanSpace_fin,
+      smul_eq_mul, abs_inv, abs_of_pos hl', mul_inv_cancel_left₀ hl'.ne']
+  have h3 : ∫ w, F (m + l • w) = ∫ z, F (m + l • L z) :=
+    (L.measurePreserving.integral_comp L.toHomeomorph.measurableEmbedding
+      (fun w => F (m + l • w))).symm
+  rw [h1, h2, h3]
+  congr 1
+  refine integral_congr_ae (Filter.Eventually.of_forall fun z => ?_)
+  have hmem : (m + l • L z ∈ Metric.closedBall m (l / 2)) ↔
+      z ∈ Metric.closedBall (0 : Rd d) (1 / 2) := by
+    rw [Metric.mem_closedBall, Metric.mem_closedBall, dist_eq_norm, dist_eq_norm, sub_zero,
+      add_sub_cancel_left, norm_smul, Real.norm_eq_abs, abs_of_pos hl, LinearIsometryEquiv.norm_map]
+    constructor <;> intro h <;> nlinarith
+  by_cases hz : z ∈ Metric.closedBall (0 : Rd d) (1 / 2)
+  · rw [Set.indicator_of_mem hz]
+    exact Set.indicator_of_mem (hmem.2 hz) g
+  · rw [Set.indicator_of_notMem hz]
+    exact Set.indicator_of_notMem (fun h => hz (hmem.1 h)) g
 
 /-- **Subgoal** (Eq. (7), `integral_piece` step b: rotating `e_1` to a unit vector): for
 `d > 0` and `|u| = 1` there is a linear isometry `L` of `ℝ^d` with `L e_1 = u`. -/

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:54:37Z",
+ "updated": "2026-11-26T21:09:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 43,
+ "sorryCount": 42,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 31,
-  "done": 152
+  "done": 153
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 11,
-  "done": 113
+  "done": 114
  },
  "untagged": [],
  "legend": {
@@ -2760,9 +2760,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "integral_closedBall_affine",
     "integral_piece",
     "integral_eq"
    ],
@@ -2787,11 +2786,10 @@
     "Occupation.OccupationConstant"
    ],
    "blockers": [
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
    ],
-   "detail": "3 sorry: integral_closedBall_affine, integral_piece, integral_eq"
+   "detail": "2 sorry: integral_piece, integral_eq"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2857,24 +2855,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.integral_closedBall_affine"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7), `integral_piece` step a: affine change of variables on a ball): for `λ > 0` and a linear isometry `L`, `∫_{B̄(m, λ/2)} g = λ^d ∫_{B̄(0,1/2)} g(m + λ L z) dz`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.integral_closedBall_affine — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.integral_closedBall_affine — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
