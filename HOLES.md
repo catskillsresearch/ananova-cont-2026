@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:42:39Z  
-**`sorry` occurrences:** 49 · 12 open · 38 blocked · 97 done (goals + subgoals) · goals {'open': 6, 'blocked': 22, 'done': 37} · subgoals {'open': 6, 'blocked': 16, 'done': 60} · 25 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:43:24Z  
+**`sorry` occurrences:** 48 · 11 open · 38 blocked · 98 done (goals + subgoals) · goals {'open': 6, 'blocked': 22, 'done': 37} · subgoals {'open': 5, 'blocked': 16, 'done': 61} · 25 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -82,7 +82,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Bessel.BesselKernel::besselKernel.fourier_eq` | subgoal of Definition 2.4 | 1 |
 | open | `Bessel.BesselKernel::besselKernel.integrable` | subgoal of Definition 2.4 | 1 |
 | done | `Bessel.BesselKernel::besselKernel.integrableOn_profile` | subgoal of Definition 2.4, integrability step 2: Gamma-type profile | 0 |
-| open | `Bessel.BesselKernel::besselKernel.integrable_uncurry` | subgoal of Definition 2.4, integrability step 3: Tonelli | 1 |
+| done | `Bessel.BesselKernel::besselKernel.integrable_uncurry` | subgoal of Definition 2.4, integrability step 3: Tonelli | 0 |
 | done | `Bessel.BesselKernel::besselKernel.integral_exp_slice` | subgoal of Definition 2.4, integrability step 1: Gaussian slice | 0 |
 | done | `Bessel.BesselKernel::besselKernel.nonneg` | subgoal of Definition 2.4 | 0 |
 | blocked | `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` | subgoal of Definition 2.5, Young's inequality | 1 |
@@ -157,7 +157,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | blocked | `Bessel.BesselCapacity` | Definition 2.7 | 4 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselSpace` |
-| blocked | `Bessel.BesselKernel` | Definition 2.4 | 4 | `Bessel.BesselKernel::besselKernel.asymptotic_origin`, `Bessel.BesselKernel::besselKernel.fourier_eq`, `Bessel.BesselKernel::besselKernel.integrable`, `Bessel.BesselKernel::besselKernel.integrable_uncurry` |
+| blocked | `Bessel.BesselKernel` | Definition 2.4 | 3 | `Bessel.BesselKernel::besselKernel.asymptotic_origin`, `Bessel.BesselKernel::besselKernel.fourier_eq`, `Bessel.BesselKernel::besselKernel.integrable` |
 | blocked | `Bessel.BesselSpace` | Definition 2.5 | 1 | `Bessel.BesselKernel`, `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |

@@ -69,7 +69,32 @@ theorem integrable_uncurry (hα : 0 < α) :
     Integrable (fun p : Rd d × ℝ => Real.exp (-Real.pi * ‖p.1‖ ^ 2 / p.2) *
         Real.exp (-p.2 / (4 * Real.pi)) * p.2 ^ ((α - d) / 2) / p.2)
       ((volume : Measure (Rd d)).prod (volume.restrict (Ioi 0))) := by
-  sorry
+  have hmeas : Measurable fun p : Rd d × ℝ => Real.exp (-Real.pi * ‖p.1‖ ^ 2 / p.2) *
+      Real.exp (-p.2 / (4 * Real.pi)) * p.2 ^ ((α - d) / 2) / p.2 := by
+    fun_prop
+  rw [integrable_prod_iff' hmeas.aestronglyMeasurable]
+  constructor
+  · filter_upwards [ae_restrict_mem measurableSet_Ioi] with δ hδ
+    have hδ' : (0 : ℝ) < δ := hδ
+    have hg : Integrable (fun x : Rd d => Real.exp (-Real.pi * ‖x‖ ^ 2 / δ)) := by
+      refine Integrable.of_integral_ne_zero ?_
+      rw [integral_exp_slice hδ']
+      exact (Real.rpow_pos_of_pos hδ' _).ne'
+    exact ((hg.mul_const _).mul_const _).div_const _
+  · refine IntegrableOn.congr_fun (integrableOn_profile hα) (fun δ hδ => ?_) measurableSet_Ioi
+    have hδ' : (0 : ℝ) < δ := hδ
+    have h1 : ∀ x : Rd d, ‖Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) * Real.exp (-δ / (4 * Real.pi)) *
+        δ ^ ((α - d) / 2) / δ‖ = Real.exp (-Real.pi * ‖x‖ ^ 2 / δ) *
+          (Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ) := fun x => by
+      rw [Real.norm_of_nonneg (div_nonneg (mul_nonneg (mul_nonneg (Real.exp_pos _).le
+        (Real.exp_pos _).le) (Real.rpow_nonneg hδ'.le _)) hδ'.le)]
+      ring
+    simp only [h1]
+    rw [integral_mul_const, integral_exp_slice hδ', Real.rpow_one,
+      show -(1 / (4 * Real.pi)) * δ = -δ / (4 * Real.pi) by ring,
+      show α / 2 - 1 = ((d : ℝ) / 2 + (α - d) / 2) - 1 by ring, Real.rpow_sub_one hδ'.ne',
+      Real.rpow_add hδ']
+    ring
 
 /-- **Subgoal** (Definition 2.4). -/
 theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
