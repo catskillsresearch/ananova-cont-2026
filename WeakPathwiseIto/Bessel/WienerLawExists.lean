@@ -37,6 +37,46 @@ theorem exists_isLaw (x : Rd d) : ∃ P : Measure (CanonicalWienerSpace d T), Is
   · exact ProbabilityTheory.iIndepFun_pi (X := fun (_ : Fin d) ω t => ProbabilityTheory.brownian t ω)
       fun _ => (measurable_pi_iff.mpr ProbabilityTheory.measurable_brownian).aemeasurable
 
+/-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra): the
+Borel σ-algebra of `Ω = C([0, T], ℝ^d)` is the one induced by the coordinate maps, i.e. the
+pull-back of the product σ-algebra on `[0, T] → ℝ^d` (Mathlib's
+`ContinuousMap.measurableSpace_eq_iSup_comap_eval`). -/
+theorem measurableSpace_eq_comap_coe :
+    (inferInstance : MeasurableSpace (CanonicalWienerSpace d T)) =
+      MeasurableSpace.comap (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d))
+        MeasurableSpace.pi := by
+  sorry
+
+/-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 2): a measure on `Ω` is determined by
+the law of the coordinate process `(B(t))_{t ∈ [0, T]}` on the product space. -/
+theorem ext_of_map_coe {μ ν : Measure (CanonicalWienerSpace d T)}
+    (h : μ.map (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d)) =
+      ν.map (fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d))) : μ = ν := by
+  sorry
+
+/-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of
+`d` independent Brownian motions): for independent real Brownian motions `W^1, …, W^d` and a
+finite set of times `I`, `(W^i_s)_{i, s ∈ I}` has law `⊗_i` (Brownian f.d.d. on `I`). -/
+theorem map_coords_restrict {Ω' : Type*} [MeasurableSpace Ω'] {Q : Measure Ω'}
+    [IsProbabilityMeasure Q] {W : Fin d → ℝ≥0 → Ω' → ℝ}
+    (hB : ∀ i, ProbabilityTheory.IsBrownianReal (W i) Q)
+    (hind : ProbabilityTheory.iIndepFun (fun i ω' t => W i t ω') Q) (I : Finset ℝ≥0) :
+    Q.map (fun ω' (i : Fin d) (s : I) => W i s ω') =
+      Measure.pi fun _ : Fin d => ProbabilityTheory.BrownianReal.projectiveFamily I := by
+  sorry
+
+/-- **Subgoal** (Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ`): if `P` is a law of
+Brownian motion started at `x`, its finite-dimensional distribution on `J ⊂ [0, T]` is the image
+of the Brownian f.d.d. at the times `J` under `v ↦ (x + ∑_i v^i_t e_i)_{t ∈ J}`. -/
+theorem map_restrict_eq {x : Rd d} {P : Measure (CanonicalWienerSpace d T)} (h : IsLaw x P)
+    (J : Finset (Icc (0 : ℝ) T)) :
+    (P.map fun ω : CanonicalWienerSpace d T => (ω : Icc (0 : ℝ) T → Rd d)).map J.restrict =
+      (Measure.pi fun _ : Fin d =>
+          ProbabilityTheory.BrownianReal.projectiveFamily (J.image fun s : Icc (0 : ℝ) T => (s : ℝ).toNNReal)).map
+        fun (v : Fin d → (J.image fun s : Icc (0 : ℝ) T => (s : ℝ).toNNReal) → ℝ) (j : J) => x + ∑ i, v i ⟨(j : ℝ).toNNReal, Finset.mem_image_of_mem _ j.2⟩ •
+          Rd.basisVec i := by
+  sorry
+
 /-- **Subgoal** (Section 2.2 Wiener space): the law of Brownian motion is unique (finite
 dimensional distributions determine the law on `C([0, T], ℝ^d)`). -/
 theorem isLaw_unique {x : Rd d} {P P' : Measure (CanonicalWienerSpace d T)} (h : IsLaw x P)

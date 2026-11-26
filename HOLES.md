@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T18:32:48Z  
-**`sorry` occurrences:** 49 · 12 open · 54 blocked · 74 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 6, 'blocked': 30, 'done': 39} · 26 file(s) with `sorry`.
+**Updated:** 2026-11-26T18:35:41Z  
+**`sorry` occurrences:** 53 · 16 open · 54 blocked · 74 done (goals + subgoals) · goals {'open': 6, 'blocked': 24, 'done': 35} · subgoals {'open': 10, 'blocked': 30, 'done': 39} · 26 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -87,9 +87,13 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` | subgoal of Definition 2.8, [Fuk93, p. 25] | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval` | subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω' | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw` | subgoal of Section 2.2 Wiener space | 0 |
+| open | `Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe` | subgoal of Section 2.2 Wiener space, uniqueness step 2 | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P` | subgoal of Section 2.2 Wiener space | 0 |
 | open | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` | subgoal of Section 2.2 Wiener space | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P` | subgoal of Section 2.2 Wiener space | 0 |
+| open | `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict` | subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions | 1 |
+| open | `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` | subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` | 1 |
+| open | `Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe` | subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra | 1 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
@@ -156,7 +160,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
-| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 1 | `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique` |
+| blocked | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 5 | `Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe`, `Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique`, `Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict`, `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq`, `Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe` |
 
 ### §3 Smooth change of variable
 

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T18:32:48Z",
+ "updated": "2026-11-26T18:35:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 49,
+ "sorryCount": 53,
  "counts": {
-  "open": 12,
+  "open": 16,
   "blocked": 54,
   "done": 74
  },
@@ -13,7 +13,7 @@
   "done": 35
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 10,
   "blocked": 30,
   "done": 39
  },
@@ -1962,12 +1962,16 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Section 2.2 ℙ_x exists (subgoals)",
    "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
-   "sorryCount": 1,
+   "sorryCount": 5,
    "holes": [
+    "measurableSpace_eq_comap_coe",
+    "ext_of_map_coe",
+    "map_coords_restrict",
+    "map_restrict_eq",
     "isLaw_unique"
    ],
    "declKinds": {
-    "theorem": 5
+    "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
@@ -1977,14 +1981,22 @@
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
     "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
     "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
     "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
    ],
    "blockers": [
-    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique"
+    "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+    "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
    ],
-   "detail": "1 sorry: isLaw_unique"
+   "detail": "5 sorry: measurableSpace_eq_comap_coe, ext_of_map_coe, map_coords_restrict, map_restrict_eq, isLaw_unique"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -2035,6 +2047,33 @@
    ],
    "blockers": [],
    "detail": "proved: CanonicalWienerSpace.exists_isLaw — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
+   "label": "ext_of_map_coe",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space, uniqueness step 2",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.ext_of_map_coe"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 2): a measure on `Ω` is determined by the law of the coordinate process `(B(t))_{t ∈ [0, T]}` on the product space.",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.ext_of_map_coe — subgoal of Section 2.2 Wiener space, uniqueness step 2 (in Bessel.WienerLawExists)"
   },
   {
    "id": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
@@ -2112,6 +2151,87 @@
    ],
    "blockers": [],
    "detail": "proved: CanonicalWienerSpace.isProbabilityMeasure_P — subgoal of Section 2.2 Wiener space (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+   "label": "map_coords_restrict",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.map_coords_restrict"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions): for independent real Brownian motions `W^1, …, W^d` and a finite set of times `I`, `(W^i_s)_{i, s ∈ I}` has law `⊗_i` (Brownian f.d.d. on `I`).",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.map_coords_restrict — subgoal of Section 2.2 Wiener space, uniqueness step 3: finite-dimensional distributions of `d` independent Brownian motions (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+   "label": "map_restrict_eq",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ`",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.map_restrict_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ`): if `P` is a law of Brownian motion started at `x`, its finite-dimensional distribution on `J ⊂ [0, T]` is the image of the Brownian f.d.d. at the times `J` under `v ↦ (x + ∑_i v^i_t e_i)_{t ∈ J}`.",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.map_restrict_eq — subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
+   "label": "measurableSpace_eq_comap_coe",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra",
+   "parentGoal": "Bessel.WienerLawExists",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/WienerLawExists.lean",
+   "sorryCount": 1,
+   "holes": [
+    "CanonicalWienerSpace.measurableSpace_eq_comap_coe"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra): the Borel σ-algebra of `Ω = C([0, T], ℝ^d)` is the one induced by the coordinate maps, i.e. the pull-back of the product σ-algebra on `[0, T] → ℝ^d` (Mathlib's `ContinuousMap.measurableSpace_eq_iSup_comap_eval`).",
+   "status": "open",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "sorry: CanonicalWienerSpace.measurableSpace_eq_comap_coe — subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra (in Bessel.WienerLawExists)"
   },
   {
    "id": "Main.BalancedPartitions",
@@ -4883,6 +5003,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
    "kind": "hard"
   },
@@ -4894,6 +5019,21 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
    "kind": "hard"
   },
   {
@@ -5017,6 +5157,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
    "to": "Bessel.WienerLawExists",
    "kind": "subgoal"
@@ -5028,6 +5173,21 @@
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+   "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
    "to": "Bessel.WienerLawExists",
    "kind": "subgoal"
   },
@@ -6545,6 +6705,10 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P"
   },
   {
@@ -6554,6 +6718,18 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
@@ -6644,6 +6820,10 @@
    "to": "Bessel.WienerLawExists"
   },
   {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P",
    "to": "Bessel.WienerLawExists"
   },
@@ -6653,6 +6833,18 @@
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq",
+   "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
    "to": "Bessel.WienerLawExists"
   },
   {

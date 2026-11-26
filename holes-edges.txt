@@ -198,9 +198,13 @@ Bessel.CanonicalWienerSpace -hard-> Bessel.IsBrownianPolar::IsBrownianPolar.iff_
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw
+Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P
+Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict
+Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq
+Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe
 Bessel.CanonicalWienerSpace -hard-> Main.IsItoIntegral
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB1
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB2
@@ -225,9 +229,13 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summabl
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
 Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw -hard-> Bessel.WienerLawExists
+Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P -hard-> Bessel.WienerLawExists
+Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict -hard-> Bessel.WienerLawExists
+Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq -hard-> Bessel.WienerLawExists
+Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe -hard-> Bessel.WienerLawExists
 Main.BalancedPartitions -hard-> Appendix.HeatKernel
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.div_scaling
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integrableOn_Ioc
