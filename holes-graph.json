@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:41:46Z",
+ "updated": "2026-11-26T18:42:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 38,
-  "done": 96
+  "done": 97
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 16,
-  "done": 59
+  "done": 60
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
     "fourier_eq",
-    "integrableOn_profile",
     "integrable_uncurry",
     "integrable",
     "asymptotic_origin"
@@ -1578,10 +1577,9 @@
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
     "Bessel.BesselKernel::besselKernel.integrable",
-    "Bessel.BesselKernel::besselKernel.integrableOn_profile",
     "Bessel.BesselKernel::besselKernel.integrable_uncurry"
    ],
-   "detail": "5 sorry: fourier_eq, integrableOn_profile, integrable_uncurry, integrable, asymptotic_origin"
+   "detail": "4 sorry: fourier_eq, integrable_uncurry, integrable, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1674,22 +1672,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.integrableOn_profile"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, integrability step 2: Gamma-type profile): for `α > 0`, `δ ↦ δ^{α/2 - 1} e^{-δ/(4π)}` is integrable on `(0, ∞)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.integrableOn_profile — subgoal of Definition 2.4, integrability step 2: Gamma-type profile (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.integrableOn_profile — subgoal of Definition 2.4, integrability step 2: Gamma-type profile (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.integrable_uncurry",

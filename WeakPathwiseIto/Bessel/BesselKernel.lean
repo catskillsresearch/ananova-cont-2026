@@ -61,7 +61,7 @@ theorem integral_exp_slice {δ : ℝ} (hδ : 0 < δ) :
 theorem integrableOn_profile (hα : 0 < α) :
     IntegrableOn (fun δ : ℝ => δ ^ (α / 2 - 1) * Real.exp (-(1 / (4 * Real.pi)) * δ ^ (1 : ℝ)))
       (Ioi 0) := by
-  sorry
+  exact integrableOn_rpow_mul_exp_neg_mul_rpow (by linarith) one_pos (by positivity)
 
 /-- **Subgoal** (Definition 2.4, integrability step 3: Tonelli): the subordination integrand
 `(x, δ) ↦ e^{-π|x|²/δ} e^{-δ/(4π)} δ^{(α-d)/2} / δ` is integrable on `ℝ^d × (0, ∞)`. -/
