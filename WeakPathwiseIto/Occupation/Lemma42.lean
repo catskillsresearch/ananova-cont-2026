@@ -421,7 +421,44 @@ theorem tendsto_sum_left (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVa
     (hφc : HasCompactSupport φ) :
     Tendsto (fun n => ∑ i, φ (ω ((π n).left i)) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)
       atTop (𝓝 (∫ t in Icc 0 T, φ (ω t) ∂hQV.traceMeasure)) := by
-  sorry
+  have hR := tendsto_riemannStieltjes hQV (hφ.comp_continuousOn hω)
+  set S : ℕ → ℝ := fun n => ∑ i, ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 with hSdef
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, S n ≤ M := ((tendsto_sum_sq hQV).eventually (gt_mem_nhds
+    (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+      fun n h => h.le
+  have hu := hφc.uniformContinuous_of_continuous hφ
+  have hdiff : Tendsto (fun n =>
+      ∑ i, φ (ω ((π n).left i)) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 -
+      ∑ i, (φ ∘ ω) ((π n).right i) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)
+      atTop (𝓝 0) := by
+    refine Metric.tendsto_nhds.2 fun ε hε => ?_
+    obtain ⟨δ, hδ, hδφ⟩ := Metric.uniformContinuous_iff.1 hu (ε / (2 * M)) (by positivity)
+    filter_upwards [hevS, hosc.eventually (gt_mem_nhds hδ)] with n hn hon
+    have hS0 : 0 ≤ S n := Finset.sum_nonneg fun i _ => sq_nonneg _
+    rw [Real.dist_eq, sub_zero, ← Finset.sum_sub_distrib]
+    have hterm : ∀ i, |φ (ω ((π n).left i)) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 -
+        (φ ∘ ω) ((π n).right i) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2| ≤
+        ε / (2 * M) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 := fun i => by
+      rw [← sub_mul, abs_mul, abs_of_nonneg (sq_nonneg (‖ω ((π n).right i) - ω ((π n).left i)‖))]
+      refine mul_le_mul_of_nonneg_right ?_ (sq_nonneg _)
+      have h1 := norm_increment_le hω (π n) i
+      have := hδφ (show dist (ω ((π n).left i)) (ω ((π n).right i)) < δ by
+        rw [dist_eq_norm, norm_sub_rev]; linarith)
+      rw [Real.dist_eq] at this
+      exact this.le
+    calc |∑ i, (φ (ω ((π n).left i)) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 -
+          (φ ∘ ω) ((π n).right i) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)|
+        ≤ ∑ i, ε / (2 * M) * ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2 :=
+          (Finset.abs_sum_le_sum_abs _ _).trans (Finset.sum_le_sum fun i _ => hterm i)
+      _ = ε / (2 * M) * S n := by rw [hSdef, Finset.mul_sum]
+      _ ≤ ε / (2 * M) * M := mul_le_mul_of_nonneg_left hn (by positivity)
+      _ = ε / 2 := by field_simp
+      _ < ε := by linarith
+  have h := hR.add hdiff
+  rw [add_zero] at h
+  exact h.congr fun n => by ring
 
 end lemma_4_2
 

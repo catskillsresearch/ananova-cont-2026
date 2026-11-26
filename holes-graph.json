@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T21:26:08Z",
+ "updated": "2026-11-26T21:27:03Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
   "open": 12,
-  "blocked": 27,
-  "done": 164
+  "blocked": 26,
+  "done": 165
  },
  "goalCounts": {
-  "open": 6,
-  "blocked": 19,
+  "open": 7,
+  "blocked": 18,
   "done": 40
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 8,
-  "done": 124
+  "done": 125
  },
  "untagged": [],
  "legend": {
@@ -3026,17 +3026,15 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2",
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 1,
-   "holes": [
-    "tendsto_sum_left"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
@@ -3051,10 +3049,8 @@
     "Occupation.WeightedOccupationMeasure",
     "Smooth.PathOscillation"
    ],
-   "blockers": [
-    "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
-   ],
-   "detail": "1 sorry: tendsto_sum_left"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
@@ -3228,24 +3224,22 @@
    "parentGoal": "Occupation.Lemma42",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_4_2.tendsto_sum_left"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 4.2 proof, last display): with `φ` uniformly continuous and (6), `∑_i φ(ω(t_i)) |ω(t_{i+1}) - ω(t_i)|² → ∫_0^T φ(ω(t)) d tr[ω]_π(t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.WeightedOccupationMeasure",
     "Smooth.PathOscillation"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_4_2.tendsto_sum_left — subgoal of Lemma 4.2 proof, last display (in Occupation.Lemma42)"
+   "detail": "proved: lemma_4_2.tendsto_sum_left — subgoal of Lemma 4.2 proof, last display (in Occupation.Lemma42)"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
