@@ -75,7 +75,35 @@ theorem integrableOn_unitKernel (hd : 2 < d) :
 `∫_0^T p_s(x) ds ≤ C |x|^{2-d}` (scaling `s = |x|² u` on `(0, ∞)`). -/
 theorem integral_le_potentialProfile_of_two_lt (hd : 2 < d) (T : ℝ) : ∃ C : ℝ, ∀ x : Rd d,
     x ≠ 0 → ∫ s in Ioc 0 T, heatKernel d s x ≤ C * potentialProfile d ‖x‖ := by
-  sorry
+  refine ⟨∫ u in Ioi 0, (2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)),
+    fun x hx => ?_⟩
+  have hr : 0 < ‖x‖ := norm_pos_iff.2 hx
+  have hb : 0 < ‖x‖ ^ 2 := by positivity
+  set f : ℝ → ℝ := fun s => heatKernel d s x with hf
+  have hscale : EqOn (fun u => f (‖x‖ ^ 2 * u)) (fun u => ‖x‖ ^ (-(d : ℝ)) *
+      ((2 * Real.pi * u) ^ (-(d : ℝ) / 2) * Real.exp (-1 / (2 * u)))) (Ioi 0) :=
+    fun u hu => scaling x hx hu
+  have hfi : IntegrableOn f (Ioi 0) := by
+    have := (integrableOn_Ioi_comp_mul_left_iff f 0 hb).1
+      (IntegrableOn.congr_fun ((integrableOn_unitKernel hd).const_mul _) hscale.symm
+        measurableSet_Ioi)
+    simpa using this
+  have hnn : ∀ s ∈ Ioi (0 : ℝ), 0 ≤ f s := fun s hs => by
+    have hs : (0 : ℝ) < s := hs
+    simp only [hf, heatKernel]
+    positivity
+  have hν : potentialProfile d ‖x‖ = ‖x‖ ^ (2 - (d : ℝ)) := by
+    simp [potentialProfile, show d ≠ 1 by omega, show d ≠ 2 by omega]
+  calc ∫ s in Ioc 0 T, f s ≤ ∫ s in Ioi 0, f s :=
+        setIntegral_mono_set hfi (ae_restrict_of_forall_mem measurableSet_Ioi hnn)
+          Ioc_subset_Ioi_self.eventuallyLE
+    _ = ‖x‖ ^ 2 * ∫ u in Ioi 0, f (‖x‖ ^ 2 * u) := by
+        rw [integral_comp_mul_left_Ioi f 0 hb, mul_zero, smul_eq_mul, ← mul_assoc,
+          mul_inv_cancel₀ hb.ne', one_mul]
+    _ = _ := by
+        rw [setIntegral_congr_fun measurableSet_Ioi hscale, integral_const_mul, hν,
+          Real.rpow_sub hr, Real.rpow_neg hr.le, Real.rpow_two]
+        field_simp
 
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (32) [FP00]: `∫_0^T p_s(x) ds ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem integral_le_potentialProfile (T R : ℝ) : ∃ C : ℝ, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
