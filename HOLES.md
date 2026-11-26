@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T20:08:30Z  
-**`sorry` occurrences:** 51 · 15 open · 36 blocked · 124 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 9, 'blocked': 15, 'done': 86} · 24 file(s) with `sorry`.
+**Updated:** 2026-11-26T20:10:19Z  
+**`sorry` occurrences:** 56 · 20 open · 36 blocked · 124 done (goals + subgoals) · goals {'open': 6, 'blocked': 21, 'done': 38} · subgoals {'open': 14, 'blocked': 15, 'done': 86} · 24 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -111,13 +111,17 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece` | subgoal of Eq. (7 | 1 |
 | blocked | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp` | subgoal of Lemma A.1, finiteness of `‖ρ_n‖_{L^q}` | 0 |
+| open | `Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere` | subgoal of Eq. (7 | 0 |
 | open | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply` | subgoal of Eq. (7 | 0 |
 | open | `Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean` | subgoal of Eq. (7 | 1 |
+| open | `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne` | subgoal of Eq. (7 | 0 |
+| open | `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.integrableOn_term` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.integral_ball_polar` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.integral_reflect` | subgoal of Eq. (7 | 0 |
@@ -129,6 +133,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le` | subgoal of Eq. (7 | 1 |
 | open | `Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean` | subgoal of Eq. (7 | 0 |
+| open | `Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral` | subgoal of Eq. (7 | 1 |
 | open | `Occupation.OccupationConstant::occupationConstant.sphereMean_outside` | subgoal of Eq. (7 | 1 |
 | done | `Occupation.OccupationConstant::occupationConstant.sphereMean_radial` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub` | subgoal of Eq. (7 | 0 |
@@ -218,7 +223,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
-| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 7 | `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean`, `Occupation.OccupationConstant::occupationConstant.newton_ball`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le`, `Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq`, `Occupation.OccupationConstant::occupationConstant.sphereMean_outside`, `Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean` |
+| blocked | `Occupation.OccupationConstant` | Eq. (7) c_d | 12 | `Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow`, `Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean`, `Occupation.OccupationConstant::occupationConstant.eq_inv_integral`, `Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean`, `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean`, `Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean`, `Occupation.OccupationConstant::occupationConstant.newton_ball`, `Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le`, `Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq`, `Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral`, `Occupation.OccupationConstant::occupationConstant.sphereMean_outside`, `Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean` |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.DiscreteOccupationDensity`, `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
 | blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.ApproximatingSequence`, `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` |
 | blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |

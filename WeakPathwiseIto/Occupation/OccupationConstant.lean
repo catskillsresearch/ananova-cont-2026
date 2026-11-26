@@ -356,6 +356,42 @@ theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d}
   rw [mul_assoc _ (‖z‖ ^ (2 - (d : ℝ) - 4)), hpow]
   ring
 
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6e: smoothness of the power kernel): `z ↦ |z|^p` is
+`C^n` on `ℝ^d ∖ {0}`. -/
+theorem contDiffOn_norm_rpow {d : ℕ} {n : WithTop ℕ∞} (p : ℝ) :
+    ContDiffOn ℝ n (fun z : Rd d => ‖z‖ ^ p) {z | z ≠ 0} := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6f: kernel form of the sphere mean):
+`sphereMean d r y = ∫ σ(S)⁻¹ |y - rω|^{2-d} dσ(ω)`. -/
+theorem sphereMean_eq_integral (d : ℕ) (r : ℝ) :
+    sphereMean d r = fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ * ‖y - r • (ω : Rd d)‖ ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6g: first derivative of the sphere mean): off the
+sphere `|y| = r`, the sphere mean is differentiable with derivative the sphere integral of the
+kernel derivative. -/
+theorem hasFDerivAt_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d} (hy : ‖y‖ ≠ r) :
+    HasFDerivAt (sphereMean d r)
+      (∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere) y := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6h: second derivative of the sphere mean): off the
+sphere, the derivative from 6g is differentiable with derivative the sphere integral of the
+kernel Hessian. -/
+theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d}
+    (hy : ‖y‖ ≠ r) :
+    HasFDerivAt (fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere)
+      (∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere) y := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6i: continuity of the second derivative): the sphere
+integral of the kernel Hessian is continuous on `{|y| ≠ r}`. -/
+theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
+    ContinuousOn (fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ • fderiv ℝ (fderiv ℝ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ)))) (y - r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere)
+      {y | ‖y‖ ≠ r} := by
+  sorry
+
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
 theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
