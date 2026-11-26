@@ -105,7 +105,17 @@ theorem integrable (hα : 0 < α) : Integrable (besselKernel d α) := by
 `a > 0`, `∫_0^∞ g(δ) dδ = ∫_0^∞ g(a/u) a/u² du`. -/
 theorem integral_comp_div (g : ℝ → ℝ) {a : ℝ} (ha : 0 < a) :
     ∫ u in Ioi (0 : ℝ), a / u ^ 2 * g (a / u) = ∫ δ in Ioi (0 : ℝ), g δ := by
-  sorry
+  have h1 := integral_comp_rpow_Ioi (fun y => a * g (a * y)) (p := -1) (by norm_num)
+  have h2 : ∫ y in Ioi (0 : ℝ), a * g (a * y) = ∫ δ in Ioi (0 : ℝ), g δ := by
+    rw [integral_const_mul, integral_comp_mul_left_Ioi g 0 ha, mul_zero, smul_eq_mul, ← mul_assoc,
+      mul_inv_cancel₀ ha.ne', one_mul]
+  rw [← h2, ← h1]
+  refine setIntegral_congr_fun measurableSet_Ioi fun u hu => ?_
+  have hu' : (0 : ℝ) < u := hu
+  simp only [smul_eq_mul]
+  rw [show (-1 : ℝ) - 1 = -2 by norm_num, Real.rpow_neg_one, Real.rpow_neg hu'.le, abs_neg, abs_one,
+    one_mul, Real.rpow_two, div_eq_mul_inv a u]
+  ring
 
 /-- **Subgoal** (Definition 2.4, behaviour at the origin, step 2: rescaled kernel): for `x ≠ 0`,
 with `δ = π|x|²/u`,

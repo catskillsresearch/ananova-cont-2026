@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:45:43Z",
+ "updated": "2026-11-26T18:46:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 50,
+ "sorryCount": 49,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 38,
-  "done": 99
+  "done": 100
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 16,
-  "done": 62
+  "done": 63
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
     "fourier_eq",
-    "integral_comp_div",
     "mul_eq_integral",
     "tendsto_integral",
     "asymptotic_origin"
@@ -1580,11 +1579,10 @@
    "blockers": [
     "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.integral_comp_div",
     "Bessel.BesselKernel::besselKernel.mul_eq_integral",
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
-   "detail": "5 sorry: fourier_eq, integral_comp_div, mul_eq_integral, tendsto_integral, asymptotic_origin"
+   "detail": "4 sorry: fourier_eq, mul_eq_integral, tendsto_integral, asymptotic_origin"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1725,22 +1723,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.integral_comp_div"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u`): for `a > 0`, `∫_0^∞ g(δ) dδ = ∫_0^∞ g(a/u) a/u² du`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.integral_comp_div — subgoal of Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u` (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.integral_comp_div — subgoal of Definition 2.4, behaviour at the origin, step 1: substitution `δ = a/u` (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.integral_exp_slice",
