@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-26T21:11:33Z",
+ "updated": "2026-11-26T21:15:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 47,
  "counts": {
-  "open": 12,
-  "blocked": 26,
+  "open": 18,
+  "blocked": 27,
   "done": 156
  },
  "goalCounts": {
-  "open": 7,
-  "blocked": 18,
+  "open": 6,
+  "blocked": 19,
   "done": 40
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 12,
   "blocked": 8,
   "done": 116
  },
@@ -3026,16 +3026,67 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2",
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 8,
+   "holes": [
+    "tendsto_discreteTrace",
+    "tendsto_sum_sq",
+    "norm_increment_le",
+    "traceMeasure_Ioc",
+    "tendsto_riemannStieltjes",
+    "abs_integral_sub_le",
+    "tendsto_sum_left",
+    "lemma_4_2"
+   ],
+   "declKinds": {
+    "theorem": 8
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+    "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+    "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+    "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+    "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+    "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+    "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [
+    "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+    "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+    "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+    "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+    "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+    "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+    "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc"
+   ],
+   "detail": "8 sorry: tendsto_discreteTrace, tendsto_sum_sq, norm_increment_le, traceMeasure_Ioc, tendsto_riemannStieltjes, abs_integral_sub_le, tendsto_sum_left, lemma_4_2"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "label": "abs_integral_sub_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof, first display",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
    "sorryCount": 1,
    "holes": [
-    "lemma_4_2"
+    "lemma_4_2.abs_integral_sub_le"
    ],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
-   "kind": "goal",
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof, first display): if `|φ(x) - φ(y)| ≤ ε` whenever `|x - y| ≤ osc(ω, π_n)`, then `|∫ φ 𝓛^{π_n}_ω - ∑_i φ(ω(t_i)) |ω(t_{i+1}) - ω(t_i)|²| ≤ ε ∑_i |ω(t_{i+1}) - ω(t_i)|²`.",
    "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
@@ -3043,7 +3094,181 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [],
-   "detail": "1 sorry: lemma_4_2"
+   "detail": "sorry: lemma_4_2.abs_integral_sub_le — subgoal of Lemma 4.2 proof, first display (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "label": "norm_increment_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof: increments are bounded by the oscillation",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.norm_increment_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof: increments are bounded by the oscillation): `|ω(t_{i+1}) - ω(t_i)| ≤ osc(ω, π_n)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.norm_increment_le — subgoal of Lemma 4.2 proof: increments are bounded by the oscillation (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "label": "tendsto_discreteTrace",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof: discrete trace",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.tendsto_discreteTrace"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof: discrete trace): for `t ∈ [0, T]`, `∑_{t_{i+1} ≤ t} |ω(t_{i+1}) - ω(t_i)|² → tr[ω]_π(t)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.tendsto_discreteTrace — subgoal of Lemma 4.2 proof: discrete trace (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "label": "tendsto_riemannStieltjes",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.tendsto_riemannStieltjes"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof: Riemann–Stieltjes convergence): for `g` continuous on `[0, T]`, `∑_i g(t_{i+1}) |ω(t_{i+1}) - ω(t_i)|² → ∫_{[0,T]} g d tr[ω]_π` (weak convergence of the discrete quadratic-variation measures, from pointwise convergence of their distribution functions to the continuous `tr[ω]_π`).",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.tendsto_riemannStieltjes — subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "label": "tendsto_sum_left",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof, last display",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.tendsto_sum_left"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof, last display): with `φ` uniformly continuous and (6), `∑_i φ(ω(t_i)) |ω(t_{i+1}) - ω(t_i)|² → ∫_0^T φ(ω(t)) d tr[ω]_π(t)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.tendsto_sum_left — subgoal of Lemma 4.2 proof, last display (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "label": "tendsto_sum_sq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof: total discrete quadratic variation",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.tendsto_sum_sq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof: total discrete quadratic variation): `∑_i |ω(t_{i+1}) - ω(t_i)|² → tr[ω]_π(T)`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.tendsto_sum_sq — subgoal of Lemma 4.2 proof: total discrete quadratic variation (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+   "label": "traceMeasure_Ioc",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof: Stieltjes measure of an interval",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.traceMeasure_Ioc"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof: Stieltjes measure of an interval): for `0 ≤ a ≤ b ≤ T`, `d tr[ω]_π((a, b]) = tr[ω]_π(b) - tr[ω]_π(a)`, and `d tr[ω]_π` does not charge `{0}`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.traceMeasure_Ioc — subgoal of Lemma 4.2 proof: Stieltjes measure of an interval (in Occupation.Lemma42)"
   },
   {
    "id": "Occupation.NormalizedQuadraticDensity",
@@ -6929,6 +7154,41 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.OccupationSeminorm",
    "kind": "hard"
   },
@@ -7051,6 +7311,41 @@
    "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
    "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -7433,6 +7728,41 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
    "to": "Occupation.WeightedOccupationMeasure",
    "kind": "subgoal"
@@ -7580,6 +7910,41 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Lemma42",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
    "kind": "hard"
   },
   {
@@ -8980,7 +9345,31 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
-   "to": "Occupation.Lemma42"
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc"
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
@@ -9065,6 +9454,34 @@
   {
    "from": "Occupation.IncrementBall",
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc",
+   "to": "Occupation.Lemma42"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",
@@ -9356,7 +9773,31 @@
   },
   {
    "from": "Occupation.WeightedOccupationMeasure",
-   "to": "Occupation.Lemma42"
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc"
   },
   {
    "from": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq",
@@ -9452,7 +9893,31 @@
   },
   {
    "from": "Smooth.PathOscillation",
-   "to": "Occupation.Lemma42"
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.norm_increment_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc"
   },
   {
    "from": "Smooth.PathOscillation",

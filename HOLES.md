@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:11:33Z  
-**`sorry` occurrences:** 40 · 12 open · 26 blocked · 156 done (goals + subgoals) · goals {'open': 7, 'blocked': 18, 'done': 40} · subgoals {'open': 5, 'blocked': 8, 'done': 116} · 22 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:15:08Z  
+**`sorry` occurrences:** 47 · 18 open · 27 blocked · 156 done (goals + subgoals) · goals {'open': 6, 'blocked': 19, 'done': 40} · subgoals {'open': 12, 'blocked': 8, 'done': 116} · 22 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,7 +25,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Occupation.Lemma42` | Lemma 4.2 | 1 | `lemma_4_2` |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
@@ -114,6 +113,13 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball` | subgoal of Eq. (7 | 0 |
+| open | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le` | subgoal of Lemma 4.2 proof, first display | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.norm_increment_le` | subgoal of Lemma 4.2 proof: increments are bounded by the oscillation | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace` | subgoal of Lemma 4.2 proof: discrete trace | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes` | subgoal of Lemma 4.2 proof: Riemann–Stieltjes convergence | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.tendsto_sum_left` | subgoal of Lemma 4.2 proof, last display | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.tendsto_sum_sq` | subgoal of Lemma 4.2 proof: total discrete quadratic variation | 1 |
+| open | `Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc` | subgoal of Lemma 4.2 proof: Stieltjes measure of an interval | 1 |
 | done | `Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp` | subgoal of Lemma A.1, finiteness of `‖ρ_n‖_{L^q}` | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.clm_integral_sphere` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow` | subgoal of Eq. (7 | 0 |
@@ -236,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
-| open | `Occupation.Lemma42` | Lemma 4.2 | 1 |  |
+| blocked | `Occupation.Lemma42` | Lemma 4.2 | 8 | `Occupation.Lemma42::lemma_4_2.abs_integral_sub_le`, `Occupation.Lemma42::lemma_4_2.norm_increment_le`, `Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace`, `Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_left`, `Occupation.Lemma42::lemma_4_2.tendsto_sum_sq`, `Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc` |
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | blocked | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 3 | `Occupation.OccupationSeminorm::occupationSeminorm.add_le`, `Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm`, `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` |
