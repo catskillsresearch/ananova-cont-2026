@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T21:50:09Z",
+ "updated": "2026-11-26T21:51:56Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 26,
-  "done": 181
+  "done": 182
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 42
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 8,
-  "done": 139
+  "done": 140
  },
  "untagged": [],
  "legend": {
@@ -4766,9 +4766,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "abs_taylor2_le",
     "tendsto_hessian_left",
     "tendsto_remainder",
     "follmer_ito_formula"
@@ -4798,11 +4797,10 @@
    ],
    "blockers": [
     "Smooth.FollmerItoFormula::follmer_ito_formula",
-    "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
     "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
     "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
    ],
-   "detail": "4 sorry: abs_taylor2_le, tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
+   "detail": "3 sorry: tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -4846,17 +4844,15 @@
    "parentGoal": "Smooth.FollmerItoFormula",
    "tagged": true,
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
-   "holes": [
-    "follmer_ito_formula.abs_taylor2_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** ([Föl81] proof: second-order Taylor remainder): if `‖∇²f(z) - ∇²f(x)‖ ≤ ε` on the segment `[x, y]`, then `|f(y) - f(x) - ∇f(x)·(y-x) - ½⟨∇²f(x)(y-x), y-x⟩| ≤ ε |y-x|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4866,7 +4862,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: follmer_ito_formula.abs_taylor2_le — subgoal of [Föl81] proof: second-order Taylor remainder (in Smooth.FollmerItoFormula)"
+   "detail": "proved: follmer_ito_formula.abs_taylor2_le — subgoal of [Föl81] proof: second-order Taylor remainder (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",

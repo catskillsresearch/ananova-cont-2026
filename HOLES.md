@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:50:09Z  
-**`sorry` occurrences:** 41 · 13 open · 26 blocked · 181 done (goals + subgoals) · goals {'open': 5, 'blocked': 18, 'done': 42} · subgoals {'open': 8, 'blocked': 8, 'done': 139} · 20 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:51:56Z  
+**`sorry` occurrences:** 40 · 12 open · 26 blocked · 182 done (goals + subgoals) · goals {'open': 5, 'blocked': 18, 'done': 42} · subgoals {'open': 7, 'blocked': 8, 'done': 140} · 20 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -167,7 +167,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
 | done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
 | open | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 1 |
-| open | `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le` | subgoal of [Föl81] proof: second-order Taylor remainder | 1 |
+| done | `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le` | subgoal of [Föl81] proof: second-order Taylor remainder | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient` | subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm` | subgoal of [Föl81] proof: the Hessian of a `C²` function is symmetric | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq` | subgoal of [Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one | 0 |
@@ -244,7 +244,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Smooth.Corollary32` | Corollary 3.2 | 1 |  |
 | done | `Smooth.DiscreteQuadraticVariation` | Eq. (5) sums | 0 |  |
 | done | `Smooth.FollmerIntegral` | Corollary 3.2 integral | 0 |  |
-| blocked | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 4 | `Smooth.FollmerItoFormula::follmer_ito_formula`, `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder` |
+| blocked | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 3 | `Smooth.FollmerItoFormula::follmer_ito_formula`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left`, `Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder` |
 | done | `Smooth.HasQuadraticVariation` | Section 3 Q^π(ℝ^d) | 0 |  |
 | done | `Smooth.HasScalarQuadraticVariation` | Eq. (5) | 0 |  |
 | done | `Smooth.PathOscillation` | Eq. (6) | 0 |  |

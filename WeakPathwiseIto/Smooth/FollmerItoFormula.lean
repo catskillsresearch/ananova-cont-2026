@@ -80,7 +80,59 @@ theorem abs_taylor2_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) {x y : Rd d} {
     (hε : ∀ z ∈ segment ℝ x y, ‖smoothHessian f z - smoothHessian f x‖ ≤ ε) :
     |f y - f x - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪smoothHessian f x (y - x), y - x⟫| ≤
       ε * ‖y - x‖ ^ 2 := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hgd : Differentiable ℝ (gradient f) :=
+    (L.contDiff.comp (hf.fderiv_right (m := 1) (by norm_num))).differentiable (by norm_num)
+  have hfd : Differentiable ℝ f := hf.differentiable (by norm_num)
+  set H := smoothHessian f x with hHdef
+  have hε0 : 0 ≤ ε := (norm_nonneg _).trans (hε x (left_mem_segment ℝ x y))
+  have hgrad : ∀ z w, fderiv ℝ f z w = ⟪gradient f z, w⟫ := fun z w =>
+    InnerProductSpace.toDual_symm_apply.symm
+  have hball : ∀ z ∈ segment ℝ x y, ‖z - x‖ ≤ ‖y - x‖ := fun z hz => by
+    have := (convex_closedBall x ‖y - x‖).segment_subset (Metric.mem_closedBall_self (norm_nonneg _))
+      (by rw [Metric.mem_closedBall, dist_eq_norm]) hz
+    rwa [Metric.mem_closedBall, dist_eq_norm] at this
+  have hT1 : ∀ z ∈ segment ℝ x y, ‖gradient f z - gradient f x - H (z - x)‖ ≤ ε * ‖y - x‖ := by
+    intro z hz
+    have hsub : segment ℝ z x ⊆ segment ℝ x y :=
+      (convex_segment x y).segment_subset hz (left_mem_segment ℝ x y)
+    have h := proposition_3_1.norm_taylor_le (f := gradient f) hgd (x := z) (y := x) (ε := ε)
+      (fun w hw => hε w (hsub hw))
+    have e1 : fderiv ℝ (gradient f) x (x - z) = -(H (z - x)) := by
+      rw [← map_neg, neg_sub]; rfl
+    have e : gradient f x - gradient f z - fderiv ℝ (gradient f) x (x - z) =
+        -(gradient f z - gradient f x - H (z - x)) := by rw [e1]; abel
+    rw [e, norm_neg, norm_sub_rev x z] at h
+    exact h.trans (mul_le_mul_of_nonneg_left (hball z hz) hε0)
+  have hφ := fun z => ((hfd z).hasFDerivAt.sub ((hasFDerivAt_const (gradient f x) z).inner (𝕜 := ℝ)
+    ((hasFDerivAt_id z).sub_const x))).sub
+    (((H.hasFDerivAt.comp z ((hasFDerivAt_id z).sub_const x)).inner (𝕜 := ℝ)
+      ((hasFDerivAt_id z).sub_const x)).const_mul (1 / 2))
+  have key := (convex_segment x y).norm_image_sub_le_of_norm_fderiv_le
+    (C := ε * ‖y - x‖) (fun z _ => (hφ z).differentiableAt)
+    (fun z hz => by
+      rw [(hφ z).fderiv]
+      refine ContinuousLinearMap.opNorm_le_bound _ (by positivity) fun w => ?_
+      calc _ = ‖⟪gradient f z - gradient f x - H (z - x), w⟫‖ := by
+            congr 1
+            simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
+              ContinuousLinearMap.comp_apply, ContinuousLinearMap.prod_apply, fderivInnerCLM_apply,
+              hgrad, inner_sub_left, ContinuousLinearMap.zero_apply, inner_zero_left,
+              id_eq, ContinuousLinearMap.id_apply, smul_eq_mul]
+            rw [hHdef, hessian_symm hf x w (z - x)]
+            simp only [Function.comp_apply, real_inner_comm w]
+            ring
+        _ ≤ ‖gradient f z - gradient f x - H (z - x)‖ * ‖w‖ := by
+            rw [Real.norm_eq_abs]; exact abs_real_inner_le_norm _ _
+        _ ≤ ε * ‖y - x‖ * ‖w‖ := mul_le_mul_of_nonneg_right (hT1 z hz) (norm_nonneg _))
+    (left_mem_segment ℝ x y) (right_mem_segment ℝ x y)
+  simp only [Pi.sub_apply, Function.comp_apply, id_eq, sub_self, inner_zero_right, map_zero,
+    mul_zero, sub_zero] at key
+  rw [Real.norm_eq_abs] at key
+  calc _ = |f y - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪H (y - x), y - x⟫ - f x| := by
+        congr 1; ring
+    _ ≤ ε * ‖y - x‖ * ‖y - x‖ := key
+    _ = ε * ‖y - x‖ ^ 2 := by ring
 
 /-- **Subgoal** ([Föl81] proof: `∑_k ⟨∇²f(ω(t_k)) δ_kω, δ_kω⟩ → ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`). -/
 theorem tendsto_hessian_left {π : ℕ → Partition T} {ω : ℝ → Rd d}
