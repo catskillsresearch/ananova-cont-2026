@@ -67,7 +67,89 @@ theorem integrableOn_term {d : ℕ} (y : Rd d) (R : ℝ) :
   calc ‖x - y‖ ≤ ‖x‖ + ‖y‖ := norm_sub_le _ _
     _ < R + ‖y‖ := by linarith
 
-/-- **Subgoal** (Eq. (7) c_d, step 4: Newton's theorem for a ball): for `|y| = R > 0`,
+/-- **Subgoal** (Eq. (7) c_d, Newton step 1: sphere mean): the average of `ω ↦ |rω - y|^{2-d}`
+over the unit sphere `S^{d-1}` (for the surface measure `volume.toSphere`). -/
+def sphereMean (d : ℕ) (r : ℝ) (y : Rd d) : ℝ :=
+  ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+    ∫ ω, ‖r • (ω : Rd d) - y‖ ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 2: polar coordinates on a ball): for `f` integrable on
+`B(0,R)`, `∫_{B(0,R)} f = ∫_0^R r^{d-1} ∫_{S^{d-1}} f(rω) dσ(ω) dr`. -/
+theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {f : Rd d → ℝ}
+    (hf : IntegrableOn f (Metric.ball 0 R)) :
+    ∫ x in Metric.ball (0 : Rd d) R, f x =
+      ∫ r in Ioo 0 R, r ^ (d - 1) *
+        ∫ ω, f (r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 3: rotation invariance): the surface measure on
+`S^{d-1}` is invariant under linear isometries. -/
+theorem integral_toSphere_isometry {d : ℕ} (L : Rd d ≃ₗᵢ[ℝ] Rd d) (g : Rd d → ℝ) :
+    ∫ ω, g (L (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere =
+      ∫ ω, g (ω : Rd d) ∂(volume : Measure (Rd d)).toSphere := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 4: the sphere mean is radial): `sphereMean d r y` only
+depends on `|y|`. -/
+theorem sphereMean_radial {d : ℕ} (r : ℝ) {y y' : Rd d} (h : ‖y‖ = ‖y'‖) :
+    sphereMean d r y = sphereMean d r y' := by
+  sorry
+
+open Laplacian in
+/-- **Subgoal** (Eq. (7) c_d, Newton step 5: the Newton kernel is harmonic): for `d ≥ 3` and
+`z ≠ 0`, `Δ |z|^{2-d} = 0`. -/
+theorem laplacian_newtonKernel {d : ℕ} (hd : 3 ≤ d) {z : Rd d} (hz : z ≠ 0) :
+    Δ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) z = 0 := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
+`d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
+theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
+    (hy : ‖y‖ ≠ r) : InnerProductSpace.HarmonicAt (sphereMean d r) y := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 7: radial harmonic functions): for `d ≥ 3`, a radial
+function harmonic on `{|y| > r}` is `a + b |y|^{2-d}` there. -/
+theorem radial_harmonic_eq {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 ≤ r) {u : Rd d → ℝ}
+    (hu : ∀ y : Rd d, r < ‖y‖ → InnerProductSpace.HarmonicAt u y)
+    (hrad : ∀ y y' : Rd d, ‖y‖ = ‖y'‖ → u y = u y') :
+    ∃ a b : ℝ, ∀ y : Rd d, r < ‖y‖ → u y = a + b * ‖y‖ ^ (2 - (d : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 8: behaviour at infinity): for `d ≥ 3` and `r > 0`,
+`|y|^{d-2} sphereMean d r y → 1` as `|y| → ∞`. -/
+theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :
+    Tendsto (fun y : Rd d => ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y) (cocompact (Rd d))
+      (𝓝 1) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 9: Newton's shell theorem outside the sphere): for
+`d ≥ 3`, `0 < r < |y|`, `sphereMean d r y = |y|^{2-d}`. -/
+theorem sphereMean_outside {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
+    (hy : r < ‖y‖) : sphereMean d r y = ‖y‖ ^ (2 - (d : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 10: integrating over shells): Newton's theorem for a
+ball, `d ≥ 3`. -/
+theorem newton_ball_of_three_le {d : ℕ} (hd : 3 ≤ d) {R : ℝ} (hR : 0 < R) {y : Rd d}
+    (hy : ‖y‖ = R) :
+    ∫ x in Metric.ball (0 : Rd d) R, ‖x - y‖ ^ (2 - (d : ℝ)) =
+      (volume (Metric.ball (0 : Rd d) R)).toReal * R ^ (2 - (d : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 11: `d = 1`): Newton's theorem for an interval. -/
+theorem newton_ball_dim_one {R : ℝ} (hR : 0 < R) {y : Rd 1} (hy : ‖y‖ = R) :
+    ∫ x in Metric.ball (0 : Rd 1) R, ‖x - y‖ ^ (2 - ((1 : ℕ) : ℝ)) =
+      (volume (Metric.ball (0 : Rd 1) R)).toReal * R ^ (2 - ((1 : ℕ) : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, Newton step 12: `d = 2`): the kernel is `1`. -/
+theorem newton_ball_dim_two {R : ℝ} {y : Rd 2} :
+    ∫ x in Metric.ball (0 : Rd 2) R, ‖x - y‖ ^ (2 - ((2 : ℕ) : ℝ)) =
+      (volume (Metric.ball (0 : Rd 2) R)).toReal * R ^ (2 - ((2 : ℕ) : ℝ)) := by
+  sorry
+
+/-- **Subgoal** (Eq. (7) c_d, step 4 = Newton step 13: Newton's theorem for a ball): for `|y| = R > 0`,
 `∫_{B(0,R)} |x - y|^{2-d} dx = |B(0,R)| R^{2-d}` (mean value property of the Newton kernel). -/
 theorem newton_ball {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {y : Rd d} (hy : ‖y‖ = R) :
     ∫ x in Metric.ball (0 : Rd d) R, ‖x - y‖ ^ (2 - (d : ℝ)) =
