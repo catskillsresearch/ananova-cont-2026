@@ -744,7 +744,75 @@ theorem sphereMean_bounds {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : R
     (hy : r < ‖y‖) :
     (1 + r / ‖y‖) ^ (2 - (d : ℝ)) ≤ ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y ∧
       ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y ≤ (1 - r / ‖y‖) ^ (2 - (d : ℝ)) := by
-  sorry
+  have hd0 : 0 < d := by omega
+  have hny : 0 < ‖y‖ := hr.trans hy
+  have hp : (2 - (d : ℝ)) ≤ 0 := by
+    have : (3 : ℝ) ≤ d := by exact_mod_cast hd
+    linarith
+  haveI : Nonempty (Metric.sphere (0 : Rd d) 1) :=
+    ⟨⟨EuclideanSpace.single (⟨0, hd0⟩ : Fin d) (1 : ℝ), by simp⟩⟩
+  have hσ0 : (volume : Measure (Rd d)).toSphere univ ≠ 0 :=
+    isOpen_univ.measure_ne_zero _ univ_nonempty
+  have hσpos : 0 < (volume : Measure (Rd d)).toSphere.real univ :=
+    ENNReal.toReal_pos hσ0 (measure_ne_top _ _)
+  have hlo : ∀ ω : Metric.sphere (0 : Rd d) 1, ‖y‖ - r ≤ ‖r • (ω : Rd d) - y‖ := fun ω => by
+    have h1 := norm_sub_norm_le y (r • (ω : Rd d))
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one,
+      norm_sub_rev] at h1
+    exact h1
+  have hhi : ∀ ω : Metric.sphere (0 : Rd d) 1, ‖r • (ω : Rd d) - y‖ ≤ ‖y‖ + r := fun ω => by
+    have h1 := norm_sub_le (r • (ω : Rd d)) y
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one] at h1
+    linarith
+  set h : Metric.sphere (0 : Rd d) 1 → ℝ := fun ω => (‖r • (ω : Rd d) - y‖ / ‖y‖) ^ (2 - (d : ℝ))
+    with hh
+  have hkey : ∀ ω : Metric.sphere (0 : Rd d) 1,
+      ‖y‖ ^ ((d : ℝ) - 2) * ‖r • (ω : Rd d) - y‖ ^ (2 - (d : ℝ)) = h ω := fun ω => by
+    show _ = (‖r • (ω : Rd d) - y‖ / ‖y‖) ^ (2 - (d : ℝ))
+    rw [Real.div_rpow (norm_nonneg _) hny.le, show (d : ℝ) - 2 = -(2 - (d : ℝ)) by ring,
+      Real.rpow_neg hny.le]
+    field_simp
+  have hqlo : ∀ ω : Metric.sphere (0 : Rd d) 1, 1 - r / ‖y‖ ≤ ‖r • (ω : Rd d) - y‖ / ‖y‖ :=
+    fun ω => by rw [le_div_iff₀ hny]; field_simp; linarith [hlo ω]
+  have hqhi : ∀ ω : Metric.sphere (0 : Rd d) 1, ‖r • (ω : Rd d) - y‖ / ‖y‖ ≤ 1 + r / ‖y‖ :=
+    fun ω => by rw [div_le_iff₀ hny]; field_simp; linarith [hhi ω]
+  have hq0 : 0 < 1 - r / ‖y‖ := by
+    rw [sub_pos, div_lt_one hny]; exact hy
+  have hblo : ∀ ω, (1 + r / ‖y‖) ^ (2 - (d : ℝ)) ≤ h ω := fun ω =>
+    Real.rpow_le_rpow_of_nonpos (hq0.trans_le (hqlo ω)) (hqhi ω) hp
+  have hbhi : ∀ ω, h ω ≤ (1 - r / ‖y‖) ^ (2 - (d : ℝ)) := fun ω =>
+    Real.rpow_le_rpow_of_nonpos hq0 (hqlo ω) hp
+  have hcont : Continuous h := by
+    refine Continuous.rpow_const (by fun_prop) fun ω => Or.inl ?_
+    exact (hq0.trans_le (hqlo ω)).ne'
+  have hInt : Integrable h (volume : Measure (Rd d)).toSphere :=
+    Integrable.of_bound hcont.aestronglyMeasurable _ (Filter.Eventually.of_forall fun ω => by
+      rw [Real.norm_eq_abs, abs_of_nonneg (Real.rpow_nonneg (hq0.le.trans (hqlo ω)) _)]
+      exact hbhi ω)
+  have hsm : ‖y‖ ^ ((d : ℝ) - 2) * sphereMean d r y =
+      ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+        ∫ ω, h ω ∂(volume : Measure (Rd d)).toSphere := by
+    rw [sphereMean, mul_left_comm, ← integral_const_mul]
+    congr 1
+    exact integral_congr_ae (Filter.Eventually.of_forall hkey)
+  have hconst : ∀ c : ℝ, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+      ∫ _ω, c ∂(volume : Measure (Rd d)).toSphere = c := fun c => by
+    rw [integral_const, smul_eq_mul, ← mul_assoc, inv_mul_cancel₀ hσpos.ne', one_mul]
+  rw [hsm]
+  constructor
+  · calc (1 + r / ‖y‖) ^ (2 - (d : ℝ)) = ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+          ∫ _ω, (1 + r / ‖y‖) ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere :=
+          (hconst _).symm
+      _ ≤ _ := by
+          exact mul_le_mul_of_nonneg_left (integral_mono (integrable_const _) hInt hblo)
+            (inv_nonneg.2 hσpos.le)
+  · calc ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+          ∫ ω, h ω ∂(volume : Measure (Rd d)).toSphere ≤
+          ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ *
+          ∫ _ω, (1 - r / ‖y‖) ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere := by
+          exact mul_le_mul_of_nonneg_left (integral_mono hInt (integrable_const _) hbhi)
+            (inv_nonneg.2 hσpos.le)
+      _ = _ := hconst _
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 8: behaviour at infinity): for `d ≥ 3` and `r > 0`,
 `|y|^{d-2} sphereMean d r y → 1` as `|y| → ∞`. -/
