@@ -187,7 +187,14 @@ theorem integral_toSphere_isometry {d : ℕ} (L : Rd d ≃ₗᵢ[ℝ] Rd d) (g :
 depends on `|y|`. -/
 theorem sphereMean_radial {d : ℕ} (r : ℝ) {y y' : Rd d} (h : ‖y‖ = ‖y'‖) :
     sphereMean d r y = sphereMean d r y' := by
-  sorry
+  unfold sphereMean
+  congr 1
+  set L : Rd d ≃ₗᵢ[ℝ] Rd d := (ℝ ∙ (y - y'))ᗮ.reflection with hL
+  have hLy : L y = y' := Submodule.reflection_sub h
+  rw [← integral_toSphere_isometry L (fun z => ‖r • z - y'‖ ^ (2 - (d : ℝ)))]
+  refine integral_congr_ae (Eventually.of_forall fun ω => ?_)
+  simp only
+  rw [← hLy, ← L.map_smul, ← L.map_sub, L.norm_map]
 
 open Laplacian in
 /-- **Subgoal** (Eq. (7) c_d, Newton step 5: the Newton kernel is harmonic): for `d ≥ 3` and
