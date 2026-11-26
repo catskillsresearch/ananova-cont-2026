@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T21:55:52Z",
+ "updated": "2026-11-26T21:56:14Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
   "open": 9,
   "blocked": 25,
@@ -4693,10 +4693,8 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Corollary 3.2",
    "file": "WeakPathwiseIto/Smooth/Corollary32.lean",
-   "sorryCount": 1,
-   "holes": [
-    "corollary_3_2"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 2
    },
@@ -4715,7 +4713,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "1 sorry: corollary_3_2"
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",

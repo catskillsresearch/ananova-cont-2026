@@ -49,6 +49,8 @@ theorem corollary_3_2 {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ �
         (𝓝 (follmerIntegral π (gradient f) ω T)) ∧
       f (ω T) = f (ω 0) + follmerIntegral π (gradient f) ω T +
         1 / 2 * pathwiseCovariation π (gradient f) ω T := by
-  sorry
+  obtain ⟨h1, h2⟩ := follmer_ito_formula hω hQV hosc hf
+  rw [corollary_3_2.pathwiseCovariation_eq hω hQV hosc hf]
+  exact ⟨h1, h2⟩
 
 end WeakPathwiseIto
