@@ -482,7 +482,11 @@ theorem clm_integral_sphere {d : ℕ} {F G : Type*} [NormedAddCommGroup F] [Norm
     (L : F →L[ℝ] G) {φ : Metric.sphere (0 : Rd d) 1 → F} (hφ : Continuous φ) :
     L (∫ ω, φ ω ∂(volume : Measure (Rd d)).toSphere) =
       ∫ ω, L (φ ω) ∂(volume : Measure (Rd d)).toSphere := by
-  sorry
+  obtain ⟨C, hC⟩ := (isCompact_univ (X := Metric.sphere (0 : Rd d) 1)).exists_bound_of_continuousOn
+    hφ.continuousOn
+  have hInt : Integrable φ (volume : Measure (Rd d)).toSphere :=
+    Integrable.of_bound hφ.aestronglyMeasurable C (Filter.Eventually.of_forall fun ω => hC ω trivial)
+  exact (L.integral_comp_comm hInt).symm
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6: the sphere mean is harmonic off the sphere): for
 `d ≥ 3`, `r > 0` and `|y| ≠ r`, `sphereMean d r` is harmonic at `y`. -/
