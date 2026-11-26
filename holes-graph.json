@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T21:45:13Z",
+ "updated": "2026-11-26T21:46:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 45,
  "counts": {
-  "open": 10,
+  "open": 17,
   "blocked": 26,
   "done": 177
  },
@@ -13,7 +13,7 @@
   "done": 42
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 12,
   "blocked": 8,
   "done": 135
  },
@@ -4766,12 +4766,19 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "[Föl81] Itô formula",
    "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
-   "sorryCount": 1,
+   "sorryCount": 8,
    "holes": [
+    "contDiffBounded_gradient",
+    "hessian_symm",
+    "riemannSum_eq",
+    "sub_eq_sum",
+    "abs_taylor2_le",
+    "tendsto_hessian_left",
+    "tendsto_remainder",
     "follmer_ito_formula"
    ],
    "declKinds": {
-    "theorem": 1
+    "theorem": 8
    },
    "paperGoal": false,
    "verified": false,
@@ -4782,13 +4789,28 @@
     "Basic.SmoothHessian",
     "Smooth.FollmerIntegral",
     "Smooth.FollmerItoFormula::follmer_ito_formula",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
     "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
    ],
    "blockers": [
-    "Smooth.FollmerItoFormula::follmer_ito_formula"
+    "Smooth.FollmerItoFormula::follmer_ito_formula",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+    "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
    ],
-   "detail": "1 sorry: follmer_ito_formula"
+   "detail": "8 sorry: contDiffBounded_gradient, hessian_symm, riemannSum_eq, sub_eq_sum, abs_taylor2_le, tendsto_hessian_left, tendsto_remainder, follmer_ito_formula"
   },
   {
    "id": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -4816,10 +4838,235 @@
     "Basic.SmoothHessian",
     "Smooth.FollmerIntegral",
     "Smooth.HasQuadraticVariation",
-    "Smooth.PathOscillation"
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
    ],
    "blockers": [],
    "detail": "sorry: follmer_ito_formula — subgoal of Corollary 3.2 proof, [Föl81] (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "label": "abs_taylor2_le",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: second-order Taylor remainder",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.abs_taylor2_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: second-order Taylor remainder): if `‖∇²f(z) - ∇²f(x)‖ ≤ ε` on the segment `[x, y]`, then `|f(y) - f(x) - ∇f(x)·(y-x) - ½⟨∇²f(x)(y-x), y-x⟩| ≤ ε |y-x|²`.",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.abs_taylor2_le — subgoal of [Föl81] proof: second-order Taylor remainder (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "label": "contDiffBounded_gradient",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b`",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.contDiffBounded_gradient"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.contDiffBounded_gradient — subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "label": "hessian_symm",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: the Hessian of a `C²` function is symmetric",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.hessian_symm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: the Hessian of a `C²` function is symmetric).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.hessian_symm — subgoal of [Föl81] proof: the Hessian of a `C²` function is symmetric (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "label": "riemannSum_eq",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.riemannSum_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.riemannSum_eq — subgoal of [Föl81] proof: at `t = T` the stopped left Riemann sum is the plain one (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "label": "sub_eq_sum",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: telescoping `f(ω(T",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.sub_eq_sum"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: telescoping `f(ω(T)) - f(ω(0)) = ∑_k (f(ω(t_{k+1})) - f(ω(t_k)))`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.sub_eq_sum — subgoal of [Föl81] proof: telescoping `f(ω(T (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "label": "tendsto_hessian_left",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: `∑_k ⟨∇²f(ω(t_k",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.tendsto_hessian_left"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: `∑_k ⟨∇²f(ω(t_k)) δ_kω, δ_kω⟩ → ∫_0^T ⟨∇²f(ω), d[ω]_π⟩`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.tendsto_hessian_left — subgoal of [Föl81] proof: `∑_k ⟨∇²f(ω(t_k (in Smooth.FollmerItoFormula)"
+  },
+  {
+   "id": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
+   "label": "tendsto_remainder",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of [Föl81] proof: the second-order Taylor remainders sum to `o(1",
+   "parentGoal": "Smooth.FollmerItoFormula",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/FollmerItoFormula.lean",
+   "sorryCount": 1,
+   "holes": [
+    "follmer_ito_formula.tendsto_remainder"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** ([Föl81] proof: the second-order Taylor remainders sum to `o(1)`, `≤ ρ_{∇²f}(osc) ∑ |δ_kω|²`).",
+   "status": "open",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Smooth.FollmerIntegral",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: follmer_ito_formula.tendsto_remainder — subgoal of [Föl81] proof: the second-order Taylor remainders sum to `o(1 (in Smooth.FollmerItoFormula)"
   },
   {
    "id": "Smooth.HasQuadraticVariation",
@@ -6058,6 +6305,41 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -6814,6 +7096,41 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "kind": "hard"
   },
   {
@@ -8262,7 +8579,77 @@
    "kind": "hard"
   },
   {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
    "from": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "to": "Smooth.FollmerItoFormula",
    "kind": "subgoal"
   },
@@ -8299,6 +8686,41 @@
   {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "kind": "hard"
   },
   {
@@ -8508,6 +8930,41 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -8629,6 +9086,51 @@
   {
    "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "kind": "hard"
   },
   {
@@ -9087,10 +9589,6 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Smooth.Corollary32"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -9591,6 +10089,34 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
   },
   {
    "from": "Basic.WeakLpTendsto",
@@ -10593,7 +11119,63 @@
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
+  },
+  {
    "from": "Smooth.FollmerItoFormula::follmer_ito_formula",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left",
+   "to": "Smooth.FollmerItoFormula"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "to": "Smooth.FollmerItoFormula"
   },
   {
@@ -10611,10 +11193,6 @@
   {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.Corollary32"
-  },
-  {
-   "from": "Smooth.HasQuadraticVariation",
-   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
   },
   {
    "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -10709,10 +11287,6 @@
    "to": "Smooth.Corollary32"
   },
   {
-   "from": "Smooth.PathOscillation",
-   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
-  },
-  {
    "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
    "to": "Smooth.PathOscillation"
   },
@@ -10763,6 +11337,38 @@
   {
    "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
   },
   {
    "from": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le",
