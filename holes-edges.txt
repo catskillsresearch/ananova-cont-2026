@@ -347,7 +347,9 @@ Occupation.ApproximatingSequence -hard-> Occupation.PathwiseSobolevSpace
 Occupation.ApproximatingSequence -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42
+Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le
+Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.norm_increment_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes
@@ -379,7 +381,9 @@ Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteO
 Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece
 Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg
 Occupation.IncrementBall -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball
+Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le -hard-> Occupation.Lemma42
 Occupation.Lemma42::lemma_4_2.abs_integral_sub_le -hard-> Occupation.Lemma42
+Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le -hard-> Occupation.Lemma42
 Occupation.Lemma42::lemma_4_2.norm_increment_le -hard-> Occupation.Lemma42
 Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace -hard-> Occupation.Lemma42
 Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes -hard-> Occupation.Lemma42
@@ -462,7 +466,9 @@ Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44
 Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset -hard-> Occupation.PathwiseSobolevSpace
 Occupation.Remark44 -hard-> Occupation.Remark45
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42
+Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le
+Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.norm_increment_le
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes
@@ -499,7 +505,9 @@ Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt -hard-> Sm
 Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone -hard-> Smooth.HasScalarQuadraticVariation
 Smooth.PathOscillation -hard-> Main.Theorem51
 Smooth.PathOscillation -hard-> Occupation.Lemma42
+Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le
+Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le
 Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.norm_increment_le
 Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace
 Smooth.PathOscillation -hard-> Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes

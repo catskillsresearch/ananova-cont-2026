@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-26T21:21:14Z",
+ "updated": "2026-11-26T21:22:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 43,
  "counts": {
-  "open": 13,
+  "open": 15,
   "blocked": 27,
   "done": 161
  },
@@ -13,7 +13,7 @@
   "done": 40
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 9,
   "blocked": 8,
   "done": 121
  },
@@ -3026,13 +3026,15 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Lemma 4.2",
    "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
-   "sorryCount": 2,
+   "sorryCount": 4,
    "holes": [
+    "abs_sum_sub_grid_le",
+    "abs_integral_sub_grid_le",
     "tendsto_riemannStieltjes",
     "tendsto_sum_left"
    ],
    "declKinds": {
-    "theorem": 8
+    "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
@@ -3040,7 +3042,9 @@
    "status": "blocked",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
+    "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
     "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+    "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
     "Occupation.Lemma42::lemma_4_2.norm_increment_le",
     "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace",
     "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
@@ -3051,10 +3055,41 @@
     "Smooth.PathOscillation"
    ],
    "blockers": [
+    "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+    "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
     "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes",
     "Occupation.Lemma42::lemma_4_2.tendsto_sum_left"
    ],
-   "detail": "2 sorry: tendsto_riemannStieltjes, tendsto_sum_left"
+   "detail": "4 sorry: abs_sum_sub_grid_le, abs_integral_sub_grid_le, tendsto_riemannStieltjes, tendsto_sum_left"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "label": "abs_integral_sub_grid_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step b: the Stieltjes integral",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.abs_integral_sub_grid_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step b: the Stieltjes integral): with the grid `s_k = kT/K` and `g` continuous on `[0,T]` varying by at most `η` over distances `≤ T/K`, `|∫_{[0,T]} g d tr[ω]_π - ∑_{k<K} g(s_{k+1}) (tr(s_{k+1}) - tr(s_k))| ≤ η (tr(T) - tr(0))`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.abs_integral_sub_grid_le — subgoal of Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step b: the Stieltjes integral (in Occupation.Lemma42)"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
@@ -3082,6 +3117,35 @@
    ],
    "blockers": [],
    "detail": "proved: lemma_4_2.abs_integral_sub_le — subgoal of Lemma 4.2 proof, first display (in Occupation.Lemma42)"
+  },
+  {
+   "id": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
+   "label": "abs_sum_sub_grid_le",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step a: discrete sums",
+   "parentGoal": "Occupation.Lemma42",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Lemma42.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_4_2.abs_sum_sub_grid_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step a: discrete sums): for points `r_i ∈ (0, T]` with weights `w_i ≥ 0` and the grid `s_k = kT/K`, if `g` varies by at most `η` on `[0,T]` over distances `≤ T/K`, then `|∑_i g(r_i) w_i - ∑_{k<K} g(s_{k+1}) (W(s_{k+1}) - W(s_k))| ≤ η ∑_i w_i`, where `W(s) = ∑_{r_i ≤ s} w_i`.",
+   "status": "open",
+   "deps": [
+    "Occupation.DiscreteOccupationDensity",
+    "Occupation.WeightedOccupationMeasure",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_4_2.abs_sum_sub_grid_le — subgoal of Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step a: discrete sums (in Occupation.Lemma42)"
   },
   {
    "id": "Occupation.Lemma42::lemma_4_2.norm_increment_le",
@@ -7133,7 +7197,17 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
    "kind": "hard"
   },
   {
@@ -7292,7 +7366,17 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
    "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "to": "Occupation.Lemma42",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
    "to": "Occupation.Lemma42",
    "kind": "subgoal"
   },
@@ -7708,7 +7792,17 @@
   },
   {
    "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
    "kind": "hard"
   },
   {
@@ -7893,7 +7987,17 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
    "kind": "hard"
   },
   {
@@ -9324,7 +9428,15 @@
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Occupation.DiscreteOccupationDensity",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le"
   },
   {
    "from": "Occupation.DiscreteOccupationDensity",
@@ -9435,7 +9547,15 @@
    "to": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
   },
   {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le",
+   "to": "Occupation.Lemma42"
+  },
+  {
    "from": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le",
+   "to": "Occupation.Lemma42"
+  },
+  {
+   "from": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le",
    "to": "Occupation.Lemma42"
   },
   {
@@ -9752,7 +9872,15 @@
   },
   {
    "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Occupation.WeightedOccupationMeasure",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le"
   },
   {
    "from": "Occupation.WeightedOccupationMeasure",
@@ -9872,7 +10000,15 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le"
   },
   {
    "from": "Smooth.PathOscillation",

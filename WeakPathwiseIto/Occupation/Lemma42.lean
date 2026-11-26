@@ -116,6 +116,33 @@ theorem traceMeasure_Ioc (hQV : HasQuadraticVariation π ω) {a b : ℝ} (ha : 0
       (F.mono.continuousWithinAt_Iio_iff_leftLim_eq).1 hFc.continuousWithinAt, sub_self,
       ENNReal.ofReal_zero]
 
+open scoped Classical in
+/-- **Subgoal** (Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step a: discrete sums): for
+points `r_i ∈ (0, T]` with weights `w_i ≥ 0` and the grid `s_k = kT/K`, if `g` varies by at
+most `η` on `[0,T]` over distances `≤ T/K`, then
+`|∑_i g(r_i) w_i - ∑_{k<K} g(s_{k+1}) (W(s_{k+1}) - W(s_k))| ≤ η ∑_i w_i`, where
+`W(s) = ∑_{r_i ≤ s} w_i`. -/
+theorem abs_sum_sub_grid_le {ι : Type*} [Fintype ι] {r w : ι → ℝ} (hr : ∀ i, r i ∈ Ioc 0 T)
+    (hw : ∀ i, 0 ≤ w i) {K : ℕ} (hK : 0 < K) {g : ℝ → ℝ} {η : ℝ}
+    (hη : ∀ x ∈ Icc 0 T, ∀ y ∈ Icc 0 T, |x - y| ≤ T / K → |g x - g y| ≤ η) :
+    |∑ i, g (r i) * w i - ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
+        (∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k + 1 : ℕ) * T / K), w i -
+          ∑ i ∈ Finset.univ.filter (fun i => r i ≤ (k : ℕ) * T / K), w i)| ≤
+      η * ∑ i, w i := by
+  sorry
+
+/-- **Subgoal** (Lemma 4.2 proof, `tendsto_riemannStieltjes` grid step b: the Stieltjes
+integral): with the grid `s_k = kT/K` and `g` continuous on `[0,T]` varying by at most `η`
+over distances `≤ T/K`, `|∫_{[0,T]} g d tr[ω]_π - ∑_{k<K} g(s_{k+1}) (tr(s_{k+1}) - tr(s_k))|
+≤ η (tr(T) - tr(0))`. -/
+theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (hK : 0 < K)
+    {g : ℝ → ℝ} (hg : ContinuousOn g (Icc 0 T)) {η : ℝ}
+    (hη : ∀ x ∈ Icc 0 T, ∀ y ∈ Icc 0 T, |x - y| ≤ T / K → |g x - g y| ≤ η) :
+    |(∫ t in Icc 0 T, g t ∂hQV.traceMeasure) - ∑ k ∈ Finset.range K, g ((k + 1 : ℕ) * T / K) *
+        (hQV.trace ((k + 1 : ℕ) * T / K) - hQV.trace ((k : ℕ) * T / K))| ≤
+      η * (hQV.trace T - hQV.trace 0) := by
+  sorry
+
 /-- **Subgoal** (Lemma 4.2 proof: Riemann–Stieltjes convergence): for `g` continuous on `[0, T]`,
 `∑_i g(t_{i+1}) |ω(t_{i+1}) - ω(t_i)|² → ∫_{[0,T]} g d tr[ω]_π` (weak convergence of the
 discrete quadratic-variation measures, from pointwise convergence of their distribution
