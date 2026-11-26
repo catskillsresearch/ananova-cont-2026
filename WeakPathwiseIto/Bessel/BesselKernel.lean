@@ -80,7 +80,25 @@ theorem integral_profile_exp (hα : 0 < α) (ξ : Rd d) :
         (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
       (4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2) *
         (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) ^ (-(α / 2)) := by
-  sorry
+  set r : ℝ := 1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2 with hr_def
+  have hr : 0 < r := by positivity
+  have key : ∀ δ ∈ Ioi (0 : ℝ), Real.exp (-δ / (4 * Real.pi)) * δ ^ ((α - d) / 2) / δ *
+      (δ ^ ((d : ℝ) / 2) * Real.exp (-Real.pi * δ * ‖ξ‖ ^ 2)) =
+      δ ^ (α / 2 - 1) * Real.exp (-(r * δ)) := by
+    intro δ hδ
+    have hδ' : (0 : ℝ) < δ := hδ
+    rw [show α / 2 - 1 = ((α - d) / 2 + (d : ℝ) / 2) - 1 by ring, Real.rpow_sub_one hδ'.ne',
+      Real.rpow_add hδ', hr_def,
+      show -((1 / (4 * Real.pi) + Real.pi * ‖ξ‖ ^ 2) * δ) =
+        -δ / (4 * Real.pi) + -Real.pi * δ * ‖ξ‖ ^ 2 by field_simp; ring, Real.exp_add]
+    field_simp
+  rw [setIntegral_congr_fun measurableSet_Ioi key,
+    Real.integral_rpow_mul_exp_neg_mul_Ioi (by linarith : 0 < α / 2) hr]
+  have hA : 0 < 1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2 := by positivity
+  rw [show 1 / r = 4 * Real.pi / (1 + 4 * Real.pi ^ 2 * ‖ξ‖ ^ 2) by
+      rw [hr_def]; field_simp,
+    Real.div_rpow (by positivity) hA.le, Real.rpow_neg hA.le]
+  ring
 
 /-- **Subgoal** (Definition 2.4). Definition 2.4: the Fourier transform `ĝ_α(ξ) = ∫ g_α(x) e^{-2πi x·ξ} dx` equals
 `(1 + 4π²|ξ|²)^{-α/2}`. -/

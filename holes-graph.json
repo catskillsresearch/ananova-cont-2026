@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:51:13Z",
+ "updated": "2026-11-26T18:54:36Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 48,
+ "sorryCount": 47,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 38,
-  "done": 104
+  "done": 105
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 16,
-  "done": 67
+  "done": 68
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "fourier_fubini",
-    "integral_profile_exp",
     "fourier_eq"
    ],
    "declKinds": {
@@ -1580,10 +1579,9 @@
    ],
    "blockers": [
     "Bessel.BesselKernel::besselKernel.fourier_eq",
-    "Bessel.BesselKernel::besselKernel.fourier_fubini",
-    "Bessel.BesselKernel::besselKernel.integral_profile_exp"
+    "Bessel.BesselKernel::besselKernel.fourier_fubini"
    ],
-   "detail": "3 sorry: fourier_fubini, integral_profile_exp, fourier_eq"
+   "detail": "2 sorry: fourier_fubini, fourier_eq"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1824,22 +1822,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.integral_profile_exp"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4, Fourier transform step 3: Gamma integral): `∫_0^∞ e^{-δ/(4π)} δ^{(α-d)/2} δ^{-1} δ^{d/2} e^{-πδ|ξ|²} dδ = (4π)^{α/2} Γ(α/2) (1 + 4π²|ξ|²)^{-α/2}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.integral_profile_exp — subgoal of Definition 2.4, Fourier transform step 3: Gamma integral (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.integral_profile_exp — subgoal of Definition 2.4, Fourier transform step 3: Gamma integral (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.mul_eq_integral",
