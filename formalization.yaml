@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# ananova-cont-2026 — Palomar packaging (Challenge/Solution/comparator).
+version: v0.4
+project:
+  name: WeakPathwiseIto — A pathwise Ito formula for weakly differentiable functions in Lean 4
+  description: >-
+    A Lean 4 / Mathlib formalization (blueprint stage) of Anna Ananova and Rama Cont,
+    "A pathwise Ito formula for weakly differentiable functions", arXiv:2608.07365v2.
+    Paths of finite quadratic variation along a sequence of partitions, discrete weighted
+    occupation densities, the path-dependent Sobolev space W^2_{ω,π} (Definition 4.3), the
+    weak pathwise integral and covariation, the change-of-variable formula (Theorem 5.1),
+    Sobolev traces along Brownian paths outside a polar set (Theorem 5.2), and the pathwise
+    Föllmer–Protter formula (Proposition 5.3).
+  authors:
+  - Lars Warren Ericson
+  license: Apache-2.0
+  responsible_maintainers:
+  - Lars Warren Ericson
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.PR
+  - math.FA
+  msc:
+  - '60H05'
+  - '60J65'
+  - '46E35'
+  - '68V20'
+status:
+  scope: >-
+    Blueprint: every paper definition is stated as a Lean def/structure and every numbered
+    result as a theorem with a sorry proof. Proofs not started.
+  sorry_count: 52
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+  - sorryAx
+  main_results:
+  - declaration: WeakPathwiseIto.theorem_5_1
+    file: WeakPathwiseIto/Main/Theorem51.lean
+    comparator_config: comparator.json
+    literature_dependencies: []
+  - declaration: WeakPathwiseIto.theorem_5_2
+    file: WeakPathwiseIto/Main/Theorem52.lean
+    comparator_config: comparator.json
+    literature_dependencies: []
+  - declaration: WeakPathwiseIto.proposition_5_3
+    file: WeakPathwiseIto/Main/Proposition53.lean
+    comparator_config: comparator.json
+    literature_dependencies: []
+references:
+- arxiv: '2608.07365'
+  version: v2
+  title: A pathwise Ito formula for weakly differentiable functions
+  authors:
+  - Anna Ananova
+  - Rama Cont

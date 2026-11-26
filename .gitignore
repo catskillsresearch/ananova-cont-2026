@@ -1,0 +1,23 @@
+/.lake
+# Nested Lake build dirs under path deps (vendor/brownian-motion, etc.)
+**/.lake/
+/lake-packages
+/build
+*.olean
+*.ilean
+*.c
+*.trace
+.vscode/
+*~
+*.swp
+
+# Local agent / tool noise
+.cursor/
+scripts/__pycache__/
+.cache
+.venv-editorial
+
+# Writeup PDF pipeline intermediates (keep WeakPathwiseIto.pdf)
+arxiv.*
+view.pdf
+.cache/

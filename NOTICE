@@ -1,0 +1,16 @@
+This repository's original Lean, scripts, and author-written documentation
+are licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party source material (not Apache-2.0)
+--------------------------------------------
+
+`sources/2608.07365v2.pdf` reproduces Anna Ananova and Rama Cont, *A pathwise
+Ito formula for weakly differentiable functions*, arXiv:2608.07365v2.
+Copyright remains with the authors / rights holders. Included only as the cited
+primary source for this formalization. Palomar and other redistributors must
+not treat it as licensed under Apache-2.0.
+
+Vendored code under `vendor/` keeps its own licence (see each directory's
+LICENSE and `vendor/SOURCES`). Lake dependencies (Mathlib and its
+dependencies) retain their own licences; pins are recorded in
+`lake-manifest.json`.

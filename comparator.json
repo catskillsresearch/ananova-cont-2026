@@ -1,0 +1,18 @@
+{
+  "challenge_module": "WeakPathwiseItoComparator.Challenge",
+  "solution_module": "WeakPathwiseItoComparator.Solution",
+  "theorem_names": [
+    "WeakPathwiseIto.theorem_5_1",
+    "WeakPathwiseIto.theorem_5_1_tendsto",
+    "WeakPathwiseIto.theorem_5_1_unique",
+    "WeakPathwiseIto.theorem_5_2",
+    "WeakPathwiseIto.theorem_5_2_deterministic",
+    "WeakPathwiseIto.proposition_5_3"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

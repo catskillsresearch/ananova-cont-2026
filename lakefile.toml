@@ -1,0 +1,36 @@
+name = "WeakPathwiseIto"
+defaultTargets = ["WeakPathwiseIto", "WeakPathwiseItoChallenge", "WeakPathwiseItoSolution"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Vendored path dependencies, copied unchanged from ../xodarev2026/vendor (see
+# vendor/SOURCES and PROVENANCE.md). Import concrete modules only; do not build the
+# BrownianMotion umbrella (see vendor/README.md).
+[[require]]
+name = "BrownianMotion"
+path = "vendor/brownian-motion"
+
+[[require]]
+name = "MathFin"
+path = "vendor/formal-mathfin"
+
+# Same Mathlib pin as xodarev2026 / lyasoff2016 (Lean v4.35.0).
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "e91b128082cc221d6432a6a5aadcd3243af8e76c"
+
+[[lean_lib]]
+name = "WeakPathwiseIto"
+globs = ["WeakPathwiseIto", "WeakPathwiseIto.+"]
+
+[[lean_lib]]
+name = "WeakPathwiseItoChallenge"
+roots = ["WeakPathwiseItoComparator.Challenge"]
+
+[[lean_lib]]
+name = "WeakPathwiseItoSolution"
+roots = ["WeakPathwiseItoComparator.Solution"]

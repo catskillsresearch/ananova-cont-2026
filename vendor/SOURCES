@@ -1,0 +1,29 @@
+# Dependency pins (copied 2026-11-26 from sibling repositories, unchanged)
+
+brownian-motion
+  path:   vendor/brownian-motion
+  source: ../xodarev2026/vendor/brownian-motion @ xodarev2026 commit 0e1f1f3b0739fdf472511da2207599ab11085660
+  upstream: https://github.com/RemyDegenne/brownian-motion.git
+  upstream_commit: 497e5e2a60450796f75ab920e6c33addae4d644d (pruned copy, see xodarev2026/vendor/SOURCES)
+
+kolmogorov_extension4
+  url:    https://github.com/RemyDegenne/kolmogorov_extension4.git
+  commit: c20f168ed693537c78111ffeabc2ab5f384e35d6
+  note:   transitive via brownian-motion
+
+formal-mathfin
+  path:   vendor/formal-mathfin
+  source: ../xodarev2026/vendor/formal-mathfin @ xodarev2026 commit 0e1f1f3b0739fdf472511da2207599ab11085660
+  upstream: https://github.com/formal-applied-math/formal-mathfin.git
+  upstream_commit: c47908ea18274b16c5b26edd206ec073470c4a26 (module-system slim copy, see xodarev2026/vendor/SOURCES)
+
+palomar-policy
+  path:   vendor/palomar-policy (pin in vendor/PALOMAR_POLICY_PIN)
+  source: ../xodarev2026/vendor/palomar-policy @ xodarev2026 commit 0e1f1f3b0739fdf472511da2207599ab11085660
+  upstream: https://github.com/PalomarRegistry/PalomarPolicy
+  upstream_commit: 5bd35cddcfc940532bb5f55e399d68b49b0986a5
+
+mathlib
+  url:    https://github.com/leanprover-community/mathlib4
+  commit: e91b128082cc221d6432a6a5aadcd3243af8e76c
+  toolchain: leanprover/lean4:v4.35.0
