@@ -436,7 +436,26 @@ theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
     ∃ C : ℝ, ∀ n, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
       ∑ i : Fin (π n).m, heatKernel d ((π n).left i) x * ((π n).right i - (π n).left i) ≤
         C * potentialProfile d ‖x‖ := by
-  sorry
+  obtain ⟨M₁, hM₁⟩ := h1
+  obtain ⟨C', hC'⟩ := integral_le_potentialProfile (d := d) T R
+  set K : ℝ := max (max (1 + M₁) (1 + (π 0).mesh / (π 0).minGap)) 1 with hKdef
+  have hK1 : 1 ≤ K := le_max_right _ _
+  refine ⟨K ^ ((d : ℝ) / 2) * C', fun n x hx hxR => ?_⟩
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · exact (hx (Subsingleton.elim _ _)).elim
+  have hratio : 1 + (π n).mesh / (π n).minGap ≤ K := by
+    rcases Nat.eq_zero_or_pos n with rfl | hn
+    · exact (le_max_right _ _).trans (le_max_left _ _)
+    · have := hM₁ n hn
+      exact (by linarith : 1 + (π n).mesh / (π n).minGap ≤ 1 + M₁).trans
+        ((le_max_left _ _).trans (le_max_left _ _))
+  have hK : ∀ i, 0 < (π n).left i → (π n).right i ≤ K * (π n).left i := fun i hi =>
+    ((π n).right_le_mul_left i hi).trans (mul_le_mul_of_nonneg_right hratio hi.le)
+  calc _ ≤ K ^ ((d : ℝ) / 2) * ∫ s in Ioc 0 T, heatKernel d s x :=
+        riemannSum_le_integral (π n) hd hx hK1 hK
+    _ ≤ K ^ ((d : ℝ) / 2) * (C' * potentialProfile d ‖x‖) :=
+        mul_le_mul_of_nonneg_left (hC' x hx hxR) (Real.rpow_nonneg (by linarith) _)
+    _ = _ := by ring
 
 end heatKernel
 
