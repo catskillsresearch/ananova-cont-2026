@@ -70,7 +70,7 @@ theorem B_ofCoords (x : Rd d) (W : Fin d → ℝ≥0 → ℝ) (hW : ∀ i, Conti
     (ht : t ∈ Icc 0 T) :
     CanonicalWienerSpace.B (T := T) t (CanonicalWienerSpace.ofCoords x W hW) =
       x + ∑ i, W i t.toNNReal • Rd.basisVec i := by
-  sorry
+  simp [CanonicalWienerSpace.B, ht, CanonicalWienerSpace.ofCoords]
 
 /-- **Subgoal** (Lemma A.1 proof, step 2b: from coordinates to `N(0, I_d)`): independent
 standard normal coordinates `Y^1, …, Y^d` give `∑_i Y^i e_i ∼ N(0, I_d)`. -/
