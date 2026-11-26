@@ -61,6 +61,7 @@ Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.scaling
 Appendix.PotentialProfile -hard-> Appendix.LemmaB1
 Basic.ContDiffBounded -hard-> Occupation.ApproximatingSequence
 Basic.ContDiffBounded -hard-> Smooth.Corollary32
+Basic.ContDiffBounded -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Basic.ContDiffBounded -hard-> Smooth.FollmerItoFormula
 Basic.ContDiffBounded -hard-> Smooth.FollmerItoFormula::follmer_ito_formula
 Basic.ContDiffBounded -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le
@@ -511,11 +512,13 @@ Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.tends
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.tendsto_sum_sq
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc
 Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq -hard-> Occupation.WeightedOccupationMeasure
+Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq -hard-> Smooth.Corollary32
 Smooth.DiscreteQuadraticVariation -hard-> Smooth.HasScalarQuadraticVariation
 Smooth.DiscreteQuadraticVariation -hard-> Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt
 Smooth.DiscreteQuadraticVariation -hard-> Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone
 Smooth.FollmerIntegral -hard-> Main.WeakPathwiseIntegral
 Smooth.FollmerIntegral -hard-> Smooth.Corollary32
+Smooth.FollmerIntegral -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le
@@ -525,6 +528,8 @@ Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.rie
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder
+Smooth.FollmerItoFormula -hard-> Smooth.Corollary32
+Smooth.FollmerItoFormula -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.FollmerItoFormula::follmer_ito_formula -hard-> Smooth.FollmerItoFormula
 Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le -hard-> Smooth.FollmerItoFormula
 Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient -hard-> Smooth.FollmerItoFormula
@@ -538,6 +543,7 @@ Smooth.HasQuadraticVariation -hard-> Occupation.Remark44
 Smooth.HasQuadraticVariation -hard-> Occupation.WeightedOccupationMeasure
 Smooth.HasQuadraticVariation -hard-> Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq
 Smooth.HasQuadraticVariation -hard-> Smooth.Corollary32
+Smooth.HasQuadraticVariation -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.HasQuadraticVariation -hard-> Smooth.FollmerItoFormula
 Smooth.HasQuadraticVariation -hard-> Smooth.FollmerItoFormula::follmer_ito_formula
 Smooth.HasQuadraticVariation -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le
@@ -586,6 +592,7 @@ Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Smooth.PathOscillation -hard-> Occupation.Remark44
 Smooth.PathOscillation -hard-> Smooth.Corollary32
+Smooth.PathOscillation -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.PathOscillation -hard-> Smooth.FollmerItoFormula
 Smooth.PathOscillation -hard-> Smooth.FollmerItoFormula::follmer_ito_formula
 Smooth.PathOscillation -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le
@@ -609,6 +616,7 @@ Smooth.PathOscillation -hard-> Smooth.Proposition31::proposition_3_1.tendsto_rie
 Smooth.PathOscillation::pathOscillation.vanishes_of_mesh -hard-> Smooth.PathOscillation
 Smooth.PathwiseCovariation -hard-> Main.WeakCovariation
 Smooth.PathwiseCovariation -hard-> Smooth.Corollary32
+Smooth.PathwiseCovariation -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.inner_apply_eq
@@ -620,6 +628,8 @@ Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.tendsto
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.tendsto_main
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.tendsto_remainder
 Smooth.PathwiseCovariation -hard-> Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes
+Smooth.Proposition31 -hard-> Smooth.Corollary32
+Smooth.Proposition31 -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.Proposition31 -hard-> Smooth.FollmerItoFormula
 Smooth.Proposition31 -hard-> Smooth.FollmerItoFormula::follmer_ito_formula
 Smooth.Proposition31 -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:54:56Z  
-**`sorry` occurrences:** 37 · 9 open · 25 blocked · 186 done (goals + subgoals) · goals {'open': 5, 'blocked': 17, 'done': 43} · subgoals {'open': 4, 'blocked': 8, 'done': 143} · 19 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:55:22Z  
+**`sorry` occurrences:** 38 · 9 open · 26 blocked · 186 done (goals + subgoals) · goals {'open': 4, 'blocked': 18, 'done': 43} · subgoals {'open': 5, 'blocked': 8, 'done': 143} · 19 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,7 +25,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -166,6 +165,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 1 |
 | blocked | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 1 |
 | done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
+| open | `Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq` | subgoal of Corollary 3.2 proof, "by Proposition 3.1" | 1 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le` | subgoal of [Föl81] proof: second-order Taylor remainder | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient` | subgoal of [Föl81] proof: `∇f ∈ C^1_b` for `f ∈ C^2_b` | 0 |
@@ -241,7 +241,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| open | `Smooth.Corollary32` | Corollary 3.2 | 1 |  |
+| blocked | `Smooth.Corollary32` | Corollary 3.2 | 2 | `Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq` |
 | done | `Smooth.DiscreteQuadraticVariation` | Eq. (5) sums | 0 |  |
 | done | `Smooth.FollmerIntegral` | Corollary 3.2 integral | 0 |  |
 | done | `Smooth.FollmerItoFormula` | [Föl81] Itô formula | 0 |  |

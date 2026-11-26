@@ -10,6 +10,8 @@ public import WeakPathwiseIto.Smooth.HasQuadraticVariation
 public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Smooth.FollmerIntegral
 public import WeakPathwiseIto.Smooth.PathwiseCovariation
+public import WeakPathwiseIto.Smooth.Proposition31
+public import WeakPathwiseIto.Smooth.FollmerItoFormula
 
 @[expose] public section
 
@@ -19,6 +21,19 @@ open MeasureTheory Filter Topology Set
 open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace WeakPathwiseIto
+
+namespace corollary_3_2
+
+/-- **Subgoal** (Corollary 3.2 proof, "by Proposition 3.1"): for `f ∈ C^2_b`,
+`[∇f(ω), ω]_π(T) = ∫_0^T ⟨∇²f(ω(t)), d[ω]_π(t)⟩`. -/
+theorem pathwiseCovariation_eq {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
+    (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
+    (hosc : pathOscillation.Vanishes ω π) {f : Rd d → ℝ} (hf : ContDiffBounded 2 f) :
+    pathwiseCovariation π (gradient f) ω T = hQV.matrixIntegral
+      (fun u i j => Rd.coord i (smoothHessian f (ω u) (Rd.basisVec j))) T := by
+  sorry
+
+end corollary_3_2
 
 /-- **Corollary 3.2.** For `ω ∈ C([0,T], ℝ^d) ∩ Q^π` (the paper states (6) as a standing assumption of Section 3,
 "in the sequel we will fix a sequence of partitions π and assume (6)", so it is a hypothesis here) and `f ∈ C^2_b(ℝ^d, ℝ)`, the

@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-26T21:54:56Z",
+ "updated": "2026-11-26T21:55:22Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 38,
  "counts": {
   "open": 9,
-  "blocked": 25,
+  "blocked": 26,
   "done": 186
  },
  "goalCounts": {
-  "open": 5,
-  "blocked": 17,
+  "open": 4,
+  "blocked": 18,
   "done": 43
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 5,
   "blocked": 8,
   "done": 143
  },
@@ -4693,26 +4693,65 @@
    "sectionTitle": "§3 Smooth change of variable",
    "paper": "Corollary 3.2",
    "file": "WeakPathwiseIto/Smooth/Corollary32.lean",
+   "sorryCount": 2,
+   "holes": [
+    "pathwiseCovariation_eq",
+    "corollary_3_2"
+   ],
+   "declKinds": {
+    "theorem": 2
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+    "Smooth.FollmerIntegral",
+    "Smooth.FollmerItoFormula",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Smooth.PathwiseCovariation",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq"
+   ],
+   "detail": "2 sorry: pathwiseCovariation_eq, corollary_3_2"
+  },
+  {
+   "id": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+   "label": "pathwiseCovariation_eq",
+   "kind": "subgoal",
+   "section": "Smooth",
+   "sectionTitle": "§3 Smooth change of variable",
+   "paper": "subgoal of Corollary 3.2 proof, \"by Proposition 3.1\"",
+   "parentGoal": "Smooth.Corollary32",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Smooth/Corollary32.lean",
    "sorryCount": 1,
    "holes": [
-    "corollary_3_2"
+    "corollary_3_2.pathwiseCovariation_eq"
    ],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
-   "kind": "goal",
+   "verified": true,
+   "doc": "**Subgoal** (Corollary 3.2 proof, \"by Proposition 3.1\"): for `f ∈ C^2_b`, `[∇f(ω), ω]_π(T) = ∫_0^T ⟨∇²f(ω(t)), d[ω]_π(t)⟩`.",
    "status": "open",
    "deps": [
     "Basic.ContDiffBounded",
     "Smooth.FollmerIntegral",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
-    "Smooth.PathwiseCovariation"
+    "Smooth.PathwiseCovariation",
+    "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "1 sorry: corollary_3_2"
+   "detail": "sorry: corollary_3_2.pathwiseCovariation_eq — subgoal of Corollary 3.2 proof, \"by Proposition 3.1\" (in Smooth.Corollary32)"
   },
   {
    "id": "Smooth.DiscreteQuadraticVariation",
@@ -6257,6 +6296,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Smooth.Corollary32",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
    "kind": "hard"
   },
   {
@@ -8510,6 +8554,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+   "to": "Smooth.Corollary32",
+   "kind": "subgoal"
+  },
+  {
    "from": "Smooth.DiscreteQuadraticVariation",
    "to": "Smooth.HasScalarQuadraticVariation",
    "kind": "hard"
@@ -8532,6 +8581,11 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Smooth.Corollary32",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
    "kind": "hard"
   },
   {
@@ -8577,6 +8631,16 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Smooth.Corollary32",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
    "kind": "hard"
   },
   {
@@ -8642,6 +8706,11 @@
   {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Smooth.Corollary32",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
    "kind": "hard"
   },
   {
@@ -8886,6 +8955,11 @@
   },
   {
    "from": "Smooth.PathOscillation",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
    "to": "Smooth.FollmerItoFormula",
    "kind": "hard"
   },
@@ -9001,6 +9075,11 @@
   },
   {
    "from": "Smooth.PathwiseCovariation",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -9052,6 +9131,16 @@
   {
    "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.Corollary32",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
    "kind": "hard"
   },
   {
@@ -9551,10 +9640,6 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Occupation.ApproximatingSequence"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Smooth.Corollary32"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -11065,6 +11150,10 @@
    "to": "Occupation.WeightedOccupationMeasure"
   },
   {
+   "from": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq",
+   "to": "Smooth.Corollary32"
+  },
+  {
    "from": "Smooth.DiscreteQuadraticVariation",
    "to": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt"
   },
@@ -11075,10 +11164,6 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Main.WeakPathwiseIntegral"
-  },
-  {
-   "from": "Smooth.FollmerIntegral",
-   "to": "Smooth.Corollary32"
   },
   {
    "from": "Smooth.FollmerIntegral",
@@ -11111,6 +11196,10 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq"
   },
   {
    "from": "Smooth.FollmerItoFormula::follmer_ito_formula",
@@ -11155,10 +11244,6 @@
   {
    "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq"
-  },
-  {
-   "from": "Smooth.HasQuadraticVariation",
-   "to": "Smooth.Corollary32"
   },
   {
    "from": "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross",
@@ -11249,20 +11334,12 @@
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
   },
   {
-   "from": "Smooth.PathOscillation",
-   "to": "Smooth.Corollary32"
-  },
-  {
    "from": "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh",
    "to": "Smooth.PathOscillation"
   },
   {
    "from": "Smooth.PathwiseCovariation",
    "to": "Main.WeakCovariation"
-  },
-  {
-   "from": "Smooth.PathwiseCovariation",
-   "to": "Smooth.Corollary32"
   },
   {
    "from": "Smooth.PathwiseCovariation",
