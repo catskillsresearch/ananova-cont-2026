@@ -28,7 +28,19 @@ open scoped Classical in
 theorem tendsto_discreteTrace (hQV : HasQuadraticVariation π ω) {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ t),
       ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2) atTop (𝓝 (hQV.trace t)) := by
-  sorry
+  have hcoord : ∀ (j : Fin d) (v w : Rd d), Rd.coord j v - Rd.coord j w = (v - w) j := by
+    intro j v w
+    simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+  have e : ∀ n, (∑ i ∈ Finset.univ.filter (fun i => (π n).right i ≤ t),
+      ‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2) =
+      ∑ j, discreteQuadraticVariation (π n) (fun s => Rd.coord j (ω s)) t := by
+    intro n
+    unfold discreteQuadraticVariation
+    simp_rw [EuclideanSpace.real_norm_sq_eq, hcoord]
+    exact Finset.sum_comm
+  simp_rw [e]
+  unfold HasQuadraticVariation.trace
+  exact tendsto_finset_sum _ fun j _ => (hQV.coord j).tendsto t ht
 
 /-- **Subgoal** (Lemma 4.2 proof: total discrete quadratic variation):
 `∑_i |ω(t_{i+1}) - ω(t_i)|² → tr[ω]_π(T)`. -/
