@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-26T18:22:03Z",
+ "updated": "2026-11-26T18:23:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 55,
+ "sorryCount": 54,
  "counts": {
   "open": 12,
   "blocked": 51,
@@ -511,10 +511,9 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
     "hasGaussianLaw_coordIncrements",
-    "covariance_coordIncrements_eq_zero",
     "iIndepFun_increments",
     "memLp_two",
     "integral_eq",
@@ -558,7 +557,7 @@
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "6 sorry: hasGaussianLaw_coordIncrements, covariance_coordIncrements_eq_zero, iIndepFun_increments, memLp_two, integral_eq, variance_le"
+   "detail": "5 sorry: hasGaussianLaw_coordIncrements, iIndepFun_increments, memLp_two, integral_eq, variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -600,10 +599,8 @@
    "parentGoal": "Appendix.LemmaA1",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_A_1.covariance_coordIncrements_eq_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -620,7 +617,7 @@
    "blockers": [
     "Bessel.WienerLawExists"
    ],
-   "detail": "sorry: lemma_A_1.covariance_coordIncrements_eq_zero — subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated (in Appendix.LemmaA1)"
+   "detail": "proved: lemma_A_1.covariance_coordIncrements_eq_zero — subgoal of Lemma A.1 proof, step 2d-ii: uncorrelated (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements",
