@@ -208,7 +208,84 @@ theorem lintegral_kernel_le_of_three_le (hd : 3 ≤ d) : ∃ C : ℝ≥0, ∀ (f
     {ρ : ℝ}, 0 < ρ → ρ ≤ 1 →
     ∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) ≤
       C * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a := by
-  sorry
+  refine ⟨(volume (Metric.ball (0 : Rd d) 1)).toNNReal * 2 ^ d * 2, fun f a ρ hρ hρ1 => ?_⟩
+  haveI : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
+  set V := volume (Metric.ball (0 : Rd d) 1) with hV
+  have hVc : ((V.toNNReal : ℝ≥0) : ℝ≥0∞) = V := ENNReal.coe_toNNReal measure_ball_lt_top.ne
+  set S : ℕ → Set (Rd d) := fun k => {x | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k}
+    with hSdef
+  have hcover : Metric.closedBall a ρ ⊆ {a} ∪ ⋃ k, S k := by
+    intro x hx
+    by_cases hxa : x = a
+    · exact Or.inl hxa
+    right
+    have hr : 0 < ‖x - a‖ := norm_pos_iff.2 (sub_ne_zero.2 hxa)
+    have hxr : ‖x - a‖ ≤ ρ := by rwa [Metric.mem_closedBall, dist_eq_norm] at hx
+    have hex : ∃ k : ℕ, ρ / 2 ^ (k + 1) < ‖x - a‖ := by
+      obtain ⟨n, hn⟩ := pow_unbounded_of_one_lt (ρ / ‖x - a‖) (by norm_num : (1 : ℝ) < 2)
+      refine ⟨n, ?_⟩
+      rw [div_lt_iff₀ hr] at hn
+      rw [div_lt_iff₀ (by positivity), pow_succ]
+      have : (0 : ℝ) < 2 ^ n := by positivity
+      nlinarith
+    classical
+    refine mem_iUnion.2 ⟨Nat.find hex, show _ ∧ _ from ⟨Nat.find_spec hex, ?_⟩⟩
+    rcases Nat.eq_zero_or_pos (Nat.find hex) with h0 | hpos
+    · rw [h0, pow_zero, div_one]; exact hxr
+    · obtain ⟨j, hj⟩ : ∃ j, Nat.find hex = j + 1 := ⟨_, (Nat.succ_pred_eq_of_pos hpos).symm⟩
+      have := Nat.find_min hex (show j < Nat.find hex by omega)
+      rw [hj]; exact not_lt.1 this
+  have hterm : ∀ k : ℕ, ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) *
+      volume (Metric.ball a (ρ / 2 ^ k)) * localMaximalFunction 1 f a ≤
+      V * 2 ^ d * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a * 2⁻¹ ^ k := fun k => by
+    have hu : 0 < ρ / 2 ^ (k + 1) := by positivity
+    have h1 : ρ / 2 ^ k = 2 * (ρ / 2 ^ (k + 1)) := by rw [pow_succ]; field_simp
+    have hA : (ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ)) * (ρ / 2 ^ (k + 1)) ^ d = (ρ / 2 ^ (k + 1)) ^ 2 := by
+      rw [← Real.rpow_natCast (ρ / 2 ^ (k + 1)) d, ← Real.rpow_add hu,
+        show (2 - (d : ℝ)) + d = ((2 : ℕ) : ℝ) by norm_num, Real.rpow_natCast]
+    have h2k : (2 : ℝ) ^ k ≤ (2 ^ (k + 1)) ^ 2 := by
+      rw [← pow_mul]; exact pow_le_pow_right₀ (by norm_num) (by omega)
+    have hAB : (ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ)) * (ρ / 2 ^ k) ^ d ≤
+        2 ^ d * ρ ^ 2 * (1 / 2) ^ k := by
+      rw [h1, mul_pow, mul_left_comm, hA, div_pow, one_div_pow, mul_assoc, mul_one_div]
+      exact mul_le_mul_of_nonneg_left
+        (div_le_div_of_nonneg_left (sq_nonneg _) (by positivity) h2k) (by positivity)
+    have hhalf : ENNReal.ofReal (1 / 2) = 2⁻¹ := by
+      rw [one_div, ENNReal.ofReal_inv_of_pos two_pos, ENNReal.ofReal_ofNat]
+    have hE : ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) * ENNReal.ofReal ((ρ / 2 ^ k) ^ d) ≤
+        2 ^ d * ENNReal.ofReal (ρ ^ 2) * 2⁻¹ ^ k := by
+      rw [← ENNReal.ofReal_mul (Real.rpow_nonneg hu.le _)]
+      refine (ENNReal.ofReal_le_ofReal hAB).trans (le_of_eq ?_)
+      rw [ENNReal.ofReal_mul (by positivity), ENNReal.ofReal_mul (by positivity),
+        ENNReal.ofReal_pow (by norm_num : (0 : ℝ) ≤ 2), ENNReal.ofReal_pow (by norm_num : (0 : ℝ) ≤ 1 / 2), hhalf,
+        ENNReal.ofReal_ofNat]
+    rw [volume_ball_eq a (by positivity)]
+    calc _ = (ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) *
+          ENNReal.ofReal ((ρ / 2 ^ k) ^ d)) * V * localMaximalFunction 1 f a := by ring
+      _ ≤ (2 ^ d * ENNReal.ofReal (ρ ^ 2) * 2⁻¹ ^ k) * V * localMaximalFunction 1 f a :=
+          mul_le_mul_left (mul_le_mul_left hE _) _
+      _ = _ := by ring
+  have h0 : volume ({a} : Set (Rd d)) = 0 := measure_singleton a
+  calc _ ≤ ∫⁻ x in {a} ∪ ⋃ k, S k, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) :=
+        lintegral_mono_set hcover
+    _ ≤ (∫⁻ x in {a}, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
+          ∫⁻ x in ⋃ k, S k, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) :=
+        lintegral_union_le _ _ _
+    _ = ∫⁻ x in ⋃ k, S k, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) := by
+        rw [setLIntegral_measure_zero _ _ h0, zero_add]
+    _ ≤ ∑' k, ∫⁻ x in S k, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) :=
+        lintegral_iUnion_le _ _
+    _ ≤ ∑' k, ENNReal.ofReal ((ρ / 2 ^ (k + 1)) ^ (2 - (d : ℝ))) *
+          volume (Metric.ball a (ρ / 2 ^ k)) * localMaximalFunction 1 f a :=
+        ENNReal.tsum_le_tsum fun k => lintegral_shell_le hd f a hρ hρ1 k
+    _ ≤ ∑' k, V * 2 ^ d * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a * 2⁻¹ ^ k :=
+        ENNReal.tsum_le_tsum hterm
+    _ = V * 2 ^ d * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a * 2 := by
+        rw [ENNReal.tsum_mul_left, ENNReal.tsum_geometric, ENNReal.one_sub_inv_two, inv_inv]
+    _ = _ := by
+        push_cast
+        rw [hVc]
+        ring
 
 /-- **Subgoal** (Eq. (10) proof, one increment): if `|b - a| ≤ 1` then
 `∫ |f| 𝓛^{n,i}_ω ≤ C (M_1 f(b) + M_1 f(a)) |b - a|²`, since `Q ⊆ B̄(a,|b-a|) ∩ B̄(b,|b-a|)`. -/
