@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:26:34Z",
+ "updated": "2026-11-26T18:29:05Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 52,
+ "sorryCount": 54,
  "counts": {
   "open": 12,
-  "blocked": 52,
-  "done": 73
+  "blocked": 54,
+  "done": 74
  },
  "goalCounts": {
   "open": 6,
@@ -14,8 +14,8 @@
  },
  "subgoalCounts": {
   "open": 6,
-  "blocked": 28,
-  "done": 38
+  "blocked": 30,
+  "done": 39
  },
  "untagged": [],
  "legend": {
@@ -511,14 +511,16 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Lemma A.1",
    "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
-   "sorryCount": 3,
+   "sorryCount": 5,
    "holes": [
+    "memLp_norm_rpow_stdGaussian",
+    "integral_rpow_eq_sum_norm",
     "memLp_two",
     "integral_eq",
     "variance_le"
    ],
    "declKinds": {
-    "theorem": 14
+    "theorem": 16
    },
    "paperGoal": false,
    "verified": false,
@@ -535,6 +537,8 @@
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
     "Appendix.LemmaA1::lemma_A_1.integral_eq",
     "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+    "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
     "Appendix.LemmaA1::lemma_A_1.memLp_two",
     "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
     "Appendix.LemmaA1::lemma_A_1.variance_le",
@@ -552,12 +556,14 @@
     "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp",
     "Appendix.LemmaA1::lemma_A_1.integral_eq",
     "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+    "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+    "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
     "Appendix.LemmaA1::lemma_A_1.memLp_two",
     "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance",
     "Appendix.LemmaA1::lemma_A_1.variance_le",
     "Bessel.WienerLawExists"
    ],
-   "detail": "3 sorry: memLp_two, integral_eq, variance_le"
+   "detail": "5 sorry: memLp_norm_rpow_stdGaussian, integral_rpow_eq_sum_norm, memLp_two, integral_eq, variance_le"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -830,6 +836,70 @@
     "Bessel.WienerLawExists"
    ],
    "detail": "proved: lemma_A_1.integral_rpow_eq_sum — subgoal of Lemma A.1 proof, step 1: `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "label": "integral_rpow_eq_sum_norm",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 1 in terms of `Z_i^n`",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.integral_rpow_eq_sum_norm"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 1 in terms of `Z_i^n`): along `ℙ_x`-paths, `‖ρ_{n,B}‖^q_{L^q} = ∑_i |Z_i^n|^{2q} Δ_i^n` with `Z_i^n = (Δ_i^n)^{-1/2}(B(t_{i+1}) - B(t_i))`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.integral_rpow_eq_sum_norm — subgoal of Lemma A.1 proof, step 1 in terms of `Z_i^n` (in Appendix.LemmaA1)"
+  },
+  {
+   "id": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
+   "label": "memLp_norm_rpow_stdGaussian",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma A.1 proof, step 3: Gaussian moments are finite",
+   "parentGoal": "Appendix.LemmaA1",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/LemmaA1.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_A_1.memLp_norm_rpow_stdGaussian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 3: Gaussian moments are finite): for `p ≥ 0`, `z ↦ |z|^p` is in every `L^r(N(0, I_d))`, `r < ∞`.",
+   "status": "blocked",
+   "deps": [
+    "Appendix.GaussianMoment",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.NormalizedQuadraticDensity"
+   ],
+   "blockers": [
+    "Bessel.WienerLawExists"
+   ],
+   "detail": "sorry: lemma_A_1.memLp_norm_rpow_stdGaussian — subgoal of Lemma A.1 proof, step 3: Gaussian moments are finite (in Appendix.LemmaA1)"
   },
   {
    "id": "Appendix.LemmaA1::lemma_A_1.memLp_two",
@@ -1133,7 +1203,7 @@
    "declKinds": {
     "structure": 1,
     "def": 5,
-    "theorem": 6
+    "theorem": 7
    },
    "paperGoal": false,
    "verified": true,
@@ -1145,6 +1215,7 @@
     "Basic.Partition::Partition.mesh_nonneg",
     "Basic.Partition::Partition.nonneg",
     "Basic.Partition::Partition.right_le_mul_left",
+    "Basic.Partition::Partition.sum_gap",
     "Basic.Partition::Partition.t_mem"
    ],
    "blockers": [],
@@ -1264,6 +1335,29 @@
    "deps": [],
    "blockers": [],
    "detail": "proved: Partition.right_le_mul_left — subgoal of Lemma B.2 proof, eq. (35 (in Basic.Partition)"
+  },
+  {
+   "id": "Basic.Partition::Partition.sum_gap",
+   "label": "sum_gap",
+   "kind": "subgoal",
+   "section": "Basic",
+   "sectionTitle": "Preliminaries",
+   "paper": "subgoal of Lemma A.1 proof, step 3: `∑_i Δ_i^n = T`",
+   "parentGoal": "Basic.Partition",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Basic/Partition.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma A.1 proof, step 3: `∑_i Δ_i^n = T`): the gaps of a partition of `[0, T]` sum to `T`.",
+   "status": "done",
+   "deps": [],
+   "blockers": [],
+   "detail": "proved: Partition.sum_gap — subgoal of Lemma A.1 proof, step 3: `∑_i Δ_i^n = T` (in Basic.Partition)"
   },
   {
    "id": "Basic.Partition::Partition.t_mem",
@@ -3860,6 +3954,16 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
    "kind": "hard"
   },
@@ -3985,6 +4089,16 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "to": "Appendix.LemmaA1",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
    "to": "Appendix.LemmaA1",
    "kind": "subgoal"
   },
@@ -4320,6 +4434,11 @@
   },
   {
    "from": "Basic.Partition::Partition.right_le_mul_left",
+   "to": "Basic.Partition",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Basic.Partition::Partition.sum_gap",
    "to": "Basic.Partition",
    "kind": "subgoal"
   },
@@ -4725,6 +4844,16 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Appendix.LemmaA1::lemma_A_1.memLp_two",
    "kind": "hard"
   },
@@ -4866,6 +4995,16 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
    "kind": "hard"
   },
   {
@@ -5311,6 +5450,16 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
    "kind": "hard"
   },
   {
@@ -5848,6 +5997,14 @@
   },
   {
    "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian"
+  },
+  {
+   "from": "Appendix.GaussianMoment",
    "to": "Appendix.LemmaA1::lemma_A_1.memLp_two"
   },
   {
@@ -5948,6 +6105,14 @@
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm",
+   "to": "Appendix.LemmaA1"
+  },
+  {
+   "from": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian",
    "to": "Appendix.LemmaA1"
   },
   {
@@ -6132,6 +6297,10 @@
   },
   {
    "from": "Basic.Partition::Partition.right_le_mul_left",
+   "to": "Basic.Partition"
+  },
+  {
+   "from": "Basic.Partition::Partition.sum_gap",
    "to": "Basic.Partition"
   },
   {
@@ -6464,6 +6633,14 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.memLp_two"
   },
   {
@@ -6777,6 +6954,14 @@
   {
    "from": "Occupation.NormalizedQuadraticDensity",
    "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm"
+  },
+  {
+   "from": "Occupation.NormalizedQuadraticDensity",
+   "to": "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian"
   },
   {
    "from": "Occupation.NormalizedQuadraticDensity",

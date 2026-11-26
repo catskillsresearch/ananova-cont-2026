@@ -9,6 +9,8 @@ Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
+Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm
+Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
@@ -35,6 +37,8 @@ Appendix.LemmaA1::lemma_A_1.iIndepFun_increments -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.integral_eq -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum -hard-> Appendix.LemmaA1
+Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm -hard-> Appendix.LemmaA1
+Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.memLp_two -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.variance_le -hard-> Appendix.LemmaA1
@@ -102,6 +106,7 @@ Basic.Partition::Partition.left_lt_right -hard-> Basic.Partition
 Basic.Partition::Partition.mesh_nonneg -hard-> Basic.Partition
 Basic.Partition::Partition.nonneg -hard-> Basic.Partition
 Basic.Partition::Partition.right_le_mul_left -hard-> Basic.Partition
+Basic.Partition::Partition.sum_gap -hard-> Basic.Partition
 Basic.Partition::Partition.t_mem -hard-> Basic.Partition
 Basic.Rd -hard-> Appendix.GaussianMoment
 Basic.Rd -hard-> Appendix.HeatKernel
@@ -182,6 +187,8 @@ Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increm
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
+Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm
+Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
@@ -211,6 +218,8 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_increments
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
+Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm
+Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
@@ -300,6 +309,8 @@ Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.iIndep
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.integral_eq
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum
+Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm
+Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Occupation.NormalizedQuadraticDensity -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
