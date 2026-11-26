@@ -264,7 +264,29 @@ theorem hasFDerivAt_integral_sphere {d : ℕ} {F : Type*} [NormedAddCommGroup F]
     (hK'c : ContinuousOn (Function.uncurry K') (U ×ˢ univ)) {y : Rd d} (hy : y ∈ U) :
     HasFDerivAt (fun y => ∫ ω, K y ω ∂(volume : Measure (Rd d)).toSphere)
       (∫ ω, K' y ω ∂(volume : Measure (Rd d)).toSphere) y := by
-  sorry
+  obtain ⟨ε, hε, hεU⟩ := Metric.isOpen_iff.1 hU y hy
+  have hBU : Metric.closedBall y (ε / 2) ⊆ U :=
+    (Metric.closedBall_subset_ball (half_lt_self hε)).trans hεU
+  have hcpt : IsCompact (Metric.closedBall y (ε / 2) ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1))) :=
+    (isCompact_closedBall y _).prod isCompact_univ
+  obtain ⟨C, hC⟩ := hcpt.exists_bound_of_continuousOn (hK'c.mono (prod_mono hBU subset_rfl))
+  obtain ⟨C₀, hC₀⟩ := hcpt.exists_bound_of_continuousOn (hKc.mono (prod_mono hBU subset_rfl))
+  have hcont : ∀ x ∈ U, Continuous (K x) := fun x hx =>
+    hKc.comp_continuous (by fun_prop : Continuous fun ω : Metric.sphere (0 : Rd d) 1 => (x, ω))
+      (fun ω => ⟨hx, trivial⟩)
+  have hcont' : Continuous (K' y) :=
+    hK'c.comp_continuous (by fun_prop : Continuous fun ω : Metric.sphere (0 : Rd d) 1 => (y, ω))
+      (fun ω => ⟨hy, trivial⟩)
+  have hB : Metric.closedBall y (ε / 2) ∈ 𝓝 y := Metric.closedBall_mem_nhds y (half_pos hε)
+  have hyB : y ∈ Metric.closedBall y (ε / 2) := Metric.mem_closedBall_self (half_pos hε).le
+  refine hasFDerivAt_integral_of_dominated_of_fderiv_le (bound := fun _ => C) hB ?_ ?_
+    hcont'.aestronglyMeasurable ?_ (integrable_const C) ?_
+  · filter_upwards [hB] with x hx
+    exact (hcont x (hBU hx)).aestronglyMeasurable
+  · exact Integrable.of_bound (hcont y hy).aestronglyMeasurable C₀
+      (Filter.Eventually.of_forall fun ω => hC₀ (y, ω) ⟨hyB, trivial⟩)
+  · exact Filter.Eventually.of_forall fun ω x hx => hC (x, ω) ⟨hx, trivial⟩
+  · exact Filter.Eventually.of_forall fun ω x hx => hK ω x (hBU hx)
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6b: continuity of the sphere integral): if `K` is
 jointly continuous on `U × S^{d-1}` with `U` open, `y ↦ ∫ K(y, ω) dσ(ω)` is continuous on `U`. -/
