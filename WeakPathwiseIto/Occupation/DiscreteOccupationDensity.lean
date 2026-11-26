@@ -181,7 +181,9 @@ theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
 /-- **Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_eq (π : Partition T) (ω : ℝ → Rd d) :
     ∫ x, discreteOccupationDensity π ω x = ∑ i : Fin π.m, ‖ω (π.right i) - ω (π.left i)‖ ^ 2 := by
-  sorry
+  unfold discreteOccupationDensity
+  rw [integral_finset_sum _ fun i _ => integrable_piece _ _]
+  exact Finset.sum_congr rfl fun i _ => integral_piece _ _
 
 end discreteOccupationDensity
 

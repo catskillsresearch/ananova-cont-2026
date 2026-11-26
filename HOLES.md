@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T21:10:33Z  
-**`sorry` occurrences:** 41 · 9 open · 31 blocked · 154 done (goals + subgoals) · goals {'open': 6, 'blocked': 20, 'done': 39} · subgoals {'open': 3, 'blocked': 11, 'done': 115} · 23 file(s) with `sorry`.
+**Updated:** 2026-11-26T21:11:17Z  
+**`sorry` occurrences:** 40 · 9 open · 30 blocked · 155 done (goals + subgoals) · goals {'open': 7, 'blocked': 19, 'done': 39} · subgoals {'open': 2, 'blocked': 11, 'done': 116} · 22 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -25,6 +25,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
+| `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 | (review → VERIFIED) |
 | `Smooth.Corollary32` | Corollary 3.2 | 1 | `corollary_3_2` |
 | `Smooth.Proposition31` | Proposition 3.1 | 1 | `proposition_3_1` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
@@ -109,7 +110,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine` | subgoal of Eq. (7 | 0 |
-| open | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq` | subgoal of Eq. (7 | 1 |
+| done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball` | subgoal of Eq. (7 | 0 |
@@ -232,7 +233,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | blocked | `Occupation.ApproximatingSequence` | Eq. (8) | 0 | `Occupation.OccupationSeminorm` |
 | done | `Occupation.DiscreteLocalTime` | Remark 4.5 λ^{n,±}_T [DOS18] | 0 |  |
-| blocked | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 1 | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq` |
+| open | `Occupation.DiscreteOccupationDensity` | Eq. (7) | 0 |  |
 | done | `Occupation.DiscreteSeminorm` | Section 4.2 ‖h‖_{n,p,ω} | 0 |  |
 | done | `Occupation.IncrementBall` | Eq. (7) Q^n_i | 0 |  |
 | blocked | `Occupation.Lemma42` | Lemma 4.2 | 1 | `Occupation.DiscreteOccupationDensity` |

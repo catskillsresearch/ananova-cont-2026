@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-26T21:10:33Z",
+ "updated": "2026-11-26T21:11:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
   "open": 9,
-  "blocked": 31,
-  "done": 154
+  "blocked": 30,
+  "done": 155
  },
  "goalCounts": {
-  "open": 6,
-  "blocked": 20,
+  "open": 7,
+  "blocked": 19,
   "done": 39
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 11,
-  "done": 115
+  "done": 116
  },
  "untagged": [],
  "legend": {
@@ -2760,10 +2760,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "integral_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 2,
     "theorem": 7
@@ -2771,7 +2769,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.Partition",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2784,10 +2782,8 @@
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
-   "blockers": [
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq"
-   ],
-   "detail": "1 sorry: integral_eq"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2880,24 +2876,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.integral_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)). `∫ 𝓛^{π_n}_ω = ∑_i |ω(t_{i+1}) - ω(t_i)|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.integral_eq — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.integral_eq — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
