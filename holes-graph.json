@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T18:48:38Z",
+ "updated": "2026-11-26T18:49:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 38,
-  "done": 102
+  "done": 103
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 37
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 16,
-  "done": 65
+  "done": 66
  },
  "untagged": [],
  "legend": {
@@ -1548,10 +1548,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.4",
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "fourier_eq",
-    "asymptotic_origin"
+    "fourier_eq"
    ],
    "declKinds": {
     "def": 1,
@@ -1575,10 +1574,9 @@
     "Bessel.BesselKernel::besselKernel.tendsto_integral"
    ],
    "blockers": [
-    "Bessel.BesselKernel::besselKernel.asymptotic_origin",
     "Bessel.BesselKernel::besselKernel.fourier_eq"
    ],
-   "detail": "2 sorry: fourier_eq, asymptotic_origin"
+   "detail": "1 sorry: fourier_eq"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -1590,22 +1588,20 @@
    "parentGoal": "Bessel.BesselKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselKernel.asymptotic_origin"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.4). Behaviour at the origin for `0 < α < d`: `g_α(x) ~ 1 / (γ(α) |x|^{d-α})`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: besselKernel.asymptotic_origin — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
+   "detail": "proved: besselKernel.asymptotic_origin — subgoal of Definition 2.4 (in Bessel.BesselKernel)"
   },
   {
    "id": "Bessel.BesselKernel::besselKernel.fourier_eq",

@@ -187,7 +187,21 @@ theorem tendsto_integral (hαd : α < d) :
 theorem asymptotic_origin (hα : 0 < α) (hαd : α < d) : ∃ γ : ℝ, 0 < γ ∧
     Tendsto (fun x : Rd d => ‖x‖ ^ ((d : ℝ) - α) * besselKernel d α x) (𝓝[≠] 0)
       (𝓝 γ⁻¹) := by
-  sorry
+  have hpos : 0 < ((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ * Real.pi ^ ((α - d) / 2) *
+      Real.Gamma (((d : ℝ) - α) / 2) :=
+    mul_pos (mul_pos (inv_pos.2 (mul_pos (Real.rpow_pos_of_pos (by positivity) _)
+      (Real.Gamma_pos_of_pos (by linarith)))) (Real.rpow_pos_of_pos Real.pi_pos _))
+      (Real.Gamma_pos_of_pos (by linarith))
+  refine ⟨(((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ * Real.pi ^ ((α - d) / 2) *
+    Real.Gamma (((d : ℝ) - α) / 2))⁻¹, inv_pos.2 hpos, ?_⟩
+  rw [inv_inv, mul_assoc]
+  have hev : (fun x : Rd d => ((4 * Real.pi) ^ (α / 2) * Real.Gamma (α / 2))⁻¹ *
+      Real.pi ^ ((α - d) / 2) * ∫ u in Ioi (0 : ℝ), Real.exp (-u) * Real.exp (-‖x‖ ^ 2 / (4 * u)) *
+        u ^ (((d : ℝ) - α) / 2 - 1)) =ᶠ[𝓝[≠] 0]
+      fun x => ‖x‖ ^ ((d : ℝ) - α) * besselKernel d α x :=
+    eventually_mem_nhdsWithin.mono fun x hx => (mul_eq_integral hx).symm
+  rw [← mul_assoc]
+  exact ((tendsto_integral hαd).const_mul _).congr' hev
 
 end besselKernel
 
