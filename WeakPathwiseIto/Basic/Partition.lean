@@ -60,6 +60,35 @@ theorem mesh_nonneg : 0 ≤ π.mesh := Real.iSup_nonneg fun i => (sub_pos.2 (π.
 theorem gap_le_mesh (i : Fin π.m) : π.right i - π.left i ≤ π.mesh :=
   le_ciSup (f := fun i => π.right i - π.left i) (Set.finite_range _).bddAbove i
 
+/-- **Subgoal** (Lemma B.2 proof, eq. (35), ratio step): for `t_i > 0`,
+`t_{i+1} ≤ (1 + |π| / |π|_) t_i`, since `t_{i+1} - t_i ≤ |π|` and `t_i ≥ t_i - t_{i-1} ≥ |π|_`. -/
+theorem right_le_mul_left (i : Fin π.m) (hi : 0 < π.left i) :
+    π.right i ≤ (1 + π.mesh / π.minGap) * π.left i := by
+  have : Nonempty (Fin π.m) := ⟨i⟩
+  obtain ⟨k, hk⟩ : ∃ k : ℕ, i.val = k + 1 := by
+    refine Nat.exists_eq_succ_of_ne_zero fun h0 => ?_
+    have h : i.castSucc = 0 := Fin.ext (by simp [h0])
+    simp [left, h, π.t_zero] at hi
+  let j : Fin π.m := ⟨k, by omega⟩
+  have hj : π.right j = π.left i := by
+    simp only [right, left]
+    congr 1
+    ext
+    simp [j, hk]
+  have hmin_le : π.minGap ≤ π.right j - π.left j :=
+    ciInf_le (f := fun i => π.right i - π.left i) (Set.finite_range _).bddBelow j
+  have hminpos : 0 < π.minGap := by
+    obtain ⟨l, hl⟩ := exists_eq_ciInf_of_finite (f := fun i => π.right i - π.left i)
+    rw [minGap, ← hl]
+    exact sub_pos.2 (π.left_lt_right l)
+  have hleft : π.minGap ≤ π.left i := by
+    have : 0 ≤ π.left j := (π.t_mem j.castSucc).1
+    linarith
+  have hgap := π.gap_le_mesh i
+  have h1 : π.mesh = π.mesh / π.minGap * π.minGap := by field_simp
+  have h2 := mul_le_mul_of_nonneg_left hleft (div_nonneg π.mesh_nonneg hminpos.le)
+  linarith
+
 /-- **Subgoal** (Section 3 partitions): the horizon of a partition of `[0, T]` is nonnegative. -/
 theorem nonneg (π : Partition T) : 0 ≤ T := by
   have h := π.strictMono.monotone (Fin.zero_le (Fin.last π.m))
