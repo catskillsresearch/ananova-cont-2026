@@ -367,7 +367,11 @@ theorem contDiffOn_norm_rpow {d : ℕ} {n : WithTop ℕ∞} (p : ℝ) :
 `sphereMean d r y = ∫ σ(S)⁻¹ |y - rω|^{2-d} dσ(ω)`. -/
 theorem sphereMean_eq_integral (d : ℕ) (r : ℝ) :
     sphereMean d r = fun y : Rd d => ∫ ω, ((volume : Measure (Rd d)).toSphere.real univ)⁻¹ * ‖y - r • (ω : Rd d)‖ ^ (2 - (d : ℝ)) ∂(volume : Measure (Rd d)).toSphere := by
-  sorry
+  funext y
+  rw [sphereMean, ← integral_const_mul]
+  refine integral_congr_ae (Filter.Eventually.of_forall fun ω => ?_)
+  simp only
+  rw [norm_sub_rev]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6g: first derivative of the sphere mean): off the
 sphere `|y| = r`, the sphere mean is differentiable with derivative the sphere integral of the
