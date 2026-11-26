@@ -29,24 +29,32 @@ namespace occupationSeminorm
 
 variable {T : ℝ} {d : ℕ} {F : Type*} [NormedAddCommGroup F]
 
-/-- **Subgoal** (Section 4.2 seminorm). -/
-theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) (f g : Rd d → F) :
+/-- **Subgoal** (Section 4.2 seminorm): subadditivity. The measurability hypotheses are the paper's
+standing assumption (the seminorm is only applied to Hessians of Sobolev functions); without them
+the statement is false, since Lean's `∫⁻` is only superadditive on non-measurable integrands
+(e.g. indicators of a Bernstein set and its complement). -/
+theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) {f g : Rd d → F}
+    (hf : AEStronglyMeasurable f) (hg : AEStronglyMeasurable g) :
     occupationSeminorm π ω (f + g) ≤ occupationSeminorm π ω f + occupationSeminorm π ω g := by
   sorry
 
 /-- **Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then
-`∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`. -/
+`∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`.
+The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`); without it
+`osc(ω, π_n) ≤ 1` can hold vacuously (the `iSup` of an unbounded family is `0`) and (10) fails. -/
 theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T) (ω : ℝ → Rd d)
-    (f : Rd d → ℝ), LocallyIntegrable f → pathOscillation ω π ≤ 1 →
+    (f : Rd d → ℝ), ContinuousOn ω (Icc 0 T) → LocallyIntegrable f → pathOscillation ω π ≤ 1 →
     ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity π ω x) ≤
       C * ∑ i : Fin π.m, (localMaximalFunction 1 f (ω (π.right i)) +
         localMaximalFunction 1 f (ω (π.left i))) * ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) := by
   sorry
 
 /-- **Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with
-`1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`. -/
+`1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.
+The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`), needed
+for (10). -/
 theorem le_limsup_discreteSeminorm {p q : ℝ} (hpq : p.HolderConjugate q) (π : ℕ → Partition T)
-    (ω : ℝ → Rd d) (hosc : pathOscillation.Vanishes ω π)
+    (ω : ℝ → Rd d) (hω : ContinuousOn ω (Icc 0 T)) (hosc : pathOscillation.Vanishes ω π)
     (hρ : ∃ K : ℝ≥0∞, K < ⊤ ∧ ∀ n,
       eLpNorm (normalizedQuadraticDensity (π n) ω) (ENNReal.ofReal q) (volume.restrict (Icc 0 T)) ≤ K)
     (f : Rd d → ℝ) (hf : LocallyIntegrable f) : ∃ C : ℝ≥0∞, C < ⊤ ∧

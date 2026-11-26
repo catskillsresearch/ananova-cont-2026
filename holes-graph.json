@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T21:56:20Z",
+ "updated": "2026-11-26T22:16:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 36,
  "counts": {
@@ -4440,7 +4440,7 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Section 4.2 seminorm).",
+   "doc": "**Subgoal** (Section 4.2 seminorm): subadditivity. The measurability hypotheses are the paper's standing assumption (the seminorm is only applied to Hessians of Sobolev functions); without them the statement is false, since Lean's `∫⁻` is only superadditive on non-measurable integrands (e.g. indicators of a Bernstein set and its complement).",
    "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
@@ -4471,7 +4471,7 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`.",
+   "doc": "**Subgoal** (Eq. (11)). Estimate (11): if `osc(ω, π_n) → 0` and `sup_n ‖ρ_{n,ω}‖_{L^q([0,T])} < ∞` with `1/p + 1/q = 1`, then `‖f‖_{W^0_{ω,π}} ≤ C_{p,ω} limsup_n ‖M_1 f‖_{n,p,ω}`. The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`), needed for (10).",
    "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
@@ -4502,7 +4502,7 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`.",
+   "doc": "**Subgoal** (Eq. (10)). Estimate (10): if `osc(ω, π_n) ≤ 1` then `∫ |f| 𝓛^{π_n}_ω ≤ C_d ∑_i (M_1 f(ω(t_{i+1})) + M_1 f(ω(t_i))) |ω(t_{i+1}) - ω(t_i)|²`. The continuity of `ω` is the paper's standing assumption of Section 4.1 (`ω ∈ C[0,T]`); without it `osc(ω, π_n) ≤ 1` can hold vacuously (the `iSup` of an unbounded family is `0`) and (10) fails.",
    "status": "open",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
