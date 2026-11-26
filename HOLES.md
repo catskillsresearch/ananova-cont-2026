@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-26T22:47:58Z  
-**`sorry` occurrences:** 33 · 7 open · 19 blocked · 211 done (goals + subgoals) · goals {'open': 5, 'blocked': 12, 'done': 48} · subgoals {'open': 2, 'blocked': 7, 'done': 163} · 17 file(s) with `sorry`.
+**Updated:** 2026-11-26T22:49:32Z  
+**`sorry` occurrences:** 32 · 7 open · 17 blocked · 213 done (goals + subgoals) · goals {'open': 6, 'blocked': 10, 'done': 49} · subgoals {'open': 1, 'blocked': 7, 'done': 164} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,6 +26,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
+| `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
 | `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -176,7 +177,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal` | subgoal of Eq. (10 | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset` | subgoal of Definition 4.3 | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: Hessian entries | 0 |
-| open | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j` | 1 |
+| done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the multi-index `e_i + e_j` | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: integration by parts twice | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self` | subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` | 0 |
@@ -281,8 +282,8 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.NormalizedQuadraticDensity` | Eq. (28) | 0 |  |
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
-| blocked | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 1 | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single` |
-| blocked | `Occupation.Remark44` | Remark 4.4 | 3 | `Occupation.PathwiseSobolevSpace` |
+| done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
+| open | `Occupation.Remark44` | Remark 4.4 | 3 |  |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
@@ -296,7 +297,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | open | `Main.Theorem51` | Theorem 5.1 | 3 |  |
-| blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Occupation.PathwiseSobolevSpace` |
+| blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 

@@ -32,7 +32,41 @@ variable {T : ℝ} {d : ℕ}
 theorem directions_single_add_single {i j : Fin d} (hij : i ≤ j) :
     IsWeakDerivative.directions (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) =
       [Rd.basisVec i, Rd.basisVec j] := by
-  sorry
+  classical
+  set α : Fin d → ℕ := Pi.single i 1 + Pi.single j 1 with hα
+  set f : Fin d → List (Rd d) := fun k => List.replicate (α k) (Rd.basisVec k) with hf
+  set P : Fin d → Bool := fun k => decide (k = i ∨ k = j) with hP
+  have hfl : ∀ L : List (Fin d), L.flatMap f = (L.filter P).flatMap f := by
+    intro L
+    induction L with
+    | nil => rfl
+    | cons k L ih =>
+      by_cases hk : k = i ∨ k = j
+      · have : P k = true := by simp [hP, hk]
+        rw [List.filter_cons_of_pos this, List.flatMap_cons, List.flatMap_cons, ih]
+      · have : P k = false := by simpa [hP, not_or] using hk
+        have h0 : f k = [] := by
+          push Not at hk
+          simp [hf, hα, Pi.single_apply, hk.1, hk.2]
+        rw [List.filter_cons_of_neg (by simp [this]), List.flatMap_cons, h0, List.nil_append, ih]
+  have hsorted : ((List.finRange d).filter P).Pairwise (· < ·) := (List.pairwise_lt_finRange d).filter _
+  have hdir : IsWeakDerivative.directions α = (List.finRange d).flatMap f := rfl
+  rw [hdir, hfl]
+  rcases hij.lt_or_eq with hlt | rfl
+  · have hfilt : (List.finRange d).filter P = [i, j] := by
+      apply List.Perm.eq_of_pairwise' (r := (· ≤ ·)) (hsorted.imp le_of_lt) (by simp [hij])
+      rw [List.perm_ext_iff_of_nodup (hsorted.imp ne_of_lt) (by simp [hlt.ne])]
+      intro a
+      simp [hP, List.mem_filter]
+    rw [hfilt]
+    simp [hf, hα, Pi.single_apply, hlt.ne, hlt.ne']
+  · have hfilt : (List.finRange d).filter P = [i] := by
+      apply List.Perm.eq_of_pairwise' (r := (· ≤ ·)) (hsorted.imp le_of_lt) (by simp)
+      rw [List.perm_ext_iff_of_nodup (hsorted.imp ne_of_lt) (by simp)]
+      intro a
+      simp [hP, List.mem_filter]
+    rw [hfilt]
+    simp [hf, hα]
 
 /-- **Subgoal** (Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative):
 `D^{e_i + e_j} φ = ∂_i ∂_j φ` for a smooth `φ`. -/
