@@ -42,7 +42,12 @@ variable {T : ℝ} {d : ℕ}
 
 /-- **Subgoal** (Eq. (7)). -/
 theorem piece_nonneg (a b x : Rd d) : 0 ≤ piece a b x := by
-  sorry
+  unfold piece
+  split_ifs
+  · exact le_rfl
+  · refine Set.indicator_nonneg (fun x _ => mul_nonneg ?_ ?_) x
+    · exact div_nonneg (by norm_num) ENNReal.toReal_nonneg
+    · exact add_nonneg (Real.rpow_nonneg (norm_nonneg _) _) (Real.rpow_nonneg (norm_nonneg _) _)
 
 /-- **Subgoal** (Eq. (7), `integral_piece` step a: affine change of variables on a ball): for
 `λ > 0` and a linear isometry `L`, `∫_{B̄(m, λ/2)} g = λ^d ∫_{B̄(0,1/2)} g(m + λ L z) dz`. -/

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:50:52Z",
+ "updated": "2026-11-26T20:51:34Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 47,
+ "sorryCount": 46,
  "counts": {
-  "open": 15,
+  "open": 14,
   "blocked": 31,
-  "done": 148
+  "done": 149
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 11,
-  "done": 109
+  "done": 110
  },
  "untagged": [],
  "legend": {
@@ -2760,9 +2760,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "piece_nonneg",
     "integral_closedBall_affine",
     "exists_isometry_basisVec",
     "setIntegral_closedBall_eq_ball",
@@ -2796,10 +2795,9 @@
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
    ],
-   "detail": "7 sorry: piece_nonneg, integral_closedBall_affine, exists_isometry_basisVec, setIntegral_closedBall_eq_ball, integral_piece, integrable_piece, integral_eq"
+   "detail": "6 sorry: integral_closedBall_affine, exists_isometry_basisVec, setIntegral_closedBall_eq_ball, integral_piece, integrable_piece, integral_eq"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2956,24 +2954,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.piece_nonneg"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7)).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.piece_nonneg — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.piece_nonneg — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball",
