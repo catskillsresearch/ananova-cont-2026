@@ -63,11 +63,16 @@ theorem exists_isometry_basisVec (hd : 0 < d) {u : Rd d} (hu : ‖u‖ = 1) :
     ∃ L : Rd d ≃ₗᵢ[ℝ] Rd d, L (Rd.basisVec ⟨0, hd⟩) = u := by
   sorry
 
-/-- **Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): the set integrals of
-any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/
-theorem setIntegral_closedBall_eq_ball (r : ℝ) (g : Rd d → ℝ) :
+/-- **Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): for `d > 0`, the set
+integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/
+theorem setIntegral_closedBall_eq_ball (hd : 0 < d) (r : ℝ) (g : Rd d → ℝ) :
     ∫ x in Metric.closedBall (0 : Rd d) r, g x = ∫ x in Metric.ball (0 : Rd d) r, g x := by
-  sorry
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  refine setIntegral_congr_set ?_
+  have h0 : volume (Metric.sphere (0 : Rd d) r) = 0 := Measure.addHaar_sphere _ _ _
+  filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with x hx
+  simp only [Metric.mem_sphere, Metric.mem_closedBall, Metric.mem_ball, eq_iff_iff] at hx ⊢
+  exact ⟨fun h => lt_of_le_of_ne h hx, le_of_lt⟩
 
 /-- **Subgoal** (Eq. (7)). By homogeneity, `∫ 𝓛^{n,i}_ω = |ω(t_{i+1}) - ω(t_i)|²`. -/
 theorem integral_piece (a b : Rd d) : ∫ x, piece a b x = ‖b - a‖ ^ 2 := by

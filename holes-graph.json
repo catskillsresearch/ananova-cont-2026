@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:52:35Z",
+ "updated": "2026-11-26T20:53:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 45,
+ "sorryCount": 44,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 31,
-  "done": 150
+  "done": 151
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 39
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 11,
-  "done": 111
+  "done": 112
  },
  "untagged": [],
  "legend": {
@@ -2760,11 +2760,10 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7)",
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
     "integral_closedBall_affine",
     "exists_isometry_basisVec",
-    "setIntegral_closedBall_eq_ball",
     "integral_piece",
     "integral_eq"
    ],
@@ -2792,10 +2791,9 @@
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine",
     "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece",
-    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball"
+    "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece"
    ],
-   "detail": "5 sorry: integral_closedBall_affine, exists_isometry_basisVec, setIntegral_closedBall_eq_ball, integral_piece, integral_eq"
+   "detail": "4 sorry: integral_closedBall_affine, exists_isometry_basisVec, integral_piece, integral_eq"
   },
   {
    "id": "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec",
@@ -2977,24 +2975,22 @@
    "parentGoal": "Occupation.DiscreteOccupationDensity",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/DiscreteOccupationDensity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "discreteOccupationDensity.setIntegral_closedBall_eq_ball"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): the set integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null).",
-   "status": "open",
+   "doc": "**Subgoal** (Eq. (7), `integral_piece` step c: closed vs open ball): for `d > 0`, the set integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null).",
+   "status": "done",
    "deps": [
     "Basic.Partition",
     "Occupation.IncrementBall",
     "Occupation.OccupationConstant"
    ],
    "blockers": [],
-   "detail": "sorry: discreteOccupationDensity.setIntegral_closedBall_eq_ball — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
+   "detail": "proved: discreteOccupationDensity.setIntegral_closedBall_eq_ball — subgoal of Eq. (7 (in Occupation.DiscreteOccupationDensity)"
   },
   {
    "id": "Occupation.DiscreteSeminorm",
