@@ -31,7 +31,38 @@ theorem integral_rpow_eq_sum (π : Partition T) (ω : ℝ → Rd d) {q : ℝ} (h
     ∫ t in Icc 0 T, |normalizedQuadraticDensity π ω t| ^ q =
       ∑ i : Fin π.m, (‖ω (π.right i) - ω (π.left i)‖ ^ 2 / (π.right i - π.left i)) ^ q *
         (π.right i - π.left i) := by
-  sorry
+  set c : Fin π.m → ℝ := fun i => ‖ω (π.right i) - ω (π.left i)‖ ^ 2 / (π.right i - π.left i)
+    with hc
+  have hc0 : ∀ i, 0 ≤ c i := fun i => div_nonneg (sq_nonneg _) (by linarith [π.left_lt_right i])
+  have hdisj : ∀ i j : Fin π.m, i ≠ j → ∀ t, t ∈ Ico (π.left i) (π.right i) →
+      t ∉ Ico (π.left j) (π.right j) := by
+    have key : ∀ i j : Fin π.m, i < j → π.right i ≤ π.left j := fun i j hij =>
+      π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+    intro i j hij t hi hj
+    rcases lt_or_gt_of_ne hij with h | h
+    · linarith [key i j h, hi.2, hj.1]
+    · linarith [key j i h, hi.1, hj.2]
+  have hpt : ∀ t, |normalizedQuadraticDensity π ω t| ^ q =
+      ∑ i, (Ico (π.left i) (π.right i)).indicator (fun _ => c i ^ q) t := by
+    intro t
+    by_cases h : ∃ i, t ∈ Ico (π.left i) (π.right i)
+    · obtain ⟨i0, hi0⟩ := h
+      unfold normalizedQuadraticDensity
+      rw [Finset.sum_eq_single i0 (fun j _ hj => indicator_of_notMem (hdisj i0 j hj.symm t hi0) _)
+          (by simp),
+        Finset.sum_eq_single i0 (fun j _ hj => indicator_of_notMem (hdisj i0 j hj.symm t hi0) _)
+          (by simp),
+        indicator_of_mem hi0, indicator_of_mem hi0, abs_of_nonneg (hc0 i0)]
+    · push_neg at h
+      simp [normalizedQuadraticDensity, indicator_of_notMem (h _), Real.zero_rpow hq.ne']
+  have hsub : ∀ i, Ico (π.left i) (π.right i) ⊆ Icc 0 T := fun i s hs =>
+    ⟨(π.t_mem _).1.trans hs.1, hs.2.le.trans (π.t_mem _).2⟩
+  simp_rw [hpt]
+  rw [integral_finset_sum _ fun i _ => (integrable_const _).indicator measurableSet_Ico]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [integral_indicator measurableSet_Ico, Measure.restrict_restrict measurableSet_Ico,
+    inter_eq_left.2 (hsub i), setIntegral_const, measureReal_def, Real.volume_Ico,
+    ENNReal.toReal_ofReal (by linarith [π.left_lt_right i]), smul_eq_mul, mul_comm]
 
 /-- **Subgoal** (Lemma A.1 proof, step 2a: coordinates of `B`): on `[0, T]` the canonical
 process of `ofCoords x W` is `x + ∑_i W^i(t) e_i`. -/
