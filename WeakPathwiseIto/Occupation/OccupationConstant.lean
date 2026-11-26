@@ -80,7 +80,64 @@ theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {f : R
     ∫ x in Metric.ball (0 : Rd d) R, f x =
       ∫ r in Ioo 0 R, r ^ (d - 1) *
         ∫ ω, f (r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere := by
-  sorry
+  classical
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  set σ := (volume : Measure (Rd d)).toSphere with hσ
+  set g : Rd d → ℝ := (Metric.ball 0 R).indicator f with hg
+  have hgi : Integrable g := (integrable_indicator_iff measurableSet_ball).2 hf
+  have hmp := (volume : Measure (Rd d)).measurePreserving_homeomorphUnitSphereProd
+  have hemb := (homeomorphUnitSphereProd (Rd d)).measurableEmbedding
+  set G : Metric.sphere (0 : Rd d) 1 × Ioi (0 : ℝ) → ℝ :=
+    fun p => g ((p.2 : ℝ) • (p.1 : Rd d)) with hG
+  have hGh : ∀ x : ({0}ᶜ : Set (Rd d)), G (homeomorphUnitSphereProd _ x) = g x := by
+    intro x
+    have := homeomorphUnitSphereProd_symm_apply_coe (Rd d) (homeomorphUnitSphereProd (Rd d) x)
+    rw [Homeomorph.symm_apply_apply] at this
+    simp only [hG]
+    rw [← this]
+  have hcomp : (G ∘ homeomorphUnitSphereProd (Rd d)) = fun x : ({0}ᶜ : Set (Rd d)) => g x := funext hGh
+  have hGint : Integrable G (σ.prod (Measure.volumeIoiPow (Module.finrank ℝ (Rd d) - 1))) := by
+    refine (hmp.integrable_comp_emb hemb).1 ?_
+    rw [hcomp]
+    exact (integrableOn_iff_comap_subtypeVal (measurableSet_singleton _).compl).1 hgi.integrableOn
+  have h1 : ∫ x in Metric.ball (0 : Rd d) R, f x =
+      ∫ p, G p ∂(σ.prod (Measure.volumeIoiPow (Module.finrank ℝ (Rd d) - 1))) := by
+    calc ∫ x in Metric.ball (0 : Rd d) R, f x = ∫ x, g x := (integral_indicator measurableSet_ball).symm
+      _ = ∫ x : ({0}ᶜ : Set (Rd d)), g x ∂(volume.comap Subtype.val) := by
+        rw [integral_subtype_comap (measurableSet_singleton _).compl, restrict_compl_singleton]
+      _ = ∫ x : ({0}ᶜ : Set (Rd d)), G (homeomorphUnitSphereProd _ x) ∂(volume.comap Subtype.val) := by
+        simp_rw [hGh]
+      _ = _ := hmp.integral_comp hemb G
+  set H : ℝ → ℝ := fun a => ∫ ω, g (a • (ω : Rd d)) ∂σ with hH
+  have h2 : ∀ r : Ioi (0 : ℝ), ∫ ω, G (ω, r) ∂σ = H r := fun r => rfl
+  rw [h1, integral_prod_symm _ hGint]
+  simp_rw [h2]
+  simp only [Measure.volumeIoiPow, ENNReal.ofReal]
+  rw [integral_withDensity_eq_integral_smul
+      (measurable_subtype_coe.pow_const _).real_toNNReal,
+    integral_subtype_comap measurableSet_Ioi fun a => Real.toNNReal (a ^ (Module.finrank ℝ (Rd d) - 1)) • H a,
+    finrank_euclideanSpace_fin]
+  rw [setIntegral_congr_fun measurableSet_Ioi (g := (Iio R).indicator fun a =>
+      a ^ (d - 1) * ∫ ω, f (a • (ω : Rd d)) ∂σ) fun a ha => ?_,
+    setIntegral_indicator measurableSet_Iio, Ioi_inter_Iio]
+  have ha' : (0 : ℝ) < a := ha
+  rw [NNReal.smul_def, Real.coe_toNNReal _ (pow_nonneg ha'.le _), smul_eq_mul]
+  by_cases har : a < R
+  · rw [Set.indicator_of_mem (show a ∈ Iio R from har)]
+    congr 1
+    refine integral_congr_ae (Eventually.of_forall fun ω => ?_)
+    have hmem : a • (ω : Rd d) ∈ Metric.ball (0 : Rd d) R := by
+      rw [mem_ball_zero_iff, norm_smul, Real.norm_of_nonneg ha'.le, norm_eq_of_mem_sphere ω, mul_one]
+      exact har
+    simp only [hg, Set.indicator_of_mem hmem]
+  · rw [Set.indicator_of_notMem (show a ∉ Iio R from har)]
+    have : H a = 0 := by
+      refine integral_eq_zero_of_ae (Eventually.of_forall fun ω => ?_)
+      have hmem : a • (ω : Rd d) ∉ Metric.ball (0 : Rd d) R := by
+        rw [mem_ball_zero_iff, norm_smul, Real.norm_of_nonneg ha'.le, norm_eq_of_mem_sphere ω, mul_one]
+        exact har
+      simp only [hg, Set.indicator_of_notMem hmem, Pi.zero_apply]
+    rw [this, mul_zero]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 3: rotation invariance): the surface measure on
 `S^{d-1}` is invariant under linear isometries. -/

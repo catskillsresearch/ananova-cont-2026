@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T19:50:26Z",
+ "updated": "2026-11-26T19:52:15Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 55,
+ "sorryCount": 54,
  "counts": {
-  "open": 19,
+  "open": 18,
   "blocked": 36,
-  "done": 114
+  "done": 115
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 13,
+  "open": 12,
   "blocked": 15,
-  "done": 76
+  "done": 77
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
-    "integral_ball_polar",
     "integral_toSphere_isometry",
     "sphereMean_radial",
     "laplacian_newtonKernel",
@@ -3093,7 +3092,6 @@
    "blockers": [
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
-    "Occupation.OccupationConstant::occupationConstant.integral_ball_polar",
     "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry",
     "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel",
     "Occupation.OccupationConstant::occupationConstant.newton_ball",
@@ -3103,7 +3101,7 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_radial",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "11 sorry: integral_ball_polar, integral_toSphere_isometry, sphereMean_radial, laplacian_newtonKernel, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "10 sorry: integral_toSphere_isometry, sphereMean_radial, laplacian_newtonKernel, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
@@ -3194,22 +3192,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.integral_ball_polar"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 2: polar coordinates on a ball): for `f` integrable on `B(0,R)`, `∫_{B(0,R)} f = ∫_0^R r^{d-1} ∫_{S^{d-1}} f(rω) dσ(ω) dr`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.integral_ball_polar — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.integral_ball_polar — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.integral_reflect",
