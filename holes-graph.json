@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T17:44:17Z",
+ "updated": "2026-11-26T17:52:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 54,
+ "sorryCount": 53,
  "counts": {
-  "open": 16,
+  "open": 15,
   "blocked": 40,
-  "done": 56
+  "done": 59
  },
  "goalCounts": {
   "open": 7,
@@ -13,9 +13,9 @@
   "done": 34
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 16,
-  "done": 22
+  "done": 25
  },
  "untagged": [],
  "legend": {
@@ -64,21 +64,22 @@
    "sectionTitle": "Appendices A–B",
    "paper": "Eqs. (32), (34), (35)",
    "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "integral_le_potentialProfile",
-    "integral_div_le",
     "riemannSum_le_potentialProfile"
    ],
    "declKinds": {
     "def": 1,
-    "theorem": 3
+    "theorem": 5
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
    "status": "blocked",
    "deps": [
+    "Appendix.HeatKernel::heatKernel.div_scaling",
+    "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
     "Appendix.HeatKernel::heatKernel.integral_div_le",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
     "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile",
@@ -89,11 +90,68 @@
     "Main.GeometricMeshDecay"
    ],
    "blockers": [
-    "Appendix.HeatKernel::heatKernel.integral_div_le",
     "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
     "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile"
    ],
-   "detail": "3 sorry: integral_le_potentialProfile, integral_div_le, riemannSum_le_potentialProfile"
+   "detail": "2 sorry: integral_le_potentialProfile, riemannSum_le_potentialProfile"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "label": "div_scaling",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eq. (34",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (34), scaling `s = |x|² u`): `p_{|x|² u}(x) / (|x|² u) = |x|^{-d} |x|^{-2} · (2πu)^{-d/2} e^{-1/(2u)} / u`.",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [],
+   "detail": "proved: heatKernel.div_scaling — subgoal of Lemma B.2 proof, eq. (34 (in Appendix.HeatKernel)"
+  },
+  {
+   "id": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
+   "label": "integrableOn_unitProfile",
+   "kind": "subgoal",
+   "section": "Appendix",
+   "sectionTitle": "Appendices A–B",
+   "paper": "subgoal of Lemma B.2 proof, eq. (34",
+   "parentGoal": "Appendix.HeatKernel",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma B.2 proof, eq. (34), unit profile): for `d ≥ 1`, `u ↦ (2πu)^{-d/2} e^{-1/(2u)} / u` is integrable on `(0, ∞)` (substitute `v = 1/u`, Gamma integral).",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.Partition",
+    "Basic.Rd",
+    "Main.BalancedPartitions",
+    "Main.GeometricMeshDecay"
+   ],
+   "blockers": [],
+   "detail": "proved: heatKernel.integrableOn_unitProfile — subgoal of Lemma B.2 proof, eq. (34 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.integral_div_le",
@@ -105,17 +163,15 @@
    "parentGoal": "Appendix.HeatKernel",
    "tagged": true,
    "file": "WeakPathwiseIto/Appendix/HeatKernel.lean",
-   "sorryCount": 1,
-   "holes": [
-    "heatKernel.integral_div_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (34): `∫_0^T p_s(x) / s ds ≤ C |x|^{-d}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.Partition",
@@ -124,7 +180,7 @@
     "Main.GeometricMeshDecay"
    ],
    "blockers": [],
-   "detail": "sorry: heatKernel.integral_div_le — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
+   "detail": "proved: heatKernel.integral_div_le — subgoal of Lemma B.2 proof, eqs. (32 (in Appendix.HeatKernel)"
   },
   {
    "id": "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile",
@@ -3052,6 +3108,16 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
+   "to": "Appendix.HeatKernel",
+   "kind": "subgoal"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.integral_div_le",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
@@ -3074,6 +3140,16 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
    "kind": "hard"
   },
   {
@@ -3139,6 +3215,16 @@
   {
    "from": "Basic.Partition",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
    "kind": "hard"
   },
   {
@@ -3279,6 +3365,16 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
    "kind": "hard"
   },
   {
@@ -3673,6 +3769,16 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.integral_div_le",
    "kind": "hard"
   },
@@ -3704,6 +3810,16 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
    "kind": "hard"
   },
   {
@@ -4398,6 +4514,14 @@
    "to": "Appendix.LemmaA1"
   },
   {
+   "from": "Appendix.HeatKernel::heatKernel.div_scaling",
+   "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile",
+   "to": "Appendix.HeatKernel"
+  },
+  {
    "from": "Appendix.HeatKernel::heatKernel.integral_div_le",
    "to": "Appendix.HeatKernel"
   },
@@ -4412,6 +4536,14 @@
   {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
    "to": "Appendix.LemmaB2"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -4540,6 +4672,14 @@
   {
    "from": "Basic.Rd",
    "to": "Appendix.GaussianMoment"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile"
   },
   {
    "from": "Basic.Rd",
@@ -4807,6 +4947,14 @@
   },
   {
    "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Main.BalancedPartitions",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile"
+  },
+  {
+   "from": "Main.BalancedPartitions",
    "to": "Appendix.HeatKernel::heatKernel.integral_div_le"
   },
   {
@@ -4824,6 +4972,14 @@
   {
    "from": "Main.BalancedPartitions",
    "to": "Main.Theorem52"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.div_scaling"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile"
   },
   {
    "from": "Main.GeometricMeshDecay",

@@ -1,10 +1,14 @@
 # Direct import WeakPathwiseIto deps (for blocking / build order)
 Appendix.GaussianMoment -hard-> Appendix.LemmaA1
+Appendix.HeatKernel::heatKernel.div_scaling -hard-> Appendix.HeatKernel
+Appendix.HeatKernel::heatKernel.integrableOn_unitProfile -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.integral_div_le -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.integral_le_potentialProfile -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile -hard-> Appendix.HeatKernel
 Appendix.LemmaB2::lemma_B_2_literal -hard-> Appendix.LemmaB2
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel
+Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.div_scaling
+Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.integrableOn_unitProfile
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
@@ -18,6 +22,8 @@ Basic.FunctionOscillation::functionOscillation.tendsto_zero -hard-> Basic.Functi
 Basic.IsCubeOrBall -hard-> Sobolev.Lemma22
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21
 Basic.Partition -hard-> Appendix.HeatKernel
+Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.div_scaling
+Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integrableOn_unitProfile
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
@@ -46,6 +52,8 @@ Basic.Partition::Partition.nonneg -hard-> Basic.Partition
 Basic.Partition::Partition.t_mem -hard-> Basic.Partition
 Basic.Rd -hard-> Appendix.GaussianMoment
 Basic.Rd -hard-> Appendix.HeatKernel
+Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.div_scaling
+Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integrableOn_unitProfile
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile
 Basic.Rd -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
@@ -124,6 +132,8 @@ Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P -hard-> Bessel.WienerLawExi
 Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P -hard-> Bessel.WienerLawExists
 Main.BalancedPartitions -hard-> Appendix.HeatKernel
+Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.div_scaling
+Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integrableOn_unitProfile
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
@@ -131,6 +141,8 @@ Main.BalancedPartitions -hard-> Appendix.LemmaB2
 Main.BalancedPartitions -hard-> Appendix.LemmaB2::lemma_B_2_literal
 Main.BalancedPartitions -hard-> Main.Theorem52
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel
+Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.div_scaling
+Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integrableOn_unitProfile
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integral_div_le
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integral_le_potentialProfile
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile
