@@ -474,7 +474,27 @@ theorem sum_rpow_le {p : ℝ} (hp : 1 ≤ p) (π : Partition T) (ω : ℝ → Rd
     (∑ i : Fin π.m, ((h (ω (π.right i)) + h (ω (π.left i))) *
         ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p) ^ (1 / p) ≤
       2 ^ ((p - 1) / p) * discreteSeminorm π p h ω := by
-  sorry
+  have hp0 : 0 < p := by linarith
+  have hterm : ∀ i : Fin π.m, ((h (ω (π.right i)) + h (ω (π.left i))) *
+      ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p ≤
+        2 ^ (p - 1) * ((h (ω (π.left i)) ^ p + h (ω (π.right i)) ^ p) *
+          ENNReal.ofReal (π.right i - π.left i)) := by
+    intro i
+    rw [ENNReal.mul_rpow_of_nonneg _ _ hp0.le, ← ENNReal.rpow_mul, inv_mul_cancel₀ hp0.ne',
+      ENNReal.rpow_one, ← mul_assoc, add_comm (h (ω (π.right i)))]
+    gcongr
+    exact ENNReal.rpow_add_le_mul_rpow_add_rpow _ _ hp
+  calc (∑ i : Fin π.m, ((h (ω (π.right i)) + h (ω (π.left i))) *
+          ENNReal.ofReal (π.right i - π.left i) ^ p⁻¹) ^ p) ^ (1 / p)
+      ≤ (2 ^ (p - 1) * ∑ i : Fin π.m, (h (ω (π.left i)) ^ p + h (ω (π.right i)) ^ p) *
+          ENNReal.ofReal (π.right i - π.left i)) ^ (1 / p) := by
+        rw [Finset.mul_sum]
+        gcongr with i
+        · exact hterm i
+    _ = _ := by
+        rw [ENNReal.mul_rpow_of_nonneg _ _ (by positivity), ← ENNReal.rpow_mul, discreteSeminorm]
+        congr 2
+        ring
 
 /-- **Subgoal** (Eq. (11) proof, `‖ρ_{n,ω}‖_{L^q([0,T])}`): the discrete `ℓ^q` norm of the
 `b_i` is (at most) the `L^q([0,T])` norm of the step function `ρ_{n,ω}`. -/

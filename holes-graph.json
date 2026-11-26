@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T22:36:27Z",
+ "updated": "2026-11-26T22:37:40Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 25,
-  "done": 198
+  "done": 199
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 44
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 8,
-  "done": 154
+  "done": 155
  },
  "untagged": [],
  "legend": {
@@ -4390,9 +4390,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Section 4.2 seminorm, (10), (11)",
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "sum_rpow_le",
     "sum_rpow_le_eLpNorm",
     "le_limsup_discreteSeminorm"
    ],
@@ -4425,11 +4424,10 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le",
     "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
     "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm"
    ],
-   "detail": "3 sorry: sum_rpow_le, sum_rpow_le_eLpNorm, le_limsup_discreteSeminorm"
+   "detail": "2 sorry: sum_rpow_le_eLpNorm, le_limsup_discreteSeminorm"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.add_le",
@@ -4702,17 +4700,15 @@
    "parentGoal": "Occupation.OccupationSeminorm",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationSeminorm.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationSeminorm.eq_11.sum_rpow_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (11) proof, `‖H_n‖_{L^p} ≤ C_p ‖M_1 f‖_{n,p,ω}`): with `C_p = 2^{(p-1)/p}`, from `(x + y)^p ≤ 2^{p-1} (x^p + y^p)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.DiscreteOccupationDensity",
     "Occupation.DiscreteSeminorm",
@@ -4721,7 +4717,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: occupationSeminorm.eq_11.sum_rpow_le — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
+   "detail": "proved: occupationSeminorm.eq_11.sum_rpow_le — subgoal of Eq. (11 (in Occupation.OccupationSeminorm)"
   },
   {
    "id": "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm",
