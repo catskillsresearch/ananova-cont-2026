@@ -360,7 +360,8 @@ theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d}
 `C^n` on `ℝ^d ∖ {0}`. -/
 theorem contDiffOn_norm_rpow {d : ℕ} {n : WithTop ℕ∞} (p : ℝ) :
     ContDiffOn ℝ n (fun z : Rd d => ‖z‖ ^ p) {z | z ≠ 0} := by
-  sorry
+  intro z hz
+  exact ((contDiffAt_norm ℝ hz).rpow_const_of_ne (norm_ne_zero_iff.2 hz)).contDiffWithinAt
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6f: kernel form of the sphere mean):
 `sphereMean d r y = ∫ σ(S)⁻¹ |y - rω|^{2-d} dσ(ω)`. -/

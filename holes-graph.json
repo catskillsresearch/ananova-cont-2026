@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-26T20:10:19Z",
+ "updated": "2026-11-26T20:11:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 56,
+ "sorryCount": 55,
  "counts": {
-  "open": 20,
+  "open": 19,
   "blocked": 36,
-  "done": 124
+  "done": 125
  },
  "goalCounts": {
   "open": 6,
@@ -13,9 +13,9 @@
   "done": 38
  },
  "subgoalCounts": {
-  "open": 14,
+  "open": 13,
   "blocked": 15,
-  "done": 86
+  "done": 87
  },
  "untagged": [],
  "legend": {
@@ -3048,9 +3048,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Eq. (7) c_d",
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 12,
+   "sorryCount": 11,
    "holes": [
-    "contDiffOn_norm_rpow",
     "sphereMean_eq_integral",
     "hasFDerivAt_sphereMean",
     "hasFDerivAt_fderiv_sphereMean",
@@ -3103,7 +3102,6 @@
     "Occupation.OccupationConstant::occupationConstant.volume_ball_half"
    ],
    "blockers": [
-    "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
     "Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean",
     "Occupation.OccupationConstant::occupationConstant.eq_inv_integral",
     "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean",
@@ -3116,7 +3114,7 @@
     "Occupation.OccupationConstant::occupationConstant.sphereMean_outside",
     "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean"
    ],
-   "detail": "12 sorry: contDiffOn_norm_rpow, sphereMean_eq_integral, hasFDerivAt_sphereMean, hasFDerivAt_fderiv_sphereMean, continuousOn_fderiv_fderiv_sphereMean, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
+   "detail": "11 sorry: sphereMean_eq_integral, hasFDerivAt_sphereMean, hasFDerivAt_fderiv_sphereMean, continuousOn_fderiv_fderiv_sphereMean, harmonicAt_sphereMean, radial_harmonic_eq, tendsto_sphereMean, sphereMean_outside, newton_ball_of_three_le, newton_ball, eq_inv_integral"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow",
@@ -3128,22 +3126,20 @@
    "parentGoal": "Occupation.OccupationConstant",
    "tagged": true,
    "file": "WeakPathwiseIto/Occupation/OccupationConstant.lean",
-   "sorryCount": 1,
-   "holes": [
-    "occupationConstant.contDiffOn_norm_rpow"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Eq. (7) c_d, Newton step 6e: smoothness of the power kernel): `z ↦ |z|^p` is `C^n` on `ℝ^d ∖ {0}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: occupationConstant.contDiffOn_norm_rpow — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
+   "detail": "proved: occupationConstant.contDiffOn_norm_rpow — subgoal of Eq. (7 (in Occupation.OccupationConstant)"
   },
   {
    "id": "Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean",
