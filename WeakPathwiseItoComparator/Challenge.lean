@@ -3933,7 +3933,10 @@ theorem theorem_5_1 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariati
     (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) :
     ∀ t ∈ Icc 0 T, F (ω t) - F (ω 0) = weakPathwiseIntegral A t + 1 / 2 * weakCovariation A t := by
-  sorry
+  intro t ht
+  have hI := theorem_5_1.tendsto_integral hω hQV hosc hH A ht
+  rw [weakPathwiseIntegral, hI.limUnder_eq]
+  ring
 
 end
 
