@@ -67,7 +67,32 @@ theorem le_lintegral_piece {G : Rd d → (Rd d →L[ℝ] Rd d)} {a b : Rd d} {m 
     (hm : ∀ z ∈ incrementBall a b, m ≤ ‖G z‖) :
     ENNReal.ofReal (m * ‖b - a‖ ^ 2) ≤
       ∫⁻ x, ‖G x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) := by
-  sorry
+  rcases le_or_gt m 0 with hm0 | hm0
+  · rw [ENNReal.ofReal_of_nonpos (mul_nonpos_of_nonpos_of_nonneg hm0 (sq_nonneg _))]
+    exact zero_le
+  have hpt : ∀ x, ENNReal.ofReal m * ENNReal.ofReal (discreteOccupationDensity.piece a b x) ≤
+      ‖G x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) := fun x => by
+    by_cases hx : x ∈ incrementBall a b
+    · refine mul_le_mul' ?_ le_rfl
+      rw [← ofReal_norm_eq_enorm]
+      exact ENNReal.ofReal_le_ofReal (hm x hx)
+    · have : discreteOccupationDensity.piece a b x = 0 := by
+        unfold discreteOccupationDensity.piece
+        split_ifs
+        · rfl
+        · exact indicator_of_notMem hx _
+      rw [this, ENNReal.ofReal_zero, mul_zero, mul_zero]
+  have hint : ∫⁻ x, ENNReal.ofReal (discreteOccupationDensity.piece a b x) =
+      ENNReal.ofReal (‖b - a‖ ^ 2) := by
+    rw [← discreteOccupationDensity.integral_piece a b,
+      ofReal_integral_eq_lintegral_ofReal (discreteOccupationDensity.integrable_piece a b)
+        (Eventually.of_forall fun x => discreteOccupationDensity.piece_nonneg a b x)]
+  calc ENNReal.ofReal (m * ‖b - a‖ ^ 2)
+      = ENNReal.ofReal m * ∫⁻ x, ENNReal.ofReal (discreteOccupationDensity.piece a b x) := by
+        rw [hint, ENNReal.ofReal_mul hm0.le]
+    _ = ∫⁻ x, ENNReal.ofReal m * ENNReal.ofReal (discreteOccupationDensity.piece a b x) :=
+        (lintegral_const_mul' _ _ ENNReal.ofReal_ne_top).symm
+    _ ≤ _ := lintegral_mono hpt
 
 /-- **Subgoal** (Theorem 5.1 proof, (18), one increment): if `∇²H` varies by at most `ε` on the
 increment ball `Q` of `a, b` (from `a`), then

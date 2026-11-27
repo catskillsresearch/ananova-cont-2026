@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:07:23Z",
+ "updated": "2026-11-27T01:08:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 18,
-  "done": 220
+  "done": 221
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 50
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 7,
-  "done": 170
+  "done": 171
  },
  "untagged": [],
  "legend": {
@@ -2413,9 +2413,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "le_lintegral_piece",
     "abs_inner_increment_le_lintegral",
     "eventually_hessian_close",
     "eventually_sum_abs_le",
@@ -2449,10 +2448,9 @@
     "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
     "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
     "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
-    "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
-    "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
+    "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
    ],
-   "detail": "6 sorry: le_lintegral_piece, abs_inner_increment_le_lintegral, eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
+   "detail": "5 sorry: abs_inner_increment_le_lintegral, eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18",
@@ -2654,17 +2652,15 @@
    "parentGoal": "Main.Eq18",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.eq_18.le_lintegral_piece"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (18), lower bound by the occupation density): if `m ≤ ‖G‖` on the increment ball `Q` of `a, b`, then `m |b - a|² ≤ ∫ |G| 𝓛^{n,i}_ω`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2674,7 +2670,7 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.eq_18.le_lintegral_piece — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+   "detail": "proved: theorem_5_1.eq_18.le_lintegral_piece — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
   },
   {
    "id": "Main.GeometricMeshDecay",
