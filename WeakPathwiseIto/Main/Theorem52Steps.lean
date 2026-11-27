@@ -449,6 +449,41 @@ theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd 
     | exact hg.aestronglyMeasurable
     | exact (hardyLittlewood.measurable_localMaximalFunction g).aestronglyMeasurable
 
+/-- **Subgoal** (Appendix C, `M_1` commutes with translations: `M_1(f(· + h))(x) = M_1 f(x + h)`). -/
+theorem localMaximalFunction_comp_add (f : Rd d → ℝ) (h x : Rd d) :
+    localMaximalFunction 1 (fun z => f (z + h)) x = localMaximalFunction 1 f (x + h) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, sublinearity of `M_1` at two points:
+`|M_1 f(x) - M_1 f(x + h)| ≤ M_1(f - f(· + h))(x)` where both values are finite). -/
+theorem enorm_toReal_sub_le {f : Rd d → ℝ} (hf : Measurable f) {x h : Rd d}
+    (hx : localMaximalFunction 1 f x ≠ ⊤) (hxh : localMaximalFunction 1 f (x + h) ≠ ⊤) :
+    ‖(localMaximalFunction 1 f x).toReal - (localMaximalFunction 1 f (x + h)).toReal‖ₑ ≤
+      localMaximalFunction 1 (fun z => f z - f (z + h)) x := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `M_1 f < ∞` a.e. for `f ∈ L^p`, `p > 1`). -/
+theorem ae_localMaximalFunction_ne_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ} (hf : Measurable f)
+    (hfp : MemLp f (ENNReal.ofReal p)) : ∀ᵐ x, localMaximalFunction 1 f x ≠ ⊤ := by
+  sorry
+
+/-- **Subgoal** (Appendix C, Tonelli in difference coordinates:
+`∫∫ Φ(x, y) dy dx = ∫∫ Φ(x, x + h) dx dh`). -/
+theorem lintegral_lintegral_eq_add {Φ : Rd d → Rd d → ℝ≥0∞}
+    (hΦ : Measurable (Function.uncurry Φ)) :
+    ∫⁻ x, ∫⁻ y, Φ x y = ∫⁻ h, ∫⁻ x, Φ x (x + h) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with
+the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le`). -/
+theorem gagliardo_maximal_le_of_measurable {s p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
+    (hf : Measurable f) (hfp : MemLp f (ENNReal.ofReal p)) :
+    ∫⁻ x, ∫⁻ y, ‖(localMaximalFunction 1 f x).toReal - (localMaximalFunction 1 f y).toReal‖ₑ ^ p /
+        edist x y ^ (s * p + d) ≤
+      ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1)) *
+        ∫⁻ x, ∫⁻ y, ‖f x - f y‖ₑ ^ p / edist x y ^ (s * p + d) := by
+  sorry
+
 /-- **Subgoal** (Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and
 sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}`). -/
 theorem gagliardo_maximal_le {s p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd d → ℝ,
