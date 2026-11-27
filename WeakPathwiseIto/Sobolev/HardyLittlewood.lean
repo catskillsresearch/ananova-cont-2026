@@ -310,7 +310,24 @@ theorem lintegral_rpow_eq_lintegral_meas_lt {g : Rd d → ℝ≥0∞} (hg : Meas
     (hp : 0 < p) :
     ∫⁻ x, g x ^ p = ENNReal.ofReal p *
       ∫⁻ t in Ioi (0 : ℝ), volume {x | ENNReal.ofReal t < g x} * ENNReal.ofReal (t ^ (p - 1)) := by
-  sorry
+  have hp0 : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp).ne'
+  have hpt : ENNReal.ofReal p ≠ ⊤ := ENNReal.ofReal_ne_top
+  have hpt' : ∀ x, g x ^ p = ENNReal.ofReal p * ∫⁻ t in Ioi (0 : ℝ),
+      {t : ℝ | ENNReal.ofReal t < g x}.indicator (fun t => ENNReal.ofReal (t ^ (p - 1))) t :=
+    fun x => by rw [lintegral_Ioi_indicator_rpow hp, ENNReal.mul_div_cancel hp0 hpt]
+  simp_rw [hpt']
+  rw [lintegral_const_mul' _ _ hpt]
+  congr 1
+  have hF : Measurable (Function.uncurry fun (x : Rd d) (t : ℝ) =>
+      {t : ℝ | ENNReal.ofReal t < g x}.indicator (fun t => ENNReal.ofReal (t ^ (p - 1))) t) := by
+    have hS : MeasurableSet {z : Rd d × ℝ | ENNReal.ofReal z.2 < g z.1} :=
+      measurableSet_lt (ENNReal.measurable_ofReal.comp measurable_snd) (hg.comp measurable_fst)
+    exact ((measurable_snd.pow_const (p - 1)).ennreal_ofReal).indicator hS
+  rw [lintegral_lintegral_swap hF.aemeasurable]
+  refine lintegral_congr fun t => ?_
+  have hSt : MeasurableSet {x | ENNReal.ofReal t < g x} := measurableSet_lt measurable_const hg
+  rw [mul_comm, ← lintegral_indicator_const hSt]
+  rfl
 
 /-- **Subgoal** (Hardy–Littlewood, Tonelli for the truncated bound:
 `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1) ‖f‖_p^p`). -/
