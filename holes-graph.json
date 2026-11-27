@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:14:59Z",
+ "updated": "2026-11-27T03:17:28Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 29,
+ "sorryCount": 28,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 19,
-  "done": 275
+  "done": 276
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 220
+  "done": 221
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_ball_kernel2_le",
     "abs_sub_taylorAverage_le"
    ],
    "declKinds": {
@@ -7929,10 +7928,9 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
    "blockers": [
-    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le"
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
    ],
-   "detail": "2 sorry: lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "1 sorry: abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8081,24 +8079,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.lintegral_ball_kernel2_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r)} |y - z|^{2-d} ≤ C (r + |x - z|)^{2-d}`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.lintegral_ball_kernel2_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.lintegral_ball_kernel2_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
