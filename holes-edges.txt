@@ -561,6 +561,7 @@ Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe
+Bessel.CanonicalWienerSpace -hard-> Main.ExitTime
 Bessel.CanonicalWienerSpace -hard-> Main.IsItoIntegral
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem

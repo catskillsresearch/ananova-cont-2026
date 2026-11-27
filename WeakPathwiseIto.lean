@@ -29,6 +29,7 @@ public import WeakPathwiseIto.Bessel.Young
 public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral
+public import WeakPathwiseIto.Main.ExitTime
 public import WeakPathwiseIto.Main.Proposition53
 public import WeakPathwiseIto.Main.Proposition53Steps
 public import WeakPathwiseIto.Main.Remark54

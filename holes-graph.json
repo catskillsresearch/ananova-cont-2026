@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T21:39:03Z",
+ "updated": "2026-11-27T21:53:24Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 11,
  "counts": {
   "open": 5,
   "blocked": 12,
-  "done": 442
+  "done": 443
  },
  "goalCounts": {
   "open": 2,
   "blocked": 9,
-  "done": 67
+  "done": 68
  },
  "subgoalCounts": {
   "open": 3,
@@ -3461,6 +3461,28 @@
    "detail": "proved: theorem_5_1.eq_18.le_lintegral_piece — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
+   "id": "Main.ExitTime",
+   "label": "ExitTime",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "τ_R exit time (proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/ExitTime.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
    "id": "Main.GeometricMeshDecay",
    "label": "GeometricMeshDecay",
    "section": "Main",
@@ -3581,7 +3603,7 @@
    "label": "IsItoIntegral",
    "section": "Main",
    "sectionTitle": "§5 Main results",
-   "paper": "Itô integral",
+   "paper": "Itô integral (elementary integrands, natural filtration)",
    "file": "WeakPathwiseIto/Main/IsItoIntegral.lean",
    "sorryCount": 0,
    "holes": [],
@@ -18026,6 +18048,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.ExitTime",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.IsItoIntegral",
    "kind": "hard"
   },
@@ -28423,6 +28450,10 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.ExitTime"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
