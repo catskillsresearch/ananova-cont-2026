@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T22:18:35Z",
+ "updated": "2026-11-27T22:20:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 45,
+ "sorryCount": 44,
  "counts": {
-  "open": 39,
+  "open": 38,
   "blocked": 15,
-  "done": 450
+  "done": 451
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 73
  },
  "subgoalCounts": {
-  "open": 37,
+  "open": 36,
   "blocked": 3,
-  "done": 377
+  "done": 378
  },
  "untagged": [],
  "legend": {
@@ -3180,9 +3180,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3)",
    "file": "WeakPathwiseIto/Main/DoobL2.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_sq_le_of_weak_type",
     "lintegral_sup_sq_le"
    ],
    "declKinds": {
@@ -3197,10 +3196,9 @@
     "Main.DoobL2::DoobL2.lintegral_sup_sq_le"
    ],
    "blockers": [
-    "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
     "Main.DoobL2::DoobL2.lintegral_sup_sq_le"
    ],
-   "detail": "2 sorry: lintegral_sq_le_of_weak_type, lintegral_sup_sq_le"
+   "detail": "1 sorry: lintegral_sup_sq_le"
   },
   {
    "id": "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
@@ -3212,26 +3210,23 @@
    "parentGoal": "Main.DoobL2",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/DoobL2.lean",
-   "sorryCount": 1,
-   "holes": [
-    "DoobL2.lintegral_sq_le_of_weak_type"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Doob `L²`, weak type ⇒ strong type): if `0 ≤ X, Y` with `E Y² < ∞` and `t μ(Y ≥ t) ≤ ∫_{Y ≥ t} X` for all `t > 0`, then `E Y² ≤ 4 E X²` (layer cake: `E Y² = 2 ∫_0^∞ t μ(Y ≥ t) dt ≤ 2 E[X Y] ≤ 2 ‖X‖₂ ‖Y‖₂`).",
+   "doc": "**Subgoal** (Doob `L²`, weak type ⇒ strong type): if `0 ≤ Y`, `X` measurable, `E Y² < ∞` and `t μ(Y ≥ t) ≤ ∫_{Y ≥ t} X` for all `t > 0`, then `E Y² ≤ 4 E X²` (layer cake: `E Y² = 2 ∫_0^∞ t μ(Y ≥ t) dt ≤ 2 E[X Y] ≤ 2 ‖X‖₂ ‖Y‖₂`).",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [],
    "blockers": [],
-   "detail": "sorry: DoobL2.lintegral_sq_le_of_weak_type — subgoal of Doob `L²`, weak type ⇒ strong type (in Main.DoobL2) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: DoobL2.lintegral_sq_le_of_weak_type — subgoal of Doob `L²`, weak type ⇒ strong type (in Main.DoobL2) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.DoobL2::DoobL2.lintegral_sup_sq_le",

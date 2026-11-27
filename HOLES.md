@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:18:35Z  
-**`sorry` occurrences:** 45 · 39 open · 15 blocked · 450 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 73} · subgoals {'open': 37, 'blocked': 3, 'done': 377} · 11 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:20:21Z  
+**`sorry` occurrences:** 44 · 38 open · 15 blocked · 451 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 73} · subgoals {'open': 36, 'blocked': 3, 'done': 378} · 11 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -113,7 +113,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul` | subgoal of Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y | 0 |
 | done | `Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le` | subgoal of Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y | 0 |
 | done | `Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le` | subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v | 0 |
-| open | `Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type` | subgoal of Doob `L²`, weak type ⇒ strong type | 1 |
+| done | `Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type` | subgoal of Doob `L²`, weak type ⇒ strong type | 0 |
 | open | `Main.DoobL2::DoobL2.lintegral_sup_sq_le` | subgoal of Doob's `L²` maximal inequality, discrete time | 1 |
 | done | `Main.Eq18::theorem_5_1.eq_18` | subgoal of Theorem 5.1 proof, eq. (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
@@ -540,7 +540,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
-| blocked | `Main.DoobL2` | Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3) | 2 | `Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type`, `Main.DoobL2::DoobL2.lintegral_sup_sq_le` |
+| blocked | `Main.DoobL2` | Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3) | 1 | `Main.DoobL2::DoobL2.lintegral_sup_sq_le` |
 | done | `Main.Eq18` |  | 0 |  |
 | done | `Main.ExitTime` | τ_R exit time (proof of Prop. 5.3) | 0 |  |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
