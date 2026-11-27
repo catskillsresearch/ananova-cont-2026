@@ -162,6 +162,23 @@ own text.
   $\|h\|_{n,p,\omega}$ of Section 4.2, which is how Appendix C uses it), and prove
   `lemma_B_2_literal` (the literal reading) from it; for $T > 0$ the two conclusions are
   equivalent, so the typo does not change the strength of the lemma.
+* **Theorem 5.2 and Proposition 5.3: representative of F (added hypothesis, approved).**
+  Both statements evaluate $F$ pointwise along the path ($F_m(B(t)) \to F(B(t))$ for every
+  $t\in[0,T]$, and $F(B(t)) - F(B(0))$ in the Itô formula), while $W^{2+,p}$ and $W^{2,1}$ only
+  determine $F$ up to Lebesgue-null sets. Appendix C proves $F_m(x)\to\tilde F(x)$ only at
+  Lebesgue points $x$ of $F$ (to the Lebesgue value), so the paper silently takes $F$ to be its
+  precise representative there. For an arbitrary representative the statements are false.
+  Sketch ($d = 1$): let $F\in C^\infty_c(\mathbb R)$ and $F' := F + \mathbf 1_{\{0\}}$, which lies
+  in the same Sobolev classes. Points are not polar for one-dimensional Brownian motion, so from
+  any $x_0 \neq 0$ the path hits $0$ before $T$ with positive probability. On that event the
+  local time is bounded below on a neighbourhood $[c,e]$ of $0$, so convergence of the Hessians
+  in $\|\cdot\|_{W^0_{B,\pi}}$ forces $(F_m - F)'' \to 0$ in $L^1[c,e]$. Then $F_m - F$ is
+  asymptotically affine on $[c,e]$ and tends to $0$ at $c$ and $e$, hence at $0$, contradicting
+  $F_m(0) \to F'(0) = F(0) + 1$. So no polar exceptional set can work (in $d = 2$ the same
+  happens with $F$ modified on a line). We therefore add the hypothesis
+  `hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x` to `theorem_5_2`,
+  `theorem_5_2_deterministic` and `proposition_5_3`. This is the paper's implicit convention
+  and is satisfied by the precise representative of any $F$.
 * **Remark 4.4** is stated for $r \in (1,\infty]$ (weak-* for $r = \infty$, `WeakLpTendsto`):
   the density identity, the explicit seminorm and the inclusion. Its last paragraph ("does not
   in general characterise all of $\mathcal W^2_{\omega,\pi}$") is an informal comment and is

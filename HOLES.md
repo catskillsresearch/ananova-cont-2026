@@ -2,7 +2,7 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T04:01:13Z  
+**Updated:** 2026-11-27T10:11:22Z  
 **`sorry` occurrences:** 32 · 7 open · 21 blocked · 300 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 61} · subgoals {'open': 4, 'blocked': 12, 'done': 239} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).

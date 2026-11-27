@@ -976,6 +976,7 @@ Smooth.Proposition31::proposition_3_1.tendsto_main -hard-> Smooth.Proposition31
 Smooth.Proposition31::proposition_3_1.tendsto_remainder -hard-> Smooth.Proposition31
 Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes -hard-> Smooth.Proposition31
 Sobolev.IsLebesguePoint -hard-> Bessel.Theorem29
+Sobolev.IsLebesguePoint -hard-> Main.Proposition53
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
@@ -1183,6 +1184,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_is
 Sobolev.MemW2PlusS -hard-> Sobolev.MemW2Plus
 Sobolev.MemWLoc -hard-> Main.Proposition53
 Sobolev.MemWLoc -hard-> Main.Remark54
+Sobolev.PreciseRepresentative -hard-> Main.Proposition53
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem

@@ -4286,11 +4286,14 @@ section
 variable {T : ℝ} {d : ℕ}
 
 /-- **Theorem 5.2.** Let `π` satisfy Assumptions 1 and 2 and
-`F ∈ W^{2+,p}(ℝ^d) ∩ W^{2,1}(ℝ^d)`, `1 < p < ∞`. Then there is a polar set `E` such that for
+`F ∈ W^{2+,p}(ℝ^d) ∩ W^{2,1}(ℝ^d)`, `1 < p < ∞`, with `F` equal to its precise
+representative `F̃` at every Lebesgue point (the paper's implicit convention; see
+`WeakPathwiseIto.md`, "Theorem 5.2 and Proposition 5.3: representative of F"). Then there is a polar set `E` such that for
 every starting point `x₀ ∉ E`, `ℙ_{x₀}(F ∈ 𝓦^2_{B,π}) = 1`. -/
 theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
-    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) :
+    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F)
+    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
     ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.path ω) := by
   sorry
@@ -4299,7 +4302,8 @@ theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
 `F_m ∈ C^2_b ∩ W^{2,1}` works `ℙ_{x₀}`-almost surely. -/
 theorem theorem_5_2_deterministic {π : ℕ → Partition T}
     (hT : 0 < T) (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
-    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) :
+    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F)
+    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
     ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
         (∀ m, 1 ≤ m → ContDiffBounded 2 (Fm m) ∧ MemW 2 1 (Fm m)) ∧ ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀),
@@ -4397,14 +4401,16 @@ section
 variable {T : ℝ} {d : ℕ}
 
 /-- **Proposition 5.3** (pathwise Föllmer–Protter formula). Let `π` satisfy Assumptions 1 and 2
-and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradient `∇F`. Outside a
+and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradient `∇F`, and `F` equal to its precise representative `F̃` at every
+Lebesgue point (as in Theorem 5.2). Outside a
 polar set `E` of starting points, the pathwise integral of Theorem 5.1 agrees `ℙ_x`-a.s. with
 the stochastic Itô integral, and for every `t ∈ [0, T]`
 `F(B(t)) - F(B(0)) = ∫_0^t ∇F(B(s)) dB(s) + ½ [∇F(B), B]_π(t)`, `ℙ_x`-a.s. -/
 theorem proposition_5_3 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) (hFloc : MemWLoc 1 2 F)
-    {G : Rd d → Rd d} (hG : IsWeakGradient F G) :
+    {G : Rd d → Rd d} (hG : IsWeakGradient F G)
+    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
     ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
         ∀ t ∈ Icc 0 T, ∃ I : CanonicalWienerSpace d T → ℝ, IsItoIntegral x₀ G t I ∧
