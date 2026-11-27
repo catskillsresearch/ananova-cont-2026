@@ -115,9 +115,24 @@ theorem ae_localMaximalFunction_lt_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
 
 /-- **Subgoal** (Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0`). -/
 theorem tendsto_eLpNorm_rpow_one {p : ℝ} (hp : 0 < p) {g : ℕ → Rd d → ℝ} (hg : ∀ m, 0 ≤ g m)
+    (hgm : ∀ m, Measurable (g m))
     (hlim : Tendsto (fun m => eLpNorm (g m) (ENNReal.ofReal p) volume) atTop (𝓝 0)) :
     Tendsto (fun m => eLpNorm (fun x => g m x ^ p) 1 volume) atTop (𝓝 0) := by
-  sorry
+  have heq : ∀ m, eLpNorm (fun x => g m x ^ p) 1 volume =
+      eLpNorm (g m) (ENNReal.ofReal p) volume ^ p := by
+    intro m
+    have h0 : ENNReal.ofReal p ≠ 0 := by rwa [Ne, ENNReal.ofReal_eq_zero, not_le]
+    rw [eLpNorm_one_eq_lintegral_enorm, eLpNorm_eq_lintegral_rpow_enorm_toReal h0 ENNReal.ofReal_ne_top,
+      ENNReal.toReal_ofReal hp.le, ← ENNReal.rpow_mul, one_div_mul_cancel hp.ne', ENNReal.rpow_one]
+    refine lintegral_congr fun x => ?_
+    rw [Real.enorm_eq_ofReal (Real.rpow_nonneg (hg m x) p), Real.enorm_eq_ofReal (hg m x),
+      ENNReal.ofReal_rpow_of_nonneg (hg m x) hp.le]
+    · exact (hgm m).aestronglyMeasurable
+    · exact ((hgm m).pow_const p).aestronglyMeasurable
+  simp_rw [heq]
+  have := (ENNReal.continuous_rpow_const (y := p)).tendsto 0
+  rw [ENNReal.zero_rpow_of_pos hp] at this
+  exact this.comp hlim
 
 /-- **Subgoal** (Appendix C, standard mollifier `η_m(x) = m^d η(m x)`). -/
 theorem exists_mollifier (d : ℕ) : ∃ ψ : ℕ → Rd d → ℝ,
