@@ -621,7 +621,58 @@ theorem smoothHessian_convolution {F : Rd d → ℝ} {G : Rd d → Rd d}
     {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ)
     (x : Rd d) :
     smoothHessian (fun z => ∫ y, F y * ψ (z - y)) x = ∫ y, ψ (x - y) • H y := by
-  sorry
+  obtain ⟨hC2, hder⟩ := theorem_2_1_second.hessian_convolution hG hH hψ hψc
+  set u : Rd d → ℝ := fun z => ∫ y, F y * ψ (z - y)
+  set M : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j =>
+    (EuclideanSpace.proj j : Rd d →L[ℝ] ℝ).smulRight (Rd.basisVec i)
+  have hrep : ∀ A : Rd d →L[ℝ] Rd d, A = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) • M i j := by
+    intro A
+    apply ContinuousLinearMap.coe_injective
+    refine (EuclideanSpace.basisFun (Fin d) ℝ).toBasis.ext fun k => ?_
+    ext l
+    simp [M, Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right, Pi.single_apply]
+  have hext : ∀ A B : Rd d →L[ℝ] Rd d,
+      (∀ i j, Rd.coord i (A (Rd.basisVec j)) = Rd.coord i (B (Rd.basisVec j))) → A = B := by
+    intro A B h
+    rw [hrep A, hrep B]
+    simp_rw [h]
+  have hψx : Continuous fun y => ψ (x - y) := hψ.continuous.comp (continuous_sub_left x)
+  have hψxc : HasCompactSupport fun y => ψ (x - y) := hψc.comp_homeomorph (Homeomorph.subLeft x)
+  have hent : ∀ i j, Integrable (fun y => ψ (x - y) • Rd.coord i (H y (Rd.basisVec j))) :=
+    fun i j => (hH i j).2.1.integrable_smul_left_of_hasCompactSupport hψx hψxc
+  have hInt : Integrable (fun y => ψ (x - y) • H y) := by
+    have hfun : (fun y => ψ (x - y) • H y) =
+        fun y => ∑ i, ∑ j, (ψ (x - y) • Rd.coord i (H y (Rd.basisVec j))) • M i j := by
+      funext y
+      conv_lhs => rw [hrep (H y)]
+      simp only [Finset.smul_sum, smul_smul, smul_eq_mul]
+    rw [hfun]
+    exact integrable_finsetSum _ fun i _ =>
+      integrable_finsetSum _ fun j _ => (hent i j).smul_const _
+  refine hext _ _ fun i j => ?_
+  -- left side: second derivative of the mollification
+  have hd1 : Differentiable ℝ (fderiv ℝ u) :=
+    (hC2.fderiv_right (m := 1) (by norm_num)).differentiable (by norm_num)
+  have hL : Rd.coord i (smoothHessian u x (Rd.basisVec j)) =
+      ∫ y, Rd.coord i (H y (Rd.basisVec j)) * ψ (x - y) := by
+    rw [PathwiseSobolevSpace.coord_smoothHessian hC2 i j x]
+    rw [fderiv_clm_apply (hd1 x) (differentiableAt_const _)]
+    rw [fderiv_const_apply]
+    simp only [ContinuousLinearMap.comp_zero, zero_add, ContinuousLinearMap.flip_apply]
+    exact hder x j i
+  -- right side: coordinates commute with the Bochner integral
+  have hR : Rd.coord i ((∫ y, ψ (x - y) • H y) (Rd.basisVec j)) =
+      ∫ y, Rd.coord i (H y (Rd.basisVec j)) * ψ (x - y) := by
+    rw [ContinuousLinearMap.integral_apply hInt]
+    have hI2 : Integrable (fun y => (ψ (x - y) • H y) (Rd.basisVec j)) :=
+      (ContinuousLinearMap.apply ℝ (Rd d) (Rd.basisVec j)).integrable_comp hInt
+    have := (innerSL ℝ (Rd.basisVec i)).integral_comp_comm hI2
+    simp only [innerSL_apply_apply] at this
+    simp only [Rd.coord]
+    rw [real_inner_comm, ← this]
+    congr 1; funext y
+    simp [real_inner_comm, real_inner_smul_right, mul_comm]
+  rw [hL, hR]
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}`
 function is in `L^p`, by uniqueness of weak derivatives). -/
