@@ -113,7 +113,44 @@ a.e.-strongly measurable). -/
 theorem isWeakHessian_ae {F : Rd d → ℝ} {H H' : Rd d → (Rd d →L[ℝ] Rd d)}
     (hH : IsWeakHessian F H) (hH' : IsWeakHessian F H') :
     AEStronglyMeasurable H volume ∧ H =ᵐ[volume] H' := by
-  sorry
+  set b := EuclideanSpace.basisFun (Fin d) ℝ with hb
+  have hbv : ∀ i, b i = Rd.basisVec i := fun i => by
+    rw [hb, EuclideanSpace.basisFun_apply]; rfl
+  set E : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j => (innerSL ℝ (b j)).smulRight (b i)
+    with hE
+  have hrep : ∀ A : Rd d →L[ℝ] Rd d,
+      A = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) • E i j := by
+    intro A
+    ext1 v
+    have hv : v = ∑ j, ⟪b j, v⟫ • b j := (b.sum_repr' v).symm
+    have hw : ∀ w : Rd d, w = ∑ i, ⟪b i, w⟫ • b i := fun w => (b.sum_repr' w).symm
+    conv_lhs => rw [hv]
+    rw [map_sum]
+    simp only [map_smul]
+    conv_lhs => arg 2; ext j; rw [hw (A (b j))]
+    simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply, hE,
+      ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, Finset.smul_sum, smul_smul,
+      Rd.coord, ← hbv]
+    rw [Finset.sum_comm]
+    refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+    rw [real_inner_comm (b i)]
+    ring_nf
+  have hc : ∀ i j, AEStronglyMeasurable (fun x => Rd.coord i (H x (Rd.basisVec j))) volume :=
+    fun i j => (hH i j).2.1.aestronglyMeasurable
+  have hae : ∀ᵐ x ∂volume, ∀ i j, Rd.coord i (H x (Rd.basisVec j)) =
+      Rd.coord i (H' x (Rd.basisVec j)) := by
+    rw [ae_all_iff]; intro i
+    rw [ae_all_iff]; intro j
+    exact isWeakDerivative_ae_unique (hH i j) (hH' i j)
+  refine ⟨?_, ?_⟩
+  · have : H = fun x => ∑ i, ∑ j, Rd.coord i (H x (Rd.basisVec j)) • E i j :=
+      funext fun x => hrep (H x)
+    rw [this]
+    exact Finset.aestronglyMeasurable_fun_sum _ fun i _ =>
+      Finset.aestronglyMeasurable_fun_sum _ fun j _ => (hc i j).smul_const _
+  · filter_upwards [hae] with x hx
+    rw [hrep (H x), hrep (H' x)]
+    simp only [hx]
 
 /-- **Subgoal** (Theorem 5.1 proof, eqs. (19) and (23)): for `C²_b` functions `F, G` and
 a.e.-equal measurable `H, H'`,
