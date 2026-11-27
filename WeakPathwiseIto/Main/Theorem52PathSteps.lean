@@ -523,6 +523,35 @@ theorem memLp_maximal_toReal {p : ℝ} (hp : 1 < p) {u : Rd d → ℝ}
   rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg]
   exact ENNReal.ofReal_toReal_le
 
+/-- **Subgoal** (Theorem 5.2, step 2: for `u ∈ L^p` with finite Gagliardo seminorm,
+`h = (M_1 u)^p` meets the hypotheses of Lemma B.2: measurable, nonnegative, integrable, and
+`∫_K ∫_K |h(x) - h(y)| / |x - y|^d < ∞` on compacts, via Hardy–Littlewood, the Gagliardo bound
+for `M_1` and `lintegral_rpow_sub_le`). -/
+theorem lemma_B_2_hyps_maximal {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {u : Rd d → ℝ}
+    (hu : MemLp u (ENNReal.ofReal p))
+    (hus : ∫⁻ x, ∫⁻ y, ‖u x - u y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤) :
+    Measurable (fun x => (localMaximalFunction 1 u x).toReal ^ p) ∧
+      0 ≤ (fun x => (localMaximalFunction 1 u x).toReal ^ p) ∧
+      Integrable (fun x => (localMaximalFunction 1 u x).toReal ^ p) ∧
+      ∀ K : Set (Rd d), IsCompact K → ∫⁻ x in K, ∫⁻ y in K,
+        ‖(localMaximalFunction 1 u x).toReal ^ p - (localMaximalFunction 1 u y).toReal ^ p‖ₑ /
+          edist x y ^ (d : ℝ) < ⊤ := by
+  set g : Rd d → ℝ := fun x => (localMaximalFunction 1 u x).toReal
+  have hgm : Measurable g := (localMaximalFunction.measurable u).ennreal_toReal
+  have hg0 : 0 ≤ g := fun x => ENNReal.toReal_nonneg
+  have hgp : MemLp g (ENNReal.ofReal p) := memLp_maximal_toReal hp hu
+  obtain ⟨C, hC⟩ := gagliardo_maximal_le (d := d) (s := s) hp
+  have hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤ :=
+    (hC u hu).trans_lt (ENNReal.mul_lt_top ENNReal.coe_lt_top hus)
+  refine ⟨hgm.pow_const p, fun x => Real.rpow_nonneg (hg0 x) p, ?_,
+    fun K hK => lintegral_rpow_sub_le hs hp hg0 hgm hgp hgs hK⟩
+  have hp0 : ENNReal.ofReal p ≠ 0 := by
+    rw [Ne, ENNReal.ofReal_eq_zero, not_le]; linarith
+  have hint := hgp.integrable_norm_rpow hp0 ENNReal.ofReal_ne_top
+  rw [ENNReal.toReal_ofReal (by linarith)] at hint
+  refine hint.congr (ae_of_all _ fun x => ?_)
+  simp only [Real.norm_eq_abs, abs_of_nonneg (hg0 x), g]
+
 end theorem_5_2
 
 end WeakPathwiseIto

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:16:12Z  
-**`sorry` occurrences:** 23 · 10 open · 11 blocked · 373 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 311} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:16:34Z  
+**`sorry` occurrences:** 23 · 10 open · 11 blocked · 374 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 312} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -138,6 +138,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier` | subgoal of Appendix C, standard mollifier `η_m(x | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub` | subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` | subgoal of Appendix C, (11 | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal` | subgoal of Theorem 5.2, step 2: for `u ∈ L^p` with finite Gagliardo seminorm, `h = (M_1 u | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first` | subgoal of Appendix C, (10 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first` | subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal` | subgoal of Theorem 5.2, step 2: `g = (M_1 u | 0 |
