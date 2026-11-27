@@ -32,6 +32,53 @@ variable {d : ℕ}
 /-- `S` is `(α, p)`-polar: `B_{α,p}(S) = 0` (Definition 2.7). -/
 def IsNull (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : Prop := besselCapacity d α p S = 0
 
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 1): for `α ≠ 0` the potential
+`g_α ⋆ h ∈ [0, ∞]` is monotone under a.e. inequality of `h`. -/
+theorem nonnegPotential_mono_ae {α : ℝ} (hα : α ≠ 0) {h₁ h₂ : Rd d → ℝ}
+    (hle : ∀ᵐ y, ENNReal.ofReal (h₁ y) ≤ ENNReal.ofReal (h₂ y)) (x : Rd d) :
+    BesselSpace.nonnegPotential d α h₁ x ≤ BesselSpace.nonnegPotential d α h₂ x := by
+  sorry
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 2): for `0 < p < ∞`,
+`‖h‖_p^p = ∫ |h|^p`. -/
+theorem eLpNorm_rpow_eq {p : ℝ≥0∞} (hp : 0 < p.toReal) {h : Rd d → ℝ} (hh : Measurable h) :
+    eLpNorm h p volume ^ p.toReal = ∫⁻ y, ‖h y‖ₑ ^ p.toReal := by
+  sorry
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 3): when `p.toReal = 0`
+(`p ∈ {0, ∞}`), every admissible value `‖h‖_p^0` is `1`, so `B_{α,p}(E) ≥ 1`. -/
+theorem one_le_of_toReal_eq_zero {α : ℝ} {p : ℝ≥0∞} (hp : p.toReal = 0) (S : Set (Rd d)) :
+    1 ≤ besselCapacity d α p S := by
+  sorry
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 4): `(sup_n a_n)^q ≤ ∑_n a_n^q`
+for `q > 0`. -/
+theorem iSup_rpow_le_tsum {q : ℝ} (hq : 0 < q) (a : ℕ → ℝ≥0∞) :
+    (⨆ n, a n) ^ q ≤ ∑' n, a n ^ q := by
+  sorry
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 5): below any `c > B_{α,p}(E)`
+there is an admissible `h`. -/
+theorem exists_feasible_lt {α : ℝ} {p : ℝ≥0∞} {S : Set (Rd d)} {c : ℝ≥0∞}
+    (hc : besselCapacity d α p S < c) :
+    ∃ h : Rd d → ℝ, Measurable h ∧ 0 ≤ h ∧ (∀ x ∈ S, 1 ≤ BesselSpace.nonnegPotential d α h x) ∧
+      eLpNorm h p volume ^ p.toReal < c := by
+  sorry
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 6): the admissible function
+`sup_n h_n`, taken as `1` on the (null) set where the supremum is `∞`. -/
+noncomputable def supFn (h : ℕ → Rd d → ℝ) (y : Rd d) : ℝ :=
+  if ⨆ n, ENNReal.ofReal (h n y) = ⊤ then 1 else (⨆ n, ENNReal.ofReal (h n y)).toReal
+
+/-- **Subgoal** (Definition 2.7, countable subadditivity, step 6): `sup_n h_n` is measurable,
+nonnegative, dominates each `h_n` where finite, and `|sup_n h_n|^q ≤ ∑_n h_n^q`. -/
+theorem supFn_props {h : ℕ → Rd d → ℝ} (hm : ∀ n, Measurable (h n)) :
+    Measurable (supFn h) ∧ 0 ≤ supFn h ∧
+      (∀ n y, ⨆ k, ENNReal.ofReal (h k y) ≠ ⊤ →
+        ENNReal.ofReal (h n y) ≤ ENNReal.ofReal (supFn h y)) ∧
+      ∀ {q : ℝ}, 0 < q → ∀ y, ‖supFn h y‖ₑ ^ q ≤ ∑' n, ENNReal.ofReal (h n y) ^ q := by
+  sorry
+
 /-- **Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93]. -/
 theorem iUnion_le (α : ℝ) (p : ℝ≥0∞) (S : ℕ → Set (Rd d)) :
     besselCapacity d α p (⋃ n, S n) ≤ ∑' n, besselCapacity d α p (S n) := by

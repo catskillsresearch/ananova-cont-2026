@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T18:50:40Z  
-**`sorry` occurrences:** 18 · 7 open · 14 blocked · 392 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 4, 'blocked': 4, 'done': 329} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T18:53:45Z  
+**`sorry` occurrences:** 24 · 13 open · 14 blocked · 393 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 10, 'blocked': 4, 'done': 330} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -75,7 +75,14 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion` | subgoal of Definition 2.7, countable unions | 0 |
 | open | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one` | subgoal of Lemma B.1 proof, [AM71] | 1 |
 | open | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p` | subgoal of Appendix C proof of Theorem 5.2, [AM71] | 1 |
+| open | `Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq` | subgoal of Definition 2.7, countable subadditivity, step 2 | 1 |
+| open | `Bessel.BesselCapacity::besselCapacity.exists_feasible_lt` | subgoal of Definition 2.7, countable subadditivity, step 5 | 1 |
+| open | `Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum` | subgoal of Definition 2.7, countable subadditivity, step 4 | 1 |
 | open | `Bessel.BesselCapacity::besselCapacity.iUnion_le` | subgoal of Definition 2.7, countable subadditivity [Fuk93] | 1 |
+| open | `Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae` | subgoal of Definition 2.7, countable subadditivity, step 1 | 1 |
+| open | `Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero` | subgoal of Definition 2.7, countable subadditivity, step 3 | 1 |
+| done | `Bessel.BesselCapacity::besselCapacity.supFn` | subgoal of Definition 2.7, countable subadditivity, step 6 | 0 |
+| open | `Bessel.BesselCapacity::besselCapacity.supFn_props` | subgoal of Definition 2.7, countable subadditivity, step 6 | 1 |
 | done | `Bessel.BesselKernel::besselKernel.asymptotic_origin` | subgoal of Definition 2.4 | 0 |
 | done | `Bessel.BesselKernel::besselKernel.fourier_eq` | subgoal of Definition 2.4 | 0 |
 | done | `Bessel.BesselKernel::besselKernel.fourier_fubini` | subgoal of Definition 2.4, Fourier transform step 2: Fubini | 0 |
@@ -413,7 +420,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Bessel.BesselCapacity` | Definition 2.7 | 3 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.iUnion_le` |
+| blocked | `Bessel.BesselCapacity` | Definition 2.7 | 9 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq`, `Bessel.BesselCapacity::besselCapacity.exists_feasible_lt`, `Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae`, `Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero`, `Bessel.BesselCapacity::besselCapacity.supFn_props` |
 | done | `Bessel.BesselKernel` | Definition 2.4 | 0 |  |
 | done | `Bessel.BesselSpace` | Definition 2.5 | 0 |  |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |

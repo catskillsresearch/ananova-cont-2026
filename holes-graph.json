@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:50:40Z",
+ "updated": "2026-11-27T18:53:45Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 18,
+ "sorryCount": 24,
  "counts": {
-  "open": 7,
+  "open": 13,
   "blocked": 14,
-  "done": 392
+  "done": 393
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 10,
   "blocked": 4,
-  "done": 329
+  "done": 330
  },
  "untagged": [],
  "legend": {
@@ -1581,15 +1581,21 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 3,
+   "sorryCount": 9,
    "holes": [
+    "nonnegPotential_mono_ae",
+    "eLpNorm_rpow_eq",
+    "one_le_of_toReal_eq_zero",
+    "iSup_rpow_le_tsum",
+    "exists_feasible_lt",
+    "supFn_props",
     "iUnion_le",
     "IsNull.one_two_of_two_one",
     "IsNull.one_two_of_two_p"
    ],
    "declKinds": {
-    "def": 2,
-    "theorem": 4
+    "def": 3,
+    "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
@@ -1599,7 +1605,14 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+    "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+    "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+    "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+    "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+    "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+    "Bessel.BesselCapacity::besselCapacity.supFn",
+    "Bessel.BesselCapacity::besselCapacity.supFn_props",
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
@@ -1607,9 +1620,15 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
-    "Bessel.BesselCapacity::besselCapacity.iUnion_le"
+    "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+    "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+    "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+    "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+    "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+    "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+    "Bessel.BesselCapacity::besselCapacity.supFn_props"
    ],
-   "detail": "3 sorry: iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "9 sorry: nonnegPotential_mono_ae, eLpNorm_rpow_eq, one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1712,6 +1731,108 @@
    "detail": "sorry: besselCapacity.IsNull.one_two_of_two_p — subgoal of Appendix C proof of Theorem 5.2, [AM71] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
+   "id": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+   "label": "eLpNorm_rpow_eq",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 2",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.eLpNorm_rpow_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 2): for `0 < p < ∞`, `‖h‖_p^p = ∫ |h|^p`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.eLpNorm_rpow_eq — subgoal of Definition 2.7, countable subadditivity, step 2 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+   "label": "exists_feasible_lt",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 5",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.exists_feasible_lt"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 5): below any `c > B_{α,p}(E)` there is an admissible `h`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.exists_feasible_lt — subgoal of Definition 2.7, countable subadditivity, step 5 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+   "label": "iSup_rpow_le_tsum",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 4",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.iSup_rpow_le_tsum"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 4): `(sup_n a_n)^q ≤ ∑_n a_n^q` for `q > 0`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.iSup_rpow_le_tsum — subgoal of Definition 2.7, countable subadditivity, step 4 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
    "label": "iUnion_le",
    "kind": "subgoal",
@@ -1744,6 +1865,139 @@
    ],
    "blockers": [],
    "detail": "sorry: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+   "label": "nonnegPotential_mono_ae",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 1",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.nonnegPotential_mono_ae"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 1): for `α ≠ 0` the potential `g_α ⋆ h ∈ [0, ∞]` is monotone under a.e. inequality of `h`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.nonnegPotential_mono_ae — subgoal of Definition 2.7, countable subadditivity, step 1 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+   "label": "one_le_of_toReal_eq_zero",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 3",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.one_le_of_toReal_eq_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 3): when `p.toReal = 0` (`p ∈ {0, ∞}`), every admissible value `‖h‖_p^0` is `1`, so `B_{α,p}(E) ≥ 1`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.one_le_of_toReal_eq_zero — subgoal of Definition 2.7, countable subadditivity, step 3 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.supFn",
+   "label": "supFn",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 6",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 6): the admissible function `sup_n h_n`, taken as `1` on the (null) set where the supremum is `∞`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "proved: besselCapacity.supFn — subgoal of Definition 2.7, countable subadditivity, step 6 (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.BesselCapacity::besselCapacity.supFn_props",
+   "label": "supFn_props",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.7, countable subadditivity, step 6",
+   "parentGoal": "Bessel.BesselCapacity",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
+   "sorryCount": 1,
+   "holes": [
+    "besselCapacity.supFn_props"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 6): `sup_n h_n` is measurable, nonnegative, dominates each `h_n` where finite, and `|sup_n h_n|^q ≤ ∑_n h_n^q`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
+   ],
+   "blockers": [],
+   "detail": "sorry: besselCapacity.supFn_props — subgoal of Definition 2.7, countable subadditivity, step 6 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselKernel",
@@ -16260,7 +16514,42 @@
    "kind": "subgoal"
   },
   {
+   "from": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.supFn",
+   "to": "Bessel.BesselCapacity",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.supFn_props",
    "to": "Bessel.BesselCapacity",
    "kind": "subgoal"
   },
@@ -16376,7 +16665,42 @@
   },
   {
    "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
    "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn_props",
    "kind": "hard"
   },
   {
@@ -16981,7 +17305,42 @@
   },
   {
    "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
    "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn_props",
    "kind": "hard"
   },
   {
@@ -26482,7 +26841,35 @@
    "to": "Bessel.BesselCapacity"
   },
   {
+   "from": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
    "from": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.supFn",
+   "to": "Bessel.BesselCapacity"
+  },
+  {
+   "from": "Bessel.BesselCapacity::besselCapacity.supFn_props",
    "to": "Bessel.BesselCapacity"
   },
   {
@@ -26567,7 +26954,35 @@
   },
   {
    "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum"
+  },
+  {
+   "from": "Bessel.BesselSpace",
    "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn"
+  },
+  {
+   "from": "Bessel.BesselSpace",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn_props"
   },
   {
    "from": "Bessel.BesselSpace",
@@ -26863,7 +27278,35 @@
   },
   {
    "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
    "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.supFn_props"
   },
   {
    "from": "Bessel.Theorem29",

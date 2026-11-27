@@ -204,7 +204,48 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Bessel.BesselCapacity::besselCapacity.iUnion_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.supFn": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.supFn_props": [
    "propext",
    "sorryAx",
    "Classical.choice",
@@ -1694,5 +1735,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:50:39Z"
+ "generated": "2026-11-27T18:53:45Z"
 }
