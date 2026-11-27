@@ -91,7 +91,22 @@ theorem pathwiseCovariation_sub {π : ℕ → Partition T} {ω : ℝ → Rd d}
 fundamental lemma of the calculus of variations). -/
 theorem isWeakDerivative_ae_unique {α : Fin d → ℕ} {f g g' : Rd d → ℝ}
     (hg : IsWeakDerivative α f g) (hg' : IsWeakDerivative α f g') : g =ᵐ[volume] g' := by
-  sorry
+  obtain ⟨_, hgl, hgi⟩ := hg
+  obtain ⟨_, hgl', hgi'⟩ := hg'
+  have h0 := ae_eq_zero_of_integral_contDiff_smul_eq_zero (hgl.sub hgl') fun φ hφ hφc => by
+    have hne : ((-1 : ℝ) ^ IsWeakDerivative.order α) ≠ 0 := pow_ne_zero _ (by norm_num)
+    have heq : ∫ x, g x * φ x = ∫ x, g' x * φ x :=
+      mul_left_cancel₀ hne ((hgi φ hφ hφc).symm.trans (hgi' φ hφ hφc))
+    have hi : Integrable (fun x => φ x • g x) :=
+      hgl.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    have hi' : Integrable (fun x => φ x • g' x) :=
+      hgl'.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    simp only [Pi.sub_apply, smul_sub]
+    rw [integral_sub hi hi']
+    simp only [smul_eq_mul, mul_comm (φ _)]
+    rw [heq, sub_self]
+  filter_upwards [h0] with x hx
+  exact sub_eq_zero.1 hx
 
 /-- **Subgoal** (Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and
 a.e.-strongly measurable). -/

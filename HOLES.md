@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:46:37Z  
-**`sorry` occurrences:** 36 · 10 open · 19 blocked · 236 done (goals + subgoals) · goals {'open': 4, 'blocked': 12, 'done': 52} · subgoals {'open': 6, 'blocked': 7, 'done': 184} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:47:16Z  
+**`sorry` occurrences:** 35 · 9 open · 19 blocked · 237 done (goals + subgoals) · goals {'open': 4, 'blocked': 12, 'done': 52} · subgoals {'open': 5, 'blocked': 7, 'done': 185} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -119,7 +119,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le` | subgoal of Theorem 5.1 proof, eqs. (19 | 1 |
 | done | `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub` | subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub` | subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` | 0 |
-| open | `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique` | subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations | 1 |
+| done | `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique` | subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations | 0 |
 | open | `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae` | subgoal of Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable | 1 |
 | done | `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub` | subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` | 0 |
 | open | `Main.Theorem51Steps::theorem_5_1.tendsto_covariation` | subgoal of Theorem 5.1 proof, (20 | 1 |
@@ -322,7 +322,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `Main.Theorem51Steps` |
-| blocked | `Main.Theorem51Steps` |  | 5 | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le`, `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique`, `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae`, `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
+| blocked | `Main.Theorem51Steps` |  | 4 | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le`, `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae`, `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
