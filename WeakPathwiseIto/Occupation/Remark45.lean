@@ -284,7 +284,11 @@ theorem remark_4_5_subset (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticV
     {F : Rd 1 → ℝ} (hF : MemW 2 1 F) (hFc : Continuous F) {H : Rd 1 → (Rd 1 →L[ℝ] Rd 1)}
     (hH : IsWeakHessian F H) (hHr : MemLp H r.conjExponent) :
     F ∈ PathwiseSobolevSpace π ω := by
-  sorry
+  have hL0 : ∀ n x, 0 ≤ discreteOccupationDensity (π n) ω x := fun n x =>
+    Finset.sum_nonneg fun i _ => discreteOccupationDensity.piece_nonneg _ _ _
+  exact remark_4_4 hω hQV hosc hr (fun x => le_max_right (ℓ x) 0)
+    (remark_4_5.weakLpTendsto_posPart hr hL0
+      (remark_4_5_seminorm hω hQV hosc hr hplus hminus).1) hF hFc hH hHr
 
 /-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
 `L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`

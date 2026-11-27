@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T20:08:34Z",
+ "updated": "2026-11-27T20:08:50Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 13,
+ "sorryCount": 12,
  "counts": {
   "open": 6,
   "blocked": 12,
@@ -10472,9 +10472,8 @@
    "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
    "paper": "Remark 4.5",
    "file": "WeakPathwiseIto/Occupation/Remark45.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "remark_4_5_subset",
     "remark_4_5_bounded"
    ],
    "declKinds": {
@@ -10504,7 +10503,7 @@
     "Occupation.Remark45::remark_4_5_term_eq"
    ],
    "blockers": [],
-   "detail": "2 sorry: remark_4_5_subset, remark_4_5_bounded"
+   "detail": "1 sorry: remark_4_5_bounded"
   },
   {
    "id": "Occupation.Remark45::Partition.reverse_left",
