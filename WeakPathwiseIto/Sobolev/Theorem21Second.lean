@@ -482,7 +482,29 @@ theorem hessian_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d →
 its entries in the standard basis). -/
 theorem norm_le_sum_entries (A : Rd d →L[ℝ] Rd d →L[ℝ] ℝ) :
     ‖A‖ ≤ ∑ i, ∑ j, |A (Rd.basisVec i) (Rd.basisVec j)| := by
-  sorry
+  have hexp : ∀ v : Rd d, v = ∑ i, Rd.coord i v • Rd.basisVec i := by
+    intro v
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' v]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hcv : ∀ (i : Fin d) (v : Rd d), |Rd.coord i v| ≤ ‖v‖ := by
+    intro i v
+    have h := abs_real_inner_le_norm v (Rd.basisVec i)
+    have hb : ‖Rd.basisVec i‖ = 1 := by simp [Rd.basisVec]
+    rw [hb, mul_one] at h
+    exact h
+  have key : ∀ (F : Type) [NormedAddCommGroup F] [NormedSpace ℝ F] (L : Rd d →L[ℝ] F),
+      ‖L‖ ≤ ∑ i, ‖L (Rd.basisVec i)‖ := by
+    intro F _ _ L
+    refine L.opNorm_le_bound (Finset.sum_nonneg fun _ _ => norm_nonneg _) fun v => ?_
+    conv_lhs => rw [hexp v]
+    rw [map_sum, Finset.sum_mul]
+    refine (norm_sum_le _ _).trans (Finset.sum_le_sum fun i _ => ?_)
+    rw [map_smul, norm_smul, Real.norm_eq_abs, mul_comm]
+    exact mul_le_mul_of_nonneg_left (hcv i v) (norm_nonneg _)
+  refine (key _ A).trans (Finset.sum_le_sum fun i _ => ?_)
+  refine (key ℝ (A (Rd.basisVec i))).trans (le_of_eq ?_)
+  simp [Real.norm_eq_abs]
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: the local Riesz potential of order `2`
 is bounded on `L¹(Q)`). -/
