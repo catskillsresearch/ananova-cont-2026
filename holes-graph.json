@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T22:03:34Z",
+ "updated": "2026-11-27T22:04:07Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 9,
   "blocked": 13,
-  "done": 447
+  "done": 448
  },
  "goalCounts": {
   "open": 2,
   "blocked": 10,
-  "done": 71
+  "done": 72
  },
  "subgoalCounts": {
   "open": 7,
@@ -3684,6 +3684,28 @@
    "deps": [
     "Basic.Partition",
     "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.PartitionEta",
+   "label": "PartitionEta",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "η_n left grid point (proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/PartitionEta.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Partition"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
@@ -16853,6 +16875,11 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.PartitionEta",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteLocalTime",
    "kind": "hard"
   },
@@ -28165,6 +28192,10 @@
   {
    "from": "Basic.Partition",
    "to": "Main.ItoRiemannSum"
+  },
+  {
+   "from": "Basic.Partition",
+   "to": "Main.PartitionEta"
   },
   {
    "from": "Basic.Partition",

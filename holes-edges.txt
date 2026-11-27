@@ -265,6 +265,7 @@ Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh
 Basic.Partition -hard-> Main.ItoRiemannSum
+Basic.Partition -hard-> Main.PartitionEta
 Basic.Partition -hard-> Occupation.DiscreteLocalTime
 Basic.Partition -hard-> Occupation.DiscreteOccupationDensity
 Basic.Partition -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec

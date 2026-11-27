@@ -31,6 +31,7 @@ public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral
 public import WeakPathwiseIto.Main.ExitTime
 public import WeakPathwiseIto.Main.ItoRiemannSum
+public import WeakPathwiseIto.Main.PartitionEta
 public import WeakPathwiseIto.Main.IsLocalItoIntegral
 public import WeakPathwiseIto.Main.IsL2ItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
