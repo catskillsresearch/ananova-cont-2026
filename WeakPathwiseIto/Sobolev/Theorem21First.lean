@@ -1078,7 +1078,106 @@ theorem volume_inter_ball_ge (hd : 0 < d) : ∃ κ : ℝ≥0, 0 < κ ∧ ∀ Q :
 theorem lintegral_ball_kernel_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (x z : Rd d) {r : ℝ}, 0 < r →
     ∫⁻ y in Metric.ball x r, 1 / edist y z ^ ((d : ℝ) - 1) ≤
       C * volume (Metric.ball x r) / edist x z ^ ((d : ℝ) - 1) := by
-  sorry
+  obtain ⟨C0, -, hC0⟩ := lemma_2_2 d (α := 1) one_pos
+  set e : ℝ := (d : ℝ) - 1 with he
+  have he0 : 0 ≤ e := by
+    have : (1 : ℝ) ≤ d := by exact_mod_cast hd
+    linarith
+  set V := volume (Metric.ball (0 : Rd d) 1) with hV
+  have hV0 : V ≠ 0 := (Metric.measure_ball_pos volume _ one_pos).ne'
+  have hVt : V ≠ ⊤ := measure_ball_lt_top.ne
+  set Vr : ℝ := V.toReal with hVr
+  have hVr0 : 0 < Vr := ENNReal.toReal_pos hV0 hVt
+  set Cr : ℝ := (2 : ℝ) ^ e + C0 * 6 * (2 : ℝ) ^ e / Vr with hCr
+  have h2e : 0 < (2 : ℝ) ^ e := by positivity
+  have hCr0 : 0 ≤ Cr := by positivity
+  refine ⟨Cr.toNNReal, fun x z r hr => ?_⟩
+  have hCe : ((Cr.toNNReal : ℝ≥0) : ℝ≥0∞) = ENNReal.ofReal Cr := rfl
+  have hvol : volume (Metric.ball x r) = ENNReal.ofReal (r ^ d) * V := by
+    rw [Measure.addHaar_ball_of_pos volume x hr, finrank_euclideanSpace_fin]
+  rcases le_or_gt (2 * r) (dist x z) with hfar | hnear
+  · -- far case: `|y - z| ≥ |x - z| / 2` on the ball
+    have hxz : 0 < dist x z := by linarith
+    have hE : edist x z ^ e = ENNReal.ofReal (dist x z ^ e) := by
+      rw [edist_dist, ENNReal.ofReal_rpow_of_nonneg dist_nonneg he0]
+    have hpt : ∀ y ∈ Metric.ball x r, 1 / edist y z ^ e ≤ ENNReal.ofReal ((2 : ℝ) ^ e / dist x z ^ e) := by
+      intro y hy
+      have hyz : dist x z / 2 ≤ dist y z := by
+        have := dist_triangle x y z
+        have hxy : dist x y < r := by rw [dist_comm]; exact Metric.mem_ball.1 hy
+        linarith
+      have hpos : 0 < dist x z / 2 := by positivity
+      rw [edist_dist, ENNReal.ofReal_rpow_of_nonneg dist_nonneg he0, one_div,
+        ← ENNReal.ofReal_inv_of_pos (Real.rpow_pos_of_pos (hpos.trans_le hyz) _)]
+      refine ENNReal.ofReal_le_ofReal ?_
+      calc (dist y z ^ e)⁻¹ ≤ ((dist x z / 2) ^ e)⁻¹ :=
+            inv_anti₀ (Real.rpow_pos_of_pos hpos _) (Real.rpow_le_rpow hpos.le hyz he0)
+        _ = (2 : ℝ) ^ e / dist x z ^ e := by
+            rw [Real.div_rpow hxz.le (by norm_num), inv_div]
+    calc ∫⁻ y in Metric.ball x r, 1 / edist y z ^ e
+        ≤ ∫⁻ y in Metric.ball x r, ENNReal.ofReal ((2 : ℝ) ^ e / dist x z ^ e) :=
+          setLIntegral_mono' measurableSet_ball hpt
+      _ = ENNReal.ofReal ((2 : ℝ) ^ e / dist x z ^ e) * volume (Metric.ball x r) :=
+          setLIntegral_const _ _
+      _ ≤ ENNReal.ofReal Cr * volume (Metric.ball x r) / edist x z ^ e := by
+          rw [hE, ENNReal.ofReal_div_of_pos (Real.rpow_pos_of_pos hxz _), div_eq_mul_inv,
+            div_eq_mul_inv, mul_right_comm]
+          refine mul_le_mul' (mul_le_mul' (ENNReal.ofReal_le_ofReal ?_) le_rfl) le_rfl
+          rw [hCr]; have : 0 ≤ C0 * 6 * (2 : ℝ) ^ e / Vr := by positivity
+          linarith
+      _ = _ := by rw [hCe]
+  · -- near case: `B(x, r) ⊆ B̄(z, 3r)` and Lemma 2.2
+    have hsub : Metric.ball x r ⊆ Metric.closedBall z (3 * r) := fun y hy => by
+      rw [Metric.mem_closedBall]
+      have := dist_triangle y x z
+      have : dist y x < r := Metric.mem_ball.1 hy
+      linarith
+    have h3 : 0 < 3 * r := by positivity
+    have hball : IsCubeOrBall (Metric.closedBall z (3 * r)) := ⟨z, 3 * r, h3, Or.inr (Or.inl rfl)⟩
+    have hlem := hC0 (Metric.closedBall z (3 * r)) (fun _ => (1 : ℝ)) hball
+      (integrableOn_const measure_closedBall_lt_top.ne) z (Metric.mem_closedBall_self h3.le)
+    have hM : localMaximalFunction (Metric.ediam (Metric.closedBall z (3 * r)))
+        (fun _ : Rd d => (1 : ℝ)) z ≤ 1 := by
+      refine iSup_le fun r => iSup_le fun _ => iSup_le fun _ => ?_
+      rw [laverage_eq]
+      simp only [enorm_one, lintegral_const, one_mul, Measure.restrict_apply_univ]
+      exact ENNReal.div_self_le_one
+    have hdiam : Metric.ediam (Metric.closedBall z (3 * r)) ≤ ENNReal.ofReal (2 * (3 * r)) := by
+      rw [← ENNReal.ofReal_toReal Metric.isBounded_closedBall.ediam_ne_top]
+      exact ENNReal.ofReal_le_ofReal (Metric.diam_closedBall h3.le)
+    have hE : edist x z ^ e ≤ ENNReal.ofReal ((2 * r) ^ e) := by
+      rw [edist_dist, ENNReal.ofReal_rpow_of_nonneg dist_nonneg he0]
+      exact ENNReal.ofReal_le_ofReal (Real.rpow_le_rpow dist_nonneg hnear.le he0)
+    have h2r : 0 < (2 * r) ^ e := by positivity
+    calc ∫⁻ y in Metric.ball x r, 1 / edist y z ^ e
+        ≤ ∫⁻ y in Metric.closedBall z (3 * r), 1 / edist y z ^ e := lintegral_mono_set hsub
+      _ = ∫⁻ y in Metric.closedBall z (3 * r),
+            ‖(fun _ : Rd d => (1 : ℝ)) y‖ₑ / edist z y ^ ((d : ℝ) - 1) := by
+          simp only [enorm_one, edist_comm, he]
+      _ ≤ C0 * Metric.ediam (Metric.closedBall z (3 * r)) ^ (1 : ℝ) *
+            localMaximalFunction (Metric.ediam (Metric.closedBall z (3 * r)))
+              (fun _ => (1 : ℝ)) z := hlem
+      _ ≤ C0 * ENNReal.ofReal (2 * (3 * r)) * 1 := by rw [ENNReal.rpow_one]; gcongr
+      _ = ENNReal.ofReal (C0 * 6 * r) := by
+          rw [mul_one, ← ENNReal.ofReal_coe_nnreal, ← ENNReal.ofReal_mul (by positivity)]
+          congr 1; ring
+      _ ≤ ENNReal.ofReal (Cr * r ^ d * Vr / (2 * r) ^ e) := by
+          refine ENNReal.ofReal_le_ofReal ?_
+          have hrd : r ^ d / (2 * r) ^ e = r / (2 : ℝ) ^ e := by
+            rw [Real.mul_rpow (by norm_num) hr.le, he, Real.rpow_sub_one hr.ne', Real.rpow_natCast]
+            field_simp
+          rw [show Cr * r ^ d * Vr / (2 * r) ^ e = Cr * Vr * (r ^ d / (2 * r) ^ e) by ring, hrd,
+            hCr, add_mul, add_mul]
+          have : 0 ≤ (2 : ℝ) ^ e * Vr * (r / (2 : ℝ) ^ e) := by positivity
+          have key : C0 * 6 * (2 : ℝ) ^ e / Vr * Vr * (r / (2 : ℝ) ^ e) = C0 * 6 * r := by
+            field_simp
+          linarith [key, this]
+      _ = ENNReal.ofReal Cr * (ENNReal.ofReal (r ^ d) * V) / ENNReal.ofReal ((2 * r) ^ e) := by
+          rw [ENNReal.ofReal_div_of_pos h2r, ENNReal.ofReal_mul (by positivity),
+            ENNReal.ofReal_mul hCr0, hVr, ENNReal.ofReal_toReal hVt, mul_assoc]
+      _ ≤ ENNReal.ofReal Cr * volume (Metric.ball x r) / edist x z ^ e := by
+          rw [hvol]; exact ENNReal.div_le_div_left hE _
+      _ = _ := by rw [hCe]
 
 /-- **Subgoal** (Theorem 2.1 proof, the Lebesgue-point limit): if `x ∈ Q` is a Lebesgue point of
 `f ∈ W^{1,1}` with value `c`, then `|c - f_Q| ≤ C ∫_Q |∇f(z)| / |x - z|^{d-1} dz` (average (2)

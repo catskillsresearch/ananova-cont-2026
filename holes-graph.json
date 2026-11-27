@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:43:01Z",
+ "updated": "2026-11-27T02:45:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 19,
-  "done": 262
+  "done": 263
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 208
+  "done": 209
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_ball_kernel_le",
     "abs_sub_average_le"
    ],
    "declKinds": {
@@ -7263,10 +7262,9 @@
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
    "blockers": [
-    "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le"
+    "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le"
    ],
-   "detail": "2 sorry: lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "1 sorry: abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7550,17 +7548,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.lintegral_ball_kernel_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1`): `∫_{B(x,r)} |y - z|^{1-d} dy ≤ C |B(x,r)| |x - z|^{1-d}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7570,7 +7566,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.lintegral_ball_kernel_le — subgoal of Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1` (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.lintegral_ball_kernel_le — subgoal of Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1` (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le",

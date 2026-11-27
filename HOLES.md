@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:43:01Z  
-**`sorry` occurrences:** 30 · 6 open · 19 blocked · 262 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 3, 'blocked': 7, 'done': 208} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:45:11Z  
+**`sorry` occurrences:** 29 · 5 open · 19 blocked · 263 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 2, 'blocked': 7, 'done': 209} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -240,7 +240,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero` | subgoal of Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props` | subgoal of Theorem 2.1 proof: cubes and balls | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le` | subgoal of Theorem 2.1 proof, (2 | 0 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le` | subgoal of Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1` | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le` | subgoal of Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1` | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le` | subgoal of Theorem 2.1 proof, (2 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le` | subgoal of Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹` | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le` | subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q | 0 |
@@ -283,7 +283,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 2 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le` |
+| blocked | `Sobolev.Theorem21First` |  | 1 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets
