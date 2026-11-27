@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:56:41Z",
+ "updated": "2026-11-27T18:57:34Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 21,
+ "sorryCount": 20,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 14,
-  "done": 396
+  "done": 397
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 4,
-  "done": 333
+  "done": 334
  },
  "untagged": [],
  "legend": {
@@ -1581,9 +1581,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "iSup_rpow_le_tsum",
     "exists_feasible_lt",
     "supFn_props",
     "iUnion_le",
@@ -1618,11 +1617,10 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
     "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
-    "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
     "Bessel.BesselCapacity::besselCapacity.supFn_props"
    ],
-   "detail": "6 sorry: iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "5 sorry: exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1799,10 +1797,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.iSup_rpow_le_tsum"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1811,17 +1807,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 4): `(sup_n a_n)^q ≤ ∑_n a_n^q` for `q > 0`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.iSup_rpow_le_tsum — subgoal of Definition 2.7, countable subadditivity, step 4 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.iSup_rpow_le_tsum — subgoal of Definition 2.7, countable subadditivity, step 4 (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.iUnion_le",

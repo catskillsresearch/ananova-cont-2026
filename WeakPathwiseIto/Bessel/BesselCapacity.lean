@@ -61,7 +61,8 @@ theorem one_le_of_toReal_eq_zero {α : ℝ} {p : ℝ≥0∞} (hp : p.toReal = 0)
 for `q > 0`. -/
 theorem iSup_rpow_le_tsum {q : ℝ} (hq : 0 < q) (a : ℕ → ℝ≥0∞) :
     (⨆ n, a n) ^ q ≤ ∑' n, a n ^ q := by
-  sorry
+  rw [ENNReal.iSup_rpow_of_pos hq]
+  exact iSup_le fun n => ENNReal.le_tsum (f := fun n => a n ^ q) n
 
 /-- **Subgoal** (Definition 2.7, countable subadditivity, step 5): below any `c > B_{α,p}(E)`
 there is an admissible `h`. -/

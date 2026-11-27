@@ -217,7 +217,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1732,5 +1731,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:56:40Z"
+ "generated": "2026-11-27T18:57:34Z"
 }
