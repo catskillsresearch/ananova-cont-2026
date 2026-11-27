@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:30:57Z",
+ "updated": "2026-11-27T20:31:14Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 12,
  "counts": {
   "open": 6,
   "blocked": 12,
-  "done": 415
+  "done": 416
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 350
+  "done": 351
  },
  "untagged": [],
  "legend": {
@@ -10490,7 +10490,7 @@
     "remark_4_5_bounded"
    ],
    "declKinds": {
-    "theorem": 20
+    "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
@@ -10511,6 +10511,7 @@
     "Occupation.Remark45::occupationConstant_one",
     "Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto",
     "Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le",
+    "Occupation.Remark45::remark_4_5.exists_pairing",
     "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
     "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
     "Occupation.Remark45::remark_4_5.weakLpTendsto_posPart",
@@ -10870,6 +10871,38 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le — subgoal of Remark 4.5 bounded case, `L^∞` norm by duality (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark45::remark_4_5.exists_pairing",
+   "label": "exists_pairing",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.5 bounded case, the `L^1`–`L^∞` pairing",
+   "parentGoal": "Occupation.Remark45",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark45.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.5 bounded case, the `L^1`–`L^∞` pairing): for `f ∈ L^∞`, `g ↦ ∫ g f` is a continuous linear functional on `L^1`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Main.Theorem51",
+    "Occupation.DiscreteLocalTime",
+    "Occupation.Remark44"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_5.exists_pairing — subgoal of Remark 4.5 bounded case, the `L^1`–`L^∞` pairing (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
@@ -18707,6 +18740,11 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
    "kind": "hard"
   },
@@ -20028,6 +20066,11 @@
   {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing",
    "kind": "hard"
   },
   {
@@ -21657,6 +21700,11 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
    "kind": "hard"
   },
@@ -21762,6 +21810,11 @@
   },
   {
    "from": "Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le",
+   "to": "Occupation.Remark45",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5.exists_pairing",
    "to": "Occupation.Remark45",
    "kind": "subgoal"
   },
@@ -28126,6 +28179,10 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr"
   },
   {
@@ -28974,6 +29031,10 @@
   },
   {
    "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr"
   },
   {
@@ -29742,6 +29803,10 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5.exists_pairing"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr"
   },
   {
@@ -29826,6 +29891,10 @@
   },
   {
    "from": "Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le",
+   "to": "Occupation.Remark45"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5.exists_pairing",
    "to": "Occupation.Remark45"
   },
   {

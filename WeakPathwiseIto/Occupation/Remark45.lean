@@ -312,6 +312,16 @@ theorem remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le {d : ℕ} {f : Rd d → 
   simp only [Pi.zero_apply, sub_nonneg] at hx
   simpa [Real.norm_eq_abs] using hx
 
+/-- **Subgoal** (Remark 4.5 bounded case, the `L^1`–`L^∞` pairing): for `f ∈ L^∞`,
+`g ↦ ∫ g f` is a continuous linear functional on `L^1`. -/
+theorem remark_4_5.exists_pairing {d : ℕ} {f : Rd d → ℝ} (hf : MemLp f ⊤) :
+    ∃ L : Lp ℝ 1 (volume : Measure (Rd d)) →L[ℝ] ℝ, ∀ g, L g = ∫ x, g x * f x := by
+  have : ENNReal.HolderConjugate ⊤ 1 := ENNReal.HolderConjugate.top_one
+  refine ⟨(ContinuousLinearMap.mul ℝ ℝ).lpPairing volume ⊤ 1 (hf.toLp f), fun g => ?_⟩
+  rw [ContinuousLinearMap.lpPairing_eq_integral]
+  refine integral_congr_ae ((hf.coeFn_toLp).mono fun x hx => ?_)
+  simp [hx, mul_comm]
+
 /-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
 `L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`
 (for continuous representatives). -/
