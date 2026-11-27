@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:42:33Z",
+ "updated": "2026-11-27T10:54:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 22,
-  "done": 309
+  "done": 310
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 12,
-  "done": 248
+  "done": 249
  },
  "untagged": [],
  "legend": {
@@ -3529,9 +3529,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "lintegral_le_maximal_first",
     "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
     "ae_localMaximalFunction_lt_top",
@@ -3572,10 +3571,9 @@
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
-    "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "5 sorry: lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
+   "detail": "4 sorry: tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3817,17 +3815,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.lintegral_le_maximal_first"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, (10) with the first increment kept explicit): if `g ≥ M_1 f` at the path's partition points `ω(t_j)`, `j ≥ 1`, then `∫ |f| 𝓛^π_ω ≤ C (J + ∑_i (g(ω(t_{i+1})) + g(ω(t_i))) |Δω_i|²)`, `J` the kernel integral at `ω(0)` over the ball of radius `osc(ω, π)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3839,7 +3835,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.lintegral_le_maximal_first — subgoal of Appendix C, (10 (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.lintegral_le_maximal_first — subgoal of Appendix C, (10 (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",

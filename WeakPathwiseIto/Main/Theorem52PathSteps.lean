@@ -133,7 +133,97 @@ theorem lintegral_le_maximal_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partit
           ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ)))) +
         ∑ i : Fin π.m, (g (ω (π.right i)) + g (ω (π.left i))) *
           ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2)) := by
-  sorry
+  obtain ⟨C₁, hC₁⟩ := occupationSeminorm.eq_10.lintegral_piece_le d
+  obtain ⟨C₂, hC₂⟩ := lintegral_piece_le_first d
+  refine ⟨C₁ + C₂, fun π ω f g hω hf hosc hg => ?_⟩
+  have hc : 0 ≤ occupationConstant d := by unfold occupationConstant; positivity
+  have hnn : ∀ (a b x : Rd d), 0 ≤ discreteOccupationDensity.piece a b x :=
+    discreteOccupationDensity.piece_nonneg
+  have hmeas : ∀ (a b : Rd d), Measurable (discreteOccupationDensity.piece a b) := by
+    intro a b
+    unfold discreteOccupationDensity.piece
+    split_ifs
+    · exact measurable_const
+    · exact Measurable.indicator (by fun_prop) measurableSet_closedBall
+  have hfm : AEStronglyMeasurable f := hf.aestronglyMeasurable
+  set J := ∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω π),
+    ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ))) with hJ
+  set X : Fin π.m → ℝ≥0∞ := fun i => (g (ω (π.right i)) + g (ω (π.left i))) *
+    ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) with hX
+  have hright : ∀ i : Fin π.m, localMaximalFunction 1 f (ω (π.right i)) ≤ g (ω (π.right i)) :=
+    fun i => hg i.succ (Fin.succ_ne_zero i)
+  have hterm : ∀ i : Fin π.m, ∫⁻ x, ‖f x‖ₑ *
+      ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) ≤
+        (if (i : ℕ) = 0 then (C₂ : ℝ≥0∞) * J else 0) + ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * X i := by
+    intro i
+    have hinc := (occupationSeminorm.eq_10.norm_increment_le hω π i).trans hosc
+    by_cases hi : (i : ℕ) = 0
+    · simp only [hi, ↓reduceIte]
+      have hl : π.left i = 0 := by
+        have : i.castSucc = 0 := Fin.ext (by simp [hi])
+        simp [Partition.left, this, π.t_zero]
+      have hJi : ∫⁻ x in Metric.closedBall (ω (π.left i)) ‖ω (π.right i) - ω (π.left i)‖,
+          ‖f x‖ₑ * ENNReal.ofReal (‖x - ω (π.left i)‖ ^ (2 - (d : ℝ))) ≤ J := by
+        rw [hJ, hl]
+        refine lintegral_mono_set (Metric.closedBall_subset_closedBall ?_)
+        have := occupationSeminorm.eq_10.norm_increment_le hω π i
+        rwa [hl] at this
+      calc _ ≤ (C₂ : ℝ≥0∞) * ((∫⁻ x in Metric.closedBall (ω (π.left i)) ‖ω (π.right i) - ω (π.left i)‖,
+            ‖f x‖ₑ * ENNReal.ofReal (‖x - ω (π.left i)‖ ^ (2 - (d : ℝ)))) +
+            localMaximalFunction 1 f (ω (π.right i)) *
+              ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2)) := hC₂ f _ _ hfm hinc
+        _ ≤ (C₂ : ℝ≥0∞) * (J + X i) := by
+            gcongr
+            simp only [hX]
+            gcongr
+            exact (hright i).trans le_self_add
+        _ ≤ _ := by
+            rw [mul_add]
+            gcongr
+            exact le_add_self
+    · simp only [hi, ↓reduceIte, zero_add]
+      have hleft : localMaximalFunction 1 f (ω (π.left i)) ≤ g (ω (π.left i)) :=
+        hg i.castSucc (fun h => hi (by simpa using congrArg Fin.val h))
+      calc _ ≤ (C₁ : ℝ≥0∞) * (localMaximalFunction 1 f (ω (π.right i)) +
+            localMaximalFunction 1 f (ω (π.left i))) *
+              ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2) := hC₁ f _ _ hfm hinc
+        _ ≤ (C₁ : ℝ≥0∞) * X i := by
+            rw [mul_assoc]
+            simp only [hX]
+            gcongr
+            exact hright i
+        _ ≤ _ := by
+            gcongr
+            exact le_self_add
+  have hite : ∑ i : Fin π.m, (if (i : ℕ) = 0 then (C₂ : ℝ≥0∞) * J else 0) ≤ (C₂ : ℝ≥0∞) * J := by
+    rw [← Finset.sum_filter]
+    calc _ = (Finset.univ.filter fun i : Fin π.m => (i : ℕ) = 0).card • ((C₂ : ℝ≥0∞) * J) :=
+          Finset.sum_const _
+      _ ≤ 1 • ((C₂ : ℝ≥0∞) * J) := by
+          gcongr
+          refine Finset.card_le_one.2 fun a ha b hb => ?_
+          simp only [Finset.mem_filter] at ha hb
+          exact Fin.ext (ha.2.trans hb.2.symm)
+      _ = _ := one_smul _ _
+  calc ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity π ω x)
+      = ∫⁻ x, ∑ i : Fin π.m, ‖f x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) := by
+        congr 1; funext x
+        rw [discreteOccupationDensity, ENNReal.ofReal_sum_of_nonneg (fun i _ => hnn _ _ x),
+          Finset.mul_sum]
+    _ = ∑ i : Fin π.m, ∫⁻ x, ‖f x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) :=
+        lintegral_finsetSum' _ (fun i _ =>
+          hfm.enorm.mul (ENNReal.measurable_ofReal.comp (hmeas _ _)).aemeasurable)
+    _ ≤ ∑ i : Fin π.m, ((if (i : ℕ) = 0 then (C₂ : ℝ≥0∞) * J else 0) +
+          ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * X i) := Finset.sum_le_sum fun i _ => hterm i
+    _ = ∑ i : Fin π.m, (if (i : ℕ) = 0 then (C₂ : ℝ≥0∞) * J else 0) +
+          ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * ∑ i, X i := by rw [Finset.sum_add_distrib, Finset.mul_sum]
+    _ ≤ (C₂ : ℝ≥0∞) * J + ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * ∑ i, X i := by gcongr
+    _ ≤ ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * J + ((C₁ + C₂ : ℝ≥0) : ℝ≥0∞) * ∑ i, X i := by
+        gcongr
+        exact le_add_self
+    _ = _ := by rw [← mul_add]
 
 /-- **Subgoal** (Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖)` on small balls). -/
 theorem rpow_le_potentialProfile {r : ℝ} (hr1 : r ≤ 1) :
