@@ -727,7 +727,39 @@ theorem lintegral_mul_rpow_div_lt_top {s p : ℝ} (hd : 1 ≤ d) (hs : 0 < s) (h
     (hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤)
     {K : Set (Rd d)} (hK : IsCompact K) :
     ∫⁻ x in K, ∫⁻ y in K, ‖g x - g y‖ₑ * ‖g x‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ) < ⊤ := by
-  sorry
+  have hp1 : 0 < p - 1 := by linarith
+  set β : ℝ := (d : ℝ) - s * p / (p - 1)
+  have hβ : β < d := by
+    have : 0 < s * p / (p - 1) := by positivity
+    simp only [β]; linarith
+  obtain ⟨C, hCt, hC⟩ := exists_lintegral_edist_rpow_le hβ hK
+  have : Nontrivial (Rd d) := Module.nontrivial_of_finrank_pos (R := ℝ) (M := Rd d)
+    (by rw [finrank_euclideanSpace_fin]; omega)
+  set A : Rd d → Rd d → ℝ≥0∞ := fun x y => ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d)
+  have hinner : ∀ x, ∫⁻ y in K, ‖g x - g y‖ₑ * ‖g x‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ) ≤
+      (∫⁻ y, A x y) + ‖g x‖ₑ ^ p * ∫⁻ y in K, edist x y ^ (-β) := by
+    intro x
+    calc _ ≤ ∫⁻ y in K, (A x y + ‖g x‖ₑ ^ p * edist x y ^ (-β)) := by
+          refine lintegral_mono_ae ?_
+          filter_upwards [ae_restrict_of_ae (ae_iff.2 (by simp) : ∀ᵐ y ∂volume, y ≠ x)] with y hy
+          refine (mul_rpow_div_le_add (s := s) hp ((edist_pos.2 hy.symm).ne') (edist_ne_top x y)).trans_eq ?_
+          rw [ENNReal.rpow_neg, div_eq_mul_inv _ (edist x y ^ β)]
+      _ = (∫⁻ y in K, A x y) + ‖g x‖ₑ ^ p * ∫⁻ y in K, edist x y ^ (-β) := by
+          rw [lintegral_add_right _ (by fun_prop), lintegral_const_mul _ (by fun_prop)]
+      _ ≤ _ := by gcongr; exact Measure.restrict_le_self
+  have hLp : ∫⁻ x, ‖g x‖ₑ ^ p < ⊤ := by
+    have := lintegral_rpow_enorm_lt_top_of_eLpNorm_lt_top (p := ENNReal.ofReal p)
+      (by simp; linarith) ENNReal.ofReal_ne_top hgp
+    rwa [ENNReal.toReal_ofReal (by linarith)] at this
+  calc _ ≤ ∫⁻ x in K, ((∫⁻ y, A x y) + ‖g x‖ₑ ^ p * C) := by
+        refine lintegral_mono_ae ?_
+        filter_upwards [ae_restrict_mem hK.measurableSet] with x hx
+        exact (hinner x).trans (by gcongr; exact hC x hx)
+    _ = (∫⁻ x in K, ∫⁻ y, A x y) + (∫⁻ x in K, ‖g x‖ₑ ^ p) * C := by
+        rw [lintegral_add_right _ (by fun_prop), lintegral_mul_const _ (by fun_prop)]
+    _ ≤ (∫⁻ x, ∫⁻ y, A x y) + (∫⁻ x, ‖g x‖ₑ ^ p) * C := by
+        gcongr <;> exact Measure.restrict_le_self
+    _ < ⊤ := ENNReal.add_lt_top.2 ⟨hgs, ENNReal.mul_lt_top hLp hCt.lt_top⟩
 
 /-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(y)^{p-1}` is finite, by
 symmetry and Tonelli). -/
