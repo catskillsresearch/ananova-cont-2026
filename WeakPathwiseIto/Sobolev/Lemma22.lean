@@ -81,7 +81,68 @@ positive diameter and lies in the closed ball of radius `diam Q` about each of i
 theorem subset_closedBall (hd : 0 < d) {Q : Set (Rd d)} (hQ : IsCubeOrBall Q) {x : Rd d}
     (hx : x ∈ Q) : Metric.ediam Q ≠ ⊤ ∧ 0 < (Metric.ediam Q).toReal ∧
       Q ⊆ Metric.closedBall x (Metric.ediam Q).toReal := by
-  sorry
+  obtain ⟨c, r, hr, hQ'⟩ := hQ
+  have hcoord : ∀ (v : Rd d) (i : Fin d), Rd.coord i v = v i := fun v i => by
+    rw [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]; simp
+  have hdR : (1 : ℝ) ≤ d := by exact_mod_cast hd
+  -- every point of `Q` is within `r d` of `c`
+  have hcube : ∀ v : Rd d, (∀ i, |Rd.coord i v| ≤ r) → ‖v‖ ≤ r * d := by
+    intro v hv
+    rw [EuclideanSpace.norm_eq]
+    have hs : ∑ i, ‖v i‖ ^ 2 ≤ (r * d) ^ 2 := by
+      calc ∑ i, ‖v i‖ ^ 2 ≤ ∑ _i : Fin d, r ^ 2 := Finset.sum_le_sum fun i _ => by
+            rw [Real.norm_eq_abs, ← hcoord]
+            exact pow_le_pow_left₀ (abs_nonneg _) (hv i) 2
+        _ = d * r ^ 2 := by simp
+        _ ≤ (r * d) ^ 2 := by nlinarith [sq_nonneg r]
+    calc Real.sqrt (∑ i, ‖v i‖ ^ 2) ≤ Real.sqrt ((r * d) ^ 2) := Real.sqrt_le_sqrt hs
+      _ = r * d := Real.sqrt_sq (by positivity)
+  have hsub : Q ⊆ Metric.closedBall c (r * d) := by
+    intro y hy
+    rw [Metric.mem_closedBall, dist_eq_norm]
+    rcases hQ' with rfl | rfl | rfl | rfl
+    · exact (le_of_lt (by simpa [dist_eq_norm] using hy)).trans (by nlinarith)
+    · exact (by simpa [dist_eq_norm] using hy : ‖y - c‖ ≤ r).trans (by nlinarith)
+    · exact hcube _ fun i => (hy i).le
+    · exact hcube _ hy
+  have hne : Metric.ediam Q ≠ ⊤ :=
+    Metric.isBounded_iff_ediam_ne_top.1 (Metric.isBounded_closedBall.subset hsub)
+  -- two distinct points of `Q`
+  set e : Rd d := Rd.basisVec ⟨0, hd⟩
+  have he : ‖e‖ = 1 := by simp [e, Rd.basisVec]
+  have hec : ∀ i, |Rd.coord i ((r / 2) • e)| ≤ r / 2 := by
+    intro i
+    rw [hcoord, PiLp.smul_apply, smul_eq_mul, abs_mul, abs_of_pos (by positivity : 0 < r / 2)]
+    have : |e i| ≤ 1 := by
+      rw [← hcoord, Rd.coord]
+      refine (abs_real_inner_le_norm _ _).trans ?_
+      rw [he, one_mul]; simp [Rd.basisVec]
+    nlinarith [abs_nonneg (e i)]
+  have hc : c ∈ Q := by
+    rcases hQ' with rfl | rfl | rfl | rfl
+    · exact Metric.mem_ball_self hr
+    · exact Metric.mem_closedBall_self hr.le
+    · intro i; simp [Rd.coord, hr]
+    · intro i; simp [Rd.coord, hr.le]
+  have hp : c + (r / 2) • e ∈ Q := by
+    have hn : ‖(r / 2) • e‖ = r / 2 := by rw [norm_smul, he, Real.norm_of_nonneg (by positivity), mul_one]
+    rcases hQ' with rfl | rfl | rfl | rfl
+    · rw [Metric.mem_ball, dist_eq_norm, add_sub_cancel_left, hn]; linarith
+    · rw [Metric.mem_closedBall, dist_eq_norm, add_sub_cancel_left, hn]; linarith
+    · intro i; rw [add_sub_cancel_left]; linarith [hec i]
+    · intro i; rw [add_sub_cancel_left]; linarith [hec i]
+  have hpos : 0 < Metric.ediam Q := by
+    refine lt_of_lt_of_le ?_ (Metric.edist_le_ediam_of_mem hc hp)
+    rw [edist_pos]
+    intro h
+    have : ‖(r / 2) • e‖ = 0 := by
+      rw [show (r / 2) • e = (c + (r / 2) • e) - c by abel, ← h, sub_self, norm_zero]
+    rw [norm_smul, he] at this
+    have : r / 2 = 0 := by simpa [abs_of_pos hr] using this
+    linarith
+  refine ⟨hne, ENNReal.toReal_pos hpos.ne' hne, fun y hy => ?_⟩
+  rw [Metric.mem_closedBall, dist_edist]
+  exact ENNReal.toReal_mono hne (Metric.edist_le_ediam_of_mem hy hx)
 
 /-- **Subgoal** (Lemma 2.2 proof, `α < d`, one dyadic shell): on
 `{ρ/2^{k+1} < |y - x| ≤ ρ/2^k}`, `∫ |f| |x - y|^{α-d} ≤ 2^{d-α} ρ^α 2^{-kα} |B(0,1)| M_ρ f(x)`. -/

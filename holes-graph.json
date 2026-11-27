@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T00:49:24Z",
+ "updated": "2026-11-27T00:52:53Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 18,
-  "done": 214
+  "done": 215
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 49
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 165
+  "done": 166
  },
  "untagged": [],
  "legend": {
@@ -6195,9 +6195,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "subset_closedBall",
     "lintegral_shell_le",
     "lintegral_closedBall_kernel_le_of_lt",
     "lintegral_closedBall_kernel_le_of_ge",
@@ -6222,10 +6221,9 @@
    "blockers": [
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
-    "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
-    "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
+    "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le"
    ],
-   "detail": "5 sorry: subset_closedBall, lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+   "detail": "4 sorry: lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6347,23 +6345,21 @@
    "parentGoal": "Sobolev.Lemma22",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_2_2.subset_closedBall"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q)`): for `d ≥ 1`, a cube or ball has finite positive diameter and lies in the closed ball of radius `diam Q` about each of its points.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_2_2.subset_closedBall — subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q (in Sobolev.Lemma22)"
+   "detail": "proved: lemma_2_2.subset_closedBall — subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.LocalMaximalFunction",
