@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T03:51:52Z",
+ "updated": "2026-11-27T03:52:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 27,
+ "sorryCount": 26,
  "counts": {
-  "open": 3,
-  "blocked": 21,
-  "done": 294
+  "open": 5,
+  "blocked": 17,
+  "done": 296
  },
  "goalCounts": {
   "open": 2,
-  "blocked": 11,
-  "done": 59
+  "blocked": 10,
+  "done": 60
  },
  "subgoalCounts": {
-  "open": 1,
-  "blocked": 10,
-  "done": 235
+  "open": 3,
+  "blocked": 7,
+  "done": 236
  },
  "untagged": [],
  "legend": {
@@ -1933,8 +1933,7 @@
    "blockers": [
     "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
     "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
-    "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
-    "Bessel.Young"
+    "Bessel.BesselSpace::BesselSpace.enorm_potential_le"
    ],
    "detail": "3 sorry: enorm_potential_le, aestronglyMeasurable_potential, eLpNorm_potential_le"
   },
@@ -1958,14 +1957,12 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
-   "blockers": [
-    "Bessel.Young"
-   ],
+   "blockers": [],
    "detail": "sorry: BesselSpace.aestronglyMeasurable_potential — subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable (in Bessel.BesselSpace)"
   },
   {
@@ -1988,14 +1985,12 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
-   "blockers": [
-    "Bessel.Young"
-   ],
+   "blockers": [],
    "detail": "sorry: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
   },
   {
@@ -2018,14 +2013,12 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x)| ≤ ∫ |g_α(x - y)| |f(y)| dy`, valid even where the integral diverges).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
-   "blockers": [
-    "Bessel.Young"
-   ],
+   "blockers": [],
    "detail": "sorry: BesselSpace.enorm_potential_le — subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x (in Bessel.BesselSpace)"
   },
   {
@@ -2462,17 +2455,15 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": null,
    "file": "WeakPathwiseIto/Bessel/Young.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lintegral_conv_le_of_ae_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 4
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Basic.Rd",
     "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
@@ -2480,10 +2471,8 @@
     "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
     "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le"
    ],
-   "blockers": [
-    "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le"
-   ],
-   "detail": "1 sorry: lintegral_conv_le_of_ae_le"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
@@ -2495,22 +2484,20 @@
    "parentGoal": "Bessel.Young",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/Young.lean",
-   "sorryCount": 1,
-   "holes": [
-    "BesselSpace.young.lintegral_conv_le_of_ae_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: BesselSpace.young.lintegral_conv_le_of_ae_le — subgoal of Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through (in Bessel.Young)"
+   "detail": "proved: BesselSpace.young.lintegral_conv_le_of_ae_le — subgoal of Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through (in Bessel.Young)"
   },
   {
    "id": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",

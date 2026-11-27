@@ -119,7 +119,11 @@ theorem lintegral_rpow_conv_le {d : ℕ} {q : ℝ} (hq : 1 ≤ q) {K F : Rd d �
 theorem lintegral_conv_le_of_ae_le {d : ℕ} {K F : Rd d → ℝ≥0∞} (hK : AEMeasurable K) {C : ℝ≥0∞}
     (hF : ∀ᵐ y, F y ≤ C) (x : Rd d) :
     ∫⁻ y, K (x - y) * F y ≤ (∫⁻ z, K z) * C := by
-  sorry
+  calc ∫⁻ y, K (x - y) * F y ≤ ∫⁻ y, K (x - y) * C :=
+        lintegral_mono_ae (hF.mono fun y hy => mul_le_mul' le_rfl hy)
+    _ = (∫⁻ y, K (x - y)) * C := lintegral_mul_const'' _
+        (hK.comp_quasiMeasurePreserving (Measure.measurePreserving_sub_left volume x).quasiMeasurePreserving)
+    _ = (∫⁻ z, K z) * C := by rw [lintegral_sub_left_eq_self]
 
 end young
 
