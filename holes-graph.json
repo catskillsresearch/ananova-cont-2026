@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:08:49Z",
+ "updated": "2026-11-27T01:09:53Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 18,
-  "done": 222
+  "done": 223
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 50
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 172
+  "done": 173
  },
  "untagged": [],
  "legend": {
@@ -2413,9 +2413,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "eventually_hessian_close",
     "eventually_sum_abs_le",
     "abs_riemannSum_le",
     "eq_18"
@@ -2445,10 +2444,9 @@
    "blockers": [
     "Main.Eq18::theorem_5_1.eq_18",
     "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
-    "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
     "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
    ],
-   "detail": "4 sorry: eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
+   "detail": "3 sorry: eventually_sum_abs_le, abs_riemannSum_le, eq_18"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18",
@@ -2584,17 +2582,15 @@
    "parentGoal": "Main.Eq18",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.eq_18.eventually_hessian_close"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (18), uniform continuity): for `H ∈ C²_b` and `ε > 0`, eventually `‖∇²H(z) - ∇²H(ω(t_k))‖ ≤ ε` on every increment ball of `π_n`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2604,7 +2600,7 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.eq_18.eventually_hessian_close — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+   "detail": "proved: theorem_5_1.eq_18.eventually_hessian_close — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",

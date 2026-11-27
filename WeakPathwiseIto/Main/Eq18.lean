@@ -126,7 +126,38 @@ theorem eventually_hessian_close {π : ℕ → Partition T} {ω : ℝ → Rd d}
     ∀ᶠ n in atTop, ∀ k : Fin (π n).m,
       ∀ z ∈ incrementBall (ω ((π n).left k)) (ω ((π n).right k)),
         ‖smoothHessian H z - smoothHessian H (ω ((π n).left k))‖ ≤ ε := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient H = L ∘ fderiv ℝ H := rfl
+  have hD : ContDiff ℝ 1 (fderiv ℝ H) := hH.1.fderiv_right (m := 1) (by norm_num)
+  have hgc : ContDiff ℝ 1 (gradient H) := by rw [hg]; exact L.contDiff.comp hD
+  have hHc : Continuous (smoothHessian H) := hgc.continuous_fderiv (by norm_num)
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  have hωC : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C := fun s hs => hC _ (mem_image_of_mem ω hs)
+  obtain ⟨δ, hδ, hδD⟩ := Metric.uniformContinuousOn_iff.1
+    ((isCompact_closedBall (0 : Rd d) (C + 1)).uniformContinuousOn_of_continuous hHc.continuousOn)
+    ε hε
+  filter_upwards [hosc.eventually (gt_mem_nhds (lt_min hδ one_pos))] with n hon k z hz
+  have hΔ := lemma_4_2.norm_increment_le hω (π n) k
+  have hΔ' : ‖ω ((π n).right k) - ω ((π n).left k)‖ < min δ 1 := hΔ.trans_lt hon
+  have hza : dist z (ω ((π n).left k)) ≤ ‖ω ((π n).right k) - ω ((π n).left k)‖ := by
+    have h1 := dist_triangle z (midpoint ℝ (ω ((π n).left k)) (ω ((π n).right k))) (ω ((π n).left k))
+    rw [dist_midpoint_left (𝕜 := ℝ)] at h1
+    rw [incrementBall, Metric.mem_closedBall] at hz
+    have h2 : dist (ω ((π n).left k)) (ω ((π n).right k)) =
+        ‖ω ((π n).right k) - ω ((π n).left k)‖ := by rw [dist_comm, dist_eq_norm]
+    simp only [Real.norm_ofNat] at h1
+    linarith
+  have ha : ‖ω ((π n).left k)‖ ≤ C := hωC _ ((π n).t_mem _)
+  have haB : ω ((π n).left k) ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+    rw [Metric.mem_closedBall, dist_zero_right]; linarith
+  have hzB : z ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+    rw [Metric.mem_closedBall, dist_zero_right]
+    have := norm_le_insert' z (ω ((π n).left k))
+    rw [← dist_eq_norm] at this
+    linarith [min_le_right δ 1]
+  have := hδD z hzB _ haB (by linarith [min_le_left δ 1])
+  rw [dist_eq_norm] at this
+  exact this.le
 
 /-- **Subgoal** (Theorem 5.1 proof, (18), summing the increments): for `H ∈ C²_b` and `ε > 0`,
 eventually `∑_k |(∇H(ω(t_{k+1})) - ∇H(ω(t_k))) · δω_k| ≤ ∫ |∇²H| 𝓛^{π_n}_ω + ε`. -/
