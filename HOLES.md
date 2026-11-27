@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:29:11Z  
-**`sorry` occurrences:** 35 · 12 open · 19 blocked · 280 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 10, 'blocked': 7, 'done': 223} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:29:54Z  
+**`sorry` occurrences:** 34 · 11 open · 19 blocked · 281 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 9, 'blocked': 7, 'done': 224} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -266,7 +266,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le` | subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal` | subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s | 1 |
-| open | `Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint` | subgoal of Theorem 2.3 proof: the ball with diameter `[x, y]` | 1 |
+| done | `Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint` | subgoal of Theorem 2.3 proof: the ball with diameter `[x, y]` | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top` | subgoal of Theorem 2.3 proof: if `M_R|∇f|(x | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le` | subgoal of Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|` | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le` | subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B | 1 |
@@ -307,7 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First` |  | 0 |  |
 | done | `Sobolev.Theorem21Second` |  | 0 |  |
 | blocked | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `Sobolev.Theorem23Steps` |
-| blocked | `Sobolev.Theorem23Steps` |  | 9 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le`, `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
+| blocked | `Sobolev.Theorem23Steps` |  | 8 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le`, `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
 
 ### §2.2 Bessel potentials, capacity, polar sets
 

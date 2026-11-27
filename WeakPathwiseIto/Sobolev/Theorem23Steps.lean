@@ -35,7 +35,20 @@ theorem closedBall_midpoint {x y : Rd d} (hxy : x ≠ y) :
       x ∈ Metric.closedBall (midpoint ℝ x y) (dist x y / 2) ∧
       y ∈ Metric.closedBall (midpoint ℝ x y) (dist x y / 2) ∧
       Metric.ediam (Metric.closedBall (midpoint ℝ x y) (dist x y / 2)) ≤ edist x y := by
-  sorry
+  have hr : 0 < dist x y / 2 := by have := dist_pos.2 hxy; positivity
+  have hx : x ∈ Metric.closedBall (midpoint ℝ x y) (dist x y / 2) := by
+    rw [Metric.mem_closedBall, dist_left_midpoint (𝕜 := ℝ)]
+    simp; linarith
+  have hy : y ∈ Metric.closedBall (midpoint ℝ x y) (dist x y / 2) := by
+    rw [Metric.mem_closedBall, dist_right_midpoint (𝕜 := ℝ)]
+    simp; linarith
+  refine ⟨⟨_, _, hr, Or.inr (Or.inl rfl)⟩, hx, hy, Metric.ediam_le fun a ha b hb => ?_⟩
+  rw [edist_dist, edist_dist]
+  refine ENNReal.ofReal_le_ofReal ((dist_triangle a (midpoint ℝ x y) b).trans ?_)
+  have h1 := Metric.mem_closedBall.1 ha
+  have h2 := Metric.mem_closedBall.1 hb
+  rw [dist_comm] at h2
+  linarith
 
 /-- **Subgoal** (Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with
 the maximal radius enlarged to any `R ≥ diam Q`). -/
