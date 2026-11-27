@@ -38,6 +38,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The Euclidean space `ℝ^d` in which all paths and functions of the paper take values. -/
 abbrev Rd (d : ℕ) : Type := EuclideanSpace ℝ (Fin d)
 
@@ -60,6 +63,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- A partition `π = {0 = t_0 < t_1 < ⋯ < t_m = T}` of `[0, T]` (Section 3). -/
 structure Partition (T : ℝ) where
@@ -125,6 +131,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 open scoped Classical in
 /-- The discrete quadratic variation of eq. (5):
 `∑_{t_{i+1} ≤ t} (x(t_{i+1}) - x(t_i))²` along a partition `π_n`. -/
@@ -138,6 +147,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- A real path `x` has finite quadratic variation along `π = (π_n)` (eq. (5), [Föl81]):
 for every `t ∈ [0, T]` the discrete quadratic variations converge to `[x]_π(t)`, and
@@ -180,6 +192,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- A path `ω = (ω^1, …, ω^d)` has finite quadratic variation along `π` (Section 3): every
 `ω^i` and every `ω^i + ω^j` has finite quadratic variation along `π`. The quadratic
@@ -226,6 +241,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The oscillation of `ω` along `π_n` (eq. (6)):
 `osc(ω, π_n) := max_i sup_{t ∈ [t_i, t_{i+1}]} |ω(t) - ω(t_i)|`. -/
 def pathOscillation {T : ℝ} {d : ℕ} (ω : ℝ → Rd d) (π : Partition T) : ℝ :=
@@ -248,6 +266,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace IsWeakDerivative
 
@@ -282,6 +303,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- `H` is a weak Hessian `∇²f` of `f`: the `(i, j)` entry `⟨H(x) e_j, e_i⟩` is the weak
 derivative `∂_i ∂_j f`. -/
 def IsWeakHessian {d : ℕ} (f : Rd d → ℝ) (H : Rd d → (Rd d →L[ℝ] Rd d)) : Prop :=
@@ -295,6 +319,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace follmerIntegral
 
@@ -318,6 +345,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- `C^k_b`: `f` is `k` times continuously differentiable and all its derivatives of order
 `≤ k` are bounded (the spaces `C^1_b`, `C^2_b` of the paper). -/
 def ContDiffBounded {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -332,6 +362,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The classical Hessian `∇²F(x)` of a twice differentiable `F : ℝ^d → ℝ`, as the derivative
 of the gradient, a linear map `ℝ^d →L ℝ^d`. -/
 def smoothHessian {d : ℕ} (F : Rd d → ℝ) (x : Rd d) : Rd d →L[ℝ] Rd d :=
@@ -344,6 +377,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The Sobolev space `W^{k,p}(ℝ^d)` (Section 2.1): `f ∈ L^p` and every weak derivative
 `D^α f`, `|α| ≤ k`, exists and lies in `L^p`. -/
@@ -372,6 +408,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace Pointwise
 
 /-- The normalising constant `c_d := 2 / |B(0,1)|` of eq. (7). -/
 def occupationConstant (d : ℕ) : ℝ := 2 / (volume (Metric.ball (0 : Rd d) 1)).toReal
@@ -1362,6 +1401,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The ball `Q^n_i := {x : |x - (a + b)/2| ≤ |b - a| / 2}` spanned by an increment from
 `a = ω(t_i)` to `b = ω(t_{i+1})` (eq. (7)). -/
 def incrementBall {d : ℕ} (a b : Rd d) : Set (Rd d) :=
@@ -1374,6 +1416,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace discreteOccupationDensity
 
@@ -1552,6 +1597,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The normalised discrete quadratic-variation density of eq. (28) (also used for (11)):
 `ρ_{n,ω}(t) := ∑_i |ω(t_{i+1}) - ω(t_i)|² / (t_{i+1} - t_i) · 1_{[t_i, t_{i+1})}(t)`. -/
 def normalizedQuadraticDensity {T : ℝ} {d : ℕ} (π : Partition T) (ω : ℝ → Rd d) (t : ℝ) : ℝ :=
@@ -1565,6 +1613,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The discrete seminorm of Section 4.2 (and `‖h‖_{n,1,B}` of Lemma B.2 for `p = 1`):
 `‖h‖_{n,p,ω} := (∑_i (|h(ω(t_i))|^p + |h(ω(t_{i+1}))|^p) |t_{i+1} - t_i|)^{1/p}`, for a
@@ -1581,6 +1632,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The truncated Hardy–Littlewood maximal function
 `M_R f(x) := sup_{r < R} ⨍_{B(x,r)} |f(y)| dy` (Section 2.1). -/
@@ -1603,6 +1657,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The seminorm `‖f‖_{W^0_{ω,π}} := limsup_n ∫ |f(x)| 𝓛^{π_n}_ω(x) dx` (Section 4.2). -/
 def occupationSeminorm {T : ℝ} {d : ℕ} {F : Type*} [NormedAddCommGroup F] (π : ℕ → Partition T)
@@ -1707,6 +1764,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- An approximating sequence for `F` with weak Hessian `H` along `(ω, π)` (eq. (8)), indexed by `m ≥ 1` (the value at `m = 0` is unconstrained):
 `F_m ∈ C^2_b ∩ W^{2,1}`, `F_m(ω(t)) → F(ω(t))` for all `t ∈ [0, T]`, and
 `‖∇²F_m - ∇²F‖_{W^0_{ω,π}} → 0`. -/
@@ -1728,6 +1788,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The pathwise integral of a weak gradient (eq. (16)):
 `∫_0^t ∇F(ω(s)) d^π ω(s) := lim_m ∫_0^t ∇F_m(ω(s)) d^π ω(s)` along an approximating sequence. -/
 def weakPathwiseIntegral {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d} {F : Rd d → ℝ}
@@ -1741,6 +1804,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace pathwiseCovariation
 
@@ -1766,6 +1832,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The covariation of a weak gradient (eq. (15)):
 `[∇F(ω), ω]_π(t) := lim_m [∇F_m(ω), ω]_π(t)` along an approximating sequence. -/
 def weakCovariation {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d} {F : Rd d → ℝ}
@@ -1779,6 +1848,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The quadratic-variation weighted occupation measure (Lemma 4.2):
 `μ^T_ω(A) := tr ∫_0^T 1_A(ω(t)) d[ω]_π(t)`, i.e. the image of `d tr[ω]_π` on `[0, T]`
@@ -1807,6 +1879,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace lemma_4_2
 
@@ -2299,6 +2374,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace proposition_3_1
 
@@ -2800,6 +2878,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 namespace follmer_ito_formula
 
 variable {T : ℝ} {d : ℕ}
@@ -3081,6 +3162,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 variable {T : ℝ} {d : ℕ}
 
@@ -3375,6 +3459,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 variable {T : ℝ} {d : ℕ}
 
 namespace theorem_5_1
@@ -3592,6 +3679,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 variable {T : ℝ} {d : ℕ}
 
@@ -3858,6 +3948,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
 
 /-- **Theorem 5.1** (existence of the limits (14) and (15)). -/
@@ -3946,6 +4039,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The canonical path space `Ω := C([0, T], ℝ^d)` of Section 2.2, with its Borel σ-algebra. -/
 abbrev CanonicalWienerSpace (d : ℕ) (T : ℝ) : Type := C(Icc (0 : ℝ) T, Rd d)
 
@@ -3991,6 +4087,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The Bessel kernel `g_α` on `ℝ^d` (Definition 2.4), given by the subordination formula
 `g_α(x) = ((4π)^{α/2} Γ(α/2))⁻¹ ∫_0^∞ e^{-π|x|²/δ} e^{-δ/(4π)} δ^{(α-d)/2} dδ/δ`
@@ -4055,7 +4154,8 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal
 
 end
 
@@ -4064,6 +4164,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace BesselSpace
 
@@ -4096,6 +4199,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The Bessel `(α, p)`-capacity (Definition 2.7):
 `B_{α,p}(E) := inf {‖h‖_p^p : g_α ⋆ h ≥ 1_E, h ≥ 0}`. -/
 def besselCapacity (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : ℝ≥0∞ :=
@@ -4119,6 +4225,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- A polar set for Brownian motion (Definition 2.8), on the canonical space
 `Ω = C([0, T], ℝ^d)`: `ℙ_x(B(t) ∈ E for some t > 0) = 0` for all `x ∈ ℝ^d`. -/
 def IsBrownianPolar (d : ℕ) (T : ℝ) (S : Set (Rd d)) : Prop :=
@@ -4138,6 +4247,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The Sobolev–Slobodeckij space `W^{2+s,p}(ℝ^d)` (Section 5.2): `f ∈ W^{2,p}` and its weak
 Hessian has finite Gagliardo seminorm
 `∫∫ |∇²f(x) - ∇²f(y)|^p / |x - y|^{sp + d} dx dy < ∞`. -/
@@ -4153,6 +4265,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- `W^{2+,p}(ℝ^d) := ⋃_{s ∈ (0,1)} W^{2+s,p}(ℝ^d)` (Section 2.1). -/
 def MemW2Plus {d : ℕ} (p : ℝ) (f : Rd d → ℝ) : Prop :=
   ∃ s ∈ Ioo (0 : ℝ) 1, MemW2PlusS s p f
@@ -4164,6 +4279,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The pathwise Sobolev space `𝓦^2_{ω,π}` (Definition 4.3, eq. (9)): functions
 `F ∈ W^{2,1}(ℝ^d)` admitting an approximating sequence satisfying (8). -/
@@ -4185,6 +4303,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- **Assumption 1** (balanced partitions), eq. (26): `M₁ := sup_{n ≥ 1} |π_n| / |π_n|_ < ∞`. -/
 def BalancedPartitions {T : ℝ} (π : ℕ → Partition T) : Prop :=
   ∃ M₁ : ℝ, ∀ n, 1 ≤ n → (π n).mesh / (π n).minGap ≤ M₁
@@ -4196,6 +4317,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- **Assumption 2**, eq. (27): there is `M₂ > 1` with `M₂ ≤ |π_n| / |π_{n+1}|` for all `n ≥ 1`. -/
 def GeometricMeshDecay {T : ℝ} (π : ℕ → Partition T) : Prop :=
@@ -4215,6 +4339,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- `x` is a Lebesgue point of `f`: `⨍_{B(x,r)} |f(y) - c| dy → 0` as `r → 0` for some `c`. -/
 def IsLebesguePoint {d : ℕ} (f : Rd d → ℝ) (x : Rd d) : Prop :=
   ∃ c : ℝ, Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |f y - c|) (𝓝[>] 0) (𝓝 0)
@@ -4227,7 +4354,8 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 end
 
@@ -4236,6 +4364,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The natural (precise) representative of eq. (3):
 `g̃(x) := limsup_{r → 0} ⨍_{B(x,r)} g(y) dy`. -/
@@ -4269,6 +4400,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 namespace theorem_5_2
 
 variable {d : ℕ} {T : ℝ}
@@ -4282,6 +4416,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 variable {T : ℝ} {d : ℕ}
 
@@ -4320,6 +4457,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 namespace IsItoIntegral
 
@@ -4370,6 +4510,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- The local Sobolev space `W^{k,p}_loc(ℝ^d)`: `f` and its weak derivatives of order `≤ k`
 are `L^p` on every compact set. -/
 def MemWLoc {d : ℕ} (k : ℕ) (p : ℝ≥0∞) (f : Rd d → ℝ) : Prop :=
@@ -4386,6 +4529,9 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
 /-- `G` is a weak gradient `∇f` of `f`: each coordinate `G^i` is the weak derivative `∂_i f`. -/
 def IsWeakGradient {d : ℕ} (f : Rd d → ℝ) (G : Rd d → Rd d) : Prop :=
   ∀ i : Fin d, IsWeakDerivative (Pi.single i 1) f (fun x => Rd.coord i (G x))
@@ -4397,6 +4543,9 @@ end
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
 
 variable {T : ℝ} {d : ℕ}
 

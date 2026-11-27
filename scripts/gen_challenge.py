@@ -68,7 +68,12 @@ def body_of(mod: str) -> str:
     text = path_of(mod).read_text(encoding="utf-8")
     start = text.index(f"namespace {LIB}\n")
     end = text.rindex(f"end {LIB}")
-    return text[start + len(f"namespace {LIB}\n"):end].strip("\n")
+    # Keep the module's own top-level `open` commands (e.g. `open scoped Pointwise`): they sit
+    # before `namespace WeakPathwiseIto` and affect elaboration of the copied body. They are
+    # emitted inside the module's `section … end`, so they stay local to that module.
+    opens = [ln for ln in text[:start].splitlines() if re.match(r"^open\b", ln)]
+    body = text[start + len(f"namespace {LIB}\n"):end].strip("\n")
+    return ("\n".join(opens) + "\n\n" + body) if opens else body
 
 
 THM_RE = re.compile(r"^(?:theorem|lemma)\s+([^\s:({\[]+)", re.M)
