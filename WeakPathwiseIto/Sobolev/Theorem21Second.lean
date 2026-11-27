@@ -482,7 +482,29 @@ theorem hessian_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d →
 is integrable as an operator-valued map). -/
 theorem integrable_hessian {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d)}
     (hf : MemW 2 1 f) (hH : IsWeakHessian f H) : Integrable H := by
-  sorry
+  have hexp : ∀ w : Rd d, w = ∑ i, Rd.coord i w • Rd.basisVec i := by
+    intro w
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' w]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  set E : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j =>
+    (innerSL ℝ (Rd.basisVec i)).smulRight (Rd.basisVec j) with hE
+  have hz : H = fun z => ∑ i, ∑ j, Rd.coord j (H z (Rd.basisVec i)) • E i j := by
+    funext z
+    ext1 v
+    calc H z v = H z (∑ i, Rd.coord i v • Rd.basisVec i) := by rw [← hexp v]
+      _ = ∑ i, Rd.coord i v • H z (Rd.basisVec i) := by simp [map_sum, map_smul]
+      _ = ∑ i, Rd.coord i v • ∑ j, Rd.coord j (H z (Rd.basisVec i)) • Rd.basisVec j := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [← hexp]
+      _ = _ := by
+          simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply, hE,
+            ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, Finset.smul_sum, smul_smul]
+          refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+          simp only [Rd.coord, real_inner_comm, mul_comm]
+  rw [hz]
+  exact integrable_finset_sum _ fun i _ => integrable_finset_sum _ fun j _ =>
+    (coord_hessian_integrable hf hH j i).smul_const _
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of
 its entries in the standard basis). -/
