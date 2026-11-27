@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:33:02Z",
+ "updated": "2026-11-27T03:34:10Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 19,
-  "done": 285
+  "done": 286
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 57
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 228
+  "done": 229
  },
  "untagged": [],
  "legend": {
@@ -8315,9 +8315,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "abs_average_sub_average_le_maximal",
     "isLebesguePoint_of_maximal_lt_top",
     "maximal_lt_top_of_isLebesguePoint",
     "maximal_coord_hessian_le"
@@ -8343,12 +8342,11 @@
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
    "blockers": [
-    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
     "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
-   "detail": "4 sorry: abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
+   "detail": "3 sorry: isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8386,23 +8384,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.abs_average_sub_average_le_maximal"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r M_R|∇f|(x)` for `0 < s ≤ r`, `r < R`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.abs_average_sub_average_le_maximal — subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.abs_average_sub_average_le_maximal — subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",

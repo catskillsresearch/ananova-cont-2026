@@ -242,7 +242,64 @@ theorem abs_average_sub_average_le_maximal (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (
       0 < s → s ≤ r → ENNReal.ofReal r < R →
         ENNReal.ofReal |(⨍ y in Metric.ball x s, f y) - ⨍ y in Metric.ball x r, f y| ≤
           C * ENNReal.ofReal r * localMaximalFunction R G x := by
-  sorry
+  obtain ⟨C, hC⟩ := abs_average_sub_average_le hd
+  refine ⟨2 * C, fun f G hf hG x R r s hs hsr hrR => ?_⟩
+  set M := localMaximalFunction R G x with hM
+  set av : ℝ → ℝ := fun t => ⨍ y in Metric.ball x t, f y with hav
+  have hlav : ∀ t, 0 < t → ENNReal.ofReal t < R →
+      laverage (volume.restrict (Metric.ball x t)) (fun y => ‖G y‖ₑ) ≤ M := fun t ht htR =>
+    le_iSup_of_le t (le_iSup_of_le ht (le_iSup_of_le htR le_rfl))
+  have hone : ∀ t u, 0 < u → u ≤ t → t ≤ 2 * u → ENNReal.ofReal t < R →
+      ENNReal.ofReal |av u - av t| ≤ C * ENNReal.ofReal t * M := fun t u hu hut htu htR =>
+    (hC f G hf hG x t u hu hut htu).trans (mul_le_mul' le_rfl (hlav t (hu.trans_le hut) htR))
+  have key : ∀ k : ℕ, ∀ t, s ≤ t → t ≤ 2 ^ (k + 1) * s → ENNReal.ofReal t < R →
+      ENNReal.ofReal |av s - av t| ≤ (2 * C : ℝ≥0) * ENNReal.ofReal t * M := by
+    intro k
+    induction k with
+    | zero =>
+      intro t hst hts htR
+      refine (hone t s hs hst (by simpa using hts) htR).trans ?_
+      refine mul_le_mul' (mul_le_mul' ?_ le_rfl) le_rfl
+      push_cast
+      exact le_mul_of_one_le_left' (by norm_num)
+    | succ k ih =>
+      intro t hst hts htR
+      by_cases h2 : t ≤ 2 * s
+      · refine (hone t s hs hst h2 htR).trans ?_
+        refine mul_le_mul' (mul_le_mul' ?_ le_rfl) le_rfl
+        push_cast
+        exact le_mul_of_one_le_left' (by norm_num)
+      · push_neg at h2
+        have ht0 : 0 < t := hs.trans_le hst
+        have hst' : s ≤ t / 2 := by linarith
+        have hts' : t / 2 ≤ 2 ^ (k + 1) * s := by
+          rw [pow_succ] at hts; linarith
+        have htR' : ENNReal.ofReal (t / 2) < R :=
+          lt_of_le_of_lt (ENNReal.ofReal_le_ofReal (by linarith)) htR
+        have h1 := ih (t / 2) hst' hts' htR'
+        have h3 := hone t (t / 2) (by positivity) (by linarith) (by linarith) htR
+        calc ENNReal.ofReal |av s - av t|
+            ≤ ENNReal.ofReal (|av s - av (t / 2)| + |av (t / 2) - av t|) :=
+              ENNReal.ofReal_le_ofReal (abs_sub_le _ _ _)
+          _ = ENNReal.ofReal |av s - av (t / 2)| + ENNReal.ofReal |av (t / 2) - av t| :=
+              ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _)
+          _ ≤ (2 * C : ℝ≥0) * ENNReal.ofReal (t / 2) * M + C * ENNReal.ofReal t * M :=
+              add_le_add h1 h3
+          _ = (2 * C : ℝ≥0) * ENNReal.ofReal t * M := by
+              have hhalf : ENNReal.ofReal (t / 2) = 2⁻¹ * ENNReal.ofReal t := by
+                rw [show t / 2 = 2⁻¹ * t by ring, ENNReal.ofReal_mul (by norm_num),
+                  ENNReal.ofReal_inv_of_pos (by norm_num), ENNReal.ofReal_ofNat]
+              have h22 : (2 : ℝ≥0∞) * 2⁻¹ = 1 := ENNReal.mul_inv_cancel two_ne_zero ENNReal.ofNat_ne_top
+              rw [hhalf]
+              push_cast
+              calc 2 * (C : ℝ≥0∞) * (2⁻¹ * ENNReal.ofReal t) * M + C * ENNReal.ofReal t * M
+                  = (2 * 2⁻¹) * (C * ENNReal.ofReal t * M) + C * ENNReal.ofReal t * M := by ring
+                _ = 2 * C * ENNReal.ofReal t * M := by rw [h22, one_mul, ← two_mul]; ring
+  obtain ⟨k, hk⟩ := pow_unbounded_of_one_lt (r / s) (by norm_num : (1 : ℝ) < 2)
+  refine key k r hsr ?_ hrR
+  rw [div_lt_iff₀ hs] at hk
+  rw [pow_succ]
+  nlinarith [pow_pos (by norm_num : (0 : ℝ) < 2) k]
 
 /-- **Subgoal** (Theorem 2.3 proof: if `M_R|∇f|(x) < ∞` then `x` is a Lebesgue point of `f`). -/
 theorem isLebesguePoint_of_maximal_lt_top (hd : 0 < d) {f : Rd d → ℝ} {G : Rd d → Rd d}
