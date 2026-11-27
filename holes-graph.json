@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T02:47:58Z",
+ "updated": "2026-11-27T02:48:15Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 27,
  "counts": {
   "open": 5,
-  "blocked": 18,
-  "done": 264
+  "blocked": 17,
+  "done": 265
  },
  "goalCounts": {
   "open": 4,
-  "blocked": 11,
-  "done": 54
+  "blocked": 10,
+  "done": 55
  },
  "subgoalCounts": {
   "open": 1,
@@ -7198,7 +7198,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7208,9 +7208,7 @@
     "Sobolev.PreciseRepresentative",
     "Sobolev.Theorem21First"
    ],
-   "blockers": [
-    "Sobolev.Theorem21First"
-   ],
+   "blockers": [],
    "detail": "1 sorry: theorem_2_1_second"
   },
   {
@@ -7226,9 +7224,9 @@
     "theorem": 21
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7259,7 +7257,7 @@
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
