@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:15:03Z",
+ "updated": "2026-11-27T02:18:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 19,
-  "done": 249
+  "done": 251
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 7,
-  "done": 195
+  "done": 197
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
-    "contDiff_convolution",
     "lintegral_convolution_le",
     "tendsto_convolution_of_hasCompactSupport",
     "tendsto_convolution",
@@ -7234,7 +7233,7 @@
     "abs_sub_average_le"
    ],
    "declKinds": {
-    "theorem": 15
+    "theorem": 16
    },
    "paperGoal": false,
    "verified": false,
@@ -7260,11 +7259,11 @@
     "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+    "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
@@ -7273,7 +7272,7 @@
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "9 sorry: contDiff_convolution, lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "8 sorry: lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7345,17 +7344,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.contDiff_convolution"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, mollification step 1): for `f` with weak gradient `G` and a smooth compactly supported `ψ`, `f * ψ` is `C¹` with `∇(f * ψ) = G * ψ`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7364,7 +7361,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.contDiff_convolution — subgoal of Theorem 2.1 proof, mollification step 1 (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.contDiff_convolution — subgoal of Theorem 2.1 proof, mollification step 1 (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
@@ -7696,6 +7693,35 @@
    ],
    "blockers": [],
    "detail": "sorry: theorem_2_1_first.tendsto_convolution_of_hasCompactSupport — subgoal of Theorem 2.1 proof, mollification step 3: continuous compactly supported case (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
+   "label": "testDeriv_single",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, mollification step 1, first-order test derivative",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, mollification step 1, first-order test derivative): `D^{e_i} φ = ∂_i φ`.",
+   "status": "done",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_2_1_first.testDeriv_single — subgoal of Theorem 2.1 proof, mollification step 1, first-order test derivative (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
@@ -8287,6 +8313,11 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
    "kind": "hard"
   },
   {
@@ -12291,6 +12322,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "kind": "hard"
   },
@@ -12397,6 +12433,11 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
    "kind": "hard"
   },
   {
@@ -12741,6 +12782,11 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "kind": "hard"
   },
@@ -12856,6 +12902,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "kind": "hard"
   },
@@ -12936,6 +12987,11 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
    "to": "Sobolev.Theorem21First",
    "kind": "subgoal"
   },
@@ -13301,6 +13357,10 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
   },
   {
    "from": "Basic.IsCubeOrBall",
@@ -15640,6 +15700,10 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
@@ -15717,6 +15781,10 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -15964,6 +16032,10 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
@@ -16048,6 +16120,10 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
@@ -16112,6 +16188,10 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
    "to": "Sobolev.Theorem21First"
   },
   {

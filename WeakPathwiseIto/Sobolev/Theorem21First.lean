@@ -397,6 +397,43 @@ theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), I
           push_cast; rfl
       _ ≤ _ := by rw [← hball]; exact mul_le_mul' le_rfl (measure_mono hin)
 
+/-- **Subgoal** (Theorem 2.1 proof, mollification step 1, first-order test derivative):
+`D^{e_i} φ = ∂_i φ`. -/
+theorem testDeriv_single (φ : Rd d → ℝ) (i : Fin d) (x : Rd d) :
+    IsWeakDerivative.testDeriv (Pi.single i 1) φ x = fderiv ℝ φ x (Rd.basisVec i) := by
+  classical
+  set f : Fin d → List (Rd d) := fun k => List.replicate ((Pi.single i 1 : Fin d → ℕ) k)
+    (Rd.basisVec k) with hf
+  set P : Fin d → Bool := fun k => decide (k = i) with hP
+  have hfl : ∀ L : List (Fin d), L.flatMap f = (L.filter P).flatMap f := by
+    intro L
+    induction L with
+    | nil => rfl
+    | cons k L ih =>
+      by_cases hk : k = i
+      · have : P k = true := by simp [hP, hk]
+        rw [List.filter_cons_of_pos this, List.flatMap_cons, List.flatMap_cons, ih]
+      · have : P k = false := by simpa [hP] using hk
+        have h0 : f k = [] := by simp [hf, Pi.single_apply, hk]
+        rw [List.filter_cons_of_neg (by simp [this]), List.flatMap_cons, h0, List.nil_append, ih]
+  have hsorted : ((List.finRange d).filter P).Pairwise (· < ·) :=
+    (List.pairwise_lt_finRange d).filter _
+  have hfilt : (List.finRange d).filter P = [i] := by
+    apply List.Perm.eq_of_pairwise' (r := (· ≤ ·)) (hsorted.imp le_of_lt) (by simp)
+    rw [List.perm_ext_iff_of_nodup (hsorted.imp ne_of_lt) (by simp)]
+    intro a
+    simp [hP, List.mem_filter]
+  have hdir : IsWeakDerivative.directions (Pi.single i 1 : Fin d → ℕ) = [Rd.basisVec i] := by
+    have : IsWeakDerivative.directions (Pi.single i 1 : Fin d → ℕ) =
+        (List.finRange d).flatMap f := rfl
+    rw [this, hfl, hfilt]
+    simp [hf]
+  have key : ∀ (a : Rd d) (l : List (Rd d)), l = [a] →
+      iteratedFDeriv ℝ l.length φ x (fun k => l.get k) = fderiv ℝ φ x a := by
+    rintro a l rfl
+    exact iteratedFDeriv_one_apply _
+  exact key _ _ hdir
+
 /-- **Subgoal** (Theorem 2.1 proof, mollification step 1): for `f` with weak gradient `G` and a
 smooth compactly supported `ψ`, `f * ψ` is `C¹` with `∇(f * ψ) = G * ψ`. -/
 theorem contDiff_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} (hG : IsWeakGradient f G)
@@ -404,7 +441,58 @@ theorem contDiff_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} (hG : IsWeak
     ContDiff ℝ 1 (fun x => ∫ y, f y * ψ (x - y)) ∧
       ∀ x, gradient (fun x => ∫ y, f y * ψ (x - y)) x =
         ∑ i, (∫ y, Rd.coord i (G y) * ψ (x - y)) • Rd.basisVec i := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · have hsub : ∀ u v : Rd 0, u = v := fun u v => Subsingleton.elim u v
+    refine ⟨?_, fun x => hsub _ _⟩
+    have : (fun x => ∫ y, f y * ψ (x - y)) = fun _ => ∫ y, f y * ψ (0 - y) := by
+      funext x; rw [hsub x 0]
+    rw [this]; exact contDiff_const
+  have hfl : LocallyIntegrable f := (hG ⟨0, hd⟩).1
+  have hψ1 : ContDiff ℝ 1 ψ := hψ.of_le (by exact_mod_cast le_top)
+  set F := fun x => ∫ y, f y * ψ (x - y) with hFdef
+  have hFeq : F = convolution f ψ (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+    funext x; simp [hFdef, convolution_def, smul_eq_mul]
+  refine ⟨?_, fun x => ?_⟩
+  · rw [hFeq]
+    exact hψc.contDiff_convolution_right (n := 1) (L := ContinuousLinearMap.lsmul ℝ ℝ) hfl hψ1
+  -- the partial derivatives
+  have hpart : ∀ i, fderiv ℝ F x (Rd.basisVec i) = ∫ y, Rd.coord i (G y) * ψ (x - y) := by
+    intro i
+    have hD := hψc.hasFDerivAt_convolution_right (L := ContinuousLinearMap.lsmul ℝ ℝ) hfl hψ1 x
+    rw [← hFeq] at hD
+    rw [hD.fderiv, convolution_precompR_apply (𝕜 := ℝ) (L := ContinuousLinearMap.lsmul ℝ ℝ) hfl
+      (hψc.fderiv (𝕜 := ℝ)) (hψ1.continuous_fderiv one_ne_zero)]
+    simp only [convolution_def, ContinuousLinearMap.lsmul_apply, smul_eq_mul]
+    -- weak derivative against `φ y = ψ (x - y)`
+    set φ : Rd d → ℝ := fun y => ψ (x - y) with hφdef
+    have hφs : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) φ := hψ.comp (contDiff_const.sub contDiff_id)
+    have hφc : HasCompactSupport φ := hψc.comp_homeomorph (Homeomorph.subLeft x)
+    have hφd : ∀ y, fderiv ℝ φ y (Rd.basisVec i) = -fderiv ℝ ψ (x - y) (Rd.basisVec i) := by
+      intro y
+      have h1 : HasFDerivAt (fun y : Rd d => x - y) (-ContinuousLinearMap.id ℝ (Rd d)) y :=
+        (hasFDerivAt_id y).const_sub x
+      have h2 : HasFDerivAt φ ((fderiv ℝ ψ (x - y)).comp (-ContinuousLinearMap.id ℝ (Rd d))) y :=
+        ((hψ1.differentiable one_ne_zero) (x - y)).hasFDerivAt.comp y h1
+      rw [h2.fderiv]
+      simp
+    have hw := (hG i).2.2 φ hφs hφc
+    simp only [testDeriv_single, hφd, IsWeakDerivative.order] at hw
+    have hord : ∑ k, (Pi.single i 1 : Fin d → ℕ) k = 1 := by simp
+    rw [hord, pow_one] at hw
+    have : ∫ y, f y * -fderiv ℝ ψ (x - y) (Rd.basisVec i) =
+        -∫ y, f y * fderiv ℝ ψ (x - y) (Rd.basisVec i) := by
+      rw [← integral_neg]; simp [mul_neg]
+    rw [this] at hw
+    linarith
+  -- assemble via the orthonormal basis
+  have hexp := (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (gradient F x)
+  rw [← hexp]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  have hb : (EuclideanSpace.basisFun (Fin d) ℝ) i = Rd.basisVec i := by
+    simp [Rd.basisVec]
+  rw [hb, ← hpart i, real_inner_comm]
+  congr 1
+  simp [gradient, InnerProductSpace.toDual_symm_apply]
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹`):
 `‖h * ψ‖_1 ≤ ‖h‖_1 ‖ψ‖_1`. -/
