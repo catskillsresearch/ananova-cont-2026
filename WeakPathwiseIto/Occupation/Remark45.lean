@@ -290,6 +290,28 @@ theorem remark_4_5_subset (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticV
     (remark_4_5.weakLpTendsto_posPart hr hL0
       (remark_4_5_seminorm hω hQV hosc hr hplus hminus).1) hF hFc hH hHr
 
+/-- **Subgoal** (Remark 4.5 bounded case, `L^∞` norm by duality): if `∫_s |f| ≤ C |s|` for every
+measurable `s` of finite measure, then `‖f‖_∞ ≤ C`. -/
+theorem remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le {d : ℕ} {f : Rd d → ℝ}
+    (hf : MemLp f ⊤) {C : ℝ}
+    (h : ∀ s, MeasurableSet s → volume s < ∞ → ∫ x in s, |f x| ≤ C * volume.real s) :
+    eLpNorm f ⊤ volume ≤ ENNReal.ofReal C := by
+  have hint : ∀ s, MeasurableSet s → volume s < ∞ → IntegrableOn (fun x => |f x|) s := by
+    intro s _ hs
+    have : Fact (volume s < ∞) := ⟨hs⟩
+    exact (hf.restrict s).norm.integrable le_top
+  have hae : 0 ≤ᵐ[volume] fun x => C - |f x| := by
+    refine ae_nonneg_of_forall_setIntegral_nonneg_of_sigmaFinite (fun s hs hst => ?_)
+      (fun s hs hst => ?_)
+    · exact (integrableOn_const hst.ne).sub (hint s hs hst)
+    · rw [integral_sub (integrableOn_const hst.ne) (hint s hs hst), setIntegral_const,
+        smul_eq_mul, sub_nonneg, mul_comm]
+      exact h s hs hst
+  rw [eLpNorm_exponent_top hf.aestronglyMeasurable]
+  refine eLpNormEssSup_le_of_ae_bound (hae.mono fun x hx => ?_)
+  simp only [Pi.zero_apply, sub_nonneg] at hx
+  simpa [Real.norm_eq_abs] using hx
+
 /-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
 `L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`
 (for continuous representatives). -/

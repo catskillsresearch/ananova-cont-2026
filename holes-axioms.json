@@ -1356,6 +1356,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::remark_4_5.weakLpTendsto_congr": [
    "propext",
    "Classical.choice",
@@ -1782,5 +1787,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:29:29Z"
+ "generated": "2026-11-27T20:30:57Z"
 }

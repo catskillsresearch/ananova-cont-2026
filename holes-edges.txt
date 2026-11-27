@@ -861,6 +861,7 @@ Main.Theorem51 -hard-> Occupation.Remark45::discreteOccupationDensity.piece_one
 Main.Theorem51 -hard-> Occupation.Remark45::incrementBall_one_iff
 Main.Theorem51 -hard-> Occupation.Remark45::occupationConstant_one
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto
+Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_congr
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_half_add
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_posPart
@@ -1125,6 +1126,7 @@ Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::discreteOccupationDens
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::incrementBall_one_iff
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::occupationConstant_one
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto
+Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_congr
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_half_add
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_posPart
@@ -1449,6 +1451,7 @@ Occupation.Remark44 -hard-> Occupation.Remark45::discreteOccupationDensity.piece
 Occupation.Remark44 -hard-> Occupation.Remark45::incrementBall_one_iff
 Occupation.Remark44 -hard-> Occupation.Remark45::occupationConstant_one
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto
+Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_congr
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_half_add
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_posPart
@@ -1470,6 +1473,7 @@ Occupation.Remark45::discreteOccupationDensity.piece_one -hard-> Occupation.Rema
 Occupation.Remark45::incrementBall_one_iff -hard-> Occupation.Remark45
 Occupation.Remark45::occupationConstant_one -hard-> Occupation.Remark45
 Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto -hard-> Occupation.Remark45
+Occupation.Remark45::remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le -hard-> Occupation.Remark45
 Occupation.Remark45::remark_4_5.weakLpTendsto_congr -hard-> Occupation.Remark45
 Occupation.Remark45::remark_4_5.weakLpTendsto_half_add -hard-> Occupation.Remark45
 Occupation.Remark45::remark_4_5.weakLpTendsto_posPart -hard-> Occupation.Remark45
