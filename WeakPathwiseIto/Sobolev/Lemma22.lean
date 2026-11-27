@@ -283,7 +283,53 @@ theorem lintegral_closedBall_kernel_le_of_ge {α : ℝ} (hα : 0 < α) (hαd : (
     ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (x : Rd d) {ρ : ℝ}, 0 < ρ →
       ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
         C * ENNReal.ofReal ρ ^ α * localMaximalFunction (ENNReal.ofReal ρ) f x := by
-  sorry
+  set V := volume (Metric.ball (0 : Rd d) 1) with hV
+  refine ⟨V.toNNReal, fun f x ρ hρ => ?_⟩
+  rw [ENNReal.coe_toNNReal measure_ball_lt_top.ne]
+  have hs : (d : ℝ) - α ≤ 0 := by linarith
+  set K : ℝ≥0∞ := (ENNReal.ofReal ρ ^ ((d : ℝ) - α))⁻¹ with hK
+  have hpt : ∀ y ∈ Metric.closedBall x ρ,
+      ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤ ‖f y‖ₑ * K := by
+    intro y hy
+    rw [div_eq_mul_inv, hK]
+    have hle : edist x y ≤ ENNReal.ofReal ρ := by
+      rw [edist_dist, dist_comm]
+      exact ENNReal.ofReal_le_ofReal (Metric.mem_closedBall.1 hy)
+    have hinv : (edist x y ^ ((d : ℝ) - α))⁻¹ ≤ (ENNReal.ofReal ρ ^ ((d : ℝ) - α))⁻¹ := by
+      have he : (d : ℝ) - α = -(α - d) := by ring
+      have ht' : 0 ≤ α - d := by linarith
+      rw [he, ENNReal.rpow_neg, ENNReal.rpow_neg, inv_inv, inv_inv]
+      exact ENNReal.rpow_le_rpow hle ht'
+    exact mul_le_mul' le_rfl hinv
+  have hvol : volume (Metric.ball x ρ) = ENNReal.ofReal (ρ ^ d) * V := by
+    rcases Nat.eq_zero_or_pos d with rfl | hd
+    · have h1 : ∀ (z : Rd 0) (r : ℝ), 0 < r → Metric.ball z r = univ := fun z r hr =>
+        eq_univ_of_forall fun w => by
+          rw [Metric.mem_ball, Subsingleton.elim w z, dist_self]; exact hr
+      rw [hV, h1 x ρ hρ, h1 0 1 one_pos, pow_zero, ENNReal.ofReal_one, one_mul]
+    · have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+      rw [Measure.addHaar_ball volume x hρ.le, finrank_euclideanSpace_fin]
+  have hreal : (ρ ^ ((d : ℝ) - α))⁻¹ * ρ ^ d = ρ ^ α := by
+    rw [← Real.rpow_natCast ρ d, Real.rpow_def_of_pos hρ, Real.rpow_def_of_pos hρ,
+      Real.rpow_def_of_pos hρ, ← Real.exp_neg, ← Real.exp_add]
+    congr 1
+    ring
+  have hKe : K * ENNReal.ofReal (ρ ^ d) = ENNReal.ofReal ρ ^ α := by
+    rw [hK, ENNReal.ofReal_rpow_of_pos hρ, ← ENNReal.ofReal_inv_of_pos (by positivity),
+      ← ENNReal.ofReal_mul (by positivity), hreal, ENNReal.ofReal_rpow_of_pos hρ]
+  calc ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α)
+      ≤ ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ * K :=
+        setLIntegral_mono' measurableSet_closedBall hpt
+    _ = (∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ) * K :=
+        lintegral_mul_const' _ _ (by
+          rw [hK]
+          exact ENNReal.inv_ne_top.2 (ENNReal.rpow_pos (ENNReal.ofReal_pos.2 hρ) ENNReal.ofReal_ne_top).ne')
+    _ ≤ (volume (Metric.ball x ρ) * localMaximalFunction (ENNReal.ofReal ρ) f x) * K := by
+        gcongr
+        exact lintegral_closedBall_le f x hρ le_rfl
+    _ = _ := by
+        rw [hvol, ← hKe]
+        ring
 
 end lemma_2_2
 

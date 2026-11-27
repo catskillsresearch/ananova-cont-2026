@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T00:55:20Z",
+ "updated": "2026-11-27T00:59:35Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
   "open": 7,
-  "blocked": 18,
-  "done": 217
+  "blocked": 17,
+  "done": 218
  },
  "goalCounts": {
-  "open": 5,
-  "blocked": 11,
+  "open": 6,
+  "blocked": 10,
   "done": 49
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 168
+  "done": 169
  },
  "untagged": [],
  "legend": {
@@ -6195,9 +6195,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_closedBall_kernel_le_of_ge",
     "lemma_2_2"
    ],
    "declKinds": {
@@ -6206,7 +6205,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6216,10 +6215,8 @@
     "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
-   ],
-   "detail": "2 sorry: lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+   "blockers": [],
+   "detail": "1 sorry: lemma_2_2"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6231,23 +6228,21 @@
    "parentGoal": "Sobolev.Lemma22",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 2.2 proof, `d ≤ α`): the kernel is at most `ρ^{α-d}` on `B̄(x,ρ)`, so `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ |B(0,1)| ρ^α M_ρ f(x)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_2_2.lintegral_closedBall_kernel_le_of_ge — subgoal of Lemma 2.2 proof, `d ≤ α` (in Sobolev.Lemma22)"
+   "detail": "proved: lemma_2_2.lintegral_closedBall_kernel_le_of_ge — subgoal of Lemma 2.2 proof, `d ≤ α` (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
