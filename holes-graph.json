@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:41:35Z",
+ "updated": "2026-11-27T01:42:32Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 19,
-  "done": 233
+  "done": 234
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 52
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 7,
-  "done": 181
+  "done": 182
  },
  "untagged": [],
  "legend": {
@@ -3049,9 +3049,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "contDiffBounded_sub",
     "gradient_smoothHessian_sub",
     "pathwiseCovariation_sub",
     "isWeakDerivative_ae_unique",
@@ -3086,7 +3085,6 @@
    ],
    "blockers": [
     "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
-    "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
     "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
     "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
     "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
@@ -3094,7 +3092,7 @@
     "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
     "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
    ],
-   "detail": "8 sorry: contDiffBounded_sub, gradient_smoothHessian_sub, pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
+   "detail": "7 sorry: gradient_smoothHessian_sub, pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
@@ -3139,17 +3137,15 @@
    "parentGoal": "Main.Theorem51Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.contDiffBounded_sub"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3160,7 +3156,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.contDiffBounded_sub — subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` (in Main.Theorem51Steps)"
+   "detail": "proved: theorem_5_1.contDiffBounded_sub — subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",

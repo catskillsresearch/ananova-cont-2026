@@ -31,7 +31,13 @@ namespace theorem_5_1
 /-- **Subgoal** (Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k`). -/
 theorem contDiffBounded_sub {F G : Rd d → ℝ} (hF : ContDiffBounded 2 F) (hG : ContDiffBounded 2 G) :
     ContDiffBounded 2 (F - G) := by
-  sorry
+  refine ⟨hF.1.sub hG.1, fun i hi => ?_⟩
+  obtain ⟨C1, hC1⟩ := hF.2 i hi
+  obtain ⟨C2, hC2⟩ := hG.2 i hi
+  have hi' : (i : WithTop ℕ∞) ≤ (2 : ℕ) := by exact_mod_cast hi
+  refine ⟨C1 + C2, fun x => ?_⟩
+  rw [iteratedFDeriv_sub_apply (hF.1.of_le hi').contDiffAt (hG.1.of_le hi').contDiffAt]
+  exact (norm_sub_le _ _).trans (add_le_add (hC1 x) (hC2 x))
 
 /-- **Subgoal** (Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²`). -/
 theorem gradient_smoothHessian_sub {F G : Rd d → ℝ} (hF : ContDiff ℝ 2 F) (hG : ContDiff ℝ 2 G) :
