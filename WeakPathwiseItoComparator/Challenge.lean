@@ -5669,7 +5669,18 @@ theorem supFn_props {h : ℕ → Rd d → ℝ} (hm : ∀ n, Measurable (h n)) :
       (∀ n y, ⨆ k, ENNReal.ofReal (h k y) ≠ ⊤ →
         ENNReal.ofReal (h n y) ≤ ENNReal.ofReal (supFn h y)) ∧
       ∀ {q : ℝ}, 0 < q → ∀ y, ‖supFn h y‖ₑ ^ q ≤ ∑' n, ENNReal.ofReal (h n y) ^ q := by
-  sorry
+  have hH : Measurable fun y => ⨆ n, ENNReal.ofReal (h n y) :=
+    Measurable.iSup fun n => (hm n).ennreal_ofReal
+  refine ⟨Measurable.ite (measurableSet_eq_fun hH measurable_const) measurable_const
+    hH.ennreal_toReal, fun y => ?_, fun n y hy => ?_, fun {q} hq y => ?_⟩
+  · simp only [supFn, Pi.zero_apply]; split_ifs <;> simp
+  · simp only [supFn, hy, ↓reduceIte, ENNReal.ofReal_toReal hy]
+    exact le_iSup (fun n => ENNReal.ofReal (h n y)) n
+  · refine le_trans ?_ (iSup_rpow_le_tsum hq _)
+    simp only [supFn]
+    split_ifs with hy
+    · rw [hy, ENNReal.top_rpow_of_pos hq]; exact le_top
+    · rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg, ENNReal.ofReal_toReal hy]
 -/
 
 /- [omitted from the Challenge: not used by the compared statements]
