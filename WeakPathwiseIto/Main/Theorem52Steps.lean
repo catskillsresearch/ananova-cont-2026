@@ -849,6 +849,20 @@ theorem lintegral_shift_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [Norme
     ENNReal.rpow_one] at this
   exact this
 
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: the weak Hessian is unique a.e.,
+entrywise by uniqueness of weak derivatives). -/
+theorem ae_eq_of_isWeakHessian {F : Rd d → ℝ} {H H' : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hH : IsWeakHessian F H) (hH' : IsWeakHessian F H') : H =ᵐ[volume] H' := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in
+difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h) - A x‖^p dx) / |h|^r dh`). -/
+theorem lintegral_gagliardo_eq_shift {E : Type*} [NormedAddCommGroup E] {A : Rd d → E}
+    (hA : AEStronglyMeasurable A volume) (p r : ℝ) :
+    ∫⁻ x, ∫⁻ y, ‖A x - A y‖ₑ ^ p / edist x y ^ r =
+      ∫⁻ h, (∫⁻ x, ‖A (x + h) - A x‖ₑ ^ p) / ‖h‖ₑ ^ r := by
+  sorry
+
 /-- **Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in
 the Gagliardo seminorm `[·]_{W^{s,p}}`). -/
 theorem tendsto_mollify_hessian {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {F : Rd d → ℝ}

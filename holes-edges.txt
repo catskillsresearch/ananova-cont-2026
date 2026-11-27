@@ -89,6 +89,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -109,6 +110,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_n
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -348,6 +350,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -368,6 +371,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_non
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -488,6 +492,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -508,6 +513,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -539,6 +545,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -559,6 +566,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLeb
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -616,6 +624,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52Steps
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -636,6 +645,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -754,6 +764,7 @@ Main.Theorem51Steps -hard-> Main.Theorem52Steps
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -774,6 +785,7 @@ Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_non
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -838,6 +850,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegr
 Main.Theorem52Steps::theorem_5_2.abs_convolution_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top -hard-> Main.Theorem52Steps
@@ -858,6 +871,7 @@ Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue -hard-> Main.Theore
 Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.le_one_cases -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add' -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top -hard-> Main.Theorem52Steps
@@ -1150,6 +1164,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1170,6 +1185,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isBrown
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1442,6 +1458,7 @@ Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1462,6 +1479,7 @@ Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1495,6 +1513,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1515,6 +1534,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1680,6 +1700,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1700,6 +1721,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isBrownian
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1800,6 +1822,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1820,6 +1843,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLe
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1853,6 +1877,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -1873,6 +1898,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isBrownia
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top
@@ -1985,6 +2011,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top
@@ -2005,6 +2032,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top

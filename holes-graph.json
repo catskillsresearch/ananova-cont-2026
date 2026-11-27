@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T15:40:37Z",
+ "updated": "2026-11-27T15:43:02Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 25,
+ "sorryCount": 27,
  "counts": {
   "open": 7,
-  "blocked": 73,
+  "blocked": 75,
   "done": 307
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 63,
+  "blocked": 65,
   "done": 245
  },
  "untagged": [],
@@ -4031,13 +4031,15 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 2,
+   "sorryCount": 4,
    "holes": [
     "isBrownianPolar_nonLebesgue",
+    "ae_eq_of_isWeakHessian",
+    "lintegral_gagliardo_eq_shift",
     "tendsto_mollify_hessian"
    ],
    "declKinds": {
-    "theorem": 48
+    "theorem": 50
    },
    "paperGoal": false,
    "verified": false,
@@ -4053,6 +4055,7 @@
     "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
     "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
     "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
     "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top",
@@ -4073,6 +4076,7 @@
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
@@ -4112,6 +4116,7 @@
     "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
     "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
     "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
     "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top",
@@ -4132,6 +4137,7 @@
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
@@ -4158,7 +4164,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "2 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian"
+   "detail": "4 sorry: isBrownianPolar_nonLebesgue, ae_eq_of_isWeakHessian, lintegral_gagliardo_eq_shift, tendsto_mollify_hessian"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4279,6 +4285,48 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.abs_setAverage_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "label": "ae_eq_of_isWeakHessian",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the weak Hessian is unique a.e., entrywise by uniqueness of weak derivatives",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.ae_eq_of_isWeakHessian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: the weak Hessian is unique a.e., entrywise by uniqueness of weak derivatives).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
+    "Main.Theorem51Steps",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.ae_eq_of_isWeakHessian — subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the weak Hessian is unique a.e., entrywise by uniqueness of weak derivatives (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
@@ -5081,6 +5129,48 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.le_one_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
+   "label": "lintegral_gagliardo_eq_shift",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.lintegral_gagliardo_eq_shift"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h) - A x‖^p dx) / |h|^r dh`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
+    "Main.Theorem51Steps",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.lintegral_gagliardo_eq_shift — subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
@@ -11935,6 +12025,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -12031,6 +12126,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -13230,6 +13330,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -13326,6 +13431,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -13930,6 +14040,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -14026,6 +14141,11 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -14185,6 +14305,11 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -14281,6 +14406,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -14570,6 +14700,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -14666,6 +14801,11 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -15260,6 +15400,11 @@
   },
   {
    "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51Steps",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -15356,6 +15501,11 @@
   {
    "from": "Main.Theorem51Steps",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -15679,6 +15829,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -15775,6 +15930,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -17240,6 +17400,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -17336,6 +17501,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -18700,6 +18870,11 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -18796,6 +18971,11 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -18965,6 +19145,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -19061,6 +19246,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -19890,6 +20080,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -19986,6 +20181,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -20490,6 +20690,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -20586,6 +20791,11 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -20755,6 +20965,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -20851,6 +21066,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -21415,6 +21635,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -21511,6 +21736,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "kind": "hard"
   },
   {
@@ -22810,6 +23040,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -22887,6 +23121,10 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -23010,6 +23248,10 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -23087,6 +23329,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Bessel.Theorem29",
@@ -23258,6 +23504,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -23335,6 +23585,10 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Bessel.WienerLawExists",
@@ -23778,6 +24032,10 @@
   },
   {
    "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Main.Theorem51Steps",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -23855,6 +24113,10 @@
   {
    "from": "Main.Theorem51Steps",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Main.Theorem51Steps",
@@ -24105,6 +24367,10 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps"
   },
@@ -24182,6 +24448,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -25562,6 +25832,10 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -25639,6 +25913,10 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Sobolev.HardyLittlewood",
@@ -26314,6 +26592,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -26391,6 +26673,10 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -26774,6 +27060,10 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -26851,6 +27141,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift"
   },
   {
    "from": "Sobolev.Theorem21Second",
