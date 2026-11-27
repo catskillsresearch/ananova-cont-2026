@@ -40,7 +40,56 @@ theorem lintegral_comp_homothety_sq_le {Q : Set (Rd d)} (hQ : Convex ℝ Q)
     ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2 ≤
       ENNReal.ofReal (s ^ (-(d : ℝ) - 2)) *
         ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z := by
-  sorry
+  have hs0 : 0 < s := hs.1
+  set H : Rd d → ℝ≥0∞ :=
+    Q.indicator ({z | dist z x ≤ s * D}.indicator fun z => g z * ‖z - x‖ₑ ^ 2) with hH
+  have hinv : ENNReal.ofReal (s⁻¹ ^ 2) * ENNReal.ofReal s ^ 2 = 1 := by
+    rw [← ENNReal.ofReal_pow hs0.le, ← ENNReal.ofReal_mul (pow_nonneg (inv_nonneg.2 hs0.le) 2),
+      ← mul_pow, inv_mul_cancel₀ hs0.ne', one_pow, ENNReal.ofReal_one]
+  have step1 : ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2 ≤
+      ∫⁻ y, ENNReal.ofReal (s⁻¹ ^ 2) * H (x + s • (y - x)) := by
+    refine (lintegral_mono_ae ((ae_restrict_iff' hQm).2 (Eventually.of_forall fun y hy => ?_))).trans
+      (lintegral_mono' Measure.restrict_le_self le_rfl)
+    have hzQ : x + s • (y - x) ∈ Q := hQ.add_smul_sub_mem hx hy ⟨hs0.le, hs.2⟩
+    have hzd : dist (x + s • (y - x)) x ≤ s * D := by
+      rw [dist_eq_norm, add_sub_cancel_left, norm_smul, Real.norm_of_nonneg hs0.le]
+      exact mul_le_mul_of_nonneg_left (by simpa [dist_eq_norm] using hD y hy) hs0.le
+    have hval : H (x + s • (y - x)) =
+        g (x + s • (y - x)) * (ENNReal.ofReal s * ‖y - x‖ₑ) ^ 2 := by
+      rw [hH, indicator_of_mem hzQ, indicator_of_mem (show _ ∈ {z | dist z x ≤ s * D} from hzd),
+        add_sub_cancel_left, enorm_smul, Real.enorm_of_nonneg hs0.le]
+    rw [hval]
+    refine le_of_eq ?_
+    calc g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2
+        = (ENNReal.ofReal (s⁻¹ ^ 2) * ENNReal.ofReal s ^ 2) * (g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2) := by
+          rw [hinv, one_mul]
+      _ = ENNReal.ofReal (s⁻¹ ^ 2) * (g (x + s • (y - x)) * (ENNReal.ofReal s * ‖y - x‖ₑ) ^ 2) := by
+          ring
+  have step4 : ∫⁻ w, H (x + s • w) =
+      ENNReal.ofReal (|(s ^ Module.finrank ℝ (Rd d))⁻¹|) * ∫⁻ u, H (x + u) := by
+    have := lintegral_map_equiv (fun u => H (x + u)) (MeasurableEquiv.smul₀ s hs0.ne') (μ := volume)
+    have hmap : Measure.map (MeasurableEquiv.smul₀ s hs0.ne' : Rd d ≃ᵐ Rd d) volume =
+        ENNReal.ofReal (|(s ^ Module.finrank ℝ (Rd d))⁻¹|) • volume :=
+      Measure.map_addHaar_smul volume hs0.ne'
+    rw [hmap, lintegral_smul_measure] at this
+    exact this.symm
+  calc ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2
+      ≤ ∫⁻ y, ENNReal.ofReal (s⁻¹ ^ 2) * H (x + s • (y - x)) := step1
+    _ = ENNReal.ofReal (s⁻¹ ^ 2) * ∫⁻ w, H (x + s • w) := by
+        rw [lintegral_const_mul' _ _ ENNReal.ofReal_ne_top,
+          lintegral_sub_right_eq_self (fun w => H (x + s • w)) x]
+    _ = ENNReal.ofReal (s⁻¹ ^ 2) *
+          (ENNReal.ofReal (|(s ^ Module.finrank ℝ (Rd d))⁻¹|) * ∫⁻ z, H z) := by
+        rw [step4, lintegral_add_left_eq_self H x]
+    _ = ENNReal.ofReal (s ^ (-(d : ℝ) - 2)) *
+          ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z := by
+        rw [hH, lintegral_indicator hQm, ← mul_assoc,
+          ← ENNReal.ofReal_mul (pow_nonneg (inv_nonneg.2 hs0.le) 2)]
+        congr 2
+        rw [finrank_euclideanSpace_fin, abs_of_pos (inv_pos.2 (pow_pos hs0 d)),
+          Real.rpow_sub hs0, Real.rpow_neg hs0.le, Real.rpow_natCast,
+          show (2 : ℝ) = ((2 : ℕ) : ℝ) by norm_num, Real.rpow_natCast]
+        field_simp
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 2: Taylor's formula
 with integral remainder along the segment from `z` to `x`, reparametrised from `x`). -/

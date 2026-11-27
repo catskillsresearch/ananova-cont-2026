@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:54:21Z",
+ "updated": "2026-11-27T02:55:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 16,
+  "open": 15,
   "blocked": 19,
-  "done": 265
+  "done": 266
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 13,
+  "open": 12,
   "blocked": 7,
-  "done": 210
+  "done": 211
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 12,
+   "sorryCount": 11,
    "holes": [
-    "lintegral_comp_homothety_sq_le",
     "abs_taylor_le",
     "poincare2_of_contDiff",
     "isWeakGradient_coord",
@@ -7945,14 +7944,13 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
     "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
     "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
-   "detail": "12 sorry: lintegral_comp_homothety_sq_le, abs_taylor_le, poincare2_of_contDiff, isWeakGradient_coord, coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "11 sorry: abs_taylor_le, poincare2_of_contDiff, isWeakGradient_coord, coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8138,24 +8136,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.lintegral_comp_homothety_sq_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 1: homothety with quadratic weight): the substitution `z = x + s (y - x)` on a convex `Q ∋ x`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.lintegral_comp_homothety_sq_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.lintegral_comp_homothety_sq_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
