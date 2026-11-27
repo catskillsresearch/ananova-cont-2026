@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T02:45:11Z",
+ "updated": "2026-11-27T02:47:01Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 29,
+ "sorryCount": 28,
  "counts": {
   "open": 5,
-  "blocked": 19,
-  "done": 263
+  "blocked": 18,
+  "done": 264
  },
  "goalCounts": {
-  "open": 3,
-  "blocked": 12,
+  "open": 4,
+  "blocked": 11,
   "done": 54
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 209
+  "done": 210
  },
  "untagged": [],
  "legend": {
@@ -7221,17 +7221,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "abs_sub_average_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7261,10 +7259,8 @@
     "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "blockers": [
-    "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le"
-   ],
-   "detail": "1 sorry: abs_sub_average_le"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7276,17 +7272,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.abs_sub_average_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, the Lebesgue-point limit): if `x ∈ Q` is a Lebesgue point of `f ∈ W^{1,1}` with value `c`, then `|c - f_Q| ≤ C ∫_Q |∇f(z)| / |x - z|^{d-1} dz` (average (2) over `Q ∩ B(x,r)`, use [BH93, Lemma 2] and let `r → 0`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7296,7 +7290,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.abs_sub_average_le — subgoal of Theorem 2.1 proof, the Lebesgue-point limit (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.abs_sub_average_le — subgoal of Theorem 2.1 proof, the Lebesgue-point limit (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",

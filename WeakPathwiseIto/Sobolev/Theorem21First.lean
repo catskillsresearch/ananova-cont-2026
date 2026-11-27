@@ -1187,7 +1187,116 @@ theorem abs_sub_average_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ
       x ∈ Q → Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |f y - c|) (𝓝[>] 0) (𝓝 0) →
         ENNReal.ofReal |c - ⨍ z in Q, f z| ≤
           C * ∫⁻ z in Q, ‖G z‖ₑ / edist x z ^ ((d : ℝ) - 1) := by
-  sorry
+  obtain ⟨K, hK⟩ := poincare_ae hd
+  obtain ⟨κ, hκ0, hκ⟩ := volume_inter_ball_ge hd
+  obtain ⟨C, hC⟩ := lintegral_ball_kernel_le hd
+  obtain ⟨K0, hK0⟩ := isCubeOrBall_props hd
+  refine ⟨κ⁻¹ * K * C, fun f G Q x c hf hG hQ hx hc => ?_⟩
+  obtain ⟨-, hQm, hQb, -, -⟩ := hK0 Q hQ
+  have hfi : Integrable f := memLp_one_iff_integrable.1 hf.1
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) := coord_integrable hf hG
+  have hexpG : ∀ z, G z = ∑ i, Rd.coord i (G z) • Rd.basisVec i := by
+    intro z
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (G z)]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hGm : AEStronglyMeasurable G volume := by
+    have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
+    rw [this]
+    exact Finset.aestronglyMeasurable_fun_sum _ fun i _ => (hGi i).aestronglyMeasurable.smul_const _
+  set e : ℝ := (d : ℝ) - 1 with he
+  set L : ℝ≥0∞ := ENNReal.ofReal |c - ⨍ z in Q, f z| with hL
+  set I : ℝ≥0∞ := ∫⁻ z in Q, ‖G z‖ₑ / edist x z ^ e with hI
+  have hκ0' : (κ : ℝ≥0∞) ≠ 0 := by exact_mod_cast hκ0.ne'
+  have key : ∀ᶠ r in 𝓝[>] (0 : ℝ), (κ : ℝ≥0∞) * L ≤
+      ENNReal.ofReal (⨍ y in Metric.ball x r, |f y - c|) + K * C * I := by
+    filter_upwards [hκ Q hQ x hx, self_mem_nhdsWithin] with r hr hr0
+    have hr0 : (0 : ℝ) < r := hr0
+    set B := Metric.ball x r with hB
+    set A := Q ∩ B with hA
+    have hAm : MeasurableSet A := hQm.inter measurableSet_ball
+    have hVB0 : volume B ≠ 0 := (Metric.measure_ball_pos volume x hr0).ne'
+    have hVBt : volume B ≠ ⊤ := measure_ball_lt_top.ne
+    -- pointwise on `A`
+    have hpt : ∀ᵐ y ∂(volume.restrict A), L ≤ ENNReal.ofReal |f y - c| +
+        K * ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e := by
+      have h1 := ae_restrict_of_ae (μ := volume) (s := A) (hK f G hf hG Q hQ)
+      filter_upwards [h1, ae_restrict_mem hAm] with y hy hyA
+      refine le_trans ?_ (add_le_add le_rfl (hy hyA.1))
+      rw [hL, ← ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _)]
+      refine ENNReal.ofReal_le_ofReal ?_
+      calc |c - ⨍ z in Q, f z| ≤ |c - f y| + |f y - ⨍ z in Q, f z| := abs_sub_le _ _ _
+        _ = |f y - c| + |f y - ⨍ z in Q, f z| := by rw [abs_sub_comm c]
+    -- the kernel term
+    have hm : AEMeasurable (Function.uncurry fun (y z : Rd d) => ‖G z‖ₑ / edist y z ^ e)
+        ((volume.restrict A).prod (volume.restrict Q)) := by
+      have h1 : AEMeasurable (fun p : Rd d × Rd d => ‖G p.2‖ₑ)
+          ((volume.restrict A).prod (volume.restrict Q)) :=
+        hGm.restrict.aemeasurable.enorm.comp_quasiMeasurePreserving
+          Measure.quasiMeasurePreserving_snd
+      have h2 : Measurable fun p : Rd d × Rd d => edist p.1 p.2 ^ e :=
+        (continuous_edist.measurable).pow_const _
+      exact h1.div h2.aemeasurable
+    have hJ : ∫⁻ y in A, ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e ≤ C * volume B * I := by
+      calc ∫⁻ y in A, ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e
+          = ∫⁻ z in Q, ∫⁻ y in A, ‖G z‖ₑ / edist y z ^ e := lintegral_lintegral_swap hm
+        _ = ∫⁻ z in Q, ‖G z‖ₑ * ∫⁻ y in A, 1 / edist y z ^ e := by
+            refine lintegral_congr fun z => ?_
+            rw [← lintegral_const_mul' _ _ enorm_ne_top]
+            refine lintegral_congr fun y => ?_
+            rw [div_eq_mul_inv, one_div]
+        _ ≤ ∫⁻ z in Q, ‖G z‖ₑ * (C * volume B / edist x z ^ e) := by
+            refine lintegral_mono fun z => mul_le_mul' le_rfl ?_
+            exact (lintegral_mono_set Set.inter_subset_right).trans (hC x z hr0)
+        _ = ∫⁻ z in Q, (C * volume B) * (‖G z‖ₑ / edist x z ^ e) := by
+            refine lintegral_congr fun z => ?_
+            rw [div_eq_mul_inv, div_eq_mul_inv]; ring
+        _ = C * volume B * I := by
+            rw [lintegral_const_mul' _ _ (ENNReal.mul_ne_top ENNReal.coe_ne_top hVBt)]
+    have hfB : IntegrableOn (fun y => |f y - c|) B :=
+      (hfi.integrableOn.sub (integrableOn_const hVBt)).abs
+    have havg : ENNReal.ofReal (⨍ y in B, |f y - c|) =
+        (volume B)⁻¹ * ∫⁻ y in B, ENNReal.ofReal |f y - c| := by
+      rw [setAverage_eq, smul_eq_mul, ENNReal.ofReal_mul (inv_nonneg.2 measureReal_nonneg),
+        ofReal_integral_eq_lintegral_ofReal hfB (Eventually.of_forall fun _ => abs_nonneg _),
+        measureReal_def, ENNReal.ofReal_inv_of_pos (ENNReal.toReal_pos hVB0 hVBt),
+        ENNReal.ofReal_toReal hVBt]
+    have hint : (κ : ℝ≥0∞) * volume B * L ≤
+        (∫⁻ y in B, ENNReal.ofReal |f y - c|) + K * (C * volume B * I) := by
+      calc (κ : ℝ≥0∞) * volume B * L ≤ volume A * L := mul_le_mul' hr le_rfl
+        _ = ∫⁻ y in A, L := by rw [setLIntegral_const, mul_comm]
+        _ ≤ ∫⁻ y in A, (ENNReal.ofReal |f y - c| + K * ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e) :=
+            lintegral_mono_ae hpt
+        _ = (∫⁻ y in A, ENNReal.ofReal |f y - c|) +
+              K * ∫⁻ y in A, ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e := by
+            have hm1 : AEMeasurable (fun y => ENNReal.ofReal |f y - c|) (volume.restrict A) :=
+              (hfi.aemeasurable.sub aemeasurable_const).abs.ennreal_ofReal.restrict
+            rw [lintegral_add_left' hm1,
+              lintegral_const_mul' _ _ ENNReal.coe_ne_top]
+        _ ≤ _ := add_le_add (lintegral_mono_set Set.inter_subset_right) (mul_le_mul' le_rfl hJ)
+    calc (κ : ℝ≥0∞) * L = (volume B)⁻¹ * ((κ : ℝ≥0∞) * volume B * L) := by
+          rw [show (κ : ℝ≥0∞) * volume B * L = volume B * (κ * L) by ring, ← mul_assoc,
+            ENNReal.inv_mul_cancel hVB0 hVBt, one_mul]
+      _ ≤ (volume B)⁻¹ * ((∫⁻ y in B, ENNReal.ofReal |f y - c|) + K * (C * volume B * I)) :=
+          mul_le_mul' le_rfl hint
+      _ = ENNReal.ofReal (⨍ y in B, |f y - c|) + K * C * I := by
+          rw [mul_add, havg]
+          congr 1
+          rw [show (K : ℝ≥0∞) * (C * volume B * I) = volume B * (K * C * I) by ring, ← mul_assoc,
+            ENNReal.inv_mul_cancel hVB0 hVBt, one_mul]
+  have hlim : Tendsto (fun r => ENNReal.ofReal (⨍ y in Metric.ball x r, |f y - c|) + K * C * I)
+      (𝓝[>] (0 : ℝ)) (𝓝 (0 + K * C * I)) := by
+    have := ENNReal.tendsto_ofReal hc
+    rw [ENNReal.ofReal_zero] at this
+    exact this.add tendsto_const_nhds
+  rw [zero_add] at hlim
+  have hκL : (κ : ℝ≥0∞) * L ≤ K * C * I := ge_of_tendsto hlim key
+  calc L = (κ : ℝ≥0∞)⁻¹ * ((κ : ℝ≥0∞) * L) := by
+        rw [← mul_assoc, ENNReal.inv_mul_cancel hκ0' ENNReal.coe_ne_top, one_mul]
+    _ ≤ (κ : ℝ≥0∞)⁻¹ * (K * C * I) := mul_le_mul' le_rfl hκL
+    _ = _ := by
+        rw [ENNReal.coe_mul, ENNReal.coe_mul, ENNReal.coe_inv hκ0.ne']
+        ring
 
 end theorem_2_1_first
 
