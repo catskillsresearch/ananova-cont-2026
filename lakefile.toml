@@ -6,13 +6,6 @@ pp.unicode.fun = true
 autoImplicit = false
 relaxedAutoImplicit = false
 
-# Vendored path dependency, copied from ../xodarev2026/vendor with one documented rename (see
-# vendor/SOURCES and PROVENANCE.md). Import concrete modules only; do not build the
-# BrownianMotion umbrella (see vendor/README.md).
-[[require]]
-name = "BrownianMotion"
-path = "vendor/brownian-motion"
-
 # Same Mathlib pin as the Carleson project at its pinned commit (Lean v4.36.0-rc1).
 [[require]]
 name = "mathlib"
@@ -24,6 +17,21 @@ rev = "d88814353fcbcc0461c55b2a4585d3f44d903df1"
 name = "carleson"
 git = "https://github.com/fpvandoorn/carleson.git"
 rev = "f7487cc9da4d1e73f009dc0280cd5b958f3e2c78"
+
+# Dependency of the vendored brownian-motion library (its own lakefile's require), pinned.
+[[require]]
+name = "kolmogorov_extension4"
+git = "https://github.com/RemyDegenne/kolmogorov_extension4"
+rev = "c20f168ed693537c78111ffeabc2ab5f384e35d6"
+
+# Vendored libraries are compiled as this package's lean_libs (srcDir), not as Lake path
+# dependencies (same layout as catskillsresearch/scott_models): Comparator's landrun sandbox may
+# write only under .lake/, and a path package would try to write vendor/<pkg>/.lake (EACCES).
+# brownian-motion is a copy of ../xodarev2026/vendor/brownian-motion with one documented rename
+# (see vendor/SOURCES and PROVENANCE.md); only the modules we import are built.
+[[lean_lib]]
+name = "BrownianMotion"
+srcDir = "vendor/brownian-motion"
 
 [[lean_lib]]
 name = "WeakPathwiseIto"

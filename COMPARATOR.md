@@ -9,7 +9,9 @@
   boundary so `_proof_N` names match the per-module library build. It imports Mathlib and
   the vendored libraries under `vendor/` (part of the submission) that the copied modules
   import — currently `BrownianMotion.Gaussian.BrownianMotion` (`VENDOR_PREFIXES` in the
-  generator). Proofs are copied as written, never replaced by `sorry`. Theorems/lemmas (and
+  generator). As in `catskillsresearch/scott_models`, vendored libraries are compiled as
+  lean_libs of this package (`srcDir = "vendor/<pkg>"` in `lakefile.toml`), not as Lake path
+  dependencies, so a Comparator build writes only under `.lake/`. Proofs are copied as written, never replaced by `sorry`. Theorems/lemmas (and
   `**Subgoal**` helper defs) that are neither compared nor referenced by anything kept are
   commented out completely (`/- [omitted from the Challenge: …] … -/`), so they add no
   declarations.

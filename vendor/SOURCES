@@ -2,7 +2,7 @@
 # documented rename patch, see below and PROVENANCE.md)
 
 brownian-motion
-  path:   vendor/brownian-motion
+  path:   vendor/brownian-motion (built as root lean_lib BrownianMotion, srcDir; not a path require)
   source: ../xodarev2026/vendor/brownian-motion @ xodarev2026 commit 0e1f1f3b0739fdf472511da2207599ab11085660
   upstream: https://github.com/RemyDegenne/brownian-motion.git
   upstream_commit: 497e5e2a60450796f75ab920e6c33addae4d644d (pruned copy, see xodarev2026/vendor/SOURCES)
@@ -15,7 +15,7 @@ brownian-motion
 kolmogorov_extension4
   url:    https://github.com/RemyDegenne/kolmogorov_extension4.git
   commit: c20f168ed693537c78111ffeabc2ab5f384e35d6
-  note:   transitive via brownian-motion
+  note:   requirement of brownian-motion; pinned as a direct root require
 
 palomar-policy
   path:   vendor/palomar-policy (pin in vendor/PALOMAR_POLICY_PIN)

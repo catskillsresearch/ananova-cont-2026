@@ -5,7 +5,11 @@ Everything here is an **unchanged** copy (borrowed whole), except one documented
 repository lives in the main body of this repository instead, with its origin recorded in
 `PROVENANCE.md`. Pins and upstream SHAs: `SOURCES`.
 
-- `brownian-motion/`: **Lake path dependency** (`BrownianMotion`). Copy of
+- `brownian-motion/`: compiled as this package's `lean_lib BrownianMotion`
+  (`srcDir = "vendor/brownian-motion"`), not as a Lake path dependency, following the
+  `catskillsresearch/scott_models` layout: Comparator's landrun sandbox may write only under
+  `.lake/`, and a path package would write `vendor/brownian-motion/.lake`. Its own Lake
+  requirement `kolmogorov_extension4` is a pinned root `require`. Copy of
   `../xodarev2026/vendor/brownian-motion` (itself lyasoff2016's pruned pin of
   RemyDegenne/brownian-motion). Import concrete modules only; do **not**
   `lake build BrownianMotion` as an umbrella.
