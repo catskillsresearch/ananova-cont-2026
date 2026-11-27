@@ -853,7 +853,18 @@ theorem lintegral_shift_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [Norme
 entrywise by uniqueness of weak derivatives). -/
 theorem ae_eq_of_isWeakHessian {F : Rd d → ℝ} {H H' : Rd d → (Rd d →L[ℝ] Rd d)}
     (hH : IsWeakHessian F H) (hH' : IsWeakHessian F H') : H =ᵐ[volume] H' := by
-  sorry
+  set M : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j =>
+    (EuclideanSpace.proj j : Rd d →L[ℝ] ℝ).smulRight (Rd.basisVec i)
+  have hrep : ∀ A : Rd d →L[ℝ] Rd d, A = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) • M i j := by
+    intro A
+    apply ContinuousLinearMap.coe_injective
+    refine (EuclideanSpace.basisFun (Fin d) ℝ).toBasis.ext fun k => ?_
+    ext l
+    simp [M, Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right, Pi.single_apply]
+  filter_upwards [ae_all_iff.2 fun i => ae_all_iff.2 fun j =>
+    theorem_5_1.isWeakDerivative_ae_unique (hH i j) (hH' i j)] with x hx
+  rw [hrep (H x), hrep (H' x)]
+  simp_rw [hx]
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in
 difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h) - A x‖^p dx) / |h|^r dh`). -/
