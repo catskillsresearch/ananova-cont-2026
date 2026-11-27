@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:42:32Z",
+ "updated": "2026-11-27T01:45:58Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 19,
-  "done": 234
+  "done": 235
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 52
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 7,
-  "done": 182
+  "done": 183
  },
  "untagged": [],
  "legend": {
@@ -3049,9 +3049,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "gradient_smoothHessian_sub",
     "pathwiseCovariation_sub",
     "isWeakDerivative_ae_unique",
     "isWeakHessian_ae",
@@ -3085,14 +3084,13 @@
    ],
    "blockers": [
     "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
-    "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
     "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
     "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
     "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
     "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
     "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
    ],
-   "detail": "7 sorry: gradient_smoothHessian_sub, pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
+   "detail": "6 sorry: pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
@@ -3168,17 +3166,15 @@
    "parentGoal": "Main.Theorem51Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.gradient_smoothHessian_sub"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3189,7 +3185,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.gradient_smoothHessian_sub — subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` (in Main.Theorem51Steps)"
+   "detail": "proved: theorem_5_1.gradient_smoothHessian_sub — subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",

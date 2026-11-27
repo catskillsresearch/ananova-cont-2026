@@ -43,7 +43,22 @@ theorem contDiffBounded_sub {F G : Rd d → ℝ} (hF : ContDiffBounded 2 F) (hG 
 theorem gradient_smoothHessian_sub {F G : Rd d → ℝ} (hF : ContDiff ℝ 2 F) (hG : ContDiff ℝ 2 G) :
     gradient (F - G) = gradient F - gradient G ∧
       smoothHessian (F - G) = smoothHessian F - smoothHessian G := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hFd : Differentiable ℝ F := hF.differentiable (by norm_num)
+  have hGd : Differentiable ℝ G := hG.differentiable (by norm_num)
+  have hgF : Differentiable ℝ (gradient F) :=
+    (L.contDiff.comp (hF.fderiv_right (m := 1) (by norm_num))).differentiable (by norm_num)
+  have hgG : Differentiable ℝ (gradient G) :=
+    (L.contDiff.comp (hG.fderiv_right (m := 1) (by norm_num))).differentiable (by norm_num)
+  have hg : gradient (F - G) = gradient F - gradient G := by
+    funext x
+    change L (fderiv ℝ (F - G) x) = L (fderiv ℝ F x) - L (fderiv ℝ G x)
+    rw [fderiv_sub (hFd x) (hGd x), map_sub]
+  refine ⟨hg, ?_⟩
+  funext x
+  change fderiv ℝ (gradient (F - G)) x = fderiv ℝ (gradient F) x - fderiv ℝ (gradient G) x
+  rw [hg]
+  exact fderiv_sub (hgF x) (hgG x)
 
 /-- **Subgoal** (Theorem 5.1 proof: linearity of the covariation on `C²_b`):
 `[∇(F - G)(ω), ω]_π(t) = [∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)`. -/
