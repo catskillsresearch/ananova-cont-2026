@@ -61,6 +61,7 @@ Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.riemannSum_le_
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.scaling
 Appendix.PotentialProfile -hard-> Appendix.LemmaB1
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -75,7 +76,9 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_p
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -90,6 +93,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_poten
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
@@ -339,6 +343,7 @@ Basic.Rd -hard-> Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicon
 Basic.Rd -hard-> Sobolev.LocalMaximalFunction::localMaximalFunction.measurable
 Basic.Rd -hard-> Sobolev.PreciseRepresentative
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -353,6 +358,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potenti
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.SmoothHessian -hard-> Main.Theorem52Steps
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
@@ -479,6 +485,7 @@ Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe
 Bessel.CanonicalWienerSpace -hard-> Main.IsItoIntegral
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -493,6 +500,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB1
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB2
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB2::lemma_B_2_literal
@@ -617,6 +625,7 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -631,6 +640,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_pote
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
@@ -751,6 +761,23 @@ Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.scaling
 Main.GeometricMeshDecay -hard-> Appendix.LemmaB2
 Main.GeometricMeshDecay -hard-> Appendix.LemmaB2::lemma_B_2_literal
 Main.GeometricMeshDecay -hard-> Main.Theorem52
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh -hard-> Main.GeometricMeshDecay
@@ -832,6 +859,7 @@ Main.Theorem51Steps::theorem_5_1.tendsto_covariation -hard-> Main.Theorem51Steps
 Main.Theorem51Steps::theorem_5_1.tendsto_integral -hard-> Main.Theorem51Steps
 Main.Theorem52 -hard-> Main.Proposition53
 Main.Theorem52PathSteps -hard-> Main.Theorem52
+Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.ae_path_zero -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.continuousOn_path -hard-> Main.Theorem52PathSteps
@@ -846,8 +874,10 @@ Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile -hard-> Main.Theor
 Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.vanishes_path -hard-> Main.Theorem52PathSteps
 Main.Theorem52Steps -hard-> Main.Theorem52
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -862,6 +892,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potenti
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Main.Theorem52Steps::theorem_5_2.abs_convolution_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le -hard-> Main.Theorem52Steps
@@ -1135,6 +1166,7 @@ Occupation.OccupationConstant::occupationConstant.toSphere_real_univ -hard-> Occ
 Occupation.OccupationConstant::occupationConstant.volume_ball_eq -hard-> Occupation.OccupationConstant
 Occupation.OccupationConstant::occupationConstant.volume_ball_half -hard-> Occupation.OccupationConstant
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -1149,6 +1181,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Occupation.OccupationSeminorm -hard-> Occupation.ApproximatingSequence
 Occupation.OccupationSeminorm::occupationSeminorm.add_le -hard-> Occupation.OccupationSeminorm
 Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le -hard-> Occupation.OccupationSeminorm
@@ -1165,6 +1198,7 @@ Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm -ha
 Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal -hard-> Occupation.OccupationSeminorm
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -1179,6 +1213,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpo
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
@@ -1641,6 +1676,7 @@ Sobolev.IsWeakHessian -hard-> Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le
 Sobolev.IsWeakHessian -hard-> Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece
 Sobolev.IsWeakHessian -hard-> Main.Theorem51
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -1655,6 +1691,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_poten
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace
 Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset
 Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian
@@ -1799,6 +1836,7 @@ Sobolev.LocalMaximalFunction::localMaximalFunction.measurable -hard-> Sobolev.Lo
 Sobolev.MemW -hard-> Bessel.Theorem26
 Sobolev.MemW -hard-> Bessel.Theorem29
 Sobolev.MemW -hard-> Main.Theorem52PathSteps
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -1813,6 +1851,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfi
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.MemW -hard-> Occupation.ApproximatingSequence
 Sobolev.MemW -hard-> Sobolev.MemW2PlusS
 Sobolev.MemW -hard-> Sobolev.Theorem21
@@ -2018,6 +2057,7 @@ Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient -hard-> Sob
 Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
@@ -2032,6 +2072,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_pot
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le

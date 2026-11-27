@@ -11096,6 +11096,37 @@ theorem tendsto_limsup_discreteSeminorm_of_rpow {p : ℝ} (hp : 0 < p) (π : ℕ
   rwa [Function.comp_def, ENNReal.zero_rpow_of_pos hp'] at this
 -/
 
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at
+the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of
+`(0, T]`). -/
+theorem ae_forall_partition_not_mem {N : Set (Rd d)} (hN : volume N = 0) (π : ℕ → Partition T)
+    (x₀ : Rd d) :
+    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ n, ∀ j : Fin ((π n).m + 1), j ≠ 0 →
+      CanonicalWienerSpace.path ω ((π n).t j) ∉ N := by
+  set S : Set ℝ := {t | ∃ n, ∃ j : Fin ((π n).m + 1), j ≠ 0 ∧ (π n).t j = t}
+  have hS : S.Countable := by
+    refine (Set.countable_iUnion fun n => (Set.finite_range (π n).t).countable).mono ?_
+    rintro t ⟨n, j, -, rfl⟩
+    exact Set.mem_iUnion.2 ⟨n, j, rfl⟩
+  have hpos : ∀ t ∈ S, 0 < t ∧ t ≤ T := by
+    rintro t ⟨n, j, hj, rfl⟩
+    refine ⟨?_, ((π n).t_mem j).2⟩
+    rw [← (π n).t_zero]
+    exact (π n).strictMono (Fin.pos_iff_ne_zero.2 hj)
+  filter_upwards [ae_forall_mem_not_mem_null hN hS hpos x₀] with ω hω n j hj
+  exact hω _ ⟨n, j, hj, rfl⟩
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every
+Brownian path satisfies the oscillation condition (6) along `π`). -/
+theorem vanishes_path (hT : 0 < T) {π : ℕ → Partition T} (h2 : GeometricMeshDecay π)
+    (ω : CanonicalWienerSpace d T) : pathOscillation.Vanishes (CanonicalWienerSpace.path ω) π := by
+  refine pathOscillation.vanishes_of_mesh (continuousOn_path ω) ?_
+  exact (tendsto_add_atTop_iff_nat 1).1 (h2.summable_mesh hT).tendsto_atTop_zero
+-/
+
 end theorem_5_2
 
 end

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T16:49:16Z",
+ "updated": "2026-11-27T16:53:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
-  "done": 370
+  "done": 372
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 1,
-  "done": 308
+  "done": 310
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 14
+    "theorem": 16
    },
    "paperGoal": false,
    "verified": false,
@@ -4027,6 +4027,8 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
@@ -4041,6 +4043,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+    "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4052,6 +4055,47 @@
     "Main.Theorem52Steps"
    ],
    "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "label": "ae_forall_partition_not_mem",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of `(0, T]`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of `(0, T]`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.ae_forall_partition_not_mem — subgoal of Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of `(0, T]` (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -4083,6 +4127,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4123,6 +4168,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4163,6 +4209,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4203,6 +4250,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4243,6 +4291,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4283,6 +4332,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4323,6 +4373,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4363,6 +4414,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4403,6 +4455,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4443,6 +4496,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4483,6 +4537,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4523,6 +4578,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4563,6 +4619,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4603,6 +4660,7 @@
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
     "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -4612,6 +4670,47 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.tendsto_lintegral_closedBall_kernel — subgoal of Appendix C, `J_{m,n}(x₀ (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "label": "vanishes_path",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6) along `π`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.vanishes_path — subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6 (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52Steps",
@@ -13305,6 +13404,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -13371,6 +13475,11 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -13380,6 +13489,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -13446,6 +13560,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -14695,6 +14814,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -14761,6 +14885,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -15395,6 +15524,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -15461,6 +15595,11 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -16085,6 +16224,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -16151,6 +16295,11 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -16754,6 +16903,91 @@
    "kind": "hard"
   },
   {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
    "to": "Main.GeometricMeshDecay",
    "kind": "subgoal"
@@ -17159,6 +17393,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -17229,6 +17468,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52",
    "kind": "hard"
@@ -17236,6 +17480,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
    "kind": "hard"
   },
   {
@@ -17306,6 +17555,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -18675,6 +18929,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -18741,6 +19000,11 @@
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -18825,6 +19089,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -18891,6 +19160,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -21205,6 +21479,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -21271,6 +21550,11 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -21995,6 +22279,11 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -22061,6 +22350,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -23090,6 +23384,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "kind": "hard"
   },
@@ -23156,6 +23455,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
   {
@@ -23773,6 +24077,10 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
   },
   {
@@ -23826,6 +24134,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -25497,7 +25809,67 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
-   "to": "Main.Theorem52"
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
@@ -25816,6 +26188,10 @@
    "to": "Main.Theorem52"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
    "to": "Main.Theorem52PathSteps"
   },
@@ -25872,6 +26248,14 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
+  },
+  {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
   },
@@ -25926,6 +26310,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",

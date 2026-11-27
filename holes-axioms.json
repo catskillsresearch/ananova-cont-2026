@@ -482,6 +482,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top": [
    "propext",
    "Classical.choice",
@@ -548,6 +553,11 @@
    "Quot.sound"
   ],
   "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.vanishes_path": [
    "propext",
    "Classical.choice",
    "Quot.sound"
@@ -1589,5 +1599,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T16:49:15Z"
+ "generated": "2026-11-27T16:53:38Z"
 }
