@@ -8,6 +8,7 @@ public import Mathlib
 public import WeakPathwiseIto.Occupation.OccupationSeminorm
 public import WeakPathwiseIto.Appendix.PotentialProfile
 public import WeakPathwiseIto.Bessel.CanonicalWienerSpace
+public import WeakPathwiseIto.Bessel.WienerLawExists
 public import WeakPathwiseIto.Sobolev.MemW
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Basic.ContDiffBounded
@@ -152,7 +153,26 @@ theorem integrable_norm_hessian_sub {F G : Rd d → ℝ} (hF : MemW 2 1 F)
 /-- **Subgoal** (Appendix C, `B(0) = x₀`, `ℙ_{x₀}`-almost surely). -/
 theorem ae_path_zero (hT : 0 ≤ T) (x₀ : Rd d) :
     ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), CanonicalWienerSpace.path ω 0 = x₀ := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, -, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x₀
+  have h0 : (0 : ℝ) ∈ Icc 0 T := ⟨le_rfl, hT⟩
+  have hmeas : MeasurableSet {ω : CanonicalWienerSpace d T | CanonicalWienerSpace.path ω 0 = x₀} := by
+    have : {ω : CanonicalWienerSpace d T | CanonicalWienerSpace.path ω 0 = x₀} =
+        (fun ω : CanonicalWienerSpace d T => ω ⟨0, h0⟩) ⁻¹' {x₀} := by
+      ext ω
+      simp [CanonicalWienerSpace.path, CanonicalWienerSpace.B, h0]
+    rw [this]
+    exact (continuous_eval_const (⟨0, h0⟩ : Icc (0:ℝ) T)).measurable (measurableSet_singleton x₀)
+  have hae : AEMeasurable (fun ω' => CanonicalWienerSpace.ofCoords (T := T) x₀
+      (fun i t => W i t ω') fun i => hW i ω') Q := by
+    refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun s => ?_
+    simp only [CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  rw [hP, ae_map_iff hae hmeas]
+  have hz : ∀ᵐ ω' ∂Q, ∀ i, W i 0 ω' = 0 :=
+    ae_all_iff.2 fun i => (hB i).toIsPreBrownianReal.eval_zero_ae_eq_zero
+  filter_upwards [hz] with ω' hω'
+  simp [CanonicalWienerSpace.path, CanonicalWienerSpace.B, CanonicalWienerSpace.ofCoords, h0, hω']
 
 /-- **Subgoal** (Appendix C, Brownian paths are continuous on `[0, T]`). -/
 theorem continuousOn_path (ω : CanonicalWienerSpace d T) :

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:27:33Z",
+ "updated": "2026-11-27T10:36:20Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 16,
+  "open": 15,
   "blocked": 22,
-  "done": 304
+  "done": 305
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 13,
+  "open": 12,
   "blocked": 12,
-  "done": 243
+  "done": 244
  },
  "untagged": [],
  "legend": {
@@ -3529,7 +3529,7 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
     "lintegral_piece_le_first",
     "lintegral_le_maximal_first",
@@ -3538,8 +3538,7 @@
     "measurable_localMaximalFunction",
     "ae_localMaximalFunction_lt_top",
     "exists_mollifier",
-    "integrable_norm_hessian_sub",
-    "ae_path_zero"
+    "integrable_norm_hessian_sub"
    ],
    "declKinds": {
     "theorem": 13
@@ -3553,6 +3552,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
@@ -3572,7 +3572,6 @@
    ],
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
-    "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
@@ -3581,7 +3580,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "9 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, exists_mollifier, integrable_norm_hessian_sub, ae_path_zero"
+   "detail": "8 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, exists_mollifier, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3609,6 +3608,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3626,28 +3626,27 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.ae_path_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, `B(0) = x₀`, `ℙ_{x₀}`-almost surely).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.ae_path_zero — subgoal of Appendix C, `B(0 (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.ae_path_zero — subgoal of Appendix C, `B(0 (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
@@ -3673,6 +3672,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3704,6 +3704,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3737,6 +3738,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3770,6 +3772,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3803,6 +3806,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3836,6 +3840,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3869,6 +3874,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3902,6 +3908,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3933,6 +3940,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3964,6 +3972,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -3997,6 +4006,7 @@
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
     "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
     "Occupation.OccupationSeminorm",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW"
@@ -11838,6 +11848,76 @@
    "kind": "hard"
   },
   {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
    "to": "Bessel.WienerLawExists",
    "kind": "subgoal"
@@ -17826,58 +17906,6 @@
    "to": "Main.IsItoIntegral"
   },
   {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
-  },
-  {
    "from": "Bessel.IsBrownianPolar",
    "to": "Appendix.LemmaB1"
   },
@@ -18020,6 +18048,58 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Appendix.LemmaA1::lemma_A_1.variance_le"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",

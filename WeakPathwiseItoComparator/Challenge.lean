@@ -4427,6 +4427,23 @@ def potentialProfile (d : ℕ) (r : ℝ) : ℝ :=
 
 end
 
+/-! ## `WeakPathwiseIto.Bessel.WienerLawExists` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace CanonicalWienerSpace
+
+variable {d : ℕ} {T : ℝ}
+
+end CanonicalWienerSpace
+
+end
+
 /-! ## `WeakPathwiseIto.Main.Theorem52PathSteps` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
