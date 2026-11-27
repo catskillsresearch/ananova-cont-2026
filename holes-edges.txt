@@ -887,6 +887,7 @@ Main.Theorem51 -hard-> Occupation.Remark45::discreteLocalTime.reversed_eq
 Main.Theorem51 -hard-> Occupation.Remark45::discreteOccupationDensity.piece_one
 Main.Theorem51 -hard-> Occupation.Remark45::incrementBall_one_iff
 Main.Theorem51 -hard-> Occupation.Remark45::occupationConstant_one
+Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5_term_eq
 Main.Theorem51Steps -hard-> Main.Theorem51
 Main.Theorem51Steps -hard-> Main.Theorem52Steps
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -1107,6 +1108,7 @@ Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::discreteLocalTime.reve
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::discreteOccupationDensity.piece_one
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::incrementBall_one_iff
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::occupationConstant_one
+Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::remark_4_5_term_eq
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le
@@ -1432,6 +1434,7 @@ Occupation.Remark44 -hard-> Occupation.Remark45::discreteLocalTime.reversed_eq
 Occupation.Remark44 -hard-> Occupation.Remark45::discreteOccupationDensity.piece_one
 Occupation.Remark44 -hard-> Occupation.Remark45::incrementBall_one_iff
 Occupation.Remark44 -hard-> Occupation.Remark45::occupationConstant_one
+Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5_term_eq
 Occupation.Remark45::Partition.reverse_left -hard-> Occupation.Remark45
 Occupation.Remark45::Partition.reverse_right -hard-> Occupation.Remark45
 Occupation.Remark45::Rd.coord_one_apply -hard-> Occupation.Remark45
@@ -1441,6 +1444,7 @@ Occupation.Remark45::discreteLocalTime.reversed_eq -hard-> Occupation.Remark45
 Occupation.Remark45::discreteOccupationDensity.piece_one -hard-> Occupation.Remark45
 Occupation.Remark45::incrementBall_one_iff -hard-> Occupation.Remark45
 Occupation.Remark45::occupationConstant_one -hard-> Occupation.Remark45
+Occupation.Remark45::remark_4_5_term_eq -hard-> Occupation.Remark45
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le

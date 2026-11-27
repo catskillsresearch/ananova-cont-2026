@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:55:33Z",
+ "updated": "2026-11-27T17:56:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 19,
  "counts": {
   "open": 7,
   "blocked": 14,
-  "done": 390
+  "done": 391
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 4,
   "blocked": 4,
-  "done": 328
+  "done": 329
  },
  "untagged": [],
  "legend": {
@@ -10081,7 +10081,7 @@
     "remark_4_5_bounded"
    ],
    "declKinds": {
-    "theorem": 14
+    "theorem": 15
    },
    "paperGoal": false,
    "verified": false,
@@ -10099,7 +10099,8 @@
     "Occupation.Remark45::discreteLocalTime.reversed_eq",
     "Occupation.Remark45::discreteOccupationDensity.piece_one",
     "Occupation.Remark45::incrementBall_one_iff",
-    "Occupation.Remark45::occupationConstant_one"
+    "Occupation.Remark45::occupationConstant_one",
+    "Occupation.Remark45::remark_4_5_term_eq"
    ],
    "blockers": [
     "Occupation.Remark44"
@@ -10393,6 +10394,38 @@
    ],
    "blockers": [],
    "detail": "proved: occupationConstant_one — subgoal of Remark 4.5, eq. (7 (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark45::remark_4_5_term_eq",
+   "label": "remark_4_5_term_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.5, identity off the endpoints",
+   "parentGoal": "Occupation.Remark45",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark45.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.5, identity off the endpoints): if `u ≠ a, b` then `(|u-a|+|u-b|) 1_{[a∧b, a∨b]}(u) = ½ (2|b-u| + 2|a-u|) 1_{[a∧b, a∨b)}(u)`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Main.Theorem51",
+    "Occupation.DiscreteLocalTime",
+    "Occupation.Remark44"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_5_term_eq — subgoal of Remark 4.5, identity off the endpoints (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.WeightedOccupationMeasure",
@@ -18226,6 +18259,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5_term_eq",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Theorem51Steps",
    "to": "Main.Theorem51",
    "kind": "hard"
@@ -19323,6 +19361,11 @@
   {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::occupationConstant_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5_term_eq",
    "kind": "hard"
   },
   {
@@ -20951,6 +20994,11 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5_term_eq",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.Remark45::Partition.reverse_left",
    "to": "Occupation.Remark45",
    "kind": "subgoal"
@@ -20992,6 +21040,11 @@
   },
   {
    "from": "Occupation.Remark45::occupationConstant_one",
+   "to": "Occupation.Remark45",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5_term_eq",
    "to": "Occupation.Remark45",
    "kind": "subgoal"
   },
@@ -27641,6 +27694,10 @@
    "to": "Occupation.Remark45::occupationConstant_one"
   },
   {
+   "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5_term_eq"
+  },
+  {
    "from": "Main.Theorem51Steps",
    "to": "Main.Theorem51"
   },
@@ -28437,6 +28494,10 @@
    "to": "Occupation.Remark45::occupationConstant_one"
   },
   {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5_term_eq"
+  },
+  {
    "from": "Occupation.DiscreteOccupationDensity",
    "to": "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le"
   },
@@ -29185,6 +29246,10 @@
    "to": "Occupation.Remark45::occupationConstant_one"
   },
   {
+   "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5_term_eq"
+  },
+  {
    "from": "Occupation.Remark45::Partition.reverse_left",
    "to": "Occupation.Remark45"
   },
@@ -29218,6 +29283,10 @@
   },
   {
    "from": "Occupation.Remark45::occupationConstant_one",
+   "to": "Occupation.Remark45"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5_term_eq",
    "to": "Occupation.Remark45"
   },
   {

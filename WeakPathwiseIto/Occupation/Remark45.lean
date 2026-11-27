@@ -129,6 +129,21 @@ theorem discreteLocalTime.reversed_eq {T : ℝ} (π : Partition T) (x : ℝ → 
     min_comm, max_comm]
   rfl
 
+/-- **Subgoal** (Remark 4.5, identity off the endpoints): if `u ≠ a, b` then
+`(|u-a|+|u-b|) 1_{[a∧b, a∨b]}(u) = ½ (2|b-u| + 2|a-u|) 1_{[a∧b, a∨b)}(u)`. -/
+theorem remark_4_5_term_eq {a b u : ℝ} (ha : u ≠ a) (hb : u ≠ b) :
+    (Icc (min a b) (max a b)).indicator (fun u => |u - a| + |u - b|) u =
+      1 / 2 * ((Ico (min a b) (max a b)).indicator (fun u => 2 * |b - u|) u +
+        (Ico (min a b) (max a b)).indicator (fun u => 2 * |a - u|) u) := by
+  have hmax : u ≠ max a b := by rcases max_choice a b with h | h <;> rw [h] <;> assumption
+  by_cases hu : u ∈ Ico (min a b) (max a b)
+  · rw [indicator_of_mem (Ico_subset_Icc_self hu), indicator_of_mem hu, indicator_of_mem hu,
+      abs_sub_comm b, abs_sub_comm a]
+    ring
+  · have hu' : u ∉ Icc (min a b) (max a b) := fun h => hu ⟨h.1, lt_of_le_of_ne h.2 hmax⟩
+    rw [indicator_of_notMem hu', indicator_of_notMem hu, indicator_of_notMem hu]
+    ring
+
 /-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
 endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
 `λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed

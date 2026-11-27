@@ -1283,6 +1283,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::remark_4_5_term_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq": [
    "propext",
    "Classical.choice",
@@ -1689,5 +1694,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:55:32Z"
+ "generated": "2026-11-27T17:56:03Z"
 }
