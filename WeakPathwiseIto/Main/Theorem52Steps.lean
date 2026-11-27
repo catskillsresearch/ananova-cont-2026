@@ -815,7 +815,13 @@ theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d �
 continuous measures on `ℝ` is absolutely continuous with respect to the product). -/
 theorem pi_absolutelyContinuous {n : ℕ} {μ ν : Fin n → Measure ℝ} [∀ i, SigmaFinite (μ i)]
     [∀ i, SigmaFinite (ν i)] (h : ∀ i, μ i ≪ ν i) : Measure.pi μ ≪ Measure.pi ν := by
-  sorry
+  induction n with
+  | zero => rw [Measure.pi_of_empty μ, Measure.pi_of_empty ν]
+  | succ n ih =>
+    have hμ := (measurePreserving_piFinSuccAbove μ 0).symm
+    have hν := (measurePreserving_piFinSuccAbove ν 0).symm
+    rw [← hμ.map_eq, ← hν.map_eq]
+    exact ((h 0).prod (ih fun j => h _)).map (MeasurableEquiv.measurable _)
 
 /-- **Subgoal** (Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a
 Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}`). -/
