@@ -10,13 +10,14 @@ public import WeakPathwiseIto.Smooth.HasQuadraticVariation
 public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Basic.WeakLpTendsto
 public import WeakPathwiseIto.Occupation.Lemma42
+public import WeakPathwiseIto.Main.Theorem52PathSteps
 
 @[expose] public section
 
 noncomputable section
 
 open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
+open scoped ENNReal NNReal RealInnerProductSpace Convolution
 
 namespace WeakPathwiseIto
 
@@ -134,6 +135,19 @@ theorem remark_4_4.lintegral_le_eLpNorm_mul {r : ℝ≥0∞} (hr : 1 < r) {ℓ :
   refine lintegral_congr fun x => ?_
   change _ = ‖‖g x‖ * ℓ x‖ₑ
   rw [enorm_mul, enorm_norm, Real.enorm_of_nonneg (hℓ0 x)]
+
+/-- **Subgoal** (Remark 4.4 inclusion, conjugate exponent): for `1 < r`, `r' = r/(r-1)` is finite,
+`r' = ofReal r'.toReal` and `1 ≤ r'.toReal`. -/
+theorem remark_4_4.conjExponent_facts {r : ℝ≥0∞} (hr : 1 < r) :
+    r.conjExponent ≠ ∞ ∧ ENNReal.ofReal r.conjExponent.toReal = r.conjExponent ∧
+      1 ≤ r.conjExponent.toReal := by
+  have hne : r.conjExponent ≠ ∞ := by
+    unfold ENNReal.conjExponent
+    refine ENNReal.add_ne_top.2 ⟨ENNReal.one_ne_top, ENNReal.inv_ne_top.2 ?_⟩
+    exact (tsub_pos_of_lt hr).ne'
+  refine ⟨hne, ENNReal.ofReal_toReal hne, ?_⟩
+  have h1 : (1 : ℝ≥0∞) ≤ r.conjExponent := by unfold ENNReal.conjExponent; exact le_self_add
+  simpa using ENNReal.toReal_mono hne h1
 
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T19:36:02Z  
-**`sorry` occurrences:** 15 · 6 open · 13 blocked · 405 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 3, 'blocked': 3, 'done': 342} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T19:57:04Z  
+**`sorry` occurrences:** 15 · 5 open · 14 blocked · 406 done (goals + subgoals) · goals {'open': 2, 'blocked': 11, 'done': 63} · subgoals {'open': 3, 'blocked': 3, 'done': 343} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,7 +27,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Occupation.Remark44` | Remark 4.4 | 1 | `remark_4_4` |
 
 ## Subgoals (helper lemmas/defs)
 
@@ -288,6 +287,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self` | subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative | 0 |
+| done | `Occupation.Remark44::remark_4_4.conjExponent_facts` | subgoal of Remark 4.4 inclusion, conjugate exponent | 0 |
 | done | `Occupation.Remark44::remark_4_4.integrable_mul_conj` | subgoal of Remark 4.4, Hölder | 0 |
 | done | `Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul` | subgoal of Remark 4.4 inclusion, Hölder | 0 |
 | done | `Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq` | subgoal of Remark 4.4, lower vs. Bochner integral | 0 |
@@ -463,7 +463,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
 | done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
-| open | `Occupation.Remark44` | Remark 4.4 | 1 |  |
+| blocked | `Occupation.Remark44` | Remark 4.4 | 1 | `Main.Theorem52PathSteps` |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 3 | `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 

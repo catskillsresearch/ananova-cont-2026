@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T19:36:02Z",
+ "updated": "2026-11-27T19:57:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
-  "open": 6,
-  "blocked": 13,
-  "done": 405
+  "open": 5,
+  "blocked": 14,
+  "done": 406
  },
  "goalCounts": {
-  "open": 3,
-  "blocked": 10,
+  "open": 2,
+  "blocked": 11,
   "done": 63
  },
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 342
+  "done": 343
  },
  "untagged": [],
  "legend": {
@@ -10293,16 +10293,18 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 7
+    "theorem": 8
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "open",
+   "status": "blocked",
    "deps": [
     "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
+    "Occupation.Remark44::remark_4_4.conjExponent_facts",
     "Occupation.Remark44::remark_4_4.integrable_mul_conj",
     "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
     "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
@@ -10310,8 +10312,45 @@
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation"
    ],
-   "blockers": [],
+   "blockers": [
+    "Main.Theorem52PathSteps"
+   ],
    "detail": "1 sorry: remark_4_4"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "label": "conjExponent_facts",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4 inclusion, conjugate exponent",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4 inclusion, conjugate exponent): for `1 < r`, `r' = r/(r-1)` is finite, `r' = ofReal r'.toReal` and `1 ≤ r'.toReal`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.conjExponent_facts — subgoal of Remark 4.4 inclusion, conjugate exponent (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
@@ -10339,6 +10378,7 @@
    "status": "done",
    "deps": [
     "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Smooth.HasQuadraticVariation",
@@ -10373,6 +10413,7 @@
    "status": "done",
    "deps": [
     "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Smooth.HasQuadraticVariation",
@@ -10407,6 +10448,7 @@
    "status": "done",
    "deps": [
     "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Smooth.HasQuadraticVariation",
@@ -10441,6 +10483,7 @@
    "status": "done",
    "deps": [
     "Basic.WeakLpTendsto",
+    "Main.Theorem52PathSteps",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Smooth.HasQuadraticVariation",
@@ -16582,6 +16625,11 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
    "kind": "hard"
   },
@@ -19111,6 +19159,36 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -20302,6 +20380,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
    "kind": "hard"
   },
@@ -21402,6 +21485,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
    "kind": "hard"
   },
@@ -21579,6 +21667,11 @@
    "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq",
    "kind": "hard"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
@@ -22002,6 +22095,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
    "kind": "hard"
   },
@@ -22363,6 +22461,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
   {
@@ -27041,6 +27144,10 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj"
   },
   {
@@ -28700,6 +28807,26 @@
    "to": "Main.Theorem52"
   },
   {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.conjExponent_facts"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
    "to": "Main.Theorem52PathSteps"
   },
@@ -29457,22 +29584,6 @@
   },
   {
    "from": "Occupation.Lemma42",
-   "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj"
-  },
-  {
-   "from": "Occupation.Lemma42",
-   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
-  },
-  {
-   "from": "Occupation.Lemma42",
-   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
-  },
-  {
-   "from": "Occupation.Lemma42",
-   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
-  },
-  {
-   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
   },
   {
@@ -29901,22 +30012,6 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
   },
   {
@@ -30034,6 +30129,10 @@
   {
    "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.conjExponent_facts",
+   "to": "Occupation.Remark44"
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",

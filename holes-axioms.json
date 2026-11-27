@@ -1271,6 +1271,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark44::remark_4_4.conjExponent_facts": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark44::remark_4_4.integrable_mul_conj": [
    "propext",
    "Classical.choice",
@@ -1747,5 +1752,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T19:36:02Z"
+ "generated": "2026-11-27T19:57:03Z"
 }
