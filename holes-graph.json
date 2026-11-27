@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T12:50:04Z",
+ "updated": "2026-11-27T12:51:23Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
   "open": 8,
   "blocked": 49,
@@ -4031,12 +4031,11 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
-    "eLpNorm_maximal_le",
     "gagliardo_maximal_le",
     "lintegral_rpow_sub_le",
     "ae_forall_mem_not_mem_null"
@@ -4114,7 +4113,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Sobolev.HardyLittlewood"
    ],
-   "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "6 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4403,10 +4402,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.eLpNorm_maximal_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4432,7 +4429,7 @@
     "Bessel.Theorem29",
     "Sobolev.HardyLittlewood"
    ],
-   "detail": "sorry: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",

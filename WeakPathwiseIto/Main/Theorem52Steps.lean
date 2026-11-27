@@ -414,7 +414,40 @@ theorem tendsto_mollify_hessian {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {F : Rd d 
 theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd d → ℝ,
     eLpNorm (localMaximalFunction 1 f) (ENNReal.ofReal p) volume ≤
       C * eLpNorm f (ENNReal.ofReal p) volume := by
-  sorry
+  set K : ℝ≥0∞ := ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) *
+    (2 ^ (p - 1) / ENNReal.ofReal (p - 1))
+  have hK : K ≠ ⊤ := by
+    refine ENNReal.mul_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top
+      (ENNReal.mul_ne_top ENNReal.ofNat_ne_top
+        (ENNReal.pow_ne_top (ENNReal.pow_ne_top ENNReal.ofNat_ne_top)))) ?_
+    exact ENNReal.div_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofNat_ne_top)
+      (ENNReal.ofReal_pos.2 (by linarith)).ne'
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hKp : K ^ (1 / p) ≠ ⊤ := ENNReal.rpow_ne_top_of_nonneg (by positivity) hK
+  refine ⟨(K ^ (1 / p)).toNNReal + 1, fun f => ?_⟩
+  have hC0 : (((K ^ (1 / p)).toNNReal + 1 : ℝ≥0) : ℝ≥0∞) ≠ 0 := by simp
+  have hKC : K ^ (1 / p) ≤ (((K ^ (1 / p)).toNNReal + 1 : ℝ≥0) : ℝ≥0∞) := by
+    rw [ENNReal.coe_add, ENNReal.coe_toNNReal hKp]; exact le_self_add
+  by_cases hf : AEStronglyMeasurable f volume
+  swap
+  · rw [eLpNorm_of_not_aestronglyMeasurable hf, ENNReal.mul_top hC0]; exact le_top
+  set g := hf.mk f
+  have hg : Measurable g := hf.stronglyMeasurable_mk.measurable
+  rw [hardyLittlewood.congr_ae hf.ae_eq_mk, eLpNorm_congr_ae hf.ae_eq_mk]
+  have hp1 : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp0).ne'
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp1 ENNReal.ofReal_ne_top,
+    eLpNorm_eq_lintegral_rpow_enorm_toReal hp1 ENNReal.ofReal_ne_top,
+    ENNReal.toReal_ofReal hp0.le]
+  simp_rw [enorm_eq_self]
+  calc (∫⁻ x, localMaximalFunction 1 g x ^ p) ^ (1 / p)
+      ≤ (K * ∫⁻ y, ‖g y‖ₑ ^ p) ^ (1 / p) := by
+        gcongr; exact hardyLittlewood.lintegral_rpow_le hg hp
+    _ = K ^ (1 / p) * (∫⁻ y, ‖g y‖ₑ ^ p) ^ (1 / p) :=
+        ENNReal.mul_rpow_of_nonneg _ _ (by positivity)
+    _ ≤ _ := by gcongr
+  all_goals first
+    | exact hg.aestronglyMeasurable
+    | exact (hardyLittlewood.measurable_localMaximalFunction g).aestronglyMeasurable
 
 /-- **Subgoal** (Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and
 sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}`). -/
