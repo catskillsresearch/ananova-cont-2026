@@ -61,7 +61,12 @@ theorem lintegral_le_maximal_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partit
 /-- **Subgoal** (Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖)` on small balls). -/
 theorem rpow_le_potentialProfile {r : ℝ} (hr1 : r ≤ 1) :
     r ^ (2 - (d : ℝ)) ≤ potentialProfile d r := by
-  sorry
+  unfold potentialProfile
+  split_ifs with h1 h2
+  · subst h1; norm_num; exact hr1
+  · subst h2
+    norm_num
+  · exact le_rfl
 
 /-- **Subgoal** (Appendix C, `J_{m,n}(x₀) → 0`): if `∫ |f(z)| ν(|z - x₀|) dz < ∞` and the radii
 shrink to `0`, the kernel integrals over `B̄(x₀, ρ_n)` tend to `0`. -/
