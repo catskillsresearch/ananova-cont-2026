@@ -16,7 +16,7 @@ Route A (approved): a direct `d`-dimensional elementary Itô calculus for the ca
 * **P53.A** (this file, first part): `B` under `ℙ_x` has increments independent of the past
   `𝓕_s = σ(B(v) : v ≤ s)`, with covariance `(t - s) I`; hence the elementary isometry inputs
   `E⟨ξ, B_t - B_s⟩² = (t - s) E|ξ|²` and the vanishing of cross terms.
-* **P53.B**: elementary isometry and localisation (stubs below); limit in probability.
+* **P53.B**: elementary isometry (the `L²` construction of the stopped integrals).
 * **P53.C**: `∇F_m(B) → G(B)` in `L²(ds)` in probability, off a polar set.
 * **P53.D**: Riemann sums along `π` converge in probability to the Itô integral.
 * **P53.E**: assembly (`proposition_5_3`). -/
@@ -450,19 +450,6 @@ theorem elementary_isometry (x : Rd d) {k : ℕ} {s : Fin (k + 1) → ℝ} (hs :
     ∫ ω, IsItoIntegral.elementaryIntegral s ξ ω ^ 2 ∂CanonicalWienerSpace.P (T := T) x =
       ∫ ω, (∫ u in (0 : ℝ)..s (Fin.last k), ‖IsItoIntegral.elementaryValue s ξ u ω‖ ^ 2)
         ∂CanonicalWienerSpace.P (T := T) x := by
-  sorry
-
-/-- **Subgoal** (P53.B, localisation): for an adapted elementary integrand on
-`0 = s_0 ≤ … ≤ s_k ≤ T` and `ε, δ > 0`,
-`ℙ(|∫ H dB| ≥ ε) ≤ δ / ε² + ℙ(∫ |H|² ≥ δ)`. -/
-theorem elementary_localisation (x : Rd d) {k : ℕ} {s : Fin (k + 1) → ℝ} (hs : Monotone s)
-    (hs0 : s 0 = 0) (hsT : s (Fin.last k) ≤ T)
-    {ξ : Fin k → CanonicalWienerSpace d T → Rd d}
-    (hξ : ∀ j, Measurable[IsItoIntegral.naturalSigma d T (s j.castSucc)] (ξ j))
-    {ε δ : ℝ} (hε : 0 < ε) (hδ : 0 < δ) :
-    CanonicalWienerSpace.P (T := T) x {ω | ε ≤ |IsItoIntegral.elementaryIntegral s ξ ω|} ≤
-      ENNReal.ofReal (δ / ε ^ 2) + CanonicalWienerSpace.P (T := T) x
-        {ω | δ ≤ ∫ u in (0 : ℝ)..s (Fin.last k), ‖IsItoIntegral.elementaryValue s ξ u ω‖ ^ 2} := by
   sorry
 
 end proposition_5_3

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27T21:20:00Z",
+ "updated": "2026-11-27T21:33:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 13,
+ "sorryCount": 12,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 13,
   "done": 436
  },
@@ -13,7 +13,7 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 3,
   "done": 370
  },
@@ -3638,13 +3638,12 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "elementary_isometry",
-    "elementary_localisation"
+    "elementary_isometry"
    ],
    "declKinds": {
-    "theorem": 19
+    "theorem": 18
    },
    "paperGoal": false,
    "verified": false,
@@ -3656,7 +3655,6 @@
     "Main.Proposition53Steps::proposition_5_3.coord_apply",
     "Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec",
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
-    "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
     "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
     "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
@@ -3674,10 +3672,9 @@
     "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
    ],
    "blockers": [
-    "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
-    "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
+    "Main.Proposition53Steps::proposition_5_3.elementary_isometry"
    ],
-   "detail": "2 sorry: elementary_isometry, elementary_localisation"
+   "detail": "1 sorry: elementary_isometry"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.coord_apply",
@@ -3774,40 +3771,6 @@
    ],
    "blockers": [],
    "detail": "sorry: proposition_5_3.elementary_isometry — subgoal of P53.B, elementary Itô isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
-  },
-  {
-   "id": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-   "label": "elementary_localisation",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of P53.B, localisation",
-   "parentGoal": "Main.Proposition53Steps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.elementary_localisation"
-   ],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (P53.B, localisation): for an adapted elementary integrand on `0 = s_0 ≤ … ≤ s_k ≤ T` and `ε, δ > 0`, `ℙ(|∫ H dB| ≥ ε) ≤ δ / ε² + ℙ(∫ |H|² ≥ δ)`.",
-   "axioms": [
-    "propext",
-    "sorryAx",
-    "Classical.choice",
-    "Quot.sound"
-   ],
-   "status": "open",
-   "deps": [
-    "Bessel.WienerLawExists",
-    "Main.IsItoIntegral"
-   ],
-   "blockers": [],
-   "detail": "sorry: proposition_5_3.elementary_localisation — subgoal of P53.B, localisation (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
@@ -18562,11 +18525,6 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
    "kind": "hard"
   },
@@ -19437,11 +19395,6 @@
   },
   {
    "from": "Main.IsItoIntegral",
-   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
    "kind": "hard"
   },
@@ -19527,11 +19480,6 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
-   "to": "Main.Proposition53Steps",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28661,10 +28609,6 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment"
   },
   {
@@ -29213,10 +29157,6 @@
   },
   {
    "from": "Main.IsItoIntegral",
-   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
-  },
-  {
-   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment"
   },
   {
@@ -29285,10 +29225,6 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
-   "to": "Main.Proposition53Steps"
-  },
-  {
-   "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
    "to": "Main.Proposition53Steps"
   },
   {

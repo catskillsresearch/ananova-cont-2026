@@ -685,7 +685,6 @@ Bessel.WienerLawExists -hard-> Main.Proposition53Steps
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.coord_apply
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
-Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.exists_rep_increment
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
@@ -860,7 +859,6 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.coord_apply
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
-Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.exists_rep_increment
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
@@ -879,7 +877,6 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.norm_sq_eq_s
 Main.Proposition53Steps::proposition_5_3.coord_apply -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.elementary_isometry -hard-> Main.Proposition53Steps
-Main.Proposition53Steps::proposition_5_3.elementary_localisation -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.exists_rep_increment -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.iIndepFun_bool -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.increment_moments -hard-> Main.Proposition53Steps

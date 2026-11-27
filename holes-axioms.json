@@ -465,12 +465,6 @@
    "Classical.choice",
    "Quot.sound"
   ],
-  "Main.Proposition53Steps::proposition_5_3.elementary_localisation": [
-   "propext",
-   "sorryAx",
-   "Classical.choice",
-   "Quot.sound"
-  ],
   "Main.Proposition53Steps::proposition_5_3.exists_rep_increment": [
    "propext",
    "Classical.choice",
@@ -1899,5 +1893,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:20:00Z"
+ "generated": "2026-11-27T21:33:38Z"
 }
