@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:34:10Z  
-**`sorry` occurrences:** 29 · 6 open · 19 blocked · 286 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 4, 'blocked': 7, 'done': 229} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:37:00Z  
+**`sorry` occurrences:** 28 · 5 open · 19 blocked · 287 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 3, 'blocked': 7, 'done': 230} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -271,7 +271,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le` | subgoal of Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|` | 0 |
 | done | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le` | subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B | 0 |
 | done | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal` | subgoal of Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q` | 0 |
-| open | `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le` | subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian | 1 |
+| done | `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le` | subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` | subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite | 1 |
 
 ## All modules by section
@@ -307,7 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First` |  | 0 |  |
 | done | `Sobolev.Theorem21Second` |  | 0 |  |
 | blocked | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `Sobolev.Theorem23Steps` |
-| blocked | `Sobolev.Theorem23Steps` |  | 3 | `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
+| blocked | `Sobolev.Theorem23Steps` |  | 2 | `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
 
 ### §2.2 Bessel potentials, capacity, polar sets
 

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:34:10Z",
+ "updated": "2026-11-27T03:37:00Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 29,
+ "sorryCount": 28,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 19,
-  "done": 286
+  "done": 287
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 57
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 7,
-  "done": 229
+  "done": 230
  },
  "untagged": [],
  "legend": {
@@ -8315,11 +8315,10 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "isLebesguePoint_of_maximal_lt_top",
-    "maximal_lt_top_of_isLebesguePoint",
-    "maximal_coord_hessian_le"
+    "maximal_lt_top_of_isLebesguePoint"
    ],
    "declKinds": {
     "theorem": 9
@@ -8343,10 +8342,9 @@
    ],
    "blockers": [
     "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
-    "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
-   "detail": "3 sorry: isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
+   "detail": "2 sorry: isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8542,23 +8540,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.maximal_coord_hessian_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.maximal_coord_hessian_le — subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.maximal_coord_hessian_le — subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian (in Sobolev.Theorem23Steps)"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",

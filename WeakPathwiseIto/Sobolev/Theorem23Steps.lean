@@ -320,7 +320,28 @@ theorem maximal_coord_hessian_le {H : Rd d → (Rd d →L[ℝ] Rd d)} (i : Fin d
     (x : Rd d) :
     localMaximalFunction R (fun z => ∑ j, Rd.coord i (H z (Rd.basisVec j)) • Rd.basisVec j) x ≤
       localMaximalFunction R H x := by
-  sorry
+  have hexp : ∀ w : Rd d, w = ∑ i, Rd.coord i w • Rd.basisVec i := by
+    intro w
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' w]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hVn : ∀ z, ‖∑ j, Rd.coord i (H z (Rd.basisVec j)) • Rd.basisVec j‖ₑ ≤ ‖H z‖ₑ := by
+    intro z
+    have hadj : ∑ j, Rd.coord i (H z (Rd.basisVec j)) • Rd.basisVec j =
+        ContinuousLinearMap.adjoint (H z) (Rd.basisVec i) := by
+      conv_rhs => rw [hexp (ContinuousLinearMap.adjoint (H z) (Rd.basisVec i))]
+      refine Finset.sum_congr rfl fun j _ => ?_
+      congr 1
+      simp only [Rd.coord]
+      rw [ContinuousLinearMap.adjoint_inner_left, real_inner_comm]
+    rw [hadj, ← ofReal_norm, ← ofReal_norm]
+    refine ENNReal.ofReal_le_ofReal (((ContinuousLinearMap.adjoint (H z)).le_opNorm _).trans ?_)
+    have hb : ‖Rd.basisVec i‖ = 1 := by simp [Rd.basisVec]
+    rw [hb, mul_one, LinearIsometryEquiv.norm_map]
+  unfold localMaximalFunction
+  refine iSup_mono fun r => iSup_mono fun _ => iSup_mono fun _ => ?_
+  rw [laverage_eq, laverage_eq]
+  exact ENNReal.div_le_div_right (lintegral_mono fun z => hVn z) _
 
 end theorem_2_3
 
