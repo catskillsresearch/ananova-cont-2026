@@ -32,6 +32,7 @@ Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_H
 Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Appendix.HeatKernel -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Appendix.HeatKernel::heatKernel.div_scaling -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.integrableOn_Ioc -hard-> Appendix.HeatKernel
@@ -80,6 +81,7 @@ Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_HR_l
 Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Appendix.LemmaB1 -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps
 Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
@@ -889,6 +891,7 @@ Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.lintegr
 Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.GeometricMeshDecay -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Main.GeometricMeshDecay -hard-> Main.Theorem52
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps
@@ -964,6 +967,7 @@ Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegr
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq
@@ -983,6 +987,7 @@ Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_HR
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Main.PartitionEta -hard-> Main.Proposition53Proof
 Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq
@@ -1002,6 +1007,7 @@ Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_HR_
 Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.PartitionEta -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq -hard-> Main.Proposition53Proof
 Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub -hard-> Main.Proposition53Proof
@@ -1020,6 +1026,7 @@ Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top -hard-> Main.Propos
 Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le -hard-> Main.Proposition53Proof
 Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential -hard-> Main.Proposition53Proof
 Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le -hard-> Main.Proposition53Proof
+Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum -hard-> Main.Proposition53Proof
 Main.Proposition53Proof::proposition_5_3.summable_mesh -hard-> Main.Proposition53Proof
 Main.Proposition53Steps -hard-> Main.Proposition53Proof
 Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq
@@ -1039,6 +1046,7 @@ Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.lintegr
 Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.Proposition53Steps -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Main.Proposition53Steps::proposition_5_3.coord_apply -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec -hard-> Main.Proposition53Steps
@@ -1749,6 +1757,7 @@ Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegra
 Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Smooth.FollmerIntegral -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Smooth.FollmerIntegral -hard-> Main.WeakPathwiseIntegral
 Smooth.FollmerIntegral -hard-> Smooth.Corollary32
@@ -2079,6 +2088,7 @@ Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.lintegra
 Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Sobolev.IsWeakGradient -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First
@@ -2409,6 +2419,7 @@ Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt
 Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le
 Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential
 Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
+Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Sobolev.MemWLoc -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
 Sobolev.MemWLoc -hard-> Main.Remark54
 Sobolev.PreciseRepresentative -hard-> Main.Proposition53

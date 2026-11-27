@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:06:47Z  
-**`sorry` occurrences:** 28 · 22 open · 13 blocked · 448 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 20, 'blocked': 3, 'done': 376} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:07:18Z  
+**`sorry` occurrences:** 28 · 22 open · 13 blocked · 449 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 20, 'blocked': 3, 'done': 377} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -140,6 +140,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le` | subgoal of P53.D, the last step of the BDG bound | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential` | subgoal of P53.C, stopped energy via the Brownian transition density and eq. (32 | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le` | subgoal of P53.D, BDG bound for `S_n^m - J_m` | 1 |
+| done | `Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum` | subgoal of P53.D, `S_n^m` is the Föllmer Riemann sum along `B` | 0 |
 | done | `Main.Proposition53Proof::proposition_5_3.summable_mesh` | subgoal of P53.D, Assumption 2 ⇒ summable mesh | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_apply` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec` | subgoal of P53.A, helper | 0 |

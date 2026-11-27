@@ -232,6 +232,19 @@ theorem ae_stopped_eq_sub (x₀ : Rd d) {R : ℕ} (hR : 1 ≤ R) (g G : Rd d →
       ∀ t ∈ Icc 0 T, D t ω = Jm t ω - J t ω := by
   sorry
 
+/-- **Subgoal** (P53.D, `S_n^m` is the Föllmer Riemann sum along `B`): the left Riemann sum of
+the pathwise integral (Theorem 5.1) along `B` equals the paper's `S_n^m(t)`; for `t_i > t` both
+increments vanish. -/
+theorem riemannSum_path_eq_itoRiemannSum (π : Partition T) (g : Rd d → Rd d) (t : ℝ)
+    (ω : CanonicalWienerSpace d T) :
+    follmerIntegral.riemannSum π g (CanonicalWienerSpace.path ω) t = itoRiemannSum π g t ω := by
+  simp only [follmerIntegral.riemannSum, itoRiemannSum]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rcases le_total (π.left i) t with h | h
+  · rw [min_eq_left h]
+  · rw [min_eq_right h, min_eq_right (h.trans (π.left_lt_right i).le)]
+    simp
+
 end proposition_5_3
 
 end WeakPathwiseIto
