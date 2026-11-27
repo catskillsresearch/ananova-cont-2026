@@ -449,6 +449,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.coord_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec": [
    "propext",
    "Classical.choice",
@@ -1876,5 +1881,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:59:17Z"
+ "generated": "2026-11-27T21:18:17Z"
 }

@@ -267,6 +267,10 @@ theorem increment_moments (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) 
       simp only [h, Δ] at h0 ⊢
       rw [h0, zero_mul]
 
+/-- **Subgoal** (P53.A, helper): the coordinate `v^i = ⟨v, e_i⟩` is the `i`-th entry of `v`. -/
+theorem coord_apply (i : Fin d) (v : Rd d) : Rd.coord i v = v i := by
+  simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+
 /-- **Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)`
 `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`. -/
 theorem integral_inner_increment_sq (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t)
