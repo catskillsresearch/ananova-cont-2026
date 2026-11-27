@@ -752,7 +752,14 @@ theorem exists_mollifier : ∃ ψ : ℕ → Rd d → ℝ,
     (∀ n, ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (ψ n)) ∧ (∀ n, HasCompactSupport (ψ n)) ∧
       (∀ n x, 0 ≤ ψ n x) ∧ (∀ n, ∫ x, ψ n x = 1) ∧
         ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1)) := by
-  sorry
+  have hpos : ∀ n : ℕ, 0 < 1 / ((n : ℝ) + 1) := fun n => by positivity
+  let φ : ℕ → ContDiffBump (0 : Rd d) := fun n =>
+    ⟨1 / ((n : ℝ) + 1) / 2, 1 / ((n : ℝ) + 1), by have := hpos n; positivity,
+      by have := hpos n; linarith⟩
+  refine ⟨fun n => (φ n).normed volume, fun n => (φ n).contDiff_normed (n := ⊤),
+    fun n => (φ n).hasCompactSupport_normed, fun n x => (φ n).nonneg_normed x,
+    fun n => (φ n).integral_normed, fun n => ?_⟩
+  rw [(φ n).support_normed_eq]
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification: `∇(f * ψ_n) → ∇f` in `L¹`). -/
 theorem tendsto_lintegral_gradient {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : MemW 1 1 f)
