@@ -518,7 +518,12 @@ theorem ae_localMaximalFunction_ne_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
 theorem lintegral_lintegral_eq_add {Φ : Rd d → Rd d → ℝ≥0∞}
     (hΦ : Measurable (Function.uncurry Φ)) :
     ∫⁻ x, ∫⁻ y, Φ x y = ∫⁻ h, ∫⁻ x, Φ x (x + h) := by
-  sorry
+  have h1 : ∀ x, ∫⁻ y, Φ x y = ∫⁻ h, Φ x (x + h) := fun x =>
+    (lintegral_add_left_eq_self (fun y => Φ x y) x).symm
+  simp_rw [h1]
+  have hm : Measurable (Function.uncurry fun x h : Rd d => Φ x (x + h)) :=
+    hΦ.comp (measurable_fst.prodMk (measurable_fst.add measurable_snd))
+  exact lintegral_lintegral_swap hm.aemeasurable
 
 /-- **Subgoal** (Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with
 the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le`). -/
