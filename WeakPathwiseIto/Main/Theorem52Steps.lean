@@ -452,7 +452,16 @@ theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd 
 /-- **Subgoal** (Appendix C, `M_1` commutes with translations: `M_1(f(· + h))(x) = M_1 f(x + h)`). -/
 theorem localMaximalFunction_comp_add (f : Rd d → ℝ) (h x : Rd d) :
     localMaximalFunction 1 (fun z => f (z + h)) x = localMaximalFunction 1 f (x + h) := by
-  sorry
+  unfold localMaximalFunction
+  congr 1; funext r; congr 1; funext hr; congr 1; funext _
+  have hpre : (· + h) ⁻¹' Metric.ball (x + h) r = Metric.ball x r := by
+    rw [Metric.preimage_add_right_ball, add_sub_cancel_right]
+  have hint : ∫⁻ z in Metric.ball x r, ‖f (z + h)‖ₑ = ∫⁻ z in Metric.ball (x + h) r, ‖f z‖ₑ := by
+    rw [← hpre]
+    exact (measurePreserving_add_right volume h).setLIntegral_comp_preimage_emb
+      (measurableEmbedding_addRight h) (fun z => ‖f z‖ₑ) _
+  rw [laverage_eq, laverage_eq, Measure.restrict_apply_univ, Measure.restrict_apply_univ, hint,
+    Measure.addHaar_ball_center volume x r, Measure.addHaar_ball_center volume (x + h) r]
 
 /-- **Subgoal** (Appendix C, sublinearity of `M_1` at two points:
 `|M_1 f(x) - M_1 f(x + h)| ≤ M_1(f - f(· + h))(x)` where both values are finite). -/

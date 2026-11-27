@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T12:59:47Z",
+ "updated": "2026-11-27T13:01:10Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
   "open": 7,
   "blocked": 54,
@@ -4031,12 +4031,11 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
-    "localMaximalFunction_comp_add",
     "enorm_toReal_sub_le",
     "ae_localMaximalFunction_ne_top",
     "lintegral_lintegral_eq_add",
@@ -4127,7 +4126,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "11 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, localMaximalFunction_comp_add, enorm_toReal_sub_le, ae_localMaximalFunction_ne_top, lintegral_lintegral_eq_add, gagliardo_maximal_le_of_measurable, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "10 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, enorm_toReal_sub_le, ae_localMaximalFunction_ne_top, lintegral_lintegral_eq_add, gagliardo_maximal_le_of_measurable, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4955,10 +4954,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.localMaximalFunction_comp_add"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4983,7 +4980,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.localMaximalFunction_comp_add — subgoal of Appendix C, `M_1` commutes with translations: `M_1(f(· + h (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.localMaximalFunction_comp_add — subgoal of Appendix C, `M_1` commutes with translations: `M_1(f(· + h (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
