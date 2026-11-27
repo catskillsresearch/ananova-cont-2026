@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T01:41:00Z",
+ "updated": "2026-11-27T01:41:35Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
-  "open": 6,
-  "blocked": 28,
-  "done": 231
+  "open": 13,
+  "blocked": 19,
+  "done": 233
  },
  "goalCounts": {
   "open": 4,
-  "blocked": 13,
-  "done": 51
+  "blocked": 12,
+  "done": 52
  },
  "subgoalCounts": {
-  "open": 2,
-  "blocked": 15,
-  "done": 180
+  "open": 9,
+  "blocked": 7,
+  "done": 181
  },
  "untagged": [],
  "legend": {
@@ -2846,17 +2846,15 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "ito_at"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 5
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Main.SmoothItoAt::theorem_5_1.ito_at",
     "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
@@ -2868,10 +2866,8 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt::theorem_5_1.ito_at"
-   ],
-   "detail": "1 sorry: ito_at"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at",
@@ -2883,17 +2879,15 @@
    "parentGoal": "Main.SmoothItoAt",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.ito_at"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, eq. (21)): the smooth pathwise Itô formula at every `t ∈ [0,T]`: for `f ∈ C²_b` the left Riemann sums converge to `f(ω(t)) - f(ω(0)) - ½ [∇f(ω), ω]_π(t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2901,7 +2895,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.ito_at — subgoal of Theorem 5.1 proof, eq. (21 (in Main.SmoothItoAt)"
+   "detail": "proved: theorem_5_1.ito_at — subgoal of Theorem 5.1 proof, eq. (21 (in Main.SmoothItoAt)"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
@@ -3091,7 +3085,6 @@
     "Smooth.Proposition31"
    ],
    "blockers": [
-    "Main.SmoothItoAt",
     "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
     "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
     "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
@@ -3123,7 +3116,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, eqs. (19) and (23)): for `C²_b` functions `F, G` and a.e.-equal measurable `H, H'`, `|[∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)| ≤ C_d (‖∇²F - H‖_{W^0} + ‖∇²G - H'‖_{W^0})`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3133,9 +3126,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.abs_covariation_sub_le — subgoal of Theorem 5.1 proof, eqs. (19 (in Main.Theorem51Steps)"
   },
   {
@@ -3158,7 +3149,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k`).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3168,9 +3159,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.contDiffBounded_sub — subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` (in Main.Theorem51Steps)"
   },
   {
@@ -3193,7 +3182,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²`).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3203,9 +3192,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.gradient_smoothHessian_sub — subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` (in Main.Theorem51Steps)"
   },
   {
@@ -3228,7 +3215,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3238,9 +3225,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.isWeakDerivative_ae_unique — subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations (in Main.Theorem51Steps)"
   },
   {
@@ -3263,7 +3248,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable).",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3273,9 +3258,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.isWeakHessian_ae — subgoal of Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable (in Main.Theorem51Steps)"
   },
   {
@@ -3298,7 +3281,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: linearity of the covariation on `C²_b`): `[∇(F - G)(ω), ω]_π(t) = [∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3308,9 +3291,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.pathwiseCovariation_sub — subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` (in Main.Theorem51Steps)"
   },
   {
@@ -3333,7 +3314,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (20) and (15)): the covariations along an approximating sequence form a Cauchy sequence, hence converge to `[∇F(ω), ω]_π(t)`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3343,9 +3324,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.tendsto_covariation — subgoal of Theorem 5.1 proof, (20 (in Main.Theorem51Steps)"
   },
   {
@@ -3368,7 +3347,7 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (22) and (14)): the pathwise integrals along an approximating sequence converge to `F(ω(t)) - F(ω(0)) - ½ [∇F(ω), ω]_π(t)`.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3378,9 +3357,7 @@
     "Smooth.FollmerItoFormula",
     "Smooth.Proposition31"
    ],
-   "blockers": [
-    "Main.SmoothItoAt"
-   ],
+   "blockers": [],
    "detail": "sorry: theorem_5_1.tendsto_integral — subgoal of Theorem 5.1 proof, (22 (in Main.Theorem51Steps)"
   },
   {

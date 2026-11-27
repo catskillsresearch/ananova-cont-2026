@@ -216,7 +216,21 @@ theorem ito_at {π : ℕ → Partition T} {ω : ℝ → Rd d} (hω : ContinuousO
     (hf : ContDiffBounded 2 f) {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun n => follmerIntegral.riemannSum (π n) (gradient f) ω t) atTop
       (𝓝 (f (ω t) - f (ω 0) - 1 / 2 * pathwiseCovariation π (gradient f) ω t)) := by
-  sorry
+  have hg := follmer_ito_formula.contDiffBounded_gradient hf
+  have hcov := proposition_3_1 hω hQV hosc hg t ht
+  have hpc : pathwiseCovariation π (gradient f) ω t = hQV.matrixIntegral
+      (fun u i j => Rd.coord i (fderiv ℝ (gradient f) (ω u) (Rd.basisVec j))) t := by
+    unfold pathwiseCovariation; exact hcov.limUnder_eq
+  rw [hpc]
+  have h := ((tendsto_const_nhds (x := f (ω t) - f (ω 0))).sub (hcov.const_mul (1 / 2))).sub
+    (ito_at.tendsto_trapezoid hω hQV hosc hf ht)
+  rw [sub_zero] at h
+  refine h.congr fun n => ?_
+  rw [ito_at.sub_eq_sum_stopped (π n) f ω ht, follmerIntegral.riemannSum,
+    pathwiseCovariation.riemannSum, Finset.mul_sum, ← Finset.sum_sub_distrib,
+    ← Finset.sum_sub_distrib]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  ring
 
 end theorem_5_1
 
