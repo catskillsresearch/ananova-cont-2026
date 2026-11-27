@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T00:48:48Z",
+ "updated": "2026-11-27T00:49:24Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 18,
-  "done": 213
+  "done": 214
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 49
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 7,
-  "done": 164
+  "done": 165
  },
  "untagged": [],
  "legend": {
@@ -6195,9 +6195,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "lintegral_closedBall_le",
     "subset_closedBall",
     "lintegral_shell_le",
     "lintegral_closedBall_kernel_le_of_lt",
@@ -6223,11 +6222,10 @@
    "blockers": [
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
-    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
     "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
     "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
    ],
-   "detail": "6 sorry: lintegral_closedBall_le, subset_closedBall, lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+   "detail": "5 sorry: subset_closedBall, lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6295,23 +6293,21 @@
    "parentGoal": "Sobolev.Lemma22",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_2_2.lintegral_closedBall_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 2.2 proof, maximal function on a closed ball): for `0 < ρ` with `ρ ≤ R`, `∫_{B̄(a,ρ)} |f| ≤ |B(a,ρ)| M_R f(a)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_2_2.lintegral_closedBall_le — subgoal of Lemma 2.2 proof, maximal function on a closed ball (in Sobolev.Lemma22)"
+   "detail": "proved: lemma_2_2.lintegral_closedBall_le — subgoal of Lemma 2.2 proof, maximal function on a closed ball (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
