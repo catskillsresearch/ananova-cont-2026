@@ -843,7 +843,41 @@ independent `N(0, t)`). -/
 theorem measure_path_mem_null (x₀ : Rd d) {N : Set (Rd d)} (hN : volume N = 0) {t : ℝ}
     (ht : 0 < t) (htT : t ≤ T) :
     CanonicalWienerSpace.P (T := T) x₀ {ω | CanonicalWienerSpace.path ω t ∈ N} = 0 := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, hind, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x₀
+  have htI : t ∈ Icc 0 T := ⟨ht.le, htT⟩
+  set N' := toMeasurable volume N
+  have hN' : volume N' = 0 := by rw [measure_toMeasurable]; exact hN
+  refine measure_mono_null (t := {ω | CanonicalWienerSpace.path ω t ∈ N'})
+    (fun ω hω => subset_toMeasurable volume N hω) ?_
+  set g : Ω' → CanonicalWienerSpace d T := fun ω' =>
+    CanonicalWienerSpace.ofCoords x₀ (fun i t => W i t ω') fun i => hW i ω' with hgdef
+  have hg : AEMeasurable g Q := by
+    refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun r => ?_
+    simp only [hgdef, CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  have hev : Measurable fun ω : CanonicalWienerSpace d T => ω ⟨t, htI⟩ :=
+    (continuous_eval_const (⟨t, htI⟩ : Icc (0 : ℝ) T)).measurable
+  have hA : {ω : CanonicalWienerSpace d T | CanonicalWienerSpace.path ω t ∈ N'} =
+      (fun ω : CanonicalWienerSpace d T => ω ⟨t, htI⟩) ⁻¹' N' := by
+    ext ω; simp [CanonicalWienerSpace.path, CanonicalWienerSpace.B, htI]
+  rw [hA, hP, Measure.map_apply_of_aemeasurable hg (hev (measurableSet_toMeasurable _ _))]
+  set V : Ω' → Fin d → ℝ := fun ω' i => W i t.toNNReal ω'
+  have hpre : g ⁻¹' ((fun ω : CanonicalWienerSpace d T => ω ⟨t, htI⟩) ⁻¹' N') =
+      V ⁻¹' {v | x₀ + ∑ i, v i • Rd.basisVec i ∈ N'} := by
+    ext ω'; simp [g, V, CanonicalWienerSpace.ofCoords]
+  have hVlaw : ProbabilityTheory.HasLaw V
+      (Measure.pi fun _ => ProbabilityTheory.gaussianReal 0 t.toNNReal) Q :=
+    (hind.comp (fun _ (f : ℝ≥0 → ℝ) => f t.toNNReal) fun _ => measurable_pi_apply _).hasLaw_pi
+      fun i => (hB i).toIsPreBrownianReal.hasLaw_eval _
+  have hM : MeasurableSet {v : Fin d → ℝ | x₀ + ∑ i, v i • Rd.basisVec i ∈ N'} :=
+    (measurableSet_toMeasurable _ _).preimage (by fun_prop)
+  rw [hpre, ← Measure.map_apply_of_aemeasurable hVlaw.aemeasurable hM, hVlaw.map_eq]
+  have hac : Measure.pi (fun _ : Fin d => ProbabilityTheory.gaussianReal 0 t.toNNReal) ≪ volume := by
+    rw [volume_pi]
+    exact pi_absolutelyContinuous fun _ =>
+      ProbabilityTheory.gaussianReal_absolutelyContinuous 0 (by simpa using ht)
+  exact hac (volume_coords_preimage_null x₀ hN')
 
 /-- **Subgoal** (Appendix C, Brownian motion has a density at positive times: it a.s. avoids a
 Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0`). -/
