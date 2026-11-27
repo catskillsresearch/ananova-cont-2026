@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:24:40Z  
-**`sorry` occurrences:** 26 · 5 open · 18 blocked · 278 done (goals + subgoals) · goals {'open': 4, 'blocked': 11, 'done': 55} · subgoals {'open': 1, 'blocked': 7, 'done': 223} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:25:01Z  
+**`sorry` occurrences:** 26 · 4 open · 17 blocked · 280 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 57} · subgoals {'open': 1, 'blocked': 7, 'done': 223} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,7 +26,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
-| `Sobolev.Theorem21Second` |  | 0 | (review → VERIFIED) |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
 
 ## Subgoals (helper lemmas/defs)
@@ -296,9 +295,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemW2PlusS` | Section 5.2 W^{2+s,p} | 0 |  |
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
-| blocked | `Sobolev.Theorem21` | Theorem 2.1 | 0 | `Sobolev.Theorem21Second` |
+| done | `Sobolev.Theorem21` | Theorem 2.1 | 0 |  |
 | done | `Sobolev.Theorem21First` |  | 0 |  |
-| open | `Sobolev.Theorem21Second` |  | 0 |  |
+| done | `Sobolev.Theorem21Second` |  | 0 |  |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets

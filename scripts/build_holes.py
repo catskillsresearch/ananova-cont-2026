@@ -50,6 +50,8 @@ DECL_RE = re.compile(
 # See AGENTS.md: add an id only after a successful `lake build` of that module.
 VERIFIED: set[str] = {
     "Sobolev.Theorem21First",
+    "Sobolev.Theorem21Second",
+    "Sobolev.Theorem21",
     "Main.Theorem51",
     "Main.Theorem51Steps",
     "Main.SmoothItoAt",

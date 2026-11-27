@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T03:24:40Z",
+ "updated": "2026-11-27T03:25:01Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 26,
  "counts": {
-  "open": 5,
-  "blocked": 18,
-  "done": 278
+  "open": 4,
+  "blocked": 17,
+  "done": 280
  },
  "goalCounts": {
-  "open": 4,
-  "blocked": 11,
-  "done": 55
+  "open": 3,
+  "blocked": 10,
+  "done": 57
  },
  "subgoalCounts": {
   "open": 1,
@@ -7194,9 +7194,9 @@
     "theorem": 2
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7207,10 +7207,8 @@
     "Sobolev.Theorem21First",
     "Sobolev.Theorem21Second"
    ],
-   "blockers": [
-    "Sobolev.Theorem21Second"
-   ],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.Theorem21First",
@@ -7903,9 +7901,9 @@
     "theorem": 13
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
@@ -7925,7 +7923,7 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
