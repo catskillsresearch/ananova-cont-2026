@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T14:21:44Z",
+ "updated": "2026-11-27T14:22:19Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 27,
  "counts": {
   "open": 7,
   "blocked": 62,
@@ -4031,11 +4031,10 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "tendsto_mollify_hessian",
-    "volume_coords_preimage_null",
     "measure_path_mem_null",
     "ae_forall_mem_not_mem_null"
    ],
@@ -4138,7 +4137,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "5 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian, volume_coords_preimage_null, measure_path_mem_null, ae_forall_mem_not_mem_null"
+   "detail": "4 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian, measure_path_mem_null, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -5562,10 +5561,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.volume_coords_preimage_null"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -5591,7 +5588,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.volume_coords_preimage_null — subgoal of Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.volume_coords_preimage_null — subgoal of Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.WeakCovariation",

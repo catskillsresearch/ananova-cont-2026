@@ -827,7 +827,15 @@ theorem pi_absolutelyContinuous {n : ℕ} {μ ν : Fin n → Measure ℝ} [∀ i
 Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}`). -/
 theorem volume_coords_preimage_null (x₀ : Rd d) {N : Set (Rd d)} (hN : volume N = 0) :
     volume {v : Fin d → ℝ | x₀ + ∑ i, v i • Rd.basisVec i ∈ N} = 0 := by
-  sorry
+  have hsum : ∀ v : Fin d → ℝ, ∑ i, v i • Rd.basisVec i = MeasurableEquiv.toLp 2 (Fin d → ℝ) v := by
+    intro v; ext j; simp [Rd.basisVec, Pi.single_apply]
+  have hset : {v : Fin d → ℝ | x₀ + ∑ i, v i • Rd.basisVec i ∈ N} =
+      MeasurableEquiv.toLp 2 (Fin d → ℝ) ⁻¹' ((x₀ + ·) ⁻¹' N) := by
+    ext v; simp [hsum]
+  have h := (EuclideanSpace.volume_preserving_symm_measurableEquiv_toLp (Fin d)).symm
+    |>.measure_preimage_equiv ((x₀ + ·) ⁻¹' N)
+  rw [MeasurableEquiv.symm_symm] at h
+  rw [hset, h, measure_preimage_add, hN]
 
 /-- **Subgoal** (Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`,
 `ℙ_{x₀}(B(t) ∈ N) = 0` for a Lebesgue-null `N`, since the coordinates of `B(t) - x₀` are
