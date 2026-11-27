@@ -91,7 +91,29 @@ theorem lintegral_lintegral_sub_mul {d : ℕ} {K G : Rd d → ℝ≥0∞} (hK : 
 theorem lintegral_rpow_conv_le {d : ℕ} {q : ℝ} (hq : 1 ≤ q) {K F : Rd d → ℝ≥0∞}
     (hK : AEMeasurable K) (hF : AEMeasurable F) :
     ∫⁻ x, (∫⁻ y, K (x - y) * F y) ^ q ≤ (∫⁻ z, K z) ^ q * ∫⁻ y, F y ^ q := by
-  sorry
+  set A := ∫⁻ z, K z with hA
+  have hFq : AEMeasurable (fun y => F y ^ q) := hF.pow_const q
+  have hKx : ∀ x : Rd d, AEMeasurable (fun y => K (x - y)) := fun x =>
+    hK.comp_quasiMeasurePreserving (Measure.measurePreserving_sub_left volume x).quasiMeasurePreserving
+  have hprod : AEMeasurable (fun p : Rd d × Rd d => K (p.1 - p.2) * F p.2 ^ q)
+      ((volume : Measure (Rd d)).prod volume) :=
+    (hK.comp_quasiMeasurePreserving
+      (quasiMeasurePreserving_sub_of_right_invariant volume volume)).mul
+        (hFq.comp_quasiMeasurePreserving Measure.quasiMeasurePreserving_snd)
+  have hB : AEMeasurable (fun x => ∫⁻ y, K (x - y) * F y ^ q) := hprod.lintegral_prod_right'
+  calc ∫⁻ x, (∫⁻ y, K (x - y) * F y) ^ q
+      ≤ ∫⁻ x, (∫⁻ y, K (x - y)) ^ (q - 1) * ∫⁻ y, K (x - y) * F y ^ q :=
+        lintegral_mono fun x => rpow_lintegral_mul_le hq (hKx x) hF
+    _ = ∫⁻ x, A ^ (q - 1) * ∫⁻ y, K (x - y) * F y ^ q := lintegral_congr fun x => by
+        rw [lintegral_sub_left_eq_self]
+    _ = A ^ (q - 1) * ∫⁻ x, ∫⁻ y, K (x - y) * F y ^ q := lintegral_const_mul'' _ hB
+    _ = A ^ (q - 1) * (A * ∫⁻ y, F y ^ q) := by rw [lintegral_lintegral_sub_mul hK hFq]
+    _ = A ^ q * ∫⁻ y, F y ^ q := by
+        rw [← mul_assoc]
+        congr 1
+        calc A ^ (q - 1) * A = A ^ (q - 1) * A ^ (1 : ℝ) := by rw [ENNReal.rpow_one]
+          _ = A ^ (q - 1 + 1) := (ENNReal.rpow_add_of_nonneg _ _ (by linarith) zero_le_one).symm
+          _ = A ^ q := by ring_nf
 
 /-- **Subgoal** (Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through). -/
 theorem lintegral_conv_le_of_ae_le {d : ℕ} {K F : Rd d → ℝ≥0∞} (hK : AEMeasurable K) {C : ℝ≥0∞}
