@@ -53,11 +53,31 @@ theorem exists_isWeakGradient {k : ℕ} (hk : 1 ≤ k) {F : Rd d → ℝ} (hF : 
   refine ⟨fun x => WithLp.toLp 2 (fun i => g i x), fun i => ?_⟩
   simpa [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right] using hg i
 
+/-- **Subgoal** (Appendix C, mollification: the `(i, j)` entry of the linear map of a matrix `M` is
+`M i j`). -/
+theorem coord_toEuclideanCLM (M : Matrix (Fin d) (Fin d) ℝ) (i j : Fin d) :
+    Rd.coord i (Matrix.toEuclideanCLM (𝕜 := ℝ) M (Rd.basisVec j)) = M i j := by
+  have hb : (EuclideanSpace.single j 1 : Rd d) = (EuclideanSpace.basisFun (Fin d) ℝ).toBasis j := by
+    simp
+  simp only [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right, Matrix.toEuclideanCLM]
+  rw [hb]
+  erw [Matrix.toLin_self]
+  simp [Pi.single_apply]
+
 /-- **Subgoal** (Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled
 from its second-order weak derivatives). -/
 theorem exists_isWeakHessian {F : Rd d → ℝ} (hF : MemW 2 1 F) :
     ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H := by
-  sorry
+  have h : ∀ i j : Fin d, ∃ g : Rd d → ℝ, IsWeakDerivative (Pi.single i 1 + Pi.single j 1) F g := by
+    intro i j
+    have hord : IsWeakDerivative.order (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) ≤ 2 := by
+      simp [IsWeakDerivative.order, Finset.sum_add_distrib]
+    obtain ⟨g, hg, -⟩ := hF.2 _ hord
+    exact ⟨g, hg⟩
+  choose g hg using h
+  refine ⟨fun x => Matrix.toEuclideanCLM (𝕜 := ℝ) (Matrix.of fun i j => g i j x), fun i j => ?_⟩
+  simp only [coord_toEuclideanCLM, Matrix.of_apply]
+  exact hg i j
 
 /-- **Subgoal** (Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞`). -/
 theorem abs_convolution_le {h ψ : Rd d → ℝ} (hh : Integrable h) {C : ℝ}

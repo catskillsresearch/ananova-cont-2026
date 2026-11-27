@@ -94,6 +94,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_l
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -321,6 +322,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -433,6 +435,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -454,6 +457,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -631,6 +635,7 @@ Main.Theorem52Steps::theorem_5_2.abs_convolution_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian -hard-> Main.Theorem52Steps
@@ -917,6 +922,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_con
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -1181,6 +1187,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -1338,6 +1345,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.abs_convol
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -1423,6 +1431,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -1446,6 +1455,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.abs_convo
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
@@ -1550,6 +1560,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
