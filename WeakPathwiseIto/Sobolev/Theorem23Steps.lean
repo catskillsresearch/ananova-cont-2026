@@ -145,7 +145,30 @@ theorem lintegral_abs_sub_average_ball_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (f
     (G : Rd d → Rd d), MemW 1 1 f → IsWeakGradient f G → ∀ (c : Rd d) (r : ℝ), 0 < r →
       ∫⁻ y in Metric.ball c r, ENNReal.ofReal |f y - ⨍ z in Metric.ball c r, f z| ≤
         C * ENNReal.ofReal r * ∫⁻ z in Metric.ball c r, ‖G z‖ₑ := by
-  sorry
+  obtain ⟨K, hK⟩ := theorem_2_1_first.poincare_ae hd
+  obtain ⟨C, hC⟩ := lintegral_ball_potential_le hd
+  refine ⟨K * C, fun f G hf hG c r hr => ?_⟩
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) := theorem_2_1_first.coord_integrable hf hG
+  have hexpG : ∀ z, G z = ∑ i, Rd.coord i (G z) • Rd.basisVec i := by
+    intro z
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (G z)]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hGm : AEStronglyMeasurable G volume := by
+    have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
+    rw [this]
+    exact Finset.aestronglyMeasurable_fun_sum _ fun i _ => (hGi i).aestronglyMeasurable.smul_const _
+  have hball : IsCubeOrBall (Metric.ball c r) := ⟨c, r, hr, Or.inl rfl⟩
+  have hpt := hK f G hf hG _ hball
+  have hpot := hC c r hr (fun z => ‖G z‖) hGm.norm
+  simp only [enorm_norm] at hpot
+  calc ∫⁻ y in Metric.ball c r, ENNReal.ofReal |f y - ⨍ z in Metric.ball c r, f z|
+      ≤ ∫⁻ y in Metric.ball c r, K * ∫⁻ z in Metric.ball c r, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1) :=
+        lintegral_mono_ae ((ae_restrict_iff' measurableSet_ball).2 hpt)
+    _ = K * ∫⁻ y in Metric.ball c r, ∫⁻ z in Metric.ball c r, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1) :=
+        lintegral_const_mul' _ _ ENNReal.coe_ne_top
+    _ ≤ K * (C * ENNReal.ofReal r * ∫⁻ z in Metric.ball c r, ‖G z‖ₑ) := mul_le_mul' le_rfl hpot
+    _ = _ := by push_cast; ring
 
 /-- **Subgoal** (Theorem 2.3 proof: averages over comparable concentric balls are close,
 `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r ⨍_{B(x,r)} |∇f|` for `r/2 ≤ s ≤ r`). -/
