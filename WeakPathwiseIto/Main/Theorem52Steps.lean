@@ -12,6 +12,7 @@ public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.IsLebesguePoint
 public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
 public import WeakPathwiseIto.Sobolev.HardyLittlewood
+public import Carleson.ToMathlib.RealInterpolation.Minkowski
 public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Sobolev.Theorem21Second
@@ -512,7 +513,71 @@ theorem eLpNorm_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [NormedSpace �
     eLpNorm (fun x => (∫ y, ψ (x - y) • f y) - f x) (ENNReal.ofReal p) volume ≤
       ⨆ z ∈ Metric.ball (0 : Rd d) r,
         eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume := by
-  sorry
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hpr : (ENNReal.ofReal p).toReal = p := ENNReal.toReal_ofReal hp0.le
+  have hpne : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp0).ne'
+  have hψk : HasCompactSupport ψ :=
+    (isCompact_closedBall (0 : Rd d) r).of_isClosed_subset isClosed_closure
+      (closure_minimal (hψs.trans Metric.ball_subset_closedBall) Metric.isClosed_closedBall)
+  have hfl : LocallyIntegrable f volume := hf.locallyIntegrable (ENNReal.one_le_ofReal.2 hp)
+  have hfm : AEStronglyMeasurable f volume := hf.aestronglyMeasurable
+  set S := ⨆ z ∈ Metric.ball (0 : Rd d) r,
+    eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume
+  -- measurability of the left side: a convolution with a continuous compactly supported kernel
+  have hconv : (fun x => ∫ y, ψ (x - y) • f y) =
+      (ψ ⋆[ContinuousLinearMap.lsmul ℝ ℝ, volume] f) := by
+    funext x; rw [convolution_lsmul_swap]
+  have hLm : AEStronglyMeasurable (fun x => (∫ y, ψ (x - y) • f y) - f x) volume := by
+    have hc : Continuous fun x => ∫ y, ψ (x - y) • f y := by
+      rw [hconv]; exact hψk.continuous_convolution_left _ hψc hfl
+    exact hc.aestronglyMeasurable.sub hfm
+  -- the joint integrand
+  set Φ : Rd d → Rd d → ℝ≥0∞ := fun x z => ENNReal.ofReal (ψ z) * ‖f (x - z) - f x‖ₑ
+  have hΦm : AEMeasurable (Function.uncurry Φ) (volume.prod volume) := by
+    have h1 : AEStronglyMeasurable (fun q : Rd d × Rd d => f (q.1 - q.2)) (volume.prod volume) :=
+      hfm.comp_quasiMeasurePreserving (quasiMeasurePreserving_sub_of_right_invariant _ _)
+    have h2 : AEStronglyMeasurable (fun q : Rd d × Rd d => f q.1) (volume.prod volume) :=
+      hfm.comp_fst
+    have h3 : AEMeasurable (fun q : Rd d × Rd d => ENNReal.ofReal (ψ q.2)) (volume.prod volume) :=
+      (ENNReal.continuous_ofReal.comp (hψc.comp continuous_snd)).measurable.aemeasurable
+    exact h3.mul (h1.sub h2).enorm
+  have hpt : ∀ x, ‖(∫ y, ψ (x - y) • f y) - f x‖ₑ ≤ ∫⁻ z, Φ x z := by
+    intro x
+    rw [mollify_sub_eq hp hf hψc hψk hψ1 x]
+    refine (enorm_integral_le_lintegral_enorm _).trans (lintegral_mono fun z => ?_)
+    rw [enorm_smul, Real.enorm_of_nonneg (hψ0 z)]
+  have hgm : ∀ z, AEStronglyMeasurable (fun x => f (x - z) - f x) volume := fun z =>
+    (hfm.comp_measurePreserving (measurePreserving_sub_right _ z)).sub hfm
+  have hinner : ∀ z, (∫⁻ x, Φ x z ^ p) ^ p⁻¹ = ENNReal.ofReal (ψ z) *
+      eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume := by
+    intro z
+    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hpne ENNReal.ofReal_ne_top (hgm z), hpr]
+    simp_rw [Φ, ENNReal.mul_rpow_of_nonneg _ _ hp0.le]
+    rw [lintegral_const_mul' _ _ (ENNReal.rpow_ne_top_of_nonneg hp0.le ENNReal.ofReal_ne_top),
+      ENNReal.mul_rpow_of_nonneg _ _ (inv_nonneg.2 hp0.le),
+      ENNReal.rpow_rpow_inv hp0.ne', one_div]
+  have hz : ∀ z, ENNReal.ofReal (ψ z) *
+      eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume ≤ ENNReal.ofReal (ψ z) * S := by
+    intro z
+    by_cases hzb : z ∈ Metric.ball (0 : Rd d) r
+    · gcongr; exact le_iSup₂ (f := fun z (_ : z ∈ Metric.ball (0 : Rd d) r) =>
+        eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume) z hzb
+    · have : ψ z = 0 := Function.notMem_support.1 fun h => hzb (hψs h)
+      simp [this]
+  have hψl : ∫⁻ z, ENNReal.ofReal (ψ z) = 1 := by
+    rw [← ofReal_integral_eq_lintegral_ofReal (integrable_of_integral_eq_one hψ1)
+      (Eventually.of_forall hψ0), hψ1, ENNReal.ofReal_one]
+  calc eLpNorm (fun x => (∫ y, ψ (x - y) • f y) - f x) (ENNReal.ofReal p) volume
+      = (∫⁻ x, ‖(∫ y, ψ (x - y) • f y) - f x‖ₑ ^ p) ^ p⁻¹ := by
+        rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hpne ENNReal.ofReal_ne_top hLm, hpr, one_div]
+    _ ≤ (∫⁻ x, (∫⁻ z, Φ x z) ^ p) ^ p⁻¹ := by
+        gcongr with x; exact hpt x
+    _ ≤ ∫⁻ z, (∫⁻ x, Φ x z ^ p) ^ p⁻¹ := lintegral_lintegral_pow_swap hp hΦm
+    _ ≤ ∫⁻ z, ENNReal.ofReal (ψ z) * S := by
+        refine lintegral_mono fun z => ?_; rw [hinner]; exact hz z
+    _ = S := by
+        rw [lintegral_mul_const S (f := fun z => ENNReal.ofReal (ψ z))
+          (ENNReal.continuous_ofReal.comp hψc).measurable, hψl, one_mul]
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: mollification converges in `L^p`,
 `‖ψ_n ⋆ f - f‖_p → 0`). -/
