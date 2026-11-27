@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:24:35Z  
-**`sorry` occurrences:** 33 · 9 open · 19 blocked · 254 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 6, 'blocked': 7, 'done': 200} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:28:37Z  
+**`sorry` occurrences:** 32 · 8 open · 19 blocked · 255 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 5, 'blocked': 7, 'done': 201} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -239,7 +239,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le` | subgoal of Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1` | 1 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le` | subgoal of Theorem 2.1 proof, (2 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le` | subgoal of Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹` | 0 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le` | subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le` | subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae` | subgoal of Theorem 2.1 proof, eq. (2 | 1 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff` | subgoal of Theorem 2.1 proof, eq. (2 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq` | subgoal of Theorem 2.1 proof: at a Lebesgue point the precise representative is the Lebesgue value | 0 |
@@ -278,7 +278,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 5 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
+| blocked | `Sobolev.Theorem21First` |  | 4 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets

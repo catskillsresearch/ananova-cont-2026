@@ -10,6 +10,7 @@ public import WeakPathwiseIto.Sobolev.MemW
 public import WeakPathwiseIto.Sobolev.IsWeakGradient
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.IsLebesguePoint
+public import WeakPathwiseIto.Sobolev.Lemma22
 
 /-! # Steps of the proof of Theorem 2.1, first estimate ([BH93], `m = 1`)
 
@@ -659,10 +660,63 @@ theorem tendsto_convolution {h : Rd d → ℝ} (hh : Integrable h) {ψ : ℕ →
 
 /-- **Subgoal** (Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q)`):
 `∫_Q ∫_Q |h(z)| / |y - z|^{d-1} dz dy ≤ C_Q ∫_Q |h|` for bounded `Q`. -/
-theorem lintegral_potential_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q) :
+theorem lintegral_potential_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
+    (hQm : MeasurableSet Q) :
     ∃ C : ℝ≥0, ∀ h : Rd d → ℝ, AEStronglyMeasurable h →
       ∫⁻ y in Q, ∫⁻ z in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1) ≤ C * ∫⁻ z in Q, ‖h z‖ₑ := by
-  sorry
+  obtain ⟨C0, -, hC0⟩ := lemma_2_2 d (α := 1) one_pos
+  set D : ℝ := Metric.diam Q + 1 with hDdef
+  have hD : 0 < D := by positivity
+  refine ⟨C0 * (2 * D).toNNReal, fun h hh => ?_⟩
+  set C : ℝ≥0∞ := ((C0 * (2 * D).toNNReal : ℝ≥0) : ℝ≥0∞) with hCdef
+  -- the kernel integral is uniformly bounded on `Q`
+  have hK : ∀ z ∈ Q, ∫⁻ y in Q, 1 / edist y z ^ ((d : ℝ) - 1) ≤ C := by
+    intro z hz
+    have hsub : Q ⊆ Metric.closedBall z D := fun y hy => by
+      rw [Metric.mem_closedBall]
+      exact (Metric.dist_le_diam_of_mem hQb hy hz).trans (by linarith)
+    have hball : IsCubeOrBall (Metric.closedBall z D) := ⟨z, D, hD, Or.inr (Or.inl rfl)⟩
+    have hlem := hC0 (Metric.closedBall z D) (fun _ => (1 : ℝ)) hball
+      (integrableOn_const measure_closedBall_lt_top.ne) z (Metric.mem_closedBall_self hD.le)
+    have hM : localMaximalFunction (Metric.ediam (Metric.closedBall z D)) (fun _ : Rd d => (1 : ℝ)) z
+        ≤ 1 := by
+      refine iSup_le fun r => iSup_le fun _ => iSup_le fun _ => ?_
+      rw [laverage_eq]
+      simp only [enorm_one, lintegral_const, one_mul, Measure.restrict_apply_univ]
+      exact ENNReal.div_self_le_one
+    have hdiam : Metric.ediam (Metric.closedBall z D) ≤ ENNReal.ofReal (2 * D) := by
+      rw [← ENNReal.ofReal_toReal Metric.isBounded_closedBall.ediam_ne_top]
+      exact ENNReal.ofReal_le_ofReal (Metric.diam_closedBall hD.le)
+    calc ∫⁻ y in Q, 1 / edist y z ^ ((d : ℝ) - 1)
+        ≤ ∫⁻ y in Metric.closedBall z D, 1 / edist y z ^ ((d : ℝ) - 1) := lintegral_mono_set hsub
+      _ = ∫⁻ y in Metric.closedBall z D, ‖(fun _ : Rd d => (1 : ℝ)) y‖ₑ / edist z y ^ ((d : ℝ) - 1) := by
+          simp only [enorm_one, edist_comm]
+      _ ≤ C0 * Metric.ediam (Metric.closedBall z D) ^ (1 : ℝ) *
+            localMaximalFunction (Metric.ediam (Metric.closedBall z D)) (fun _ => (1 : ℝ)) z := hlem
+      _ ≤ C0 * ENNReal.ofReal (2 * D) * 1 := by
+          rw [ENNReal.rpow_one]; gcongr
+      _ = C := by
+          rw [mul_one, hCdef, ENNReal.coe_mul, ENNReal.ofReal]
+  have hm : AEMeasurable (Function.uncurry fun (y z : Rd d) => ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1))
+      ((volume.restrict Q).prod (volume.restrict Q)) := by
+    have h1 : AEMeasurable (fun p : Rd d × Rd d => ‖h p.2‖ₑ)
+        ((volume.restrict Q).prod (volume.restrict Q)) :=
+      hh.restrict.aemeasurable.enorm.comp_quasiMeasurePreserving Measure.quasiMeasurePreserving_snd
+    have h2 : Measurable fun p : Rd d × Rd d => edist p.1 p.2 ^ ((d : ℝ) - 1) :=
+      (continuous_edist.measurable).pow_const _
+    exact h1.div h2.aemeasurable
+  calc ∫⁻ y in Q, ∫⁻ z in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1)
+      = ∫⁻ z in Q, ∫⁻ y in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1) := lintegral_lintegral_swap hm
+    _ = ∫⁻ z in Q, ‖h z‖ₑ * ∫⁻ y in Q, 1 / edist y z ^ ((d : ℝ) - 1) := by
+        refine lintegral_congr fun z => ?_
+        rw [← lintegral_const_mul' _ _ enorm_ne_top]
+        refine lintegral_congr fun y => ?_
+        rw [div_eq_mul_inv, one_div]
+    _ ≤ ∫⁻ z in Q, ‖h z‖ₑ * C := by
+        refine lintegral_mono_ae ((ae_restrict_iff' hQm).2 (Eventually.of_forall fun z hz => ?_))
+        exact mul_le_mul' le_rfl (hK z hz)
+    _ = C * ∫⁻ z in Q, ‖h z‖ₑ := by
+        rw [lintegral_mul_const' _ _ ENNReal.coe_ne_top, mul_comm]
 
 /-- **Subgoal** (Theorem 2.1 proof, eq. (2) of [BH93] a.e. for `W^{1,1}`, by mollification): for
 a cube or ball `Q`, for a.e. `y ∈ Q`, `|f(y) - f_Q| ≤ K ∫_Q |∇f(z)| / |y - z|^{d-1} dz`. -/

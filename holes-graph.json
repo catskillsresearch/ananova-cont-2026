@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:24:35Z",
+ "updated": "2026-11-27T02:28:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 9,
+  "open": 8,
   "blocked": 19,
-  "done": 254
+  "done": 255
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 7,
-  "done": 200
+  "done": 201
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "lintegral_potential_le",
     "poincare_ae",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
@@ -7240,6 +7239,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative",
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7262,11 +7262,10 @@
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
     "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "5 sorry: lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "4 sorry: poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7293,6 +7292,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7322,6 +7322,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7351,6 +7352,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7380,6 +7382,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7409,6 +7412,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7440,6 +7444,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7469,6 +7474,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7498,6 +7504,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7514,26 +7521,25 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.lintegral_potential_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q)`): `∫_Q ∫_Q |h(z)| / |y - z|^{d-1} dz dy ≤ C_Q ∫_Q |h|` for bounded `Q`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.lintegral_potential_le — subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.lintegral_potential_le — subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
@@ -7560,6 +7566,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7589,6 +7596,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7618,6 +7626,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7647,6 +7656,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7676,6 +7686,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7705,6 +7716,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -7736,6 +7748,7 @@
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative"
    ],
@@ -12539,6 +12552,91 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
+   "kind": "hard"
+  },
+  {
    "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
    "to": "Sobolev.Lemma22",
    "kind": "subgoal"
@@ -13289,70 +13387,6 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
-  },
-  {
-   "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
    "from": "Basic.Partition",
@@ -15849,6 +15883,70 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.Theorem23"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
    "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
