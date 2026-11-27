@@ -859,6 +859,7 @@ Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.volume_iUni
 Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh -hard-> Main.GeometricMeshDecay
+Main.IsItoIntegral -hard-> Main.IsL2ItoIntegral
 Main.IsItoIntegral -hard-> Main.Proposition53
 Main.IsItoIntegral -hard-> Main.Proposition53Steps
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.coord_apply

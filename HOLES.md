@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:53:24Z  
-**`sorry` occurrences:** 11 · 5 open · 12 blocked · 443 done (goals + subgoals) · goals {'open': 2, 'blocked': 9, 'done': 68} · subgoals {'open': 3, 'blocked': 3, 'done': 375} · 8 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:53:47Z  
+**`sorry` occurrences:** 11 · 5 open · 12 blocked · 444 done (goals + subgoals) · goals {'open': 2, 'blocked': 9, 'done': 69} · subgoals {'open': 3, 'blocked': 3, 'done': 375} · 8 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -508,6 +508,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.ExitTime` | τ_R exit time (proof of Prop. 5.3) | 0 |  |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral (elementary integrands, natural filtration) | 0 |  |
+| done | `Main.IsL2ItoIntegral` | L² Itô integral (stopped integrals J^R) | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | done | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 0 |  |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |

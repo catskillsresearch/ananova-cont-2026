@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T21:53:24Z",
+ "updated": "2026-11-27T21:53:47Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 11,
  "counts": {
   "open": 5,
   "blocked": 12,
-  "done": 443
+  "done": 444
  },
  "goalCounts": {
   "open": 2,
   "blocked": 9,
-  "done": 68
+  "done": 69
  },
  "subgoalCounts": {
   "open": 3,
@@ -3616,6 +3616,28 @@
    "status": "done",
    "deps": [
     "Bessel.CanonicalWienerSpace"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.IsL2ItoIntegral",
+   "label": "IsL2ItoIntegral",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "L² Itô integral (stopped integrals J^R)",
+   "file": "WeakPathwiseIto/Main/IsL2ItoIntegral.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Main.IsItoIntegral"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
@@ -19538,6 +19560,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.IsL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53",
    "kind": "hard"
   },
@@ -29366,6 +29393,10 @@
   {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh",
    "to": "Main.GeometricMeshDecay"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.IsL2ItoIntegral"
   },
   {
    "from": "Main.IsItoIntegral",
