@@ -9656,7 +9656,10 @@ theorem tendsto_mollify_of_isLebesguePoint {F : Rd d → ℝ} (hF : LocallyInteg
 /-- **Subgoal** (Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93]). -/
 theorem isBrownianPolar_nonLebesgue (hT : 0 < T) {p : ℝ} (hp : 1 < p) {F : Rd d → ℝ}
     (hF : MemW2Plus p F) : IsBrownianPolar d T {x | ¬ IsLebesguePoint F x} := by
-  sorry
+  obtain ⟨_, _, hFs⟩ := hF
+  have h29 := theorem_2_9 d 2 hp hFs.1
+  rw [Nat.cast_ofNat] at h29
+  exact (IsBrownianPolar.iff_isNull hT _).2 (besselCapacity.IsNull.one_two_of_two_p hp h29)
 -/
 
 /- [omitted from the Challenge: not used by the compared statements]

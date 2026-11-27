@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:50:26Z  
-**`sorry` occurrences:** 20 · 8 open · 13 blocked · 381 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 5, 'blocked': 3, 'done': 319} · 11 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:50:59Z  
+**`sorry` occurrences:** 19 · 7 open · 14 blocked · 381 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 319} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -175,7 +175,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply` | subgoal of Appendix C, mollification: `∂_v (F * g | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le` | subgoal of Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable` | subgoal of Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le` | 0 |
-| open | `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` | subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` | subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff` | subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero` | subgoal of Appendix C, mollification: `D^0 f = f` weakly | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.le_one_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` | 0 |
@@ -460,7 +460,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 0 | `Appendix.LemmaB2`, `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52PathSteps` |  | 0 | `Appendix.LemmaB1`, `Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52Steps` |  | 1 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` |
+| blocked | `Main.Theorem52Steps` |  | 0 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 

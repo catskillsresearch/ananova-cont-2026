@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T17:50:26Z",
+ "updated": "2026-11-27T17:50:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 20,
+ "sorryCount": 19,
  "counts": {
-  "open": 8,
-  "blocked": 13,
+  "open": 7,
+  "blocked": 14,
   "done": 381
  },
  "goalCounts": {
@@ -13,8 +13,8 @@
   "done": 62
  },
  "subgoalCounts": {
-  "open": 5,
-  "blocked": 3,
+  "open": 4,
+  "blocked": 4,
   "done": 319
  },
  "untagged": [],
@@ -5119,10 +5119,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "isBrownianPolar_nonLebesgue"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 50
    },
@@ -5200,7 +5198,7 @@
     "Bessel.Theorem29",
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
    ],
-   "detail": "1 sorry: isBrownianPolar_nonLebesgue"
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -6052,10 +6050,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.isBrownianPolar_nonLebesgue"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -6068,7 +6064,7 @@
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -6088,7 +6084,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.isBrownianPolar_nonLebesgue — subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] (in Main.Theorem52Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: theorem_5_2.isBrownianPolar_nonLebesgue — subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] (in Main.Theorem52Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
