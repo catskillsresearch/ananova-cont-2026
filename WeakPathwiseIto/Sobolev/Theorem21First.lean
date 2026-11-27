@@ -498,7 +498,24 @@ theorem contDiff_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} (hG : IsWeak
 `‖h * ψ‖_1 ≤ ‖h‖_1 ‖ψ‖_1`. -/
 theorem lintegral_convolution_le {h ψ : Rd d → ℝ} (hh : Integrable h) (hψ : Integrable ψ) :
     ∫⁻ x, ‖∫ y, h y * ψ (x - y)‖ₑ ≤ (∫⁻ y, ‖h y‖ₑ) * ∫⁻ y, ‖ψ y‖ₑ := by
-  sorry
+  have hm : AEMeasurable (Function.uncurry fun (x y : Rd d) => ‖h y‖ₑ * ‖ψ (x - y)‖ₑ)
+      (volume.prod volume) := by
+    have h1 : AEMeasurable (fun p : Rd d × Rd d => ‖h p.2‖ₑ) (volume.prod volume) :=
+      hh.aemeasurable.enorm.comp_quasiMeasurePreserving
+        (Measure.quasiMeasurePreserving_snd)
+    have h2 : AEMeasurable (fun p : Rd d × Rd d => ‖ψ (p.1 - p.2)‖ₑ) (volume.prod volume) :=
+      hψ.aemeasurable.enorm.comp_quasiMeasurePreserving
+        (quasiMeasurePreserving_sub volume volume)
+    exact h1.mul h2
+  calc ∫⁻ x, ‖∫ y, h y * ψ (x - y)‖ₑ
+      ≤ ∫⁻ x, ∫⁻ y, ‖h y‖ₑ * ‖ψ (x - y)‖ₑ := lintegral_mono fun x =>
+        (enorm_integral_le_lintegral_enorm _).trans (le_of_eq (lintegral_congr fun y => enorm_mul _ _))
+    _ = ∫⁻ y, ∫⁻ x, ‖h y‖ₑ * ‖ψ (x - y)‖ₑ := lintegral_lintegral_swap hm
+    _ = ∫⁻ y, ‖h y‖ₑ * ∫⁻ z, ‖ψ z‖ₑ := by
+        refine lintegral_congr fun y => ?_
+        rw [lintegral_const_mul' _ _ enorm_ne_top,
+          lintegral_sub_right_eq_self (fun z => ‖ψ z‖ₑ) y]
+    _ = (∫⁻ y, ‖h y‖ₑ) * ∫⁻ y, ‖ψ y‖ₑ := lintegral_mul_const' _ _ hψ.2.ne
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification step 3: continuous compactly supported case):
 for an approximate identity `ψ_n` (nonnegative, continuous, mass `1`, supported in

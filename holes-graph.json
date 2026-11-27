@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:18:38Z",
+ "updated": "2026-11-27T02:19:54Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 19,
-  "done": 251
+  "done": 252
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 7,
-  "done": 197
+  "done": 198
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "lintegral_convolution_le",
     "tendsto_convolution_of_hasCompactSupport",
     "tendsto_convolution",
     "lintegral_potential_le",
@@ -7265,14 +7264,13 @@
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
     "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "8 sorry: lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "7 sorry: tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7491,17 +7489,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.lintegral_convolution_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹`): `‖h * ψ‖_1 ≤ ‖h‖_1 ‖ψ‖_1`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7510,7 +7506,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.lintegral_convolution_le — subgoal of Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹` (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.lintegral_convolution_le — subgoal of Theorem 2.1 proof, mollification step 2: Young's inequality in `L¹` (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
