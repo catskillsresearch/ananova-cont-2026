@@ -54,12 +54,27 @@ theorem remark_4_4.lintegral_ofReal_mul_eq {f g : Rd d → ℝ} (hf : 0 ≤ f) (
 
 /-- **Remark 4.4** (explicit seminorm). Under the hypotheses of `remark_4_4_density`, for every
 `h ∈ L^{r'}(ℝ^d)`, `‖h‖_{W^0_{ω,π}} = ∫ |h(x)| ℓ^{ω,π}_T(x) dx = ‖h‖_{L^1(μ^π_{ω,T})}`. -/
-theorem remark_4_4_seminorm (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd d → ℝ} (hℓ0 : 0 ≤ ℓ)
+theorem remark_4_4_seminorm (_hω : ContinuousOn ω (Icc 0 T)) (_hQV : HasQuadraticVariation π ω)
+    (_hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd d → ℝ} (hℓ0 : 0 ≤ ℓ)
     (hweak : WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ)
     {E : Type*} [NormedAddCommGroup E] {h : Rd d → E} (hh : MemLp h r.conjExponent) :
     occupationSeminorm π ω h = ∫⁻ x, ‖h x‖ₑ * ENNReal.ofReal (ℓ x) := by
-  sorry
+  have hn : MemLp (fun x => ‖h x‖) r.conjExponent := hh.norm
+  have hL0 : ∀ n, 0 ≤ discreteOccupationDensity (π n) ω := fun n x =>
+    Finset.sum_nonneg fun i _ => discreteOccupationDensity.piece_nonneg _ _ _
+  have henorm : ∀ x, ‖h x‖ₑ = ENNReal.ofReal ‖h x‖ := fun x => (ofReal_norm _).symm
+  have hseq : ∀ n, ∫⁻ x, ‖h x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x) =
+      ENNReal.ofReal (∫ x, ‖h x‖ * discreteOccupationDensity (π n) ω x) := fun n => by
+    simp_rw [henorm]
+    exact remark_4_4.lintegral_ofReal_mul_eq (hL0 n) (fun x => norm_nonneg _)
+      (remark_4_4.integrable_mul_conj hr (hweak.1 n) hn)
+  have hlim : ∫⁻ x, ‖h x‖ₑ * ENNReal.ofReal (ℓ x) = ENNReal.ofReal (∫ x, ‖h x‖ * ℓ x) := by
+    simp_rw [henorm]
+    exact remark_4_4.lintegral_ofReal_mul_eq hℓ0 (fun x => norm_nonneg _)
+      (remark_4_4.integrable_mul_conj hr hweak.2.1 hn)
+  unfold occupationSeminorm
+  simp_rw [hseq, hlim]
+  exact ((ENNReal.continuous_ofReal.tendsto _).comp (hweak.2.2 _ hn)).limsup_eq
 
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/
