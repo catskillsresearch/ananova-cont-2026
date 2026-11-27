@@ -165,7 +165,50 @@ theorem abs_covariation_sub_le {π : ℕ → Partition T} {ω : ℝ → Rd d}
             pathwiseCovariation π (gradient G) ω t| ≤
           C * (occupationSeminorm π ω (fun x => smoothHessian F x - H x) +
             occupationSeminorm π ω (fun x => smoothHessian G x - H' x)) := by
-  sorry
+  obtain ⟨C, hC⟩ := eq_18 hω hQV hosc
+  refine ⟨C, fun F G H H' hF hG hHm hHH' t ht => ?_⟩
+  have hcongr : ∀ f g : Rd d → (Rd d →L[ℝ] Rd d), f =ᵐ[volume] g →
+      occupationSeminorm π ω f = occupationSeminorm π ω g := by
+    intro f g h
+    unfold occupationSeminorm
+    congr 1
+    funext n
+    apply lintegral_congr_ae
+    filter_upwards [h] with x hx
+    rw [hx]
+  have hneg : ∀ f : Rd d → (Rd d →L[ℝ] Rd d),
+      occupationSeminorm π ω (fun x => -f x) = occupationSeminorm π ω f := by
+    intro f
+    unfold occupationSeminorm
+    simp only [enorm_neg]
+  have hcF : Continuous (smoothHessian F) :=
+    (follmer_ito_formula.contDiffBounded_gradient hF).1.continuous_fderiv (by norm_num)
+  have hcG : Continuous (smoothHessian G) :=
+    (follmer_ito_formula.contDiffBounded_gradient hG).1.continuous_fderiv (by norm_num)
+  have hH'm : AEStronglyMeasurable H' volume := hHm.congr hHH'
+  have m1 : AEStronglyMeasurable (fun x => smoothHessian F x - H x) volume :=
+    hcF.aestronglyMeasurable.sub hHm
+  have m2 : AEStronglyMeasurable (fun x => -(smoothHessian G x - H' x)) volume :=
+    (hcG.aestronglyMeasurable.sub hH'm).neg
+  calc ENNReal.ofReal |pathwiseCovariation π (gradient F) ω t -
+          pathwiseCovariation π (gradient G) ω t|
+      = ENNReal.ofReal |pathwiseCovariation π (gradient (F - G)) ω t| := by
+        rw [pathwiseCovariation_sub hω hQV hosc hF hG ht]
+    _ ≤ C * occupationSeminorm π ω (smoothHessian (F - G)) :=
+        hC _ (contDiffBounded_sub hF hG) t ht
+    _ = C * occupationSeminorm π ω ((fun x => smoothHessian F x - H x) +
+          (fun x => -(smoothHessian G x - H' x))) := by
+        rw [(gradient_smoothHessian_sub hF.1 hG.1).2]
+        congr 1
+        apply hcongr
+        filter_upwards [hHH'] with x hx
+        simp only [Pi.sub_apply, Pi.add_apply, hx]
+        abel
+    _ ≤ C * (occupationSeminorm π ω (fun x => smoothHessian F x - H x) +
+          occupationSeminorm π ω (fun x => -(smoothHessian G x - H' x))) := by
+        gcongr
+        exact occupationSeminorm.add_le π ω m1 m2
+    _ = _ := by rw [hneg (fun x => smoothHessian G x - H' x)]
 
 /-- **Subgoal** (Theorem 5.1 proof, (20) and (15)): the covariations along an approximating
 sequence form a Cauchy sequence, hence converge to `[∇F(ω), ω]_π(t)`. -/

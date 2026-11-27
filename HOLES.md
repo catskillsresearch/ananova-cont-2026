@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:48:12Z  
-**`sorry` occurrences:** 34 · 8 open · 19 blocked · 238 done (goals + subgoals) · goals {'open': 4, 'blocked': 12, 'done': 52} · subgoals {'open': 4, 'blocked': 7, 'done': 186} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:49:28Z  
+**`sorry` occurrences:** 33 · 7 open · 19 blocked · 239 done (goals + subgoals) · goals {'open': 4, 'blocked': 12, 'done': 52} · subgoals {'open': 3, 'blocked': 7, 'done': 187} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -116,7 +116,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq` | subgoal of Theorem 5.1 proof, (21 | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped` | subgoal of Theorem 5.1 proof, (21 | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` | subgoal of Theorem 5.1 proof, (21 | 0 |
-| open | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le` | subgoal of Theorem 5.1 proof, eqs. (19 | 1 |
+| done | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le` | subgoal of Theorem 5.1 proof, eqs. (19 | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub` | subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub` | subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique` | subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations | 0 |
@@ -322,7 +322,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `Main.Theorem51Steps` |
-| blocked | `Main.Theorem51Steps` |  | 3 | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le`, `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
+| blocked | `Main.Theorem51Steps` |  | 2 | `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:48:12Z",
+ "updated": "2026-11-27T01:49:28Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 19,
-  "done": 238
+  "done": 239
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 52
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 7,
-  "done": 186
+  "done": 187
  },
  "untagged": [],
  "legend": {
@@ -3049,9 +3049,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "abs_covariation_sub_le",
     "tendsto_covariation",
     "tendsto_integral"
    ],
@@ -3080,11 +3079,10 @@
     "Smooth.Proposition31"
    ],
    "blockers": [
-    "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
     "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
     "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
    ],
-   "detail": "3 sorry: abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
+   "detail": "2 sorry: tendsto_covariation, tendsto_integral"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
@@ -3096,17 +3094,15 @@
    "parentGoal": "Main.Theorem51Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.abs_covariation_sub_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, eqs. (19) and (23)): for `C²_b` functions `F, G` and a.e.-equal measurable `H, H'`, `|[∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)| ≤ C_d (‖∇²F - H‖_{W^0} + ‖∇²G - H'‖_{W^0})`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3117,7 +3113,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.abs_covariation_sub_le — subgoal of Theorem 5.1 proof, eqs. (19 (in Main.Theorem51Steps)"
+   "detail": "proved: theorem_5_1.abs_covariation_sub_le — subgoal of Theorem 5.1 proof, eqs. (19 (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
