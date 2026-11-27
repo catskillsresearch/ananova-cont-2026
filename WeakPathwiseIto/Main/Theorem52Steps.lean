@@ -768,7 +768,10 @@ theorem lintegral_mul_rpow_div_lt_top' {s p : ℝ} (hd : 1 ≤ d) (hs : 0 < s) (
     (hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤)
     {K : Set (Rd d)} (hK : IsCompact K) :
     ∫⁻ x in K, ∫⁻ y in K, ‖g x - g y‖ₑ * ‖g y‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ) < ⊤ := by
-  sorry
+  rw [lintegral_lintegral_swap (by fun_prop)]
+  convert lintegral_mul_rpow_div_lt_top hd hs hp hgm hgp hgs hK using 3 with x
+  refine lintegral_congr fun y => ?_
+  rw [enorm_sub_rev, edist_comm]
 
 /-- **Subgoal** (Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K`). -/
 theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d → ℝ}
