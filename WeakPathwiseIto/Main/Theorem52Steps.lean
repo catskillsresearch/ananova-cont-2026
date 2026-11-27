@@ -872,7 +872,23 @@ theorem lintegral_gagliardo_eq_shift {E : Type*} [NormedAddCommGroup E] {A : Rd 
     (hA : AEStronglyMeasurable A volume) (p r : ℝ) :
     ∫⁻ x, ∫⁻ y, ‖A x - A y‖ₑ ^ p / edist x y ^ r =
       ∫⁻ h, (∫⁻ x, ‖A (x + h) - A x‖ₑ ^ p) / ‖h‖ₑ ^ r := by
-  sorry
+  have hsh : AEStronglyMeasurable (fun q : Rd d × Rd d => A (q.1 + q.2)) (volume.prod volume) :=
+    hA.comp_snd.comp_measurePreserving (measurePreserving_prod_add volume volume)
+  have hΦ : AEMeasurable (fun q : Rd d × Rd d =>
+      ‖A q.1 - A (q.1 + q.2)‖ₑ ^ p / edist q.1 (q.1 + q.2) ^ r) (volume.prod volume) := by
+    refine ((hA.comp_fst.sub hsh).enorm.pow_const p).div ?_
+    exact ((continuous_fst.edist (continuous_fst.add continuous_snd)).measurable.pow_const
+      r).aemeasurable
+  rw [theorem_5_2.lintegral_lintegral_eq_add' (Φ := fun x y => ‖A x - A y‖ₑ ^ p / edist x y ^ r) hΦ]
+  refine lintegral_congr fun h => ?_
+  have he : ∀ x : Rd d, edist x (x + h) = ‖h‖ₑ := by
+    intro x; rw [edist_comm, edist_eq_enorm_sub, add_sub_cancel_left]
+  simp_rw [he, div_eq_mul_inv]
+  have hm : AEMeasurable (fun x => ‖A (x + h) - A x‖ₑ ^ p) volume :=
+    ((hA.comp_measurePreserving (measurePreserving_add_right volume h)).sub hA).enorm.pow_const p
+  rw [← lintegral_mul_const'' _ hm]
+  refine lintegral_congr fun x => ?_
+  rw [enorm_sub_rev]
 
 /-- **Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in
 the Gagliardo seminorm `[·]_{W^{s,p}}`). -/
