@@ -5589,7 +5589,9 @@ theorem iUnion_le (α : ℝ) (p : ℝ≥0∞) (S : ℕ → Set (Rd d)) :
 /-- **Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar. -/
 theorem IsNull.iUnion {α : ℝ} {p : ℝ≥0∞} {S : ℕ → Set (Rd d)} (h : ∀ n, IsNull d α (p) (S n)) :
     IsNull d α p (⋃ n, S n) := by
-  sorry
+  refine le_antisymm ((iUnion_le α p S).trans ?_) zero_le
+  simp only [IsNull] at h
+  simp [h]
 -/
 
 /- [omitted from the Challenge: not used by the compared statements]

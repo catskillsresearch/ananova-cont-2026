@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T17:38:17Z",
+ "updated": "2026-11-27T17:50:26Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 21,
+ "sorryCount": 20,
  "counts": {
-  "open": 9,
-  "blocked": 12,
+  "open": 8,
+  "blocked": 13,
   "done": 381
  },
  "goalCounts": {
@@ -13,8 +13,8 @@
   "done": 62
  },
  "subgoalCounts": {
-  "open": 6,
-  "blocked": 2,
+  "open": 5,
+  "blocked": 3,
   "done": 319
  },
  "untagged": [],
@@ -1581,10 +1581,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
     "iUnion_le",
-    "IsNull.iUnion",
     "IsNull.one_two_of_two_one",
     "IsNull.one_two_of_two_p"
    ],
@@ -1609,7 +1608,7 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le"
    ],
-   "detail": "4 sorry: iUnion_le, IsNull.iUnion, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "3 sorry: iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1621,10 +1620,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.IsNull.iUnion"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1637,12 +1634,12 @@
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "blocked",
    "deps": [
     "Bessel.BesselSpace"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
