@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:58:13Z",
+ "updated": "2026-11-27T20:58:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 16,
  "counts": {
   "open": 10,
   "blocked": 13,
-  "done": 425
+  "done": 426
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 8,
   "blocked": 3,
-  "done": 359
+  "done": 360
  },
  "untagged": [],
  "legend": {
@@ -3647,7 +3647,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 11
+    "theorem": 12
    },
    "paperGoal": false,
    "verified": false,
@@ -3658,6 +3658,7 @@
     "Main.IsItoIntegral",
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+    "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
     "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
     "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
@@ -3744,6 +3745,37 @@
    ],
    "blockers": [],
    "detail": "sorry: proposition_5_3.elementary_localisation — subgoal of P53.B, localisation (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
+   "label": "exists_rep_increment",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): a concrete representation of `ℙ_x` as the image `Q.map G` of independent real Brownian motions `W^i`, under which `B(t) - B(s) = ∑_i (W^i_t - W^i_s) e_i`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.exists_rep_increment — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
@@ -18316,6 +18348,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
    "kind": "hard"
   },
@@ -19151,6 +19188,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
    "kind": "hard"
   },
@@ -19201,6 +19243,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28296,6 +28343,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool"
   },
   {
@@ -28816,6 +28867,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool"
   },
   {
@@ -28856,6 +28911,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
    "to": "Main.Proposition53Steps"
   },
   {

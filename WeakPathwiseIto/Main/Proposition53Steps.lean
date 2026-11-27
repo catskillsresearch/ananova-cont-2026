@@ -181,6 +181,30 @@ theorem indep_naturalSigma_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst 
       (CanonicalWienerSpace.P (T := T) x) :=
   (IndepFun_iff_Indep _ _ _).1 (indepFun_past_increment x hs hst ht)
 
+/-- **Subgoal** (P53.A, helper): a concrete representation of `ℙ_x` as the image `Q.map G` of
+independent real Brownian motions `W^i`, under which `B(t) - B(s) = ∑_i (W^i_t - W^i_s) e_i`. -/
+theorem exists_rep_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) (ht : t ≤ T) :
+    ∃ (Ω' : Type) (_ : MeasurableSpace Ω') (Q : Measure Ω') (W : Fin d → ℝ≥0 → Ω' → ℝ)
+      (G : Ω' → CanonicalWienerSpace d T), IsProbabilityMeasure Q ∧
+      (∀ i, IsBrownianReal (W i) Q) ∧ iIndepFun (fun i ω' t => W i t ω') Q ∧
+      AEMeasurable G Q ∧ CanonicalWienerSpace.P (T := T) x = Q.map G ∧
+      ∀ ω', CanonicalWienerSpace.B t (G ω') - CanonicalWienerSpace.B s (G ω') =
+        ∑ i, (W i t.toNNReal ω' - W i s.toNNReal ω') • Rd.basisVec i := by
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, hind, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x
+  refine ⟨Ω', inferInstance, Q, W,
+    fun ω' => CanonicalWienerSpace.ofCoords x (fun i t => W i t ω') fun i => hW i ω',
+    hQ, hB, hind, ?_, hP, fun ω' => ?_⟩
+  · refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun r => ?_
+    simp only [CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  · have htI : t ∈ Icc 0 T := ⟨hs.trans hst, ht⟩
+    have hsI : s ∈ Icc 0 T := ⟨hs, hst.trans ht⟩
+    simp only [CanonicalWienerSpace.B, htI, hsI, dite_true, CanonicalWienerSpace.ofCoords,
+      ContinuousMap.coe_mk]
+    rw [add_sub_add_left_eq_sub, ← Finset.sum_sub_distrib]
+    simp_rw [sub_smul]
+
 /-- **Subgoal** (P53.A, increment moments): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the increment
 `B(t) - B(s)` is square integrable, centred, with covariance `(t - s) I`. -/
 theorem increment_moments (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) (ht : t ≤ T) :

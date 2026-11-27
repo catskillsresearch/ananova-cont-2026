@@ -461,6 +461,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.exists_rep_increment": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool": [
    "propext",
    "Classical.choice",
@@ -1862,5 +1867,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:58:12Z"
+ "generated": "2026-11-27T20:58:29Z"
 }
