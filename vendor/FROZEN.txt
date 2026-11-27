@@ -1,0 +1,34 @@
+# Frozen checkouts vendored for one Palomar SHA (same layout as catskillsresearch/scott_models).
+# Each vendor/<repo> is compiled as a [[lean_lib]] of THIS package with srcDir = "vendor/<repo>"
+# (lakefile.toml), never as a Lake path dependency: Comparator's landrun sandbox may write only
+# under .lake/, and a path package would write vendor/<repo>/.lake (EACCES).
+# Requirements of a vendored library (here kolmogorov_extension4) are pinned root git requires
+# under .lake/packages, like Carleson and Mathlib. No .git / .lake / docs build products copied.
+# Upstream remotes remain the homes of these libraries; full pins also in vendor/SOURCES.
+
+vendor/brownian-motion   (lean_lib BrownianMotion)
+  origin:   https://github.com/RemyDegenne/brownian-motion
+  rev:      497e5e2a60450796f75ab920e6c33addae4d644d
+  from:     ../xodarev2026/vendor/brownian-motion @ xodarev2026 0e1f1f3b0739fdf472511da2207599ab11085660
+            (itself ../lyasoff2016/vendor/brownian-motion, copied 2026-11-21; lyasoff pin dated 2026-11-18)
+  date:     2026-11-26 (copied into this repository)
+  in-tree edits:
+    - Unfinished (sorry) declarations removed from the build closure, inherited from the
+      lyasoff2016 copy: DoobLp L^p iSup; UniformIntegrable limitProcess / Submartingale
+      stoppedValue; OptionalSampling stoppedValue_min; LocalMartingale isStable_submartingale.
+      Consequently the BrownianMotion umbrella (ClassD) does not build; only the concrete
+      modules we import are built.
+    - 2026-11-27: ENNReal.one_le_toReal renamed ENNReal.one_le_toReal_of_ne_top in
+      BrownianMotion/Auxiliary/ENNReal.lean (declaration line 29, use line 35) and
+      BrownianMotion/Auxiliary/Jensen.lean (use line 47), to avoid a clash with
+      Carleson/ToMathlib/RealInterpolation/InterpolatedExponents.lean:45 (carleson @ f7487cc).
+    - Its own Palomar/docs packaging (verso, lakefile requires checkdecls/subverso) is not used;
+      vendor/brownian-motion/lakefile.toml is kept for reference but not read by Lake.
+  requires: kolmogorov_extension4 @ c20f168ed693537c78111ffeabc2ab5f384e35d6 (root git require)
+  used by:  WeakPathwiseIto/Bessel/WienerLawExists.lean (proof of CanonicalWienerSpace.exists_isLaw)
+
+vendor/palomar-policy     (not Lean; editorial policy snapshot)
+  origin:   https://github.com/PalomarRegistry/PalomarPolicy
+  rev:      5bd35cddcfc940532bb5f55e399d68b49b0986a5 (vendor/PALOMAR_POLICY_PIN)
+  from:     ../xodarev2026/vendor/palomar-policy @ xodarev2026 0e1f1f3b0739fdf472511da2207599ab11085660
+  in-tree edits: none

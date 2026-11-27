@@ -3,7 +3,7 @@
 Everything here is an **unchanged** copy (borrowed whole), except one documented rename in
 `brownian-motion/` (see `SOURCES` and `PROVENANCE.md`). Anything modified from another
 repository lives in the main body of this repository instead, with its origin recorded in
-`PROVENANCE.md`. Pins and upstream SHAs: `SOURCES`.
+`PROVENANCE.md`. Pins and upstream SHAs: `SOURCES`; frozen revisions, copy dates and every in-tree edit: `FROZEN.txt`.
 
 - `brownian-motion/`: compiled as this package's `lean_lib BrownianMotion`
   (`srcDir = "vendor/brownian-motion"`), not as a Lake path dependency, following the
