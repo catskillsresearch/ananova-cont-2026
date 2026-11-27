@@ -357,6 +357,22 @@ theorem remark_4_5.setIntegral_abs_le_opNorm {d : ℕ} {f : Rd d → ℝ} (hf : 
   rw [← hval, ← hnorm]
   exact (le_abs_self _).trans (L.le_opNorm _)
 
+/-- **Subgoal** (Remark 4.5 bounded case, Banach–Steinhaus): a weakly-* convergent sequence in
+`L^∞` is bounded in `L^∞`. -/
+theorem remark_4_5.exists_uniform_bound {d : ℕ} {f : ℕ → Rd d → ℝ} {ℓ : Rd d → ℝ}
+    (h : WeakLpTendsto ⊤ f ℓ) : ∃ C : ℝ, ∀ n, eLpNorm (f n) ⊤ volume ≤ ENNReal.ofReal C := by
+  choose L hL using fun n => remark_4_5.exists_pairing (h.1 n)
+  have hc1 : (⊤ : ℝ≥0∞).conjExponent = 1 := by simp [ENNReal.conjExponent]
+  have hpt : ∀ g : Lp ℝ 1 (volume : Measure (Rd d)), ∃ C, ∀ n, ‖L n g‖ ≤ C := by
+    intro g
+    have ht := h.2.2 g (by rw [hc1]; exact Lp.memLp g)
+    obtain ⟨C, hC⟩ := isBounded_iff_forall_norm_le.1 (Metric.isBounded_range_of_tendsto _ ht)
+    exact ⟨C, fun n => by rw [hL n]; exact hC _ ⟨n, rfl⟩⟩
+  obtain ⟨C', hC'⟩ := banach_steinhaus hpt
+  refine ⟨C', fun n => remark_4_5.eLpNorm_top_le_of_setIntegral_abs_le (h.1 n) fun s hs hst => ?_⟩
+  exact (remark_4_5.setIntegral_abs_le_opNorm (h.1 n) (L n) (hL n) hs hst).trans
+    (mul_le_mul_of_nonneg_right (hC' n) measureReal_nonneg)
+
 /-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
 `L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`
 (for continuous representatives). -/
