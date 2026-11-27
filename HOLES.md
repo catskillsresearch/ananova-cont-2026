@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T00:54:20Z  
-**`sorry` occurrences:** 34 · 8 open · 18 blocked · 216 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 49} · subgoals {'open': 3, 'blocked': 7, 'done': 167} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T00:55:20Z  
+**`sorry` occurrences:** 33 · 7 open · 18 blocked · 217 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 49} · subgoals {'open': 2, 'blocked': 7, 'done': 168} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -209,7 +209,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
 | open | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge` | subgoal of Lemma 2.2 proof, `d ≤ α` | 1 |
-| open | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` | subgoal of Lemma 2.2 proof, `α < d` | 1 |
+| done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` | subgoal of Lemma 2.2 proof, `α < d` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le` | subgoal of Lemma 2.2 proof, maximal function on a closed ball | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_shell_le` | subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.subset_closedBall` | subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q | 0 |
@@ -236,7 +236,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
 | done | `Sobolev.IsWeakHessian` |  | 0 |  |
-| blocked | `Sobolev.Lemma22` | Lemma 2.2 | 3 | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge`, `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` |
+| blocked | `Sobolev.Lemma22` | Lemma 2.2 | 2 | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge` |
 | done | `Sobolev.LocalMaximalFunction` | Section 2.1 M_R f | 0 |  |
 | done | `Sobolev.MemW` | Section 2.1 W^{k,p} | 0 |  |
 | done | `Sobolev.MemW2Plus` | Section 2.1 W^{2+,p} | 0 |  |

@@ -201,7 +201,7 @@ theorem lintegral_shell_le {α : ℝ} (hα : 0 < α) (hαd : α < d) (f : Rd d �
           exact ENNReal.inv_ne_top.2 (ENNReal.rpow_pos (ENNReal.ofReal_pos.2 ha) ENNReal.ofReal_ne_top).ne')
     _ ≤ (∫⁻ y in Metric.closedBall x b, ‖f y‖ₑ) * K := by
         gcongr
-        exact diff_subset
+        exact sdiff_subset
     _ ≤ (volume (Metric.ball x b) * localMaximalFunction (ENNReal.ofReal ρ) f x) * K := by
         gcongr
         exact lintegral_closedBall_le f x hb (ENNReal.ofReal_le_ofReal hbρ)
@@ -215,7 +215,67 @@ theorem lintegral_closedBall_kernel_le_of_lt {α : ℝ} (hα : 0 < α) (hαd : �
     ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (x : Rd d) {ρ : ℝ}, 0 < ρ →
       ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
         C * ENNReal.ofReal ρ ^ α * localMaximalFunction (ENNReal.ofReal ρ) f x := by
-  sorry
+  have hd : 0 < d := by
+    have : (0 : ℝ) < d := hα.trans hαd
+    exact_mod_cast this
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  set V := volume (Metric.ball (0 : Rd d) 1) with hV
+  set r : ℝ≥0∞ := ENNReal.ofReal ((2 : ℝ) ^ (-α)) with hr
+  have hr1 : r < 1 := ENNReal.ofReal_lt_one.2
+    (Real.rpow_lt_one_of_one_lt_of_neg one_lt_two (neg_neg_of_pos hα))
+  set C' : ℝ≥0∞ := ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α)) * V * (1 - r)⁻¹ with hC'
+  have hC'top : C' ≠ ⊤ := ENNReal.mul_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top
+    measure_ball_lt_top.ne) (ENNReal.inv_ne_top.2 (tsub_pos_of_lt hr1).ne')
+  refine ⟨C'.toNNReal, fun f x ρ hρ => ?_⟩
+  rw [ENNReal.coe_toNNReal hC'top]
+  set S : ℕ → Set (Rd d) := fun k => {y | ρ / 2 ^ (k + 1) < dist y x ∧ dist y x ≤ ρ / 2 ^ k}
+    with hSdef
+  have hcover : Metric.closedBall x ρ ⊆ {x} ∪ ⋃ k, S k := by
+    intro y hy
+    by_cases hyx : y = x
+    · exact Or.inl hyx
+    right
+    have hpos : 0 < dist y x := dist_pos.2 hyx
+    have hyr : dist y x ≤ ρ := hy
+    have hex : ∃ k : ℕ, ρ / 2 ^ (k + 1) < dist y x := by
+      obtain ⟨n, hn⟩ := pow_unbounded_of_one_lt (ρ / dist y x) (by norm_num : (1 : ℝ) < 2)
+      refine ⟨n, ?_⟩
+      rw [div_lt_iff₀ hpos] at hn
+      rw [div_lt_iff₀ (by positivity), pow_succ]
+      have : (0 : ℝ) < 2 ^ n := by positivity
+      nlinarith
+    classical
+    refine mem_iUnion.2 ⟨Nat.find hex, show _ ∧ _ from ⟨Nat.find_spec hex, ?_⟩⟩
+    rcases Nat.eq_zero_or_pos (Nat.find hex) with h0 | hpos'
+    · rw [h0, pow_zero, div_one]; exact hyr
+    · obtain ⟨j, hj⟩ : ∃ j, Nat.find hex = j + 1 := ⟨_, (Nat.succ_pred_eq_of_pos hpos').symm⟩
+      have := Nat.find_min hex (show j < Nat.find hex by omega)
+      rw [hj]; exact not_lt.1 this
+  have h0 : volume ({x} : Set (Rd d)) = 0 := measure_singleton x
+  set A : ℝ≥0∞ := ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α)) * ENNReal.ofReal (ρ ^ α) * V *
+    localMaximalFunction (ENNReal.ofReal ρ) f x with hA
+  have hterm : ∀ k : ℕ, ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α) * ρ ^ α * ((2 : ℝ) ^ (-α)) ^ k) *
+      V * localMaximalFunction (ENNReal.ofReal ρ) f x = A * r ^ k := fun k => by
+    rw [ENNReal.ofReal_mul (by positivity), ENNReal.ofReal_mul (by positivity),
+      ENNReal.ofReal_pow (by positivity), hA, hr]
+    ring
+  calc _ ≤ ∫⁻ y in {x} ∪ ⋃ k, S k, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) :=
+        lintegral_mono_set hcover
+    _ ≤ (∫⁻ y in {x}, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α)) +
+          ∫⁻ y in ⋃ k, S k, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) :=
+        lintegral_union_le _ _ _
+    _ = ∫⁻ y in ⋃ k, S k, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) := by
+        rw [setLIntegral_measure_zero _ _ h0, zero_add]
+    _ ≤ ∑' k, ∫⁻ y in S k, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) :=
+        lintegral_iUnion_le _ _
+    _ ≤ ∑' k, ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α) * ρ ^ α * ((2 : ℝ) ^ (-α)) ^ k) *
+          V * localMaximalFunction (ENNReal.ofReal ρ) f x :=
+        ENNReal.tsum_le_tsum fun k => lintegral_shell_le hα hαd f x hρ k
+    _ = ∑' k, A * r ^ k := tsum_congr hterm
+    _ = A * (1 - r)⁻¹ := by rw [ENNReal.tsum_mul_left, ENNReal.tsum_geometric]
+    _ = _ := by
+        rw [hA, hC', ENNReal.ofReal_rpow_of_pos hρ]
+        ring
 
 /-- **Subgoal** (Lemma 2.2 proof, `d ≤ α`): the kernel is at most `ρ^{α-d}` on `B̄(x,ρ)`, so
 `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ |B(0,1)| ρ^α M_ρ f(x)`. -/

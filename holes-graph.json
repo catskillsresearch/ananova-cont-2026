@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T00:54:20Z",
+ "updated": "2026-11-27T00:55:20Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 18,
-  "done": 216
+  "done": 217
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 49
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 167
+  "done": 168
  },
  "untagged": [],
  "legend": {
@@ -6195,9 +6195,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "lintegral_closedBall_kernel_le_of_lt",
     "lintegral_closedBall_kernel_le_of_ge",
     "lemma_2_2"
    ],
@@ -6218,10 +6217,9 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
-    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
    ],
-   "detail": "3 sorry: lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+   "detail": "2 sorry: lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6261,23 +6259,21 @@
    "parentGoal": "Sobolev.Lemma22",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 2.2 proof, `α < d`): summing the dyadic shells, `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ C ρ^α M_ρ f(x)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_2_2.lintegral_closedBall_kernel_le_of_lt — subgoal of Lemma 2.2 proof, `α < d` (in Sobolev.Lemma22)"
+   "detail": "proved: lemma_2_2.lintegral_closedBall_kernel_le_of_lt — subgoal of Lemma 2.2 proof, `α < d` (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
