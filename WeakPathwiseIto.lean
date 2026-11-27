@@ -37,6 +37,8 @@ public import WeakPathwiseIto.Main.IsLocalItoIntegral
 public import WeakPathwiseIto.Main.IsL2ItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
 public import WeakPathwiseIto.Main.Proposition53Steps
+public import WeakPathwiseIto.Main.DoobL2
+public import WeakPathwiseIto.Main.ItoL2Theory
 public import WeakPathwiseIto.Main.Proposition53Proof
 public import WeakPathwiseIto.Main.Remark54
 public import WeakPathwiseIto.Main.Eq18

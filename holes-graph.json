@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T22:16:44Z",
+ "updated": "2026-11-27T22:18:35Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 45,
  "counts": {
-  "open": 22,
-  "blocked": 13,
+  "open": 39,
+  "blocked": 15,
   "done": 450
  },
  "goalCounts": {
   "open": 2,
-  "blocked": 10,
+  "blocked": 12,
   "done": 73
  },
  "subgoalCounts": {
-  "open": 20,
+  "open": 37,
   "blocked": 3,
   "done": 377
  },
@@ -3174,6 +3174,97 @@
    "detail": "Verified (builds, no sorry)."
   },
   {
+   "id": "Main.DoobL2",
+   "label": "DoobL2",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/DoobL2.lean",
+   "sorryCount": 2,
+   "holes": [
+    "lintegral_sq_le_of_weak_type",
+    "lintegral_sup_sq_le"
+   ],
+   "declKinds": {
+    "theorem": 2
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
+    "Main.DoobL2::DoobL2.lintegral_sup_sq_le"
+   ],
+   "blockers": [
+    "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
+    "Main.DoobL2::DoobL2.lintegral_sup_sq_le"
+   ],
+   "detail": "2 sorry: lintegral_sq_le_of_weak_type, lintegral_sup_sq_le"
+  },
+  {
+   "id": "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
+   "label": "lintegral_sq_le_of_weak_type",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Doob `L²`, weak type ⇒ strong type",
+   "parentGoal": "Main.DoobL2",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/DoobL2.lean",
+   "sorryCount": 1,
+   "holes": [
+    "DoobL2.lintegral_sq_le_of_weak_type"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Doob `L²`, weak type ⇒ strong type): if `0 ≤ X, Y` with `E Y² < ∞` and `t μ(Y ≥ t) ≤ ∫_{Y ≥ t} X` for all `t > 0`, then `E Y² ≤ 4 E X²` (layer cake: `E Y² = 2 ∫_0^∞ t μ(Y ≥ t) dt ≤ 2 E[X Y] ≤ 2 ‖X‖₂ ‖Y‖₂`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [],
+   "blockers": [],
+   "detail": "sorry: DoobL2.lintegral_sq_le_of_weak_type — subgoal of Doob `L²`, weak type ⇒ strong type (in Main.DoobL2) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.DoobL2::DoobL2.lintegral_sup_sq_le",
+   "label": "lintegral_sup_sq_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Doob's `L²` maximal inequality, discrete time",
+   "parentGoal": "Main.DoobL2",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/DoobL2.lean",
+   "sorryCount": 1,
+   "holes": [
+    "DoobL2.lintegral_sup_sq_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Doob's `L²` maximal inequality, discrete time): for a real martingale `M` with `M_k ∈ L²`, `E (max_{k ≤ n} |M_k|)² ≤ 4 E |M_n|²`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [],
+   "blockers": [],
+   "detail": "sorry: DoobL2.lintegral_sup_sq_le — subgoal of Doob's `L²` maximal inequality, discrete time (in Main.DoobL2) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Main.Eq18",
    "label": "Eq18",
    "section": "Main",
@@ -3687,6 +3778,633 @@
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.ItoL2Theory",
+   "label": "ItoL2Theory",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "L² Itô integral: martingale, BDG p=2, existence (proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 15,
+   "holes": [
+    "setIntegral_inner_increment_eq_zero",
+    "condExp_elementaryIntegral",
+    "exists_elementary_sub",
+    "lintegral_elementaryIntegral_sq",
+    "isL2ItoIntegral_unique",
+    "lintegral_sq_isL2ItoIntegral",
+    "condExp_isL2ItoIntegral",
+    "lintegral_sup_sq_finite_le",
+    "lintegral_sup_sq_le",
+    "exists_elementary_approx_of_continuous",
+    "exists_continuous_approx_of_bounded",
+    "exists_bounded_approx",
+    "exists_elementary_approx",
+    "exists_isL2ItoIntegral",
+    "exists_continuous_isL2ItoIntegral"
+   ],
+   "declKinds": {
+    "theorem": 15
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+    "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+    "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+    "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+    "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+    "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+    "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+    "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+    "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+    "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+    "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2",
+    "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+    "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+    "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+    "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+    "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+    "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+    "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+    "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+    "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+    "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+    "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+    "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero"
+   ],
+   "detail": "15 sorry: setIntegral_inner_increment_eq_zero, condExp_elementaryIntegral, exists_elementary_sub, lintegral_elementaryIntegral_sq, isL2ItoIntegral_unique, lintegral_sq_isL2ItoIntegral, condExp_isL2ItoIntegral, lintegral_sup_sq_finite_le, lintegral_sup_sq_le, exists_elementary_approx_of_continuous, exists_continuous_approx_of_bounded, exists_bounded_approx, exists_elementary_approx, exists_isL2ItoIntegral, exists_continuous_isL2ItoIntegral"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "label": "condExp_elementaryIntegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, conditional expectation of an elementary integral",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.condExp_elementaryIntegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, conditional expectation of an elementary integral): for `0 ≤ r ≤ T`, `E[∫_0^{s_k} H dB | 𝓕_r] = ∫_0^{s_k ∧ r} H dB` for an elementary predictable `H`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.condExp_elementaryIntegral — subgoal of L2.M, conditional expectation of an elementary integral (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "label": "condExp_isL2ItoIntegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, martingale property",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.condExp_isL2ItoIntegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, martingale property): for `0 ≤ t' ≤ t ≤ T`, `E[I(t) | 𝓕_{t'}] = I(t')`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.condExp_isL2ItoIntegral — subgoal of L2.M, martingale property (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "label": "exists_bounded_approx",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, truncation",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_bounded_approx"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, truncation): a progressive `H` with `E ∫_0^t |H|² < ∞` is the `L²(dℙ ⊗ ds)` limit on `(0, t]` of its bounded truncations.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_bounded_approx — subgoal of L2.E, truncation (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "label": "exists_continuous_approx_of_bounded",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, bounded progressive ⇒ continuous in time",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_continuous_approx_of_bounded"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, bounded progressive ⇒ continuous in time): a bounded progressive `H` is the `L²(dℙ ⊗ ds)` limit on `(0, t]` of the bounded progressive processes with continuous paths `H_n(u) = n ∫_{(u - 1/n) ∨ 0}^u H(v) dv`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_continuous_approx_of_bounded — subgoal of L2.E, bounded progressive ⇒ continuous in time (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "label": "exists_continuous_isL2ItoIntegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, continuous version",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_continuous_isL2ItoIntegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, continuous version): the `L²` integral process has a version with continuous paths on `[0, T]` (elementary integral processes are continuous; Doob's `L²` inequality and Borel–Cantelli along a fast subsequence give uniform convergence).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_continuous_isL2ItoIntegral — subgoal of L2.E, continuous version (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "label": "exists_elementary_approx",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, density",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_elementary_approx"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, density): elementary predictable integrands are dense in the progressive `L²(dℙ ⊗ ds)` on `(0, t]`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_elementary_approx — subgoal of L2.E, density (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "label": "exists_elementary_approx_of_continuous",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, density for bounded integrands continuous in time",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_elementary_approx_of_continuous"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, density for bounded integrands continuous in time): a bounded adapted `H` with continuous paths is the `L²(dℙ ⊗ ds)` limit on `(0, t]` of the elementary integrands `H(η_n(s))` along dyadic grids.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_elementary_approx_of_continuous — subgoal of L2.E, density for bounded integrands continuous in time (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "label": "exists_elementary_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, common refinement",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_elementary_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, common refinement): the difference of two elementary integrands on grids of `[0, t]` is an elementary integrand on the merged grid, and the elementary integrals subtract.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_elementary_sub — subgoal of L2.M, common refinement (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "label": "exists_isL2ItoIntegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.E, existence at a fixed time",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.exists_isL2ItoIntegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.E, existence at a fixed time): the elementary integrals of an approximating sequence are Cauchy in `L²(ℙ_x)` by the isometry; their limit is the `L²` integral.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.exists_isL2ItoIntegral — subgoal of L2.E, existence at a fixed time (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "label": "isL2ItoIntegral_unique",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, uniqueness",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.isL2ItoIntegral_unique"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, uniqueness): the `L²` stochastic integral at a time `t ∈ [0, T]` is unique up to `ℙ_x`-null sets.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.isL2ItoIntegral_unique — subgoal of L2.M, uniqueness (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "label": "lintegral_elementaryIntegral_sq",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, the elementary isometry in `∫⁻` form on `(0, s_k]`",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.lintegral_elementaryIntegral_sq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, the elementary isometry in `∫⁻` form on `(0, s_k]`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.lintegral_elementaryIntegral_sq — subgoal of L2.M, the elementary isometry in `∫⁻` form on `(0, s_k]` (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "label": "lintegral_sq_isL2ItoIntegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, the isometry for the `L²` integral",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.lintegral_sq_isL2ItoIntegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, the isometry for the `L²` integral): `E I(t)² = E ∫_0^t |H(s)|² ds`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.lintegral_sq_isL2ItoIntegral — subgoal of L2.M, the isometry for the `L²` integral (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "label": "lintegral_sup_sq_finite_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.BDG, finite time sets",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.lintegral_sup_sq_finite_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.BDG, finite time sets): Doob's `L²` inequality along times `0 ≤ r_0 ≤ ⋯ ≤ r_N ≤ T`: `E max_j |I(r_j)|² ≤ 4 E |I(r_N)|²`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.lintegral_sup_sq_finite_le — subgoal of L2.BDG, finite time sets (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "label": "lintegral_sup_sq_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.BDG, `p = 2`",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.lintegral_sup_sq_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.BDG, `p = 2`): for an `L²` integral process with continuous paths on `[0, T]`, `E sup_{t ≤ T} |I(t)|² ≤ 4 E ∫_0^T |H(s)|² ds` (finite dyadic time sets increase to a dense set; continuity and monotone convergence).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.lintegral_sup_sq_le — subgoal of L2.BDG, `p = 2` (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "label": "setIntegral_inner_increment_eq_zero",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of L2.M, increments are orthogonal to the past",
+   "parentGoal": "Main.ItoL2Theory",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/ItoL2Theory.lean",
+   "sorryCount": 1,
+   "holes": [
+    "itoL2.setIntegral_inner_increment_eq_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (L2.M, increments are orthogonal to the past): for `a ≤ c ≤ b ≤ T`, `ξ ∈ L²` `𝓕_a`-measurable and `A ∈ 𝓕_c`, `∫_A ⟨ξ, B(b) - B(c)⟩ dℙ_x = 0`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.DoobL2",
+    "Main.IsL2ItoIntegral",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.DoobL2"
+   ],
+   "detail": "sorry: itoL2.setIntegral_inner_increment_eq_zero — subgoal of L2.M, increments are orthogonal to the past (in Main.ItoL2Theory) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.ItoRiemannSum",
@@ -20463,6 +21181,96 @@
    "kind": "hard"
   },
   {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
+   "to": "Main.DoobL2",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.DoobL2::DoobL2.lintegral_sup_sq_le",
+   "to": "Main.DoobL2",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Eq18",
    "to": "Main.Theorem51Steps",
    "kind": "hard"
@@ -21013,6 +21821,86 @@
    "kind": "hard"
   },
   {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "kind": "hard"
+  },
+  {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53",
    "kind": "hard"
@@ -21121,6 +22009,81 @@
    "from": "Main.IsProgressive",
    "to": "Main.IsL2ItoIntegral",
    "kind": "hard"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "to": "Main.ItoL2Theory",
+   "kind": "subgoal"
   },
   {
    "from": "Main.ItoRiemannSum",
@@ -21416,6 +22379,86 @@
    "from": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
    "to": "Main.Proposition53Proof",
    "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "kind": "hard"
   },
   {
    "from": "Main.Proposition53Steps",
@@ -31461,6 +32504,74 @@
    "to": "Appendix.LemmaB2::lemma_B_2_literal"
   },
   {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le"
+  },
+  {
+   "from": "Main.DoobL2",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero"
+  },
+  {
+   "from": "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type",
+   "to": "Main.DoobL2"
+  },
+  {
+   "from": "Main.DoobL2::DoobL2.lintegral_sup_sq_le",
+   "to": "Main.DoobL2"
+  },
+  {
    "from": "Main.Eq18",
    "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le"
   },
@@ -31793,6 +32904,66 @@
    "to": "Main.IsLocalItoIntegral"
   },
   {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le"
+  },
+  {
+   "from": "Main.IsL2ItoIntegral",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero"
+  },
+  {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53"
   },
@@ -31875,6 +33046,66 @@
   {
    "from": "Main.IsProgressive",
    "to": "Main.IsL2ItoIntegral"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_bounded_approx",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_approx",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_elementary_sub",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le",
+   "to": "Main.ItoL2Theory"
+  },
+  {
+   "from": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero",
+   "to": "Main.ItoL2Theory"
   },
   {
    "from": "Main.ItoRiemannSum",
@@ -32103,6 +33334,66 @@
   {
    "from": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
    "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_bounded_approx"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_elementary_sub"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero"
   },
   {
    "from": "Main.Proposition53Steps",

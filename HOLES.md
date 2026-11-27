@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:16:44Z  
-**`sorry` occurrences:** 28 · 22 open · 13 blocked · 450 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 73} · subgoals {'open': 20, 'blocked': 3, 'done': 377} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:18:35Z  
+**`sorry` occurrences:** 45 · 39 open · 15 blocked · 450 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 73} · subgoals {'open': 37, 'blocked': 3, 'done': 377} · 11 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -113,6 +113,8 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul` | subgoal of Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y | 0 |
 | done | `Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le` | subgoal of Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y | 0 |
 | done | `Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le` | subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v | 0 |
+| open | `Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type` | subgoal of Doob `L²`, weak type ⇒ strong type | 1 |
+| open | `Main.DoobL2::DoobL2.lintegral_sup_sq_le` | subgoal of Doob's `L²` maximal inequality, discrete time | 1 |
 | done | `Main.Eq18::theorem_5_1.eq_18` | subgoal of Theorem 5.1 proof, eq. (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral` | subgoal of Theorem 5.1 proof, (18 | 0 |
@@ -123,6 +125,21 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
+| open | `Main.ItoL2Theory::itoL2.condExp_elementaryIntegral` | subgoal of L2.M, conditional expectation of an elementary integral | 1 |
+| open | `Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral` | subgoal of L2.M, martingale property | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_bounded_approx` | subgoal of L2.E, truncation | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded` | subgoal of L2.E, bounded progressive ⇒ continuous in time | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral` | subgoal of L2.E, continuous version | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_elementary_approx` | subgoal of L2.E, density | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous` | subgoal of L2.E, density for bounded integrands continuous in time | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_elementary_sub` | subgoal of L2.M, common refinement | 1 |
+| open | `Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral` | subgoal of L2.E, existence at a fixed time | 1 |
+| open | `Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique` | subgoal of L2.M, uniqueness | 1 |
+| open | `Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq` | subgoal of L2.M, the elementary isometry in `∫⁻` form on `(0, s_k]` | 1 |
+| open | `Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral` | subgoal of L2.M, the isometry for the `L²` integral | 1 |
+| open | `Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le` | subgoal of L2.BDG, finite time sets | 1 |
+| open | `Main.ItoL2Theory::itoL2.lintegral_sup_sq_le` | subgoal of L2.BDG, `p = 2` | 1 |
+| open | `Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero` | subgoal of L2.M, increments are orthogonal to the past | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq` | subgoal of P53.D, pathwise integral of `∇F_m` is `J_m` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub` | subgoal of P53.D, `D_m^R = J_m - J` when `τ_R > T` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub` | subgoal of P53.D, Tonelli for `S_n^m` | 1 |
@@ -523,6 +540,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
+| blocked | `Main.DoobL2` | Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3) | 2 | `Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type`, `Main.DoobL2::DoobL2.lintegral_sup_sq_le` |
 | done | `Main.Eq18` |  | 0 |  |
 | done | `Main.ExitTime` | τ_R exit time (proof of Prop. 5.3) | 0 |  |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
@@ -530,6 +548,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.IsL2ItoIntegral` | L² Itô integral (stopped integrals J^R) | 0 |  |
 | done | `Main.IsLocalItoIntegral` | local Itô integral J (proof of Prop. 5.3) | 0 |  |
 | done | `Main.IsProgressive` | progressively measurable integrands (proof of Prop. 5.3) | 0 |  |
+| blocked | `Main.ItoL2Theory` | L² Itô integral: martingale, BDG p=2, existence (proof of Prop. 5.3) | 15 | `Main.DoobL2`, `Main.ItoL2Theory::itoL2.condExp_elementaryIntegral`, `Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral`, `Main.ItoL2Theory::itoL2.exists_bounded_approx`, `Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded`, `Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral`, `Main.ItoL2Theory::itoL2.exists_elementary_approx`, `Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous`, `Main.ItoL2Theory::itoL2.exists_elementary_sub`, `Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral`, `Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique`, `Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq`, `Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral`, `Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le`, `Main.ItoL2Theory::itoL2.lintegral_sup_sq_le`, `Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero` |
 | done | `Main.ItoRiemannSum` | S_n^m Riemann sums (proof of Prop. 5.3) | 0 |  |
 | done | `Main.PartitionEta` | η_n left grid point (proof of Prop. 5.3) | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |

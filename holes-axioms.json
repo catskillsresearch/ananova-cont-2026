@@ -399,6 +399,18 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.DoobL2::DoobL2.lintegral_sq_le_of_weak_type": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.DoobL2::DoobL2.lintegral_sup_sq_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Eq18::theorem_5_1.eq_18": [
    "propext",
    "Classical.choice",
@@ -446,6 +458,96 @@
   ],
   "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh": [
    "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.condExp_elementaryIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.condExp_isL2ItoIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_bounded_approx": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_continuous_approx_of_bounded": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_continuous_isL2ItoIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_elementary_approx": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_elementary_approx_of_continuous": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_elementary_sub": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.exists_isL2ItoIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.isL2ItoIntegral_unique": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.lintegral_elementaryIntegral_sq": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.lintegral_sq_isL2ItoIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.lintegral_sup_sq_finite_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.lintegral_sup_sq_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.ItoL2Theory::itoL2.setIntegral_inner_increment_eq_zero": [
+   "propext",
+   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -2024,5 +2126,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T22:16:43Z"
+ "generated": "2026-11-27T22:18:34Z"
 }

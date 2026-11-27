@@ -191,6 +191,8 @@ PAPER_LABEL: dict[str, str] = {
     "Main.ItoRiemannSum": "S_n^m Riemann sums (proof of Prop. 5.3)",
     "Main.PartitionEta": "η_n left grid point (proof of Prop. 5.3)",
     "Main.IsProgressive": "progressively measurable integrands (proof of Prop. 5.3)",
+    "Main.DoobL2": "Doob L² maximal inequality (for BDG p=2, proof of Prop. 5.3)",
+    "Main.ItoL2Theory": "L² Itô integral: martingale, BDG p=2, existence (proof of Prop. 5.3)",
     "Main.IsLocalItoIntegral": "local Itô integral J (proof of Prop. 5.3)",
     "Main.IsL2ItoIntegral": "L² Itô integral (stopped integrals J^R)",
     "Main.Proposition53": "Proposition 5.3",
