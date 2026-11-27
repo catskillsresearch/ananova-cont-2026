@@ -4493,7 +4493,7 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-open MeasureTheory Filter Topology Set
+open MeasureTheory Filter Topology Set Metric Vitali
 open scoped ENNReal NNReal
 
 namespace hardyLittlewood

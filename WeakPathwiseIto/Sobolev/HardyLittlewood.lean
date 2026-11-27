@@ -21,7 +21,7 @@ public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
 
 noncomputable section
 
-open MeasureTheory Filter Topology Set
+open MeasureTheory Filter Topology Set Metric Vitali
 open scoped ENNReal NNReal
 
 namespace WeakPathwiseIto
@@ -102,7 +102,36 @@ theorem measure_biUnion_le_lintegral_aux {ι : Type*} {𝓑 : Set ι} {c : ι �
     (h2u : ∀ i ∈ 𝓑, l * volume (Metric.ball (c i) (r i)) ≤
       ∫⁻ x in Metric.ball (c i) (r i), u x) :
     l * volume (⋃ i ∈ 𝓑, Metric.ball (c i) (r i)) ≤ (2 ^ d) ^ 2 * ∫⁻ x, u x := by
-  sorry
+  let 𝓑' := { a ∈ 𝓑 | 0 < r a }
+  obtain ⟨B, hB𝓑, hB, h2B⟩ := exists_disjoint_subfamily_covering_enlargement_ball
+    𝓑' c r R (fun a ha => hR a ha.1) (2 ^ 2) (by norm_num)
+  have : Countable B := hB.countable_of_isOpen (fun _ _ => isOpen_ball)
+    (fun a ha => nonempty_ball.mpr (hB𝓑 ha).right)
+  have disj := fun i j hij ↦
+    hB (Subtype.coe_prop i) (Subtype.coe_prop j) (Subtype.coe_ne_coe.mpr hij)
+  calc
+    l * volume (⋃ i ∈ 𝓑, ball (c i) (r i)) ≤ l * volume (⋃ i ∈ B, ball (c i) (2 ^ 2 * r i)) := by
+      refine mul_right_mono (measure_mono fun x hx ↦ ?_)
+      simp only [mem_iUnion] at hx
+      rcases hx with ⟨i, i𝓑, hi⟩
+      have i𝓑' : i ∈ 𝓑' := .intro i𝓑 (nonempty_ball.mp (nonempty_of_mem hi))
+      obtain ⟨b, bB, hb⟩ := h2B i i𝓑'
+      exact mem_iUnion₂.mpr ⟨b, bB, hb <| mem_ball.mpr hi⟩
+    _ ≤ l * ∑' i : B, volume (ball (c i) (2 ^ 2 * r i)) :=
+      mul_right_mono <| measure_biUnion_le volume this fun i ↦ ball (c i) (2 ^ 2 * r i)
+    _ ≤ l * ∑' i : B, (2 ^ d) ^ 2 * volume (ball (c i) (r i)) := by
+      refine mul_right_mono <| ENNReal.tsum_le_tsum (fun i ↦ ?_)
+      rw [sq, sq, mul_assoc, mul_assoc]
+      apply (measure_ball_two_le (c i) (2 * r i)).trans
+      gcongr; exact measure_ball_two_le (c i) (r i)
+    _ = (2 ^ d) ^ 2 * ∑' i : B, l * volume (ball (c i) (r i)) := by
+      rw [ENNReal.tsum_mul_left, ENNReal.tsum_mul_left, ← mul_assoc, ← mul_assoc, mul_comm l]
+    _ ≤ (2 ^ d) ^ 2 * ∑' i : B, ∫⁻ x in ball (c i) (r i), u x := by
+      gcongr; exact h2u _ (hB𝓑 (Subtype.coe_prop _)).left
+    _ = (2 ^ d) ^ 2 * ∫⁻ x in ⋃ i ∈ B, ball (c i) (r i), u x := by
+      congr; simpa using (lintegral_iUnion (fun i ↦ measurableSet_ball) disj u).symm
+    _ ≤ (2 ^ d) ^ 2 * ∫⁻ x, u x := by
+      gcongr; exact Measure.restrict_le_self
 
 /-- **Subgoal** (Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson
 `measure_biUnion_le_lintegral`). -/
