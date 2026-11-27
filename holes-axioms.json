@@ -563,6 +563,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one": [
    "propext",
    "Classical.choice",
@@ -1625,5 +1630,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:19:05Z"
+ "generated": "2026-11-27T17:20:02Z"
 }

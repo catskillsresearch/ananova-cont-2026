@@ -11444,6 +11444,27 @@ theorem exists_polar_forall_potential_lt_top (T : ℝ) {u : ℕ → Rd d → ℝ
     hfin k x₀ fun hk => hx₀ (mem_iUnion.2 ⟨k, hk⟩)⟩
 -/
 
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 2: if `u_m → 0` in `L^p` then `h_m = (M_1 u_m)^p → 0` in
+`L^1`, by Hardy–Littlewood `‖M_1 u_m‖_p ≤ C ‖u_m‖_p` and `‖g^p‖_1 = ‖g‖_p^p`). -/
+theorem tendsto_eLpNorm_maximal_rpow {p : ℝ} (hp : 1 < p) {u : ℕ → Rd d → ℝ}
+    (hlim : Tendsto (fun m => eLpNorm (u m) (ENNReal.ofReal p) volume) atTop (𝓝 0)) :
+    Tendsto (fun m => eLpNorm (fun x => (localMaximalFunction 1 (u m) x).toReal ^ p) 1 volume)
+      atTop (𝓝 0) := by
+  obtain ⟨C, hC⟩ := eLpNorm_maximal_le (d := d) hp
+  refine tendsto_eLpNorm_rpow_one (by linarith) (fun m x => ENNReal.toReal_nonneg)
+    (fun m => (localMaximalFunction.measurable (u m)).ennreal_toReal) ?_
+  have hCl := ENNReal.Tendsto.const_mul (a := (C : ℝ≥0∞)) hlim (Or.inr ENNReal.coe_ne_top)
+  rw [mul_zero] at hCl
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hCl (fun _ => zero_le)
+    fun m => ?_
+  refine le_trans (eLpNorm_mono_enorm
+    (localMaximalFunction.measurable (u m)).ennreal_toReal.aestronglyMeasurable fun x => ?_)
+    (hC (u m))
+  rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg]
+  exact ENNReal.ofReal_toReal_le
+-/
+
 end theorem_5_2
 
 end

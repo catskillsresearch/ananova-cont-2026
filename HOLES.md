@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:19:05Z  
-**`sorry` occurrences:** 23 · 10 open · 12 blocked · 376 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 314} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:20:02Z  
+**`sorry` occurrences:** 23 · 10 open · 12 blocked · 377 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 315} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -146,6 +146,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal` | subgoal of Theorem 5.2, step 2: `g = (M_1 u | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm` | subgoal of Theorem 5.2, step 5: `‖f‖_{B,π}` only sees `|f|`, so the matrix-valued Hessian error can be replaced by its pointwise norm `u_m = ‖∇²F_m - H‖` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile` | subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow` | subgoal of Theorem 5.2, step 2: if `u_m → 0` in `L^p` then `h_m = (M_1 u_m | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one` | subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow` | subgoal of Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm; this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the `limsup` commutes with the continuous increasing map `a ↦ a^{1/p}` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 0 |

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:19:05Z",
+ "updated": "2026-11-27T17:20:02Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 12,
-  "done": 376
+  "done": 377
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 2,
-  "done": 314
+  "done": 315
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 21
+    "theorem": 22
    },
    "paperGoal": false,
    "verified": false,
@@ -4045,6 +4045,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
     "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
@@ -4739,6 +4740,48 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.rpow_le_potentialProfile — subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "label": "tendsto_eLpNorm_maximal_rpow",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 2: if `u_m → 0` in `L^p` then `h_m = (M_1 u_m",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 2: if `u_m → 0` in `L^p` then `h_m = (M_1 u_m)^p → 0` in `L^1`, by Hardy–Littlewood `‖M_1 u_m‖_p ≤ C ‖u_m‖_p` and `‖g^p‖_1 = ‖g‖_p^p`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.LemmaB1",
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.tendsto_eLpNorm_maximal_rpow — subgoal of Theorem 5.2, step 2: if `u_m → 0` in `L^p` then `h_m = (M_1 u_m (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
@@ -13637,6 +13680,11 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -13832,6 +13880,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -13938,6 +13991,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
    "kind": "hard"
   },
   {
@@ -15292,6 +15350,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -16027,6 +16090,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -16752,6 +16820,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -17462,6 +17535,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -17971,6 +18049,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -18083,6 +18166,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
    "kind": "hard"
   },
   {
@@ -19557,6 +19645,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -19738,6 +19831,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
    "kind": "hard"
   },
   {
@@ -22157,6 +22255,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -22978,6 +23081,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
    "kind": "hard"
   },
   {
@@ -24112,6 +24220,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "kind": "hard"
   },
@@ -24747,6 +24860,10 @@
   {
    "from": "Appendix.LemmaB1",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow"
   },
   {
    "from": "Appendix.LemmaB1",
@@ -26566,6 +26683,10 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
   },
   {
@@ -26965,6 +27086,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
    "to": "Main.Theorem52PathSteps"
   },
@@ -27047,6 +27172,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_maximal_rpow"
   },
   {
    "from": "Main.Theorem52Steps",
