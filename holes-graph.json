@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:53:32Z",
+ "updated": "2026-11-27T03:54:24Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 25,
+ "sorryCount": 24,
  "counts": {
-  "open": 4,
+  "open": 3,
   "blocked": 17,
-  "done": 297
+  "done": 298
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 60
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 237
+  "done": 238
  },
  "untagged": [],
  "legend": {
@@ -1909,9 +1909,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.5",
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "aestronglyMeasurable_potential",
     "eLpNorm_potential_le"
    ],
    "declKinds": {
@@ -1930,10 +1929,9 @@
     "Bessel.Young"
    ],
    "blockers": [
-    "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
     "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
    ],
-   "detail": "2 sorry: aestronglyMeasurable_potential, eLpNorm_potential_le"
+   "detail": "1 sorry: eLpNorm_potential_le"
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
@@ -1945,23 +1943,21 @@
    "parentGoal": "Bessel.BesselSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "BesselSpace.aestronglyMeasurable_potential"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
    "blockers": [],
-   "detail": "sorry: BesselSpace.aestronglyMeasurable_potential — subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable (in Bessel.BesselSpace)"
+   "detail": "proved: BesselSpace.aestronglyMeasurable_potential — subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",

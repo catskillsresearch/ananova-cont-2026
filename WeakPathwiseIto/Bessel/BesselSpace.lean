@@ -48,7 +48,13 @@ theorem enorm_potential_le {α : ℝ} (hα : α ≠ 0) (f : Rd d → ℝ) (x : R
 /-- **Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable). -/
 theorem aestronglyMeasurable_potential {α : ℝ} (hα : 0 < α) {f : Rd d → ℝ}
     (hf : AEStronglyMeasurable f) : AEStronglyMeasurable (potential d α f) := by
-  sorry
+  have h : potential d α f =
+      MeasureTheory.convolution f (besselKernel d α) (ContinuousLinearMap.mul ℝ ℝ).flip volume := by
+    funext x
+    simp only [potential, if_neg hα.ne', convolution_def, ContinuousLinearMap.flip_apply,
+      ContinuousLinearMap.mul_apply']
+  rw [h]
+  exact hf.convolution _ (besselKernel.integrable hα).aestronglyMeasurable
 
 /-- **Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`. -/
 theorem eLpNorm_potential_le {α : ℝ} (hα : 0 < α) {p : ℝ≥0∞} (hp : 1 ≤ p) {f : Rd d → ℝ}
