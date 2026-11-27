@@ -683,7 +683,49 @@ theorem tendsto_lintegral_shift_mollify_sub {E : Type*} [NormedAddCommGroup E] [
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) (h : Rd d) :
     Tendsto (fun n => ∫⁻ x, ‖((∫ y, ψ n (x + h - y) • f y) - f (x + h)) -
       ((∫ y, ψ n (x - y) • f y) - f x)‖ₑ ^ p) atTop (𝓝 0) := by
-  sorry
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hp1 : (1 : ℝ≥0∞) ≤ ENNReal.ofReal p := ENNReal.one_le_ofReal.2 hp
+  have hpr : (ENNReal.ofReal p).toReal = p := ENNReal.toReal_ofReal hp0.le
+  have hpne : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp0).ne'
+  set a : ℕ → Rd d → E := fun n x => (∫ y, ψ n (x - y) • f y) - f x
+  set e : ℕ → ℝ≥0∞ := fun n => eLpNorm (a n) (ENNReal.ofReal p) volume
+  have hfl : LocallyIntegrable f volume := hf.locallyIntegrable hp1
+  have ham : ∀ n, AEStronglyMeasurable (a n) volume := by
+    intro n
+    have hψk : HasCompactSupport (ψ n) :=
+      (isCompact_closedBall (0 : Rd d) _).of_isClosed_subset isClosed_closure
+        (closure_minimal ((hψs n).trans Metric.ball_subset_closedBall) Metric.isClosed_closedBall)
+    have hconv : (fun x => ∫ y, ψ n (x - y) • f y) =
+        (ψ n ⋆[ContinuousLinearMap.lsmul ℝ ℝ, volume] f) := by
+      funext x; rw [convolution_lsmul_swap]
+    have hc : Continuous fun x => ∫ y, ψ n (x - y) • f y := by
+      rw [hconv]; exact hψk.continuous_convolution_left _ (hψc n) hfl
+    exact hc.aestronglyMeasurable.sub hf.aestronglyMeasurable
+  have hbound : ∀ n, ∫⁻ x, ‖a n (x + h) - a n x‖ₑ ^ p ≤ (2 * e n) ^ p := by
+    intro n
+    have hm : AEStronglyMeasurable (fun x => a n (x + h) - a n x) volume :=
+      ((ham n).comp_measurePreserving (measurePreserving_add_right volume h)).sub (ham n)
+    have hle : eLpNorm (fun x => a n (x + h) - a n x) (ENNReal.ofReal p) volume ≤ 2 * e n := by
+      have hsub : (fun x => a n (x + h) - a n x) = (fun x => a n (x + h)) + fun x => -a n x := by
+        funext x; simp [sub_eq_add_neg]
+      rw [hsub, two_mul]
+      refine (eLpNorm_add_le hp1).trans ?_
+      have h1 : eLpNorm (fun x => a n (x + h)) (ENNReal.ofReal p) volume = e n :=
+        eLpNorm_comp_measurePreserving (ham n) (measurePreserving_add_right volume h)
+      rw [h1, show (fun x => -a n x) = -a n from rfl, eLpNorm_neg]
+    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hpne ENNReal.ofReal_ne_top hm, hpr] at hle
+    have := ENNReal.rpow_le_rpow hle hp0.le
+    rwa [← ENNReal.rpow_mul, one_div, inv_mul_cancel₀ hp0.ne', ENNReal.rpow_one] at this
+  have hlim : Tendsto (fun n => (2 * e n) ^ p) atTop (𝓝 0) := by
+    have h2 : Tendsto (fun n => 2 * e n) atTop (𝓝 0) := by
+      have := ENNReal.Tendsto.const_mul
+        (tendsto_eLpNorm_mollify_sub hp hf hψc hψ0 hψ1 hψs) (Or.inr (ENNReal.ofNat_ne_top (n := 2)))
+      simpa using this
+    have := (ENNReal.continuous_rpow_const (y := p)).tendsto 0 |>.comp h2
+    rw [ENNReal.zero_rpow_of_pos hp0] at this
+    exact this
+  exact tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hlim
+    (fun n => bot_le) hbound
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: domination,
 `‖a_n(· + h) - a_n‖_p^p ≤ 2^p ‖f(· + h) - f‖_p^p`). -/
