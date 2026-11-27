@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27T03:17:28Z",
+ "updated": "2026-11-27T03:17:51Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 29,
  "counts": {
-  "open": 5,
+  "open": 6,
   "blocked": 19,
   "done": 276
  },
@@ -13,7 +13,7 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 3,
   "blocked": 7,
   "done": 221
  },
@@ -7899,12 +7899,13 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
+   "sorryCount": 2,
    "holes": [
+    "integrable_hessian",
     "abs_sub_taylorAverage_le"
    ],
    "declKinds": {
-    "theorem": 12
+    "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
@@ -7918,6 +7919,7 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
     "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+    "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
     "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
@@ -7928,9 +7930,10 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
    "blockers": [
-    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian"
    ],
-   "detail": "1 sorry: abs_sub_taylorAverage_le"
+   "detail": "2 sorry: integrable_hessian, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8041,6 +8044,35 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_2_1_second.hessian_convolution — subgoal of Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}` function is `C²`, with second derivatives the mollified weak Hessian entries (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
+   "label": "integrable_hessian",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: the weak Hessian of a `W^{2,1}` function is integrable as an operator-valued map",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.integrable_hessian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the weak Hessian of a `W^{2,1}` function is integrable as an operator-valued map).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.integrable_hessian — subgoal of Theorem 2.1 proof, second estimate: the weak Hessian of a `W^{2,1}` function is integrable as an operator-valued map (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
@@ -11651,6 +11683,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
    "kind": "hard"
   },
@@ -13216,6 +13253,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
    "kind": "hard"
   },
@@ -13816,6 +13858,11 @@
   },
   {
    "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
    "kind": "hard"
   },
@@ -13981,6 +14028,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
    "to": "Sobolev.Theorem21Second",
    "kind": "subgoal"
   },
@@ -16156,6 +16208,10 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord"
   },
   {
@@ -17316,6 +17372,10 @@
   },
   {
    "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord"
   },
   {
@@ -17448,6 +17508,10 @@
   },
   {
    "from": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian",
    "to": "Sobolev.Theorem21Second"
   },
   {

@@ -671,6 +671,7 @@ Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_sec
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution
+Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le
@@ -984,6 +985,7 @@ Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_su
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution
+Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le
@@ -1104,6 +1106,7 @@ Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_s
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution
+Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le
@@ -1138,6 +1141,7 @@ Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le -hard-> Sob
 Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le -hard-> Sobolev.Theorem21Second
 Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable -hard-> Sobolev.Theorem21Second
 Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution -hard-> Sobolev.Theorem21Second
+Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian -hard-> Sobolev.Theorem21Second
 Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord -hard-> Sobolev.Theorem21Second
 Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le -hard-> Sobolev.Theorem21Second
 Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le -hard-> Sobolev.Theorem21Second

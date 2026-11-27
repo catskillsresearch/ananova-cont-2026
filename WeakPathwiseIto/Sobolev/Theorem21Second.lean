@@ -478,6 +478,12 @@ theorem hessian_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d →
     simp only [hcoord, hbasis]
     simp
 
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: the weak Hessian of a `W^{2,1}` function
+is integrable as an operator-valued map). -/
+theorem integrable_hessian {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hf : MemW 2 1 f) (hH : IsWeakHessian f H) : Integrable H := by
+  sorry
+
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of
 its entries in the standard basis). -/
 theorem norm_le_sum_entries (A : Rd d →L[ℝ] Rd d →L[ℝ] ℝ) :
