@@ -128,7 +128,29 @@ Lebesgue value). -/
 theorem preciseRepresentative_eq {f : Rd d → ℝ} (hf : LocallyIntegrable f) {x : Rd d} {c : ℝ}
     (hc : Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |f y - c|) (𝓝[>] 0) (𝓝 0)) :
     preciseRepresentative f x = c := by
-  sorry
+  have key : ∀ r : ℝ, 0 < r →
+      |(⨍ y in Metric.ball x r, f y) - c| ≤ ⨍ y in Metric.ball x r, |f y - c| := by
+    intro r hr
+    have hfin : volume (Metric.ball x r) ≠ ⊤ := measure_ball_lt_top.ne
+    have hpos : volume (Metric.ball x r) ≠ 0 := (Metric.measure_ball_pos volume x hr).ne'
+    have hi : IntegrableOn f (Metric.ball x r) :=
+      (hf.integrableOn_isCompact (isCompact_closedBall x r)).mono_set Metric.ball_subset_closedBall
+    have hreal : volume.real (Metric.ball x r) ≠ 0 := by
+      rw [measureReal_def]; exact ENNReal.toReal_ne_zero.2 ⟨hpos, hfin⟩
+    rw [setAverage_eq, setAverage_eq, smul_eq_mul, smul_eq_mul]
+    have e : (volume.real (Metric.ball x r))⁻¹ * (∫ y in Metric.ball x r, f y) - c =
+        (volume.real (Metric.ball x r))⁻¹ * ∫ y in Metric.ball x r, (f y - c) := by
+      rw [integral_sub hi (integrableOn_const hfin), setIntegral_const, smul_eq_mul]
+      field_simp
+    rw [e, abs_mul, abs_inv, abs_of_nonneg measureReal_nonneg]
+    exact mul_le_mul_of_nonneg_left abs_integral_le_integral_abs (inv_nonneg.2 measureReal_nonneg)
+  have ht : Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, f y) (𝓝[>] 0) (𝓝 c) := by
+    rw [tendsto_iff_norm_sub_tendsto_zero]
+    refine squeeze_zero' (Eventually.of_forall fun r => norm_nonneg _) ?_ hc
+    filter_upwards [self_mem_nhdsWithin] with r hr
+    rw [Real.norm_eq_abs]
+    exact key r hr
+  exact ht.limsup_eq
 
 /-- **Subgoal** (Theorem 2.1 proof: cubes and balls have positive density at each of their
 points): `|Q ∩ B(x,r)| ≥ κ_d |B(x,r)|` for `x ∈ Q` and small `r`. -/

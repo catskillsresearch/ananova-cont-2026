@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:00:39Z  
-**`sorry` occurrences:** 43 · 19 open · 19 blocked · 243 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 16, 'blocked': 7, 'done': 189} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:01:46Z  
+**`sorry` occurrences:** 42 · 18 open · 19 blocked · 244 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 15, 'blocked': 7, 'done': 190} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -242,7 +242,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le` | subgoal of Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae` | subgoal of Theorem 2.1 proof, eq. (2 | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff` | subgoal of Theorem 2.1 proof, eq. (2 | 1 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq` | subgoal of Theorem 2.1 proof: at a Lebesgue point the precise representative is the Lebesgue value | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq` | subgoal of Theorem 2.1 proof: at a Lebesgue point the precise representative is the Lebesgue value | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution` | subgoal of Theorem 2.1 proof, mollification step 4 | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport` | subgoal of Theorem 2.1 proof, mollification step 3: continuous compactly supported case | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` | subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points | 1 |
@@ -277,7 +277,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 15 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment`, `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff`, `Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
+| blocked | `Sobolev.Theorem21First` |  | 14 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment`, `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets
