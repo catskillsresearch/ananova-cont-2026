@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:52:37Z",
+ "updated": "2026-11-27T03:53:32Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 26,
+ "sorryCount": 25,
  "counts": {
-  "open": 5,
+  "open": 4,
   "blocked": 17,
-  "done": 296
+  "done": 297
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 60
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 236
+  "done": 237
  },
  "untagged": [],
  "legend": {
@@ -1909,9 +1909,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.5",
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "enorm_potential_le",
     "aestronglyMeasurable_potential",
     "eLpNorm_potential_le"
    ],
@@ -1932,10 +1931,9 @@
    ],
    "blockers": [
     "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
-    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
-    "Bessel.BesselSpace::BesselSpace.enorm_potential_le"
+    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
    ],
-   "detail": "3 sorry: enorm_potential_le, aestronglyMeasurable_potential, eLpNorm_potential_le"
+   "detail": "2 sorry: aestronglyMeasurable_potential, eLpNorm_potential_le"
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
@@ -2003,23 +2001,21 @@
    "parentGoal": "Bessel.BesselSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "BesselSpace.enorm_potential_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x)| ≤ ∫ |g_α(x - y)| |f(y)| dy`, valid even where the integral diverges).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
    "blockers": [],
-   "detail": "sorry: BesselSpace.enorm_potential_le — subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x (in Bessel.BesselSpace)"
+   "detail": "proved: BesselSpace.enorm_potential_le — subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.CanonicalWienerSpace",

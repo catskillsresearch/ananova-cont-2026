@@ -42,7 +42,8 @@ def norm (α : ℝ) (p : ℝ≥0∞) (F : Rd d → ℝ) : ℝ≥0∞ :=
 `|g_α ⋆ f(x)| ≤ ∫ |g_α(x - y)| |f(y)| dy`, valid even where the integral diverges). -/
 theorem enorm_potential_le {α : ℝ} (hα : α ≠ 0) (f : Rd d → ℝ) (x : Rd d) :
     ‖potential d α f x‖ₑ ≤ ∫⁻ y, ‖besselKernel d α (x - y)‖ₑ * ‖f y‖ₑ := by
-  sorry
+  simp only [potential, if_neg hα]
+  exact (enorm_integral_le_lintegral_enorm _).trans_eq (lintegral_congr fun y => enorm_mul _ _)
 
 /-- **Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable). -/
 theorem aestronglyMeasurable_potential {α : ℝ} (hα : 0 < α) {f : Rd d → ℝ}

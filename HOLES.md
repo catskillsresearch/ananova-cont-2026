@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:52:37Z  
-**`sorry` occurrences:** 26 · 5 open · 17 blocked · 296 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 60} · subgoals {'open': 3, 'blocked': 7, 'done': 236} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:53:32Z  
+**`sorry` occurrences:** 25 · 4 open · 17 blocked · 297 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 60} · subgoals {'open': 2, 'blocked': 7, 'done': 237} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -89,7 +89,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.BesselKernel::besselKernel.tendsto_integral` | subgoal of Definition 2.4, behaviour at the origin, step 3: dominated convergence | 0 |
 | open | `Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential` | subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable | 1 |
 | open | `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` | subgoal of Definition 2.5, Young's inequality | 1 |
-| open | `Bessel.BesselSpace::BesselSpace.enorm_potential_le` | subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x | 1 |
+| done | `Bessel.BesselSpace::BesselSpace.enorm_potential_le` | subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x | 0 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion` | subgoal of Definition 2.8, countable unions | 1 |
 | blocked | `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` | subgoal of Definition 2.8, [Fuk93, p. 25] | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval` | subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω' | 0 |
@@ -321,7 +321,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 |---|---|---|---|---|
 | blocked | `Bessel.BesselCapacity` | Definition 2.7 | 4 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselSpace` |
 | done | `Bessel.BesselKernel` | Definition 2.4 | 0 |  |
-| blocked | `Bessel.BesselSpace` | Definition 2.5 | 3 | `Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential`, `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le`, `Bessel.BesselSpace::BesselSpace.enorm_potential_le` |
+| blocked | `Bessel.BesselSpace` | Definition 2.5 | 2 | `Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential`, `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
