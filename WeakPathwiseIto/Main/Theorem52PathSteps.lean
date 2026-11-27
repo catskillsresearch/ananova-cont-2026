@@ -97,7 +97,11 @@ theorem discreteSeminorm_enorm_rpow {p : ℝ} (hp : 0 < p) (π : Partition T) {g
     (hg : 0 ≤ g) (ω : ℝ → Rd d) :
     discreteSeminorm π p (fun x => ‖g x‖ₑ) ω =
       discreteSeminorm π 1 (fun x => ‖g x ^ p‖ₑ) ω ^ (1 / p) := by
-  sorry
+  have he : ∀ x, ‖g x ^ p‖ₑ = ‖g x‖ₑ ^ p := by
+    intro x
+    rw [Real.enorm_eq_ofReal (Real.rpow_nonneg (hg x) p), Real.enorm_eq_ofReal (hg x),
+      ENNReal.ofReal_rpow_of_nonneg (hg x) hp.le]
+  simp only [discreteSeminorm, he, ENNReal.rpow_one, div_one]
 
 /-- **Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages). -/
 theorem measurable_localMaximalFunction (f : Rd d → ℝ) :

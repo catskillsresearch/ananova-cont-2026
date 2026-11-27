@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T10:26:05Z  
-**`sorry` occurrences:** 43 · 18 open · 22 blocked · 302 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 15, 'blocked': 12, 'done': 241} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T10:26:26Z  
+**`sorry` occurrences:** 42 · 17 open · 22 blocked · 303 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 14, 'blocked': 12, 'done': 242} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -132,7 +132,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top` | subgoal of Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p` | 1 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero` | subgoal of Appendix C, `B(0 | 1 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path` | subgoal of Appendix C, Brownian paths are continuous on `[0, T]` | 0 |
-| open | `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow` | subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` | 1 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow` | subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` | 0 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier` | subgoal of Appendix C, standard mollifier `η_m(x | 1 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub` | subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 | 1 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` | subgoal of Appendix C, (11 | 1 |
@@ -398,7 +398,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52PathSteps` |  | 11 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero`, `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow`, `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` |
+| blocked | `Main.Theorem52PathSteps` |  | 10 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero`, `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` |
 | blocked | `Main.Theorem52Steps` |  | 9 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |

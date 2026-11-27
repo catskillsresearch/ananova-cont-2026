@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:26:05Z",
+ "updated": "2026-11-27T10:26:26Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 43,
+ "sorryCount": 42,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 22,
-  "done": 302
+  "done": 303
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 15,
+  "open": 14,
   "blocked": 12,
-  "done": 241
+  "done": 242
  },
  "untagged": [],
  "legend": {
@@ -3529,13 +3529,12 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
     "lintegral_piece_le_first",
     "lintegral_le_maximal_first",
     "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
-    "discreteSeminorm_enorm_rpow",
     "measurable_localMaximalFunction",
     "ae_localMaximalFunction_lt_top",
     "tendsto_eLpNorm_rpow_one",
@@ -3575,7 +3574,6 @@
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
-    "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
@@ -3585,7 +3583,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "11 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, discreteSeminorm_enorm_rpow, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, tendsto_eLpNorm_rpow_one, exists_mollifier, integrable_norm_hessian_sub, ae_path_zero"
+   "detail": "10 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, tendsto_eLpNorm_rpow_one, exists_mollifier, integrable_norm_hessian_sub, ae_path_zero"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3694,17 +3692,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.discreteSeminorm_enorm_rpow"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3715,7 +3711,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.discreteSeminorm_enorm_rpow — subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.discreteSeminorm_enorm_rpow — subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
