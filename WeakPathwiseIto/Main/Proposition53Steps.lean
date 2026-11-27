@@ -62,7 +62,56 @@ theorem indepFun_coords_past_shift {Ω' : Type*} [MeasurableSpace Ω'] {Q : Meas
     (hind : iIndepFun (fun i ω' t => W i t ω') Q) (s : ℝ≥0) :
     IndepFun (fun ω' (i : Fin d) (v : Iic s) => W i v ω')
       (fun ω' (i : Fin d) (u : ℝ≥0) => W i (s + u) ω' - W i s ω') Q := by
-  sorry
+  have hae : ∀ i, AEMeasurable (fun ω' t => W i t ω') Q := fun i => (hB i).aemeasurable
+  set Y : Fin d → Ω' → ℝ≥0 → ℝ := fun i => (hae i).mk _ with hYdef
+  have hY : ∀ i, Measurable (Y i) := fun i => (hae i).measurable_mk
+  have hYe : ∀ i, (fun ω' t => W i t ω') =ᵐ[Q] Y i := fun i => (hae i).ae_eq_mk
+  set pastF : (ℝ≥0 → ℝ) → (ℝ≥0 → ℝ) := fun w v => w (min v s) with hpastF
+  set shiftF : (ℝ≥0 → ℝ) → (ℝ≥0 → ℝ) := fun w u => w (s + u) - w s with hshiftF
+  have hpm : Measurable pastF := by rw [hpastF]; fun_prop
+  have hsm : Measurable shiftF := by rw [hshiftF]; fun_prop
+  set piece : Bool → (ℝ≥0 → ℝ) → (ℝ≥0 → ℝ) := fun b => cond b shiftF pastF with hpiece
+  have hpiecem : ∀ b, Measurable (piece b) := fun b => by cases b <;> simpa [hpiece]
+  set X : Fin d → Bool → Ω' → ℝ≥0 → ℝ := fun i b ω => piece b (Y i ω) with hX
+  have mX : ∀ i b, Measurable (X i b) := fun i b => (hpiecem b).comp (hY i)
+  have h1 : iIndepFun (fun i ω => (X i · ω)) Q := by
+    have h0 : iIndepFun Y Q := hind.congr hYe
+    exact h0.comp (fun _ w b => piece b w) fun _ => measurable_pi_iff.2 hpiecem
+  have h2 : ∀ i, iIndepFun (X i) Q := by
+    intro i
+    refine iIndepFun_bool ?_
+    have hsh := (hB i).toIsPreBrownianReal.indepFun_shift s
+    have hc := hsh.symm.comp
+      (φ := fun (g : Iic s → ℝ) (v : ℝ≥0) => g ⟨min v s, mem_Iic.2 (min_le_right _ _)⟩)
+      (ψ := id) (measurable_pi_iff.2 fun _ => measurable_pi_apply _) measurable_id
+    refine hc.congr ?_ ?_
+    · filter_upwards [hYe i] with ω hω
+      funext v
+      simp [X, piece, pastF, ← hω]
+    · filter_upwards [hYe i] with ω hω
+      funext u
+      simp [X, piece, shiftF, ← hω]
+  have hU := iIndepFun_uncurry' mX h1 h2
+  have hdisj : Disjoint ((Finset.univ : Finset (Fin d)) ×ˢ ({false} : Finset Bool))
+      ((Finset.univ : Finset (Fin d)) ×ˢ ({true} : Finset Bool)) := by
+    rw [Finset.disjoint_left]; rintro ⟨i, b⟩ h1 h2; simp at h1 h2; simp [h1] at h2
+  have hF := hU.indepFun_finset _ _ hdisj (fun p => mX p.1 p.2)
+  have hc := hF.comp
+    (φ := fun (f : ((Finset.univ : Finset (Fin d)) ×ˢ ({false} : Finset Bool) :
+        Finset (Fin d × Bool)) → ℝ≥0 → ℝ)
+      (i : Fin d) (v : Iic s) => f ⟨(i, false), by simp⟩ v)
+    (ψ := fun (f : ((Finset.univ : Finset (Fin d)) ×ˢ ({true} : Finset Bool) :
+        Finset (Fin d × Bool)) → ℝ≥0 → ℝ)
+      (i : Fin d) (u : ℝ≥0) => f ⟨(i, true), by simp⟩ u) (by fun_prop) (by fun_prop)
+  have hall : ∀ᵐ ω ∂Q, ∀ i, (fun t => W i t ω) = Y i ω := ae_all_iff.2 hYe
+  refine hc.congr ?_ ?_
+  · filter_upwards [hall] with ω hω
+    funext i v
+    simp only [Function.comp_apply, X, piece, Bool.cond_false, pastF, ← hω i,
+      min_eq_left (mem_Iic.1 v.2)]
+  · filter_upwards [hall] with ω hω
+    funext i u
+    simp only [Function.comp_apply, X, piece, Bool.cond_true, shiftF, ← hω i]
 
 /-- **Subgoal** (P53.A, canonical space): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the past path
 `(B(v))_{v ≤ s}` is independent of the increment `B(t) - B(s)`. -/

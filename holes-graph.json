@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:52:46Z",
+ "updated": "2026-11-27T20:53:15Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 19,
+ "sorryCount": 18,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 13,
-  "done": 420
+  "done": 421
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 3,
-  "done": 354
+  "done": 355
  },
  "untagged": [],
  "legend": {
@@ -3638,9 +3638,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "indepFun_coords_past_shift",
     "indepFun_past_increment",
     "indep_naturalSigma_increment",
     "increment_moments",
@@ -3673,13 +3672,12 @@
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
-    "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
     "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
     "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
    ],
-   "detail": "8 sorry: indepFun_coords_past_shift, indepFun_past_increment, indep_naturalSigma_increment, increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+   "detail": "7 sorry: indepFun_past_increment, indep_naturalSigma_increment, increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
@@ -3824,10 +3822,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.indepFun_coords_past_shift"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -3836,17 +3832,16 @@
    "doc": "**Subgoal** (P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments). For independent real Brownian motions `W^1, …, W^d` and `s ≥ 0`, the past `(W^i_v)_{i, v ≤ s}` is independent of the shifted increments `(W^i_{s+u} - W^i_s)_{i, u}`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.indepFun_coords_past_shift — subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.indepFun_coords_past_shift — subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",

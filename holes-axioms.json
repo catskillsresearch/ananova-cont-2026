@@ -474,7 +474,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1855,5 +1854,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:52:46Z"
+ "generated": "2026-11-27T20:53:14Z"
 }
