@@ -213,7 +213,12 @@ theorem le_add {f g h : Rd d → ℝ} (hg : Measurable g)
 /-- **Subgoal** (Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`). -/
 theorem le_of_enorm_le {g : Rd d → ℝ} {c : ℝ≥0∞} (hg : ∀ y, ‖g y‖ₑ ≤ c) (x : Rd d) :
     localMaximalFunction 1 g x ≤ c := by
-  sorry
+  unfold localMaximalFunction
+  refine iSup_le fun r => iSup_le fun _ => iSup_le fun _ => ?_
+  refine (laverage_mono_ae (ae_of_all _ hg)).trans ?_
+  rw [laverage_eq, lintegral_const]
+  rw [mul_div_assoc]
+  exact mul_le_of_le_one_right' ENNReal.div_self_le_one
 
 /-- **Subgoal** (Hardy–Littlewood, truncated weak bound:
 `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`). -/
