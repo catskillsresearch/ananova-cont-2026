@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T12:51:23Z",
+ "updated": "2026-11-27T12:51:53Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 29,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 49,
-  "done": 315
+  "done": 316
  },
  "goalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 10,
-  "done": 61
+  "done": 62
  },
  "subgoalCounts": {
   "open": 4,
@@ -4110,8 +4110,7 @@
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
-    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
-    "Sobolev.HardyLittlewood"
+    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
    "detail": "6 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
@@ -4149,8 +4148,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.abs_convolution_le — subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
   },
@@ -4188,8 +4186,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.abs_mollify_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x (in Main.Theorem52Steps)"
   },
@@ -4227,8 +4224,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.abs_setAverage_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` (in Main.Theorem52Steps)"
   },
@@ -4268,8 +4264,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.ae_forall_mem_not_mem_null — subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` (in Main.Theorem52Steps)"
   },
@@ -4309,8 +4304,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.ae_forall_path_not_mem — subgoal of Appendix C, Brownian motion does not enter a polar set at positive times (in Main.Theorem52Steps)"
   },
@@ -4348,8 +4342,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.contDiffBounded_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞` (in Main.Theorem52Steps)"
   },
@@ -4387,8 +4380,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.coord_toEuclideanCLM — subgoal of Appendix C, mollification: the `(i, j (in Main.Theorem52Steps)"
   },
@@ -4426,8 +4418,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
   },
@@ -4465,8 +4456,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.exists_isWeakGradient — subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives (in Main.Theorem52Steps)"
   },
@@ -4504,8 +4494,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.exists_isWeakHessian — subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives (in Main.Theorem52Steps)"
   },
@@ -4543,8 +4532,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.fderiv_convolution_apply — subgoal of Appendix C, mollification: `∂_v (F * g (in Main.Theorem52Steps)"
   },
@@ -4584,8 +4572,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.gagliardo_maximal_le — subgoal of Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` (in Main.Theorem52Steps)"
   },
@@ -4625,8 +4612,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.isBrownianPolar_nonLebesgue — subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] (in Main.Theorem52Steps)"
   },
@@ -4664,8 +4650,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.isWeakDerivative_single_of_contDiff — subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts (in Main.Theorem52Steps)"
   },
@@ -4703,8 +4688,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.isWeakDerivative_zero — subgoal of Appendix C, mollification: `D^0 f = f` weakly (in Main.Theorem52Steps)"
   },
@@ -4742,8 +4726,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.le_one_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` (in Main.Theorem52Steps)"
   },
@@ -4783,8 +4766,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.lintegral_rpow_sub_le — subgoal of Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K` (in Main.Theorem52Steps)"
   },
@@ -4822,8 +4804,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.memW_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality (in Main.Theorem52Steps)"
   },
@@ -4861,8 +4842,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
   },
@@ -4900,8 +4880,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.norm_convolution_le_of_bound — subgoal of Appendix C, mollification: `‖(F ⋆[L] g (in Main.Theorem52Steps)"
   },
@@ -4939,8 +4918,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
   },
@@ -4978,8 +4956,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.preciseRepresentative_eq_of_tendsto — subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x (in Main.Theorem52Steps)"
   },
@@ -5019,8 +4996,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.tendsto_mollify_hessian — subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` (in Main.Theorem52Steps)"
   },
@@ -5058,8 +5034,7 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29",
-    "Sobolev.HardyLittlewood"
+    "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.tendsto_mollify_of_isLebesguePoint — subgoal of Appendix C, mollification: `F_m(x (in Main.Theorem52Steps)"
   },
@@ -8527,9 +8502,9 @@
     "theorem": 15
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
     "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
@@ -8549,7 +8524,7 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",

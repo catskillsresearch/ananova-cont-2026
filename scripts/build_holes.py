@@ -56,6 +56,7 @@ VERIFIED: set[str] = {
     "Sobolev.Theorem23",
     "Bessel.Young",
     "Bessel.BesselSpace",
+    "Sobolev.HardyLittlewood",
     "Main.Theorem51",
     "Main.Theorem51Steps",
     "Main.SmoothItoAt",

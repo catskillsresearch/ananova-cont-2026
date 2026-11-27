@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T12:51:23Z  
-**`sorry` occurrences:** 29 · 8 open · 49 blocked · 315 done (goals + subgoals) · goals {'open': 4, 'blocked': 10, 'done': 61} · subgoals {'open': 4, 'blocked': 39, 'done': 254} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T12:51:53Z  
+**`sorry` occurrences:** 29 · 7 open · 49 blocked · 316 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 39, 'done': 254} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,7 +27,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
-| `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 | (review → VERIFIED) |
 
 ## Subgoals (helper lemmas/defs)
 
@@ -351,7 +350,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| open | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 |  |
+| done | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 |  |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
@@ -430,7 +429,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52PathSteps` |  | 0 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero`, `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path`, `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow`, `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52Steps` |  | 6 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.abs_convolution_le`, `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le`, `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution`, `Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian`, `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero`, `Main.Theorem52Steps::theorem_5_2.le_one_cases`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.memW_convolution`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound`, `Main.Theorem52Steps::theorem_5_2.order_le_two_cases`, `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint`, `Sobolev.HardyLittlewood` |
+| blocked | `Main.Theorem52Steps` |  | 6 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.abs_convolution_le`, `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le`, `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution`, `Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian`, `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero`, `Main.Theorem52Steps::theorem_5_2.le_one_cases`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.memW_convolution`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound`, `Main.Theorem52Steps::theorem_5_2.order_le_two_cases`, `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 
