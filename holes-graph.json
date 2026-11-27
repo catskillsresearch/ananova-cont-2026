@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:39:09Z",
+ "updated": "2026-11-27T01:39:43Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 43,
+ "sorryCount": 41,
  "counts": {
-  "open": 9,
+  "open": 7,
   "blocked": 28,
-  "done": 228
+  "done": 230
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 51
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 3,
   "blocked": 15,
-  "done": 177
+  "done": 179
  },
  "untagged": [],
  "legend": {
@@ -2846,10 +2846,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 4,
+   "sorryCount": 2,
    "holes": [
-    "stopped_sum_eq",
-    "sub_eq_sum_stopped",
     "tendsto_trapezoid",
     "ito_at"
    ],
@@ -2873,11 +2871,9 @@
    ],
    "blockers": [
     "Main.SmoothItoAt::theorem_5_1.ito_at",
-    "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
-    "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
     "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
    ],
-   "detail": "4 sorry: stopped_sum_eq, sub_eq_sum_stopped, tendsto_trapezoid, ito_at"
+   "detail": "2 sorry: tendsto_trapezoid, ito_at"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at",
@@ -2947,17 +2943,15 @@
    "parentGoal": "Main.SmoothItoAt",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.ito_at.stopped_sum_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (21), splitting a stopped sum): for `φ` vanishing on the diagonal, `∑_k φ(ω(t_k ∧ t), ω(t_{k+1} ∧ t))` is the sum over complete intervals `t_{k+1} ≤ t` plus the straddling interval `t_k < t < t_{k+1}`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2965,7 +2959,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.ito_at.stopped_sum_eq — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+   "detail": "proved: theorem_5_1.ito_at.stopped_sum_eq — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
@@ -2977,17 +2971,15 @@
    "parentGoal": "Main.SmoothItoAt",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.ito_at.sub_eq_sum_stopped"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (21), telescoping): for `t ∈ [0,T]`, `f(ω(t)) - f(ω(0)) = ∑_k (f(ω(t_{k+1} ∧ t)) - f(ω(t_k ∧ t)))`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2995,7 +2987,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.ito_at.sub_eq_sum_stopped — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+   "detail": "proved: theorem_5_1.ito_at.sub_eq_sum_stopped — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",

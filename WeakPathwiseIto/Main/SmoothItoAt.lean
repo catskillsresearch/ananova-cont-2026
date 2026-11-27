@@ -77,14 +77,31 @@ theorem stopped_sum_eq (p : Partition T) (φ : Rd d → Rd d → ℝ) (hφ : ∀
     ∑ k : Fin p.m, φ (ω (min (p.left k) t)) (ω (min (p.right k) t)) =
       ∑ k ∈ Finset.univ.filter (fun k => p.right k ≤ t), φ (ω (p.left k)) (ω (p.right k)) +
       ∑ k ∈ Finset.univ.filter (fun k => p.left k < t ∧ t < p.right k), φ (ω (p.left k)) (ω t) := by
-  sorry
+  rw [Finset.sum_filter, Finset.sum_filter, ← Finset.sum_add_distrib]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  have hlr := p.left_lt_right k
+  by_cases h1 : p.right k ≤ t
+  · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
+    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+  · by_cases h3 : p.left k < t
+    · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
+      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+    · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
+      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3), hφ,
+        add_zero]
 
 /-- **Subgoal** (Theorem 5.1 proof, (21), telescoping): for `t ∈ [0,T]`,
 `f(ω(t)) - f(ω(0)) = ∑_k (f(ω(t_{k+1} ∧ t)) - f(ω(t_k ∧ t)))`. -/
 theorem sub_eq_sum_stopped (p : Partition T) (f : Rd d → ℝ) (ω : ℝ → Rd d) {t : ℝ}
     (ht : t ∈ Icc 0 T) :
     f (ω t) - f (ω 0) = ∑ k : Fin p.m, (f (ω (min (p.right k) t)) - f (ω (min (p.left k) t))) := by
-  sorry
+  have h1 := Fin.sum_univ_succ (fun j => f (ω (min (p.t j) t)))
+  have h2 := Fin.sum_univ_castSucc (fun j => f (ω (min (p.t j) t)))
+  have hT : f (ω t) = f (ω (min (p.t (Fin.last p.m)) t)) := by rw [p.t_last, min_eq_right ht.2]
+  have h0 : f (ω 0) = f (ω (min (p.t 0) t)) := by rw [p.t_zero, min_eq_left ht.1]
+  rw [Finset.sum_sub_distrib, hT, h0]
+  change _ = ∑ k : Fin p.m, f (ω (min (p.t k.succ) t)) - ∑ k : Fin p.m, f (ω (min (p.t k.castSucc) t))
+  linarith
 
 /-- **Subgoal** (Theorem 5.1 proof, (21), the trapezoid remainders vanish): for `f ∈ C²_b` and
 `t ∈ [0,T]`, `∑_k (f(b_k) - f(a_k) - ∇f(a_k)·(b_k - a_k) - ½(∇f(b_k) - ∇f(a_k))·(b_k - a_k)) → 0`
