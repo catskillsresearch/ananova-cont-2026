@@ -93,7 +93,7 @@ theorem exists_isometry_basisVec (hd : 0 < d) {u : Rd d} (hu : ‖u‖ = 1) :
 integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/
 theorem setIntegral_closedBall_eq_ball (hd : 0 < d) (r : ℝ) (g : Rd d → ℝ) :
     ∫ x in Metric.closedBall (0 : Rd d) r, g x = ∫ x in Metric.ball (0 : Rd d) r, g x := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   refine setIntegral_congr_set ?_
   have h0 : volume (Metric.sphere (0 : Rd d) r) = 0 := Measure.addHaar_sphere _ _ _
   filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with x hx
@@ -182,7 +182,7 @@ theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
 theorem integral_eq (π : Partition T) (ω : ℝ → Rd d) :
     ∫ x, discreteOccupationDensity π ω x = ∑ i : Fin π.m, ‖ω (π.right i) - ω (π.left i)‖ ^ 2 := by
   unfold discreteOccupationDensity
-  rw [integral_finset_sum _ fun i _ => integrable_piece _ _]
+  rw [integral_finsetSum _ fun i _ => integrable_piece _ _]
   exact Finset.sum_congr rfl fun i _ => integral_piece _ _
 
 end discreteOccupationDensity

@@ -25,12 +25,30 @@ references) from other formalizations was copied.
 
 | Path | Source | Commit |
 |------|--------|--------|
-| `vendor/brownian-motion/` | `catskillsresearch/xodarev2026` `vendor/brownian-motion` (pruned RemyDegenne/brownian-motion `497e5e2`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
-| `vendor/formal-mathfin/` | `catskillsresearch/xodarev2026` `vendor/formal-mathfin` (formal-applied-math/formal-mathfin `c47908e`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
-| `vendor/carleson/` (reference copy, not built) | `fpvandoorn/carleson` `Carleson/ToMathlib/HardyLittlewood.lean` + `LICENSE` (Apache-2.0; F. van Doorn et al. and contributors) | `f7487cc9da4d1e73f009dc0280cd5b958f3e2c78` |
+| `vendor/brownian-motion/` | `catskillsresearch/xodarev2026` `vendor/brownian-motion` (pruned RemyDegenne/brownian-motion `497e5e2`), with one documented rename patch (below) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
 | `vendor/palomar-policy/`, `vendor/PALOMAR_POLICY_PIN` | `catskillsresearch/xodarev2026` `vendor/` (PalomarRegistry/PalomarPolicy `5bd35cddcfc940532bb5f55e399d68b49b0986a5`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
 
 Details: `vendor/SOURCES`.
+
+**Patch to `vendor/brownian-motion` (2026-11-27).** Like the existing pruning of the copy (items
+removed, e.g. those with `sorry`), the copy carries one rename so that it can be
+loaded together with the Carleson project: `ENNReal.one_le_toReal` (`p ≠ ⊤` form) is renamed
+`ENNReal.one_le_toReal_of_ne_top` at its declaration `BrownianMotion/Auxiliary/ENNReal.lean:29`
+and its two uses `BrownianMotion/Auxiliary/ENNReal.lean:35` and
+`BrownianMotion/Auxiliary/Jensen.lean:47`. Carleson's
+`Carleson/ToMathlib/RealInterpolation/InterpolatedExponents.lean:45` declares
+`ENNReal.one_le_toReal` (`a < ⊤` form); Lean rejects two declarations with one name in one
+environment. Nothing else in the copy changed; it is still an independent Lake package, so it
+stays in `vendor/` rather than being moved into the main body.
+
+**Carleson project** (`fpvandoorn/carleson` @ `f7487cc9da4d1e73f009dc0280cd5b958f3e2c78`,
+Apache-2.0, F. van Doorn et al. and contributors) is a Lake git dependency, not copied:
+`Sobolev/HardyLittlewood.lean` imports `Carleson.ToMathlib.HardyLittlewood` and uses
+`globalMaximalFunction`, `laverage_le_globalMaximalFunction`, `hasStrongType_maximalFunction_one`,
+`CMB_eq_of_one_lt_q`, `measurable_maximalFunction`.
+
+formal-mathfin (previously `vendor/formal-mathfin/`, xodarev2026 copy of
+formal-applied-math/formal-mathfin `c47908e`) was never imported and was removed on 2026-11-27.
 
 ### Where vendored and upstream code is used
 
@@ -38,8 +56,8 @@ Details: `vendor/SOURCES`.
 |---|---|---|
 | Brownian motion predicate in `CanonicalWienerSpace.IsLaw` | Mathlib `ProbabilityTheory.IsBrownianReal` (upstreamed from RemyDegenne/brownian-motion) | imported from Mathlib |
 | Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged (outside the Mathlib-only Challenge closure) |
-| Covering lemmas `hardyLittlewood.measure_biUnion_le_lintegral(_aux)` (`Sobolev/HardyLittlewood.lean`) | Carleson project `Carleson/ToMathlib/HardyLittlewood.lean` @ `f7487cc` | adapted to our pin (Lebesgue measure, doubling constant `2^d`, `def tr` inlined); provenance header in the file |
-| Itô integral | `vendor/formal-mathfin` `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
+| Hardy–Littlewood maximal theorem (`Sobolev/HardyLittlewood.lean`) | Carleson project `Carleson/ToMathlib/HardyLittlewood.lean` @ `f7487cc` | imported unchanged (Lake dependency); our file only bridges the paper's `M_1` to `globalMaximalFunction` |
+| Itô integral | formal-mathfin (formerly vendored) `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
 
 ## Borrowed unchanged tooling (kept at the path the tooling requires)
 
@@ -55,7 +73,7 @@ must live in `scripts/`; they are byte-for-byte copies of
 
 | File | Derived from |
 |------|--------------|
-| `lakefile.toml`, `lean-toolchain`, `lake-manifest.json` | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` (same toolchain, Mathlib pin and vendored path deps; renamed package) |
+| `lakefile.toml`, `lean-toolchain`, `lake-manifest.json` | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` (structure; toolchain and Mathlib pin since moved to the Carleson project's, formal-mathfin dropped, Carleson added; renamed package) |
 | `scripts/build_holes.py`, `holes.html`, `scripts/serve_holes.sh` | Board design of xodarev2026 `scripts/build_holes.py` / `holes.html` / `scripts/serve_holes.sh` at `0e1f1f3b0739fdf472511da2207599ab11085660` (same status rules, file formats and embed marker; code rewritten, no data copied) |
 | `scripts/gen_challenge.py` | Technique of xodarev2026 `scripts/gen_challenge.py` at `0e1f1f3b0739fdf472511da2207599ab11085660` (verbatim flattening, per-module `auxLemmasExt` reset); code rewritten |
 | `scripts/palomar_preflight.sh` | `catskillsresearch/palomar-preflight` `examples/project-wrapper.sh` at `cd89b1336ad1f189f44dd6facd2634ce8a9a4447`, and lyasoff2016 `scripts/palomar_preflight.sh` at `3376bd2b8c18cab4322ca5b1db46d7fc477eed1a` |

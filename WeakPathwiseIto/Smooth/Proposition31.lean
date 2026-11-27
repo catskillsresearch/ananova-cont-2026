@@ -69,7 +69,7 @@ theorem abs_integral_sub_grid_le {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
     nlinarith [ht.1]
   have hstep : ∀ k, s (k + 1) - s k = t / K := fun k => by rw [hs, hs]; push_cast; ring
-  haveI : IsLocallyFiniteMeasure h.stieltjesMeasure := by
+  have : IsLocallyFiniteMeasure h.stieltjesMeasure := by
     unfold HasScalarQuadraticVariation.stieltjesMeasure; infer_instance
   have hInt : IntegrableOn g (Icc 0 T) h.stieltjesMeasure := hg.integrableOn_compact isCompact_Icc
   have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 t := fun k hk y hy =>
@@ -158,7 +158,7 @@ theorem tendsto_riemannStieltjes {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     rw [div_le_iff₀ hKr]
     have : (j : ℝ) ≤ K := by exact_mod_cast hj
     nlinarith [ht.1]
-  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+  have hgridlim := tendsto_finsetSum (Finset.range K) fun k hk =>
     ((h.tendsto _ (hsub (hmem (k + 1) (Finset.mem_range.1 hk)))).sub
       (h.tendsto _ (hsub (hmem k (Finset.mem_range.1 hk).le)))).const_mul
         (g ((k + 1 : ℕ) * t / K))
@@ -175,16 +175,16 @@ theorem tendsto_riemannStieltjes {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     rw [Finset.sum_filter, Finset.sum_filter]
     refine Finset.sum_congr rfl fun k _ => ?_
     by_cases h1 : (π n).right k ≤ t
-    · simp only [hr, hw, min_eq_left h1, if_pos h1]
+    · simp only [hr, hw, min_eq_left h1, ite_eq_left h1]
     · have h2 : ¬ (π n).right k ≤ s := fun h' => h1 (h'.trans hs)
-      simp only [hr, hw, if_neg h1, if_neg h2, ite_self]
+      simp only [hr, hw, ite_eq_right h1, ite_eq_right h2, ite_self]
   have hA : ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
       g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2 = ∑ k, g (r k) * w k := by
     rw [Finset.sum_filter]
     refine Finset.sum_congr rfl fun k _ => ?_
     by_cases h1 : (π n).right k ≤ t
-    · simp only [hr, hw, min_eq_left h1, if_pos h1]
-    · simp only [hw, if_neg h1, mul_zero]
+    · simp only [hr, hw, min_eq_left h1, ite_eq_left h1]
+    · simp only [hw, ite_eq_right h1, mul_zero]
   have hSw : ∑ k, w k = discreteQuadraticVariation (π n) x t := by
     rw [← hinner t le_rfl, Finset.filter_true_of_mem fun k _ => min_le_right _ _]
   have e1 := lemma_4_2.abs_sum_sub_grid_le (T := t) (r := r) (w := w)
@@ -286,12 +286,12 @@ theorem riemannSum_eq (p : Partition T) (f : Rd d → Rd d) (ω : ℝ → Rd d) 
   have hlr := p.left_lt_right k
   by_cases h1 : p.right k ≤ t
   · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
-    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+    rw [ite_eq_left h1, ite_eq_right h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
   · by_cases h3 : p.left k < t
     · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
-      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+      rw [ite_eq_right h1, ite_eq_left h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
     · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
-      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3)]
+      rw [ite_eq_right h1, ite_eq_right h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3)]
       simp
 
 /-- **Subgoal** (Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization):
@@ -348,7 +348,7 @@ theorem tendsto_main {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
               (fun s => Rd.coord j (ω s)) ((π n).left k)) ^ 2)) / 2) atTop
       (𝓝 (hQV.matrixIntegral (fun u i j => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) t)) := by
     unfold HasQuadraticVariation.matrixIntegral
-    exact tendsto_finset_sum _ fun i _ => tendsto_finset_sum _ fun j _ =>
+    exact tendsto_finsetSum _ fun i _ => tendsto_finsetSum _ fun j _ =>
       (((tendsto_riemannStieltjes (hQV.pair i j) (hGc i j) ht).sub
         (tendsto_riemannStieltjes (hQV.coord i) (hGc i j) ht)).sub
         (tendsto_riemannStieltjes (hQV.coord j) (hGc i j) ht)).div_const 2
@@ -449,7 +449,7 @@ theorem tendsto_remainder {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
 at most `sup |∇f| · osc(ω, π_n)² → 0`). -/
 theorem tendsto_boundary {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
     (hosc : pathOscillation.Vanishes ω π) {f : Rd d → Rd d} (hf : ContDiffBounded 1 f)
-    {t : ℝ} (ht : t ∈ Icc 0 T) :
+    {t : ℝ} (_ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
       ⟪f (ω t) - f (ω ((π n).left k)), ω t - ω ((π n).left k)⟫) atTop (𝓝 0) := by
   have hfd : Differentiable ℝ f := hf.1.differentiable (by norm_num)

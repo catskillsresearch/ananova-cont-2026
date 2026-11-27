@@ -17,8 +17,8 @@ lake exe cache get   # optional, after lake update
 lake build
 ```
 
-Toolchain: Lean `v4.35.0` (see `lean-toolchain`), Mathlib pin in `lakefile.toml`
-(the same pin as the sibling formalizations).
+Toolchain: Lean `v4.36.0-rc1` (see `lean-toolchain`), Mathlib pin in `lakefile.toml`
+(the Carleson project's pin; see `vendor/SOURCES`).
 
 ## Layout
 
@@ -33,7 +33,7 @@ Toolchain: Lean `v4.35.0` (see `lean-toolchain`), Mathlib pin in `lakefile.toml`
 | `WeakPathwiseIto/Main/` | §5: weak pathwise integral and covariation, Assumptions 1–2, Itô integral; Thm 5.1, Thm 5.2, Prop 5.3 |
 | `WeakPathwiseIto/Appendix/` | Lemma A.1, Lemma B.1, Lemma B.2 and the kernel estimates (32)–(35) |
 | `WeakPathwiseItoComparator/` | Palomar Challenge (generated) and Solution |
-| `vendor/` | Unchanged copies: formal-mathfin, brownian-motion, Palomar policy (see `vendor/SOURCES`) |
+| `vendor/` | brownian-motion (one documented rename), Palomar policy (see `vendor/SOURCES`); Carleson is a Lake git dependency |
 | `scripts/` | Board, Challenge generator, Palomar checks |
 
 ## Conventions

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T13:06:34Z",
+ "updated": "2026-11-27T13:48:56Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 28,
  "counts": {
   "open": 7,
   "blocked": 54,
-  "done": 316
+  "done": 307
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 4,
   "blocked": 44,
-  "done": 254
+  "done": 245
  },
  "untagged": [],
  "legend": {
@@ -8691,45 +8691,32 @@
    "label": "HardyLittlewood",
    "section": "Sobolev",
    "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
+   "paper": "Hardy–Littlewood bound for M_1 (Appendix C; bridge to Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 15
+    "theorem": 2
    },
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
    "status": "done",
    "deps": [
-    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-    "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
-    "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
-    "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+    "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
-    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
-    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
   },
   {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-   "label": "congr_ae",
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
+   "label": "le_globalMaximalFunction",
    "kind": "subgoal",
    "section": "Sobolev",
    "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`",
+   "paper": "subgoal of Hardy–Littlewood, `M_1 f ≤ M f` pointwise, with `M` Carleson's uncentred `globalMaximalFunction`",
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
@@ -8740,138 +8727,13 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`).",
+   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f ≤ M f` pointwise, with `M` Carleson's uncentred `globalMaximalFunction`).",
    "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "proved: hardyLittlewood.congr_ae — subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
-   "label": "exists_ball_of_lt",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `t < M_1 f(x",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `t < M_1 f(x)` is witnessed by a ball `B(x, r)`, `r < 1`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.exists_ball_of_lt — subgoal of Hardy–Littlewood, `t < M_1 f(x (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
-   "label": "le_add",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.le_add — subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
-   "label": "le_of_enorm_le",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.le_of_enorm_le — subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
-   "label": "lintegral_Ioi_indicator_rpow",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.lintegral_Ioi_indicator_rpow — subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
-   "label": "lintegral_rpow_eq_lintegral_meas_lt",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt — subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.le_globalMaximalFunction — subgoal of Hardy–Littlewood, `M_1 f ≤ M f` pointwise, with `M` Carleson's uncentred `globalMaximalFunction` (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
@@ -8890,213 +8752,13 @@
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, strong type `(p, p)`, `p > 1`, for measurable `f`).",
+   "doc": "**Subgoal** (Hardy–Littlewood, strong type `(p, p)`, `p > 1`, for measurable `f`), from Carleson's `hasStrongType_maximalFunction_one`, whose constant `CMB (2^d) p = 2 (p/(p-1) · 4^d)^{1/p}` gives exactly the constant below.",
    "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
    "detail": "proved: hardyLittlewood.lintegral_rpow_le — subgoal of Hardy–Littlewood, strong type `(p, p (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-   "label": "lintegral_truncate_eq",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1) ‖f‖_p^p`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.lintegral_truncate_eq — subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
-   "label": "lowerSemicontinuous_mul_measure_ball",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.lowerSemicontinuous_mul_measure_ball — subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
-   "label": "measurable_localMaximalFunction",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.measurable_localMaximalFunction — subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
-   "label": "measure_ball_two_le",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r)| ≤ 2^d |B(x, r)|`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.measure_ball_two_le — subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
-   "label": "measure_biUnion_le_lintegral",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.measure_biUnion_le_lintegral — subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
-   "label": "measure_biUnion_le_lintegral_aux",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.measure_biUnion_le_lintegral_aux — subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux` (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
-   "label": "mul_measure_lt_le",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, weak type `(1, 1",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, weak type `(1, 1)`: `t |{M_1 f > t}| ≤ 4^d ‖f‖_1`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.mul_measure_lt_le — subgoal of Hardy–Littlewood, weak type `(1, 1 (in Sobolev.HardyLittlewood)"
-  },
-  {
-   "id": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
-   "label": "mul_measure_lt_le_truncate",
-   "kind": "subgoal",
-   "section": "Sobolev",
-   "sectionTitle": "§2.1 Sobolev spaces",
-   "paper": "subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`",
-   "parentGoal": "Sobolev.HardyLittlewood",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`).",
-   "status": "done",
-   "deps": [
-    "Sobolev.LocalMaximalFunction"
-   ],
-   "blockers": [],
-   "detail": "proved: hardyLittlewood.mul_measure_lt_le_truncate — subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|` (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.IsLebesguePoint",
@@ -9354,17 +9016,122 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "def": 2
+    "def": 2,
+    "theorem": 4
    },
    "paperGoal": false,
    "verified": true,
    "kind": "goal",
    "status": "done",
    "deps": [
-    "Basic.Rd"
+    "Basic.Rd",
+    "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae",
+    "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add",
+    "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball",
+    "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae",
+   "label": "congr_ae",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of `M_1`, `M_1 f` depends only on the a.e. class of `f`",
+   "parentGoal": "Sobolev.LocalMaximalFunction",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/LocalMaximalFunction.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (`M_1`, `M_1 f` depends only on the a.e. class of `f`).",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "proved: localMaximalFunction.congr_ae — subgoal of `M_1`, `M_1 f` depends only on the a.e. class of `f` (in Sobolev.LocalMaximalFunction)"
+  },
+  {
+   "id": "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add",
+   "label": "le_add",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of `M_1`, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`",
+   "parentGoal": "Sobolev.LocalMaximalFunction",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/LocalMaximalFunction.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (`M_1`, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`).",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "proved: localMaximalFunction.le_add — subgoal of `M_1`, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` (in Sobolev.LocalMaximalFunction)"
+  },
+  {
+   "id": "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball",
+   "label": "lowerSemicontinuous_mul_measure_ball",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of `M_1`, `M_1 f` is Borel: `x ↦ c ν(B(x, r",
+   "parentGoal": "Sobolev.LocalMaximalFunction",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/LocalMaximalFunction.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (`M_1`, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`).",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "proved: localMaximalFunction.lowerSemicontinuous_mul_measure_ball — subgoal of `M_1`, `M_1 f` is Borel: `x ↦ c ν(B(x, r (in Sobolev.LocalMaximalFunction)"
+  },
+  {
+   "id": "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable",
+   "label": "measurable",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of `M_1`, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
+   "parentGoal": "Sobolev.LocalMaximalFunction",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/LocalMaximalFunction.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (`M_1`, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
+   "status": "done",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "proved: localMaximalFunction.measurable — subgoal of `M_1`, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Sobolev.LocalMaximalFunction)"
   },
   {
    "id": "Sobolev.MemW",
@@ -12405,6 +12172,26 @@
   {
    "from": "Basic.Rd",
    "to": "Sobolev.LocalMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable",
    "kind": "hard"
   },
   {
@@ -17133,77 +16920,12 @@
    "kind": "hard"
   },
   {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
    "to": "Sobolev.HardyLittlewood",
    "kind": "subgoal"
   },
   {
    "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
-   "to": "Sobolev.HardyLittlewood",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
    "to": "Sobolev.HardyLittlewood",
    "kind": "subgoal"
   },
@@ -18274,77 +17996,12 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
    "kind": "hard"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
    "kind": "hard"
   },
   {
@@ -18381,6 +18038,26 @@
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.Theorem23",
    "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae",
+   "to": "Sobolev.LocalMaximalFunction",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add",
+   "to": "Sobolev.LocalMaximalFunction",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball",
+   "to": "Sobolev.LocalMaximalFunction",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable",
+   "to": "Sobolev.LocalMaximalFunction",
+   "kind": "subgoal"
   },
   {
    "from": "Sobolev.MemW",
@@ -20402,7 +20079,19 @@
   },
   {
    "from": "Basic.Rd",
-   "to": "Sobolev.LocalMaximalFunction"
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable"
   },
   {
    "from": "Basic.Rd",
@@ -22941,63 +22630,11 @@
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
   },
   {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
    "to": "Sobolev.HardyLittlewood"
   },
   {
    "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
-   "to": "Sobolev.HardyLittlewood"
-  },
-  {
-   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
    "to": "Sobolev.HardyLittlewood"
   },
   {
@@ -23406,63 +23043,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_add"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt"
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
@@ -23483,6 +23068,22 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae",
+   "to": "Sobolev.LocalMaximalFunction"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add",
+   "to": "Sobolev.LocalMaximalFunction"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball",
+   "to": "Sobolev.LocalMaximalFunction"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable",
+   "to": "Sobolev.LocalMaximalFunction"
   },
   {
    "from": "Sobolev.MemW",

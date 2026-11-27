@@ -75,7 +75,7 @@ theorem le_lintegral_piece {G : Rd d → (Rd d →L[ℝ] Rd d)} {a b : Rd d} {m 
       ‖G x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) := fun x => by
     by_cases hx : x ∈ incrementBall a b
     · refine mul_le_mul' ?_ le_rfl
-      rw [← ofReal_norm_eq_enorm]
+      rw [← ofReal_norm]
       exact ENNReal.ofReal_le_ofReal (hm x hx)
     · have : discreteOccupationDensity.piece a b x = 0 := by
         unfold discreteOccupationDensity.piece
@@ -194,7 +194,7 @@ theorem eventually_sum_abs_le {π : ℕ → Partition T} {ω : ℝ → Rd d}
           (discreteOccupationDensity.piece (ω ((π n).left k)) (ω ((π n).right k)) x)) :=
       fun k _ => hHc.measurable.enorm.aemeasurable.mul
         (discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
-    rw [← lintegral_finset_sum' _ hmeas]
+    rw [← lintegral_finsetSum' _ hmeas]
     congr 1
     funext x
     rw [discreteOccupationDensity, ENNReal.ofReal_sum_of_nonneg

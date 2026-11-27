@@ -37,7 +37,7 @@ theorem integral_rpow_eq_sum (π : Partition T) (ω : ℝ → Rd d) {q : ℝ} (h
   have hdisj : ∀ i j : Fin π.m, i ≠ j → ∀ t, t ∈ Ico (π.left i) (π.right i) →
       t ∉ Ico (π.left j) (π.right j) := by
     have key : ∀ i j : Fin π.m, i < j → π.right i ≤ π.left j := fun i j hij =>
-      π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+      π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.val_castSucc]; omega)
     intro i j hij t hi hj
     rcases lt_or_gt_of_ne hij with h | h
     · linarith [key i j h, hi.2, hj.1]
@@ -53,12 +53,12 @@ theorem integral_rpow_eq_sum (π : Partition T) (ω : ℝ → Rd d) {q : ℝ} (h
         Finset.sum_eq_single i0 (fun j _ hj => indicator_of_notMem (hdisj i0 j hj.symm t hi0) _)
           (by simp),
         indicator_of_mem hi0, indicator_of_mem hi0, abs_of_nonneg (hc0 i0)]
-    · push_neg at h
+    · push Not at h
       simp [normalizedQuadraticDensity, indicator_of_notMem (h _), Real.zero_rpow hq.ne']
   have hsub : ∀ i, Ico (π.left i) (π.right i) ⊆ Icc 0 T := fun i s hs =>
     ⟨(π.t_mem _).1.trans hs.1, hs.2.le.trans (π.t_mem _).2⟩
   simp_rw [hpt]
-  rw [integral_finset_sum _ fun i _ => (integrable_const _).indicator measurableSet_Ico]
+  rw [integral_finsetSum _ fun i _ => (integrable_const _).indicator measurableSet_Ico]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [integral_indicator measurableSet_Ico, Measure.restrict_restrict measurableSet_Ico,
     inter_eq_left.2 (hsub i), setIntegral_const, measureReal_def, Real.volume_Ico,
@@ -81,7 +81,7 @@ theorem hasLaw_sum_smul_basisVec {Ω : Type*} [MeasurableSpace Ω] {Q : Measure 
   have h1 := hind.hasLaw_pi hlaw
   have h2 : HasLaw (fun v : Fin d → ℝ => ∑ i, v i • Rd.basisVec i) (stdGaussian (Rd d))
       (Measure.pi fun _ : Fin d => gaussianReal 0 1) := by
-    refine ⟨(continuous_finset_sum _ fun i _ =>
+    refine ⟨(continuous_finsetSum _ fun i _ =>
       (continuous_apply i).smul continuous_const).measurable.aemeasurable, ?_⟩
     rw [stdGaussian_eq_map_pi_orthonormalBasis (EuclideanSpace.basisFun (Fin d) ℝ)]
     congr 1
@@ -286,7 +286,7 @@ theorem memLp_two (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
       (stdGaussian (Rd d)) (CanonicalWienerSpace.P (T := T) x) := fun i =>
     hasLaw_increment x (π.t_mem _).1 (π.left_lt_right i) (π.t_mem _).2
   simp_rw [integral_rpow_eq_sum_norm π hq0]
-  refine memLp_finset_sum _ fun i _ => ?_
+  refine memLp_finsetSum _ fun i _ => ?_
   exact ((hZ i).memLp_comp (f := fun z : Rd d => ‖z‖ ^ (2 * q))
     (memLp_norm_rpow_stdGaussian (by positivity) (by simp))).mul_const _
 
@@ -308,7 +308,7 @@ theorem integral_eq (x : Rd d) (π : Partition T) {q : ℝ} (hq : 1 < q) :
     (hZ i).integrable_comp (f := fun z : Rd d => ‖z‖ ^ (2 * q))
       (memLp_one_iff_integrable.1 (memLp_norm_rpow_stdGaussian (by positivity) ENNReal.one_ne_top))
   simp_rw [integral_rpow_eq_sum_norm π hq0]
-  rw [integral_finset_sum _ fun i _ => (hint i).mul_const _]
+  rw [integral_finsetSum _ fun i _ => (hint i).mul_const _]
   have hmom : ∀ i : Fin π.m, ∫ ω, ‖(π.right i - π.left i) ^ (-(1 / 2 : ℝ)) •
       (CanonicalWienerSpace.B (π.right i) ω - CanonicalWienerSpace.B (π.left i) ω)‖ ^ (2 * q)
       ∂(CanonicalWienerSpace.P (T := T) x) = gaussianMoment d q := fun i =>

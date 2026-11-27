@@ -64,7 +64,7 @@ for convex `Q ∋ x` with `|z - x| ≤ D` on `Q` and `0 < s ≤ 1`,
 `∫_Q g(x + s(y-x)) |y-x| dy ≤ s^{-d-1} ∫_Q 1_{|z-x| ≤ sD} g(z) |z-x| dz`. -/
 theorem lintegral_comp_homothety_le {Q : Set (Rd d)} (hQ : Convex ℝ Q) (hQm : MeasurableSet Q)
     {x : Rd d} (hx : x ∈ Q) {D : ℝ} (hD : ∀ z ∈ Q, dist z x ≤ D) {g : Rd d → ℝ≥0∞}
-    (hg : Measurable g) {s : ℝ} (hs : s ∈ Ioc (0 : ℝ) 1) :
+    (_hg : Measurable g) {s : ℝ} (hs : s ∈ Ioc (0 : ℝ) 1) :
     ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ≤
       ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) *
         ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ) z := by
@@ -534,7 +534,7 @@ for an approximate identity `ψ_n` (nonnegative, continuous, mass `1`, supported
 `B(0, 1/(n+1))`), `h * ψ_n → h` in `L¹` when `h` is continuous with compact support. -/
 theorem tendsto_convolution_of_hasCompactSupport {h : Rd d → ℝ} (hh : Continuous h)
     (hhc : HasCompactSupport h) {ψ : ℕ → Rd d → ℝ} (hψ0 : ∀ n x, 0 ≤ ψ n x)
-    (hψc : ∀ n, Continuous (ψ n)) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (_hψc : ∀ n, Continuous (ψ n)) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
     Tendsto (fun n => ∫⁻ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ) atTop (𝓝 0) := by
   -- rewrite the convolution with `ψ` on the left
@@ -671,7 +671,7 @@ theorem tendsto_convolution {h : Rd d → ℝ} (hh : Integrable h) {ψ : ℕ →
 
 /-- **Subgoal** (Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q)`):
 `∫_Q ∫_Q |h(z)| / |y - z|^{d-1} dz dy ≤ C_Q ∫_Q |h|` for bounded `Q`. -/
-theorem lintegral_potential_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
+theorem lintegral_potential_le (_hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
     (hQm : MeasurableSet Q) :
     ∃ C : ℝ≥0, ∀ h : Rd d → ℝ, AEStronglyMeasurable h →
       ∫⁻ y in Q, ∫⁻ z in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1) ≤ C * ∫⁻ z in Q, ‖h z‖ₑ := by
@@ -795,8 +795,7 @@ theorem tendsto_lintegral_gradient {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : 
     rw [← sub_smul, enorm_smul]
     have : ‖Rd.basisVec i‖ₑ = 1 := by
       have hn : ‖Rd.basisVec i‖ = 1 := by
-        have := (EuclideanSpace.basisFun (Fin d) ℝ).orthonormal.1 i
-        simpa [Rd.basisVec] using this
+        simp [Rd.basisVec]
       rw [← ofReal_norm, hn, ENNReal.ofReal_one]
     rw [this, mul_one]
   have hmeas : ∀ n i, AEMeasurable (T n i) volume := by

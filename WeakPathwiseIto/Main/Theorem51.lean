@@ -25,7 +25,7 @@ variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
 
 /-- **Theorem 5.1** (existence of the limits (14) and (15)). -/
 theorem theorem_5_1_tendsto (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) :
     ∀ t ∈ Icc 0 T,
       Tendsto (fun m => follmerIntegral π (gradient (A.seq m)) ω t) atTop
@@ -40,7 +40,7 @@ theorem theorem_5_1_tendsto (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadrati
 
 /-- **Theorem 5.1** (independence of the approximating sequence). -/
 theorem theorem_5_1_unique (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H H' : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (hH' : IsWeakHessian F H')
     (A : ApproximatingSequence π ω F H) (A' : ApproximatingSequence π ω F H') :
     ∀ t ∈ Icc 0 T, weakPathwiseIntegral A' t = weakPathwiseIntegral A t ∧
@@ -93,7 +93,7 @@ theorem theorem_5_1_unique (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadratic
 (13). Then for all `t ∈ [0, T]`, eq. (17):
 `F(ω(t)) - F(ω(0)) = ∫_0^t ∇F(ω(s)) d^π ω(s) + ½ [∇F(ω), ω]_π(t)`. -/
 theorem theorem_5_1 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) :
     ∀ t ∈ Icc 0 T, F (ω t) - F (ω 0) = weakPathwiseIntegral A t + 1 / 2 * weakCovariation A t := by
   intro t ht

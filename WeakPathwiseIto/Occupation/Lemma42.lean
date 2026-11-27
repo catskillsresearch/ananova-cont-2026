@@ -40,7 +40,7 @@ theorem tendsto_discreteTrace (hQV : HasQuadraticVariation π ω) {t : ℝ} (ht 
     exact Finset.sum_comm
   simp_rw [e]
   unfold HasQuadraticVariation.trace
-  exact tendsto_finset_sum _ fun j _ => (hQV.coord j).tendsto t ht
+  exact tendsto_finsetSum _ fun j _ => (hQV.coord j).tendsto t ht
 
 /-- **Subgoal** (Lemma 4.2 proof: total discrete quadratic variation):
 `∑_i |ω(t_{i+1}) - ω(t_i)|² → tr[ω]_π(T)`. -/
@@ -95,7 +95,7 @@ theorem traceMeasure_Ioc (hQV : HasQuadraticVariation π ω) {a b : ℝ} (ha : 0
       (fun t => ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩)
   have hc : Continuous hQV.traceExt := by
     unfold HasQuadraticVariation.traceExt
-    exact continuous_finset_sum _ fun i _ => hcl i
+    exact continuous_finsetSum _ fun i _ => hcl i
   set F := hQV.traceExt_monotone.stieltjesFunction with hFdef
   have hF : ∀ x, F x = hQV.traceExt x := fun x => by
     rw [hFdef, Monotone.stieltjesFunction_eq]
@@ -151,7 +151,7 @@ theorem abs_sum_sub_grid_le {ι : Type*} [Fintype ι] {r w : ι → ℝ} (hr : �
   have hsum_c : ∀ i, ∑ k ∈ Finset.range K, c k i = 1 := fun i => by
     simp only [hc]
     rw [Finset.sum_range_sub (fun k => if r i ≤ s k then (1 : ℝ) else 0), hsK, hs0,
-      if_pos (hr i).2, if_neg (not_le.2 (hr i).1)]
+      ite_eq_left (hr i).2, ite_eq_right (not_le.2 (hr i).1)]
     norm_num
   have hW : ∀ k, ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s (k + 1)), w i -
       ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s k), w i = ∑ i, c k i * w i := fun k => by
@@ -224,7 +224,7 @@ theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (
     have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
     nlinarith
   have hstep : ∀ k, s (k + 1) - s k = T / K := fun k => by rw [hs, hs]; push_cast; ring
-  haveI : IsLocallyFiniteMeasure hQV.traceMeasure := by
+  have : IsLocallyFiniteMeasure hQV.traceMeasure := by
     unfold HasQuadraticVariation.traceMeasure; infer_instance
   have hInt : IntegrableOn g (Icc 0 T) hQV.traceMeasure := hg.integrableOn_compact isCompact_Icc
   have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 T := fun k hk x hx =>
@@ -234,7 +234,7 @@ theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (
   have h0 : hQV.traceMeasure {0} = 0 := (traceMeasure_Ioc hQV le_rfl le_rfl hT).2
   have hIcc : ∫ t in Icc 0 T, g t ∂hQV.traceMeasure = ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure := by
     refine setIntegral_congr_set (ae_eq_set.2 ⟨measure_mono_null (fun x hx => ?_) h0, ?_⟩)
-    · simp only [mem_diff, mem_Icc, mem_Ioc, not_and] at hx
+    · simp only [Set.mem_sdiff, mem_Icc, mem_Ioc, not_and] at hx
       exact Set.mem_singleton_iff.2 (le_antisymm (not_lt.1 fun h => hx.2 h hx.1.2) hx.1.1)
     · rw [sdiff_eq_empty.2 Ioc_subset_Icc_self, measure_empty]
   have hsplit : ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure =
@@ -306,7 +306,7 @@ theorem tendsto_riemannStieltjes (hQV : HasQuadraticVariation π ω) {g : ℝ �
     rw [div_le_iff₀ hKr]
     have : (j : ℝ) ≤ K := by exact_mod_cast hj
     nlinarith
-  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+  have hgridlim := tendsto_finsetSum (Finset.range K) fun k hk =>
     ((tendsto_discreteTrace hQV (hmem (k + 1) (Finset.mem_range.1 hk))).sub
       (tendsto_discreteTrace hQV (hmem k (Finset.mem_range.1 hk).le))).const_mul
         (g ((k + 1 : ℕ) * T / K))
@@ -391,7 +391,7 @@ theorem abs_integral_sub_le (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) 
       ∑ i, ∫ x, φ x * discreteOccupationDensity.piece (A i) (B i) x := by
     unfold discreteOccupationDensity
     simp_rw [Finset.mul_sum]
-    exact integral_finset_sum _ fun i _ => hint i
+    exact integral_finsetSum _ fun i _ => hint i
   have e2 : ∀ i, φ (A i) * ‖B i - A i‖ ^ 2 =
       ∫ x, φ (A i) * discreteOccupationDensity.piece (A i) (B i) x := fun i => by
     rw [integral_const_mul, discreteOccupationDensity.integral_piece]

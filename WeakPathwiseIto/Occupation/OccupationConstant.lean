@@ -25,7 +25,7 @@ namespace occupationConstant
 theorem volume_ball_half {d : ℕ} (hd : 0 < d) :
     (volume (Metric.ball (0 : Rd d) (1 / 2))).toReal =
       (1 / 2 : ℝ) ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   rw [Measure.addHaar_ball volume (0 : Rd d) (by norm_num : (0 : ℝ) ≤ 1 / 2),
     finrank_euclideanSpace_fin, ENNReal.toReal_mul, ENNReal.toReal_ofReal (by positivity)]
 
@@ -75,13 +75,13 @@ def sphereMean (d : ℕ) (r : ℝ) (y : Rd d) : ℝ :=
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 2: polar coordinates on a ball): for `f` integrable on
 `B(0,R)`, `∫_{B(0,R)} f = ∫_0^R r^{d-1} ∫_{S^{d-1}} f(rω) dσ(ω) dr`. -/
-theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {f : Rd d → ℝ}
+theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (_hR : 0 < R) {f : Rd d → ℝ}
     (hf : IntegrableOn f (Metric.ball 0 R)) :
     ∫ x in Metric.ball (0 : Rd d) R, f x =
       ∫ r in Ioo 0 R, r ^ (d - 1) *
         ∫ ω, f (r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere := by
   classical
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   set σ := (volume : Measure (Rd d)).toSphere with hσ
   set g : Rd d → ℝ := (Metric.ball 0 R).indicator f with hg
   have hgi : Integrable g := (integrable_indicator_iff measurableSet_ball).2 hf
@@ -218,7 +218,7 @@ theorem fderiv_fderiv_norm_rpow_apply {d : ℕ} {z : Rd d} (hz : z ≠ 0) (p : �
   have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) z := (innerSL ℝ).hasFDerivAt
   have h2 : HasFDerivAt (fun w : Rd d => (p * ‖w‖ ^ (p - 2)) • innerSL ℝ w) _ z := hc.smul hI
   rw [hev.fderiv_eq, h2.fderiv]
-  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+  simp only [add_apply, smul_apply,
     ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
   have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
     rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
@@ -228,7 +228,7 @@ theorem fderiv_fderiv_norm_rpow_apply {d : ℕ} {z : Rd d} (hz : z ≠ 0) (p : �
 open Laplacian in
 /-- **Subgoal** (Eq. (7) c_d, Newton step 5: the Newton kernel is harmonic): for `d ≥ 3` and
 `z ≠ 0`, `Δ |z|^{2-d} = 0`. -/
-theorem laplacian_newtonKernel {d : ℕ} (hd : 3 ≤ d) {z : Rd d} (hz : z ≠ 0) :
+theorem laplacian_newtonKernel {d : ℕ} (_hd : 3 ≤ d) {z : Rd d} (hz : z ≠ 0) :
     Δ (fun z : Rd d => ‖z‖ ^ (2 - (d : ℝ))) z = 0 := by
   set b := stdOrthonormalBasis ℝ (Rd d) with hbdef
   have hz0 : 0 < ‖z‖ := norm_pos_iff.2 hz
@@ -332,7 +332,7 @@ theorem fderiv_fderiv_norm_sub_rpow_apply {d : ℕ} {y c : Rd d} (hy : y ≠ c) 
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any
 orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`. -/
-theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
+theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (_hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
     {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ (Rd d)) :
     ∑ i, fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ (2 - (d : ℝ)))) y (b i) (b i) = 0 := by
   set z := y - c with hzdef
@@ -384,7 +384,7 @@ theorem hasFDerivAt_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d} (hy :
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -421,7 +421,7 @@ theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -446,7 +446,7 @@ theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d
       (h2.differentiableOn one_ne_zero _ hx0).differentiableAt (hV.mem_nhds hx0)
     have := (hd.hasFDerivAt.comp x ((hasFDerivAt_id x).sub_const (r • (ω : Rd d)))).const_smul
       ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
-    convert this using 1 <;> first | rfl | simp
+    convert this using 1 <;> rfl
   · exact (h0.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
   · exact (h1.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
 
@@ -464,7 +464,7 @@ theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -555,7 +555,7 @@ theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y
   rw [hcomp] at h6
   show T (S • fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d))) = 0
   rw [hTapp]
-  simp only [ContinuousLinearMap.smul_apply, smul_eq_mul]
+  simp only [smul_apply, smul_eq_mul]
   rw [← Finset.mul_sum, h6, mul_zero]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7a: radial profile): a radial `u` on `ℝ^d`, `d > 0`,
@@ -610,7 +610,7 @@ theorem fderiv_fderiv_comp_norm_apply {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy
   have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) y := (innerSL ℝ).hasFDerivAt
   have h4 : HasFDerivAt (fun w : Rd d => (deriv f ‖w‖ / ‖w‖) • innerSL ℝ w) _ y := h3.smul hI
   rw [hev.fderiv_eq, h4.fderiv]
-  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+  simp only [add_apply, smul_apply,
     ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
   have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
     rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
@@ -749,7 +749,7 @@ theorem sphereMean_bounds {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : R
   have hp : (2 - (d : ℝ)) ≤ 0 := by
     have : (3 : ℝ) ≤ d := by exact_mod_cast hd
     linarith
-  haveI : Nonempty (Metric.sphere (0 : Rd d) 1) :=
+  have : Nonempty (Metric.sphere (0 : Rd d) 1) :=
     ⟨⟨EuclideanSpace.single (⟨0, hd0⟩ : Fin d) (1 : ℝ), by simp⟩⟩
   have hσ0 : (volume : Measure (Rd d)).toSphere univ ≠ 0 :=
     isOpen_univ.measure_ne_zero _ univ_nonempty
@@ -842,7 +842,7 @@ theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :
 `d ≥ 3`, `0 < r < |y|`, `sphereMean d r y = |y|^{2-d}`. -/
 theorem sphereMean_outside {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
     (hy : r < ‖y‖) : sphereMean d r y = ‖y‖ ^ (2 - (d : ℝ)) := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
   obtain ⟨a, b, hab⟩ := radial_harmonic_eq hd hr.le
     (fun z hz => harmonicAt_sphereMean hd hr hz.ne') (fun z z' h => sphereMean_radial r h)
   have hn := tendsto_norm_cocompact_atTop (E := Rd d)
@@ -882,7 +882,7 @@ theorem toSphere_real_univ {d : ℕ} (hd : 0 < d) :
     (volume : Measure (Rd d)).toSphere.real univ =
         d * (volume (Metric.ball (0 : Rd d) 1)).toReal ∧
       0 < (volume : Measure (Rd d)).toSphere.real univ := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   have h1 : (volume : Measure (Rd d)).toSphere.real univ =
       d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
     rw [Measure.toSphere_real_apply_univ, finrank_euclideanSpace_fin, Measure.real_def]
@@ -905,7 +905,7 @@ theorem integral_sphere_eq_sphereMean {d : ℕ} (hd : 0 < d) (ρ : ℝ) (y : Rd 
 theorem volume_ball_eq {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 ≤ R) :
     (volume (Metric.ball (0 : Rd d) R)).toReal =
       R ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   rw [Measure.addHaar_ball volume (0 : Rd d) hR, finrank_euclideanSpace_fin, ENNReal.toReal_mul,
     ENNReal.toReal_ofReal (by positivity)]
 

@@ -72,7 +72,7 @@ theorem lintegral_kernel_le_maximal {F : Type*} [NormedAddCommGroup F] {α : ℝ
 
 /-- **Subgoal** (Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a
 ball `B` of radius `r` is bounded on `L¹(B)` with constant `C r`). -/
-theorem lintegral_ball_potential_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (c : Rd d) (r : ℝ), 0 < r →
+theorem lintegral_ball_potential_le (_hd : 0 < d) : ∃ C : ℝ≥0, ∀ (c : Rd d) (r : ℝ), 0 < r →
     ∀ g : Rd d → ℝ, AEStronglyMeasurable g →
       ∫⁻ y in Metric.ball c r, ∫⁻ z in Metric.ball c r, ‖g z‖ₑ / edist y z ^ ((d : ℝ) - 1) ≤
         C * ENNReal.ofReal r * ∫⁻ z in Metric.ball c r, ‖g z‖ₑ := by
@@ -269,7 +269,7 @@ theorem abs_average_sub_average_le_maximal (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (
         refine mul_le_mul' (mul_le_mul' ?_ le_rfl) le_rfl
         push_cast
         exact le_mul_of_one_le_left' (by norm_num)
-      · push_neg at h2
+      · push Not at h2
         have ht0 : 0 < t := hs.trans_le hst
         have hst' : s ≤ t / 2 := by linarith
         have hts' : t / 2 ≤ 2 ^ (k + 1) * s := by

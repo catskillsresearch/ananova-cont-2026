@@ -196,13 +196,14 @@ own text.
   sufficient condition). The comparison with the hypotheses of [FP00] is informal and not
   formalised.
 * Hardy–Littlewood maximal theorem (used in Appendix C, `M_1` bounded on `L^p`, `p > 1`):
-  not in Mathlib at our pin. `Sobolev/HardyLittlewood.lean` builds on the Carleson project
-  [Carleson]: its Vitali-type covering lemmas `measure_biUnion_le_lintegral(_aux)` are adapted
-  to Lebesgue measure on $\mathbb R^d$ (doubling constant $2^d$), giving the weak type $(1,1)$
-  bound for the truncated maximal function. Carleson derives the strong type $(p,p)$ bound from
-  its real interpolation theorem (about 14.6k further lines on a newer Lean/Mathlib); we instead
-  prove it directly by truncation and the layer-cake formula. Unchanged reference copy:
-  `vendor/carleson/`.
+  not in Mathlib at our pin. It is imported from the Carleson project [Carleson], a Lake
+  dependency pinned to its commit (no Carleson code is copied here): `hasStrongType_maximalFunction_one`
+  (via real interpolation) for the uncentred `globalMaximalFunction`, with Lebesgue measure on
+  $\mathbb R^d$ doubling with constant $2^d$. Carleson's maximal function averages over all balls
+  containing $x$, the paper's $M_1$ over centred balls of radius $< 1$, so
+  `Sobolev/HardyLittlewood.lean` is a two-lemma bridge: $M_1 f \le M f$ pointwise, and the
+  resulting bound $\int (M_1 f)^p \le 2^p \frac{p}{p-1} 4^d \int |f|^p$ (Carleson's constant
+  `CMB (2^d) p` raised to the power $p$).
 * Section 3 defines the mesh as $\sup\{|t_{i+1}-t_i|, i = 1,\dots,m(n)-1\}$ (omitting the first
   interval), while Assumption 1 uses $\max_i$; we use $\max_i$ throughout (the Section 3 mesh
   is only used in the remark that $|\pi_n|\to 0$ implies (6)).
@@ -215,6 +216,5 @@ own text.
   precise representative (its (1), (4)); followed for the proofs. Not redistributed here.
 * [Carleson]: F. van Doorn et al., *Formalization of a generalized Carleson's theorem* (Lean 4),
   <https://github.com/fpvandoorn/carleson>, commit `f7487cc9da4d1e73f009dc0280cd5b958f3e2c78`,
-  Apache-2.0. Source of the covering lemmas in `Sobolev/HardyLittlewood.lean` (adapted, see
-  Modelling choices); file `Carleson/ToMathlib/HardyLittlewood.lean` copied unchanged to
-  `vendor/carleson/`.
+  Apache-2.0. Lake dependency; its `Carleson/ToMathlib/HardyLittlewood.lean` (Hardy–Littlewood
+  maximal theorem) is imported unchanged by `Sobolev/HardyLittlewood.lean` (see Modelling choices).

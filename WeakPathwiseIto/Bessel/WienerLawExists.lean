@@ -69,7 +69,7 @@ theorem aemeasurable_of_aemeasurable_eval {X Y Z : Type*} [TopologicalSpace X]
       funext z
       by_cases hz : z ∈ N
       · simp [g', hz, Set.piecewise]
-      · simp only [g', hz, if_false, Set.piecewise]
+      · simp only [g', hz, ite_false, Set.piecewise]
         exact hgood z hz ⟨u n, huD n⟩
     rw [this]
     exact Measurable.piecewise hN measurable_const (hm _)

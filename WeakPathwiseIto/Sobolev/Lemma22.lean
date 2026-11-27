@@ -36,7 +36,7 @@ theorem lintegral_closedBall_le (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ} (hρ : 
     rcases subsingleton_or_nontrivial (Rd d) with h | h
     · have : Metric.sphere a ρ = ∅ := by
         ext x
-        simp [Subsingleton.elim x a, hρ.ne, hρ.ne']
+        simp [Subsingleton.elim x a, hρ.ne]
       rw [this, measure_empty]
     · exact Measure.addHaar_sphere volume a ρ
   have hcb : ν (Metric.closedBall a ρ) ≤ ν (Metric.ball a ρ) := by
@@ -155,7 +155,7 @@ theorem lintegral_shell_le {α : ℝ} (hα : 0 < α) (hαd : α < d) (f : Rd d �
   have hd : 0 < d := by
     have : (0 : ℝ) < d := hα.trans hαd
     exact_mod_cast this
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   set a := ρ / 2 ^ (k + 1) with ha_def
   set b := ρ / 2 ^ k with hb_def
   have ha : 0 < a := by positivity
@@ -279,7 +279,7 @@ theorem lintegral_closedBall_kernel_le_of_lt {α : ℝ} (hα : 0 < α) (hαd : �
 
 /-- **Subgoal** (Lemma 2.2 proof, `d ≤ α`): the kernel is at most `ρ^{α-d}` on `B̄(x,ρ)`, so
 `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ |B(0,1)| ρ^α M_ρ f(x)`. -/
-theorem lintegral_closedBall_kernel_le_of_ge {α : ℝ} (hα : 0 < α) (hαd : (d : ℝ) ≤ α) :
+theorem lintegral_closedBall_kernel_le_of_ge {α : ℝ} (_hα : 0 < α) (hαd : (d : ℝ) ≤ α) :
     ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (x : Rd d) {ρ : ℝ}, 0 < ρ →
       ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
         C * ENNReal.ofReal ρ ^ α * localMaximalFunction (ENNReal.ofReal ρ) f x := by

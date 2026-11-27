@@ -34,13 +34,13 @@ standing assumption (the seminorm is only applied to Hessians of Sobolev functio
 the statement is false, since Lean's `∫⁻` is only superadditive on non-measurable integrands
 (e.g. indicators of a Bernstein set and its complement). -/
 theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) {f g : Rd d → F}
-    (hf : AEStronglyMeasurable f) (hg : AEStronglyMeasurable g) :
+    (hf : AEStronglyMeasurable f) (_hg : AEStronglyMeasurable g) :
     occupationSeminorm π ω (f + g) ≤ occupationSeminorm π ω f + occupationSeminorm π ω g := by
   unfold occupationSeminorm
   have hL : ∀ n, AEMeasurable (fun x => ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) :=
     fun n => by
       unfold discreteOccupationDensity
-      exact (integrable_finset_sum _ fun i _ =>
+      exact (integrable_finsetSum _ fun i _ =>
         discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
   have key : ∀ u v : ℕ → ℝ≥0∞, limsup (u + v) atTop ≤ limsup u atTop + limsup v atTop := by
     intro u v
@@ -83,7 +83,7 @@ theorem lintegral_closedBall_le (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ} (hρ : 
     rcases subsingleton_or_nontrivial (Rd d) with h | h
     · have : Metric.sphere a ρ = ∅ := by
         ext x
-        simp [Subsingleton.elim x a, hρ.ne, hρ.ne']
+        simp [Subsingleton.elim x a, hρ.ne]
       rw [this, measure_empty]
     · exact Measure.addHaar_sphere volume a ρ
   have hcb : ν (Metric.closedBall a ρ) ≤ ν (Metric.ball a ρ) := by
@@ -132,7 +132,7 @@ theorem volume_ball_eq (a : Rd d) {ρ : ℝ} (hρ : 0 < ρ) :
       ext x
       simp [Metric.mem_ball, EuclideanSpace.dist_eq, hr]
     rw [h a ρ hρ, h 0 1 one_pos, pow_zero, ENNReal.ofReal_one, one_mul]
-  · haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  · have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
     rw [Measure.addHaar_ball volume a hρ.le, finrank_euclideanSpace_fin]
 
 /-- **Subgoal** (Eq. (10) proof, `d ≤ 2`): on `B̄(a,ρ)` the kernel `|x-a|^{2-d}` is at most
@@ -209,7 +209,7 @@ theorem lintegral_kernel_le_of_three_le (hd : 3 ≤ d) : ∃ C : ℝ≥0, ∀ (f
     ∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) ≤
       C * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a := by
   refine ⟨(volume (Metric.ball (0 : Rd d) 1)).toNNReal * 2 ^ d * 2, fun f a ρ hρ hρ1 => ?_⟩
-  haveI : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
   set V := volume (Metric.ball (0 : Rd d) 1) with hV
   have hVc : ((V.toNNReal : ℝ≥0) : ℝ≥0∞) = V := ENNReal.coe_toNNReal measure_ball_lt_top.ne
   set S : ℕ → Set (Rd d) := fun k => {x | ρ / 2 ^ (k + 1) < ‖x - a‖ ∧ ‖x - a‖ ≤ ρ / 2 ^ k}
@@ -331,7 +331,7 @@ theorem lintegral_piece_le (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
         (‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) +
           ‖f x‖ₑ * ENNReal.ofReal (‖x - b‖ ^ (2 - (d : ℝ))))) x := by
     intro x
-    simp only [discreteOccupationDensity.piece, h, if_false]
+    simp only [discreteOccupationDensity.piece, h, ite_false]
     by_cases hx : x ∈ incrementBall a b
     · rw [indicator_of_mem hx, indicator_of_mem hx, ENNReal.ofReal_mul hc,
         ENNReal.ofReal_add (by positivity) (by positivity)]
@@ -429,7 +429,7 @@ theorem lintegral_le_maximal (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partition T)
           Finset.mul_sum]
     _ = ∑ i : Fin π.m, ∫⁻ x, ‖f x‖ₑ *
           ENNReal.ofReal (discreteOccupationDensity.piece (ω (π.left i)) (ω (π.right i)) x) :=
-        lintegral_finset_sum' _ (fun i _ =>
+        lintegral_finsetSum' _ (fun i _ =>
           hfm.enorm.mul (ENNReal.measurable_ofReal.comp (hmeas _ _)).aemeasurable)
     _ ≤ ∑ i : Fin π.m, C * ((localMaximalFunction 1 f (ω (π.right i)) +
           localMaximalFunction 1 f (ω (π.left i))) *
@@ -516,7 +516,7 @@ theorem sum_rpow_le_eLpNorm {q : ℝ} (hq : 0 < q) (π : Partition T) (ω : ℝ 
         (Ico (π.left j) (π.right j)) := fun i j hij => by
       refine Set.disjoint_left.2 fun s h1 h2 => ?_
       have : π.right i ≤ π.left j :=
-        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.val_castSucc]; omega)
       linarith [h1.2, h2.1]
     intro i j hij
     rcases lt_or_gt_of_ne hij with h | h

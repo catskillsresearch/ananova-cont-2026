@@ -433,7 +433,7 @@ theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd 
   · rw [eLpNorm_of_not_aestronglyMeasurable hf, ENNReal.mul_top hC0]; exact le_top
   set g := hf.mk f
   have hg : Measurable g := hf.stronglyMeasurable_mk.measurable
-  rw [hardyLittlewood.congr_ae hf.ae_eq_mk, eLpNorm_congr_ae hf.ae_eq_mk]
+  rw [localMaximalFunction.congr_ae hf.ae_eq_mk, eLpNorm_congr_ae hf.ae_eq_mk]
   have hp1 : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp0).ne'
   rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp1 ENNReal.ofReal_ne_top,
     eLpNorm_eq_lintegral_rpow_enorm_toReal hp1 ENNReal.ofReal_ne_top,
@@ -447,7 +447,7 @@ theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd 
     _ ≤ _ := by gcongr
   all_goals first
     | exact hg.aestronglyMeasurable
-    | exact (hardyLittlewood.measurable_localMaximalFunction g).aestronglyMeasurable
+    | exact (localMaximalFunction.measurable g).aestronglyMeasurable
 
 /-- **Subgoal** (Appendix C, `M_1` commutes with translations: `M_1(f(· + h))(x) = M_1 f(x + h)`). -/
 theorem localMaximalFunction_comp_add (f : Rd d → ℝ) (h x : Rd d) :
@@ -475,12 +475,12 @@ theorem enorm_toReal_sub_le {f : Rd d → ℝ} (hf : Measurable f) {x h : Rd d}
   have hb : localMaximalFunction 1 (fun z => f (z + h)) x = b := localMaximalFunction_comp_add f h x
   have h1 : a ≤ b + c := by
     rw [← hb]
-    refine hardyLittlewood.le_add (hf.comp (measurable_add_const h)) (fun z => ?_) x
+    refine localMaximalFunction.le_add (hf.comp (measurable_add_const h)) (fun z => ?_) x
     calc ‖f z‖ₑ = ‖f (z + h) + (f z - f (z + h))‖ₑ := by ring_nf
       _ ≤ _ := enorm_add_le _ _
   have h2 : b ≤ a + c := by
     rw [← hb]
-    refine hardyLittlewood.le_add hf (fun z => ?_) x
+    refine localMaximalFunction.le_add hf (fun z => ?_) x
     calc ‖f (z + h)‖ₑ = ‖f z - (f z - f (z + h))‖ₑ := by ring_nf
       _ ≤ _ := enorm_sub_le
   rcases eq_or_ne c ⊤ with hc | hc
@@ -508,7 +508,7 @@ theorem ae_localMaximalFunction_ne_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
       (ENNReal.ofReal_pos.2 (by linarith)).ne'
   have hM : ∫⁻ x, localMaximalFunction 1 f x ^ p ≠ ⊤ :=
     ((hardyLittlewood.lintegral_rpow_le hf hp).trans_lt (ENNReal.mul_lt_top hK.lt_top hI)).ne
-  filter_upwards [ae_lt_top ((hardyLittlewood.measurable_localMaximalFunction f).pow_const p) hM]
+  filter_upwards [ae_lt_top ((localMaximalFunction.measurable f).pow_const p) hM]
     with x hx hxt
   rw [hxt, ENNReal.top_rpow_of_pos hp0] at hx
   exact lt_irrefl _ hx
@@ -541,7 +541,7 @@ theorem gagliardo_maximal_le_of_measurable {s p : ℝ} (hp : 1 < p) {f : Rd d �
     exact ENNReal.div_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofNat_ne_top)
       (ENNReal.ofReal_pos.2 (by linarith)).ne'
   set e : ℝ := s * p + d
-  have hM := hardyLittlewood.measurable_localMaximalFunction f
+  have hM := localMaximalFunction.measurable f
   have hed : Measurable fun z : Rd d × Rd d => edist z.1 z.2 ^ e :=
     (measurable_fst.edist measurable_snd).pow_const e
   have hΦ : Measurable (Function.uncurry fun x y : Rd d =>
@@ -569,7 +569,7 @@ theorem gagliardo_maximal_le_of_measurable {s p : ℝ} (hp : 1 < p) {f : Rd d �
         gcongr
         exact enorm_toReal_sub_le hf hx hxh
     _ = (∫⁻ x, localMaximalFunction 1 (fun z => f z - f (z + h)) x ^ p) * c :=
-        lintegral_mul_const _ ((hardyLittlewood.measurable_localMaximalFunction _).pow_const p)
+        lintegral_mul_const _ ((localMaximalFunction.measurable _).pow_const p)
     _ ≤ (K * ∫⁻ x, ‖f x - f (x + h)‖ₑ ^ p) * c := by
         gcongr; exact hardyLittlewood.lintegral_rpow_le hD hp
     _ = K * ∫⁻ x, ‖f x - f (x + h)‖ₑ ^ p * c := by
@@ -595,7 +595,7 @@ theorem gagliardo_maximal_le {s p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f :
   have hfg : f =ᵐ[volume] g := hfp.aestronglyMeasurable.ae_eq_mk
   have hg : Measurable g := hfp.aestronglyMeasurable.stronglyMeasurable_mk.measurable
   have hgp : MemLp g (ENNReal.ofReal p) := hfp.ae_eq hfg
-  rw [hardyLittlewood.congr_ae hfg]
+  rw [localMaximalFunction.congr_ae hfg]
   have hR : ∫⁻ x, ∫⁻ y, ‖f x - f y‖ₑ ^ p / edist x y ^ (s * p + d) =
       ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) :=
     lintegral_congr_ae (hfg.mono fun x hx => lintegral_congr_ae (hfg.mono fun y hy => by

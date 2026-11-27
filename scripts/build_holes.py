@@ -161,7 +161,7 @@ PAPER_LABEL: dict[str, str] = {
     "Main.BalancedPartitions": "Assumption 1",
     "Main.GeometricMeshDecay": "Assumption 2, (30), (31)",
     "Main.Theorem52": "Theorem 5.2",
-    "Sobolev.HardyLittlewood": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
+    "Sobolev.HardyLittlewood": "Hardy–Littlewood bound for M_1 (Appendix C; bridge to Carleson project)",
     "Main.IsItoIntegral": "Itô integral",
     "Main.Proposition53": "Proposition 5.3",
     "Appendix.GaussianMoment": "Lemma A.1 c_{q,d}",

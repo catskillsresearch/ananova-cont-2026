@@ -38,7 +38,7 @@ theorem mesh_succ {M₂ : ℝ} (hM : 1 < M₂) (h : ∀ n, 1 ≤ n → M₂ ≤ 
   exact ⟨hpos, (le_div_iff₀ hpos).1 (h n hn)⟩
 
 /-- **Subgoal** (Assumption 2, eq. (30)). Eq. (30): `∑_{n ≥ 1} |π_n| < ∞`. -/
-theorem summable_mesh (hT : 0 < T) (h : GeometricMeshDecay π) : Summable fun n => (π (n + 1)).mesh := by
+theorem summable_mesh (_hT : 0 < T) (h : GeometricMeshDecay π) : Summable fun n => (π (n + 1)).mesh := by
   obtain ⟨M₂, hM, hM'⟩ := h
   have hM0 : 0 < M₂ := by linarith
   have key : ∀ n, (π (n + 1)).mesh ≤ (π 1).mesh * M₂⁻¹ ^ n := by
@@ -55,7 +55,7 @@ theorem summable_mesh (hT : 0 < T) (h : GeometricMeshDecay π) : Summable fun n 
   exact (summable_geometric_of_lt_one (by positivity) (inv_lt_one_of_one_lt₀ hM)).mul_left _
 
 /-- **Subgoal** (Assumption 2, eq. (31)). Eq. (31): `1/|π_1| + ⋯ + 1/|π_n| ≤ M₃ / |π_n|`. -/
-theorem sum_inv_mesh_le (hT : 0 < T) (h : GeometricMeshDecay π) : ∃ M₃ : ℝ, ∀ n, 1 ≤ n →
+theorem sum_inv_mesh_le (_hT : 0 < T) (h : GeometricMeshDecay π) : ∃ M₃ : ℝ, ∀ n, 1 ≤ n →
     ∑ k ∈ Finset.Icc 1 n, 1 / (π k).mesh ≤ M₃ / (π n).mesh := by
   obtain ⟨M₂, hM, hM'⟩ := h
   have hM1 : 0 < M₂ - 1 := by linarith

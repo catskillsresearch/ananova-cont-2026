@@ -65,7 +65,7 @@ references:
   - Piotr Hajłasz
   journal: Studia Mathematica 106 (1993) 77-92
   url: https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf
-- title: Formalization of a generalized Carleson's theorem (Lean 4; Hardy-Littlewood covering lemmas adapted)
+- title: Formalization of a generalized Carleson's theorem (Lean 4; Hardy-Littlewood maximal theorem imported as a Lake dependency)
   authors:
   - Floris van Doorn
   - Carleson project contributors

@@ -149,7 +149,7 @@ theorem theorem_2_1_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
       rw [← hinner]
       simp only [inner_sub_right]
       ring
-    rw [e1, integral_finset_sum _ fun i _ => ((hGi i).integrableOn.mul_const _), Finset.mul_sum]
+    rw [e1, integral_finsetSum _ fun i _ => ((hGi i).integrableOn.mul_const _), Finset.mul_sum]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [setAverage_eq, smul_eq_mul, integral_mul_const]
     ring

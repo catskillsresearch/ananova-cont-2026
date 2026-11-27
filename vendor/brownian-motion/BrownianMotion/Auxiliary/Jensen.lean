@@ -44,7 +44,7 @@ lemma norm_rpow_condExp_le {p : ℝ≥0∞} (one_le_p : 1 ≤ p) (p_ne_top : p �
     rwa [integrable_norm_rpow_iff hf.aestronglyMeasurable (by positivity) p_ne_top]
   have hc : Continuous (fun x : E ↦ ‖x‖ ^ p.toReal) := by fun_prop (disch := positivity)
   filter_upwards [ConvexOn.map_condExp_le_univ hm
-    (convexOn_rpow_norm (one_le_toReal one_le_p p_ne_top))
+    (convexOn_rpow_norm (one_le_toReal_of_ne_top one_le_p p_ne_top))
     hc.lowerSemicontinuous (hf.integrable one_le_p) hf'] with _ h using h
 
 lemma enorm_rpow_condExp_le {p : ℝ≥0∞} (one_le_p : 1 ≤ p) (p_ne_top : p ≠ ∞) (hf : MemLp f p μ) :

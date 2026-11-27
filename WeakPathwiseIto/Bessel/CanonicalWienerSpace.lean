@@ -34,7 +34,7 @@ def path (ω : CanonicalWienerSpace d T) : ℝ → Rd d := fun t => B t ω
 def ofCoords (x : Rd d) (W : Fin d → ℝ≥0 → ℝ) (hW : ∀ i, Continuous (W i)) :
     CanonicalWienerSpace d T :=
   ⟨fun s => x + ∑ i, W i (s : ℝ).toNNReal • Rd.basisVec i,
-    continuous_const.add (continuous_finset_sum _ fun i _ =>
+    continuous_const.add (continuous_finsetSum _ fun i _ =>
       ((hW i).comp (continuous_real_toNNReal.comp continuous_subtype_val)).smul continuous_const)⟩
 
 /-- `P` is the law of `d`-dimensional Brownian motion started at `x`, on `Ω`: the image of a

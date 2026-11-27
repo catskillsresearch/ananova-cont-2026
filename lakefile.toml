@@ -6,22 +6,24 @@ pp.unicode.fun = true
 autoImplicit = false
 relaxedAutoImplicit = false
 
-# Vendored path dependencies, copied unchanged from ../xodarev2026/vendor (see
+# Vendored path dependency, copied from ../xodarev2026/vendor with one documented rename (see
 # vendor/SOURCES and PROVENANCE.md). Import concrete modules only; do not build the
 # BrownianMotion umbrella (see vendor/README.md).
 [[require]]
 name = "BrownianMotion"
 path = "vendor/brownian-motion"
 
-[[require]]
-name = "MathFin"
-path = "vendor/formal-mathfin"
-
-# Same Mathlib pin as xodarev2026 / lyasoff2016 (Lean v4.35.0).
+# Same Mathlib pin as the Carleson project at its pinned commit (Lean v4.36.0-rc1).
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4"
-rev = "e91b128082cc221d6432a6a5aadcd3243af8e76c"
+rev = "d88814353fcbcc0461c55b2a4585d3f44d903df1"
+
+# Carleson project (Hardy–Littlewood maximal function), imported directly, unchanged.
+[[require]]
+name = "carleson"
+git = "https://github.com/fpvandoorn/carleson.git"
+rev = "f7487cc9da4d1e73f009dc0280cd5b958f3e2c78"
 
 [[lean_lib]]
 name = "WeakPathwiseIto"

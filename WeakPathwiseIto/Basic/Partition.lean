@@ -97,10 +97,10 @@ theorem sum_gap : ∑ i : Fin π.m, (π.right i - π.left i) = T := by
     refine Finset.sum_congr rfl fun i _ => ?_
     have h1 : (i : ℕ) + 1 ≤ π.m := i.isLt
     have h2 : (i : ℕ) ≤ π.m := i.isLt.le
-    simp only [hg, dif_pos h1, dif_pos h2, right, left]
+    simp only [hg, dite_eq_left h1, dite_eq_left h2, right, left]
     rfl
   rw [h1, Fin.sum_univ_eq_sum_range (fun k => g (k + 1) - g k), Finset.sum_range_sub]
-  simp only [hg, dif_pos le_rfl, dif_pos (Nat.zero_le _)]
+  simp only [hg, dite_eq_left le_rfl, dite_eq_left (Nat.zero_le _)]
   rw [show (⟨π.m, by omega⟩ : Fin (π.m + 1)) = Fin.last π.m from rfl, π.t_last,
     show (⟨0, by omega⟩ : Fin (π.m + 1)) = 0 from rfl, π.t_zero, sub_zero]
 

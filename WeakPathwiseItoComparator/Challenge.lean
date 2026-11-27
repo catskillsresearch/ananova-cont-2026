@@ -421,7 +421,7 @@ namespace occupationConstant
 theorem volume_ball_half {d : ℕ} (hd : 0 < d) :
     (volume (Metric.ball (0 : Rd d) (1 / 2))).toReal =
       (1 / 2 : ℝ) ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   rw [Measure.addHaar_ball volume (0 : Rd d) (by norm_num : (0 : ℝ) ≤ 1 / 2),
     finrank_euclideanSpace_fin, ENNReal.toReal_mul, ENNReal.toReal_ofReal (by positivity)]
 
@@ -471,13 +471,13 @@ def sphereMean (d : ℕ) (r : ℝ) (y : Rd d) : ℝ :=
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 2: polar coordinates on a ball): for `f` integrable on
 `B(0,R)`, `∫_{B(0,R)} f = ∫_0^R r^{d-1} ∫_{S^{d-1}} f(rω) dσ(ω) dr`. -/
-theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 < R) {f : Rd d → ℝ}
+theorem integral_ball_polar {d : ℕ} (hd : 0 < d) {R : ℝ} (_hR : 0 < R) {f : Rd d → ℝ}
     (hf : IntegrableOn f (Metric.ball 0 R)) :
     ∫ x in Metric.ball (0 : Rd d) R, f x =
       ∫ r in Ioo 0 R, r ^ (d - 1) *
         ∫ ω, f (r • (ω : Rd d)) ∂(volume : Measure (Rd d)).toSphere := by
   classical
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   set σ := (volume : Measure (Rd d)).toSphere with hσ
   set g : Rd d → ℝ := (Metric.ball 0 R).indicator f with hg
   have hgi : Integrable g := (integrable_indicator_iff measurableSet_ball).2 hf
@@ -614,7 +614,7 @@ theorem fderiv_fderiv_norm_rpow_apply {d : ℕ} {z : Rd d} (hz : z ≠ 0) (p : �
   have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) z := (innerSL ℝ).hasFDerivAt
   have h2 : HasFDerivAt (fun w : Rd d => (p * ‖w‖ ^ (p - 2)) • innerSL ℝ w) _ z := hc.smul hI
   rw [hev.fderiv_eq, h2.fderiv]
-  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+  simp only [add_apply, smul_apply,
     ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
   have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
     rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
@@ -701,7 +701,7 @@ theorem fderiv_fderiv_norm_sub_rpow_apply {d : ℕ} {y c : Rd d} (hy : y ≠ c) 
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 6d: the trace of 6c vanishes): for `d ≥ 3` and any
 orthonormal basis `b`, `∑_i D²(|· - c|^{2-d})(y)(b_i, b_i) = 0` when `y ≠ c`. -/
-theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
+theorem sum_fderiv_fderiv_newtonKernel_sub {d : ℕ} (_hd : 3 ≤ d) {y c : Rd d} (hy : y ≠ c)
     {ι : Type*} [Fintype ι] (b : OrthonormalBasis ι ℝ (Rd d)) :
     ∑ i, fderiv ℝ (fderiv ℝ (fun x : Rd d => ‖x - c‖ ^ (2 - (d : ℝ)))) y (b i) (b i) = 0 := by
   set z := y - c with hzdef
@@ -753,7 +753,7 @@ theorem hasFDerivAt_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d} (hy :
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -790,7 +790,7 @@ theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -815,7 +815,7 @@ theorem hasFDerivAt_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) {y : Rd d
       (h2.differentiableOn one_ne_zero _ hx0).differentiableAt (hV.mem_nhds hx0)
     have := (hd.hasFDerivAt.comp x ((hasFDerivAt_id x).sub_const (r • (ω : Rd d)))).const_smul
       ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
-    convert this using 1 <;> first | rfl | simp
+    convert this using 1 <;> rfl
   · exact (h0.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
   · exact (h1.comp hg.continuousOn hmaps).const_smul ((volume : Measure (Rd d)).toSphere.real univ)⁻¹
 
@@ -833,7 +833,7 @@ theorem continuousOn_fderiv_fderiv_sphereMean {d : ℕ} {r : ℝ} (hr : 0 < r) :
   have hmaps : ∀ p ∈ {y : Rd d | ‖y‖ ≠ r} ×ˢ (univ : Set (Metric.sphere (0 : Rd d) 1)),
       p.1 - r • (p.2 : Rd d) ∈ {z : Rd d | z ≠ 0} := by
     rintro ⟨y, ω⟩ ⟨hy, -⟩
-    simp only [Set.mem_setOf_eq, sub_ne_zero] at hy ⊢
+    simp only [Set.mem_ofPred_eq, sub_ne_zero] at hy ⊢
     rintro rfl
     apply hy
     rw [norm_smul, Real.norm_eq_abs, abs_of_pos hr, norm_eq_of_mem_sphere ω, mul_one]
@@ -924,7 +924,7 @@ theorem harmonicAt_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y
   rw [hcomp] at h6
   show T (S • fderiv ℝ (fderiv ℝ N) (z - r • (ω : Rd d))) = 0
   rw [hTapp]
-  simp only [ContinuousLinearMap.smul_apply, smul_eq_mul]
+  simp only [smul_apply, smul_eq_mul]
   rw [← Finset.mul_sum, h6, mul_zero]
 
 /-- **Subgoal** (Eq. (7) c_d, Newton step 7a: radial profile): a radial `u` on `ℝ^d`, `d > 0`,
@@ -979,7 +979,7 @@ theorem fderiv_fderiv_comp_norm_apply {d : ℕ} {f : ℝ → ℝ} {y : Rd d} (hy
   have hI : HasFDerivAt (fun w : Rd d => innerSL ℝ w) (innerSL ℝ) y := (innerSL ℝ).hasFDerivAt
   have h4 : HasFDerivAt (fun w : Rd d => (deriv f ‖w‖ / ‖w‖) • innerSL ℝ w) _ y := h3.smul hI
   rw [hev.fderiv_eq, h4.fderiv]
-  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+  simp only [add_apply, smul_apply,
     ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, smul_eq_mul]
   have he : innerSL ℝ e e = ‖e‖ ^ 2 := by
     rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
@@ -1118,7 +1118,7 @@ theorem sphereMean_bounds {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : R
   have hp : (2 - (d : ℝ)) ≤ 0 := by
     have : (3 : ℝ) ≤ d := by exact_mod_cast hd
     linarith
-  haveI : Nonempty (Metric.sphere (0 : Rd d) 1) :=
+  have : Nonempty (Metric.sphere (0 : Rd d) 1) :=
     ⟨⟨EuclideanSpace.single (⟨0, hd0⟩ : Fin d) (1 : ℝ), by simp⟩⟩
   have hσ0 : (volume : Measure (Rd d)).toSphere univ ≠ 0 :=
     isOpen_univ.measure_ne_zero _ univ_nonempty
@@ -1211,7 +1211,7 @@ theorem tendsto_sphereMean {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) :
 `d ≥ 3`, `0 < r < |y|`, `sphereMean d r y = |y|^{2-d}`. -/
 theorem sphereMean_outside {d : ℕ} (hd : 3 ≤ d) {r : ℝ} (hr : 0 < r) {y : Rd d}
     (hy : r < ‖y‖) : sphereMean d r y = ‖y‖ ^ (2 - (d : ℝ)) := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, by omega⟩⟩
   obtain ⟨a, b, hab⟩ := radial_harmonic_eq hd hr.le
     (fun z hz => harmonicAt_sphereMean hd hr hz.ne') (fun z z' h => sphereMean_radial r h)
   have hn := tendsto_norm_cocompact_atTop (E := Rd d)
@@ -1251,7 +1251,7 @@ theorem toSphere_real_univ {d : ℕ} (hd : 0 < d) :
     (volume : Measure (Rd d)).toSphere.real univ =
         d * (volume (Metric.ball (0 : Rd d) 1)).toReal ∧
       0 < (volume : Measure (Rd d)).toSphere.real univ := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   have h1 : (volume : Measure (Rd d)).toSphere.real univ =
       d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
     rw [Measure.toSphere_real_apply_univ, finrank_euclideanSpace_fin, Measure.real_def]
@@ -1274,7 +1274,7 @@ theorem integral_sphere_eq_sphereMean {d : ℕ} (hd : 0 < d) (ρ : ℝ) (y : Rd 
 theorem volume_ball_eq {d : ℕ} (hd : 0 < d) {R : ℝ} (hR : 0 ≤ R) :
     (volume (Metric.ball (0 : Rd d) R)).toReal =
       R ^ d * (volume (Metric.ball (0 : Rd d) 1)).toReal := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   rw [Measure.addHaar_ball volume (0 : Rd d) hR, finrank_euclideanSpace_fin, ENNReal.toReal_mul,
     ENNReal.toReal_ofReal (by positivity)]
 
@@ -1495,7 +1495,7 @@ theorem exists_isometry_basisVec (hd : 0 < d) {u : Rd d} (hu : ‖u‖ = 1) :
 integrals of any function over `B̄(0,r)` and `B(0,r)` agree (the sphere is Lebesgue-null). -/
 theorem setIntegral_closedBall_eq_ball (hd : 0 < d) (r : ℝ) (g : Rd d → ℝ) :
     ∫ x in Metric.closedBall (0 : Rd d) r, g x = ∫ x in Metric.ball (0 : Rd d) r, g x := by
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   refine setIntegral_congr_set ?_
   have h0 : volume (Metric.sphere (0 : Rd d) r) = 0 := Measure.addHaar_sphere _ _ _
   filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with x hx
@@ -1584,7 +1584,7 @@ theorem integrable_piece (a b : Rd d) : Integrable (piece a b) := by
 theorem integral_eq (π : Partition T) (ω : ℝ → Rd d) :
     ∫ x, discreteOccupationDensity π ω x = ∑ i : Fin π.m, ‖ω (π.right i) - ω (π.left i)‖ ^ 2 := by
   unfold discreteOccupationDensity
-  rw [integral_finset_sum _ fun i _ => integrable_piece _ _]
+  rw [integral_finsetSum _ fun i _ => integrable_piece _ _]
   exact Finset.sum_congr rfl fun i _ => integral_piece _ _
 
 end discreteOccupationDensity
@@ -1633,7 +1633,7 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-open MeasureTheory Filter Topology Set
+open MeasureTheory Filter Topology Set Metric
 open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The truncated Hardy–Littlewood maximal function
@@ -1647,6 +1647,63 @@ namespace localMaximalFunction
 /-- The full maximal function `M f := M_∞ f`. -/
 def full {d : ℕ} {F : Type*} [NormedAddCommGroup F] (f : Rd d → F) (x : Rd d) : ℝ≥0∞ :=
   localMaximalFunction ⊤ f x
+
+variable {d : ℕ}
+
+/-- **Subgoal** (`M_1`, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a
+measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`). -/
+theorem lowerSemicontinuous_mul_measure_ball (ν : Measure (Rd d)) {r : ℝ} (hr : 0 < r) (c : ℝ≥0∞) (hc : c ≠ ⊤) :
+    LowerSemicontinuous fun x => c * ν (Metric.ball x r) := by
+  intro x y hy
+  set s : ℕ → Set (Rd d) := fun n => Metric.ball x (r - r / ((n : ℝ) + 2)) with hs
+  have hmono : Monotone s := by
+    intro m n hmn
+    refine Metric.ball_subset_ball ?_
+    have hm : (0 : ℝ) < (m : ℝ) + 2 := by positivity
+    have : r / ((n : ℝ) + 2) ≤ r / ((m : ℝ) + 2) :=
+      div_le_div_of_nonneg_left hr.le hm (by linarith [show (m : ℝ) ≤ n from by exact_mod_cast hmn])
+    linarith
+  have hU : (⋃ n, s n) = Metric.ball x r := by
+    ext z
+    simp only [mem_iUnion, hs, Metric.mem_ball]
+    constructor
+    · rintro ⟨n, hn⟩
+      have : 0 < r / ((n : ℝ) + 2) := by positivity
+      linarith
+    · intro hz
+      have hpos : 0 < r - dist z x := by linarith
+      obtain ⟨n, hn⟩ := exists_nat_gt (r / (r - dist z x))
+      refine ⟨n, ?_⟩
+      have h2 : (0 : ℝ) < (n : ℝ) + 2 := by positivity
+      have : r / ((n : ℝ) + 2) < r - dist z x := by
+        rw [div_lt_iff₀ h2]
+        rw [div_lt_iff₀ hpos] at hn
+        nlinarith
+      linarith
+  have ht : Tendsto (fun n => c * ν (s n)) atTop (𝓝 (c * ν (Metric.ball x r))) := by
+    rw [← hU]
+    exact ENNReal.Tendsto.const_mul (tendsto_measure_iUnion_atTop hmono) (Or.inr hc)
+  obtain ⟨n, hn⟩ := (ht.eventually (lt_mem_nhds hy)).exists
+  have hδ : 0 < r / ((n : ℝ) + 2) := by positivity
+  filter_upwards [Metric.ball_mem_nhds x hδ] with x' hx'
+  refine lt_of_lt_of_le hn (mul_le_mul_right (measure_mono fun z hz => ?_) c)
+  simp only [hs, Metric.mem_ball] at hz hx' ⊢
+  linarith [dist_triangle z x x', dist_comm x x']
+
+/-- **Subgoal** (`M_1`, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages). -/
+theorem measurable (f : Rd d → ℝ) :
+    Measurable (localMaximalFunction 1 f) := by
+  unfold localMaximalFunction
+  refine LowerSemicontinuous.measurable (lowerSemicontinuous_iSup fun r =>
+    lowerSemicontinuous_iSup fun hr => lowerSemicontinuous_iSup fun _ => ?_)
+  have h : ∀ x, laverage (volume.restrict (Metric.ball x r)) (fun y => ‖f y‖ₑ) =
+      (volume (Metric.ball (0 : Rd d) r))⁻¹ *
+        (volume.withDensity fun y => ‖f y‖ₑ) (Metric.ball x r) := by
+    intro x
+    rw [laverage_eq, withDensity_apply _ Metric.isOpen_ball.measurableSet,
+      Measure.restrict_apply_univ, Measure.addHaar_ball_center, ENNReal.div_eq_inv_mul]
+  simp_rw [h]
+  exact lowerSemicontinuous_mul_measure_ball _ hr _ (ENNReal.inv_ne_top.2 (Metric.measure_ball_pos volume _ hr).ne')
 
 end localMaximalFunction
 
@@ -1675,13 +1732,13 @@ standing assumption (the seminorm is only applied to Hessians of Sobolev functio
 the statement is false, since Lean's `∫⁻` is only superadditive on non-measurable integrands
 (e.g. indicators of a Bernstein set and its complement). -/
 theorem add_le (π : ℕ → Partition T) (ω : ℝ → Rd d) {f g : Rd d → F}
-    (hf : AEStronglyMeasurable f) (hg : AEStronglyMeasurable g) :
+    (hf : AEStronglyMeasurable f) (_hg : AEStronglyMeasurable g) :
     occupationSeminorm π ω (f + g) ≤ occupationSeminorm π ω f + occupationSeminorm π ω g := by
   unfold occupationSeminorm
   have hL : ∀ n, AEMeasurable (fun x => ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) :=
     fun n => by
       unfold discreteOccupationDensity
-      exact (integrable_finset_sum _ fun i _ =>
+      exact (integrable_finsetSum _ fun i _ =>
         discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
   have key : ∀ u v : ℕ → ℝ≥0∞, limsup (u + v) atTop ≤ limsup u atTop + limsup v atTop := by
     intro u v
@@ -1724,7 +1781,7 @@ theorem lintegral_closedBall_le (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ} (hρ : 
     rcases subsingleton_or_nontrivial (Rd d) with h | h
     · have : Metric.sphere a ρ = ∅ := by
         ext x
-        simp [Subsingleton.elim x a, hρ.ne, hρ.ne']
+        simp [Subsingleton.elim x a, hρ.ne]
       rw [this, measure_empty]
     · exact Measure.addHaar_sphere volume a ρ
   have hcb : ν (Metric.closedBall a ρ) ≤ ν (Metric.ball a ρ) := by
@@ -1773,7 +1830,7 @@ theorem volume_ball_eq (a : Rd d) {ρ : ℝ} (hρ : 0 < ρ) :
       ext x
       simp [Metric.mem_ball, EuclideanSpace.dist_eq, hr]
     rw [h a ρ hρ, h 0 1 one_pos, pow_zero, ENNReal.ofReal_one, one_mul]
-  · haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  · have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
     rw [Measure.addHaar_ball volume a hρ.le, finrank_euclideanSpace_fin]
 
 /-- **Subgoal** (Eq. (10) proof, `d ≥ 3`, dyadic shell): on the shell
@@ -1998,7 +2055,7 @@ theorem tendsto_discreteTrace (hQV : HasQuadraticVariation π ω) {t : ℝ} (ht 
     exact Finset.sum_comm
   simp_rw [e]
   unfold HasQuadraticVariation.trace
-  exact tendsto_finset_sum _ fun j _ => (hQV.coord j).tendsto t ht
+  exact tendsto_finsetSum _ fun j _ => (hQV.coord j).tendsto t ht
 
 /-- **Subgoal** (Lemma 4.2 proof: total discrete quadratic variation):
 `∑_i |ω(t_{i+1}) - ω(t_i)|² → tr[ω]_π(T)`. -/
@@ -2053,7 +2110,7 @@ theorem traceMeasure_Ioc (hQV : HasQuadraticVariation π ω) {a b : ℝ} (ha : 0
       (fun t => ⟨le_max_left _ _, max_le hT (min_le_right _ _)⟩)
   have hc : Continuous hQV.traceExt := by
     unfold HasQuadraticVariation.traceExt
-    exact continuous_finset_sum _ fun i _ => hcl i
+    exact continuous_finsetSum _ fun i _ => hcl i
   set F := hQV.traceExt_monotone.stieltjesFunction with hFdef
   have hF : ∀ x, F x = hQV.traceExt x := fun x => by
     rw [hFdef, Monotone.stieltjesFunction_eq]
@@ -2109,7 +2166,7 @@ theorem abs_sum_sub_grid_le {ι : Type*} [Fintype ι] {r w : ι → ℝ} (hr : �
   have hsum_c : ∀ i, ∑ k ∈ Finset.range K, c k i = 1 := fun i => by
     simp only [hc]
     rw [Finset.sum_range_sub (fun k => if r i ≤ s k then (1 : ℝ) else 0), hsK, hs0,
-      if_pos (hr i).2, if_neg (not_le.2 (hr i).1)]
+      ite_eq_left (hr i).2, ite_eq_right (not_le.2 (hr i).1)]
     norm_num
   have hW : ∀ k, ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s (k + 1)), w i -
       ∑ i ∈ Finset.univ.filter (fun i => r i ≤ s k), w i = ∑ i, c k i * w i := fun k => by
@@ -2182,7 +2239,7 @@ theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (
     have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
     nlinarith
   have hstep : ∀ k, s (k + 1) - s k = T / K := fun k => by rw [hs, hs]; push_cast; ring
-  haveI : IsLocallyFiniteMeasure hQV.traceMeasure := by
+  have : IsLocallyFiniteMeasure hQV.traceMeasure := by
     unfold HasQuadraticVariation.traceMeasure; infer_instance
   have hInt : IntegrableOn g (Icc 0 T) hQV.traceMeasure := hg.integrableOn_compact isCompact_Icc
   have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 T := fun k hk x hx =>
@@ -2192,7 +2249,7 @@ theorem abs_integral_sub_grid_le (hQV : HasQuadraticVariation π ω) {K : ℕ} (
   have h0 : hQV.traceMeasure {0} = 0 := (traceMeasure_Ioc hQV le_rfl le_rfl hT).2
   have hIcc : ∫ t in Icc 0 T, g t ∂hQV.traceMeasure = ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure := by
     refine setIntegral_congr_set (ae_eq_set.2 ⟨measure_mono_null (fun x hx => ?_) h0, ?_⟩)
-    · simp only [mem_diff, mem_Icc, mem_Ioc, not_and] at hx
+    · simp only [Set.mem_sdiff, mem_Icc, mem_Ioc, not_and] at hx
       exact Set.mem_singleton_iff.2 (le_antisymm (not_lt.1 fun h => hx.2 h hx.1.2) hx.1.1)
     · rw [sdiff_eq_empty.2 Ioc_subset_Icc_self, measure_empty]
   have hsplit : ∫ t in Ioc 0 T, g t ∂hQV.traceMeasure =
@@ -2264,7 +2321,7 @@ theorem tendsto_riemannStieltjes (hQV : HasQuadraticVariation π ω) {g : ℝ �
     rw [div_le_iff₀ hKr]
     have : (j : ℝ) ≤ K := by exact_mod_cast hj
     nlinarith
-  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+  have hgridlim := tendsto_finsetSum (Finset.range K) fun k hk =>
     ((tendsto_discreteTrace hQV (hmem (k + 1) (Finset.mem_range.1 hk))).sub
       (tendsto_discreteTrace hQV (hmem k (Finset.mem_range.1 hk).le))).const_mul
         (g ((k + 1 : ℕ) * T / K))
@@ -2349,7 +2406,7 @@ theorem abs_integral_sub_le (hω : ContinuousOn ω (Icc 0 T)) (p : Partition T) 
       ∑ i, ∫ x, φ x * discreteOccupationDensity.piece (A i) (B i) x := by
     unfold discreteOccupationDensity
     simp_rw [Finset.mul_sum]
-    exact integral_finset_sum _ fun i _ => hint i
+    exact integral_finsetSum _ fun i _ => hint i
   have e2 : ∀ i, φ (A i) * ‖B i - A i‖ ^ 2 =
       ∫ x, φ (A i) * discreteOccupationDensity.piece (A i) (B i) x := fun i => by
     rw [integral_const_mul, discreteOccupationDensity.integral_piece]
@@ -2520,7 +2577,7 @@ theorem abs_integral_sub_grid_le {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     have : ((k + 1 : ℕ) : ℝ) ≤ K := by exact_mod_cast hk
     nlinarith [ht.1]
   have hstep : ∀ k, s (k + 1) - s k = t / K := fun k => by rw [hs, hs]; push_cast; ring
-  haveI : IsLocallyFiniteMeasure h.stieltjesMeasure := by
+  have : IsLocallyFiniteMeasure h.stieltjesMeasure := by
     unfold HasScalarQuadraticVariation.stieltjesMeasure; infer_instance
   have hInt : IntegrableOn g (Icc 0 T) h.stieltjesMeasure := hg.integrableOn_compact isCompact_Icc
   have hcell : ∀ k < K, Ioc (s k) (s (k + 1)) ⊆ Icc 0 t := fun k hk y hy =>
@@ -2609,7 +2666,7 @@ theorem tendsto_riemannStieltjes {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     rw [div_le_iff₀ hKr]
     have : (j : ℝ) ≤ K := by exact_mod_cast hj
     nlinarith [ht.1]
-  have hgridlim := tendsto_finset_sum (Finset.range K) fun k hk =>
+  have hgridlim := tendsto_finsetSum (Finset.range K) fun k hk =>
     ((h.tendsto _ (hsub (hmem (k + 1) (Finset.mem_range.1 hk)))).sub
       (h.tendsto _ (hsub (hmem k (Finset.mem_range.1 hk).le)))).const_mul
         (g ((k + 1 : ℕ) * t / K))
@@ -2626,16 +2683,16 @@ theorem tendsto_riemannStieltjes {x : ℝ → ℝ} (h : HasScalarQuadraticVariat
     rw [Finset.sum_filter, Finset.sum_filter]
     refine Finset.sum_congr rfl fun k _ => ?_
     by_cases h1 : (π n).right k ≤ t
-    · simp only [hr, hw, min_eq_left h1, if_pos h1]
+    · simp only [hr, hw, min_eq_left h1, ite_eq_left h1]
     · have h2 : ¬ (π n).right k ≤ s := fun h' => h1 (h'.trans hs)
-      simp only [hr, hw, if_neg h1, if_neg h2, ite_self]
+      simp only [hr, hw, ite_eq_right h1, ite_eq_right h2, ite_self]
   have hA : ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
       g ((π n).right k) * (x ((π n).right k) - x ((π n).left k)) ^ 2 = ∑ k, g (r k) * w k := by
     rw [Finset.sum_filter]
     refine Finset.sum_congr rfl fun k _ => ?_
     by_cases h1 : (π n).right k ≤ t
-    · simp only [hr, hw, min_eq_left h1, if_pos h1]
-    · simp only [hw, if_neg h1, mul_zero]
+    · simp only [hr, hw, min_eq_left h1, ite_eq_left h1]
+    · simp only [hw, ite_eq_right h1, mul_zero]
   have hSw : ∑ k, w k = discreteQuadraticVariation (π n) x t := by
     rw [← hinner t le_rfl, Finset.filter_true_of_mem fun k _ => min_le_right _ _]
   have e1 := lemma_4_2.abs_sum_sub_grid_le (T := t) (r := r) (w := w)
@@ -2737,12 +2794,12 @@ theorem riemannSum_eq (p : Partition T) (f : Rd d → Rd d) (ω : ℝ → Rd d) 
   have hlr := p.left_lt_right k
   by_cases h1 : p.right k ≤ t
   · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
-    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+    rw [ite_eq_left h1, ite_eq_right h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
   · by_cases h3 : p.left k < t
     · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
-      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+      rw [ite_eq_right h1, ite_eq_left h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
     · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
-      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3)]
+      rw [ite_eq_right h1, ite_eq_right h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3)]
       simp
 
 /-- **Subgoal** (Proposition 3.1 proof, `⟨∇f, δω ᵗδω⟩` by polarization):
@@ -2799,7 +2856,7 @@ theorem tendsto_main {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
               (fun s => Rd.coord j (ω s)) ((π n).left k)) ^ 2)) / 2) atTop
       (𝓝 (hQV.matrixIntegral (fun u i j => Rd.coord i (fderiv ℝ f (ω u) (Rd.basisVec j))) t)) := by
     unfold HasQuadraticVariation.matrixIntegral
-    exact tendsto_finset_sum _ fun i _ => tendsto_finset_sum _ fun j _ =>
+    exact tendsto_finsetSum _ fun i _ => tendsto_finsetSum _ fun j _ =>
       (((tendsto_riemannStieltjes (hQV.pair i j) (hGc i j) ht).sub
         (tendsto_riemannStieltjes (hQV.coord i) (hGc i j) ht)).sub
         (tendsto_riemannStieltjes (hQV.coord j) (hGc i j) ht)).div_const 2
@@ -2900,7 +2957,7 @@ theorem tendsto_remainder {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
 at most `sup |∇f| · osc(ω, π_n)² → 0`). -/
 theorem tendsto_boundary {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
     (hosc : pathOscillation.Vanishes ω π) {f : Rd d → Rd d} (hf : ContDiffBounded 1 f)
-    {t : ℝ} (ht : t ∈ Icc 0 T) :
+    {t : ℝ} (_ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
       ⟪f (ω t) - f (ω ((π n).left k)), ω t - ω ((π n).left k)⟫) atTop (𝓝 0) := by
   have hfd : Differentiable ℝ f := hf.1.differentiable (by norm_num)
@@ -3068,9 +3125,9 @@ theorem abs_taylor2_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) {x y : Rd d} {
       refine ContinuousLinearMap.opNorm_le_bound _ (by positivity) fun w => ?_
       calc _ = ‖⟪gradient f z - gradient f x - H (z - x), w⟫‖ := by
             congr 1
-            simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
+            simp only [sub_apply, smul_apply,
               ContinuousLinearMap.comp_apply, ContinuousLinearMap.prod_apply, fderivInnerCLM_apply,
-              hgrad, inner_sub_left, ContinuousLinearMap.zero_apply, inner_zero_left,
+              hgrad, inner_sub_left, zero_apply, inner_zero_left,
               id_eq, ContinuousLinearMap.id_apply, smul_eq_mul]
             rw [hHdef, hessian_symm hf x w (z - x)]
             simp only [Function.comp_apply, real_inner_comm w]
@@ -3310,7 +3367,7 @@ theorem le_lintegral_piece {G : Rd d → (Rd d →L[ℝ] Rd d)} {a b : Rd d} {m 
       ‖G x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) := fun x => by
     by_cases hx : x ∈ incrementBall a b
     · refine mul_le_mul' ?_ le_rfl
-      rw [← ofReal_norm_eq_enorm]
+      rw [← ofReal_norm]
       exact ENNReal.ofReal_le_ofReal (hm x hx)
     · have : discreteOccupationDensity.piece a b x = 0 := by
         unfold discreteOccupationDensity.piece
@@ -3429,7 +3486,7 @@ theorem eventually_sum_abs_le {π : ℕ → Partition T} {ω : ℝ → Rd d}
           (discreteOccupationDensity.piece (ω ((π n).left k)) (ω ((π n).right k)) x)) :=
       fun k _ => hHc.measurable.enorm.aemeasurable.mul
         (discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
-    rw [← lintegral_finset_sum' _ hmeas]
+    rw [← lintegral_finsetSum' _ hmeas]
     congr 1
     funext x
     rw [discreteOccupationDensity, ENNReal.ofReal_sum_of_nonneg
@@ -3613,12 +3670,12 @@ theorem stopped_sum_eq (p : Partition T) (φ : Rd d → Rd d → ℝ) (hφ : ∀
   have hlr := p.left_lt_right k
   by_cases h1 : p.right k ≤ t
   · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
-    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+    rw [ite_eq_left h1, ite_eq_right h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
   · by_cases h3 : p.left k < t
     · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
-      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+      rw [ite_eq_right h1, ite_eq_left h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
     · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
-      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3), hφ,
+      rw [ite_eq_right h1, ite_eq_right h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3), hφ,
         add_zero]
 
 /-- **Subgoal** (Theorem 5.1 proof, (21), telescoping): for `t ∈ [0,T]`,
@@ -3639,7 +3696,7 @@ theorem sub_eq_sum_stopped (p : Partition T) (f : Rd d → ℝ) (ω : ℝ → Rd
 with `a_k = ω(t_k ∧ t)`, `b_k = ω(t_{k+1} ∧ t)`. -/
 theorem tendsto_trapezoid {π : ℕ → Partition T} {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
     (hQV : HasQuadraticVariation π ω) (hosc : pathOscillation.Vanishes ω π) {f : Rd d → ℝ}
-    (hf : ContDiffBounded 2 f) {t : ℝ} (ht : t ∈ Icc 0 T) :
+    (hf : ContDiffBounded 2 f) {t : ℝ} (_ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k : Fin (π n).m,
       (f (ω (min ((π n).right k) t)) - f (ω (min ((π n).left k) t)) -
         ⟪gradient f (ω (min ((π n).left k) t)),
@@ -3880,7 +3937,7 @@ theorem isWeakHessian_ae {F : Rd d → ℝ} {H H' : Rd d → (Rd d →L[ℝ] Rd 
     rw [map_sum]
     simp only [map_smul]
     conv_lhs => arg 2; ext j; rw [hw (A (b j))]
-    simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply, hE,
+    simp only [sum_apply, smul_apply, hE,
       ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, Finset.smul_sum, smul_smul,
       Rd.coord, ← hbv]
     rw [Finset.sum_comm]
@@ -4048,7 +4105,7 @@ variable {T : ℝ} {d : ℕ} {π : ℕ → Partition T} {ω : ℝ → Rd d}
 
 /-- **Theorem 5.1** (existence of the limits (14) and (15)). -/
 theorem theorem_5_1_tendsto (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) :
     ∀ t ∈ Icc 0 T,
       Tendsto (fun m => follmerIntegral π (gradient (A.seq m)) ω t) atTop
@@ -4063,7 +4120,7 @@ theorem theorem_5_1_tendsto (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadrati
 
 /-- **Theorem 5.1** (independence of the approximating sequence). -/
 theorem theorem_5_1_unique (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H H' : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (hH' : IsWeakHessian F H')
     (A : ApproximatingSequence π ω F H) (A' : ApproximatingSequence π ω F H') :
     ∀ t ∈ Icc 0 T, weakPathwiseIntegral A' t = weakPathwiseIntegral A t ∧
@@ -4116,7 +4173,7 @@ theorem theorem_5_1_unique (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadratic
 (13). Then for all `t ∈ [0, T]`, eq. (17):
 `F(ω(t)) - F(ω(0)) = ∫_0^t ∇F(ω(s)) d^π ω(s) + ½ [∇F(ω), ω]_π(t)`. -/
 theorem theorem_5_1 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (hF : MemW 2 1 F)
+    (hosc : pathOscillation.Vanishes ω π) {F : Rd d → ℝ} (_hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) :
     ∀ t ∈ Icc 0 T, F (ω t) - F (ω 0) = weakPathwiseIntegral A t + 1 / 2 * weakCovariation A t := by
   intro t ht
@@ -4153,7 +4210,7 @@ def path (ω : CanonicalWienerSpace d T) : ℝ → Rd d := fun t => B t ω
 def ofCoords (x : Rd d) (W : Fin d → ℝ≥0 → ℝ) (hW : ∀ i, Continuous (W i)) :
     CanonicalWienerSpace d T :=
   ⟨fun s => x + ∑ i, W i (s : ℝ).toNNReal • Rd.basisVec i,
-    continuous_const.add (continuous_finset_sum _ fun i _ =>
+    continuous_const.add (continuous_finsetSum _ fun i _ =>
       ((hW i).comp (continuous_real_toNNReal.comp continuous_subtype_val)).smul continuous_const)⟩
 
 /-- `P` is the law of `d`-dimensional Brownian motion started at `x`, on `Ω`: the image of a
@@ -4493,7 +4550,7 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
 section
 
-open MeasureTheory Filter Topology Set Metric Vitali
+open MeasureTheory
 open scoped ENNReal NNReal
 
 namespace hardyLittlewood
@@ -4577,7 +4634,7 @@ theorem lintegral_closedBall_le (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ} (hρ : 
     rcases subsingleton_or_nontrivial (Rd d) with h | h
     · have : Metric.sphere a ρ = ∅ := by
         ext x
-        simp [Subsingleton.elim x a, hρ.ne, hρ.ne']
+        simp [Subsingleton.elim x a, hρ.ne]
       rw [this, measure_empty]
     · exact Measure.addHaar_sphere volume a ρ
   have hcb : ν (Metric.closedBall a ρ) ≤ ν (Metric.ball a ρ) := by
@@ -4696,7 +4753,7 @@ theorem lintegral_shell_le {α : ℝ} (hα : 0 < α) (hαd : α < d) (f : Rd d �
   have hd : 0 < d := by
     have : (0 : ℝ) < d := hα.trans hαd
     exact_mod_cast this
-  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  have : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
   set a := ρ / 2 ^ (k + 1) with ha_def
   set b := ρ / 2 ^ k with hb_def
   have ha : 0 < a := by positivity
@@ -4820,7 +4877,7 @@ theorem lintegral_closedBall_kernel_le_of_lt {α : ℝ} (hα : 0 < α) (hαd : �
 
 /-- **Subgoal** (Lemma 2.2 proof, `d ≤ α`): the kernel is at most `ρ^{α-d}` on `B̄(x,ρ)`, so
 `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ |B(0,1)| ρ^α M_ρ f(x)`. -/
-theorem lintegral_closedBall_kernel_le_of_ge {α : ℝ} (hα : 0 < α) (hαd : (d : ℝ) ≤ α) :
+theorem lintegral_closedBall_kernel_le_of_ge {α : ℝ} (_hα : 0 < α) (hαd : (d : ℝ) ≤ α) :
     ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (x : Rd d) {ρ : ℝ}, 0 < ρ →
       ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
         C * ENNReal.ofReal ρ ^ α * localMaximalFunction (ENNReal.ofReal ρ) f x := by

@@ -36,7 +36,7 @@ variable {d : ℕ}
 quadratic weight): the substitution `z = x + s (y - x)` on a convex `Q ∋ x`. -/
 theorem lintegral_comp_homothety_sq_le {Q : Set (Rd d)} (hQ : Convex ℝ Q)
     (hQm : MeasurableSet Q) {x : Rd d} (hx : x ∈ Q) {D : ℝ} (hD : ∀ z ∈ Q, dist z x ≤ D)
-    {g : Rd d → ℝ≥0∞} (hg : Measurable g) {s : ℝ} (hs : s ∈ Ioc (0 : ℝ) 1) :
+    {g : Rd d → ℝ≥0∞} (_hg : Measurable g) {s : ℝ} (hs : s ∈ Ioc (0 : ℝ) 1) :
     ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2 ≤
       ENNReal.ofReal (s ^ (-(d : ℝ) - 2)) *
         ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z := by
@@ -498,7 +498,7 @@ theorem integrable_hessian {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d
           refine Finset.sum_congr rfl fun i _ => ?_
           rw [← hexp]
       _ = _ := by
-          simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply, hE,
+          simp only [sum_apply, smul_apply, hE,
             ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, Finset.smul_sum, smul_smul]
           refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
           simp only [Rd.coord, real_inner_comm, mul_comm]
@@ -536,7 +536,7 @@ theorem norm_le_sum_entries (A : Rd d →L[ℝ] Rd d →L[ℝ] ℝ) :
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: the local Riesz potential of order `2`
 is bounded on `L¹(Q)`). -/
-theorem lintegral_potential2_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
+theorem lintegral_potential2_le (_hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
     (hQm : MeasurableSet Q) :
     ∃ C : ℝ≥0, ∀ h : Rd d → ℝ, AEStronglyMeasurable h →
       ∫⁻ y in Q, ∫⁻ z in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 2) ≤ C * ∫⁻ z in Q, ‖h z‖ₑ := by

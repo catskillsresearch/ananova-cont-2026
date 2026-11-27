@@ -128,7 +128,7 @@ theorem isWeakHessian_ae {F : Rd d → ℝ} {H H' : Rd d → (Rd d →L[ℝ] Rd 
     rw [map_sum]
     simp only [map_smul]
     conv_lhs => arg 2; ext j; rw [hw (A (b j))]
-    simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply, hE,
+    simp only [sum_apply, smul_apply, hE,
       ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, Finset.smul_sum, smul_smul,
       Rd.coord, ← hbv]
     rw [Finset.sum_comm]

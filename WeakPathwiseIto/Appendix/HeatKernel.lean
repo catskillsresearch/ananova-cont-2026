@@ -118,7 +118,7 @@ theorem integral_le_potentialProfile_one (T : ℝ) : ∃ C : ℝ, ∀ x : Rd 1,
     refine IntegrableOn.congr_fun (hi.const_mul ((2 * Real.pi) ^ (-(1 : ℝ) / 2)))
       (fun s hs => ?_) measurableSet_Ioc
     exact (Real.mul_rpow (by positivity) hs.1.le).symm
-  simp only [potentialProfile, if_true, mul_one]
+  simp only [potentialProfile, ite_true, mul_one]
   refine integral_mono_of_nonneg (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_) hg
     (ae_restrict_of_forall_mem measurableSet_Ioc fun s hs => ?_)
   · have : (0 : ℝ) < s := hs.1
@@ -307,7 +307,7 @@ theorem le_rpow_mul (x : Rd d) {a s K : ℝ} (ha : 0 < a) (has : a ≤ s) (hsK :
   have hs : 0 < s := ha.trans_le has
   have hK : 0 < K := by
     by_contra h
-    push_neg at h
+    push Not at h
     nlinarith
   unfold heatKernel
   have e1 : Real.exp (-‖x‖ ^ 2 / (2 * a)) ≤ Real.exp (-‖x‖ ^ 2 / (2 * s)) := by
@@ -413,7 +413,7 @@ theorem riemannSum_le_integral {T : ℝ} (π : Partition T) (hd : 0 < d) {x : Rd
         (Ioc (π.left j) (π.right j)) := fun i j hij => by
       refine Set.disjoint_left.2 fun s h1 h2 => ?_
       have : π.right i ≤ π.left j :=
-        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.coe_castSucc]; omega)
+        π.strictMono.monotone (by rw [Fin.le_def]; simp only [Fin.val_succ, Fin.val_castSucc]; omega)
       linarith [h1.2, h2.1]
     intro i j hij
     rcases lt_or_gt_of_ne hij with h | h
@@ -432,7 +432,7 @@ theorem riemannSum_le_integral {T : ℝ} (π : Partition T) (hd : 0 < d) {x : Rd
 /-- **Subgoal** (Lemma B.2 proof, eqs. (32)–(35)). Eq. (35) [FP00]: under Assumptions 1 and 2,
 `∑_i p_{t_i}(x) (t_{i+1} - t_i) ≤ C(R) ν(|x|)` for `|x| ≤ R`. -/
 theorem riemannSum_le_potentialProfile {T : ℝ} {π : ℕ → Partition T}
-    (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) (R : ℝ) :
+    (h1 : BalancedPartitions π) (_h2 : GeometricMeshDecay π) (R : ℝ) :
     ∃ C : ℝ, ∀ n, ∀ x : Rd d, x ≠ 0 → ‖x‖ ≤ R →
       ∑ i : Fin (π n).m, heatKernel d ((π n).left i) x * ((π n).right i - (π n).left i) ≤
         C * potentialProfile d ‖x‖ := by

@@ -115,9 +115,9 @@ theorem abs_taylor2_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) {x y : Rd d} {
       refine ContinuousLinearMap.opNorm_le_bound _ (by positivity) fun w => ?_
       calc _ = ‖⟪gradient f z - gradient f x - H (z - x), w⟫‖ := by
             congr 1
-            simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
+            simp only [sub_apply, smul_apply,
               ContinuousLinearMap.comp_apply, ContinuousLinearMap.prod_apply, fderivInnerCLM_apply,
-              hgrad, inner_sub_left, ContinuousLinearMap.zero_apply, inner_zero_left,
+              hgrad, inner_sub_left, zero_apply, inner_zero_left,
               id_eq, ContinuousLinearMap.id_apply, smul_eq_mul]
             rw [hHdef, hessian_symm hf x w (z - x)]
             simp only [Function.comp_apply, real_inner_comm w]

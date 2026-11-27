@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T13:06:34Z  
-**`sorry` occurrences:** 28 · 7 open · 54 blocked · 316 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 44, 'done': 254} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T13:48:56Z  
+**`sorry` occurrences:** 28 · 7 open · 54 blocked · 307 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 44, 'done': 245} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -273,26 +273,17 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` | subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt` | subgoal of Hardy–Littlewood, `t < M_1 f(x | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.le_add` | subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le` | subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow` | subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt` | subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions | 0 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction` | subgoal of Hardy–Littlewood, `M_1 f ≤ M f` pointwise, with `M` Carleson's uncentred `globalMaximalFunction` | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le` | subgoal of Hardy–Littlewood, strong type `(p, p | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq` | subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball` | subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction` | subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le` | subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral` | subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux` | subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux` | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le` | subgoal of Hardy–Littlewood, weak type `(1, 1 | 0 |
-| done | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` | subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge` | subgoal of Lemma 2.2 proof, `d ≤ α` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` | subgoal of Lemma 2.2 proof, `α < d` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le` | subgoal of Lemma 2.2 proof, maximal function on a closed ball | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_shell_le` | subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.subset_closedBall` | subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q | 0 |
+| done | `Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae` | subgoal of `M_1`, `M_1 f` depends only on the a.e. class of `f` | 0 |
+| done | `Sobolev.LocalMaximalFunction::localMaximalFunction.le_add` | subgoal of `M_1`, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` | 0 |
+| done | `Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball` | subgoal of `M_1`, `M_1 f` is Borel: `x ↦ c ν(B(x, r | 0 |
+| done | `Sobolev.LocalMaximalFunction::localMaximalFunction.measurable` | subgoal of `M_1`, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le` | subgoal of Theorem 2.1 proof, the Lebesgue-point limit | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment` | subgoal of Theorem 2.1 proof, (2 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset` | subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls | 0 |
@@ -355,7 +346,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| done | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 |  |
+| done | `Sobolev.HardyLittlewood` | Hardy–Littlewood bound for M_1 (Appendix C; bridge to Carleson project) | 0 |  |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |

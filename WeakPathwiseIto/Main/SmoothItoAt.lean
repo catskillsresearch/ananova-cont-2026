@@ -82,12 +82,12 @@ theorem stopped_sum_eq (p : Partition T) (φ : Rd d → Rd d → ℝ) (hφ : ∀
   have hlr := p.left_lt_right k
   by_cases h1 : p.right k ≤ t
   · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => absurd h1 (not_le.2 h.2)
-    rw [if_pos h1, if_neg h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
+    rw [ite_eq_left h1, ite_eq_right h2, min_eq_left h1, min_eq_left (hlr.le.trans h1), add_zero]
   · by_cases h3 : p.left k < t
     · have h2 : p.left k < t ∧ t < p.right k := ⟨h3, not_le.1 h1⟩
-      rw [if_neg h1, if_pos h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
+      rw [ite_eq_right h1, ite_eq_left h2, min_eq_right (not_le.1 h1).le, min_eq_left h3.le, zero_add]
     · have h2 : ¬ (p.left k < t ∧ t < p.right k) := fun h => h3 h.1
-      rw [if_neg h1, if_neg h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3), hφ,
+      rw [ite_eq_right h1, ite_eq_right h2, min_eq_right (not_le.1 h1).le, min_eq_right (not_lt.1 h3), hφ,
         add_zero]
 
 /-- **Subgoal** (Theorem 5.1 proof, (21), telescoping): for `t ∈ [0,T]`,
@@ -108,7 +108,7 @@ theorem sub_eq_sum_stopped (p : Partition T) (f : Rd d → ℝ) (ω : ℝ → Rd
 with `a_k = ω(t_k ∧ t)`, `b_k = ω(t_{k+1} ∧ t)`. -/
 theorem tendsto_trapezoid {π : ℕ → Partition T} {ω : ℝ → Rd d} (hω : ContinuousOn ω (Icc 0 T))
     (hQV : HasQuadraticVariation π ω) (hosc : pathOscillation.Vanishes ω π) {f : Rd d → ℝ}
-    (hf : ContDiffBounded 2 f) {t : ℝ} (ht : t ∈ Icc 0 T) :
+    (hf : ContDiffBounded 2 f) {t : ℝ} (_ht : t ∈ Icc 0 T) :
     Tendsto (fun n => ∑ k : Fin (π n).m,
       (f (ω (min ((π n).right k) t)) - f (ω (min ((π n).left k) t)) -
         ⟪gradient f (ω (min ((π n).left k) t)),

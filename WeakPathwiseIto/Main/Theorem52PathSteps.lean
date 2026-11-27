@@ -340,7 +340,7 @@ theorem ae_localMaximalFunction_lt_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
     (hf : MemLp f (ENNReal.ofReal p)) : ∀ᵐ x, localMaximalFunction 1 f x < ⊤ := by
   obtain ⟨C, hC⟩ := eLpNorm_maximal_le (d := d) hp
   have hp0 : ENNReal.ofReal p ≠ 0 := by rw [Ne, ENNReal.ofReal_eq_zero, not_le]; linarith
-  have hm := hardyLittlewood.measurable_localMaximalFunction (d := d) f
+  have hm := localMaximalFunction.measurable (d := d) f
   have hlt : eLpNorm (localMaximalFunction 1 f) (ENNReal.ofReal p) volume < ⊤ :=
     (hC f).trans_lt (ENNReal.mul_lt_top ENNReal.coe_lt_top hf.eLpNorm_lt_top)
   rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 ENNReal.ofReal_ne_top hm.aestronglyMeasurable,
