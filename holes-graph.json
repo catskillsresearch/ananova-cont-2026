@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:33:51Z",
+ "updated": "2026-11-27T11:36:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 30,
  "counts": {
   "open": 7,
-  "blocked": 48,
+  "blocked": 51,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 38,
+  "blocked": 41,
   "done": 239
  },
  "untagged": [],
@@ -4109,9 +4109,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "tendsto_mollify_of_isLebesguePoint",
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
@@ -4121,7 +4120,7 @@
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 21
+    "theorem": 24
    },
    "paperGoal": false,
    "verified": false,
@@ -4133,6 +4132,8 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+    "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
     "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
@@ -4151,6 +4152,7 @@
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+    "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Occupation.PathwiseSobolevSpace",
@@ -4164,6 +4166,8 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+    "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
     "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
@@ -4182,10 +4186,11 @@
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+    "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "8 sorry: tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4223,6 +4228,80 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.abs_convolution_le — subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "label": "abs_mollify_sub_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification at Lebesgue points: `|F * ψ(x) - c| ≤ K ∫_{B(x,r)} |F - c|` for a mollifier `0 ≤ ψ ≤ K`, `∫ ψ = 1`, `supp ψ ⊆ B(0,r)`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.abs_mollify_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "label": "abs_setAverage_sub_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.abs_setAverage_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
@@ -4903,6 +4982,43 @@
    "detail": "proved: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
   },
   {
+   "id": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
+   "label": "preciseRepresentative_eq_of_tendsto",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x) = c`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.preciseRepresentative_eq_of_tendsto — subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x (in Main.Theorem52Steps)"
+  },
+  {
    "id": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
    "label": "tendsto_mollify_hessian",
    "kind": "subgoal",
@@ -4951,10 +5067,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.tendsto_mollify_of_isLebesguePoint"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4978,7 +5092,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.tendsto_mollify_of_isLebesguePoint — subgoal of Appendix C, mollification: `F_m(x (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.tendsto_mollify_of_isLebesguePoint — subgoal of Appendix C, mollification: `F_m(x (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.WeakCovariation",
@@ -10662,6 +10776,16 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -10748,6 +10872,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -11812,6 +11941,16 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -11898,6 +12037,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -12387,6 +12531,16 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -12473,6 +12627,11 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -12507,6 +12666,16 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -12593,6 +12762,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -13406,6 +13580,16 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -13492,6 +13676,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14852,6 +15041,16 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -14938,6 +15137,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -16187,6 +16391,16 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -16273,6 +16487,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -16987,6 +17206,16 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -17073,6 +17302,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -17427,6 +17661,16 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -17513,6 +17757,11 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -17557,6 +17806,16 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -17643,6 +17902,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -18092,6 +18356,16 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -18178,6 +18452,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
   {
@@ -19350,6 +19629,14 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -19419,6 +19706,10 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -19442,6 +19733,14 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -19511,6 +19810,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
    "from": "Bessel.Theorem29",
@@ -20117,6 +20420,14 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps"
   },
@@ -20186,6 +20497,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -22002,6 +22317,14 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -22071,6 +22394,10 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -22354,6 +22681,14 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -22423,6 +22758,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
    "from": "Sobolev.Theorem21Second",
