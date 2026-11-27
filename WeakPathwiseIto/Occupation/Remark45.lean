@@ -163,6 +163,18 @@ theorem remark_4_5_identity (p : Partition T) (ω : ℝ → Rd 1) :
     ← Finset.sum_add_distrib, Finset.mul_sum]
   exact Finset.sum_congr rfl fun i _ => remark_4_5_term_eq (hv i).1 (hv i).2
 
+/-- **Subgoal** (Remark 4.5, weak convergence is a.e.-invariant): if `f_n = f'_n` and `ℓ = ℓ'`
+a.e., then `f_n ⇀ ℓ` in `L^r` implies `f'_n ⇀ ℓ'`. -/
+theorem remark_4_5.weakLpTendsto_congr {d : ℕ} {r : ℝ≥0∞} {f f' : ℕ → Rd d → ℝ} {ℓ ℓ' : Rd d → ℝ}
+    (hf : ∀ n, f n =ᵐ[volume] f' n) (hℓ : ℓ =ᵐ[volume] ℓ') (h : WeakLpTendsto r f ℓ) :
+    WeakLpTendsto r f' ℓ' := by
+  refine ⟨fun n => (h.1 n).ae_eq (hf n), h.2.1.ae_eq hℓ, fun g hg => ?_⟩
+  have h1 : ∀ n, ∫ x, g x * f n x = ∫ x, g x * f' n x := fun n =>
+    integral_congr_ae ((hf n).mono fun x hx => by simp [hx])
+  have h2 : ∫ x, g x * ℓ x = ∫ x, g x * ℓ' x := integral_congr_ae (hℓ.mono fun x hx => by simp [hx])
+  simp_rw [← h1, ← h2]
+  exact h.2.2 g hg
+
 /-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
 discrete local-time sequences converge to the same terminal local time,
 `λ^{n,±}_T ⇀ ℓ_T` in `L^r(ℝ)`, then `𝓛^{π_n}_ω ⇀ ℓ_T` in `L^r(ℝ)` and
