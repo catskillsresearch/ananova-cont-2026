@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T13:04:20Z",
+ "updated": "2026-11-27T13:05:24Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
   "open": 7,
   "blocked": 54,
@@ -4031,12 +4031,11 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
-    "gagliardo_maximal_le_of_measurable",
     "gagliardo_maximal_le",
     "lintegral_rpow_sub_le",
     "ae_forall_mem_not_mem_null"
@@ -4123,7 +4122,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, gagliardo_maximal_le_of_measurable, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "6 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4673,10 +4672,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.gagliardo_maximal_le_of_measurable"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4701,7 +4698,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.gagliardo_maximal_le_of_measurable — subgoal of Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.gagliardo_maximal_le_of_measurable — subgoal of Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",

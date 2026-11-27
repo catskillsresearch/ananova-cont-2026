@@ -533,7 +533,47 @@ theorem gagliardo_maximal_le_of_measurable {s p : ℝ} (hp : 1 < p) {f : Rd d �
         edist x y ^ (s * p + d) ≤
       ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1)) *
         ∫⁻ x, ∫⁻ y, ‖f x - f y‖ₑ ^ p / edist x y ^ (s * p + d) := by
-  sorry
+  set K := ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1))
+  have hK : K ≠ ⊤ := by
+    refine ENNReal.mul_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top
+      (ENNReal.mul_ne_top ENNReal.ofNat_ne_top
+        (ENNReal.pow_ne_top (ENNReal.pow_ne_top ENNReal.ofNat_ne_top)))) ?_
+    exact ENNReal.div_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofNat_ne_top)
+      (ENNReal.ofReal_pos.2 (by linarith)).ne'
+  set e : ℝ := s * p + d
+  have hM := hardyLittlewood.measurable_localMaximalFunction f
+  have hed : Measurable fun z : Rd d × Rd d => edist z.1 z.2 ^ e :=
+    (measurable_fst.edist measurable_snd).pow_const e
+  have hΦ : Measurable (Function.uncurry fun x y : Rd d =>
+      ‖(localMaximalFunction 1 f x).toReal - (localMaximalFunction 1 f y).toReal‖ₑ ^ p /
+        edist x y ^ e) :=
+    ((((hM.comp measurable_fst).ennreal_toReal.sub
+      (hM.comp measurable_snd).ennreal_toReal).enorm).pow_const p).div hed
+  have hΨ : Measurable (Function.uncurry fun x y : Rd d => ‖f x - f y‖ₑ ^ p / edist x y ^ e) :=
+    ((((hf.comp measurable_fst).sub (hf.comp measurable_snd)).enorm).pow_const p).div hed
+  rw [lintegral_lintegral_eq_add hΦ, lintegral_lintegral_eq_add hΨ, ← lintegral_const_mul' _ _ hK]
+  refine lintegral_mono fun h => ?_
+  have hedh : ∀ x : Rd d, edist x (x + h) = ‖h‖ₑ := fun x => by
+    rw [edist_eq_enorm_sub, sub_add_cancel_left, enorm_neg]
+  simp_rw [hedh, div_eq_mul_inv]
+  set c := (‖h‖ₑ ^ e)⁻¹
+  have hD : Measurable fun z => f z - f (z + h) := hf.sub (hf.comp (measurable_add_const h))
+  have hfin := ae_localMaximalFunction_ne_top hp hf hfp
+  have hfin' : ∀ᵐ x, localMaximalFunction 1 f (x + h) ≠ ⊤ :=
+    (measurePreserving_add_right volume h).quasiMeasurePreserving.ae hfin
+  calc ∫⁻ x, ‖(localMaximalFunction 1 f x).toReal -
+          (localMaximalFunction 1 f (x + h)).toReal‖ₑ ^ p * c
+      ≤ ∫⁻ x, localMaximalFunction 1 (fun z => f z - f (z + h)) x ^ p * c := by
+        refine lintegral_mono_ae ?_
+        filter_upwards [hfin, hfin'] with x hx hxh
+        gcongr
+        exact enorm_toReal_sub_le hf hx hxh
+    _ = (∫⁻ x, localMaximalFunction 1 (fun z => f z - f (z + h)) x ^ p) * c :=
+        lintegral_mul_const _ ((hardyLittlewood.measurable_localMaximalFunction _).pow_const p)
+    _ ≤ (K * ∫⁻ x, ‖f x - f (x + h)‖ₑ ^ p) * c := by
+        gcongr; exact hardyLittlewood.lintegral_rpow_le hD hp
+    _ = K * ∫⁻ x, ‖f x - f (x + h)‖ₑ ^ p * c := by
+        rw [mul_assoc, lintegral_mul_const _ (hD.enorm.pow_const p)]
 
 /-- **Subgoal** (Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and
 sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}`). -/
