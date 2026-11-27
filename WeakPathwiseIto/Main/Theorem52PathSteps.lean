@@ -237,12 +237,43 @@ theorem rpow_le_potentialProfile {r : ℝ} (hr1 : r ≤ 1) :
 
 /-- **Subgoal** (Appendix C, `J_{m,n}(x₀) → 0`): if `∫ |f(z)| ν(|z - x₀|) dz < ∞` and the radii
 shrink to `0`, the kernel integrals over `B̄(x₀, ρ_n)` tend to `0`. -/
-theorem tendsto_lintegral_closedBall_kernel {f : Rd d → ℝ} (hfm : AEStronglyMeasurable f)
+theorem tendsto_lintegral_closedBall_kernel {f : Rd d → ℝ}
     {x₀ : Rd d} (hf : ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ⊤)
     {ρ : ℕ → ℝ} (hρ : Tendsto ρ atTop (𝓝 0)) :
     Tendsto (fun n => ∫⁻ x in Metric.closedBall x₀ (ρ n),
       ‖f x‖ₑ * ENNReal.ofReal (‖x - x₀‖ ^ (2 - (d : ℝ)))) atTop (𝓝 0) := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with hd | hd
+  · subst hd
+    have h0 : ∀ x : Rd 0, ‖f x‖ₑ * ENNReal.ofReal (‖x - x₀‖ ^ (2 - ((0 : ℕ) : ℝ))) = 0 := by
+      intro x
+      rw [Subsingleton.elim x x₀, sub_self, norm_zero]
+      norm_num
+    simp_rw [h0, lintegral_zero]
+    exact tendsto_const_nhds
+  -- `d ≥ 1`: dominate by the `ν`-weighted integrand on shrinking balls
+  have hvol : Tendsto (fun n => volume (Metric.closedBall x₀ (max (ρ n) 0))) atTop (𝓝 0) := by
+    have hm : Tendsto (fun n => max (ρ n) 0) atTop (𝓝 0) := by
+      simpa using hρ.max (tendsto_const_nhds (x := (0 : ℝ)))
+    have hc : Tendsto (fun n => ENNReal.ofReal (max (ρ n) 0 ^ d)) atTop (𝓝 0) := by
+      have := (ENNReal.continuous_ofReal.tendsto _).comp ((continuous_pow d).tendsto 0 |>.comp hm)
+      rw [zero_pow hd.ne', ENNReal.ofReal_zero] at this
+      exact this
+    have := ENNReal.Tendsto.mul_const hc (Or.inr (measure_ball_lt_top (μ := volume)
+      (x := (0 : Rd d)) (r := 1)).ne)
+    rw [zero_mul] at this
+    refine this.congr fun n => ?_
+    rw [Measure.addHaar_closedBall _ _ (le_max_right _ _), finrank_euclideanSpace_fin]
+  have hlim := tendsto_setLIntegral_zero hf.ne (μ := volume) hvol
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le' tendsto_const_nhds hlim
+    (Eventually.of_forall fun n => zero_le) ?_
+  filter_upwards [hρ.eventually (ge_mem_nhds (show (0 : ℝ) < 1 by norm_num))] with n hn
+  calc ∫⁻ x in Metric.closedBall x₀ (ρ n), ‖f x‖ₑ * ENNReal.ofReal (‖x - x₀‖ ^ (2 - (d : ℝ)))
+      ≤ ∫⁻ x in Metric.closedBall x₀ (ρ n), ‖f x‖ₑ * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) := by
+        refine lintegral_mono_ae (ae_restrict_of_forall_mem measurableSet_closedBall fun x hx => ?_)
+        rw [Metric.mem_closedBall, dist_eq_norm] at hx
+        gcongr
+        exact rpow_le_potentialProfile (hx.trans hn)
+    _ ≤ _ := lintegral_mono_set (Metric.closedBall_subset_closedBall (le_max_left _ _))
 
 /-- **Subgoal** (Appendix C, (11) with the first increment kept explicit: Hölder and
 `sup_n ‖ρ_{n,ω}‖_{L^q} < ∞`). The constant depends only on `(π, ω, p)`, not on `f` or `g`. -/

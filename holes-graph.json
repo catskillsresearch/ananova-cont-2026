@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:54:29Z",
+ "updated": "2026-11-27T10:55:49Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 22,
-  "done": 310
+  "done": 311
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 12,
-  "done": 249
+  "done": 250
  },
  "untagged": [],
  "legend": {
@@ -3529,9 +3529,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
     "ae_localMaximalFunction_lt_top",
     "integrable_norm_hessian_sub"
@@ -3570,10 +3569,9 @@
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-    "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
-    "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+    "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
    ],
-   "detail": "4 sorry: tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
+   "detail": "3 sorry: le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -4007,17 +4005,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.tendsto_lintegral_closedBall_kernel"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, `J_{m,n}(x₀) → 0`): if `∫ |f(z)| ν(|z - x₀|) dz < ∞` and the radii shrink to `0`, the kernel integrals over `B̄(x₀, ρ_n)` tend to `0`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -4029,7 +4025,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.tendsto_lintegral_closedBall_kernel — subgoal of Appendix C, `J_{m,n}(x₀ (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.tendsto_lintegral_closedBall_kernel — subgoal of Appendix C, `J_{m,n}(x₀ (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52Steps",

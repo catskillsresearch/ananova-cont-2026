@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T10:54:29Z  
-**`sorry` occurrences:** 36 · 11 open · 22 blocked · 310 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 8, 'blocked': 12, 'done': 249} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T10:55:49Z  
+**`sorry` occurrences:** 35 · 10 open · 22 blocked · 311 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 7, 'blocked': 12, 'done': 250} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -142,7 +142,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction` | subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile` | subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one` | subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` | 0 |
-| open | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 1 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 0 |
 | blocked | `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null` | subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` | 1 |
 | blocked | `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem` | subgoal of Appendix C, Brownian motion does not enter a polar set at positive times | 1 |
 | blocked | `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le` | subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` | 1 |
@@ -399,7 +399,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52PathSteps` |  | 4 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` |
+| blocked | `Main.Theorem52PathSteps` |  | 3 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` |
 | blocked | `Main.Theorem52Steps` |  | 9 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
