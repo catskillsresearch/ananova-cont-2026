@@ -495,7 +495,23 @@ theorem enorm_toReal_sub_le {f : Rd d → ℝ} (hf : Measurable f) {x h : Rd d}
 /-- **Subgoal** (Appendix C, `M_1 f < ∞` a.e. for `f ∈ L^p`, `p > 1`). -/
 theorem ae_localMaximalFunction_ne_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ} (hf : Measurable f)
     (hfp : MemLp f (ENNReal.ofReal p)) : ∀ᵐ x, localMaximalFunction 1 f x ≠ ⊤ := by
-  sorry
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hI : ∫⁻ y, ‖f y‖ₑ ^ p < ⊤ := by
+    have := lintegral_rpow_enorm_lt_top_of_eLpNorm_lt_top
+      (ENNReal.ofReal_pos.2 hp0).ne' ENNReal.ofReal_ne_top hfp.eLpNorm_lt_top
+    rwa [ENNReal.toReal_ofReal hp0.le] at this
+  have hK : ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1)) ≠ ⊤ := by
+    refine ENNReal.mul_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top
+      (ENNReal.mul_ne_top ENNReal.ofNat_ne_top
+        (ENNReal.pow_ne_top (ENNReal.pow_ne_top ENNReal.ofNat_ne_top)))) ?_
+    exact ENNReal.div_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofNat_ne_top)
+      (ENNReal.ofReal_pos.2 (by linarith)).ne'
+  have hM : ∫⁻ x, localMaximalFunction 1 f x ^ p ≠ ⊤ :=
+    ((hardyLittlewood.lintegral_rpow_le hf hp).trans_lt (ENNReal.mul_lt_top hK.lt_top hI)).ne
+  filter_upwards [ae_lt_top ((hardyLittlewood.measurable_localMaximalFunction f).pow_const p) hM]
+    with x hx hxt
+  rw [hxt, ENNReal.top_rpow_of_pos hp0] at hx
+  exact lt_irrefl _ hx
 
 /-- **Subgoal** (Appendix C, Tonelli in difference coordinates:
 `∫∫ Φ(x, y) dy dx = ∫∫ Φ(x, x + h) dx dh`). -/
