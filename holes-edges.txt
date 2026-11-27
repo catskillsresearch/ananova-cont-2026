@@ -93,6 +93,7 @@ Basic.IsCubeOrBall -hard-> Sobolev.Theorem21
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -898,6 +899,7 @@ Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -925,6 +927,7 @@ Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -967,6 +970,7 @@ Sobolev.IsWeakHessian -hard-> Sobolev.Theorem23
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -1019,6 +1023,7 @@ Sobolev.MemW -hard-> Sobolev.Theorem21
 Sobolev.MemW -hard-> Sobolev.Theorem21First
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -1047,6 +1052,7 @@ Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
+Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
@@ -1069,6 +1075,7 @@ Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem23
 Sobolev.Theorem21First -hard-> Sobolev.Theorem21
 Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment -hard-> Sobolev.Theorem21First
+Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.coord_integrable -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier -hard-> Sobolev.Theorem21First

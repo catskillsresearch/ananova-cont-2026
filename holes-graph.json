@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27T02:37:01Z",
+ "updated": "2026-11-27T02:40:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 32,
  "counts": {
-  "open": 7,
+  "open": 8,
   "blocked": 19,
   "done": 260
  },
@@ -13,7 +13,7 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 5,
   "blocked": 7,
   "done": 206
  },
@@ -7221,14 +7221,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 3,
+   "sorryCount": 4,
    "holes": [
+    "ball_subset_subset",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
     "abs_sub_average_le"
    ],
    "declKinds": {
-    "theorem": 20
+    "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
@@ -7243,6 +7244,7 @@
     "Sobolev.PreciseRepresentative",
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+    "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
     "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
     "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
@@ -7264,10 +7266,11 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
+    "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "3 sorry: volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "4 sorry: ball_subset_subset, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7330,6 +7333,38 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_2_1_first.abs_sub_le_lintegral_segment — subgoal of Theorem 2.1 proof, (2 (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
+   "label": "ball_subset_subset",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_first.ball_subset_subset"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof: ball sandwich for cubes and balls): a cube or ball `Q` is convex and measurable, and `B(c, ρ) ⊆ Q ⊆ B̄(c, d ρ)` for some centre `c` and `ρ > 0`.",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_first.ball_subset_subset — subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
@@ -8374,6 +8409,11 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
    "kind": "hard"
   },
   {
@@ -12403,6 +12443,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
    "kind": "hard"
   },
@@ -12534,6 +12579,11 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
    "kind": "hard"
   },
   {
@@ -12744,6 +12794,11 @@
   {
    "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
    "kind": "hard"
   },
   {
@@ -13008,6 +13063,11 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
    "kind": "hard"
   },
@@ -13148,6 +13208,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
    "kind": "hard"
   },
@@ -13253,6 +13318,11 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
    "to": "Sobolev.Theorem21First",
    "kind": "subgoal"
   },
@@ -15934,6 +16004,10 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution"
   },
   {
@@ -16031,6 +16105,10 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -16183,6 +16261,10 @@
   {
    "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset"
   },
   {
    "from": "Sobolev.Lemma22",
@@ -16378,6 +16460,10 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution"
   },
   {
@@ -16482,6 +16568,10 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution"
   },
   {
@@ -16566,6 +16656,10 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
    "to": "Sobolev.Theorem21First"
   },
   {

@@ -287,6 +287,13 @@ theorem poincare_of_contDiff (hd : 0 < d) {f : Rd d → ℝ} (hf : ContDiff ℝ 
           (Or.inl (ENNReal.natCast_ne_top d))]
         ring
 
+/-- **Subgoal** (Theorem 2.1 proof: ball sandwich for cubes and balls): a cube or ball `Q` is
+convex and measurable, and `B(c, ρ) ⊆ Q ⊆ B̄(c, d ρ)` for some centre `c` and `ρ > 0`. -/
+theorem ball_subset_subset (hd : 0 < d) {Q : Set (Rd d)} (hQ : IsCubeOrBall Q) :
+    ∃ (c : Rd d) (ρ : ℝ), 0 < ρ ∧ Convex ℝ Q ∧ MeasurableSet Q ∧
+      Metric.ball c ρ ⊆ Q ∧ Q ⊆ Metric.closedBall c (d * ρ) := by
+  sorry
+
 /-- **Subgoal** (Theorem 2.1 proof: cubes and balls): a cube or ball is convex, measurable,
 bounded, of positive measure, and `(diam Q)^d ≤ K_d |Q|`. -/
 theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), IsCubeOrBall Q →
