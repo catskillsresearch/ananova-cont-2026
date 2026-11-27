@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T11:33:08Z",
+ "updated": "2026-11-27T11:33:51Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 31,
  "counts": {
   "open": 7,
   "blocked": 48,
@@ -4109,9 +4109,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
-    "mollify_mem",
     "tendsto_mollify_of_isLebesguePoint",
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
@@ -4186,7 +4185,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "9 sorry: mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "8 sorry: tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4802,10 +4801,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.mollify_mem"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4829,7 +4826,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",

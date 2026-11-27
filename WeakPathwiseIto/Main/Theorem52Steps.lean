@@ -271,7 +271,7 @@ theorem mollify_mem {F : Rd d → ℝ} (hF : MemW 2 1 F) {ψ : Rd d → ℝ}
     (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
     ContDiffBounded 2 (fun x => ∫ y, F y * ψ (x - y)) ∧
       MemW 2 1 (fun x => ∫ y, F y * ψ (x - y)) := by
-  sorry
+  exact ⟨contDiffBounded_convolution hF hψ hψc, memW_convolution hF hψ hψc⟩
 
 /-- **Subgoal** (Appendix C, mollification: `F_m(x) → F̃(x)` at every Lebesgue point). -/
 theorem tendsto_mollify_of_isLebesguePoint {F : Rd d → ℝ} (hF : LocallyIntegrable F)
