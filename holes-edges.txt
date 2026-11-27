@@ -190,6 +190,11 @@ Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.mul_eq_integral
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.nonneg
 Basic.Rd -hard-> Bessel.BesselKernel::besselKernel.tendsto_integral
 Basic.Rd -hard-> Bessel.CanonicalWienerSpace
+Basic.Rd -hard-> Bessel.Young
+Basic.Rd -hard-> Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le
+Basic.Rd -hard-> Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul
+Basic.Rd -hard-> Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le
+Basic.Rd -hard-> Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le
 Basic.Rd -hard-> Occupation.DiscreteSeminorm
 Basic.Rd -hard-> Occupation.IncrementBall
 Basic.Rd -hard-> Occupation.NormalizedQuadraticDensity
@@ -267,7 +272,9 @@ Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one -hard-> Bessel.B
 Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p -hard-> Bessel.BesselCapacity
 Bessel.BesselCapacity::besselCapacity.iUnion_le -hard-> Bessel.BesselCapacity
 Bessel.BesselKernel -hard-> Bessel.BesselSpace
+Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential
 Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le
+Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.enorm_potential_le
 Bessel.BesselKernel::besselKernel.asymptotic_origin -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.fourier_eq -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.fourier_fubini -hard-> Bessel.BesselKernel
@@ -287,7 +294,9 @@ Bessel.BesselSpace -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.one_two_
 Bessel.BesselSpace -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p
 Bessel.BesselSpace -hard-> Bessel.BesselCapacity::besselCapacity.iUnion_le
 Bessel.BesselSpace -hard-> Bessel.Theorem26
+Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential -hard-> Bessel.BesselSpace
 Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le -hard-> Bessel.BesselSpace
+Bessel.BesselSpace::BesselSpace.enorm_potential_le -hard-> Bessel.BesselSpace
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.B_ofCoords
 Bessel.CanonicalWienerSpace -hard-> Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero
@@ -347,6 +356,14 @@ Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P -hard-> Bess
 Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq -hard-> Bessel.WienerLawExists
 Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe -hard-> Bessel.WienerLawExists
+Bessel.Young -hard-> Bessel.BesselSpace
+Bessel.Young -hard-> Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential
+Bessel.Young -hard-> Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le
+Bessel.Young -hard-> Bessel.BesselSpace::BesselSpace.enorm_potential_le
+Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le -hard-> Bessel.Young
+Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul -hard-> Bessel.Young
+Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le -hard-> Bessel.Young
+Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le -hard-> Bessel.Young
 Main.BalancedPartitions -hard-> Appendix.HeatKernel
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.div_scaling
 Main.BalancedPartitions -hard-> Appendix.HeatKernel::heatKernel.integrableOn_Ioc

@@ -6,6 +6,7 @@ module
 
 public import Mathlib
 public import WeakPathwiseIto.Bessel.BesselKernel
+public import WeakPathwiseIto.Bessel.Young
 
 @[expose] public section
 
@@ -36,6 +37,17 @@ variable {d : ℕ}
 /-- The norm `‖F‖_{𝓛^p_α} := ‖f‖_{L^p}` where `F = g_α ⋆ f` (Definition 2.5). -/
 def norm (α : ℝ) (p : ℝ≥0∞) (F : Rd d → ℝ) : ℝ≥0∞ :=
   ⨅ (f : Rd d → ℝ) (_ : MemLp f p) (_ : F =ᵐ[volume] potential d α f), eLpNorm f p volume
+
+/-- **Subgoal** (Definition 2.5, Young: pointwise bound
+`|g_α ⋆ f(x)| ≤ ∫ |g_α(x - y)| |f(y)| dy`, valid even where the integral diverges). -/
+theorem enorm_potential_le {α : ℝ} (hα : α ≠ 0) (f : Rd d → ℝ) (x : Rd d) :
+    ‖potential d α f x‖ₑ ≤ ∫⁻ y, ‖besselKernel d α (x - y)‖ₑ * ‖f y‖ₑ := by
+  sorry
+
+/-- **Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable). -/
+theorem aestronglyMeasurable_potential {α : ℝ} (hα : 0 < α) {f : Rd d → ℝ}
+    (hf : AEStronglyMeasurable f) : AEStronglyMeasurable (potential d α f) := by
+  sorry
 
 /-- **Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`. -/
 theorem eLpNorm_potential_le {α : ℝ} (hα : 0 < α) {p : ℝ≥0∞} (hp : 1 ≤ p) {f : Rd d → ℝ}

@@ -24,6 +24,7 @@ public import WeakPathwiseIto.Bessel.IsBrownianPolar
 public import WeakPathwiseIto.Bessel.Theorem26
 public import WeakPathwiseIto.Bessel.Theorem29
 public import WeakPathwiseIto.Bessel.WienerLawExists
+public import WeakPathwiseIto.Bessel.Young
 public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral

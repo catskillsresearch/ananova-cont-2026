@@ -4049,6 +4049,16 @@ end besselKernel
 
 end
 
+/-! ## `WeakPathwiseIto.Bessel.Young` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+
+
+end
+
 /-! ## `WeakPathwiseIto.Bessel.BesselSpace` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}

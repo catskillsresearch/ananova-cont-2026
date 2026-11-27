@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-27T03:43:07Z",
+ "updated": "2026-11-27T03:47:52Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 24,
+ "sorryCount": 30,
  "counts": {
-  "open": 3,
-  "blocked": 17,
+  "open": 6,
+  "blocked": 21,
   "done": 291
  },
  "goalCounts": {
   "open": 2,
-  "blocked": 10,
+  "blocked": 11,
   "done": 59
  },
  "subgoalCounts": {
-  "open": 1,
-  "blocked": 7,
+  "open": 4,
+  "blocked": 10,
   "done": 232
  },
  "untagged": [],
@@ -1909,13 +1909,15 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.5",
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 1,
+   "sorryCount": 3,
    "holes": [
+    "enorm_potential_le",
+    "aestronglyMeasurable_potential",
     "eLpNorm_potential_le"
    ],
    "declKinds": {
     "def": 3,
-    "theorem": 1
+    "theorem": 3
    },
    "paperGoal": false,
    "verified": false,
@@ -1923,12 +1925,48 @@
    "status": "blocked",
    "deps": [
     "Bessel.BesselKernel",
-    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+    "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+    "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
+    "Bessel.Young"
    ],
    "blockers": [
-    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+    "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+    "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
+    "Bessel.Young"
    ],
-   "detail": "1 sorry: eLpNorm_potential_le"
+   "detail": "3 sorry: enorm_potential_le, aestronglyMeasurable_potential, eLpNorm_potential_le"
+  },
+  {
+   "id": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+   "label": "aestronglyMeasurable_potential",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable",
+   "parentGoal": "Bessel.BesselSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.aestronglyMeasurable_potential"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable).",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselKernel",
+    "Bessel.Young"
+   ],
+   "blockers": [
+    "Bessel.Young"
+   ],
+   "detail": "sorry: BesselSpace.aestronglyMeasurable_potential — subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
@@ -1950,12 +1988,45 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`.",
-   "status": "open",
+   "status": "blocked",
    "deps": [
-    "Bessel.BesselKernel"
+    "Bessel.BesselKernel",
+    "Bessel.Young"
    ],
-   "blockers": [],
+   "blockers": [
+    "Bessel.Young"
+   ],
    "detail": "sorry: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
+  },
+  {
+   "id": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
+   "label": "enorm_potential_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x",
+   "parentGoal": "Bessel.BesselSpace",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.enorm_potential_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x)| ≤ ∫ |g_α(x - y)| |f(y)| dy`, valid even where the integral diverges).",
+   "status": "blocked",
+   "deps": [
+    "Bessel.BesselKernel",
+    "Bessel.Young"
+   ],
+   "blockers": [
+    "Bessel.Young"
+   ],
+   "detail": "sorry: BesselSpace.enorm_potential_le — subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.CanonicalWienerSpace",
@@ -2383,6 +2454,150 @@
    ],
    "blockers": [],
    "detail": "proved: CanonicalWienerSpace.measurableSpace_eq_comap_coe — subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra (in Bessel.WienerLawExists)"
+  },
+  {
+   "id": "Bessel.Young",
+   "label": "Young",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": null,
+   "file": "WeakPathwiseIto/Bessel/Young.lean",
+   "sorryCount": 4,
+   "holes": [
+    "rpow_lintegral_mul_le",
+    "lintegral_lintegral_sub_mul",
+    "lintegral_rpow_conv_le",
+    "lintegral_conv_le_of_ae_le"
+   ],
+   "declKinds": {
+    "theorem": 4
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.Rd",
+    "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+    "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+    "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+    "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le"
+   ],
+   "blockers": [
+    "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+    "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+    "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+    "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le"
+   ],
+   "detail": "4 sorry: rpow_lintegral_mul_le, lintegral_lintegral_sub_mul, lintegral_rpow_conv_le, lintegral_conv_le_of_ae_le"
+  },
+  {
+   "id": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+   "label": "lintegral_conv_le_of_ae_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through",
+   "parentGoal": "Bessel.Young",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/Young.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.young.lintegral_conv_le_of_ae_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: BesselSpace.young.lintegral_conv_le_of_ae_le — subgoal of Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through (in Bessel.Young)"
+  },
+  {
+   "id": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+   "label": "lintegral_lintegral_sub_mul",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y",
+   "parentGoal": "Bessel.Young",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/Young.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.young.lintegral_lintegral_sub_mul"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y) G(y) dy dx = (∫ K)(∫ G)`).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: BesselSpace.young.lintegral_lintegral_sub_mul — subgoal of Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y (in Bessel.Young)"
+  },
+  {
+   "id": "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+   "label": "lintegral_rpow_conv_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y",
+   "parentGoal": "Bessel.Young",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/Young.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.young.lintegral_rpow_conv_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y) F(y) dy)^q dx ≤ (∫ K)^q ∫ F^q`).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: BesselSpace.young.lintegral_rpow_conv_le — subgoal of Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y (in Bessel.Young)"
+  },
+  {
+   "id": "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le",
+   "label": "rpow_lintegral_mul_le",
+   "kind": "subgoal",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v",
+   "parentGoal": "Bessel.Young",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Bessel/Young.lean",
+   "sorryCount": 1,
+   "holes": [
+    "BesselSpace.young.rpow_lintegral_mul_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v)^q ≤ (∫ u)^{q-1} ∫ u v^q` for `q ≥ 1`).",
+   "status": "open",
+   "deps": [
+    "Basic.Rd"
+   ],
+   "blockers": [],
+   "detail": "sorry: BesselSpace.young.rpow_lintegral_mul_le — subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v (in Bessel.Young)"
   },
   {
    "id": "Main.BalancedPartitions",
@@ -9528,6 +9743,31 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.Young",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.DiscreteSeminorm",
    "kind": "hard"
   },
@@ -9913,7 +10153,17 @@
   },
   {
    "from": "Bessel.BesselKernel",
+   "to": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselKernel",
    "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.BesselKernel",
+   "to": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
    "kind": "hard"
   },
   {
@@ -10012,7 +10262,17 @@
    "kind": "hard"
   },
   {
+   "from": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+   "to": "Bessel.BesselSpace",
+   "kind": "subgoal"
+  },
+  {
    "from": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "to": "Bessel.BesselSpace",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
    "to": "Bessel.BesselSpace",
    "kind": "subgoal"
   },
@@ -10309,6 +10569,46 @@
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
    "to": "Bessel.WienerLawExists",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+   "to": "Bessel.Young",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+   "to": "Bessel.Young",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+   "to": "Bessel.Young",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le",
+   "to": "Bessel.Young",
    "kind": "subgoal"
   },
   {
@@ -15008,6 +15308,22 @@
   },
   {
    "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le"
+  },
+  {
+   "from": "Basic.Rd",
+   "to": "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le"
+  },
+  {
+   "from": "Basic.Rd",
    "to": "Occupation.DiscreteSeminorm"
   },
   {
@@ -15288,7 +15604,15 @@
   },
   {
    "from": "Bessel.BesselKernel",
+   "to": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential"
+  },
+  {
+   "from": "Bessel.BesselKernel",
    "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+  },
+  {
+   "from": "Bessel.BesselKernel",
+   "to": "Bessel.BesselSpace::BesselSpace.enorm_potential_le"
   },
   {
    "from": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
@@ -15363,7 +15687,15 @@
    "to": "Bessel.Theorem26"
   },
   {
+   "from": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
+   "to": "Bessel.BesselSpace"
+  },
+  {
    "from": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le",
+   "to": "Bessel.BesselSpace"
+  },
+  {
+   "from": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
    "to": "Bessel.BesselSpace"
   },
   {
@@ -15525,6 +15857,34 @@
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe",
    "to": "Bessel.WienerLawExists"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
+  },
+  {
+   "from": "Bessel.Young",
+   "to": "Bessel.BesselSpace::BesselSpace.enorm_potential_le"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
+   "to": "Bessel.Young"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
+   "to": "Bessel.Young"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
+   "to": "Bessel.Young"
+  },
+  {
+   "from": "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le",
+   "to": "Bessel.Young"
   },
   {
    "from": "Main.BalancedPartitions",
