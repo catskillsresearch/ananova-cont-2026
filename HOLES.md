@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:39:43Z  
-**`sorry` occurrences:** 41 · 7 open · 28 blocked · 230 done (goals + subgoals) · goals {'open': 4, 'blocked': 13, 'done': 51} · subgoals {'open': 3, 'blocked': 15, 'done': 179} · 17 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:41:00Z  
+**`sorry` occurrences:** 40 · 6 open · 28 blocked · 231 done (goals + subgoals) · goals {'open': 4, 'blocked': 13, 'done': 51} · subgoals {'open': 2, 'blocked': 15, 'done': 180} · 17 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -115,7 +115,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le` | subgoal of Theorem 5.1 proof, (21 | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq` | subgoal of Theorem 5.1 proof, (21 | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped` | subgoal of Theorem 5.1 proof, (21 | 0 |
-| open | `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` | subgoal of Theorem 5.1 proof, (21 | 1 |
+| done | `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` | subgoal of Theorem 5.1 proof, (21 | 0 |
 | blocked | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le` | subgoal of Theorem 5.1 proof, eqs. (19 | 1 |
 | blocked | `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub` | subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` | 1 |
 | blocked | `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub` | subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` | 1 |
@@ -320,7 +320,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
-| blocked | `Main.SmoothItoAt` |  | 2 | `Main.SmoothItoAt::theorem_5_1.ito_at`, `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` |
+| blocked | `Main.SmoothItoAt` |  | 1 | `Main.SmoothItoAt::theorem_5_1.ito_at` |
 | blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `Main.Theorem51Steps` |
 | blocked | `Main.Theorem51Steps` |  | 8 | `Main.SmoothItoAt`, `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le`, `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub`, `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub`, `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique`, `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae`, `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub`, `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |

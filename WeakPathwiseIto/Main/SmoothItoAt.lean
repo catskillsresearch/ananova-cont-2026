@@ -115,7 +115,96 @@ theorem tendsto_trapezoid {π : ℕ → Partition T} {ω : ℝ → Rd d} (hω : 
           ω (min ((π n).right k) t) - ω (min ((π n).left k) t)⟫ -
         1 / 2 * ⟪gradient f (ω (min ((π n).right k) t)) - gradient f (ω (min ((π n).left k) t)),
           ω (min ((π n).right k) t) - ω (min ((π n).left k) t)⟫)) atTop (𝓝 0) := by
-  sorry
+  set φ : Rd d → Rd d → ℝ := fun a b => f b - f a - ⟪gradient f a, b - a⟫ -
+    1 / 2 * ⟪gradient f b - gradient f a, b - a⟫ with hφdef
+  have hφ : ∀ a, φ a a = 0 := fun a => by simp [hφdef]
+  refine Tendsto.congr (fun n => (stopped_sum_eq (π n) φ hφ ω t).symm) ?_
+  have hg := follmer_ito_formula.contDiffBounded_gradient hf
+  have hHc : Continuous (smoothHessian f) := hg.1.continuous_fderiv (by norm_num)
+  obtain ⟨C, hC⟩ := (isCompact_Icc.image_of_continuousOn hω).isBounded.exists_norm_le
+  have hωC : ∀ s ∈ Icc 0 T, ‖ω s‖ ≤ C := fun s hs => hC _ (mem_image_of_mem ω hs)
+  have hu := Metric.uniformContinuousOn_iff.1
+    ((isCompact_closedBall (0 : Rd d) (C + 1)).uniformContinuousOn_of_continuous hHc.continuousOn)
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ M :=
+    ((lemma_4_2.tendsto_sum_sq hQV).eventually (gt_mem_nhds
+      (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+        fun n h => h.le
+  have hcard : ∀ n, (Finset.univ.filter
+      (fun k => (π n).left k < t ∧ t < (π n).right k)).card ≤ 1 := fun n => by
+    refine Finset.card_le_one.2 fun a ha b hb => ?_
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at ha hb
+    have key : ∀ a b : Fin (π n).m, a < b → (π n).right a ≤ (π n).left b := fun a b hab =>
+      (π n).strictMono.monotone (by rw [Fin.le_def]; simp; omega)
+    rcases lt_trichotomy a b with h | h | h
+    · exact absurd ((key a b h).trans_lt hb.1) (not_lt.2 ha.2.le)
+    · exact h
+    · exact absurd ((key b a h).trans_lt ha.1) (not_lt.2 hb.2.le)
+  refine Metric.tendsto_nhds.2 fun ε hε => ?_
+  set ε' := ε / (4 * (M + 1)) with hε'
+  have hε'0 : 0 < ε' := by positivity
+  obtain ⟨δ, hδ, hδD⟩ := hu ε' hε'0
+  filter_upwards [hevS, hosc.eventually (gt_mem_nhds (lt_min hδ one_pos))] with n hn hon
+  have hterm : ∀ k : Fin (π n).m, ∀ s ∈ Icc ((π n).left k) ((π n).right k),
+      |φ (ω ((π n).left k)) (ω s)| ≤ 2 * ε' * ‖ω s - ω ((π n).left k)‖ ^ 2 := by
+    intro k s hs
+    have hΔ := proposition_3_1.norm_sub_left_le hω (π n) k hs
+    have hΔ' : ‖ω s - ω ((π n).left k)‖ < min δ 1 := hΔ.trans_lt hon
+    have ha : ‖ω ((π n).left k)‖ ≤ C := hωC _ ((π n).t_mem _)
+    have haB : ω ((π n).left k) ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+      rw [Metric.mem_closedBall, dist_zero_right]; linarith
+    refine abs_trapezoid_le hf.1 fun z hz => ?_
+    have hz' : z ∈ Metric.closedBall (ω ((π n).left k)) ‖ω s - ω ((π n).left k)‖ :=
+      (convex_closedBall _ _).segment_subset (Metric.mem_closedBall_self (norm_nonneg _))
+        (by rw [Metric.mem_closedBall, dist_eq_norm]) hz
+    rw [Metric.mem_closedBall, dist_eq_norm] at hz'
+    have hzB : z ∈ Metric.closedBall (0 : Rd d) (C + 1) := by
+      rw [Metric.mem_closedBall, dist_zero_right]
+      calc ‖z‖ = ‖(z - ω ((π n).left k)) + ω ((π n).left k)‖ := by rw [sub_add_cancel]
+        _ ≤ ‖z - ω ((π n).left k)‖ + ‖ω ((π n).left k)‖ := norm_add_le _ _
+        _ ≤ C + 1 := by linarith [min_le_right δ 1]
+    have := hδD z hzB _ haB (by rw [dist_eq_norm]; linarith [min_le_left δ 1])
+    rw [dist_eq_norm] at this
+    exact this.le
+  have hA : |∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+      φ (ω ((π n).left k)) (ω ((π n).right k))| ≤ 2 * ε' * M := by
+    calc _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+          |φ (ω ((π n).left k)) (ω ((π n).right k))| := Finset.abs_sum_le_sum_abs _ _
+      _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).right k ≤ t),
+          2 * ε' * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+          Finset.sum_le_sum fun k _ =>
+            hterm k _ ⟨((π n).left_lt_right k).le, le_rfl⟩
+      _ ≤ ∑ k, 2 * ε' * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 :=
+          Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+            fun k _ _ => by positivity
+      _ = 2 * ε' * ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 := by rw [Finset.mul_sum]
+      _ ≤ 2 * ε' * M := mul_le_mul_of_nonneg_left hn (by positivity)
+  have hB : |∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+      φ (ω ((π n).left k)) (ω t)| ≤ 2 * ε' := by
+    have hb : ∀ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+        |φ (ω ((π n).left k)) (ω t)| ≤ 2 * ε' := fun k hk => by
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk
+      have hs : t ∈ Icc ((π n).left k) ((π n).right k) := ⟨hk.1.le, hk.2.le⟩
+      have hΔ := (proposition_3_1.norm_sub_left_le hω (π n) k hs).trans_lt hon
+      have h1 : ‖ω t - ω ((π n).left k)‖ ^ 2 ≤ 1 := by
+        have := min_le_right δ 1
+        have h0 := norm_nonneg (ω t - ω ((π n).left k))
+        nlinarith
+      calc _ ≤ 2 * ε' * ‖ω t - ω ((π n).left k)‖ ^ 2 := hterm k t hs
+        _ ≤ 2 * ε' * 1 := mul_le_mul_of_nonneg_left h1 (by positivity)
+        _ = 2 * ε' := mul_one _
+    calc _ ≤ ∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+          |φ (ω ((π n).left k)) (ω t)| := Finset.abs_sum_le_sum_abs _ _
+      _ ≤ (Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k)).card •
+            (2 * ε') := Finset.sum_le_card_nsmul _ _ _ hb
+      _ ≤ 1 • (2 * ε') := nsmul_le_nsmul_left (by positivity) (hcard n)
+      _ = 2 * ε' := one_nsmul _
+  rw [Real.dist_eq, sub_zero]
+  calc _ ≤ _ := abs_add_le _ _
+    _ ≤ 2 * ε' * M + 2 * ε' := add_le_add hA hB
+    _ = ε / 2 := by rw [hε']; field_simp; ring
+    _ < ε := by linarith
 
 end ito_at
 

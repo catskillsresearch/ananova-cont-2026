@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:39:43Z",
+ "updated": "2026-11-27T01:41:00Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 28,
-  "done": 230
+  "done": 231
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 51
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 15,
-  "done": 179
+  "done": 180
  },
  "untagged": [],
  "legend": {
@@ -2846,9 +2846,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "tendsto_trapezoid",
     "ito_at"
    ],
    "declKinds": {
@@ -2870,10 +2869,9 @@
     "Smooth.Proposition31"
    ],
    "blockers": [
-    "Main.SmoothItoAt::theorem_5_1.ito_at",
-    "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
+    "Main.SmoothItoAt::theorem_5_1.ito_at"
    ],
-   "detail": "2 sorry: tendsto_trapezoid, ito_at"
+   "detail": "1 sorry: ito_at"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at",
@@ -2999,17 +2997,15 @@
    "parentGoal": "Main.SmoothItoAt",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.ito_at.tendsto_trapezoid"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (21), the trapezoid remainders vanish): for `f ∈ C²_b` and `t ∈ [0,T]`, `∑_k (f(b_k) - f(a_k) - ∇f(a_k)·(b_k - a_k) - ½(∇f(b_k) - ∇f(a_k))·(b_k - a_k)) → 0` with `a_k = ω(t_k ∧ t)`, `b_k = ω(t_{k+1} ∧ t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -3017,7 +3013,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.ito_at.tendsto_trapezoid — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+   "detail": "proved: theorem_5_1.ito_at.tendsto_trapezoid — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
   },
   {
    "id": "Main.Theorem51",
