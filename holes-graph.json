@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T03:41:57Z",
+ "updated": "2026-11-27T03:43:07Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 25,
+ "sorryCount": 24,
  "counts": {
-  "open": 4,
+  "open": 3,
   "blocked": 17,
-  "done": 290
+  "done": 291
  },
  "goalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 10,
-  "done": 58
+  "done": 59
  },
  "subgoalCounts": {
   "open": 1,
@@ -8283,17 +8283,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Theorem 2.3",
    "file": "WeakPathwiseIto/Sobolev/Theorem23.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3_second"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 2
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.IsWeakGradient",
     "Sobolev.IsWeakHessian",
@@ -8303,7 +8301,7 @@
     "Sobolev.Theorem23Steps"
    ],
    "blockers": [],
-   "detail": "1 sorry: theorem_2_3_second"
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.Theorem23Steps",

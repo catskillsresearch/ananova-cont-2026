@@ -92,6 +92,72 @@ theorem theorem_2_3_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
           ⟪preciseRepresentative.vec G x, y - x⟫| ≤
         C * (localMaximalFunction (edist x y) H x + localMaximalFunction (edist x y) H y) *
           edist x y ^ 2 := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · refine ⟨0, fun f G H _ _ _ x y _ _ _ => ?_⟩
+    rw [Subsingleton.elim x y, sub_self, sub_self, inner_zero_right, sub_zero, abs_zero,
+      ENNReal.ofReal_zero]
+    exact zero_le
+  obtain ⟨C2, hC2⟩ := theorem_2_1_second d
+  obtain ⟨Ck2, hCk2⟩ := theorem_2_3.lintegral_kernel_le_maximal (d := d)
+    (F := Rd d →L[ℝ] Rd d) (α := 2) two_pos
+  obtain ⟨Ck1, hCk1⟩ := theorem_2_3.lintegral_kernel_le_maximal (d := d)
+    (F := Rd d →L[ℝ] Rd d) (α := 1) one_pos
+  refine ⟨C2 * (Ck2 + Ck1) + 1, fun f G H hf hG hH x y hfx hfy hGx => ?_⟩
+  by_cases hxy : x = y
+  · subst hxy
+    rw [sub_self, sub_self, inner_zero_right, sub_zero, abs_zero, ENNReal.ofReal_zero]
+    exact zero_le
+  set R := edist x y with hRdef
+  have hR : 0 < R := edist_pos.2 hxy
+  have hc0 : ((C2 * (Ck2 + Ck1) + 1 : ℝ≥0) : ℝ≥0∞) ≠ 0 := by
+    rw [Ne, ENNReal.coe_eq_zero]; exact (add_pos_of_nonneg_of_pos zero_le one_pos).ne'
+  have hR2 : R ^ 2 ≠ 0 := pow_ne_zero _ hR.ne'
+  by_cases htop : localMaximalFunction R H x = ⊤ ∨ localMaximalFunction R H y = ⊤
+  · have hsum : localMaximalFunction R H x + localMaximalFunction R H y = ⊤ :=
+      ENNReal.add_eq_top.2 htop
+    rw [hsum, ENNReal.mul_top hc0, ENNReal.top_mul hR2]
+    exact le_top
+  push Not at htop
+  obtain ⟨hMx, hMy⟩ := htop
+  have hf1 : MemW 1 1 f := ⟨hf.1, fun α h => hf.2 α (h.trans (by norm_num))⟩
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) :=
+    theorem_2_1_first.coord_integrable hf1 hG
+  have hLG : ∀ z, localMaximalFunction R H z ≠ ⊤ → ∀ i,
+      IsLebesguePoint (fun w => Rd.coord i (G w)) z := fun z hz i =>
+    theorem_2_3.isLebesguePoint_of_maximal_lt_top hd
+      (theorem_2_1_second.memW_coord hf hG hH i)
+      (theorem_2_1_second.isWeakGradient_coord hG hH i) hR
+      (lt_of_le_of_lt (theorem_2_3.maximal_coord_hessian_le i R z) (lt_top_iff_ne_top.2 hz))
+  have hLf : ∀ z, localMaximalFunction R H z ≠ ⊤ → IsLebesguePoint f z := by
+    intro z hz
+    obtain ⟨R', hR', hM'⟩ := theorem_2_3.maximal_lt_top_of_isLebesguePoint
+      (fun i => (hGi i).locallyIntegrable) (hLG z hz)
+    exact theorem_2_3.isLebesguePoint_of_maximal_lt_top hd hf1 hG hR' hM'
+  obtain ⟨hQ, hxQ, hyQ, hdiam⟩ := theorem_2_3.closedBall_midpoint hxy
+  have hHint : Integrable H := theorem_2_1_second.integrable_hessian hf hH
+  have h := hC2 f G H hf hG hH _ hQ x y hxQ hyQ hfx hfy hGx (hLf x hMx) (hLf y hMy) (hLG x hMx)
+  have hkx2 := hCk2 _ H hQ hHint x hxQ R hdiam
+  have hky2 := hCk2 _ H hQ hHint y hyQ R hdiam
+  have hkx1 := hCk1 _ H hQ hHint x hxQ R hdiam
+  rw [ENNReal.rpow_two] at hkx2 hky2
+  rw [ENNReal.rpow_one] at hkx1
+  set Mx := localMaximalFunction R H x
+  set My := localMaximalFunction R H y
+  refine h.trans ?_
+  calc (C2 : ℝ≥0∞) * ((∫⁻ z in Metric.closedBall (midpoint ℝ x y) (dist x y / 2),
+            ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 2)) +
+          (∫⁻ z in Metric.closedBall (midpoint ℝ x y) (dist x y / 2),
+            ‖H z‖ₑ / edist y z ^ ((d : ℝ) - 2)) +
+          Metric.ediam (Metric.closedBall (midpoint ℝ x y) (dist x y / 2)) *
+            ∫⁻ z in Metric.closedBall (midpoint ℝ x y) (dist x y / 2),
+              ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 1))
+      ≤ C2 * (Ck2 * R ^ 2 * Mx + Ck2 * R ^ 2 * My + R * (Ck1 * R * Mx)) :=
+        mul_le_mul' le_rfl (add_le_add (add_le_add hkx2 hky2) (mul_le_mul' hdiam hkx1))
+    _ = C2 * (Ck2 * R ^ 2 * Mx + Ck2 * R ^ 2 * My + Ck1 * R ^ 2 * Mx) := by ring
+    _ ≤ C2 * (Ck2 * R ^ 2 * Mx + Ck2 * R ^ 2 * My + Ck1 * R ^ 2 * (Mx + My)) :=
+        mul_le_mul' le_rfl (add_le_add le_rfl (mul_le_mul' le_rfl le_self_add))
+    _ = ((C2 * (Ck2 + Ck1) : ℝ≥0) : ℝ≥0∞) * (Mx + My) * R ^ 2 := by push_cast; ring
+    _ ≤ ((C2 * (Ck2 + Ck1) + 1 : ℝ≥0) : ℝ≥0∞) * (Mx + My) * R ^ 2 :=
+        mul_le_mul' (mul_le_mul' (ENNReal.coe_le_coe.2 le_self_add) le_rfl) le_rfl
 
 end WeakPathwiseIto
