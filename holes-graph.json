@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T12:29:37Z",
+ "updated": "2026-11-27T12:30:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 41,
+ "sorryCount": 40,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 50,
-  "done": 304
+  "done": 305
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 15,
+  "open": 14,
   "blocked": 39,
-  "done": 243
+  "done": 244
  },
  "untagged": [],
  "legend": {
@@ -8524,9 +8524,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
-    "measure_biUnion_le_lintegral",
     "exists_ball_of_lt",
     "mul_measure_lt_le",
     "le_add",
@@ -8572,11 +8571,10 @@
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
    ],
-   "detail": "11 sorry: measure_biUnion_le_lintegral, exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
+   "detail": "10 sorry: exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8879,22 +8877,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.measure_biUnion_le_lintegral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.measure_biUnion_le_lintegral — subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.measure_biUnion_le_lintegral — subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",

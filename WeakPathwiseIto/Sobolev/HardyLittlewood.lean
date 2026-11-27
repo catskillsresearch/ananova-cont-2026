@@ -140,7 +140,26 @@ theorem measure_biUnion_le_lintegral {ι : Type*} (𝓑 : Set ι) {c : ι → Rd
     (h2u : ∀ i ∈ 𝓑, l * volume (Metric.ball (c i) (r i)) ≤
       ∫⁻ x in Metric.ball (c i) (r i), u x) :
     l * volume (⋃ i ∈ 𝓑, Metric.ball (c i) (r i)) ≤ (2 ^ d) ^ 2 * ∫⁻ x, u x := by
-  sorry
+  set tr : ℕ → Set ι := fun k => {i | i ∈ 𝓑 ∧ r i ≤ k} with htr
+  have tr_mono : Monotone tr := by
+    intro i j hij
+    rintro k ⟨hi₁, hi₂⟩
+    exact ⟨hi₁, hi₂.trans (Nat.cast_le.mpr hij)⟩
+  have tr_union : 𝓑 = ⋃ k, tr k := by
+    apply eq_of_subset_of_subset
+    · intro i hi
+      rcases exists_nat_ge (r i) with ⟨k, hk⟩
+      exact mem_iUnion.mpr ⟨k, hi, hk⟩
+    · intro i hi
+      exact (mem_iUnion.mp hi).elim (fun _ p => p.left)
+  have : volume (⋃ i ∈ 𝓑, ball (c i) (r i)) = ⨆ k, volume (⋃ i ∈ tr k, ball (c i) (r i)) := by
+    conv_lhs => rw [tr_union, biUnion_iUnion]
+    have : Monotone (⋃ x ∈ tr ·, ball (c x) (r x)) :=
+      fun i j hij ↦ biUnion_mono (tr_mono hij) (fun _ _ ↦ by rfl)
+    rw [this.measure_iUnion]
+  rw [this, ENNReal.mul_iSup]
+  exact iSup_le fun R ↦
+    measure_biUnion_le_lintegral_aux l u R (fun i hi ↦ hi.2) (fun i hi ↦ h2u i hi.1)
 
 /-- **Subgoal** (Hardy–Littlewood, `t < M_1 f(x)` is witnessed by a ball `B(x, r)`, `r < 1`). -/
 theorem exists_ball_of_lt {f : Rd d → ℝ} {x : Rd d} {t : ℝ≥0∞}
