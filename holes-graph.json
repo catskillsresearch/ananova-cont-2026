@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T14:19:29Z",
+ "updated": "2026-11-27T14:20:36Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
   "open": 7,
   "blocked": 62,
@@ -4031,10 +4031,9 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
     "isBrownianPolar_nonLebesgue",
-    "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
     "pi_absolutelyContinuous",
     "volume_coords_preimage_null",
@@ -4140,7 +4139,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, pi_absolutelyContinuous, volume_coords_preimage_null, measure_path_mem_null, ae_forall_mem_not_mem_null"
+   "detail": "6 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian, pi_absolutelyContinuous, volume_coords_preimage_null, measure_path_mem_null, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4310,10 +4309,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.ae_forall_path_not_mem"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4339,7 +4336,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.ae_forall_path_not_mem — subgoal of Appendix C, Brownian motion does not enter a polar set at positive times (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.ae_forall_path_not_mem — subgoal of Appendix C, Brownian motion does not enter a polar set at positive times (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top",

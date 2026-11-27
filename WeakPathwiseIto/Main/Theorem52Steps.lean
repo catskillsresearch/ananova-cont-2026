@@ -394,7 +394,9 @@ theorem isBrownianPolar_nonLebesgue (hT : 0 < T) {p : ℝ} (hp : 1 < p) {F : Rd 
 theorem ae_forall_path_not_mem {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (x₀ : Rd d) :
     ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ Ioc 0 T,
       CanonicalWienerSpace.path ω t ∉ E := by
-  sorry
+  refine measure_eq_zero_iff_ae_notMem.1 (hE x₀) |>.mono fun ω hω t ht hmem => hω ?_
+  refine ⟨⟨t, ht.1.le, ht.2⟩, ht.1, ?_⟩
+  simpa [CanonicalWienerSpace.path, CanonicalWienerSpace.B, ht.1.le, ht.2] using hmem
 
 /-- **Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in
 the Gagliardo seminorm `[·]_{W^{s,p}}`). -/
