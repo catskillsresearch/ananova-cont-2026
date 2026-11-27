@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T20:32:04Z",
+ "updated": "2026-11-27T20:32:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 11,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 12,
-  "done": 418
+  "done": 419
  },
  "goalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 9,
-  "done": 65
+  "done": 66
  },
  "subgoalCounts": {
   "open": 3,
@@ -10491,9 +10491,9 @@
     "theorem": 23
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Theorem51",
     "Occupation.DiscreteLocalTime",
@@ -10518,7 +10518,7 @@
     "Occupation.Remark45::remark_4_5_term_eq"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.Remark45::Partition.reverse_left",
