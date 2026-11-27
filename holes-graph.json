@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T00:52:53Z",
+ "updated": "2026-11-27T00:54:20Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
-  "open": 9,
+  "open": 8,
   "blocked": 18,
-  "done": 215
+  "done": 216
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 49
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 7,
-  "done": 166
+  "done": 167
  },
  "untagged": [],
  "legend": {
@@ -6195,9 +6195,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "lintegral_shell_le",
     "lintegral_closedBall_kernel_le_of_lt",
     "lintegral_closedBall_kernel_le_of_ge",
     "lemma_2_2"
@@ -6220,10 +6219,9 @@
    ],
    "blockers": [
     "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
-    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
-    "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le"
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
    ],
-   "detail": "4 sorry: lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+   "detail": "3 sorry: lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
@@ -6317,23 +6315,21 @@
    "parentGoal": "Sobolev.Lemma22",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
-   "sorryCount": 1,
-   "holes": [
-    "lemma_2_2.lintegral_shell_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma 2.2 proof, `α < d`, one dyadic shell): on `{ρ/2^{k+1} < |y - x| ≤ ρ/2^k}`, `∫ |f| |x - y|^{α-d} ≤ 2^{d-α} ρ^α 2^{-kα} |B(0,1)| M_ρ f(x)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: lemma_2_2.lintegral_shell_le — subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell (in Sobolev.Lemma22)"
+   "detail": "proved: lemma_2_2.lintegral_shell_le — subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",

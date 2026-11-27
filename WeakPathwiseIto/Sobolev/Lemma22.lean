@@ -152,7 +152,62 @@ theorem lintegral_shell_le {α : ℝ} (hα : 0 < α) (hαd : α < d) (f : Rd d �
         ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
       ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α) * ρ ^ α * ((2 : ℝ) ^ (-α)) ^ k) *
         volume (Metric.ball (0 : Rd d) 1) * localMaximalFunction (ENNReal.ofReal ρ) f x := by
-  sorry
+  have hd : 0 < d := by
+    have : (0 : ℝ) < d := hα.trans hαd
+    exact_mod_cast this
+  haveI : Nonempty (Fin d) := ⟨⟨0, hd⟩⟩
+  set a := ρ / 2 ^ (k + 1) with ha_def
+  set b := ρ / 2 ^ k with hb_def
+  have ha : 0 < a := by positivity
+  have hb : 0 < b := by positivity
+  have hbρ : b ≤ ρ := div_le_self hρ.le (one_le_pow₀ (by norm_num))
+  have hs : 0 ≤ (d : ℝ) - α := by linarith
+  have hS : {y | a < dist y x ∧ dist y x ≤ b} = Metric.closedBall x b \ Metric.closedBall x a := by
+    ext y; simp [Metric.mem_closedBall, and_comm]
+  rw [hS]
+  set K : ℝ≥0∞ := (ENNReal.ofReal a ^ ((d : ℝ) - α))⁻¹ with hK
+  have hpt : ∀ y ∈ Metric.closedBall x b \ Metric.closedBall x a,
+      ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤ ‖f y‖ₑ * K := by
+    intro y hy
+    have hay : a < dist x y := by
+      have := hy.2; rw [Metric.mem_closedBall, not_le, dist_comm] at this; exact this
+    rw [div_eq_mul_inv, hK]
+    gcongr
+    rw [edist_dist]
+    exact ENNReal.ofReal_le_ofReal hay.le
+  have hvol : volume (Metric.ball x b) = ENNReal.ofReal (b ^ d) * volume (Metric.ball (0 : Rd d) 1) := by
+    rw [Measure.addHaar_ball volume x hb.le, finrank_euclideanSpace_fin]
+  have hreal : ((a ^ ((d : ℝ) - α))⁻¹ * b ^ d) =
+      (2 : ℝ) ^ ((d : ℝ) - α) * ρ ^ α * ((2 : ℝ) ^ (-α)) ^ k := by
+    have h2 : (0:ℝ) < 2 := two_pos
+    rw [ha_def, hb_def, ← Real.rpow_natCast (ρ / 2 ^ k), Real.rpow_def_of_pos ha,
+      Real.rpow_def_of_pos hb, Real.rpow_def_of_pos h2, Real.rpow_def_of_pos hρ,
+      Real.rpow_def_of_pos h2, ← Real.exp_neg, ← Real.exp_nat_mul, ← Real.exp_add, ← Real.exp_add,
+      ← Real.exp_add, Real.log_div hρ.ne' (by positivity), Real.log_div hρ.ne' (by positivity),
+      Real.log_pow, Real.log_pow]
+    congr 1
+    push_cast
+    ring
+  have hKe : K * ENNReal.ofReal (b ^ d) =
+      ENNReal.ofReal ((2 : ℝ) ^ ((d : ℝ) - α) * ρ ^ α * ((2 : ℝ) ^ (-α)) ^ k) := by
+    rw [hK, ENNReal.ofReal_rpow_of_pos ha, ← ENNReal.ofReal_inv_of_pos (by positivity),
+      ← ENNReal.ofReal_mul (by positivity), hreal]
+  calc ∫⁻ y in Metric.closedBall x b \ Metric.closedBall x a, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α)
+      ≤ ∫⁻ y in Metric.closedBall x b \ Metric.closedBall x a, ‖f y‖ₑ * K :=
+        setLIntegral_mono' (measurableSet_closedBall.diff measurableSet_closedBall) hpt
+    _ = (∫⁻ y in Metric.closedBall x b \ Metric.closedBall x a, ‖f y‖ₑ) * K :=
+        lintegral_mul_const' _ _ (by
+          rw [hK]
+          exact ENNReal.inv_ne_top.2 (ENNReal.rpow_pos (ENNReal.ofReal_pos.2 ha) ENNReal.ofReal_ne_top).ne')
+    _ ≤ (∫⁻ y in Metric.closedBall x b, ‖f y‖ₑ) * K := by
+        gcongr
+        exact diff_subset
+    _ ≤ (volume (Metric.ball x b) * localMaximalFunction (ENNReal.ofReal ρ) f x) * K := by
+        gcongr
+        exact lintegral_closedBall_le f x hb (ENNReal.ofReal_le_ofReal hbρ)
+    _ = _ := by
+        rw [hvol, ← hKe]
+        ring
 
 /-- **Subgoal** (Lemma 2.2 proof, `α < d`): summing the dyadic shells,
 `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ C ρ^α M_ρ f(x)`. -/
