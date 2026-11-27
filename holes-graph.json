@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T22:01:23Z",
+ "updated": "2026-11-27T22:03:34Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 16,
+ "sorryCount": 15,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 13,
-  "done": 446
+  "done": 447
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 71
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 3,
-  "done": 375
+  "done": 376
  },
  "untagged": [],
  "legend": {
@@ -3728,10 +3728,9 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps C–E (per the paper)",
    "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
     "exists_subseq_summable_L2_ball",
-    "summable_mesh",
     "bdg_two",
     "ae_tendsto_zero_of_tsum_lintegral_lt_top",
     "exists_exitTime_eq_top"
@@ -3758,10 +3757,9 @@
     "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
     "Main.Proposition53Proof::proposition_5_3.bdg_two",
     "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
-    "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
-    "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+    "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball"
    ],
-   "detail": "5 sorry: exists_subseq_summable_L2_ball, summable_mesh, bdg_two, ae_tendsto_zero_of_tsum_lintegral_lt_top, exists_exitTime_eq_top"
+   "detail": "4 sorry: exists_subseq_summable_L2_ball, bdg_two, ae_tendsto_zero_of_tsum_lintegral_lt_top, exists_exitTime_eq_top"
   },
   {
    "id": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
@@ -3917,23 +3915,20 @@
    "parentGoal": "Main.Proposition53Proof",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.summable_mesh"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (P53.D, Assumption 2 ⇒ summable mesh): `∑_n |π_n| < ∞`.",
+   "doc": "**Subgoal** (P53.D, Assumption 2 ⇒ summable mesh): `∑_n |π_n| < ∞` (eq. (30)).",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.GeometricMeshDecay",
     "Main.IsLocalItoIntegral",
@@ -3941,7 +3936,7 @@
     "Main.Proposition53Steps"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.summable_mesh — subgoal of P53.D, Assumption 2 ⇒ summable mesh (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.summable_mesh — subgoal of P53.D, Assumption 2 ⇒ summable mesh (in Main.Proposition53Proof) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps",

@@ -45,10 +45,10 @@ theorem exists_subseq_summable_L2_ball (g : ℕ → Rd d → Rd d) (G : Rd d →
       ∑' m, ∫⁻ y in Metric.ball (0 : Rd d) R, ‖g (φ m) y - G y‖ₑ ^ 2 < ∞ := by
   sorry
 
-/-- **Subgoal** (P53.D, Assumption 2 ⇒ summable mesh): `∑_n |π_n| < ∞`. -/
-theorem summable_mesh {π : ℕ → Partition T} (h2 : GeometricMeshDecay π) :
-    Summable fun n => (π n).mesh := by
-  sorry
+/-- **Subgoal** (P53.D, Assumption 2 ⇒ summable mesh): `∑_n |π_n| < ∞` (eq. (30)). -/
+theorem summable_mesh {π : ℕ → Partition T} (hT : 0 < T) (h2 : GeometricMeshDecay π) :
+    Summable fun n => (π n).mesh :=
+  (summable_nat_add_iff 1).1 (h2.summable_mesh hT)
 
 /-- **Subgoal** (P53.D, Burkholder–Davis–Gundy inequality, `p = 2`): there is a universal constant
 `C` such that for every `L²` stochastic integral process `I(t) = ∫_0^t H dB`, `t ∈ [0, T]`, with

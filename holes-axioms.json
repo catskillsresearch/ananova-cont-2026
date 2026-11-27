@@ -475,7 +475,6 @@
   ],
   "Main.Proposition53Proof::proposition_5_3.summable_mesh": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1942,5 +1941,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T22:01:22Z"
+ "generated": "2026-11-27T22:03:34Z"
 }
