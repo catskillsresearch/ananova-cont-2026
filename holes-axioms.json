@@ -467,7 +467,37 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.exists_polar_E1": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential": [
    "propext",
    "sorryAx",
    "Classical.choice",
@@ -1941,5 +1971,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T22:04:06Z"
+ "generated": "2026-11-27T22:05:49Z"
 }

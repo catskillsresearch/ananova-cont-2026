@@ -9,6 +9,12 @@ public import WeakPathwiseIto.Main.Proposition53Steps
 public import WeakPathwiseIto.Main.IsLocalItoIntegral
 public import WeakPathwiseIto.Main.ItoRiemannSum
 public import WeakPathwiseIto.Main.GeometricMeshDecay
+public import WeakPathwiseIto.Main.PartitionEta
+public import WeakPathwiseIto.Appendix.LemmaB1
+public import WeakPathwiseIto.Appendix.HeatKernel
+public import WeakPathwiseIto.Sobolev.MemWLoc
+public import WeakPathwiseIto.Sobolev.IsWeakGradient
+public import WeakPathwiseIto.Smooth.FollmerIntegral
 
 /-! # Proof of Proposition 5.3, following the paper step by step
 
@@ -72,6 +78,60 @@ theorem ae_tendsto_zero_of_tsum_lintegral_lt_top {Ω : Type*} [MeasurableSpace �
 path has `τ_R = ∞` for some integer `R ≥ 1`. -/
 theorem exists_exitTime_eq_top (ω : CanonicalWienerSpace d T) :
     ∃ R : ℕ, 1 ≤ R ∧ CanonicalWienerSpace.exitTime R ω = ⊤ := by
+  sorry
+
+/-- **Subgoal** (P53.C, `H_R ∈ L¹`): for Borel `g_m`, `G` with
+`∑_m ‖g_m - G‖²_{L²(B_R)} < ∞`, the function `H_R := 1_{B_R} ∑_m |g_m - G|²` has finite
+integral (Tonelli). The paper takes `g_m = ∇F_m`, `G` a finite-valued Borel representative
+of `∇F`. -/
+theorem lintegral_HR_lt_top (g : ℕ → Rd d → Rd d) (G : Rd d → Rd d) (hg : ∀ m, Measurable (g m))
+    (hG : Measurable G) (R : ℕ)
+    (h : ∑' m, ∫⁻ y in Metric.ball (0 : Rd d) R, ‖g m y - G y‖ₑ ^ 2 < ∞) :
+    ∫⁻ y in Metric.ball (0 : Rd d) R, ∑' m, ‖g m y - G y‖ₑ ^ 2 < ∞ := by
+  sorry
+
+/-- **Subgoal** (P53.C, `G_R ∈ L¹`): since `∇F ∈ L²_loc` (`F ∈ W^{1,2}_loc`),
+`G_R := 1_{B_R} |∇F|²` has finite integral. -/
+theorem lintegral_GR_lt_top {F : Rd d → ℝ} (hFloc : MemWLoc 1 2 F) {G : Rd d → Rd d}
+    (hG : IsWeakGradient F G) (R : ℕ) :
+    ∫⁻ y in Metric.ball (0 : Rd d) R, ‖G y‖ₑ ^ 2 < ∞ := by
+  sorry
+
+/-- **Subgoal** (P53.C, the polar set `E_1` via Lemma B.1): for families `H_R`, `G_R` (`R ≥ 1`)
+of finite integral, Lemma B.1 gives polar sets `E_R^1`, `E_R^2` with
+`∫ H_R(x) ν(|x - x₀|) dx < ∞` for `x₀ ∉ E_R^1` and `∫ G_R(x) ν(|x - x₀|) dx < ∞` for
+`x₀ ∉ E_R^2`; `E_1 := ⋃_{R ≥ 1} (E_R^1 ∪ E_R^2)` is polar. -/
+theorem exists_polar_E1 (HR GR : ℕ → Rd d → ℝ≥0∞) (hHm : ∀ R, Measurable (HR R))
+    (hGm : ∀ R, Measurable (GR R)) (hH : ∀ R, 1 ≤ R → ∫⁻ x, HR R x < ∞)
+    (hG : ∀ R, 1 ≤ R → ∫⁻ x, GR R x < ∞) :
+    ∃ E₁ : Set (Rd d), IsBrownianPolar d T E₁ ∧ ∀ x₀ ∉ E₁, ∀ R : ℕ, 1 ≤ R →
+      ∫⁻ x, HR R x * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ∞ ∧
+      ∫⁻ x, GR R x * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ∞ := by
+  sorry
+
+/-- **Subgoal** (P53.C, stopped energy via the Brownian transition density and eq. (32)
+`∫_0^T p_s(x) ds ≤ C(R) ν(|x|)`; the paper cites it as "estimate (46)", a dangling reference):
+`E_{x₀} ∫_0^{T∧τ_R} f(B(s)) ds ≤ ∫_{B_R} f(x) ∫_0^T p_s(x - x₀) ds dx
+≤ C_{R,x₀} ∫_{B_R} f(x) ν(|x - x₀|) dx`. -/
+theorem lintegral_stopped_le_potential (hd : 1 ≤ d) (x₀ : Rd d) (R : ℕ) :
+    ∃ C : ℝ≥0, ∀ f : Rd d → ℝ≥0∞, Measurable f →
+      ∫⁻ ω, (∫⁻ u in Ioc 0 T,
+          if ENNReal.ofReal u ≤ CanonicalWienerSpace.exitTime R ω
+          then f (CanonicalWienerSpace.path ω u) else 0) ∂CanonicalWienerSpace.P (T := T) x₀ ≤
+        C * ∫⁻ x in Metric.ball (0 : Rd d) R,
+          f x * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) := by
+  sorry
+
+/-- **Subgoal** (P53.C, the local Itô integral `J`): if `E ∫_0^{T∧τ_R} |G(B(s))|² ds < ∞` for
+every `R ≥ 1`, the stopped stochastic integrals `J^R(t) := ∫_0^{t∧τ_R} G(B(s)) dB(s)` are well
+defined, consistent under stopping, and (`τ_R ↑ ∞`) define the local Itô integral
+`J(t) = ∫_0^t G(B(s)) dB(s)`, `t ∈ [0, T]`. -/
+theorem exists_isLocalItoIntegral (x₀ : Rd d) {G : Rd d → Rd d} (hG : Measurable G)
+    (h : ∀ R : ℕ, 1 ≤ R → ∫⁻ ω, (∫⁻ u in Ioc 0 T,
+      ‖stoppedIntegrand (fun u ω => G (CanonicalWienerSpace.path ω u)) R u ω‖ₑ ^ 2)
+        ∂CanonicalWienerSpace.P (T := T) x₀ < ∞) :
+    ∃ J : ℝ → CanonicalWienerSpace d T → ℝ,
+      IsLocalItoIntegral x₀ (fun u ω => G (CanonicalWienerSpace.path ω u)) J := by
   sorry
 
 end proposition_5_3

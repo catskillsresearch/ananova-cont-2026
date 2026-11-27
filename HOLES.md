@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:04:07Z  
-**`sorry` occurrences:** 15 · 9 open · 13 blocked · 448 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 7, 'blocked': 3, 'done': 376} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:05:49Z  
+**`sorry` occurrences:** 20 · 14 open · 13 blocked · 448 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 12, 'blocked': 3, 'done': 376} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -126,7 +126,12 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top` | subgoal of P53.D, Tonelli step | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.bdg_two` | subgoal of P53.D, Burkholder–Davis–Gundy inequality, `p = 2` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top` | subgoal of P53.D, `τ_R > T` for some `R` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral` | subgoal of P53.C, the local Itô integral `J` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.exists_polar_E1` | subgoal of P53.C, the polar set `E_1` via Lemma B.1 | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball` | subgoal of P53.C, deterministic subsequence | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top` | subgoal of P53.C, `G_R ∈ L¹` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top` | subgoal of P53.C, `H_R ∈ L¹` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential` | subgoal of P53.C, stopped energy via the Brownian transition density and eq. (32 | 1 |
 | done | `Main.Proposition53Proof::proposition_5_3.summable_mesh` | subgoal of P53.D, Assumption 2 ⇒ summable mesh | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_apply` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec` | subgoal of P53.A, helper | 0 |
@@ -518,7 +523,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.ItoRiemannSum` | S_n^m Riemann sums (proof of Prop. 5.3) | 0 |  |
 | done | `Main.PartitionEta` | η_n left grid point (proof of Prop. 5.3) | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
-| blocked | `Main.Proposition53Proof` | Proposition 5.3 proof steps C–E (per the paper) | 4 | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top`, `Main.Proposition53Proof::proposition_5_3.bdg_two`, `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top`, `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball` |
+| blocked | `Main.Proposition53Proof` | Proposition 5.3 proof steps C–E (per the paper) | 9 | `Appendix.LemmaB1`, `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top`, `Main.Proposition53Proof::proposition_5_3.bdg_two`, `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top`, `Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral`, `Main.Proposition53Proof::proposition_5_3.exists_polar_E1`, `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball`, `Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential` |
 | done | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 0 |  |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
