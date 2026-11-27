@@ -466,7 +466,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.elementary_isometry": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1913,5 +1912,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:36:18Z"
+ "generated": "2026-11-27T21:36:36Z"
 }

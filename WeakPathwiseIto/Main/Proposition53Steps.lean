@@ -537,7 +537,10 @@ theorem elementary_isometry (x : Rd d) {k : ℕ} {s : Fin (k + 1) → ℝ} (hs :
     ∫ ω, IsItoIntegral.elementaryIntegral s ξ ω ^ 2 ∂CanonicalWienerSpace.P (T := T) x =
       ∫ ω, (∫ u in (0 : ℝ)..s (Fin.last k), ‖IsItoIntegral.elementaryValue s ξ u ω‖ ^ 2)
         ∂CanonicalWienerSpace.P (T := T) x := by
-  sorry
+  simp_rw [intervalIntegral_norm_sq_elementaryValue hs hs0]
+  rw [integral_sq_elementaryIntegral x hs hs0 hsT hξ hξ2,
+    integral_finsetSum _ fun j _ => ((hξ2 j).norm.integrable_sq).const_mul _]
+  exact Finset.sum_congr rfl fun j _ => (integral_const_mul _ _).symm
 
 end proposition_5_3
 

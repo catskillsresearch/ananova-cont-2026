@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:36:19Z  
-**`sorry` occurrences:** 12 · 6 open · 13 blocked · 440 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 4, 'blocked': 3, 'done': 374} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:36:36Z  
+**`sorry` occurrences:** 11 · 6 open · 12 blocked · 441 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 66} · subgoals {'open': 3, 'blocked': 3, 'done': 375} · 8 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,6 +26,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
+| `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 0 | (review → VERIFIED) |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 
 ## Subgoals (helper lemmas/defs)
@@ -126,7 +127,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Proposition53Steps::proposition_5_3.coord_apply` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.disjoint_Ioc_grid` | subgoal of P53.B, helper | 0 |
-| open | `Main.Proposition53Steps::proposition_5_3.elementary_isometry` | subgoal of P53.B, elementary Itô isometry | 1 |
+| done | `Main.Proposition53Steps::proposition_5_3.elementary_isometry` | subgoal of P53.B, elementary Itô isometry | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.exists_rep_increment` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.iIndepFun_bool` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.increment_moments` | subgoal of P53.A, increment moments | 0 |
@@ -508,7 +509,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
-| blocked | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 1 | `Main.Proposition53Steps::proposition_5_3.elementary_isometry` |
+| open | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 0 |  |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |

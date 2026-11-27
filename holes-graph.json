@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T21:36:19Z",
+ "updated": "2026-11-27T21:36:36Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 12,
+ "sorryCount": 11,
  "counts": {
   "open": 6,
-  "blocked": 13,
-  "done": 440
+  "blocked": 12,
+  "done": 441
  },
  "goalCounts": {
-  "open": 2,
-  "blocked": 10,
+  "open": 3,
+  "blocked": 9,
   "done": 66
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 3,
-  "done": 374
+  "done": 375
  },
  "untagged": [],
  "legend": {
@@ -3638,17 +3638,15 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "elementary_isometry"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 22
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral",
@@ -3675,10 +3673,8 @@
     "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
     "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
    ],
-   "blockers": [
-    "Main.Proposition53Steps::proposition_5_3.elementary_isometry"
-   ],
-   "detail": "1 sorry: elementary_isometry"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.coord_apply",
@@ -3783,10 +3779,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.elementary_isometry"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -3795,17 +3789,16 @@
    "doc": "**Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`, `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.elementary_isometry — subgoal of P53.B, elementary Itô isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.elementary_isometry — subgoal of P53.B, elementary Itô isometry (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.exists_rep_increment",
