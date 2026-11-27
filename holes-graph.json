@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:37:09Z",
+ "updated": "2026-11-27T01:39:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 44,
+ "sorryCount": 43,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 28,
-  "done": 227
+  "done": 228
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 51
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 15,
-  "done": 176
+  "done": 177
  },
  "untagged": [],
  "legend": {
@@ -2846,9 +2846,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "abs_trapezoid_le",
     "stopped_sum_eq",
     "sub_eq_sum_stopped",
     "tendsto_trapezoid",
@@ -2874,12 +2873,11 @@
    ],
    "blockers": [
     "Main.SmoothItoAt::theorem_5_1.ito_at",
-    "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
     "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
     "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
     "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
    ],
-   "detail": "5 sorry: abs_trapezoid_le, stopped_sum_eq, sub_eq_sum_stopped, tendsto_trapezoid, ito_at"
+   "detail": "4 sorry: stopped_sum_eq, sub_eq_sum_stopped, tendsto_trapezoid, ito_at"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at",
@@ -2921,17 +2919,15 @@
    "parentGoal": "Main.SmoothItoAt",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.ito_at.abs_trapezoid_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (21), trapezoid rule): if `‖∇²f(z) - ∇²f(x)‖ ≤ ε` on the segment `[x, y]`, then `|f(y) - f(x) - ∇f(x)·(y-x) - ½(∇f(y) - ∇f(x))·(y-x)| ≤ 2ε|y-x|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2939,7 +2935,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.ito_at.abs_trapezoid_le — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+   "detail": "proved: theorem_5_1.ito_at.abs_trapezoid_le — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
   },
   {
    "id": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",

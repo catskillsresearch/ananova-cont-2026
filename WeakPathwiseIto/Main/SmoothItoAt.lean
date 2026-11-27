@@ -36,7 +36,38 @@ theorem abs_trapezoid_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) {x y : Rd d}
     (hε : ∀ z ∈ segment ℝ x y, ‖smoothHessian f z - smoothHessian f x‖ ≤ ε) :
     |f y - f x - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪gradient f y - gradient f x, y - x⟫| ≤
       2 * ε * ‖y - x‖ ^ 2 := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hgd : Differentiable ℝ (gradient f) :=
+    (L.contDiff.comp (hf.fderiv_right (m := 1) (by norm_num))).differentiable (by norm_num)
+  have hε0 : 0 ≤ ε := (norm_nonneg _).trans (hε x (left_mem_segment ℝ x y))
+  have h1 := follmer_ito_formula.abs_taylor2_le hf hε
+  have h2 := proposition_3_1.norm_taylor_le (f := gradient f) hgd (x := y) (y := x) (ε := ε)
+    (fun z hz => hε z (segment_symm ℝ y x ▸ hz))
+  have e : gradient f x - gradient f y - fderiv ℝ (gradient f) x (x - y) =
+      -(gradient f y - gradient f x - smoothHessian f x (y - x)) := by
+    have : fderiv ℝ (gradient f) x (x - y) = -(smoothHessian f x (y - x)) := by
+      rw [← map_neg, neg_sub]; rfl
+    rw [this]; abel
+  rw [e, norm_neg, norm_sub_rev x y] at h2
+  have h3 : |⟪gradient f y - gradient f x, y - x⟫ - ⟪smoothHessian f x (y - x), y - x⟫| ≤
+      ε * ‖y - x‖ ^ 2 := by
+    rw [← inner_sub_left]
+    calc _ ≤ ‖gradient f y - gradient f x - smoothHessian f x (y - x)‖ * ‖y - x‖ :=
+          abs_real_inner_le_norm _ _
+      _ ≤ (ε * ‖y - x‖) * ‖y - x‖ := mul_le_mul_of_nonneg_right h2 (norm_nonneg _)
+      _ = ε * ‖y - x‖ ^ 2 := by ring
+  have hsplit : f y - f x - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪gradient f y - gradient f x, y - x⟫ =
+      (f y - f x - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪smoothHessian f x (y - x), y - x⟫) -
+        1 / 2 * (⟪gradient f y - gradient f x, y - x⟫ - ⟪smoothHessian f x (y - x), y - x⟫) := by
+    ring
+  rw [hsplit]
+  calc _ ≤ |f y - f x - ⟪gradient f x, y - x⟫ - 1 / 2 * ⟪smoothHessian f x (y - x), y - x⟫| +
+        |1 / 2 * (⟪gradient f y - gradient f x, y - x⟫ - ⟪smoothHessian f x (y - x), y - x⟫)| :=
+        abs_sub _ _
+    _ ≤ ε * ‖y - x‖ ^ 2 + 1 / 2 * (ε * ‖y - x‖ ^ 2) := by
+        rw [abs_mul, abs_of_pos (by norm_num : (0:ℝ) < 1 / 2)]
+        gcongr
+    _ ≤ 2 * ε * ‖y - x‖ ^ 2 := by nlinarith [sq_nonneg ‖y - x‖, mul_nonneg hε0 (sq_nonneg ‖y - x‖)]
 
 /-- **Subgoal** (Theorem 5.1 proof, (21), splitting a stopped sum): for `φ` vanishing on the
 diagonal, `∑_k φ(ω(t_k ∧ t), ω(t_{k+1} ∧ t))` is the sum over complete intervals `t_{k+1} ≤ t`
