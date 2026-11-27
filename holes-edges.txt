@@ -264,6 +264,7 @@ Basic.Partition -hard-> Main.GeometricMeshDecay
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le
 Basic.Partition -hard-> Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh
+Basic.Partition -hard-> Main.ItoRiemannSum
 Basic.Partition -hard-> Occupation.DiscreteLocalTime
 Basic.Partition -hard-> Occupation.DiscreteOccupationDensity
 Basic.Partition -hard-> Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec
@@ -563,6 +564,7 @@ Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace
 Bessel.CanonicalWienerSpace -hard-> Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe
 Bessel.CanonicalWienerSpace -hard-> Main.ExitTime
 Bessel.CanonicalWienerSpace -hard-> Main.IsItoIntegral
+Bessel.CanonicalWienerSpace -hard-> Main.ItoRiemannSum
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top

@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T21:54:54Z",
+ "updated": "2026-11-27T21:55:44Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 11,
  "counts": {
   "open": 5,
   "blocked": 12,
-  "done": 445
+  "done": 446
  },
  "goalCounts": {
   "open": 2,
   "blocked": 9,
-  "done": 70
+  "done": 71
  },
  "subgoalCounts": {
   "open": 3,
@@ -3661,6 +3661,29 @@
    "deps": [
     "Main.ExitTime",
     "Main.IsL2ItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.ItoRiemannSum",
+   "label": "ItoRiemannSum",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "S_n^m Riemann sums (proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/ItoRiemannSum.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Basic.Partition",
+    "Bessel.CanonicalWienerSpace"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
@@ -16608,6 +16631,11 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.ItoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteLocalTime",
    "kind": "hard"
   },
@@ -18099,6 +18127,11 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.IsItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.ItoRiemannSum",
    "kind": "hard"
   },
   {
@@ -27769,6 +27802,10 @@
   },
   {
    "from": "Basic.Partition",
+   "to": "Main.ItoRiemannSum"
+  },
+  {
+   "from": "Basic.Partition",
    "to": "Occupation.DiscreteLocalTime"
   },
   {
@@ -28518,6 +28555,10 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.IsItoIntegral"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.ItoRiemannSum"
   },
   {
    "from": "Bessel.IsBrownianPolar",
