@@ -322,6 +322,41 @@ theorem remark_4_5.exists_pairing {d : ℕ} {f : Rd d → ℝ} (hf : MemLp f ⊤
   refine integral_congr_ae ((hf.coeFn_toLp).mono fun x hx => ?_)
   simp [hx, mul_comm]
 
+/-- **Subgoal** (Remark 4.5 bounded case, testing against signs): if `L g = ∫ g f` on `L^1`, then
+`∫_s |f| ≤ ‖L‖ |s|` for measurable `s` of finite measure. -/
+theorem remark_4_5.setIntegral_abs_le_opNorm {d : ℕ} {f : Rd d → ℝ} (hf : MemLp f ⊤)
+    (L : Lp ℝ 1 (volume : Measure (Rd d)) →L[ℝ] ℝ) (hL : ∀ g, L g = ∫ x, g x * f x)
+    {s : Set (Rd d)} (hs : MeasurableSet s) (hst : volume s < ∞) :
+    ∫ x in s, |f x| ≤ ‖L‖ * volume.real s := by
+  set f' := hf.aestronglyMeasurable.mk f
+  have hff' : f =ᵐ[volume] f' := hf.aestronglyMeasurable.ae_eq_mk
+  have hm' : Measurable f' := hf.aestronglyMeasurable.stronglyMeasurable_mk.measurable
+  set φ : Rd d → ℝ := fun x => if 0 ≤ f' x then 1 else -1
+  have hφm : Measurable φ := Measurable.ite (measurableSet_le measurable_const hm')
+    measurable_const measurable_const
+  have hφ1 : ∀ x, ‖φ x‖ₑ = 1 := fun x => by by_cases h : 0 ≤ f' x <;> simp [φ, h]
+  set g : Rd d → ℝ := s.indicator φ
+  have hgn : ∀ x, ‖g x‖ₑ = s.indicator 1 x := fun x => by
+    by_cases hx : x ∈ s <;> simp [g, hx, hφ1]
+  have hgL : eLpNorm g 1 volume = volume s := by
+    rw [eLpNorm_one_eq_lintegral_enorm (hφm.indicator hs).aestronglyMeasurable, lintegral_congr hgn, lintegral_indicator_one hs]
+  have hgm : MemLp g 1 := by
+    rw [MemLp, hgL]; exact hst
+  have hnorm : ‖hgm.toLp g‖ = volume.real s := by
+    rw [Lp.norm_toLp, hgL]; rfl
+  have hval : L (hgm.toLp g) = ∫ x in s, |f x| := by
+    rw [hL, ← integral_indicator hs]
+    refine integral_congr_ae ((hgm.coeFn_toLp).mp (hff'.mono fun x hx hx' => ?_))
+    dsimp only
+    rw [hx']
+    by_cases hxs : x ∈ s
+    · by_cases h0 : 0 ≤ f' x
+      · simp [g, φ, hxs, h0, hx, abs_of_nonneg h0]
+      · simp [g, φ, hxs, h0, hx, abs_of_neg (not_le.1 h0)]
+    · simp [g, hxs]
+  rw [← hval, ← hnorm]
+  exact (le_abs_self _).trans (L.le_opNorm _)
+
 /-- **Remark 4.5** (bounded local-time case). For `d = 1`, if `𝓛^{π_n}_ω →* ℓ_T` weakly-* in
 `L^∞(ℝ)`, then `sup_n ‖𝓛^{π_n}_ω‖_{L^∞} < ∞` (Banach–Steinhaus) and `𝓦^2_{ω,π} = W^{2,1}(ℝ)`
 (for continuous representatives). -/
