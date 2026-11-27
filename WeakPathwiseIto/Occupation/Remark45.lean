@@ -382,7 +382,18 @@ theorem remark_4_5_bounded (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadratic
     (∃ K : ℝ≥0∞, K < ⊤ ∧ ∀ n, 1 ≤ n →
         eLpNorm (discreteOccupationDensity (π n) ω) ⊤ volume ≤ K) ∧
       ∀ F : Rd 1 → ℝ, Continuous F → (F ∈ PathwiseSobolevSpace π ω ↔ MemW 2 1 F) := by
-  sorry
+  obtain ⟨C, hC⟩ := remark_4_5.exists_uniform_bound hweak
+  refine ⟨⟨ENNReal.ofReal C, ENNReal.ofReal_lt_top, fun n _ => hC n⟩, fun F hFc =>
+    ⟨fun h => h.1, fun hF => ?_⟩⟩
+  have hc1 : (⊤ : ℝ≥0∞).conjExponent = 1 := by simp [ENNReal.conjExponent]
+  obtain ⟨H, hH⟩ := theorem_5_2.exists_isWeakHessian hF
+  have hHr : MemLp H (⊤ : ℝ≥0∞).conjExponent := by
+    rw [hc1]
+    simpa using theorem_5_2.memLp_of_isWeakHessian (p := 1) (by simpa using hF) hH
+  have hL0 : ∀ n x, 0 ≤ discreteOccupationDensity (π n) ω x := fun n x =>
+    Finset.sum_nonneg fun i _ => discreteOccupationDensity.piece_nonneg _ _ _
+  exact remark_4_4 hω hQV hosc ENNReal.one_lt_top (fun x => le_max_right (ℓ x) 0)
+    (remark_4_5.weakLpTendsto_posPart ENNReal.one_lt_top hL0 hweak) hF hFc hH hHr
 
 /-- **Remark 4.5** (comparison with Davis–Obłój–Siorpaes). For `d = 1`, if a local time
 `(ℓ_t)_{t ∈ [0,T]}` exists in the sense of [DOS18] and the DOS change-of-variable formula
