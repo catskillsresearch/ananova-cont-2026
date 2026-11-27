@@ -71,6 +71,7 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.integrabl
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -88,6 +89,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_no
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -353,6 +355,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -495,6 +498,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.integra
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -635,6 +639,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_n
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -772,6 +777,7 @@ Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -869,6 +875,7 @@ Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub -hard-> Main.Th
 Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one -hard-> Main.Theorem52PathSteps
@@ -887,6 +894,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1176,6 +1184,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.integ
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1208,6 +1217,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.int
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1686,6 +1696,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_no
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1846,6 +1857,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessia
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -2067,6 +2079,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one

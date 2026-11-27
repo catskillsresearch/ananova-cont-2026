@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:05:31Z",
+ "updated": "2026-11-27T17:16:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
-  "done": 372
+  "done": 373
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 1,
-  "done": 310
+  "done": 311
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 16
+    "theorem": 17
    },
    "paperGoal": false,
    "verified": false,
@@ -4038,6 +4038,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+    "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
     "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
@@ -4465,6 +4466,47 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "label": "memLp_maximal_toReal",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 2: `g = (M_1 u",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 2: `g = (M_1 u)` is in `L^p` when `u` is, by the Hardy–Littlewood bound `‖M_1 u‖_p ≤ C ‖u‖_p`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.memLp_maximal_toReal — subgoal of Theorem 5.2, step 2: `g = (M_1 u (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
@@ -13454,6 +13496,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -13535,6 +13582,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
    "kind": "hard"
   },
   {
@@ -14864,6 +14916,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -15574,6 +15631,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -16274,6 +16336,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -16959,6 +17026,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -17443,6 +17515,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -17530,6 +17607,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
    "kind": "hard"
   },
   {
@@ -18979,6 +19061,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -19135,6 +19222,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
    "kind": "hard"
   },
   {
@@ -21529,6 +21621,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -22325,6 +22422,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
    "kind": "hard"
   },
   {
@@ -23434,6 +23536,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "kind": "hard"
   },
@@ -24114,6 +24221,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -25849,6 +25960,10 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
   },
   {
@@ -26228,6 +26343,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
    "to": "Main.Theorem52PathSteps"
   },
@@ -26290,6 +26409,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal"
   },
   {
    "from": "Main.Theorem52Steps",

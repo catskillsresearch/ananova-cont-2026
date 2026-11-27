@@ -532,6 +532,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm": [
    "propext",
    "Classical.choice",
@@ -1599,5 +1604,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:05:31Z"
+ "generated": "2026-11-27T17:16:11Z"
 }

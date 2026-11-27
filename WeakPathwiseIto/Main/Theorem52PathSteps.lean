@@ -510,6 +510,19 @@ theorem vanishes_path (hT : 0 < T) {π : ℕ → Partition T} (h2 : GeometricMes
   refine pathOscillation.vanishes_of_mesh (continuousOn_path ω) ?_
   exact (tendsto_add_atTop_iff_nat 1).1 (h2.summable_mesh hT).tendsto_atTop_zero
 
+/-- **Subgoal** (Theorem 5.2, step 2: `g = (M_1 u)` is in `L^p` when `u` is, by the
+Hardy–Littlewood bound `‖M_1 u‖_p ≤ C ‖u‖_p`). -/
+theorem memLp_maximal_toReal {p : ℝ} (hp : 1 < p) {u : Rd d → ℝ}
+    (hu : MemLp u (ENNReal.ofReal p)) :
+    MemLp (fun x => (localMaximalFunction 1 u x).toReal) (ENNReal.ofReal p) := by
+  obtain ⟨C, hC⟩ := eLpNorm_maximal_le (d := d) hp
+  have hM : MemLp (localMaximalFunction 1 u) (ENNReal.ofReal p) :=
+    (hC u).trans_lt (ENNReal.mul_lt_top ENNReal.coe_lt_top hu.eLpNorm_lt_top)
+  refine hM.mono'_enorm (localMaximalFunction.measurable u).ennreal_toReal.aestronglyMeasurable
+    (ae_of_all _ fun x => ?_)
+  rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg]
+  exact ENNReal.ofReal_toReal_le
+
 end theorem_5_2
 
 end WeakPathwiseIto
