@@ -154,7 +154,158 @@ theorem poincare2_of_contDiff (hd : 0 < d) {f : Rd d → ℝ} (hf : ContDiff ℝ
     ENNReal.ofReal |f x - ⨍ z in Q, (f z + ⟪gradient f z, x - z⟫)| ≤
       Metric.ediam Q ^ (d : ℝ) / (d * volume Q) *
         ∫⁻ z in Q, ‖fderiv ℝ (fderiv ℝ f) z‖ₑ / edist x z ^ ((d : ℝ) - 2) := by
-  sorry
+  set D := Metric.diam Q with hDdef
+  have hD : ∀ z ∈ Q, dist z x ≤ D := fun z hz => Metric.dist_le_diam_of_mem hQb hz hx
+  set g : Rd d → ℝ≥0∞ := fun z => ‖fderiv ℝ (fderiv ℝ f) z‖ₑ with hgdef
+  have hf1 : ContDiff ℝ 1 (fderiv ℝ f) := hf.fderiv_right (by norm_num)
+  have hgm : Measurable g := (continuous_enorm.comp (hf1.continuous_fderiv one_ne_zero)).measurable
+  have hVt : volume Q ≠ ⊤ := hQb.measure_lt_top.ne
+  set φ : Rd d → ℝ := fun z => f z + ⟪gradient f z, x - z⟫ with hφdef
+  have hφc : Continuous φ := by
+    have hgc : Continuous fun z => gradient f z :=
+      (InnerProductSpace.toDual ℝ (Rd d)).symm.continuous.comp
+        (hf.continuous_fderiv (by norm_num))
+    exact hf.continuous.add (hgc.inner (continuous_const.sub continuous_id))
+  have hi : IntegrableOn φ Q :=
+    (hφc.continuousOn.integrableOn_compact hQb.isCompact_closure).mono_set subset_closure
+  set G : Rd d → ℝ≥0∞ := fun z => g z * ‖z - x‖ₑ ^ 2 with hGdef
+  set C : ℝ≥0∞ := Metric.ediam Q ^ (d : ℝ) / d with hCdef
+  -- Step A: average bound
+  have stepA : ENNReal.ofReal |f x - ⨍ z in Q, φ z| ≤
+      (volume Q)⁻¹ * ∫⁻ z in Q, ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫| := by
+    have hreal : volume.real Q ≠ 0 := by
+      rw [measureReal_def]; exact ENNReal.toReal_ne_zero.2 ⟨hQ0, hVt⟩
+    have hint : IntegrableOn (fun y => φ y - f x) Q := hi.sub (integrableOn_const hVt)
+    have e : f x - ⨍ y in Q, φ y = -((volume.real Q)⁻¹ * ∫ y in Q, (φ y - f x)) := by
+      rw [setAverage_eq, smul_eq_mul, integral_sub hi (integrableOn_const hVt), setIntegral_const,
+        smul_eq_mul]
+      field_simp
+      ring
+    have habs : ∀ z, |f x - f z - ⟪gradient f z, x - z⟫| = |φ z - f x| := fun z => by
+      rw [← abs_neg]; congr 1; simp only [hφdef]; ring
+    simp_rw [habs]
+    rw [e, abs_neg, abs_mul, abs_inv, abs_of_nonneg measureReal_nonneg]
+    calc ENNReal.ofReal ((volume.real Q)⁻¹ * |∫ y in Q, (φ y - f x)|)
+        ≤ ENNReal.ofReal ((volume.real Q)⁻¹ * ∫ y in Q, |φ y - f x|) :=
+          ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_left abs_integral_le_integral_abs
+            (inv_nonneg.2 measureReal_nonneg))
+      _ = (volume Q)⁻¹ * ∫⁻ y in Q, ENNReal.ofReal |φ y - f x| := by
+          rw [ENNReal.ofReal_mul (inv_nonneg.2 measureReal_nonneg),
+            ofReal_integral_eq_lintegral_ofReal hint.abs (Eventually.of_forall fun _ => abs_nonneg _),
+            measureReal_def, ENNReal.ofReal_inv_of_pos (ENNReal.toReal_pos hQ0 hVt),
+            ENNReal.ofReal_toReal hVt]
+  -- Steps B–F: the double integral
+  have hmeas1 : AEMeasurable (Function.uncurry fun (z : Rd d) (t : ℝ) =>
+      ENNReal.ofReal t * g (x + t • (z - x)) * ‖z - x‖ₑ ^ 2)
+      ((volume.restrict Q).prod (volume.restrict (Ioc (0 : ℝ) 1))) := by
+    refine Measurable.aemeasurable ?_
+    show Measurable fun p : Rd d × ℝ => ENNReal.ofReal p.2 * g (x + p.2 • (p.1 - x)) * ‖p.1 - x‖ₑ ^ 2
+    exact ((ENNReal.measurable_ofReal.comp measurable_snd).mul
+      (hgm.comp (continuous_const.add (continuous_snd.smul
+      (continuous_fst.sub continuous_const))).measurable)).mul
+      ((continuous_enorm.comp (continuous_fst.sub continuous_const)).measurable.pow_const 2)
+  set F : Rd d → ℝ → ℝ≥0∞ := fun z s =>
+    G z * {s : ℝ | dist z x ≤ s * D}.indicator (fun s => ENNReal.ofReal (s ^ (-(d : ℝ) - 1))) s
+    with hFdef
+  have hmeas2 : AEMeasurable (Function.uncurry F)
+      ((volume.restrict Q).prod (volume.restrict (Ioc (0 : ℝ) 1))) := by
+    refine Measurable.aemeasurable ?_
+    have hS : MeasurableSet {p : Rd d × ℝ | dist p.1 x ≤ p.2 * D} :=
+      measurableSet_le (by fun_prop) (by fun_prop)
+    have h1 : Measurable fun p : Rd d × ℝ => G p.1 :=
+      (hgm.mul ((continuous_enorm.comp (continuous_id.sub continuous_const)).measurable.pow_const 2)).comp
+        measurable_fst
+    have h2 : Measurable fun p : Rd d × ℝ => ENNReal.ofReal (p.2 ^ (-(d : ℝ) - 1)) :=
+      ENNReal.measurable_ofReal.comp (by fun_prop)
+    exact h1.mul (h2.indicator hS)
+  have hFeq : ∀ s z, ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) *
+      {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z = F z s := by
+    intro s z
+    by_cases h : dist z x ≤ s * D
+    · rw [hFdef]; simp only [indicator_of_mem (show z ∈ {z | dist z x ≤ s * D} from h),
+        indicator_of_mem (show s ∈ {s : ℝ | dist z x ≤ s * D} from h), hGdef]
+      ring
+    · rw [hFdef]; simp only [indicator_of_notMem (show z ∉ {z | dist z x ≤ s * D} from h),
+        indicator_of_notMem (show s ∉ {s : ℝ | dist z x ≤ s * D} from h), mul_zero]
+  have hpow : ∀ s ∈ Ioc (0 : ℝ) 1, ENNReal.ofReal s * ENNReal.ofReal (s ^ (-(d : ℝ) - 2)) =
+      ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) := by
+    intro s hs
+    rw [← ENNReal.ofReal_mul hs.1.le]
+    congr 1
+    rw [show -(d : ℝ) - 1 = 1 + (-(d : ℝ) - 2) by ring, Real.rpow_add hs.1, Real.rpow_one]
+  have stepBF : ∫⁻ z in Q, ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫| ≤
+      ∫⁻ z in Q, G z * ∫⁻ s in Ioc (0 : ℝ) 1,
+        {s : ℝ | dist z x ≤ s * D}.indicator (fun s => ENNReal.ofReal (s ^ (-(d : ℝ) - 1))) s := by
+    calc ∫⁻ z in Q, ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫|
+        ≤ ∫⁻ z in Q, ∫⁻ t in Ioc (0 : ℝ) 1, ENNReal.ofReal t * g (x + t • (z - x)) * ‖z - x‖ₑ ^ 2 :=
+          lintegral_mono fun z => abs_taylor_le hf x z
+      _ = ∫⁻ t in Ioc (0 : ℝ) 1, ∫⁻ z in Q, ENNReal.ofReal t * g (x + t • (z - x)) * ‖z - x‖ₑ ^ 2 :=
+          lintegral_lintegral_swap hmeas1
+      _ ≤ ∫⁻ s in Ioc (0 : ℝ) 1, ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) *
+            ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z := by
+          refine setLIntegral_mono' measurableSet_Ioc fun s hs => ?_
+          simp_rw [mul_assoc]
+          rw [lintegral_const_mul' _ _ ENNReal.ofReal_ne_top, ← hpow s hs, mul_assoc]
+          exact mul_le_mul' le_rfl (lintegral_comp_homothety_sq_le hQ hQm hx hD hgm hs)
+      _ = ∫⁻ s in Ioc (0 : ℝ) 1, ∫⁻ z in Q, F z s := by
+          refine lintegral_congr fun s => ?_
+          rw [← lintegral_const_mul' _ _ ENNReal.ofReal_ne_top]
+          exact lintegral_congr fun z => hFeq s z
+      _ = ∫⁻ z in Q, ∫⁻ s in Ioc (0 : ℝ) 1, F z s := (lintegral_lintegral_swap hmeas2).symm
+      _ = _ := by
+          refine lintegral_congr fun z => ?_
+          rw [hFdef]
+          exact lintegral_const_mul' _ _ (ENNReal.mul_ne_top enorm_ne_top
+            (ENNReal.pow_ne_top enorm_ne_top))
+  -- Step G: the radial integral
+  have hdiam : ENNReal.ofReal D = Metric.ediam Q := by
+    rw [hDdef, Metric.diam, ENNReal.ofReal_toReal hQb.ediam_ne_top]
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
+  have stepG : ∀ z ∈ Q, G z * ∫⁻ s in Ioc (0 : ℝ) 1,
+        {s : ℝ | dist z x ≤ s * D}.indicator (fun s => ENNReal.ofReal (s ^ (-(d : ℝ) - 1))) s ≤
+      C * (‖fderiv ℝ (fderiv ℝ f) z‖ₑ / edist x z ^ ((d : ℝ) - 2)) := by
+    intro z hz
+    by_cases hzx : z = x
+    · subst hzx; simp [hGdef]
+    have hr : 0 < dist z x := dist_pos.2 hzx
+    have hDpos : 0 < D := hr.trans_le (hD z hz)
+    refine (mul_le_mul' le_rfl (theorem_2_1_first.lintegral_Ioc_rpow_indicator_le hd hDpos hr)).trans (le_of_eq ?_)
+    set r := dist z x
+    have h1 : ‖z - x‖ₑ ^ 2 = ENNReal.ofReal (r ^ 2) := by
+      rw [← ofReal_norm, ← dist_eq_norm, ENNReal.ofReal_pow dist_nonneg]
+    have h2 : edist x z ^ ((d : ℝ) - 2) = ENNReal.ofReal (r ^ ((d : ℝ) - 2)) := by
+      rw [edist_dist, dist_comm, ENNReal.ofReal_rpow_of_pos hr]
+    have h3 : C = ENNReal.ofReal (D ^ d / d) := by
+      rw [hCdef, ← hdiam, ENNReal.ofReal_rpow_of_nonneg hDpos.le hdpos.le, Real.rpow_natCast,
+        ENNReal.ofReal_div_of_pos hdpos, ENNReal.ofReal_natCast]
+    simp only [hGdef, g]
+    rw [h1, h2, h3]
+    have hDd : 0 ≤ D ^ d / d := div_nonneg (pow_nonneg hDpos.le _) hdpos.le
+    have eR : ENNReal.ofReal (D ^ d / d) *
+        (‖fderiv ℝ (fderiv ℝ f) z‖ₑ / ENNReal.ofReal (r ^ ((d : ℝ) - 2))) =
+        ‖fderiv ℝ (fderiv ℝ f) z‖ₑ * ENNReal.ofReal (D ^ d / d * (r ^ ((d : ℝ) - 2))⁻¹) := by
+      rw [ENNReal.div_eq_inv_mul, ← ENNReal.ofReal_inv_of_pos (Real.rpow_pos_of_pos hr _),
+        ← mul_assoc, ← ENNReal.ofReal_mul hDd, mul_comm]
+    rw [eR, mul_assoc, ← ENNReal.ofReal_mul (sq_nonneg r)]
+    congr 2
+    rw [Real.rpow_neg hr.le, Real.rpow_sub hr, Real.rpow_two]
+    simp only [Real.rpow_natCast]
+    field_simp
+  -- Assemble
+  calc ENNReal.ofReal |f x - ⨍ z in Q, (f z + ⟪gradient f z, x - z⟫)|
+      ≤ (volume Q)⁻¹ * ∫⁻ z in Q, ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫| := stepA
+    _ ≤ (volume Q)⁻¹ * ∫⁻ z in Q, C * (‖fderiv ℝ (fderiv ℝ f) z‖ₑ / edist x z ^ ((d : ℝ) - 2)) :=
+        mul_le_mul' le_rfl (stepBF.trans (setLIntegral_mono_ae' hQm
+          (Eventually.of_forall fun z hz => stepG z hz)))
+    _ = Metric.ediam Q ^ (d : ℝ) / (d * volume Q) *
+          ∫⁻ z in Q, ‖fderiv ℝ (fderiv ℝ f) z‖ₑ / edist x z ^ ((d : ℝ) - 2) := by
+        rw [lintegral_const_mul' _ _ (ENNReal.div_lt_top
+          (ENNReal.rpow_ne_top_of_nonneg hdpos.le hQb.ediam_ne_top)
+          (by exact_mod_cast hd.ne')).ne, ← mul_assoc]
+        congr 1
+        rw [div_eq_mul_inv, div_eq_mul_inv, ENNReal.mul_inv (Or.inl (by exact_mod_cast hd.ne'))
+          (Or.inl (ENNReal.natCast_ne_top d))]
+        ring
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: the coordinates `∂_i f` of the weak
 gradient have weak gradient `(∂_j ∂_i f)_j` read off the weak Hessian). -/
