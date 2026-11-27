@@ -234,7 +234,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1733,5 +1732,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:55:22Z"
+ "generated": "2026-11-27T18:56:40Z"
 }

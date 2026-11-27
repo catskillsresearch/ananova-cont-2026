@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:55:23Z",
+ "updated": "2026-11-27T18:56:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 22,
+ "sorryCount": 21,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 14,
-  "done": 395
+  "done": 396
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 4,
-  "done": 332
+  "done": 333
  },
  "untagged": [],
  "legend": {
@@ -1581,9 +1581,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "one_le_of_toReal_eq_zero",
     "iSup_rpow_le_tsum",
     "exists_feasible_lt",
     "supFn_props",
@@ -1621,10 +1620,9 @@
     "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
     "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
-    "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
     "Bessel.BesselCapacity::besselCapacity.supFn_props"
    ],
-   "detail": "7 sorry: one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "6 sorry: iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1900,10 +1898,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.one_le_of_toReal_eq_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1912,17 +1908,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 3): when `p.toReal = 0` (`p ∈ {0, ∞}`), every admissible value `‖h‖_p^0` is `1`, so `B_{α,p}(E) ≥ 1`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.one_le_of_toReal_eq_zero — subgoal of Definition 2.7, countable subadditivity, step 3 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.one_le_of_toReal_eq_zero — subgoal of Definition 2.7, countable subadditivity, step 3 (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.supFn",

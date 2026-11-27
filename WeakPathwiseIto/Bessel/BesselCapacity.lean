@@ -54,7 +54,8 @@ theorem eLpNorm_rpow_eq {p : ℝ≥0∞} (hp : 0 < p.toReal) {h : Rd d → ℝ} 
 (`p ∈ {0, ∞}`), every admissible value `‖h‖_p^0` is `1`, so `B_{α,p}(E) ≥ 1`. -/
 theorem one_le_of_toReal_eq_zero {α : ℝ} {p : ℝ≥0∞} (hp : p.toReal = 0) (S : Set (Rd d)) :
     1 ≤ besselCapacity d α p S := by
-  sorry
+  simp only [besselCapacity, hp, ENNReal.rpow_zero]
+  exact le_iInf fun _ => le_iInf fun _ => le_iInf fun _ => le_iInf fun _ => le_rfl
 
 /-- **Subgoal** (Definition 2.7, countable subadditivity, step 4): `(sup_n a_n)^q ≤ ∑_n a_n^q`
 for `q > 0`. -/
