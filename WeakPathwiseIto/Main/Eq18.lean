@@ -171,7 +171,54 @@ theorem eventually_sum_abs_le {π : ℕ → Partition T} {ω : ℝ → Rd d}
             ω ((π n).right k) - ω ((π n).left k)⟫|) ≤
         (∫⁻ x, ‖smoothHessian H x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) +
           ENNReal.ofReal ε := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient H = L ∘ fderiv ℝ H := rfl
+  have hD : ContDiff ℝ 1 (fderiv ℝ H) := hH.1.fderiv_right (m := 1) (by norm_num)
+  have hgc : ContDiff ℝ 1 (gradient H) := by rw [hg]; exact L.contDiff.comp hD
+  have hHc : Continuous (smoothHessian H) := hgc.continuous_fderiv (by norm_num)
+  set M : ℝ := |hQV.trace T| + 1 with hM
+  have hM0 : 0 < M := by positivity
+  have hevS : ∀ᶠ n in atTop, ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ M :=
+    ((lemma_4_2.tendsto_sum_sq hQV).eventually (gt_mem_nhds
+      (show hQV.trace T < M by rw [hM]; linarith [le_abs_self (hQV.trace T)]))).mono
+        fun n h => h.le
+  set ε' := ε / (2 * M) with hε'
+  have hε'0 : 0 < ε' := by positivity
+  filter_upwards [hevS, eventually_hessian_close hω hosc hH hε'0] with n hn hc
+  have hI : ∑ k : Fin (π n).m, ∫⁻ x, ‖smoothHessian H x‖ₑ *
+        ENNReal.ofReal (discreteOccupationDensity.piece (ω ((π n).left k)) (ω ((π n).right k)) x) =
+      ∫⁻ x, ‖smoothHessian H x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x) := by
+    have hmeas : ∀ k ∈ (Finset.univ : Finset (Fin (π n).m)), AEMeasurable (fun x =>
+        ‖smoothHessian H x‖ₑ * ENNReal.ofReal
+          (discreteOccupationDensity.piece (ω ((π n).left k)) (ω ((π n).right k)) x)) :=
+      fun k _ => hHc.measurable.enorm.aemeasurable.mul
+        (discreteOccupationDensity.integrable_piece _ _).aemeasurable.ennreal_ofReal
+    rw [← lintegral_finset_sum' _ hmeas]
+    congr 1
+    funext x
+    rw [discreteOccupationDensity, ENNReal.ofReal_sum_of_nonneg
+      (fun k _ => discreteOccupationDensity.piece_nonneg _ _ x), Finset.mul_sum]
+  have hR : ∑ k : Fin (π n).m,
+        ENNReal.ofReal (2 * ε' * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2) ≤ ENNReal.ofReal ε := by
+    rw [← ENNReal.ofReal_sum_of_nonneg (fun k _ => by positivity)]
+    apply ENNReal.ofReal_le_ofReal
+    rw [← Finset.mul_sum]
+    calc 2 * ε' * ∑ k, ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2 ≤ 2 * ε' * M :=
+          mul_le_mul_of_nonneg_left hn (by positivity)
+      _ = ε := by rw [hε']; field_simp
+  calc ENNReal.ofReal (∑ k : Fin (π n).m,
+          |⟪gradient H (ω ((π n).right k)) - gradient H (ω ((π n).left k)),
+            ω ((π n).right k) - ω ((π n).left k)⟫|)
+      = ∑ k : Fin (π n).m, ENNReal.ofReal
+          |⟪gradient H (ω ((π n).right k)) - gradient H (ω ((π n).left k)),
+            ω ((π n).right k) - ω ((π n).left k)⟫| :=
+        ENNReal.ofReal_sum_of_nonneg fun k _ => abs_nonneg _
+    _ ≤ ∑ k : Fin (π n).m, ((∫⁻ x, ‖smoothHessian H x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity.piece (ω ((π n).left k)) (ω ((π n).right k)) x)) +
+          ENNReal.ofReal (2 * ε' * ‖ω ((π n).right k) - ω ((π n).left k)‖ ^ 2)) :=
+        Finset.sum_le_sum fun k _ => abs_inner_increment_le_lintegral hH.1 (hc k)
+    _ = _ + _ := Finset.sum_add_distrib
+    _ ≤ _ := add_le_add hI.le hR
 
 /-- **Subgoal** (Theorem 5.1 proof, (18), the stopped sum): for `H ∈ C²_b` and `t ∈ [0,T]`,
 `|∑_k (∇H(ω(t_{k+1} ∧ t)) - ∇H(ω(t_k ∧ t))) · (ω(t_{k+1} ∧ t) - ω(t_k ∧ t))|` is at most the
