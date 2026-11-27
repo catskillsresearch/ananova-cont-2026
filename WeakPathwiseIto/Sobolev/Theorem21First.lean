@@ -833,7 +833,146 @@ theorem poincare_ae (hd : 0 < d) : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (G : 
     MemW 1 1 f → IsWeakGradient f G → ∀ Q : Set (Rd d), IsCubeOrBall Q →
       ∀ᵐ y ∂volume, y ∈ Q → ENNReal.ofReal |f y - ⨍ z in Q, f z| ≤
         K * ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1) := by
-  sorry
+  obtain ⟨K0, hK0⟩ := isCubeOrBall_props hd
+  obtain ⟨ψ, hψ, hψc, hψ0, hψ1, hψs⟩ := exists_mollifier (d := d)
+  refine ⟨K0, fun f G hf hG Q hQ => ?_⟩
+  obtain ⟨hQc, hQm, hQb, hQ0, hQK⟩ := hK0 Q hQ
+  have hQt : volume Q ≠ ⊤ := hQb.measure_lt_top.ne
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
+  have hfi : Integrable f := memLp_one_iff_integrable.1 hf.1
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) := coord_integrable hf hG
+  -- measurability of `G`
+  have hexpG : ∀ z, G z = ∑ i, Rd.coord i (G z) • Rd.basisVec i := by
+    intro z
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (G z)]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hGm : AEStronglyMeasurable G volume := by
+    have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
+    rw [this]
+    exact Finset.aestronglyMeasurable_fun_sum _ fun i _ => (hGi i).aestronglyMeasurable.smul_const _
+  set G' := hGm.mk G with hG'def
+  have hG'm : Measurable G' := hGm.stronglyMeasurable_mk.measurable
+  have hGG' : G =ᵐ[volume] G' := hGm.ae_eq_mk
+  -- the mollified functions
+  set F : ℕ → Rd d → ℝ := fun n x => ∫ y, f y * ψ n (x - y) with hFdef
+  have hFc : ∀ n, ContDiff ℝ 1 (F n) := fun n => (contDiff_convolution hG (hψ n) (hψc n)).1
+  have hgradc : ∀ n, Continuous (gradient (F n)) := fun n =>
+    (InnerProductSpace.toDual ℝ (Rd d)).symm.continuous.comp ((hFc n).continuous_fderiv one_ne_zero)
+  set e : ℝ := (d : ℝ) - 1 with he
+  set P : ℕ → Rd d → ℝ≥0∞ := fun n y =>
+    ∫⁻ z in Q, ‖gradient (F n) z - G' z‖ₑ / edist y z ^ e with hPdef
+  have hPm : ∀ n, Measurable (P n) := by
+    intro n
+    have hm : Measurable fun p : Rd d × Rd d => ‖gradient (F n) p.2 - G' p.2‖ₑ / edist p.1 p.2 ^ e :=
+      ((((hgradc n).measurable.sub hG'm).enorm).comp measurable_snd).div
+        ((continuous_edist.measurable).pow_const _)
+    exact hm.lintegral_prod_right'
+  set S : ℕ → Rd d → ℝ≥0∞ := fun n y => ‖F n y - f y‖ₑ + P n y with hSdef
+  have hSm : ∀ n, AEMeasurable (S n) (volume.restrict Q) := fun n =>
+    ((((hFc n).continuous.measurable.aemeasurable.sub hfi.aemeasurable).enorm).add
+      (hPm n).aemeasurable).restrict
+  -- `L¹` convergence
+  obtain ⟨CQ, hCQ⟩ := lintegral_potential_le hd hQb hQm
+  have hA := tendsto_convolution hfi hψ0 (fun n => (hψ n).continuous) hψ1 hψs
+  have hB := tendsto_lintegral_gradient hf hG hψ hψc hψ0 hψ1 hψs
+  have hB' : ∀ n, ∫⁻ z, ‖gradient (F n) z - G' z‖ₑ = ∫⁻ z, ‖gradient (F n) z - G z‖ₑ := by
+    intro n
+    refine lintegral_congr_ae (hGG'.mono fun z hz => ?_)
+    simp only [hz]
+  have hSint : Tendsto (fun n => ∫⁻ y in Q, S n y) atTop (𝓝 0) := by
+    have hup : Tendsto (fun n => (∫⁻ x, ‖F n x - f x‖ₑ) + CQ * ∫⁻ z, ‖gradient (F n) z - G z‖ₑ)
+        atTop (𝓝 (0 + (CQ : ℝ≥0∞) * 0)) :=
+      hA.add (ENNReal.Tendsto.const_mul hB (Or.inr ENNReal.coe_ne_top))
+    rw [mul_zero, add_zero] at hup
+    refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hup (fun n => zero_le)
+      fun n => ?_
+    have hpot := hCQ (fun z => ‖gradient (F n) z - G' z‖)
+      (((hgradc n).aestronglyMeasurable.sub hG'm.aestronglyMeasurable).norm)
+    simp only [enorm_norm] at hpot
+    calc ∫⁻ y in Q, S n y
+        = (∫⁻ y in Q, ‖F n y - f y‖ₑ) + ∫⁻ y in Q, P n y := by
+          have hm1 : AEMeasurable (fun y => ‖F n y - f y‖ₑ) (volume.restrict Q) :=
+            (((hFc n).continuous.measurable.aemeasurable.sub hfi.aemeasurable).enorm).restrict
+          simp only [hSdef]
+          rw [lintegral_add_left' hm1]
+      _ ≤ (∫⁻ x, ‖F n x - f x‖ₑ) + CQ * ∫⁻ z, ‖gradient (F n) z - G z‖ₑ := by
+          refine add_le_add (setLIntegral_le_lintegral _ _) ?_
+          rw [← hB' n]
+          exact hpot.trans (mul_le_mul' le_rfl (setLIntegral_le_lintegral _ _))
+  obtain ⟨φ, hφmono, hφ⟩ := exists_subseq_ae_tendsto_zero hSm hSint
+  -- convergence of the averages
+  have hFi : ∀ n, IntegrableOn (F n) Q := fun n =>
+    ((hFc n).continuous.continuousOn.integrableOn_compact hQb.isCompact_closure).mono_set
+      subset_closure
+  have hfQ : IntegrableOn f Q := hfi.integrableOn
+  have hav : Tendsto (fun n => ⨍ z in Q, F n z) atTop (𝓝 (⨍ z in Q, f z)) := by
+    rw [tendsto_iff_edist_tendsto_0]
+    have hlim : Tendsto (fun n => (volume Q)⁻¹ * ∫⁻ x, ‖F n x - f x‖ₑ) atTop
+        (𝓝 ((volume Q)⁻¹ * 0)) :=
+      ENNReal.Tendsto.const_mul hA (Or.inr (ENNReal.inv_ne_top.2 hQ0))
+    rw [mul_zero] at hlim
+    refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hlim (fun n => zero_le)
+      fun n => ?_
+    rw [edist_dist, Real.dist_eq, setAverage_eq, setAverage_eq, smul_eq_mul, smul_eq_mul, ← mul_sub,
+      ← integral_sub (hFi n) hfQ, abs_mul, abs_inv, abs_of_nonneg measureReal_nonneg,
+      ENNReal.ofReal_mul (inv_nonneg.2 measureReal_nonneg), measureReal_def,
+      ENNReal.ofReal_inv_of_pos (ENNReal.toReal_pos hQ0 hQt), ENNReal.ofReal_toReal hQt]
+    refine mul_le_mul' le_rfl ?_
+    calc ENNReal.ofReal |∫ x in Q, (F n x - f x)|
+        ≤ ENNReal.ofReal (∫ x in Q, |F n x - f x|) :=
+          ENNReal.ofReal_le_ofReal abs_integral_le_integral_abs
+      _ = ∫⁻ x in Q, ‖F n x - f x‖ₑ := by
+          have hi2 : Integrable (fun x => |F n x - f x|) (volume.restrict Q) := ((hFi n).sub hfQ).abs
+          rw [ofReal_integral_eq_lintegral_ofReal hi2
+            (Eventually.of_forall fun _ => abs_nonneg _)]
+          simp only [Real.enorm_eq_ofReal_abs]
+      _ ≤ ∫⁻ x, ‖F n x - f x‖ₑ := setLIntegral_le_lintegral _ _
+  -- the constant of `poincare_of_contDiff`
+  have hcQ : Metric.ediam Q ^ (d : ℝ) / (d * volume Q) ≤ K0 := by
+    refine ENNReal.div_le_of_le_mul (hQK.trans ?_)
+    rw [mul_comm (d : ℝ≥0∞), ← mul_assoc]
+    refine le_mul_of_one_le_right' ?_
+    exact_mod_cast hd
+  -- conclude
+  rw [ae_restrict_iff' hQm] at hφ
+  have hGae : ∀ᵐ z ∂volume, G z = G' z := hGG'
+  filter_upwards [hφ] with y hy hyQ
+  have hSy := hy hyQ
+  have h1 : Tendsto (fun k => ‖F (φ k) y - f y‖ₑ) atTop (𝓝 0) :=
+    tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hSy (fun k => zero_le)
+      fun k => le_self_add
+  have h2 : Tendsto (fun k => P (φ k) y) atTop (𝓝 0) :=
+    tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hSy (fun k => zero_le)
+      fun k => le_add_self
+  have hFy : Tendsto (fun k => F (φ k) y) atTop (𝓝 (f y)) := by
+    rw [tendsto_iff_edist_tendsto_0]
+    simpa [edist_eq_enorm_sub] using h1
+  have hav' : Tendsto (fun k => ⨍ z in Q, F (φ k) z) atTop (𝓝 (⨍ z in Q, f z)) :=
+    hav.comp hφmono.tendsto_atTop
+  set A : ℝ≥0∞ := ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ e with hA
+  have hlhs : Tendsto (fun k => ENNReal.ofReal |F (φ k) y - ⨍ z in Q, F (φ k) z|) atTop
+      (𝓝 (ENNReal.ofReal |f y - ⨍ z in Q, f z|)) :=
+    ENNReal.tendsto_ofReal ((hFy.sub hav').abs)
+  have hrhs : Tendsto (fun k => (K0 : ℝ≥0∞) * (A + P (φ k) y)) atTop (𝓝 ((K0 : ℝ≥0∞) * (A + 0))) :=
+    ENNReal.Tendsto.const_mul (tendsto_const_nhds.add h2) (Or.inr ENNReal.coe_ne_top)
+  rw [add_zero] at hrhs
+  refine le_of_tendsto_of_tendsto' hlhs hrhs fun k => ?_
+  have hp := poincare_of_contDiff hd (hFc (φ k)) hQc hQm hQb hQ0 hyQ
+  refine hp.trans (mul_le_mul' hcQ ?_)
+  have hAm : AEMeasurable (fun z => ‖G z‖ₑ / edist y z ^ e) (volume.restrict Q) :=
+    (hGm.aemeasurable.enorm.div
+      ((continuous_const.edist continuous_id).measurable.pow_const _).aemeasurable).restrict
+  calc ∫⁻ z in Q, ‖gradient (F (φ k)) z‖ₑ / edist y z ^ e
+      ≤ ∫⁻ z in Q, (‖G z‖ₑ / edist y z ^ e + ‖gradient (F (φ k)) z - G' z‖ₑ / edist y z ^ e) := by
+        refine lintegral_mono_ae (ae_restrict_of_ae (hGae.mono fun z hz => ?_))
+        rw [← ENNReal.add_div]
+        refine ENNReal.div_le_div_right ?_ _
+        rw [hz]
+        calc ‖gradient (F (φ k)) z‖ₑ = ‖G' z + (gradient (F (φ k)) z - G' z)‖ₑ := by
+              rw [add_sub_cancel]
+          _ ≤ _ := enorm_add_le _ _
+    _ = A + P (φ k) y := by rw [lintegral_add_left' hAm]
 
 /-- **Subgoal** (Theorem 2.1 proof: at a Lebesgue point the precise representative is the
 Lebesgue value). -/

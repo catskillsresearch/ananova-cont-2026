@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:34:39Z",
+ "updated": "2026-11-27T02:37:01Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 31,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 19,
-  "done": 259
+  "done": 260
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 205
+  "done": 206
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "poincare_ae",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
     "abs_sub_average_le"
@@ -7266,10 +7265,9 @@
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "4 sorry: poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "3 sorry: volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7645,17 +7643,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.poincare_ae"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, eq. (2) of [BH93] a.e. for `W^{1,1}`, by mollification): for a cube or ball `Q`, for a.e. `y ∈ Q`, `|f(y) - f_Q| ≤ K ∫_Q |∇f(z)| / |y - z|^{d-1} dz`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7665,7 +7661,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.poincare_ae — subgoal of Theorem 2.1 proof, eq. (2 (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.poincare_ae — subgoal of Theorem 2.1 proof, eq. (2 (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff",
