@@ -313,7 +313,38 @@ theorem isWeakGradient_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d �
     (hG : IsWeakGradient f G) (hH : IsWeakHessian f H) (i : Fin d) :
     IsWeakGradient (fun z => Rd.coord i (G z))
       (fun z => ∑ j, Rd.coord i (H z (Rd.basisVec j)) • Rd.basisVec j) := by
-  sorry
+  intro j
+  have hcoord : (fun z => Rd.coord j (∑ k, Rd.coord i (H z (Rd.basisVec k)) • Rd.basisVec k)) =
+      fun z => Rd.coord i (H z (Rd.basisVec j)) := by
+    funext z
+    simp [Rd.coord, Rd.basisVec, sum_inner, inner_smul_left, EuclideanSpace.inner_single_right]
+  rw [hcoord]
+  obtain ⟨hfl, hGl, hGw⟩ := hG i
+  obtain ⟨-, hHl, hHw⟩ := hH i j
+  refine ⟨hGl, hHl, fun φ hφ hφc => ?_⟩
+  have hord1 : ∀ k : Fin d, IsWeakDerivative.order (Pi.single k 1 : Fin d → ℕ) = 1 := by
+    intro k; simp [IsWeakDerivative.order]
+  have hord2 : IsWeakDerivative.order (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) = 2 := by
+    simp [IsWeakDerivative.order, Finset.sum_add_distrib]
+  set ψ : Rd d → ℝ := fun y => fderiv ℝ φ y (Rd.basisVec j) with hψ
+  have hψs : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ :=
+    (hφ.fderiv_right (m := ((⊤ : ℕ∞) : WithTop ℕ∞)) le_rfl).clm_apply contDiff_const
+  have hψc : HasCompactSupport ψ := hφc.fderiv_apply (𝕜 := ℝ) _
+  have h1 := hGw ψ hψs hψc
+  have h2 := hHw φ hφ hφc
+  rw [hord2] at h2
+  rw [hord1]
+  have e1 : (fun x => f x * IsWeakDerivative.testDeriv (Pi.single i 1) ψ x) =
+      fun x => f x * IsWeakDerivative.testDeriv (Pi.single i 1 + Pi.single j 1) φ x := by
+    funext x
+    rw [theorem_2_1_first.testDeriv_single, PathwiseSobolevSpace.testDeriv_single_add_single hφ]
+  have e2 : (fun x => Rd.coord i (G x) * IsWeakDerivative.testDeriv (Pi.single j 1) φ x) =
+      fun x => Rd.coord i (G x) * ψ x := by
+    funext x; rw [theorem_2_1_first.testDeriv_single]
+  rw [e1, h2, hord1] at h1
+  rw [e2]
+  simp only [pow_one, neg_one_mul, even_two, Even.neg_one_pow, one_mul] at h1 ⊢
+  linarith
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: the Hessian entries are integrable). -/
 theorem coord_hessian_integrable {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d)}
