@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:33:39Z  
-**`sorry` occurrences:** 12 · 6 open · 13 blocked · 436 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 4, 'blocked': 3, 'done': 370} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:35:27Z  
+**`sorry` occurrences:** 12 · 6 open · 13 blocked · 437 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 4, 'blocked': 3, 'done': 371} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -125,6 +125,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_apply` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec` | subgoal of P53.A, helper | 0 |
+| done | `Main.Proposition53Steps::proposition_5_3.disjoint_Ioc_grid` | subgoal of P53.B, helper | 0 |
 | open | `Main.Proposition53Steps::proposition_5_3.elementary_isometry` | subgoal of P53.B, elementary Itô isometry | 1 |
 | done | `Main.Proposition53Steps::proposition_5_3.exists_rep_increment` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.iIndepFun_bool` | subgoal of P53.A, helper | 0 |

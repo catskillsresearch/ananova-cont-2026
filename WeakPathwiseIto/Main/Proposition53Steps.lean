@@ -439,6 +439,15 @@ theorem integral_inner_increment_mul_eq_zero (x : Rd d) {s t s' t' : ℝ} (hs : 
   refine Finset.sum_eq_zero fun j _ => ?_
   rw [(hind j).integral_fun_mul_eq_mul_integral (hXint j).1 (hYint j).1, hmean j, mul_zero]
 
+/-- **Subgoal** (P53.B, helper): the grid intervals `(s_j, s_{j+1}]` of a monotone grid are
+pairwise disjoint. -/
+theorem disjoint_Ioc_grid {k : ℕ} {s : Fin (k + 1) → ℝ} (hs : Monotone s) {j l : Fin k}
+    (hjl : j ≠ l) :
+    Disjoint (Ioc (s j.castSucc) (s j.succ)) (Ioc (s l.castSucc) (s l.succ)) := by
+  rcases lt_or_gt_of_ne hjl with h | h
+  · exact Ioc_disjoint_Ioc_of_le (hs (Fin.succ_le_castSucc_iff.2 h))
+  · exact (Ioc_disjoint_Ioc_of_le (hs (Fin.succ_le_castSucc_iff.2 h))).symm
+
 /-- **Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with
 `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`,
 `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`. -/

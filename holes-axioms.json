@@ -459,6 +459,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.disjoint_Ioc_grid": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.elementary_isometry": [
    "propext",
    "sorryAx",
@@ -1893,5 +1898,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:33:38Z"
+ "generated": "2026-11-27T21:35:27Z"
 }
