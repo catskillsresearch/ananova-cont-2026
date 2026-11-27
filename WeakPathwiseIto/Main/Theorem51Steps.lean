@@ -270,7 +270,14 @@ theorem tendsto_integral {π : ℕ → Partition T} {ω : ℝ → Rd d}
     (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun m => follmerIntegral π (gradient (A.seq m)) ω t) atTop
       (𝓝 (F (ω t) - F (ω 0) - 1 / 2 * weakCovariation A t)) := by
-  sorry
+  have h0 : (0 : ℝ) ∈ Icc 0 T := ⟨le_rfl, (π 0).nonneg⟩
+  have h := ((A.tendsto_path t ht).sub (A.tendsto_path 0 h0)).sub
+    ((tendsto_covariation hω hQV hosc hH A ht).const_mul (1 / 2))
+  refine h.congr' ?_
+  filter_upwards [eventually_ge_atTop 1] with m hm
+  have hI := ito_at hω hQV hosc (A.smooth m hm) ht
+  unfold follmerIntegral
+  rw [hI.limUnder_eq]
 
 end theorem_5_1
 
