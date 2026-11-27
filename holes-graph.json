@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:33:49Z",
+ "updated": "2026-11-27T17:34:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 12,
-  "done": 379
+  "done": 380
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 2,
-  "done": 317
+  "done": 318
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 24
+    "theorem": 25
    },
    "paperGoal": false,
    "verified": false,
@@ -4053,6 +4053,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
     "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+    "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
@@ -5078,6 +5079,48 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.vanishes_path — subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6 (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "label": "volume_iUnion_maximal_eq_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k` is infinite form a Lebesgue-null set",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k` is infinite form a Lebesgue-null set).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.LemmaB1",
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.volume_iUnion_maximal_eq_top — subgoal of Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k` is infinite form a Lebesgue-null set (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52Steps",
@@ -13805,6 +13848,11 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
    "to": "Appendix.LemmaB2",
    "kind": "subgoal"
@@ -14015,6 +14063,11 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps",
    "kind": "hard"
@@ -14137,6 +14190,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
    "kind": "hard"
   },
   {
@@ -15506,6 +15564,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps",
    "kind": "hard"
   },
@@ -16255,6 +16318,11 @@
    "kind": "hard"
   },
   {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.IsBrownianPolar",
    "to": "Appendix.LemmaB1",
    "kind": "hard"
@@ -16996,6 +17064,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps",
    "kind": "hard"
   },
@@ -17720,6 +17793,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
    "to": "Main.GeometricMeshDecay",
    "kind": "subgoal"
@@ -18245,6 +18323,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52",
    "kind": "hard"
@@ -18372,6 +18455,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
    "kind": "hard"
   },
   {
@@ -19861,6 +19949,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Occupation.ApproximatingSequence",
    "kind": "hard"
   },
@@ -20057,6 +20150,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
    "kind": "hard"
   },
   {
@@ -22491,6 +22589,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Occupation.PathwiseSobolevSpace",
    "kind": "hard"
   },
@@ -23327,6 +23430,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
    "kind": "hard"
   },
   {
@@ -24476,6 +24584,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps",
    "kind": "hard"
   },
@@ -25118,6 +25231,10 @@
   {
    "from": "Appendix.LemmaB1",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top"
   },
   {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
@@ -26948,6 +27065,10 @@
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top"
+  },
+  {
    "from": "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ",
    "to": "Main.GeometricMeshDecay"
   },
@@ -27360,6 +27481,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
   },
@@ -27454,6 +27579,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top"
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",

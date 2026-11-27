@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:33:49Z  
-**`sorry` occurrences:** 23 · 10 open · 12 blocked · 379 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 317} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:34:11Z  
+**`sorry` occurrences:** 23 · 10 open · 12 blocked · 380 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 318} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -154,6 +154,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal` | subgoal of Theorem 5.2, step 5: along one path, Appendix C (11 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.vanishes_path` | subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6 | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top` | subgoal of Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k` is infinite form a Lebesgue-null set | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_convolution_le` | subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le` | subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le` | subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` | 0 |

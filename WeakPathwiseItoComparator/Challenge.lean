@@ -11502,6 +11502,22 @@ theorem isBrownianPolar_union {A B : Set (Rd d)} (hA : IsBrownianPolar d T A)
   exact measure_union_null (hA x) (hB x)
 -/
 
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k`
+is infinite form a Lebesgue-null set). -/
+theorem volume_iUnion_maximal_eq_top {p : ℝ} (hp : 1 < p) {u : ℕ → Rd d → ℝ}
+    (hu : ∀ k, MemLp (u k) (ENNReal.ofReal p)) :
+    volume (⋃ k, {x | localMaximalFunction 1 (u k) x = ⊤}) = 0 := by
+  refine measure_iUnion_null fun k => ?_
+  have hug := (hu k).aestronglyMeasurable.ae_eq_mk
+  have hg : Measurable ((hu k).aestronglyMeasurable.mk (u k)) :=
+    (hu k).aestronglyMeasurable.stronglyMeasurable_mk.measurable
+  rw [localMaximalFunction.congr_ae hug]
+  have h := ae_localMaximalFunction_ne_top hp hg ((hu k).ae_eq hug)
+  rw [ae_iff] at h
+  simpa using h
+-/
+
 end theorem_5_2
 
 end

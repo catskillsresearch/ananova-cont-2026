@@ -603,6 +603,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52Steps::theorem_5_2.abs_convolution_le": [
    "propext",
    "Classical.choice",
@@ -1640,5 +1645,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:33:49Z"
+ "generated": "2026-11-27T17:34:11Z"
 }
