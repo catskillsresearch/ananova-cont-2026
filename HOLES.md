@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:56:04Z  
-**`sorry` occurrences:** 19 · 7 open · 14 blocked · 391 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 329} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:56:20Z  
+**`sorry` occurrences:** 18 · 7 open · 14 blocked · 391 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 329} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -452,7 +452,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
 | done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
 | open | `Occupation.Remark44` | Remark 4.4 | 3 |  |
-| blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Occupation.Remark44` |
+| blocked | `Occupation.Remark45` | Remark 4.5 | 3 | `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
 ### §5 Main results

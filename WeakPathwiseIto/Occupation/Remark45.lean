@@ -152,7 +152,16 @@ theorem remark_4_5_identity (p : Partition T) (ω : ℝ → Rd 1) :
     (fun v => discreteOccupationDensity p ω v) =ᵐ[volume] fun v =>
       1 / 2 * (discreteLocalTime p (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v) +
         discreteLocalTime.reversed p (fun t => Rd.coord 0 (ω t)) (Rd.coord 0 v)) := by
-  sorry
+  set x : ℝ → ℝ := fun t => Rd.coord 0 (ω t)
+  have hfin : (Rd.coord 0 ⁻¹' (⋃ i : Fin p.m, {x (p.left i), x (p.right i)})).Finite :=
+    (finite_iUnion fun i => (finite_singleton _).insert _).preimage Rd.coord_one_injective.injOn
+  filter_upwards [measure_eq_zero_iff_ae_notMem.1 (hfin.measure_zero volume)] with v hv
+  simp only [mem_preimage, mem_iUnion, mem_insert_iff, mem_singleton_iff, not_exists,
+    not_or] at hv
+  simp only [discreteOccupationDensity, discreteOccupationDensity.piece_one,
+    discreteLocalTime.reversed_eq, discreteLocalTime,
+    ← Finset.sum_add_distrib, Finset.mul_sum]
+  exact Finset.sum_congr rfl fun i _ => remark_4_5_term_eq (hv i).1 (hv i).2
 
 /-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
 discrete local-time sequences converge to the same terminal local time,
