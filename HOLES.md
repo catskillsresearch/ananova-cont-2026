@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:05:46Z  
-**`sorry` occurrences:** 38 · 13 open · 18 blocked · 219 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 50} · subgoals {'open': 8, 'blocked': 7, 'done': 169} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:07:23Z  
+**`sorry` occurrences:** 37 · 12 open · 18 blocked · 220 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 50} · subgoals {'open': 7, 'blocked': 7, 'done': 170} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -103,7 +103,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq` | subgoal of Section 2.2 Wiener space, uniqueness step 4: f.d.d. of `ℙ` | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe` | subgoal of Section 2.2 Wiener space, uniqueness step 1: Borel = cylinder σ-algebra | 0 |
 | open | `Main.Eq18::theorem_5_1.eq_18` | subgoal of Theorem 5.1 proof, eq. (18 | 1 |
-| open | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 1 |
+| done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | open | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral` | subgoal of Theorem 5.1 proof, (18 | 1 |
 | open | `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le` | subgoal of Theorem 5.1 proof, (18 | 1 |
 | open | `Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close` | subgoal of Theorem 5.1 proof, (18 | 1 |
@@ -303,7 +303,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
-| blocked | `Main.Eq18` |  | 7 | `Main.Eq18::theorem_5_1.eq_18`, `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le`, `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral`, `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le`, `Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close`, `Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le`, `Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece` |
+| blocked | `Main.Eq18` |  | 6 | `Main.Eq18::theorem_5_1.eq_18`, `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral`, `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le`, `Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close`, `Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le`, `Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece` |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |

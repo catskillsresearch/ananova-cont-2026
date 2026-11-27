@@ -9,6 +9,8 @@ public import WeakPathwiseIto.Smooth.HasQuadraticVariation
 public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Main.WeakCovariation
+public import WeakPathwiseIto.Occupation.Lemma42
+public import WeakPathwiseIto.Smooth.Proposition31
 
 /-! # Eq. (18) of Theorem 5.1, for `C²_b` functions -/
 
@@ -39,7 +41,25 @@ compact set `ω([0,T])` and (6)), while `∫ 𝓛^{n,i}_ω = |δω|²`. -/
 theorem abs_inner_increment_le {H : Rd d → ℝ} (hH : ContDiff ℝ 2 H) {a b : Rd d} {M : ℝ}
     (hM : ∀ z ∈ incrementBall a b, ‖smoothHessian H z‖ ≤ M) :
     |⟪gradient H b - gradient H a, b - a⟫| ≤ M * ‖b - a‖ ^ 2 := by
-  sorry
+  let L : StrongDual ℝ (Rd d) ≃ₗᵢ[ℝ] Rd d := (InnerProductSpace.toDual ℝ (Rd d)).symm
+  have hg : gradient H = L ∘ fderiv ℝ H := rfl
+  have hD : ContDiff ℝ 1 (fderiv ℝ H) := hH.fderiv_right (m := 1) (by norm_num)
+  have hgd : Differentiable ℝ (gradient H) := by
+    rw [hg]; exact (L.contDiff.comp hD).differentiable one_ne_zero
+  have ha : a ∈ incrementBall a b := by
+    rw [incrementBall, Metric.mem_closedBall, dist_comm, dist_midpoint_left (𝕜 := ℝ)]
+    simp
+    linarith [dist_nonneg (x := a) (y := b)]
+  have hb : b ∈ incrementBall a b := by
+    rw [incrementBall, Metric.mem_closedBall, dist_comm, dist_midpoint_right (𝕜 := ℝ)]
+    simp
+    linarith [dist_nonneg (x := a) (y := b)]
+  have hlip : ‖gradient H b - gradient H a‖ ≤ M * ‖b - a‖ :=
+    (convex_closedBall _ _).norm_image_sub_le_of_norm_fderiv_le (fun z _ => hgd z) hM ha hb
+  calc |⟪gradient H b - gradient H a, b - a⟫| ≤ ‖gradient H b - gradient H a‖ * ‖b - a‖ :=
+        abs_real_inner_le_norm _ _
+    _ ≤ (M * ‖b - a‖) * ‖b - a‖ := mul_le_mul_of_nonneg_right hlip (norm_nonneg _)
+    _ = M * ‖b - a‖ ^ 2 := by ring
 
 /-- **Subgoal** (Theorem 5.1 proof, (18), lower bound by the occupation density): if
 `m ≤ ‖G‖` on the increment ball `Q` of `a, b`, then `m |b - a|² ≤ ∫ |G| 𝓛^{n,i}_ω`. -/
