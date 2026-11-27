@@ -1271,6 +1271,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark44::remark_4_4.integrable_mul_conj": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::Partition.reverse_left": [
    "propext",
    "Classical.choice",
@@ -1727,5 +1732,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T19:15:51Z"
+ "generated": "2026-11-27T19:16:41Z"
 }

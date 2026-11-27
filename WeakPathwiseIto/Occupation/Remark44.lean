@@ -36,6 +36,13 @@ theorem remark_4_4_density (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadratic
   rw [weightedOccupationMeasure.integral_eq hω hQV hφ] at h2
   exact tendsto_nhds_unique h1 h2
 
+/-- **Subgoal** (Remark 4.4, Hölder): for `1 < r`, `g ∈ L^{r'}` and `f ∈ L^r`, `g f` is
+integrable. -/
+theorem remark_4_4.integrable_mul_conj {r : ℝ≥0∞} (hr : 1 < r) {f g : Rd d → ℝ} (hf : MemLp f r)
+    (hg : MemLp g r.conjExponent) : Integrable (fun x => g x * f x) := by
+  have := ENNReal.HolderConjugate.conjExponent hr.le
+  exact hg.integrable_mul hf
+
 /-- **Remark 4.4** (explicit seminorm). Under the hypotheses of `remark_4_4_density`, for every
 `h ∈ L^{r'}(ℝ^d)`, `‖h‖_{W^0_{ω,π}} = ∫ |h(x)| ℓ^{ω,π}_T(x) dx = ‖h‖_{L^1(μ^π_{ω,T})}`. -/
 theorem remark_4_4_seminorm (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
