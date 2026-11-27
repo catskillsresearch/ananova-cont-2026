@@ -275,6 +275,10 @@ theorem coord_apply (i : Fin d) (v : Rd d) : Rd.coord i v = v i := by
 theorem inner_eq_sum_coord (v w : Rd d) : ⟪v, w⟫ = ∑ i, Rd.coord i v * Rd.coord i w := by
   simp [coord_apply, PiLp.inner_apply, mul_comm]
 
+/-- **Subgoal** (P53.A, helper): `|v|² = ∑_i (v^i)²`. -/
+theorem norm_sq_eq_sum_coord (v : Rd d) : ‖v‖ ^ 2 = ∑ i, Rd.coord i v ^ 2 := by
+  simp [EuclideanSpace.norm_sq_eq, coord_apply]
+
 /-- **Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)`
 `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`. -/
 theorem integral_inner_increment_sq (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t)

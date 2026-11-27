@@ -533,6 +533,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.SmoothItoAt::theorem_5_1.ito_at": [
    "propext",
    "Classical.choice",
@@ -1886,5 +1891,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:18:34Z"
+ "generated": "2026-11-27T21:18:51Z"
 }

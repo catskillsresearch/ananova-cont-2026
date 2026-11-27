@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:18:34Z",
+ "updated": "2026-11-27T21:18:52Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 9,
   "blocked": 13,
-  "done": 431
+  "done": 432
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 3,
-  "done": 365
+  "done": 366
  },
  "untagged": [],
  "legend": {
@@ -3646,7 +3646,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 16
+    "theorem": 17
    },
    "paperGoal": false,
    "verified": false,
@@ -3670,7 +3670,8 @@
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
     "Main.Proposition53Steps::proposition_5_3.measurable_B",
-    "Main.Proposition53Steps::proposition_5_3.measurable_coord"
+    "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+    "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
    ],
    "blockers": [
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
@@ -4187,6 +4188,37 @@
    ],
    "blockers": [],
    "detail": "proved: proposition_5_3.measurable_coord — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
+   "label": "norm_sq_eq_sum_coord",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): `|v|² = ∑_i (v^i)²`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.norm_sq_eq_sum_coord — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Remark54",
@@ -18541,6 +18573,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps",
    "kind": "hard"
   },
@@ -19400,6 +19437,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Proposition53Steps::proposition_5_3.coord_apply",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
@@ -19476,6 +19518,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28582,6 +28629,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
   },
   {
@@ -29121,6 +29172,10 @@
    "to": "Main.Proposition53Steps::proposition_5_3.measurable_coord"
   },
   {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
+  },
+  {
    "from": "Main.Proposition53Steps::proposition_5_3.coord_apply",
    "to": "Main.Proposition53Steps"
   },
@@ -29182,6 +29237,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "to": "Main.Proposition53Steps"
   },
   {

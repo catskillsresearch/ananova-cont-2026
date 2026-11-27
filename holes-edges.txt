@@ -698,6 +698,7 @@ Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.measurable_B
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.measurable_coord
+Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
@@ -870,6 +871,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inn
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_B
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_coord
+Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord
 Main.Proposition53Steps::proposition_5_3.coord_apply -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.elementary_isometry -hard-> Main.Proposition53Steps
@@ -886,6 +888,7 @@ Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero -h
 Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.measurable_B -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.measurable_coord -hard-> Main.Proposition53Steps
+Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord -hard-> Main.Proposition53Steps
 Main.SmoothItoAt -hard-> Main.Theorem51Steps
 Main.SmoothItoAt -hard-> Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le
 Main.SmoothItoAt -hard-> Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub
