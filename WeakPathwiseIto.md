@@ -141,8 +141,8 @@ own text.
   (`CanonicalWienerSpace.P`, chosen by `Classical.epsilon` among the laws `IsLaw x`, i.e.
   images of $d$ independent Mathlib `IsBrownianReal` motions). Its existence
   (`exists_isLaw`) is **proved** from the vendored `BrownianMotion` construction
-  (`brownian`, `gaussianLimit`). The vendored library is part of the submission, so the
-  Challenge imports it (`BrownianMotion.Gaussian.BrownianMotion`) alongside Mathlib. Polar sets (Definition 2.8) refer to times $t\in(0,T]$
+  (`brownian`, `gaussianLimit`). The vendored library is part of the submission and is
+  compiled as a lean_lib of this package; the Mathlib-only Challenge does not import it. Polar sets (Definition 2.8) refer to times $t\in(0,T]$
   of this $\Omega$.
 * **Itô integral (Proposition 5.3): custom, documented.** The vendored MathFin integral
   (`ItoIntegralCLM`, `localItoIntegral`, `predItoIntegral`) integrates scalar integrands
