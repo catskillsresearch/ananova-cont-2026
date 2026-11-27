@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T14:03:32Z",
+ "updated": "2026-11-27T14:19:29Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 27,
+ "sorryCount": 30,
  "counts": {
   "open": 7,
-  "blocked": 59,
+  "blocked": 62,
   "done": 307
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 49,
+  "blocked": 52,
   "done": 245
  },
  "untagged": [],
@@ -4031,15 +4031,18 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 4,
+   "sorryCount": 7,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
+    "pi_absolutelyContinuous",
+    "volume_coords_preimage_null",
+    "measure_path_mem_null",
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 34
+    "theorem": 37
    },
    "paperGoal": false,
    "verified": false,
@@ -4050,6 +4053,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
     "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
     "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
@@ -4076,14 +4080,17 @@
     "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add",
+    "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
     "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+    "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+    "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4121,16 +4128,19 @@
     "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add",
+    "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
     "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+    "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
-    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+    "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "4 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, ae_forall_mem_not_mem_null"
+   "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, pi_absolutelyContinuous, volume_coords_preimage_null, measure_path_mem_null, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4156,6 +4166,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4194,6 +4205,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4232,6 +4244,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4272,6 +4285,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4312,6 +4326,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4350,6 +4365,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4388,6 +4404,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4426,6 +4443,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4464,6 +4482,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4502,6 +4521,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4540,6 +4560,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4578,6 +4599,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4616,6 +4638,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4654,6 +4677,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4692,6 +4716,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4730,6 +4755,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4768,6 +4794,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4808,6 +4835,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4846,6 +4874,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4884,6 +4913,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4922,6 +4952,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4960,6 +4991,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -4998,6 +5030,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5036,6 +5069,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5074,6 +5108,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5112,6 +5147,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5125,6 +5161,47 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.localMaximalFunction_comp_add — subgoal of Appendix C, `M_1` commutes with translations: `M_1(f(· + h (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "label": "measure_path_mem_null",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`, `ℙ_{x₀}(B(t",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.measure_path_mem_null"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`, `ℙ_{x₀}(B(t) ∈ N) = 0` for a Lebesgue-null `N`, since the coordinates of `B(t) - x₀` are independent `N(0, t)`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.measure_path_mem_null — subgoal of Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`, `ℙ_{x₀}(B(t (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
@@ -5150,6 +5227,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5188,6 +5266,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5226,6 +5305,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5264,6 +5344,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5302,6 +5383,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5315,6 +5397,47 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "label": "pi_absolutelyContinuous",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely continuous measures on `ℝ` is absolutely continuous with respect to the product",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.pi_absolutelyContinuous"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely continuous measures on `ℝ` is absolutely continuous with respect to the product).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.pi_absolutelyContinuous — subgoal of Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely continuous measures on `ℝ` is absolutely continuous with respect to the product (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
@@ -5340,6 +5463,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5380,6 +5504,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5418,6 +5543,7 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
@@ -5431,6 +5557,47 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.tendsto_mollify_of_isLebesguePoint — subgoal of Appendix C, mollification: `F_m(x (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
+   "label": "volume_coords_preimage_null",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.volume_coords_preimage_null"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Bessel.WienerLawExists",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.volume_coords_preimage_null — subgoal of Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.WeakCovariation",
@@ -11398,6 +11565,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -11423,6 +11595,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -11434,6 +11611,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -12623,6 +12805,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -12648,6 +12835,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -12659,6 +12851,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -13253,6 +13450,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -13278,6 +13480,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -13289,6 +13496,11 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -13438,6 +13650,11 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -13463,6 +13680,11 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -13474,6 +13696,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -13614,6 +13841,196 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -14372,6 +14789,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -14397,6 +14819,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -14408,6 +14835,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -15863,6 +16295,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -15888,6 +16325,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -15899,6 +16341,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -17253,6 +17700,11 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -17278,6 +17730,11 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -17289,6 +17746,11 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -17448,6 +17910,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -17473,6 +17940,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -17484,6 +17956,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -18303,6 +18780,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -18328,6 +18810,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -18339,6 +18826,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -18833,6 +19325,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -18858,6 +19355,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -18869,6 +19371,11 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -19028,6 +19535,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -19053,6 +19565,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -19064,6 +19581,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -19618,6 +20140,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "kind": "hard"
   },
@@ -19643,6 +20170,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "kind": "hard"
   },
@@ -19654,6 +20186,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "kind": "hard"
   },
   {
@@ -20920,6 +21457,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
@@ -20940,6 +21481,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
@@ -20949,6 +21494,10 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
@@ -21064,6 +21613,10 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
@@ -21084,6 +21637,10 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
@@ -21093,6 +21650,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Bessel.WienerLawExists",
@@ -21152,51 +21713,151 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval",
@@ -21767,6 +22428,10 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
    "to": "Main.Theorem52Steps"
   },
@@ -21787,6 +22452,10 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
    "to": "Main.Theorem52Steps"
   },
@@ -21796,6 +22465,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -23176,6 +23849,10 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
@@ -23196,6 +23873,10 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
@@ -23205,6 +23886,10 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction",
@@ -23872,6 +24557,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
@@ -23892,6 +24581,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
@@ -23901,6 +24594,10 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Sobolev.MemW2PlusS",
@@ -24276,6 +24973,10 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
@@ -24296,6 +24997,10 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
   },
   {
@@ -24305,6 +25010,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
   },
   {
    "from": "Sobolev.Theorem21Second",

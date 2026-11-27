@@ -16,6 +16,7 @@ public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Sobolev.Theorem21Second
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
+public import WeakPathwiseIto.Bessel.WienerLawExists
 
 /-! # Steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -807,6 +808,26 @@ theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d �
     _ < ⊤ := ENNReal.mul_lt_top ENNReal.ofReal_lt_top (ENNReal.add_lt_top.2
         ⟨lintegral_mul_rpow_div_lt_top hd hs hp hgm hgp hgs hK,
           lintegral_mul_rpow_div_lt_top' hd hs hp hgm hgp hgs hK⟩)
+
+/-- **Subgoal** (Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely
+continuous measures on `ℝ` is absolutely continuous with respect to the product). -/
+theorem pi_absolutelyContinuous {n : ℕ} {μ ν : Fin n → Measure ℝ} [∀ i, SigmaFinite (μ i)]
+    [∀ i, SigmaFinite (ν i)] (h : ∀ i, μ i ≪ ν i) : Measure.pi μ ≪ Measure.pi ν := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a
+Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}`). -/
+theorem volume_coords_preimage_null (x₀ : Rd d) {N : Set (Rd d)} (hN : volume N = 0) :
+    volume {v : Fin d → ℝ | x₀ + ∑ i, v i • Rd.basisVec i ∈ N} = 0 := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`,
+`ℙ_{x₀}(B(t) ∈ N) = 0` for a Lebesgue-null `N`, since the coordinates of `B(t) - x₀` are
+independent `N(0, t)`). -/
+theorem measure_path_mem_null (x₀ : Rd d) {N : Set (Rd d)} (hN : volume N = 0) {t : ℝ}
+    (ht : 0 < t) (htT : t ≤ T) :
+    CanonicalWienerSpace.P (T := T) x₀ {ω | CanonicalWienerSpace.path ω t ∈ N} = 0 := by
+  sorry
 
 /-- **Subgoal** (Appendix C, Brownian motion has a density at positive times: it a.s. avoids a
 Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0`). -/
