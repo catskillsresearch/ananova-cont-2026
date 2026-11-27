@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:08:09Z",
+ "updated": "2026-11-27T01:08:49Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 18,
-  "done": 221
+  "done": 222
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 50
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 7,
-  "done": 171
+  "done": 172
  },
  "untagged": [],
  "legend": {
@@ -2413,9 +2413,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "abs_inner_increment_le_lintegral",
     "eventually_hessian_close",
     "eventually_sum_abs_le",
     "abs_riemannSum_le",
@@ -2445,12 +2444,11 @@
    ],
    "blockers": [
     "Main.Eq18::theorem_5_1.eq_18",
-    "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
     "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
     "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
     "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
    ],
-   "detail": "5 sorry: abs_inner_increment_le_lintegral, eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
+   "detail": "4 sorry: eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18",
@@ -2524,17 +2522,15 @@
    "parentGoal": "Main.Eq18",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (18), one increment): if `∇²H` varies by at most `ε` on the increment ball `Q` of `a, b` (from `a`), then `|(∇H(b) - ∇H(a)) · (b - a)| ≤ ∫ |∇²H| 𝓛^{n,i}_ω + 2ε |b - a|²`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2544,7 +2540,7 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.eq_18.abs_inner_increment_le_lintegral — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+   "detail": "proved: theorem_5_1.eq_18.abs_inner_increment_le_lintegral — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",

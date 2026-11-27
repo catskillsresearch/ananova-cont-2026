@@ -102,7 +102,21 @@ theorem abs_inner_increment_le_lintegral {H : Rd d → ℝ} (hH : ContDiff ℝ 2
     ENNReal.ofReal |⟪gradient H b - gradient H a, b - a⟫| ≤
       (∫⁻ x, ‖smoothHessian H x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x)) +
         ENNReal.ofReal (2 * ε * ‖b - a‖ ^ 2) := by
-  sorry
+  set m0 := ‖smoothHessian H a‖ with hm0
+  have hup : ∀ z ∈ incrementBall a b, ‖smoothHessian H z‖ ≤ m0 + ε := fun z hz => by
+    have := norm_le_insert' (smoothHessian H z) (smoothHessian H a)
+    linarith [hε z hz]
+  have hlo : ∀ z ∈ incrementBall a b, m0 - ε ≤ ‖smoothHessian H z‖ := fun z hz => by
+    have := norm_le_insert' (smoothHessian H a) (smoothHessian H z)
+    rw [norm_sub_rev] at this
+    linarith [hε z hz]
+  calc ENNReal.ofReal |⟪gradient H b - gradient H a, b - a⟫|
+      ≤ ENNReal.ofReal ((m0 + ε) * ‖b - a‖ ^ 2) :=
+        ENNReal.ofReal_le_ofReal (abs_inner_increment_le hH hup)
+    _ = ENNReal.ofReal ((m0 - ε) * ‖b - a‖ ^ 2 + 2 * ε * ‖b - a‖ ^ 2) := by congr 1; ring
+    _ ≤ ENNReal.ofReal ((m0 - ε) * ‖b - a‖ ^ 2) + ENNReal.ofReal (2 * ε * ‖b - a‖ ^ 2) :=
+        ENNReal.ofReal_add_le
+    _ ≤ _ := add_le_add_left (le_lintegral_piece hlo) _
 
 /-- **Subgoal** (Theorem 5.1 proof, (18), uniform continuity): for `H ∈ C²_b` and `ε > 0`,
 eventually `‖∇²H(z) - ∇²H(ω(t_k))‖ ≤ ε` on every increment ball of `π_n`. -/
