@@ -4487,56 +4487,6 @@ end preciseRepresentative
 
 end
 
-/-! ## `WeakPathwiseIto.Main.Theorem52Steps` -/
-
-run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
-
-section
-
-open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
-
-namespace theorem_5_2
-
-variable {d : ℕ} {T : ℝ}
-
-end theorem_5_2
-
-end
-
-/-! ## `WeakPathwiseIto.Appendix.PotentialProfile` -/
-
-run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
-
-section
-
-open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
-
-/-- The kernel profile `ν` of eq. (33): `ν(r) = 1` for `d = 1`, `1 + log⁺(1/r)` for `d = 2`,
-and `r^{2-d}` for `d ≥ 3`. -/
-def potentialProfile (d : ℕ) (r : ℝ) : ℝ :=
-  if d = 1 then 1 else if d = 2 then 1 + max 0 (Real.log (1 / r)) else r ^ (2 - (d : ℝ))
-
-end
-
-/-! ## `WeakPathwiseIto.Bessel.WienerLawExists` -/
-
-run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
-
-section
-
-open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
-
-namespace CanonicalWienerSpace
-
-variable {d : ℕ} {T : ℝ}
-
-end CanonicalWienerSpace
-
-end
-
 /-! ## `WeakPathwiseIto.Basic.IsCubeOrBall` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
@@ -4975,6 +4925,56 @@ namespace theorem_2_1_second
 variable {d : ℕ}
 
 end theorem_2_1_second
+
+end
+
+/-! ## `WeakPathwiseIto.Main.Theorem52Steps` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace theorem_5_2
+
+variable {d : ℕ} {T : ℝ}
+
+end theorem_5_2
+
+end
+
+/-! ## `WeakPathwiseIto.Appendix.PotentialProfile` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+/-- The kernel profile `ν` of eq. (33): `ν(r) = 1` for `d = 1`, `1 + log⁺(1/r)` for `d = 2`,
+and `r^{2-d}` for `d ≥ 3`. -/
+def potentialProfile (d : ℕ) (r : ℝ) : ℝ :=
+  if d = 1 then 1 else if d = 2 then 1 + max 0 (Real.log (1 / r)) else r ^ (2 - (d : ℝ))
+
+end
+
+/-! ## `WeakPathwiseIto.Bessel.WienerLawExists` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace CanonicalWienerSpace
+
+variable {d : ℕ} {T : ℝ}
+
+end CanonicalWienerSpace
 
 end
 

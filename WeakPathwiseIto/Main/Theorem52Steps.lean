@@ -13,6 +13,8 @@ public import WeakPathwiseIto.Sobolev.IsLebesguePoint
 public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
 public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
+public import WeakPathwiseIto.Sobolev.Theorem21Second
+public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 
 /-! # Steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -36,6 +38,57 @@ namespace WeakPathwiseIto
 namespace theorem_5_2
 
 variable {d : ℕ} {T : ℝ}
+
+/-- **Subgoal** (Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled
+from its first-order weak derivatives). -/
+theorem exists_isWeakGradient {k : ℕ} (hk : 1 ≤ k) {F : Rd d → ℝ} (hF : MemW k 1 F) :
+    ∃ G : Rd d → Rd d, IsWeakGradient F G := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled
+from its second-order weak derivatives). -/
+theorem exists_isWeakHessian {F : Rd d → ℝ} (hF : MemW 2 1 F) :
+    ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞`). -/
+theorem abs_convolution_le {h ψ : Rd d → ℝ} (hh : Integrable h) {C : ℝ}
+    (hC : ∀ x, |ψ x| ≤ C) (x : Rd d) :
+    |∫ y, h y * ψ (x - y)| ≤ (∫ y, |h y|) * C := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of
+order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`). -/
+theorem contDiffBounded_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F) {G : Rd d → Rd d}
+    (hG : IsWeakGradient F G) {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H)
+    {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
+    ContDiffBounded 2 (fun x => ∫ y, F y * ψ (x - y)) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: `D^0 f = f` weakly). -/
+theorem isWeakDerivative_zero {f : Rd d → ℝ} (hf : LocallyIntegrable f) :
+    IsWeakDerivative 0 f f := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: the classical partial derivative of a `C¹` function
+is its weak derivative, by integration by parts). -/
+theorem isWeakDerivative_single_of_contDiff {f : Rd d → ℝ} (hf : ContDiff ℝ 1 f) (i : Fin d) :
+    IsWeakDerivative (Pi.single i 1) f (fun x => fderiv ℝ f x (Rd.basisVec i)) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and
+`e_i + e_j`). -/
+theorem order_le_two_cases {α : Fin d → ℕ} (hα : IsWeakDerivative.order α ≤ 2) :
+    α = 0 ∨ (∃ i, α = Pi.single i 1) ∨ ∃ i j, α = Pi.single i 1 + Pi.single j 1 := by
+  sorry
+
+/-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality
+for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives). -/
+theorem memW_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F) {G : Rd d → Rd d}
+    (hG : IsWeakGradient F G) {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H)
+    {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
+    MemW 2 1 (fun x => ∫ y, F y * ψ (x - y)) := by
+  sorry
 
 /-- **Subgoal** (Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}`). -/
 theorem mollify_mem {F : Rd d → ℝ} (hF : MemW 2 1 F) {ψ : Rd d → ℝ}

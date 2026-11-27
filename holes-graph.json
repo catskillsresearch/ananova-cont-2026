@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:10:47Z",
+ "updated": "2026-11-27T11:13:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 40,
  "counts": {
   "open": 7,
-  "blocked": 36,
+  "blocked": 44,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 26,
+  "blocked": 34,
   "done": 239
  },
  "untagged": [],
@@ -4109,8 +4109,16 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 9,
+   "sorryCount": 17,
    "holes": [
+    "exists_isWeakGradient",
+    "exists_isWeakHessian",
+    "abs_convolution_le",
+    "contDiffBounded_convolution",
+    "isWeakDerivative_zero",
+    "isWeakDerivative_single_of_contDiff",
+    "order_le_two_cases",
+    "memW_convolution",
     "mollify_mem",
     "tendsto_mollify_of_isLebesguePoint",
     "isBrownianPolar_nonLebesgue",
@@ -4122,7 +4130,7 @@
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 9
+    "theorem": 17
    },
    "paperGoal": false,
    "verified": false,
@@ -4133,34 +4141,91 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+    "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+    "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+    "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+    "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+    "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
     "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+    "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+    "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+    "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+    "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+    "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+    "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "9 sorry: mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "17 sorry: exists_isWeakGradient, exists_isWeakHessian, abs_convolution_le, contDiffBounded_convolution, isWeakDerivative_zero, isWeakDerivative_single_of_contDiff, order_le_two_cases, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "label": "abs_convolution_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.abs_convolution_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.abs_convolution_le — subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
@@ -4188,10 +4253,12 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
@@ -4225,16 +4292,57 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.ae_forall_path_not_mem — subgoal of Appendix C, Brownian motion does not enter a polar set at positive times (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "label": "contDiffBounded_convolution",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.contDiffBounded_convolution"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.contDiffBounded_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
@@ -4262,16 +4370,96 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "label": "exists_isWeakGradient",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.exists_isWeakGradient"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.exists_isWeakGradient — subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "label": "exists_isWeakHessian",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.exists_isWeakHessian"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.exists_isWeakHessian — subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
@@ -4299,10 +4487,12 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
@@ -4336,16 +4526,96 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.isBrownianPolar_nonLebesgue — subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "label": "isWeakDerivative_single_of_contDiff",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.isWeakDerivative_single_of_contDiff"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.isWeakDerivative_single_of_contDiff — subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "label": "isWeakDerivative_zero",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `D^0 f = f` weakly",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.isWeakDerivative_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `D^0 f = f` weakly).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.isWeakDerivative_zero — subgoal of Appendix C, mollification: `D^0 f = f` weakly (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
@@ -4373,16 +4643,57 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.lintegral_rpow_sub_le — subgoal of Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "label": "memW_convolution",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.memW_convolution"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.memW_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
@@ -4410,16 +4721,57 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "label": "order_le_two_cases",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.order_le_two_cases"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
@@ -4447,10 +4799,12 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
@@ -4484,10 +4838,12 @@
     "Basic.SmoothHessian",
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
@@ -10172,6 +10528,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -10182,7 +10543,22 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -10197,12 +10573,32 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -11262,6 +11658,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -11272,7 +11673,22 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -11287,12 +11703,32 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -11777,6 +12213,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -11787,7 +12228,22 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -11802,12 +12258,32 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -11837,6 +12313,11 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -11847,7 +12328,22 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -11862,12 +12358,32 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -12676,6 +13192,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -12686,7 +13207,22 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -12701,12 +13237,32 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14057,6 +14613,96 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44",
    "kind": "hard"
   },
@@ -15287,6 +15933,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -15297,7 +15948,22 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -15312,12 +15978,32 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -16027,6 +16713,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -16037,7 +16728,22 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -16052,12 +16758,32 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -16407,6 +17133,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -16417,7 +17148,22 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -16432,12 +17178,32 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -16477,6 +17243,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "kind": "hard"
   },
@@ -16487,7 +17258,22 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "kind": "hard"
   },
   {
@@ -16502,12 +17288,32 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
   {
@@ -16947,6 +17753,96 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Sobolev.Theorem21",
    "kind": "hard"
   },
@@ -17354,42 +18250,6 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -17917,42 +18777,6 @@
   },
   {
    "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
-  },
-  {
-   "from": "Basic.SmoothHessian",
    "to": "Occupation.ApproximatingSequence"
   },
   {
@@ -18173,6 +18997,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -18181,7 +19009,19 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -18193,11 +19033,27 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -18217,6 +19073,10 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -18225,7 +19085,19 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
   },
   {
    "from": "Bessel.Theorem29",
@@ -18237,11 +19109,27 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
   },
   {
    "from": "Bessel.Theorem29",
@@ -18844,6 +19732,10 @@
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
    "to": "Main.Theorem52Steps"
   },
@@ -18852,7 +19744,19 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -18864,11 +19768,27 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -20505,42 +21425,6 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
-  },
-  {
-   "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
   },
   {
@@ -20717,6 +21601,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -20725,7 +21613,19 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -20737,11 +21637,27 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -20762,42 +21678,6 @@
   {
    "from": "Sobolev.MemWLoc",
    "to": "Main.Remark54"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
-  },
-  {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
   },
   {
    "from": "Sobolev.PreciseRepresentative",
@@ -21057,59 +21937,71 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
   },
   {
    "from": "Sobolev.Theorem21Second",
