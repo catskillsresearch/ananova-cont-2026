@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:12:52Z  
-**`sorry` occurrences:** 31 · 6 open · 17 blocked · 227 done (goals + subgoals) · goals {'open': 5, 'blocked': 10, 'done': 51} · subgoals {'open': 1, 'blocked': 7, 'done': 176} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:37:09Z  
+**`sorry` occurrences:** 44 · 10 open · 28 blocked · 227 done (goals + subgoals) · goals {'open': 4, 'blocked': 13, 'done': 51} · subgoals {'open': 6, 'blocked': 15, 'done': 176} · 17 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -16,7 +16,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | Status | Module | Paper | `sorry` | Holes |
 |---|---|---|---|---|
-| open | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
+| blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `theorem_5_2`, `theorem_5_2_deterministic` |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `proposition_5_3` |
 
@@ -25,7 +25,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -112,6 +111,19 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
+| open | `Main.SmoothItoAt::theorem_5_1.ito_at` | subgoal of Theorem 5.1 proof, eq. (21 | 1 |
+| open | `Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le` | subgoal of Theorem 5.1 proof, (21 | 1 |
+| open | `Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq` | subgoal of Theorem 5.1 proof, (21 | 1 |
+| open | `Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped` | subgoal of Theorem 5.1 proof, (21 | 1 |
+| open | `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` | subgoal of Theorem 5.1 proof, (21 | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le` | subgoal of Theorem 5.1 proof, eqs. (19 | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub` | subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub` | subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique` | subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae` | subgoal of Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub` | subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.tendsto_covariation` | subgoal of Theorem 5.1 proof, (20 | 1 |
+| blocked | `Main.Theorem51Steps::theorem_5_1.tendsto_integral` | subgoal of Theorem 5.1 proof, (22 | 1 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine` | subgoal of Eq. (7 | 0 |
@@ -308,7 +320,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
-| open | `Main.Theorem51` | Theorem 5.1 | 3 |  |
+| blocked | `Main.SmoothItoAt` |  | 5 | `Main.SmoothItoAt::theorem_5_1.ito_at`, `Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le`, `Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq`, `Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped`, `Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid` |
+| blocked | `Main.Theorem51` | Theorem 5.1 | 3 | `Main.Theorem51Steps` |
+| blocked | `Main.Theorem51Steps` |  | 8 | `Main.SmoothItoAt`, `Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le`, `Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub`, `Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub`, `Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique`, `Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae`, `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub`, `Main.Theorem51Steps::theorem_5_1.tendsto_covariation`, `Main.Theorem51Steps::theorem_5_1.tendsto_integral` |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |

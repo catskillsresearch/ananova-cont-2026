@@ -1,20 +1,20 @@
 {
- "updated": "2026-11-27T01:12:52Z",
+ "updated": "2026-11-27T01:37:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 44,
  "counts": {
-  "open": 6,
-  "blocked": 17,
+  "open": 10,
+  "blocked": 28,
   "done": 227
  },
  "goalCounts": {
-  "open": 5,
-  "blocked": 10,
+  "open": 4,
+  "blocked": 13,
   "done": 51
  },
  "subgoalCounts": {
-  "open": 1,
-  "blocked": 7,
+  "open": 6,
+  "blocked": 15,
   "done": 176
  },
  "untagged": [],
@@ -2840,6 +2840,198 @@
    "detail": "3 sorry: remark_5_4_dim_one, remark_5_4_not_implied, remark_5_4_sufficient"
   },
   {
+   "id": "Main.SmoothItoAt",
+   "label": "SmoothItoAt",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": null,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 5,
+   "holes": [
+    "abs_trapezoid_le",
+    "stopped_sum_eq",
+    "sub_eq_sum_stopped",
+    "tendsto_trapezoid",
+    "ito_at"
+   ],
+   "declKinds": {
+    "theorem": 5
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.SmoothItoAt::theorem_5_1.ito_at",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt::theorem_5_1.ito_at",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+    "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
+   ],
+   "detail": "5 sorry: abs_trapezoid_le, stopped_sum_eq, sub_eq_sum_stopped, tendsto_trapezoid, ito_at"
+  },
+  {
+   "id": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "label": "ito_at",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, eq. (21",
+   "parentGoal": "Main.SmoothItoAt",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.ito_at"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, eq. (21)): the smooth pathwise Itô formula at every `t ∈ [0,T]`: for `f ∈ C²_b` the left Riemann sums converge to `f(ω(t)) - f(ω(0)) - ½ [∇f(ω), ω]_π(t)`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.ito_at — subgoal of Theorem 5.1 proof, eq. (21 (in Main.SmoothItoAt)"
+  },
+  {
+   "id": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "label": "abs_trapezoid_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (21",
+   "parentGoal": "Main.SmoothItoAt",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.ito_at.abs_trapezoid_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (21), trapezoid rule): if `‖∇²f(z) - ∇²f(x)‖ ≤ ε` on the segment `[x, y]`, then `|f(y) - f(x) - ∇f(x)·(y-x) - ½(∇f(y) - ∇f(x))·(y-x)| ≤ 2ε|y-x|²`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.ito_at.abs_trapezoid_le — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+  },
+  {
+   "id": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "label": "stopped_sum_eq",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (21",
+   "parentGoal": "Main.SmoothItoAt",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.ito_at.stopped_sum_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (21), splitting a stopped sum): for `φ` vanishing on the diagonal, `∑_k φ(ω(t_k ∧ t), ω(t_{k+1} ∧ t))` is the sum over complete intervals `t_{k+1} ≤ t` plus the straddling interval `t_k < t < t_{k+1}`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.ito_at.stopped_sum_eq — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+  },
+  {
+   "id": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "label": "sub_eq_sum_stopped",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (21",
+   "parentGoal": "Main.SmoothItoAt",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.ito_at.sub_eq_sum_stopped"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (21), telescoping): for `t ∈ [0,T]`, `f(ω(t)) - f(ω(0)) = ∑_k (f(ω(t_{k+1} ∧ t)) - f(ω(t_k ∧ t)))`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.ito_at.sub_eq_sum_stopped — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+  },
+  {
+   "id": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "label": "tendsto_trapezoid",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (21",
+   "parentGoal": "Main.SmoothItoAt",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/SmoothItoAt.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.ito_at.tendsto_trapezoid"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (21), the trapezoid remainders vanish): for `f ∈ C²_b` and `t ∈ [0,T]`, `∑_k (f(b_k) - f(a_k) - ∇f(a_k)·(b_k - a_k) - ½(∇f(b_k) - ∇f(a_k))·(b_k - a_k)) → 0` with `a_k = ω(t_k ∧ t)`, `b_k = ω(t_{k+1} ∧ t)`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.ito_at.tendsto_trapezoid — subgoal of Theorem 5.1 proof, (21 (in Main.SmoothItoAt)"
+  },
+  {
    "id": "Main.Theorem51",
    "label": "Theorem51",
    "section": "Main",
@@ -2858,16 +3050,354 @@
    "paperGoal": true,
    "verified": false,
    "kind": "goal",
-   "status": "open",
+   "status": "blocked",
    "deps": [
+    "Main.Theorem51Steps",
     "Main.WeakCovariation",
     "Main.WeakPathwiseIntegral",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Sobolev.IsWeakHessian"
    ],
-   "blockers": [],
+   "blockers": [
+    "Main.Theorem51Steps"
+   ],
    "detail": "3 sorry: theorem_5_1_tendsto, theorem_5_1_unique, theorem_5_1"
+  },
+  {
+   "id": "Main.Theorem51Steps",
+   "label": "Theorem51Steps",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": null,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 8,
+   "holes": [
+    "contDiffBounded_sub",
+    "gradient_smoothHessian_sub",
+    "pathwiseCovariation_sub",
+    "isWeakDerivative_ae_unique",
+    "isWeakHessian_ae",
+    "abs_covariation_sub_le",
+    "tendsto_covariation",
+    "tendsto_integral"
+   ],
+   "declKinds": {
+    "theorem": 8
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+    "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+    "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+    "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+    "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+    "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+    "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+    "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt",
+    "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+    "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+    "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+    "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+    "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+    "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+    "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+    "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
+   ],
+   "detail": "8 sorry: contDiffBounded_sub, gradient_smoothHessian_sub, pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "label": "abs_covariation_sub_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, eqs. (19",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.abs_covariation_sub_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, eqs. (19) and (23)): for `C²_b` functions `F, G` and a.e.-equal measurable `H, H'`, `|[∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)| ≤ C_d (‖∇²F - H‖_{W^0} + ‖∇²G - H'‖_{W^0})`.",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.abs_covariation_sub_le — subgoal of Theorem 5.1 proof, eqs. (19 (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "label": "contDiffBounded_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k`",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.contDiffBounded_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k`).",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.contDiffBounded_sub — subgoal of Theorem 5.1 proof: `C²_b` is closed under differences, used for `F_m - F_k` (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "label": "gradient_smoothHessian_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²`",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.gradient_smoothHessian_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²`).",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.gradient_smoothHessian_sub — subgoal of Theorem 5.1 proof: linearity of `∇` and `∇²` on `C²` (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "label": "isWeakDerivative_ae_unique",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.isWeakDerivative_ae_unique"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations).",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.isWeakDerivative_ae_unique — subgoal of Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the fundamental lemma of the calculus of variations (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "label": "isWeakHessian_ae",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.isWeakHessian_ae"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable).",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.isWeakHessian_ae — subgoal of Theorem 5.1 proof, uniqueness: weak Hessians are unique a.e. and a.e.-strongly measurable (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "label": "pathwiseCovariation_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b`",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.pathwiseCovariation_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof: linearity of the covariation on `C²_b`): `[∇(F - G)(ω), ω]_π(t) = [∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)`.",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.pathwiseCovariation_sub — subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "label": "tendsto_covariation",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (20",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.tendsto_covariation"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (20) and (15)): the covariations along an approximating sequence form a Cauchy sequence, hence converge to `[∇F(ω), ω]_π(t)`.",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.tendsto_covariation — subgoal of Theorem 5.1 proof, (20 (in Main.Theorem51Steps)"
+  },
+  {
+   "id": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "label": "tendsto_integral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (22",
+   "parentGoal": "Main.Theorem51Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.tendsto_integral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (22) and (14)): the pathwise integrals along an approximating sequence converge to `F(ω(t)) - F(ω(0)) - ½ [∇F(ω), ω]_π(t)`.",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18",
+    "Main.SmoothItoAt",
+    "Main.WeakCovariation",
+    "Main.WeakPathwiseIntegral",
+    "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
+    "Smooth.Proposition31"
+   ],
+   "blockers": [
+    "Main.SmoothItoAt"
+   ],
+   "detail": "sorry: theorem_5_1.tendsto_integral — subgoal of Theorem 5.1 proof, (22 (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem52",
@@ -8513,6 +9043,51 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Eq18::theorem_5_1.eq_18",
    "to": "Main.Eq18",
    "kind": "subgoal"
@@ -8658,9 +9233,124 @@
    "kind": "hard"
   },
   {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "to": "Main.SmoothItoAt",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "to": "Main.SmoothItoAt",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "to": "Main.SmoothItoAt",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "to": "Main.SmoothItoAt",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "to": "Main.SmoothItoAt",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem51",
    "to": "Occupation.Remark45",
    "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem51",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "to": "Main.Theorem51Steps",
+   "kind": "subgoal"
   },
   {
    "from": "Main.Theorem52",
@@ -8714,7 +9404,82 @@
   },
   {
    "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
    "to": "Main.Theorem51",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
    "kind": "hard"
   },
   {
@@ -8725,6 +9490,51 @@
   {
    "from": "Main.WeakPathwiseIntegral",
    "to": "Main.Theorem51",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
    "kind": "hard"
   },
   {
@@ -9095,6 +9905,81 @@
   {
    "from": "Occupation.Lemma42",
    "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
    "kind": "hard"
   },
   {
@@ -9879,6 +10764,81 @@
   },
   {
    "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
    "to": "Smooth.Corollary32",
    "kind": "hard"
   },
@@ -10545,6 +11505,81 @@
   {
    "from": "Smooth.Proposition31",
    "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.Proposition31",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
    "kind": "hard"
   },
   {
@@ -12111,6 +13146,38 @@
    "to": "Main.Theorem52"
   },
   {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation"
+  },
+  {
+   "from": "Main.Eq18",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
+  },
+  {
    "from": "Main.Eq18::theorem_5_1.eq_18",
    "to": "Main.Eq18"
   },
@@ -12219,8 +13286,96 @@
    "to": "Main.Proposition53"
   },
   {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation"
+  },
+  {
+   "from": "Main.SmoothItoAt",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at",
+   "to": "Main.SmoothItoAt"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le",
+   "to": "Main.SmoothItoAt"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq",
+   "to": "Main.SmoothItoAt"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped",
+   "to": "Main.SmoothItoAt"
+  },
+  {
+   "from": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid",
+   "to": "Main.SmoothItoAt"
+  },
+  {
    "from": "Main.Theorem51",
    "to": "Occupation.Remark45"
+  },
+  {
+   "from": "Main.Theorem51Steps",
+   "to": "Main.Theorem51"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
+   "to": "Main.Theorem51Steps"
+  },
+  {
+   "from": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
+   "to": "Main.Theorem51Steps"
   },
   {
    "from": "Main.Theorem52",
@@ -12260,7 +13415,23 @@
   },
   {
    "from": "Main.WeakCovariation",
-   "to": "Main.Theorem51"
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
   },
   {
    "from": "Main.WeakPathwiseIntegral",
@@ -12268,7 +13439,35 @@
   },
   {
    "from": "Main.WeakPathwiseIntegral",
-   "to": "Main.Theorem51"
+   "to": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation"
+  },
+  {
+   "from": "Main.WeakPathwiseIntegral",
+   "to": "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
   },
   {
    "from": "Occupation.ApproximatingSequence",
@@ -13096,6 +14295,26 @@
   },
   {
    "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
    "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq"
   },
   {
@@ -13129,10 +14348,6 @@
   {
    "from": "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder",
    "to": "Smooth.FollmerItoFormula"
-  },
-  {
-   "from": "Smooth.HasQuadraticVariation",
-   "to": "Main.Theorem51"
   },
   {
    "from": "Smooth.HasQuadraticVariation",
@@ -13453,10 +14668,6 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem51"
   },
   {
    "from": "Sobolev.IsWeakHessian",

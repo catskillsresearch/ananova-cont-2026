@@ -10,6 +10,7 @@ public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Main.WeakPathwiseIntegral
 public import WeakPathwiseIto.Main.WeakCovariation
+public import WeakPathwiseIto.Main.Theorem51Steps
 
 @[expose] public section
 
