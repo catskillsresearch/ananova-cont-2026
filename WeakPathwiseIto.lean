@@ -29,6 +29,7 @@ public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
 public import WeakPathwiseIto.Main.Remark54
+public import WeakPathwiseIto.Main.Eq18
 public import WeakPathwiseIto.Main.Theorem51
 public import WeakPathwiseIto.Main.Theorem52
 public import WeakPathwiseIto.Main.WeakCovariation

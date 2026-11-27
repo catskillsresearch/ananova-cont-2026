@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T01:02:31Z",
+ "updated": "2026-11-27T01:05:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 38,
  "counts": {
-  "open": 6,
-  "blocked": 17,
+  "open": 13,
+  "blocked": 18,
   "done": 219
  },
  "goalCounts": {
   "open": 5,
-  "blocked": 10,
+  "blocked": 11,
   "done": 50
  },
  "subgoalCounts": {
-  "open": 1,
+  "open": 8,
   "blocked": 7,
   "done": 169
  },
@@ -2405,6 +2405,264 @@
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.Eq18",
+   "label": "Eq18",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": null,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 7,
+   "holes": [
+    "abs_inner_increment_le",
+    "le_lintegral_piece",
+    "abs_inner_increment_le_lintegral",
+    "eventually_hessian_close",
+    "eventually_sum_abs_le",
+    "abs_riemannSum_le",
+    "eq_18"
+   ],
+   "declKinds": {
+    "theorem": 7
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.Eq18::theorem_5_1.eq_18",
+    "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+    "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+    "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+    "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+    "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+    "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [
+    "Main.Eq18::theorem_5_1.eq_18",
+    "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+    "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+    "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+    "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+    "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+    "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
+   ],
+   "detail": "7 sorry: abs_inner_increment_le, le_lintegral_piece, abs_inner_increment_le_lintegral, eventually_hessian_close, eventually_sum_abs_le, abs_riemannSum_le, eq_18"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18",
+   "label": "eq_18",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, eq. (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, eq. (18)): for `H ∈ C²_b(ℝ^d)`, `|[∇H(ω), ω]_π(t)| ≤ C_d ‖∇²H‖_{W^0_{ω,π}}` (proved directly; see `eq_18`).",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18 — subgoal of Theorem 5.1 proof, eq. (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "label": "abs_inner_increment_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.abs_inner_increment_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), mean value step): if `‖∇²H‖ ≤ M` on the increment ball `Q` of `a, b`, then `|(∇H(b) - ∇H(a)) · (b - a)| ≤ M |b - a|²`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.abs_inner_increment_le — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "label": "abs_inner_increment_le_lintegral",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), one increment): if `∇²H` varies by at most `ε` on the increment ball `Q` of `a, b` (from `a`), then `|(∇H(b) - ∇H(a)) · (b - a)| ≤ ∫ |∇²H| 𝓛^{n,i}_ω + 2ε |b - a|²`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.abs_inner_increment_le_lintegral — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "label": "abs_riemannSum_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.abs_riemannSum_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), the stopped sum): for `H ∈ C²_b` and `t ∈ [0,T]`, `|∑_k (∇H(ω(t_{k+1} ∧ t)) - ∇H(ω(t_k ∧ t))) · (ω(t_{k+1} ∧ t) - ω(t_k ∧ t))|` is at most the full sum `∑_k |(∇H(ω(t_{k+1})) - ∇H(ω(t_k))) · δω_k|` plus a term `→ 0` (the straddling interval).",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.abs_riemannSum_le — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "label": "eventually_hessian_close",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.eventually_hessian_close"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), uniform continuity): for `H ∈ C²_b` and `ε > 0`, eventually `‖∇²H(z) - ∇²H(ω(t_k))‖ ≤ ε` on every increment ball of `π_n`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.eventually_hessian_close — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "label": "eventually_sum_abs_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.eventually_sum_abs_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), summing the increments): for `H ∈ C²_b` and `ε > 0`, eventually `∑_k |(∇H(ω(t_{k+1})) - ∇H(ω(t_k))) · δω_k| ≤ ∫ |∇²H| 𝓛^{π_n}_ω + ε`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.eventually_sum_abs_le — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+  },
+  {
+   "id": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "label": "le_lintegral_piece",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.1 proof, (18",
+   "parentGoal": "Main.Eq18",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Eq18.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_1.eq_18.le_lintegral_piece"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.1 proof, (18), lower bound by the occupation density): if `m ≤ ‖G‖` on the increment ball `Q` of `a, b`, then `m |b - a|² ≤ ∫ |G| 𝓛^{n,i}_ω`.",
+   "status": "open",
+   "deps": [
+    "Main.WeakCovariation",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.IsWeakHessian"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_1.eq_18.le_lintegral_piece — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
   },
   {
    "id": "Main.GeometricMeshDecay",
@@ -8261,6 +8519,41 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Eq18::theorem_5_1.eq_18",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "to": "Main.Eq18",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel",
    "kind": "hard"
@@ -8378,6 +8671,46 @@
   {
    "from": "Main.Theorem52",
    "to": "Main.Proposition53",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
    "kind": "hard"
   },
   {
@@ -9522,6 +9855,46 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Main.Theorem51",
    "kind": "hard"
   },
@@ -9704,6 +10077,46 @@
    "from": "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone",
    "to": "Smooth.HasScalarQuadraticVariation",
    "kind": "subgoal"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "kind": "hard"
   },
   {
    "from": "Smooth.PathOscillation",
@@ -10168,6 +10581,46 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem23",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
    "kind": "hard"
   },
   {
@@ -11544,6 +11997,34 @@
    "to": "Main.Theorem52"
   },
   {
+   "from": "Main.Eq18::theorem_5_1.eq_18",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "to": "Main.Eq18"
+  },
+  {
+   "from": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "to": "Main.Eq18"
+  },
+  {
    "from": "Main.GeometricMeshDecay",
    "to": "Appendix.HeatKernel::heatKernel.div_scaling"
   },
@@ -11630,6 +12111,34 @@
   {
    "from": "Main.Theorem52",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
+  },
+  {
+   "from": "Main.WeakCovariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
   },
   {
    "from": "Main.WeakCovariation",
@@ -12481,6 +12990,34 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Main.Theorem51"
   },
   {
@@ -12774,6 +13311,34 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem23"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
   },
   {
    "from": "Sobolev.IsWeakHessian",

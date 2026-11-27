@@ -105,6 +105,19 @@ own text.
   Lebesgue-point hypotheses above. The paper uses this estimate only in the proof of (18) in
   Theorem 5.1; that step is replaced by a direct proof for $C^2_b$ functions (see "Theorem 5.1:
   proof of (18)").
+* **Theorem 5.1: proof of (18) (departure from the paper).** The paper obtains (18),
+  $|[\nabla H(\omega),\omega]_\pi(t)| \le C_d \|\nabla^2 H\|_{W^0_{\omega,\pi}}$ for
+  $H \in C^2_b \cap W^{2,1}$, by applying the second estimate of Theorem 2.1 to each increment;
+  as stated that estimate is false (see above), and the per-increment bound
+  $|(\nabla H(b)-\nabla H(a))\cdot(b-a)| \le C_d\int|\nabla^2H|\,\mathcal L^{n,i}_\omega$ fails in
+  general. (18) itself holds and is proved directly (`Main/Eq18.lean`, `theorem_5_1.eq_18`):
+  by (6) and uniform continuity of $\nabla^2 H$ near the compact set $\omega([0,T])$,
+  $\nabla^2 H$ varies by at most $\varepsilon$ on each increment ball $Q^n_i$ for large $n$, so
+  $|(\nabla H(b)-\nabla H(a))\cdot(b-a)| \le (|\nabla^2H(a)|+\varepsilon)|b-a|^2
+  \le \int|\nabla^2H|\,\mathcal L^{n,i}_\omega + 2\varepsilon|b-a|^2$ using
+  $\int\mathcal L^{n,i}_\omega = |b-a|^2$ and $\operatorname{supp}\mathcal L^{n,i}_\omega \subset Q^n_i$;
+  summing, using finite quadratic variation and letting $\varepsilon \to 0$ gives (18) (with
+  $C_d = 1$). The rest of the proof ((19)–(25)) follows the paper.
 * **Theorem 2.6** states both the equality of spaces and the equivalence of the norms.
 * **Quadratic variation** (eq. (5)): the limit exists for every $t \in [0,T]$ and
   $t \mapsto [x]_\pi(t)$ is continuous and increasing **on $[0,T]$** (`ContinuousOn`,
