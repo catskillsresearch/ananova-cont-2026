@@ -780,7 +780,6 @@
   ],
   "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1580,5 +1579,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T15:47:42Z"
+ "generated": "2026-11-27T16:05:08Z"
 }

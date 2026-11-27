@@ -903,7 +903,87 @@ theorem tendsto_mollify_hessian {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {F : Rd d 
         ‖‖smoothHessian (fun z => ∫ w, F w * ψ n (z - w)) x - H x‖ -
           ‖smoothHessian (fun z => ∫ w, F w * ψ n (z - w)) y - H y‖‖ₑ ^ p /
             edist x y ^ (s * p + d)) atTop (𝓝 0) := by
-  sorry
+  have : CompleteSpace (Rd d →L[ℝ] Rd d) := FiniteDimensional.complete ℝ _
+  have hp1 : 1 ≤ p := hp.le
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hr0 : (0 : ℝ) < s * p + d := by positivity
+  obtain ⟨G, hG⟩ := exists_isWeakGradient_of_memW (k := 2) (by norm_num) hF.1
+  have hψc : ∀ n, Continuous (ψ n) := fun n => (hψ n).continuous
+  have hψk : ∀ n, HasCompactSupport (ψ n) := fun n =>
+    (isCompact_closedBall (0 : Rd d) _).of_isClosed_subset isClosed_closure
+      (closure_minimal ((hψs n).trans Metric.ball_subset_closedBall) Metric.isClosed_closedBall)
+  have hsH : ∀ n x, smoothHessian (fun z => ∫ y, F y * ψ n (z - y)) x =
+      ∫ y, ψ n (x - y) • H y := fun n x =>
+    smoothHessian_convolution hG hH (hψ n) (hψk n) x
+  have hHL : MemLp H (ENNReal.ofReal p) := memLp_of_isWeakHessian hF.1 hH
+  have hHm : AEStronglyMeasurable H volume := hHL.aestronglyMeasurable
+  simp_rw [hsH]
+  refine ⟨tendsto_eLpNorm_mollify_sub hp1 hHL hψc hψ0 hψ1 hψs, ?_⟩
+  -- the mollifier defect `A n` of `H`
+  set A : ℕ → Rd d → (Rd d →L[ℝ] Rd d) := fun n x => (∫ y, ψ n (x - y) • H y) - H x
+  have hAm : ∀ n, AEStronglyMeasurable (A n) volume := by
+    intro n
+    have hconv : (fun x => ∫ y, ψ n (x - y) • H y) =
+        (ψ n ⋆[ContinuousLinearMap.lsmul ℝ ℝ, volume] H) := by
+      funext x; rw [convolution_lsmul_swap]
+    have hc : Continuous fun x => ∫ y, ψ n (x - y) • H y := by
+      rw [hconv]
+      exact (hψk n).continuous_convolution_left _ (hψc n)
+        (hHL.locallyIntegrable (ENNReal.one_le_ofReal.2 hp1))
+    exact hc.aestronglyMeasurable.sub hHm
+  set r : ℝ := s * p + d
+  -- reverse triangle inequality, then difference coordinates
+  have hle : ∀ n, ∫⁻ x, ∫⁻ y, ‖‖A n x‖ - ‖A n y‖‖ₑ ^ p / edist x y ^ r ≤
+      ∫⁻ h, (∫⁻ x, ‖A n (x + h) - A n x‖ₑ ^ p) / ‖h‖ₑ ^ r := by
+    intro n
+    rw [← lintegral_gagliardo_eq_shift (hAm n) p r]
+    refine lintegral_mono fun x => lintegral_mono fun y => ?_
+    gcongr
+    exact enorm_le_iff_norm_le.2 (by simpa [Real.norm_eq_abs] using abs_norm_sub_norm_le _ _)
+  -- dominated convergence in the shift `h`
+  have hbound_eq : ∫⁻ h, 2 ^ p * (∫⁻ x, ‖H (x + h) - H x‖ₑ ^ p) / ‖h‖ₑ ^ r =
+      2 ^ p * ∫⁻ x, ∫⁻ y, ‖H x - H y‖ₑ ^ p / edist x y ^ r := by
+    rw [lintegral_gagliardo_eq_shift hHm p r, ← lintegral_const_mul' _ _
+      (ENNReal.rpow_ne_top_of_nonneg hp0.le ENNReal.ofNat_ne_top)]
+    simp_rw [mul_div_assoc]
+  obtain ⟨H', hH', hfin⟩ := hF.2
+  have hae := ae_eq_of_isWeakHessian hH hH'
+  have hcongr : ∫⁻ x, ∫⁻ y, ‖H x - H y‖ₑ ^ p / edist x y ^ r =
+      ∫⁻ x, ∫⁻ y, ‖H' x - H' y‖ₑ ^ p / edist x y ^ r := by
+    refine lintegral_congr_ae ?_
+    filter_upwards [hae] with x hx
+    refine lintegral_congr_ae ?_
+    filter_upwards [hae] with y hy
+    rw [hx, hy]
+  have hdom : Tendsto (fun n => ∫⁻ h, (∫⁻ x, ‖A n (x + h) - A n x‖ₑ ^ p) / ‖h‖ₑ ^ r)
+      atTop (𝓝 0) := by
+    have h0 : (∫⁻ _h : Rd d, (0 : ℝ≥0∞)) = 0 := lintegral_zero
+    rw [← h0]
+    refine tendsto_lintegral_of_dominated_convergence'
+      (fun h => 2 ^ p * (∫⁻ x, ‖H (x + h) - H x‖ₑ ^ p) / ‖h‖ₑ ^ r) (fun n => ?_)
+      (fun n => Eventually.of_forall fun h => ?_) ?_ ?_
+    · have hj : AEMeasurable (fun q : Rd d × Rd d => ‖A n (q.1 + q.2) - A n q.1‖ₑ ^ p)
+          (volume.prod volume) :=
+        ((((hAm n).comp_snd.comp_measurePreserving (measurePreserving_prod_add volume volume)).sub
+          (hAm n).comp_fst).enorm.pow_const p)
+      exact hj.lintegral_prod_left'.div (continuous_enorm.measurable.pow_const r).aemeasurable
+    · dsimp only
+      exact ENNReal.div_le_div_right (lintegral_shift_mollify_sub_le hp1 hHL hψc hψ0 hψ1 hψs n h) _
+    · rw [hbound_eq, hcongr]
+      exact ENNReal.mul_ne_top (ENNReal.rpow_ne_top_of_nonneg hp0.le ENNReal.ofNat_ne_top)
+        hfin.ne
+    · refine Eventually.of_forall fun h => ?_
+      by_cases hh : h = 0
+      · subst hh
+        simp [hp0]
+        exact Or.inl (Or.inl (by rw [enorm_eq_nnnorm]; simp))
+      have hb : ‖h‖ₑ ^ r ≠ 0 :=
+        (ENNReal.rpow_pos (enorm_pos.2 hh) enorm_ne_top).ne'
+      have := ENNReal.Tendsto.div_const
+        (tendsto_lintegral_shift_mollify_sub hp1 hHL hψc hψ0 hψ1 hψs h) (Or.inr hb)
+      rwa [ENNReal.zero_div] at this
+  exact tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hdom
+    (fun n => bot_le) hle
 
 /-- **Subgoal** (Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1`). -/
 theorem eLpNorm_maximal_le {p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f : Rd d → ℝ,

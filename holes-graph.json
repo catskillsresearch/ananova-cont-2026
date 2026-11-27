@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T15:47:43Z",
+ "updated": "2026-11-27T16:05:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 25,
+ "sorryCount": 24,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 11,
-  "done": 367
+  "done": 368
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 62
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 1,
-  "done": 305
+  "done": 306
  },
  "untagged": [],
  "legend": {
@@ -4538,10 +4538,9 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "isBrownianPolar_nonLebesgue",
-    "tendsto_mollify_hessian"
+    "isBrownianPolar_nonLebesgue"
    ],
    "declKinds": {
     "theorem": 50
@@ -4618,10 +4617,9 @@
    "blockers": [
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
-    "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
-    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
+    "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
    ],
-   "detail": "2 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian"
+   "detail": "1 sorry: isBrownianPolar_nonLebesgue"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -6613,10 +6611,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.tendsto_mollify_hessian"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -6625,11 +6621,10 @@
    "doc": "**Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}`).",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -6645,11 +6640,8 @@
     "Sobolev.PreciseRepresentative",
     "Sobolev.Theorem21Second"
    ],
-   "blockers": [
-    "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
-   ],
-   "detail": "sorry: theorem_5_2.tendsto_mollify_hessian — subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` (in Main.Theorem52Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "blockers": [],
+   "detail": "proved: theorem_5_2.tendsto_mollify_hessian — subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` (in Main.Theorem52Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",

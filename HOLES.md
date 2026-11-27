@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T15:47:43Z  
-**`sorry` occurrences:** 25 · 11 open · 11 blocked · 367 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 8, 'blocked': 1, 'done': 305} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T16:05:08Z  
+**`sorry` occurrences:** 24 · 10 open · 11 blocked · 368 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 306} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -189,7 +189,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p` for continuous compactly supported functions | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_mollify_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: mollification converges in `L^p`, `‖ψ_n ⋆ f - f‖_p → 0` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_lintegral_shift_mollify_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: for a fixed shift `h`, the difference `a_n(x + h | 0 |
-| open | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian` | subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` | 1 |
+| done | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian` | subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` | subgoal of Appendix C, mollification: `F_m(x | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null` | subgoal of Appendix C, `ae_forall_mem_not_mem_null`: in coordinates, the preimage of a Lebesgue-null set under `v ↦ x₀ + ∑_i v^i e_i` is Lebesgue-null in `ℝ^{Fin d}` | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec` | subgoal of Eq. (7 | 0 |
@@ -447,7 +447,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52PathSteps` |  | 0 | `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52Steps` |  | 2 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian` |
+| blocked | `Main.Theorem52Steps` |  | 1 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 
