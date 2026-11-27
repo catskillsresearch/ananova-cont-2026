@@ -32,7 +32,11 @@ theorem theorem_5_1_tendsto (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadrati
           (𝓝 (weakPathwiseIntegral A t)) ∧
         Tendsto (fun m => pathwiseCovariation π (gradient (A.seq m)) ω t) atTop
           (𝓝 (weakCovariation A t)) := by
-  sorry
+  intro t ht
+  have hI := theorem_5_1.tendsto_integral hω hQV hosc hH A ht
+  refine ⟨?_, theorem_5_1.tendsto_covariation hω hQV hosc hH A ht⟩
+  rw [weakPathwiseIntegral, hI.limUnder_eq]
+  exact hI
 
 /-- **Theorem 5.1** (independence of the approximating sequence). -/
 theorem theorem_5_1_unique (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
