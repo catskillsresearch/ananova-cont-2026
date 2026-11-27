@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:45:58Z",
+ "updated": "2026-11-27T01:46:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 19,
-  "done": 235
+  "done": 236
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 52
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 7,
-  "done": 183
+  "done": 184
  },
  "untagged": [],
  "legend": {
@@ -3049,9 +3049,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "pathwiseCovariation_sub",
     "isWeakDerivative_ae_unique",
     "isWeakHessian_ae",
     "abs_covariation_sub_le",
@@ -3086,11 +3085,10 @@
     "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
     "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique",
     "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae",
-    "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub",
     "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
     "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
    ],
-   "detail": "6 sorry: pathwiseCovariation_sub, isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
+   "detail": "5 sorry: isWeakDerivative_ae_unique, isWeakHessian_ae, abs_covariation_sub_le, tendsto_covariation, tendsto_integral"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
@@ -3263,17 +3261,15 @@
    "parentGoal": "Main.Theorem51Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.pathwiseCovariation_sub"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof: linearity of the covariation on `C²_b`): `[∇(F - G)(ω), ω]_π(t) = [∇F(ω), ω]_π(t) - [∇G(ω), ω]_π(t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3284,7 +3280,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.pathwiseCovariation_sub — subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` (in Main.Theorem51Steps)"
+   "detail": "proved: theorem_5_1.pathwiseCovariation_sub — subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",

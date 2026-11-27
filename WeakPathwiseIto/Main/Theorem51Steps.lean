@@ -68,7 +68,24 @@ theorem pathwiseCovariation_sub {π : ℕ → Partition T} {ω : ℝ → Rd d}
     (hG : ContDiffBounded 2 G) {t : ℝ} (ht : t ∈ Icc 0 T) :
     pathwiseCovariation π (gradient (F - G)) ω t =
       pathwiseCovariation π (gradient F) ω t - pathwiseCovariation π (gradient G) ω t := by
-  sorry
+  have hF1 := proposition_3_1 hω hQV hosc (follmer_ito_formula.contDiffBounded_gradient hF) t ht
+  have hG1 := proposition_3_1 hω hQV hosc (follmer_ito_formula.contDiffBounded_gradient hG) t ht
+  have hg := (gradient_smoothHessian_sub hF.1 hG.1).1
+  have hlim : Tendsto (fun n => pathwiseCovariation.riemannSum (π n) (gradient (F - G)) ω t) atTop
+      (𝓝 (pathwiseCovariation π (gradient F) ω t - pathwiseCovariation π (gradient G) ω t)) := by
+    unfold pathwiseCovariation
+    rw [hF1.limUnder_eq, hG1.limUnder_eq]
+    refine (hF1.sub hG1).congr fun n => ?_
+    rw [hg]
+    unfold pathwiseCovariation.riemannSum
+    rw [← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun k _ => ?_
+    simp only [Pi.sub_apply]
+    rw [← inner_sub_left]
+    congr 1
+    abel
+  unfold pathwiseCovariation at hlim ⊢
+  exact hlim.limUnder_eq
 
 /-- **Subgoal** (Theorem 5.1 proof, uniqueness: weak derivatives are unique a.e., by the
 fundamental lemma of the calculus of variations). -/
