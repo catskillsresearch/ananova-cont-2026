@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:33:27Z  
-**`sorry` occurrences:** 23 · 10 open · 12 blocked · 378 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 316} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:33:49Z  
+**`sorry` occurrences:** 23 · 10 open · 12 blocked · 379 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 317} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -140,6 +140,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier` | subgoal of Appendix C, standard mollifier `η_m(x | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top` | subgoal of Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar sets is polar, give one polar set off which every `u_k` has finite potential `∫ |u_k(x | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub` | subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.isBrownianPolar_union` | subgoal of Theorem 5.2, step 3: the union of two polar sets is polar, since the event of hitting `A ∪ B` at some `t ∈ (0, T]` is the union of the two null hitting events | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` | subgoal of Appendix C, (11 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal` | subgoal of Theorem 5.2, step 2: for `u ∈ L^p` with finite Gagliardo seminorm, `h = (M_1 u | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first` | subgoal of Appendix C, (10 | 0 |

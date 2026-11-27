@@ -533,6 +533,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.isBrownianPolar_union": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first": [
    "propext",
    "Classical.choice",
@@ -1635,5 +1640,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:33:27Z"
+ "generated": "2026-11-27T17:33:49Z"
 }

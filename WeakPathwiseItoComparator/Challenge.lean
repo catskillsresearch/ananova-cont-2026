@@ -11482,6 +11482,26 @@ theorem exists_index_memLp_gagliardo {s p : ℝ} {A : ℕ → Rd d → (Rd d →
   exact h.norm
 -/
 
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 3: the union of two polar sets is polar, since the event of
+hitting `A ∪ B` at some `t ∈ (0, T]` is the union of the two null hitting events). -/
+theorem isBrownianPolar_union {A B : Set (Rd d)} (hA : IsBrownianPolar d T A)
+    (hB : IsBrownianPolar d T B) : IsBrownianPolar d T (A ∪ B) := by
+  intro x
+  have h : {ω : CanonicalWienerSpace d T | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ A ∪ B} =
+      {ω | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ A} ∪
+        {ω | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ B} := by
+    ext ω
+    simp only [mem_ofPred_eq, mem_union]
+    constructor
+    · rintro ⟨t, ht, h | h⟩
+      exacts [Or.inl ⟨t, ht, h⟩, Or.inr ⟨t, ht, h⟩]
+    · rintro (⟨t, ht, h⟩ | ⟨t, ht, h⟩)
+      exacts [⟨t, ht, Or.inl h⟩, ⟨t, ht, Or.inr h⟩]
+  rw [h]
+  exact measure_union_null (hA x) (hB x)
+-/
+
 end theorem_5_2
 
 end
