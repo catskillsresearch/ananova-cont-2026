@@ -83,7 +83,15 @@ theorem contDiffBounded_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F) {G : Rd
 /-- **Subgoal** (Appendix C, mollification: `D^0 f = f` weakly). -/
 theorem isWeakDerivative_zero {f : Rd d → ℝ} (hf : LocallyIntegrable f) :
     IsWeakDerivative 0 f f := by
-  sorry
+  refine ⟨hf, hf, fun φ hφ hφc => ?_⟩
+  have hdir : IsWeakDerivative.directions (0 : Fin d → ℕ) = [] := by
+    simp [IsWeakDerivative.directions, List.flatMap]
+  have key : ∀ (l : List (Rd d)) (x : Rd d), l = [] →
+      iteratedFDeriv ℝ l.length φ x (fun k => l.get k) = φ x := by
+    rintro l x rfl
+    simp
+  have ht : ∀ x, IsWeakDerivative.testDeriv 0 φ x = φ x := fun x => key _ x hdir
+  simp [ht, IsWeakDerivative.order]
 
 /-- **Subgoal** (Appendix C, mollification: the classical partial derivative of a `C¹` function
 is its weak derivative, by integration by parts). -/
