@@ -178,7 +178,16 @@ theorem exists_ball_of_lt {f : Rd d → ℝ} {x : Rd d} {t : ℝ≥0∞}
 /-- **Subgoal** (Hardy–Littlewood, weak type `(1, 1)`: `t |{M_1 f > t}| ≤ 4^d ‖f‖_1`). -/
 theorem mul_measure_lt_le (f : Rd d → ℝ) (t : ℝ≥0∞) :
     t * volume {x | t < localMaximalFunction 1 f x} ≤ (2 ^ d) ^ 2 * ∫⁻ y, ‖f y‖ₑ := by
-  sorry
+  set 𝓑 : Set (Rd d × ℝ) := {i | t * volume (Metric.ball i.1 i.2) ≤
+    ∫⁻ y in Metric.ball i.1 i.2, ‖f y‖ₑ}
+  have hsub : {x | t < localMaximalFunction 1 f x} ⊆ ⋃ i ∈ 𝓑, Metric.ball i.1 i.2 := by
+    intro x hx
+    obtain ⟨r, hr, -, hle⟩ := exists_ball_of_lt hx
+    exact mem_iUnion₂.2 ⟨(x, r), hle, Metric.mem_ball_self hr⟩
+  calc t * volume {x | t < localMaximalFunction 1 f x}
+      ≤ t * volume (⋃ i ∈ 𝓑, Metric.ball i.1 i.2) := by gcongr
+    _ ≤ (2 ^ d) ^ 2 * ∫⁻ y, ‖f y‖ₑ :=
+      measure_biUnion_le_lintegral (c := Prod.fst) (r := Prod.snd) 𝓑 t _ fun i hi => hi
 
 /-- **Subgoal** (Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives
 `M_1 f ≤ M_1 g + M_1 h`). -/

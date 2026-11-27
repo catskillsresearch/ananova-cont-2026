@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T12:31:45Z  
-**`sorry` occurrences:** 39 · 16 open · 50 blocked · 306 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 13, 'blocked': 39, 'done': 245} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T12:32:43Z  
+**`sorry` occurrences:** 38 · 15 open · 50 blocked · 307 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 12, 'blocked': 39, 'done': 246} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -281,7 +281,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le` | subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral` | subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux` | subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux` | 0 |
-| open | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le` | subgoal of Hardy–Littlewood, weak type `(1, 1 | 1 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le` | subgoal of Hardy–Littlewood, weak type `(1, 1 | 0 |
 | open | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` | subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|` | 1 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge` | subgoal of Lemma 2.2 proof, `d ≤ α` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` | subgoal of Lemma 2.2 proof, `α < d` | 0 |
@@ -350,7 +350,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 9 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae`, `Sobolev.HardyLittlewood::hardyLittlewood.le_add`, `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` |
+| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 8 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae`, `Sobolev.HardyLittlewood::hardyLittlewood.le_add`, `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
