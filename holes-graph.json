@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:29:50Z",
+ "updated": "2026-11-27T02:30:45Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 36,
+ "sorryCount": 35,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 19,
-  "done": 255
+  "done": 256
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 7,
-  "done": 201
+  "done": 202
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "coord_integrable",
     "exists_mollifier",
     "tendsto_lintegral_gradient",
     "exists_subseq_ae_tendsto_zero",
@@ -7269,7 +7268,6 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
     "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
     "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
@@ -7277,7 +7275,7 @@
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "8 sorry: coord_integrable, exists_mollifier, tendsto_lintegral_gradient, exists_subseq_ae_tendsto_zero, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "7 sorry: exists_mollifier, tendsto_lintegral_gradient, exists_subseq_ae_tendsto_zero, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7381,17 +7379,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.coord_integrable"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7401,7 +7397,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.coord_integrable — subgoal of Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}` (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.coord_integrable — subgoal of Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}` (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",

@@ -722,7 +722,30 @@ theorem lintegral_potential_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.Is
 integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}`). -/
 theorem coord_integrable {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : MemW 1 1 f)
     (hG : IsWeakGradient f G) (i : Fin d) : Integrable fun z => Rd.coord i (G z) := by
-  sorry
+  have hord : IsWeakDerivative.order (Pi.single i 1 : Fin d → ℕ) ≤ 1 := by
+    simp [IsWeakDerivative.order]
+  obtain ⟨g, hg, hgL⟩ := hf.2 _ hord
+  -- uniqueness of weak derivatives (as in `theorem_5_1.isWeakDerivative_ae_unique`)
+  have hG' := hG i
+  obtain ⟨_, hgl, hgi⟩ := hg
+  obtain ⟨_, hgl', hgi'⟩ := hG'
+  have h0 := ae_eq_zero_of_integral_contDiff_smul_eq_zero (hgl.sub hgl') fun φ hφ hφc => by
+    have hne : ((-1 : ℝ) ^ IsWeakDerivative.order (Pi.single i 1 : Fin d → ℕ)) ≠ 0 :=
+      pow_ne_zero _ (by norm_num)
+    have heq : ∫ x, g x * φ x = ∫ x, Rd.coord i (G x) * φ x :=
+      mul_left_cancel₀ hne ((hgi φ hφ hφc).symm.trans (hgi' φ hφ hφc))
+    have hi : Integrable (fun x => φ x • g x) :=
+      hgl.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    have hi' : Integrable (fun x => φ x • Rd.coord i (G x)) :=
+      hgl'.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    simp only [Pi.sub_apply, smul_sub]
+    rw [integral_sub hi hi']
+    simp only [smul_eq_mul, mul_comm (φ _)]
+    rw [heq, sub_self]
+  have hae : g =ᵐ[volume] fun z => Rd.coord i (G z) := by
+    filter_upwards [h0] with x hx
+    exact sub_eq_zero.1 hx
+  exact (memLp_one_iff_integrable.1 hgL).congr hae
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification: a smooth approximate identity exists). -/
 theorem exists_mollifier : ∃ ψ : ℕ → Rd d → ℝ,
