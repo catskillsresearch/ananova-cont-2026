@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:01:41Z  
-**`sorry` occurrences:** 34 · 11 open · 19 blocked · 270 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 55} · subgoals {'open': 8, 'blocked': 7, 'done': 215} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:04:25Z  
+**`sorry` occurrences:** 33 · 10 open · 19 blocked · 271 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 55} · subgoals {'open': 7, 'blocked': 7, 'done': 216} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -260,7 +260,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le` | subgoal of Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r | 1 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
 | open | `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le` | subgoal of Theorem 2.1 proof, second estimate: the local Riesz potential of order `2` is bounded on `L¹(Q | 1 |
-| open | `Sobolev.Theorem21Second::theorem_2_1_second.memW_coord` | subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}` | 1 |
+| done | `Sobolev.Theorem21Second::theorem_2_1_second.memW_coord` | subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}` | 0 |
 | open | `Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries` | subgoal of Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of its entries in the standard basis | 1 |
 | open | `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae` | subgoal of Theorem 2.1 proof, second estimate, (5 | 1 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
@@ -296,7 +296,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 1 | `Sobolev.Theorem21Second` |
 | done | `Sobolev.Theorem21First` |  | 0 |  |
-| blocked | `Sobolev.Theorem21Second` |  | 7 | `Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le`, `Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution`, `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le`, `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le`, `Sobolev.Theorem21Second::theorem_2_1_second.memW_coord`, `Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries`, `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae` |
+| blocked | `Sobolev.Theorem21Second` |  | 6 | `Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le`, `Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution`, `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le`, `Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le`, `Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries`, `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets

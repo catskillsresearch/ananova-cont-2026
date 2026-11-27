@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:01:41Z",
+ "updated": "2026-11-27T03:04:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
-  "open": 11,
+  "open": 10,
   "blocked": 19,
-  "done": 270
+  "done": 271
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 7,
-  "done": 215
+  "done": 216
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "memW_coord",
     "hessian_convolution",
     "norm_le_sum_entries",
     "lintegral_potential2_le",
@@ -7938,11 +7937,10 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
     "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae"
    ],
-   "detail": "7 sorry: memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "6 sorry: hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8178,24 +8176,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.memW_coord"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.memW_coord — subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}` (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.memW_coord — subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}` (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",

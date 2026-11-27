@@ -377,7 +377,52 @@ theorem coord_hessian_integrable {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ
 theorem memW_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d → (Rd d →L[ℝ] Rd d)}
     (hf : MemW 2 1 f) (hG : IsWeakGradient f G) (hH : IsWeakHessian f H) (i : Fin d) :
     MemW 1 1 (fun z => Rd.coord i (G z)) := by
-  sorry
+  have hf1 : MemW 1 1 f := ⟨hf.1, fun α h => hf.2 α (h.trans (by norm_num))⟩
+  have hGi := theorem_2_1_first.coord_integrable hf1 hG i
+  refine ⟨memLp_one_iff_integrable.2 hGi, fun α hα => ?_⟩
+  rcases Nat.le_one_iff_eq_zero_or_eq_one.1 hα with h0 | h1
+  · -- `α = 0`: the function itself
+    have hα0 : α = 0 := by
+      funext k
+      exact (Finset.sum_eq_zero_iff.1 h0) k (Finset.mem_univ k)
+    subst hα0
+    refine ⟨fun z => Rd.coord i (G z), ⟨hGi.locallyIntegrable, hGi.locallyIntegrable,
+      fun φ _ _ => ?_⟩, memLp_one_iff_integrable.2 hGi⟩
+    have hdir : IsWeakDerivative.directions (0 : Fin d → ℕ) = [] := by
+      simp [IsWeakDerivative.directions]
+    have ht : ∀ x, IsWeakDerivative.testDeriv (0 : Fin d → ℕ) φ x = φ x := by
+      intro x
+      unfold IsWeakDerivative.testDeriv
+      rw [hdir]
+      simp
+    simp only [ht]
+    simp [IsWeakDerivative.order]
+  · -- `α = e_j`
+    have hex : ∃ j, α j ≠ 0 := by
+      by_contra hne
+      simp only [not_exists, not_not] at hne
+      have : IsWeakDerivative.order α = 0 := Finset.sum_eq_zero fun k _ => hne k
+      omega
+    obtain ⟨j, hj⟩ := hex
+    have hsplit := Finset.add_sum_erase Finset.univ α (Finset.mem_univ j)
+    have hsum : α j + ∑ k ∈ Finset.univ.erase j, α k = 1 := by
+      rw [hsplit]; exact h1
+    have hαj : α j = 1 := by omega
+    have hrest : ∑ k ∈ Finset.univ.erase j, α k = 0 := by omega
+    have hαe : α = Pi.single j 1 := by
+      funext k
+      by_cases hk : k = j
+      · subst hk; simp [hαj]
+      · rw [Pi.single_eq_of_ne hk]
+        exact (Finset.sum_eq_zero_iff.1 hrest) k (Finset.mem_erase.2 ⟨hk, Finset.mem_univ k⟩)
+    subst hαe
+    refine ⟨_, isWeakGradient_coord hG hH i j, ?_⟩
+    have hcoord : (fun z => Rd.coord j (∑ k, Rd.coord i (H z (Rd.basisVec k)) • Rd.basisVec k)) =
+        fun z => Rd.coord i (H z (Rd.basisVec j)) := by
+      funext z
+      simp [Rd.coord, Rd.basisVec, sum_inner, inner_smul_left, EuclideanSpace.inner_single_right]
+    rw [hcoord]
+    exact memLp_one_iff_integrable.2 (coord_hessian_integrable hf hH i j)
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}`
 function is `C²`, with second derivatives the mollified weak Hessian entries). -/
