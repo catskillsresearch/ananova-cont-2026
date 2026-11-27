@@ -230,7 +230,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1735,5 +1734,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:53:45Z"
+ "generated": "2026-11-27T18:54:37Z"
 }

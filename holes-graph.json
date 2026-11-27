@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:53:45Z",
+ "updated": "2026-11-27T18:54:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 24,
+ "sorryCount": 23,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 14,
-  "done": 393
+  "done": 394
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 4,
-  "done": 330
+  "done": 331
  },
  "untagged": [],
  "legend": {
@@ -1581,9 +1581,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 9,
+   "sorryCount": 8,
    "holes": [
-    "nonnegPotential_mono_ae",
     "eLpNorm_rpow_eq",
     "one_le_of_toReal_eq_zero",
     "iSup_rpow_le_tsum",
@@ -1624,11 +1623,10 @@
     "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
     "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
-    "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",
     "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
     "Bessel.BesselCapacity::besselCapacity.supFn_props"
    ],
-   "detail": "9 sorry: nonnegPotential_mono_ae, eLpNorm_rpow_eq, one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "8 sorry: eLpNorm_rpow_eq, one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1876,10 +1874,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.nonnegPotential_mono_ae"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1888,17 +1884,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 1): for `α ≠ 0` the potential `g_α ⋆ h ∈ [0, ∞]` is monotone under a.e. inequality of `h`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.nonnegPotential_mono_ae — subgoal of Definition 2.7, countable subadditivity, step 1 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.nonnegPotential_mono_ae — subgoal of Definition 2.7, countable subadditivity, step 1 (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",

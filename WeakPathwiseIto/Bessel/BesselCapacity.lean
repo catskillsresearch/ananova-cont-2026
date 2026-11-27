@@ -37,7 +37,8 @@ def IsNull (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : Prop := bess
 theorem nonnegPotential_mono_ae {α : ℝ} (hα : α ≠ 0) {h₁ h₂ : Rd d → ℝ}
     (hle : ∀ᵐ y, ENNReal.ofReal (h₁ y) ≤ ENNReal.ofReal (h₂ y)) (x : Rd d) :
     BesselSpace.nonnegPotential d α h₁ x ≤ BesselSpace.nonnegPotential d α h₂ x := by
-  sorry
+  simp only [BesselSpace.nonnegPotential, ite_eq_right hα]
+  exact lintegral_mono_ae (hle.mono fun y hy => mul_le_mul_right hy _)
 
 /-- **Subgoal** (Definition 2.7, countable subadditivity, step 2): for `0 < p < ∞`,
 `‖h‖_p^p = ∫ |h|^p`. -/
