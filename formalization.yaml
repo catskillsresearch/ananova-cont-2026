@@ -31,7 +31,7 @@ status:
   scope: >-
     Blueprint: every paper definition is stated as a Lean def/structure and every numbered
     result as a theorem with a sorry proof. Proofs not started.
-  sorry_count: 32
+  sorry_count: 37
   sorry_in_definitions: 0
   axioms:
   - propext
@@ -58,3 +58,10 @@ references:
   authors:
   - Anna Ananova
   - Rama Cont
+- doi: 10.4064/sm-106-1-77-92
+  title: Pointwise inequalities for Sobolev functions and some applications
+  authors:
+  - Bogdan Bojarski
+  - Piotr Hajłasz
+  journal: Studia Mathematica 106 (1993) 77-92
+  url: https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf

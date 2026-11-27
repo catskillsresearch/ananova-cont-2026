@@ -84,6 +84,11 @@ Basic.ContDiffBounded -hard-> Smooth.Proposition31::proposition_3_1.tendsto_rema
 Basic.ContDiffBounded -hard-> Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes
 Basic.FunctionOscillation::functionOscillation.tendsto_zero -hard-> Basic.FunctionOscillation
 Basic.IsCubeOrBall -hard-> Sobolev.Lemma22
+Basic.IsCubeOrBall -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge
+Basic.IsCubeOrBall -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt
+Basic.IsCubeOrBall -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le
+Basic.IsCubeOrBall -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_shell_le
+Basic.IsCubeOrBall -hard-> Sobolev.Lemma22::lemma_2_2.subset_closedBall
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21
 Basic.Partition -hard-> Appendix.HeatKernel
 Basic.Partition -hard-> Appendix.HeatKernel::heatKernel.div_scaling
@@ -732,6 +737,11 @@ Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSp
 Sobolev.IsWeakHessian -hard-> Sobolev.MemW2PlusS
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem21
 Sobolev.IsWeakHessian -hard-> Sobolev.Theorem23
+Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge -hard-> Sobolev.Lemma22
+Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt -hard-> Sobolev.Lemma22
+Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le -hard-> Sobolev.Lemma22
+Sobolev.Lemma22::lemma_2_2.lintegral_shell_le -hard-> Sobolev.Lemma22
+Sobolev.Lemma22::lemma_2_2.subset_closedBall -hard-> Sobolev.Lemma22
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.add_le
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le
@@ -747,6 +757,11 @@ Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSe
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Sobolev.LocalMaximalFunction -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22
+Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge
+Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt
+Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le
+Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22::lemma_2_2.lintegral_shell_le
+Sobolev.LocalMaximalFunction -hard-> Sobolev.Lemma22::lemma_2_2.subset_closedBall
 Sobolev.LocalMaximalFunction -hard-> Sobolev.Theorem23
 Sobolev.MemW -hard-> Bessel.Theorem26
 Sobolev.MemW -hard-> Bessel.Theorem29

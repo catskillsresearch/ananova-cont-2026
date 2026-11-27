@@ -22,3 +22,6 @@ arxiv.*
 view.pdf
 .cache/
 .work/
+
+# Cited literature kept locally only (copyright: rights holders; not redistributed)
+sources/BojarskiHajlasz1993.pdf

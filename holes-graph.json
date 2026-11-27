@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T00:44:36Z",
+ "updated": "2026-11-27T00:48:48Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 37,
  "counts": {
-  "open": 7,
-  "blocked": 17,
+  "open": 11,
+  "blocked": 18,
   "done": 213
  },
  "goalCounts": {
-  "open": 6,
-  "blocked": 10,
+  "open": 5,
+  "blocked": 11,
   "done": 49
  },
  "subgoalCounts": {
-  "open": 1,
+  "open": 6,
   "blocked": 7,
   "done": 164
  },
@@ -6195,23 +6195,179 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Lemma 2.2",
    "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
+   "sorryCount": 6,
+   "holes": [
+    "lintegral_closedBall_le",
+    "subset_closedBall",
+    "lintegral_shell_le",
+    "lintegral_closedBall_kernel_le_of_lt",
+    "lintegral_closedBall_kernel_le_of_ge",
+    "lemma_2_2"
+   ],
+   "declKinds": {
+    "theorem": 6
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+    "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+    "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+    "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
+   ],
+   "detail": "6 sorry: lintegral_closedBall_le, subset_closedBall, lintegral_shell_le, lintegral_closedBall_kernel_le_of_lt, lintegral_closedBall_kernel_le_of_ge, lemma_2_2"
+  },
+  {
+   "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+   "label": "lintegral_closedBall_kernel_le_of_ge",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Lemma 2.2 proof, `d ≤ α`",
+   "parentGoal": "Sobolev.Lemma22",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
    "sorryCount": 1,
    "holes": [
-    "lemma_2_2"
+    "lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
    ],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
-   "verified": false,
-   "kind": "goal",
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 2.2 proof, `d ≤ α`): the kernel is at most `ρ^{α-d}` on `B̄(x,ρ)`, so `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ |B(0,1)| ρ^α M_ρ f(x)`.",
    "status": "open",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "1 sorry: lemma_2_2"
+   "detail": "sorry: lemma_2_2.lintegral_closedBall_kernel_le_of_ge — subgoal of Lemma 2.2 proof, `d ≤ α` (in Sobolev.Lemma22)"
+  },
+  {
+   "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+   "label": "lintegral_closedBall_kernel_le_of_lt",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Lemma 2.2 proof, `α < d`",
+   "parentGoal": "Sobolev.Lemma22",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 2.2 proof, `α < d`): summing the dyadic shells, `∫_{B̄(x,ρ)} |f| |x - y|^{α-d} ≤ C ρ^α M_ρ f(x)`.",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_2_2.lintegral_closedBall_kernel_le_of_lt — subgoal of Lemma 2.2 proof, `α < d` (in Sobolev.Lemma22)"
+  },
+  {
+   "id": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+   "label": "lintegral_closedBall_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Lemma 2.2 proof, maximal function on a closed ball",
+   "parentGoal": "Sobolev.Lemma22",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_2_2.lintegral_closedBall_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 2.2 proof, maximal function on a closed ball): for `0 < ρ` with `ρ ≤ R`, `∫_{B̄(a,ρ)} |f| ≤ |B(a,ρ)| M_R f(a)`.",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_2_2.lintegral_closedBall_le — subgoal of Lemma 2.2 proof, maximal function on a closed ball (in Sobolev.Lemma22)"
+  },
+  {
+   "id": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+   "label": "lintegral_shell_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell",
+   "parentGoal": "Sobolev.Lemma22",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_2_2.lintegral_shell_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 2.2 proof, `α < d`, one dyadic shell): on `{ρ/2^{k+1} < |y - x| ≤ ρ/2^k}`, `∫ |f| |x - y|^{α-d} ≤ 2^{d-α} ρ^α 2^{-kα} |B(0,1)| M_ρ f(x)`.",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_2_2.lintegral_shell_le — subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell (in Sobolev.Lemma22)"
+  },
+  {
+   "id": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
+   "label": "subset_closedBall",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q",
+   "parentGoal": "Sobolev.Lemma22",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Lemma22.lean",
+   "sorryCount": 1,
+   "holes": [
+    "lemma_2_2.subset_closedBall"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q)`): for `d ≥ 1`, a cube or ball has finite positive diameter and lies in the closed ball of radius `diam Q` about each of its points.",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: lemma_2_2.subset_closedBall — subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q (in Sobolev.Lemma22)"
   },
   {
    "id": "Sobolev.LocalMaximalFunction",
@@ -6830,6 +6986,31 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Lemma22",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
    "kind": "hard"
   },
   {
@@ -10073,6 +10254,31 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+   "to": "Sobolev.Lemma22",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+   "to": "Sobolev.Lemma22",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+   "to": "Sobolev.Lemma22",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+   "to": "Sobolev.Lemma22",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
+   "to": "Sobolev.Lemma22",
+   "kind": "subgoal"
+  },
+  {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm",
    "kind": "hard"
@@ -10145,6 +10351,31 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.Lemma22",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
    "kind": "hard"
   },
   {
@@ -10501,7 +10732,23 @@
   },
   {
    "from": "Basic.IsCubeOrBall",
-   "to": "Sobolev.Lemma22"
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
   },
   {
    "from": "Basic.IsCubeOrBall",
@@ -12596,6 +12843,26 @@
    "to": "Sobolev.Theorem23"
   },
   {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
+   "to": "Sobolev.Lemma22"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt",
+   "to": "Sobolev.Lemma22"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le",
+   "to": "Sobolev.Lemma22"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le",
+   "to": "Sobolev.Lemma22"
+  },
+  {
+   "from": "Sobolev.Lemma22::lemma_2_2.subset_closedBall",
+   "to": "Sobolev.Lemma22"
+  },
+  {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.add_le"
   },
@@ -12649,7 +12916,23 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.Lemma22"
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",

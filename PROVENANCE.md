@@ -58,3 +58,7 @@ must live in `scripts/`; they are byte-for-byte copies of
 | `scripts/gen_challenge.py` | Technique of xodarev2026 `scripts/gen_challenge.py` at `0e1f1f3b0739fdf472511da2207599ab11085660` (verbatim flattening, per-module `auxLemmasExt` reset); code rewritten |
 | `scripts/palomar_preflight.sh` | `catskillsresearch/palomar-preflight` `examples/project-wrapper.sh` at `cd89b1336ad1f189f44dd6facd2634ce8a9a4447`, and lyasoff2016 `scripts/palomar_preflight.sh` at `3376bd2b8c18cab4322ca5b1db46d7fc477eed1a` |
 | `AGENTS.md`, `README.md`, `NOTICE`, `COMPARATOR.md`, `formalization.yaml`, `.gitignore` | Structure of the xodarev2026 files at `0e1f1f3b0739fdf472511da2207599ab11085660`; content rewritten for this paper |
+
+## Literature followed for proofs
+
+- B. Bojarski and P. Hajłasz, *Pointwise inequalities for Sobolev functions and some applications*, Studia Math. 106 (1993), 77–92, doi:10.4064/sm-106-1-77-92, <https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf> — Theorems 1–3 and Lemmas 2–3, followed for Theorem 2.1, Lemma 2.2 and Theorem 2.3 (cited by the paper as [BH93]). Kept locally at `sources/BojarskiHajlasz1993.pdf` (git-ignored, not redistributed).

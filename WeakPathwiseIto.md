@@ -81,15 +81,18 @@ own text.
 * **Theorem 2.1 / Lemma 2.2** quantify over every $Q$ that is a cube or a ball, as in the
   paper (`IsCubeOrBall`: open or closed Euclidean balls and open or closed axis-parallel cubes).
 * **Theorem 2.1: Lebesgue-point hypotheses.** Both estimates additionally assume that $x, y$ are
-  Lebesgue points of $f$ (`IsLebesguePoint`), and the second estimate that $x$ is a Lebesgue
-  point of every component of $\nabla f$. This is how [BH93, Thm. 1] holds ("for $x, y$ outside
-  a set of measure zero"). With only $|f(x)|,|f(y)|<\infty$ the statement is false for closed
-  $Q$ and $x \in \partial Q$, a case the paper uses in Theorem 5.1 (the ball with diameter
-  $[\omega(t_i),\omega(t_{i+1})]$): e.g. for $d = 2$, $Q = [0,1]^2$, $x = 0$,
-  $f(z) = h(\arg z)\chi(|z|)$ with $h \ge 0$ smooth, $h = 0$ on $[0,\pi/2]$, $f \in W^{1,1}$,
+  Lebesgue points of $f$ (`IsLebesguePoint`, the notion of [BH93, §1]), and the second estimate
+  that $x$ is a Lebesgue point of every component of $\nabla f$. The paper cites the estimates
+  as a special case of [BH93, Thm. 1]; there (and in [BH93, Thm. 2], the two-point form) $Q$ is
+  an open cube, so the averages (4) over $B(x,r)$ eventually lie in $Q$. Our `IsCubeOrBall` also
+  admits closed $Q$ with $x \in \partial Q$ — the case the paper uses in Theorem 5.1 (the ball with
+  diameter $[\omega(t_i),\omega(t_{i+1})]$) — and there the estimate fails without the
+  hypothesis: e.g. for $d = 2$, $Q = [0,1]^2$, $x = 0$, $f(z) = h(\arg z)\chi(|z|)$ with
+  $h \ge 0$ smooth, $h = 0$ on $[0,\pi/2]$, one has $f \in W^{1,1}$,
   $\tilde f(0) = \bar h > 0 = \tilde f(\tfrac12,\tfrac12)$ while $\nabla f = 0$ on $Q$ (similarly for
-  the second estimate with $d = 3$). For the $C^2$ functions to which Theorem 5.1 applies it,
-  every point is a Lebesgue point.
+  the second estimate with $d = 3$). At a Lebesgue point the averages over $Q \cap B(x,r)$ also
+  converge to $\tilde f(x)$, which restores the argument; for the $C^2$ functions to which
+  Theorem 5.1 applies it, every point is a Lebesgue point.
 * **Theorem 2.6** states both the equality of spaces and the equivalence of the norms.
 * **Quadratic variation** (eq. (5)): the limit exists for every $t \in [0,T]$ and
   $t \mapsto [x]_\pi(t)$ is continuous and increasing **on $[0,T]$** (`ContinuousOn`,
@@ -155,3 +158,8 @@ own text.
   is only used in the remark that $|\pi_n|\to 0$ implies (6)).
 
 # Main statements (Lean)
+
+# Literature
+
+* [BH93]: B. Bojarski and P. Hajłasz, *Pointwise inequalities for Sobolev functions and some applications*, Studia Math. 106 (1993), 77–92, doi:10.4064/sm-106-1-77-92, <https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf>. Source of Theorem 2.1 / Lemma 2.2 (its Lemma 3) / Theorem 2.3 (its Theorem 3) and of the
+  precise representative (its (1), (4)); followed for the proofs. Not redistributed here.
