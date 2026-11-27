@@ -588,7 +588,17 @@ theorem tendsto_eLpNorm_mollify_sub {E : Type*} [NormedAddCommGroup E] [NormedSp
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
     Tendsto (fun n => eLpNorm (fun x => (∫ y, ψ n (x - y) • f y) - f x) (ENNReal.ofReal p) volume)
       atTop (𝓝 0) := by
-  sorry
+  rw [ENNReal.tendsto_nhds_zero]
+  intro ε hε
+  obtain ⟨δ, hδ, hball⟩ := Metric.eventually_nhds_iff_ball.1
+    ((ENNReal.tendsto_nhds_zero.1 (tendsto_eLpNorm_comp_sub_sub hp hf)) ε hε)
+  obtain ⟨N, hN⟩ := exists_nat_one_div_lt hδ
+  filter_upwards [eventually_ge_atTop N] with n hn
+  refine (eLpNorm_mollify_sub_le hp hf (hψc n) (hψ0 n) (hψ1 n) (hψs n)).trans (iSup₂_le ?_)
+  intro z hz
+  refine hball z (Metric.ball_subset_ball ?_ hz)
+  refine le_trans ?_ hN.le
+  gcongr
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 1: a `W^{k,q}` function, `k ≥ 1`, has
 a weak gradient, assembled from its first-order weak derivatives). -/
