@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:10:32Z  
-**`sorry` occurrences:** 33 · 8 open · 18 blocked · 224 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 50} · subgoals {'open': 3, 'blocked': 7, 'done': 174} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:11:39Z  
+**`sorry` occurrences:** 32 · 7 open · 18 blocked · 225 done (goals + subgoals) · goals {'open': 5, 'blocked': 11, 'done': 50} · subgoals {'open': 2, 'blocked': 7, 'done': 175} · 16 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -105,7 +105,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Eq18::theorem_5_1.eq_18` | subgoal of Theorem 5.1 proof, eq. (18 | 1 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral` | subgoal of Theorem 5.1 proof, (18 | 0 |
-| open | `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le` | subgoal of Theorem 5.1 proof, (18 | 1 |
+| done | `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece` | subgoal of Theorem 5.1 proof, (18 | 0 |
@@ -303,7 +303,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
 | done | `Main.BalancedPartitions` | Assumption 1 | 0 |  |
-| blocked | `Main.Eq18` |  | 2 | `Main.Eq18::theorem_5_1.eq_18`, `Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le` |
+| blocked | `Main.Eq18` |  | 1 | `Main.Eq18::theorem_5_1.eq_18` |
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |

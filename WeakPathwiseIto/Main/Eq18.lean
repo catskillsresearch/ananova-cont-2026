@@ -11,6 +11,7 @@ public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Main.WeakCovariation
 public import WeakPathwiseIto.Occupation.Lemma42
 public import WeakPathwiseIto.Smooth.Proposition31
+public import WeakPathwiseIto.Smooth.FollmerItoFormula
 
 /-! # Eq. (18) of Theorem 5.1, for `C²_b` functions -/
 
@@ -232,7 +233,15 @@ theorem abs_riemannSum_le {π : ℕ → Partition T} {ω : ℝ → Rd d}
         (∑ k : Fin (π n).m,
           |⟪gradient H (ω ((π n).right k)) - gradient H (ω ((π n).left k)),
             ω ((π n).right k) - ω ((π n).left k)⟫|) + e n := by
-  sorry
+  have hg := follmer_ito_formula.contDiffBounded_gradient hH
+  refine ⟨fun n => |∑ k ∈ Finset.univ.filter (fun k => (π n).left k < t ∧ t < (π n).right k),
+      ⟪gradient H (ω t) - gradient H (ω ((π n).left k)), ω t - ω ((π n).left k)⟫|, ?_, fun n => ?_⟩
+  · simpa using (proposition_3_1.tendsto_boundary hω hosc hg ht).abs
+  rw [proposition_3_1.riemannSum_eq]
+  refine (abs_add_le _ _).trans (add_le_add_left ?_ _)
+  refine (Finset.abs_sum_le_sum_abs _ _).trans ?_
+  exact Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+    fun k _ _ => abs_nonneg _
 
 end eq_18
 

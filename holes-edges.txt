@@ -608,6 +608,14 @@ Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.rie
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left
 Smooth.FollmerIntegral -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder
+Smooth.FollmerItoFormula -hard-> Main.Eq18
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le
+Smooth.FollmerItoFormula -hard-> Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece
 Smooth.FollmerItoFormula -hard-> Smooth.Corollary32
 Smooth.FollmerItoFormula -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.FollmerItoFormula::follmer_ito_formula -hard-> Smooth.FollmerItoFormula

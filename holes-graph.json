@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:10:32Z",
+ "updated": "2026-11-27T01:11:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 18,
-  "done": 224
+  "done": 225
  },
  "goalCounts": {
   "open": 5,
@@ -13,9 +13,9 @@
   "done": 50
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 174
+  "done": 175
  },
  "untagged": [],
  "legend": {
@@ -2413,9 +2413,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "abs_riemannSum_le",
     "eq_18"
    ],
    "declKinds": {
@@ -2435,16 +2434,16 @@
     "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [
-    "Main.Eq18::theorem_5_1.eq_18",
-    "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
+    "Main.Eq18::theorem_5_1.eq_18"
    ],
-   "detail": "2 sorry: abs_riemannSum_le, eq_18"
+   "detail": "1 sorry: eq_18"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18",
@@ -2470,6 +2469,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -2500,6 +2500,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -2530,6 +2531,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -2548,27 +2550,26 @@
    "parentGoal": "Main.Eq18",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.eq_18.abs_riemannSum_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (18), the stopped sum): for `H ∈ C²_b` and `t ∈ [0,T]`, `|∑_k (∇H(ω(t_{k+1} ∧ t)) - ∇H(ω(t_k ∧ t))) · (ω(t_{k+1} ∧ t) - ω(t_k ∧ t))|` is at most the full sum `∑_k |(∇H(ω(t_{k+1})) - ∇H(ω(t_k))) · δω_k|` plus a term `→ 0` (the straddling interval).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.eq_18.abs_riemannSum_le — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
+   "detail": "proved: theorem_5_1.eq_18.abs_riemannSum_le — subgoal of Theorem 5.1 proof, (18 (in Main.Eq18)"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
@@ -2592,6 +2593,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -2622,6 +2624,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -2652,6 +2655,7 @@
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
+    "Smooth.FollmerItoFormula",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Smooth.Proposition31",
@@ -9841,6 +9845,46 @@
   },
   {
    "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
    "to": "Smooth.Corollary32",
    "kind": "hard"
   },
@@ -13030,6 +13074,34 @@
   },
   {
    "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
+   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
+  },
+  {
+   "from": "Smooth.FollmerItoFormula",
    "to": "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq"
   },
   {
@@ -13251,34 +13323,6 @@
   {
    "from": "Smooth.PathwiseCovariation",
    "to": "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le"
-  },
-  {
-   "from": "Smooth.Proposition31",
-   "to": "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece"
   },
   {
    "from": "Smooth.Proposition31",
