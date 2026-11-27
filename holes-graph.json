@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:35:27Z",
+ "updated": "2026-11-27T21:35:44Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 12,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 437
+  "done": 438
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 4,
   "blocked": 3,
-  "done": 371
+  "done": 372
  },
  "untagged": [],
  "legend": {
@@ -3643,7 +3643,7 @@
     "elementary_isometry"
    ],
    "declKinds": {
-    "theorem": 19
+    "theorem": 20
    },
    "paperGoal": false,
    "verified": false,
@@ -3670,6 +3670,7 @@
     "Main.Proposition53Steps::proposition_5_3.measurable_B",
     "Main.Proposition53Steps::proposition_5_3.measurable_coord",
     "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+    "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
     "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
    ],
    "blockers": [
@@ -4237,6 +4238,37 @@
    ],
    "blockers": [],
    "detail": "proved: proposition_5_3.memLp_inner_increment — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
+   "label": "norm_sq_elementaryValue",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.B, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.B, helper): `|∑_j ξ_j 1_{(s_j, s_{j+1}]}(u)|² = ∑_j |ξ_j|² 1_{(s_j, s_{j+1}]}(u)`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.norm_sq_elementaryValue — subgoal of P53.B, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
@@ -18632,6 +18664,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "kind": "hard"
   },
@@ -19507,6 +19544,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "kind": "hard"
   },
@@ -19597,6 +19639,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28716,6 +28763,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
   },
   {
@@ -29268,6 +29319,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
   },
   {
@@ -29340,6 +29395,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue",
    "to": "Main.Proposition53Steps"
   },
   {

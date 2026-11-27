@@ -540,6 +540,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord": [
    "propext",
    "Classical.choice",
@@ -1898,5 +1903,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:35:27Z"
+ "generated": "2026-11-27T21:35:44Z"
 }

@@ -448,6 +448,22 @@ theorem disjoint_Ioc_grid {k : ℕ} {s : Fin (k + 1) → ℝ} (hs : Monotone s) 
   · exact Ioc_disjoint_Ioc_of_le (hs (Fin.succ_le_castSucc_iff.2 h))
   · exact (Ioc_disjoint_Ioc_of_le (hs (Fin.succ_le_castSucc_iff.2 h))).symm
 
+/-- **Subgoal** (P53.B, helper): `|∑_j ξ_j 1_{(s_j, s_{j+1}]}(u)|² = ∑_j |ξ_j|² 1_{(s_j, s_{j+1}]}(u)`. -/
+theorem norm_sq_elementaryValue {k : ℕ} {s : Fin (k + 1) → ℝ} (hs : Monotone s)
+    (ξ : Fin k → CanonicalWienerSpace d T → Rd d) (u : ℝ) (ω : CanonicalWienerSpace d T) :
+    ‖IsItoIntegral.elementaryValue s ξ u ω‖ ^ 2 =
+      ∑ j : Fin k, (Ioc (s j.castSucc) (s j.succ)).indicator (fun _ => ‖ξ j ω‖ ^ 2) u := by
+  unfold IsItoIntegral.elementaryValue
+  by_cases h : ∃ j : Fin k, u ∈ Ioc (s j.castSucc) (s j.succ)
+  · obtain ⟨j, hj⟩ := h
+    have hoff : ∀ l : Fin k, l ≠ j → u ∉ Ioc (s l.castSucc) (s l.succ) := fun l hl hu =>
+      Set.disjoint_left.1 (disjoint_Ioc_grid hs hl) hu hj
+    rw [Finset.sum_eq_single j (fun l _ hl => indicator_of_notMem (hoff l hl) _)
+        (by simp), Finset.sum_eq_single j (fun l _ hl => indicator_of_notMem (hoff l hl) _)
+        (by simp), indicator_of_mem hj, indicator_of_mem hj]
+  · push Not at h
+    simp [indicator_of_notMem (h _)]
+
 /-- **Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with
 `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`,
 `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`. -/
