@@ -224,7 +224,48 @@ theorem increment_moments (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) 
       ∀ i j, ∫ ω, Rd.coord i (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω) *
           Rd.coord j (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω)
           ∂CanonicalWienerSpace.P (T := T) x = if i = j then t - s else 0 := by
-  sorry
+  obtain ⟨Ω', _, Q, W, G, hQ, hB, hind, hG, hP, hrep⟩ := exists_rep_increment x hs hst ht
+  set D : CanonicalWienerSpace d T → Rd d :=
+    fun ω => CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω with hD
+  have hDm : Measurable D := (measurable_B t).sub (measurable_B s)
+  set Δ : Fin d → Ω' → ℝ := fun i ω' => W i t.toNNReal ω' - W i s.toNNReal ω' with hΔ
+  have hlaw : ∀ i, HasLaw (Δ i) (gaussianReal 0 (nndist t.toNNReal.1 s.toNNReal.1)) Q :=
+    fun i => (hB i).toIsPreBrownianReal.hasLaw_sub _ _
+  have hnd : (nndist t.toNNReal.1 s.toNNReal.1 : ℝ) = t - s := by
+    rw [coe_nndist, Real.dist_eq, NNReal.val_eq_coe, NNReal.val_eq_coe,
+      Real.coe_toNNReal _ (hs.trans hst), Real.coe_toNNReal _ hs, abs_of_nonneg (by linarith)]
+  have hΔ2 : ∀ i, MemLp (Δ i) 2 Q := fun i => (hlaw i).memLp (memLp_id_gaussianReal 2)
+  have hΔint : ∀ i, ∫ ω', Δ i ω' ∂Q = 0 := fun i => by
+    rw [(hlaw i).integral_eq, integral_id_gaussianReal]
+  have hrep' : ∀ ω', D (G ω') = ∑ i, Δ i ω' • Rd.basisVec i := hrep
+  have hDG : D ∘ G = fun ω' => ∑ i, Δ i ω' • Rd.basisVec i := funext hrep'
+  rw [hP]
+  refine ⟨?_, fun i => ?_, fun i j => ?_⟩
+  · rw [memLp_map_measure_iff hDm.aestronglyMeasurable hG, hDG]
+    exact memLp_finsetSum _ fun i _ =>
+      (hΔ2 i).smul (q := ⊤) (r := 2) (memLp_top_const (Rd.basisVec i))
+  · rw [integral_map (f := fun ω => Rd.coord i (D ω)) hG
+      ((measurable_coord i).comp hDm).aestronglyMeasurable]
+    simp_rw [hrep', coord_sum_smul_basisVec]
+    exact hΔint i
+  · rw [integral_map (f := fun ω => Rd.coord i (D ω) * Rd.coord j (D ω)) hG
+      (((measurable_coord i).comp hDm).mul ((measurable_coord j).comp hDm)).aestronglyMeasurable]
+    simp_rw [hrep', coord_sum_smul_basisVec]
+    split_ifs with hij
+    · subst hij
+      have hv := (hlaw i).variance_eq
+      rw [variance_id_gaussianReal, hnd,
+        variance_of_integral_eq_zero (hlaw i).aemeasurable (hΔint i)] at hv
+      simpa [pow_two] using hv
+    · have hI := ((hind.indepFun hij).comp
+        (φ := fun f : ℝ≥0 → ℝ => f t.toNNReal - f s.toNNReal)
+        (ψ := fun f : ℝ≥0 → ℝ => f t.toNNReal - f s.toNNReal) (by fun_prop) (by fun_prop))
+      have h := hI.integral_mul_eq_mul_integral
+        (hlaw i).aemeasurable.aestronglyMeasurable (hlaw j).aemeasurable.aestronglyMeasurable
+      have h0 := hΔint i
+      simp only [Function.comp_def, Pi.mul_apply] at h
+      simp only [h, Δ] at h0 ⊢
+      rw [h0, zero_mul]
 
 /-- **Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)`
 `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`. -/

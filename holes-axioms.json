@@ -478,7 +478,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.increment_moments": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1877,5 +1876,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:59:01Z"
+ "generated": "2026-11-27T20:59:17Z"
 }

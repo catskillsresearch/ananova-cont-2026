@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:59:01Z",
+ "updated": "2026-11-27T20:59:18Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 16,
+ "sorryCount": 15,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 13,
-  "done": 428
+  "done": 429
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 3,
-  "done": 362
+  "done": 363
  },
  "untagged": [],
  "legend": {
@@ -3638,9 +3638,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "increment_moments",
     "integral_inner_increment_sq",
     "integral_inner_increment_mul_eq_zero",
     "elementary_isometry",
@@ -3674,11 +3673,10 @@
    "blockers": [
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-    "Main.Proposition53Steps::proposition_5_3.increment_moments",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
    ],
-   "detail": "5 sorry: increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+   "detail": "4 sorry: integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec",
@@ -3851,10 +3849,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.increment_moments"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -3863,17 +3859,16 @@
    "doc": "**Subgoal** (P53.A, increment moments): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the increment `B(t) - B(s)` is square integrable, centred, with covariance `(t - s) I`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.increment_moments — subgoal of P53.A, increment moments (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.increment_moments — subgoal of P53.A, increment moments (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",

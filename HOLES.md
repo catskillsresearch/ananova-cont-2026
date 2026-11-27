@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T20:59:01Z  
-**`sorry` occurrences:** 16 · 10 open · 13 blocked · 428 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 8, 'blocked': 3, 'done': 362} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T20:59:18Z  
+**`sorry` occurrences:** 15 · 9 open · 13 blocked · 429 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 7, 'blocked': 3, 'done': 363} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -128,7 +128,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Proposition53Steps::proposition_5_3.elementary_localisation` | subgoal of P53.B, localisation | 1 |
 | done | `Main.Proposition53Steps::proposition_5_3.exists_rep_increment` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.iIndepFun_bool` | subgoal of P53.A, helper | 0 |
-| open | `Main.Proposition53Steps::proposition_5_3.increment_moments` | subgoal of P53.A, increment moments | 1 |
+| done | `Main.Proposition53Steps::proposition_5_3.increment_moments` | subgoal of P53.A, increment moments | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift` | subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_past_increment` | subgoal of P53.A, canonical space | 0 |
@@ -500,7 +500,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay` | Assumption 2, (30), (31) | 0 |  |
 | done | `Main.IsItoIntegral` | Itô integral | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
-| blocked | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 5 | `Main.Proposition53Steps::proposition_5_3.elementary_isometry`, `Main.Proposition53Steps::proposition_5_3.elementary_localisation`, `Main.Proposition53Steps::proposition_5_3.increment_moments`, `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero`, `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq` |
+| blocked | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 4 | `Main.Proposition53Steps::proposition_5_3.elementary_isometry`, `Main.Proposition53Steps::proposition_5_3.elementary_localisation`, `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero`, `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
