@@ -503,7 +503,7 @@ theorem integrable_hessian {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d
           refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
           simp only [Rd.coord, real_inner_comm, mul_comm]
   rw [hz]
-  exact integrable_finset_sum _ fun i _ => integrable_finset_sum _ fun j _ =>
+  exact integrable_finsetSum _ fun i _ => integrable_finsetSum _ fun j _ =>
     (coord_hessian_integrable hf hH j i).smul_const _
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of
@@ -618,7 +618,7 @@ theorem poincare2_ae (hd : 0 < d) : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (G :
   have hGint : Integrable G := by
     have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
     rw [this]
-    exact integrable_finset_sum _ fun i _ => (hGi i).smul_const _
+    exact integrable_finsetSum _ fun i _ => (hGi i).smul_const _
   -- Hessian entries and measurable versions
   set Hc : Fin d → Fin d → Rd d → ℝ := fun i j z => Rd.coord j (H z (Rd.basisVec i)) with hHcdef
   have hHi : ∀ i j, Integrable (Hc i j) := fun i j => coord_hessian_integrable hf hH j i
@@ -994,7 +994,7 @@ theorem abs_sub_taylorAverage_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (f : Rd d �
       simp [Rd.coord, Rd.basisVec, real_inner_comm]
     have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
     rw [this]
-    exact integrable_finset_sum _ fun i _ => (hGi i).smul_const _
+    exact integrable_finsetSum _ fun i _ => (hGi i).smul_const _
   have hHint := integrable_hessian hf hH
   have hHm := hHint.aestronglyMeasurable
   set J : ℝ≥0∞ := ∫⁻ z in Q, ‖H z‖ₑ with hJdef

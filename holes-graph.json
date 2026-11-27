@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T03:22:13Z",
+ "updated": "2026-11-27T03:24:40Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 27,
+ "sorryCount": 26,
  "counts": {
   "open": 5,
   "blocked": 18,
@@ -7188,10 +7188,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Theorem 2.1",
    "file": "WeakPathwiseIto/Sobolev/Theorem21.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 2
    },
@@ -7212,7 +7210,7 @@
    "blockers": [
     "Sobolev.Theorem21Second"
    ],
-   "detail": "1 sorry: theorem_2_1_second"
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Sobolev.Theorem21First",
