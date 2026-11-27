@@ -72,7 +72,19 @@ theorem rpow_lintegral_mul_le {α : Type*} [MeasurableSpace α] {μ : Measure α
 theorem lintegral_lintegral_sub_mul {d : ℕ} {K G : Rd d → ℝ≥0∞} (hK : AEMeasurable K)
     (hG : AEMeasurable G) :
     ∫⁻ x, ∫⁻ y, K (x - y) * G y = (∫⁻ z, K z) * ∫⁻ y, G y := by
-  sorry
+  have hprod : AEMeasurable (Function.uncurry fun x y => K (x - y) * G y)
+      ((volume : Measure (Rd d)).prod volume) :=
+    (hK.comp_quasiMeasurePreserving
+      (quasiMeasurePreserving_sub_of_right_invariant volume volume)).mul
+        (hG.comp_quasiMeasurePreserving Measure.quasiMeasurePreserving_snd)
+  rw [lintegral_lintegral_swap hprod]
+  calc ∫⁻ y, ∫⁻ x, K (x - y) * G y
+      = ∫⁻ y, (∫⁻ x, K (x - y)) * G y := lintegral_congr fun y =>
+        lintegral_mul_const'' _
+        (hK.comp_quasiMeasurePreserving (measurePreserving_sub_right volume y).quasiMeasurePreserving)
+    _ = ∫⁻ y, (∫⁻ z, K z) * G y := lintegral_congr fun y => by
+        rw [lintegral_sub_right_eq_self]
+    _ = (∫⁻ z, K z) * ∫⁻ y, G y := lintegral_const_mul'' _ hG
 
 /-- **Subgoal** (Definition 2.5, Young for `1 ≤ q < ∞` in integrated form,
 `∫ (∫ K(x - y) F(y) dy)^q dx ≤ (∫ K)^q ∫ F^q`). -/
