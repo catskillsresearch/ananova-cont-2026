@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:35:44Z",
+ "updated": "2026-11-27T21:36:02Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 12,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 438
+  "done": 439
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 4,
   "blocked": 3,
-  "done": 372
+  "done": 373
  },
  "untagged": [],
  "legend": {
@@ -3643,7 +3643,7 @@
     "elementary_isometry"
    ],
    "declKinds": {
-    "theorem": 20
+    "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
@@ -3667,6 +3667,7 @@
     "Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+    "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
     "Main.Proposition53Steps::proposition_5_3.measurable_B",
     "Main.Proposition53Steps::proposition_5_3.measurable_coord",
     "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
@@ -4145,6 +4146,37 @@
    ],
    "blockers": [],
    "detail": "proved: proposition_5_3.integral_inner_increment_sq — subgoal of P53.A, one-step isometry (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
+   "label": "intervalIntegral_norm_sq_elementaryValue",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.B, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.B, helper): `∫_0^{s_k} |H(u)|² du = ∑_j (s_{j+1} - s_j) |ξ_j|²` for an elementary integrand on a grid starting at `0`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.intervalIntegral_norm_sq_elementaryValue — subgoal of P53.B, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.measurable_B",
@@ -18649,6 +18681,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.measurable_B",
    "kind": "hard"
   },
@@ -19529,6 +19566,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.measurable_B",
    "kind": "hard"
   },
@@ -19624,6 +19666,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28751,6 +28798,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.measurable_B"
   },
   {
@@ -29307,6 +29358,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.measurable_B"
   },
   {
@@ -29383,6 +29438,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue",
    "to": "Main.Proposition53Steps"
   },
   {

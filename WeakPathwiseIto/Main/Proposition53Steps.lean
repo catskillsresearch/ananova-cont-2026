@@ -464,6 +464,26 @@ theorem norm_sq_elementaryValue {k : ℕ} {s : Fin (k + 1) → ℝ} (hs : Monoto
   · push Not at h
     simp [indicator_of_notMem (h _)]
 
+/-- **Subgoal** (P53.B, helper): `∫_0^{s_k} |H(u)|² du = ∑_j (s_{j+1} - s_j) |ξ_j|²` for an
+elementary integrand on a grid starting at `0`. -/
+theorem intervalIntegral_norm_sq_elementaryValue {k : ℕ} {s : Fin (k + 1) → ℝ}
+    (hs : Monotone s) (hs0 : s 0 = 0) (ξ : Fin k → CanonicalWienerSpace d T → Rd d)
+    (ω : CanonicalWienerSpace d T) :
+    ∫ u in (0 : ℝ)..s (Fin.last k), ‖IsItoIntegral.elementaryValue s ξ u ω‖ ^ 2 =
+      ∑ j : Fin k, (s j.succ - s j.castSucc) * ‖ξ j ω‖ ^ 2 := by
+  have h0 : 0 ≤ s (Fin.last k) := hs0 ▸ hs (Fin.zero_le _)
+  simp_rw [norm_sq_elementaryValue hs]
+  rw [intervalIntegral.integral_of_le h0, integral_finsetSum _ fun j _ =>
+    (integrableOn_const measure_Ioc_lt_top.ne).indicator measurableSet_Ioc]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  have hj0 : 0 ≤ s j.castSucc := hs0 ▸ hs (Fin.zero_le _)
+  have hjl : s j.succ ≤ s (Fin.last k) := hs (Fin.le_last _)
+  have hjj : s j.castSucc ≤ s j.succ := hs (Fin.castSucc_le_succ j)
+  rw [integral_indicator measurableSet_Ioc,
+    Measure.restrict_restrict measurableSet_Ioc, setIntegral_const,
+    Ioc_inter_Ioc, max_eq_left hj0, min_eq_left hjl, Real.volume_real_Ioc_of_le hjj,
+    smul_eq_mul]
+
 /-- **Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with
 `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`,
 `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`. -/
