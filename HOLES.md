@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:40:09Z  
-**`sorry` occurrences:** 32 · 8 open · 19 blocked · 260 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 5, 'blocked': 7, 'done': 206} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:41:22Z  
+**`sorry` occurrences:** 31 · 7 open · 19 blocked · 261 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 4, 'blocked': 7, 'done': 207} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -233,7 +233,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Lemma22::lemma_2_2.subset_closedBall` | subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le` | subgoal of Theorem 2.1 proof, the Lebesgue-point limit | 1 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment` | subgoal of Theorem 2.1 proof, (2 | 0 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset` | subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset` | subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution` | subgoal of Theorem 2.1 proof, mollification step 1 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.coord_integrable` | subgoal of Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}` | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier` | subgoal of Theorem 2.1 proof, mollification: a smooth approximate identity exists | 0 |
@@ -283,7 +283,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 4 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
+| blocked | `Sobolev.Theorem21First` |  | 3 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets

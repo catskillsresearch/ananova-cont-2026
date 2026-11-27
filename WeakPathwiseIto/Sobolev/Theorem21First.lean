@@ -292,13 +292,6 @@ convex and measurable, and `B(c, ρ) ⊆ Q ⊆ B̄(c, d ρ)` for some centre `c`
 theorem ball_subset_subset (hd : 0 < d) {Q : Set (Rd d)} (hQ : IsCubeOrBall Q) :
     ∃ (c : Rd d) (ρ : ℝ), 0 < ρ ∧ Convex ℝ Q ∧ MeasurableSet Q ∧
       Metric.ball c ρ ⊆ Q ∧ Q ⊆ Metric.closedBall c (d * ρ) := by
-  sorry
-
-/-- **Subgoal** (Theorem 2.1 proof: cubes and balls): a cube or ball is convex, measurable,
-bounded, of positive measure, and `(diam Q)^d ≤ K_d |Q|`. -/
-theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), IsCubeOrBall Q →
-    Convex ℝ Q ∧ MeasurableSet Q ∧ Bornology.IsBounded Q ∧ volume Q ≠ 0 ∧
-      Metric.ediam Q ^ (d : ℝ) ≤ K * volume Q := by
   have hcoord : ∀ (i : Fin d) (v : Rd d), Rd.coord i v = v i := by
     intro i v; simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
   have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
@@ -372,6 +365,17 @@ theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), I
       · intro y hy
         rw [Metric.mem_closedBall, dist_eq_norm]
         exact hnorm _ hr hy
+  exact shape Q hQ
+
+/-- **Subgoal** (Theorem 2.1 proof: cubes and balls): a cube or ball is convex, measurable,
+bounded, of positive measure, and `(diam Q)^d ≤ K_d |Q|`. -/
+theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), IsCubeOrBall Q →
+    Convex ℝ Q ∧ MeasurableSet Q ∧ Bornology.IsBounded Q ∧ volume Q ≠ 0 ∧
+      Metric.ediam Q ^ (d : ℝ) ≤ K * volume Q := by
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
+  have shape : ∀ Q : Set (Rd d), IsCubeOrBall Q → ∃ (c : Rd d) (r : ℝ), 0 < r ∧
+      Convex ℝ Q ∧ MeasurableSet Q ∧ Metric.ball c r ⊆ Q ∧ Q ⊆ Metric.closedBall c (d * r) :=
+    fun Q hQ => ball_subset_subset hd hQ
   -- The constant.
   set B := volume (Metric.ball (0 : Rd d) 1) with hBdef
   have hB0 : B ≠ 0 := (Metric.measure_ball_pos volume _ one_pos).ne'

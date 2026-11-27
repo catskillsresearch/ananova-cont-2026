@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:40:09Z",
+ "updated": "2026-11-27T02:41:22Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 31,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 19,
-  "done": 260
+  "done": 261
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 7,
-  "done": 206
+  "done": 207
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "ball_subset_subset",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
     "abs_sub_average_le"
@@ -7266,11 +7265,10 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "4 sorry: ball_subset_subset, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "3 sorry: volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7344,17 +7342,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.ball_subset_subset"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof: ball sandwich for cubes and balls): a cube or ball `Q` is convex and measurable, and `B(c, ρ) ⊆ Q ⊆ B̄(c, d ρ)` for some centre `c` and `ρ > 0`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7364,7 +7360,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.ball_subset_subset — subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.ball_subset_subset — subgoal of Theorem 2.1 proof: ball sandwich for cubes and balls (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
