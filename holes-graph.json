@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T12:27:13Z",
+ "updated": "2026-11-27T12:28:12Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 43,
+ "sorryCount": 42,
  "counts": {
-  "open": 20,
+  "open": 19,
   "blocked": 50,
-  "done": 302
+  "done": 303
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 17,
+  "open": 16,
   "blocked": 39,
-  "done": 241
+  "done": 242
  },
  "untagged": [],
  "legend": {
@@ -8524,9 +8524,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 13,
+   "sorryCount": 12,
    "holes": [
-    "measure_ball_two_le",
     "measure_biUnion_le_lintegral_aux",
     "measure_biUnion_le_lintegral",
     "exists_ball_of_lt",
@@ -8574,13 +8573,12 @@
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
-    "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
     "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
    ],
-   "detail": "13 sorry: measure_ball_two_le, measure_biUnion_le_lintegral_aux, measure_biUnion_le_lintegral, exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
+   "detail": "12 sorry: measure_biUnion_le_lintegral_aux, measure_biUnion_le_lintegral, exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8858,22 +8856,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.measure_ball_two_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r)| ≤ 2^d |B(x, r)|`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.measure_ball_two_le — subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.measure_ball_two_le — subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",

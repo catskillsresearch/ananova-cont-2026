@@ -89,7 +89,11 @@ theorem measurable_localMaximalFunction (f : Rd d → ℝ) :
 /-- **Subgoal** (Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r)| ≤ 2^d |B(x, r)|`). -/
 theorem measure_ball_two_le (x : Rd d) (r : ℝ) :
     volume (Metric.ball x (2 * r)) ≤ 2 ^ d * volume (Metric.ball x r) := by
-  sorry
+  rcases le_or_gt r 0 with hr | hr
+  · rw [Metric.ball_eq_empty.2 (by linarith)]; simp
+  rw [Measure.addHaar_ball_of_pos _ _ (by linarith), Measure.addHaar_ball_of_pos _ _ hr,
+    finrank_euclideanSpace_fin, mul_pow, ENNReal.ofReal_mul (by positivity), ← mul_assoc,
+    ENNReal.ofReal_pow (by norm_num), ENNReal.ofReal_ofNat]
 
 /-- **Subgoal** (Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from
 Carleson `measure_biUnion_le_lintegral_aux`). -/
