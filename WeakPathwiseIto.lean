@@ -69,6 +69,7 @@ public import WeakPathwiseIto.Sobolev.MemW2Plus
 public import WeakPathwiseIto.Sobolev.MemW2PlusS
 public import WeakPathwiseIto.Sobolev.MemWLoc
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
+public import WeakPathwiseIto.Sobolev.Theorem21First
 public import WeakPathwiseIto.Sobolev.Theorem21
 public import WeakPathwiseIto.Sobolev.Theorem23
 
