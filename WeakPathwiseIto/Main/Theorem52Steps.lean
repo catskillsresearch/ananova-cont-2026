@@ -122,7 +122,25 @@ theorem le_one_cases {α : Fin d → ℕ} (hα : ∑ k, α k ≤ 1) :
 `e_i + e_j`). -/
 theorem order_le_two_cases {α : Fin d → ℕ} (hα : IsWeakDerivative.order α ≤ 2) :
     α = 0 ∨ (∃ i, α = Pi.single i 1) ∨ ∃ i j, α = Pi.single i 1 + Pi.single j 1 := by
-  sorry
+  unfold IsWeakDerivative.order at hα
+  by_cases h : ∀ i, α i = 0
+  · exact Or.inl (funext h)
+  push Not at h
+  obtain ⟨i, hi⟩ := h
+  set β : Fin d → ℕ := Function.update α i (α i - 1) with hβ
+  have hαβ : α = Pi.single i 1 + β := by
+    funext j
+    by_cases hj : j = i
+    · subst hj; simp [hβ]; omega
+    · simp [hβ, hj]
+  have hsum : ∑ k, β k ≤ 1 := by
+    have : ∑ k, α k = 1 + ∑ k, β k := by
+      conv_lhs => rw [hαβ]
+      simp [Finset.sum_add_distrib]
+    omega
+  rcases le_one_cases hsum with h0 | ⟨j, hj⟩
+  · exact Or.inr (Or.inl ⟨i, by rw [hαβ, h0, add_zero]⟩)
+  · exact Or.inr (Or.inr ⟨i, j, by rw [hαβ, hj]⟩)
 
 /-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality
 for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives). -/

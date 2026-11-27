@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T11:16:08Z",
+ "updated": "2026-11-27T11:16:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 37,
+ "sorryCount": 36,
  "counts": {
   "open": 7,
   "blocked": 45,
@@ -4109,12 +4109,11 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 14,
+   "sorryCount": 13,
    "holes": [
     "exists_isWeakHessian",
     "contDiffBounded_convolution",
     "isWeakDerivative_single_of_contDiff",
-    "order_le_two_cases",
     "memW_convolution",
     "mollify_mem",
     "tendsto_mollify_of_isLebesguePoint",
@@ -4185,7 +4184,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "14 sorry: exists_isWeakHessian, contDiffBounded_convolution, isWeakDerivative_single_of_contDiff, order_le_two_cases, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "13 sorry: exists_isWeakHessian, contDiffBounded_convolution, isWeakDerivative_single_of_contDiff, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4774,10 +4773,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.order_le_two_cases"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4801,7 +4798,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
