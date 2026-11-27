@@ -113,6 +113,18 @@ theorem indepFun_coords_past_shift {Ω' : Type*} [MeasurableSpace Ω'] {Q : Meas
     funext i u
     simp only [Function.comp_apply, X, piece, Bool.cond_true, shiftF, ← hω i]
 
+/-- **Subgoal** (P53.A, helper): independence transfers to an image measure: if `f ∘ G` and
+`g ∘ G` are independent under `Q`, then `f` and `g` are independent under `Q.map G`. -/
+theorem indepFun_map_of_comp {Ω Ω' β β' : Type*} [MeasurableSpace Ω] [MeasurableSpace Ω']
+    [MeasurableSpace β] [MeasurableSpace β'] {Q : Measure Ω'} {G : Ω' → Ω} (hG : AEMeasurable G Q)
+    {f : Ω → β} {g : Ω → β'} (hf : Measurable f) (hg : Measurable g)
+    (h : IndepFun (f ∘ G) (g ∘ G) Q) : IndepFun f g (Q.map G) := by
+  rw [indepFun_iff_measure_inter_preimage_eq_mul] at h ⊢
+  intro A C hA hC
+  rw [Measure.map_apply_of_aemeasurable hG ((hf hA).inter (hg hC)),
+    Measure.map_apply_of_aemeasurable hG (hf hA), Measure.map_apply_of_aemeasurable hG (hg hC)]
+  exact h A C hA hC
+
 /-- **Subgoal** (P53.A, canonical space): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the past path
 `(B(v))_{v ≤ s}` is independent of the increment `B(t) - B(s)`. -/
 theorem indepFun_past_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) (ht : t ≤ T) :

@@ -477,6 +477,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment": [
    "propext",
    "sorryAx",
@@ -1854,5 +1859,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:53:14Z"
+ "generated": "2026-11-27T20:54:37Z"
 }

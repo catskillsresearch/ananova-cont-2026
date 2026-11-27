@@ -687,6 +687,7 @@ Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementa
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift
+Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_past_increment
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero
@@ -852,6 +853,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_l
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift
+Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_past_increment
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero
@@ -861,6 +863,7 @@ Main.Proposition53Steps::proposition_5_3.elementary_localisation -hard-> Main.Pr
 Main.Proposition53Steps::proposition_5_3.iIndepFun_bool -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.increment_moments -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift -hard-> Main.Proposition53Steps
+Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.indepFun_past_increment -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero -hard-> Main.Proposition53Steps
