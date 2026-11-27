@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T22:49:32Z",
+ "updated": "2026-11-27T00:44:36Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 32,
  "counts": {
@@ -6367,6 +6367,7 @@
    "status": "open",
    "deps": [
     "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
     "Sobolev.IsWeakGradient",
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW",
@@ -9972,6 +9973,11 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21",
+   "kind": "hard"
+  },
+  {
    "from": "Sobolev.IsWeakDerivative",
    "to": "Sobolev.IsWeakGradient",
    "kind": "hard"
@@ -12512,6 +12518,10 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Bessel.Theorem29"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21"
   },
   {
    "from": "Sobolev.IsWeakDerivative",

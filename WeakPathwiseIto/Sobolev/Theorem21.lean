@@ -10,6 +10,7 @@ public import WeakPathwiseIto.Sobolev.MemW
 public import WeakPathwiseIto.Sobolev.IsWeakGradient
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
+public import WeakPathwiseIto.Sobolev.IsLebesguePoint
 
 @[expose] public section
 
@@ -21,19 +22,21 @@ open scoped ENNReal NNReal RealInnerProductSpace
 namespace WeakPathwiseIto
 
 /-- **Theorem 2.1** (first estimate, [BH93, Thm. 1]). For `f ∈ W^{1,1}(ℝ^d)` with precise
-representatives and `x, y` in a cube or ball `Q` at which `f̃` is finite,
+representatives and `x, y` in a cube or ball `Q` at which `f̃` is finite and which are Lebesgue
+points of `f` (as in [BH93], "outside a null set"; see WeakPathwiseIto.md),
 `|f̃(y) - f̃(x)| ≤ C_d (∫_Q |∇f(z)| / |x - z|^{d-1} dz + ∫_Q |∇f(z)| / |y - z|^{d-1} dz)`. -/
 theorem theorem_2_1_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d),
     MemW 1 1 f → IsWeakGradient f G →
     ∀ Q : Set (Rd d), IsCubeOrBall Q → ∀ x y : Rd d, x ∈ Q → y ∈ Q →
       preciseRepresentative.IsFinite f x → preciseRepresentative.IsFinite f y →
+      IsLebesguePoint f x → IsLebesguePoint f y →
       ENNReal.ofReal |preciseRepresentative f y - preciseRepresentative f x| ≤
         C * ((∫⁻ z in Q, ‖G z‖ₑ / edist x z ^ ((d : ℝ) - 1)) +
           ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1)) := by
   sorry
 
 /-- **Theorem 2.1** (second estimate). For `f ∈ W^{2,1}(ℝ^d)` and `x, y ∈ Q` with
-`f̃(x), f̃(y), ∇̃f(x)` finite,
+`f̃(x), f̃(y), ∇̃f(x)` finite, `x, y` Lebesgue points of `f` and `x` a Lebesgue point of `∇f`,
 `|f̃(y) - f̃(x) - ∇̃f(x)(y - x)| ≤ C_d (∫_Q |∇²f(z)| / |x - z|^{d-2} dz + ∫_Q |∇²f(z)| / |y - z|^{d-2} dz)`. -/
 theorem theorem_2_1_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d)
     (H : Rd d → (Rd d →L[ℝ] Rd d)),
@@ -41,6 +44,8 @@ theorem theorem_2_1_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
     ∀ Q : Set (Rd d), IsCubeOrBall Q → ∀ x y : Rd d, x ∈ Q → y ∈ Q →
       preciseRepresentative.IsFinite f x → preciseRepresentative.IsFinite f y →
       preciseRepresentative.VecIsFinite G x →
+      IsLebesguePoint f x → IsLebesguePoint f y →
+      (∀ i, IsLebesguePoint (fun z => Rd.coord i (G z)) x) →
       ENNReal.ofReal |preciseRepresentative f y - preciseRepresentative f x -
           ⟪preciseRepresentative.vec G x, y - x⟫| ≤
         C * ((∫⁻ z in Q, ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 2)) +

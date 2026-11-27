@@ -80,6 +80,16 @@ own text.
   `besselKernel.fourier_eq`.
 * **Theorem 2.1 / Lemma 2.2** quantify over every $Q$ that is a cube or a ball, as in the
   paper (`IsCubeOrBall`: open or closed Euclidean balls and open or closed axis-parallel cubes).
+* **Theorem 2.1: Lebesgue-point hypotheses.** Both estimates additionally assume that $x, y$ are
+  Lebesgue points of $f$ (`IsLebesguePoint`), and the second estimate that $x$ is a Lebesgue
+  point of every component of $\nabla f$. This is how [BH93, Thm. 1] holds ("for $x, y$ outside
+  a set of measure zero"). With only $|f(x)|,|f(y)|<\infty$ the statement is false for closed
+  $Q$ and $x \in \partial Q$, a case the paper uses in Theorem 5.1 (the ball with diameter
+  $[\omega(t_i),\omega(t_{i+1})]$): e.g. for $d = 2$, $Q = [0,1]^2$, $x = 0$,
+  $f(z) = h(\arg z)\chi(|z|)$ with $h \ge 0$ smooth, $h = 0$ on $[0,\pi/2]$, $f \in W^{1,1}$,
+  $\tilde f(0) = \bar h > 0 = \tilde f(\tfrac12,\tfrac12)$ while $\nabla f = 0$ on $Q$ (similarly for
+  the second estimate with $d = 3$). For the $C^2$ functions to which Theorem 5.1 applies it,
+  every point is a Lebesgue point.
 * **Theorem 2.6** states both the equality of spaces and the equivalence of the norms.
 * **Quadratic variation** (eq. (5)): the limit exists for every $t \in [0,T]$ and
   $t \mapsto [x]_\pi(t)$ is continuous and increasing **on $[0,T]$** (`ContinuousOn`,

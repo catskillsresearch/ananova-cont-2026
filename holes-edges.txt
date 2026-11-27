@@ -712,6 +712,7 @@ Smooth.Proposition31::proposition_3_1.tendsto_main -hard-> Smooth.Proposition31
 Smooth.Proposition31::proposition_3_1.tendsto_remainder -hard-> Smooth.Proposition31
 Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes -hard-> Smooth.Proposition31
 Sobolev.IsLebesguePoint -hard-> Bessel.Theorem29
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21
 Sobolev.IsWeakDerivative -hard-> Sobolev.IsWeakGradient
 Sobolev.IsWeakDerivative -hard-> Sobolev.IsWeakHessian
 Sobolev.IsWeakDerivative -hard-> Sobolev.MemW
