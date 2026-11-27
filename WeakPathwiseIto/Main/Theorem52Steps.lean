@@ -469,7 +469,28 @@ theorem enorm_toReal_sub_le {f : Rd d → ℝ} (hf : Measurable f) {x h : Rd d}
     (hx : localMaximalFunction 1 f x ≠ ⊤) (hxh : localMaximalFunction 1 f (x + h) ≠ ⊤) :
     ‖(localMaximalFunction 1 f x).toReal - (localMaximalFunction 1 f (x + h)).toReal‖ₑ ≤
       localMaximalFunction 1 (fun z => f z - f (z + h)) x := by
-  sorry
+  set a := localMaximalFunction 1 f x
+  set b := localMaximalFunction 1 f (x + h)
+  set c := localMaximalFunction 1 (fun z => f z - f (z + h)) x
+  have hb : localMaximalFunction 1 (fun z => f (z + h)) x = b := localMaximalFunction_comp_add f h x
+  have h1 : a ≤ b + c := by
+    rw [← hb]
+    refine hardyLittlewood.le_add (hf.comp (measurable_add_const h)) (fun z => ?_) x
+    calc ‖f z‖ₑ = ‖f (z + h) + (f z - f (z + h))‖ₑ := by ring_nf
+      _ ≤ _ := enorm_add_le _ _
+  have h2 : b ≤ a + c := by
+    rw [← hb]
+    refine hardyLittlewood.le_add hf (fun z => ?_) x
+    calc ‖f (z + h)‖ₑ = ‖f z - (f z - f (z + h))‖ₑ := by ring_nf
+      _ ≤ _ := enorm_sub_le
+  rcases eq_or_ne c ⊤ with hc | hc
+  · rw [hc]; exact le_top
+  have h1' : a.toReal ≤ b.toReal + c.toReal := by
+    rw [← ENNReal.toReal_add hxh hc]; exact ENNReal.toReal_mono (ENNReal.add_ne_top.2 ⟨hxh, hc⟩) h1
+  have h2' : b.toReal ≤ a.toReal + c.toReal := by
+    rw [← ENNReal.toReal_add hx hc]; exact ENNReal.toReal_mono (ENNReal.add_ne_top.2 ⟨hx, hc⟩) h2
+  rw [Real.enorm_eq_ofReal_abs, ← ENNReal.ofReal_toReal hc]
+  exact ENNReal.ofReal_le_ofReal (abs_sub_le_iff.2 ⟨by linarith, by linarith⟩)
 
 /-- **Subgoal** (Appendix C, `M_1 f < ∞` a.e. for `f ∈ L^p`, `p > 1`). -/
 theorem ae_localMaximalFunction_ne_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ} (hf : Measurable f)
