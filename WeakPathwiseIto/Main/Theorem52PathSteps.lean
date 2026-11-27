@@ -59,7 +59,7 @@ theorem lintegral_le_maximal_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partit
   sorry
 
 /-- **Subgoal** (Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖)` on small balls). -/
-theorem rpow_le_potentialProfile {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r ≤ 1) :
+theorem rpow_le_potentialProfile {r : ℝ} (hr1 : r ≤ 1) :
     r ^ (2 - (d : ℝ)) ≤ potentialProfile d r := by
   sorry
 
@@ -133,7 +133,12 @@ theorem ae_path_zero (hT : 0 ≤ T) (x₀ : Rd d) :
 /-- **Subgoal** (Appendix C, Brownian paths are continuous on `[0, T]`). -/
 theorem continuousOn_path (ω : CanonicalWienerSpace d T) :
     ContinuousOn (CanonicalWienerSpace.path ω) (Icc 0 T) := by
-  sorry
+  rw [continuousOn_iff_continuous_domRestrict]
+  have h : (Icc 0 T).domRestrict (CanonicalWienerSpace.path ω) = ω := by
+    funext t
+    simp [Set.domRestrict, CanonicalWienerSpace.path, CanonicalWienerSpace.B, t.2]
+  rw [h]
+  exact ω.continuous
 
 end theorem_5_2
 
