@@ -573,7 +573,243 @@ theorem poincare2_ae (hd : 0 < d) : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (G :
       ∀ Q : Set (Rd d), IsCubeOrBall Q →
         ∀ᵐ y ∂volume, y ∈ Q → ENNReal.ofReal |f y - ⨍ z in Q, (f z + ⟪G z, y - z⟫)| ≤
           K * ∫⁻ z in Q, ‖H z‖ₑ / edist y z ^ ((d : ℝ) - 2) := by
-  sorry
+  obtain ⟨K0, hK0⟩ := theorem_2_1_first.isCubeOrBall_props hd
+  obtain ⟨ψ, hψ, hψc, hψ0, hψ1, hψs⟩ := theorem_2_1_first.exists_mollifier (d := d)
+  refine ⟨K0 * (d : ℝ≥0) ^ 2, fun f G H hf hG hH Q hQ => ?_⟩
+  obtain ⟨hQc, hQm, hQb, hQ0, hQK⟩ := hK0 Q hQ
+  have hQt : volume Q ≠ ⊤ := hQb.measure_lt_top.ne
+  have hf1 : MemW 1 1 f := ⟨hf.1, fun α h => hf.2 α (h.trans (by norm_num))⟩
+  have hfi : Integrable f := memLp_one_iff_integrable.1 hf.1
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) :=
+    theorem_2_1_first.coord_integrable hf1 hG
+  have hexpG : ∀ z, G z = ∑ i, Rd.coord i (G z) • Rd.basisVec i := by
+    intro z
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (G z)]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hGint : Integrable G := by
+    have : G = fun z => ∑ i, Rd.coord i (G z) • Rd.basisVec i := funext hexpG
+    rw [this]
+    exact integrable_finset_sum _ fun i _ => (hGi i).smul_const _
+  -- Hessian entries and measurable versions
+  set Hc : Fin d → Fin d → Rd d → ℝ := fun i j z => Rd.coord j (H z (Rd.basisVec i)) with hHcdef
+  have hHi : ∀ i j, Integrable (Hc i j) := fun i j => coord_hessian_integrable hf hH j i
+  set Hc' : Fin d → Fin d → Rd d → ℝ := fun i j => (hHi i j).aestronglyMeasurable.mk (Hc i j)
+    with hHc'def
+  have hHc'm : ∀ i j, Measurable (Hc' i j) := fun i j =>
+    (hHi i j).aestronglyMeasurable.stronglyMeasurable_mk.measurable
+  have hHcae : ∀ᵐ z ∂volume, ∀ i j, Hc i j z = Hc' i j z := by
+    have : ∀ i j, ∀ᵐ z ∂volume, Hc i j z = Hc' i j z := fun i j =>
+      (hHi i j).aestronglyMeasurable.ae_eq_mk
+    simpa only [ae_all_iff] using this
+  have hHnorm : ∀ i j z, |Hc i j z| ≤ ‖H z‖ := by
+    intro i j z
+    have hb : ∀ k : Fin d, ‖Rd.basisVec k‖ = 1 := fun k => by simp [Rd.basisVec]
+    have h1 := abs_real_inner_le_norm (H z (Rd.basisVec i)) (Rd.basisVec j)
+    rw [hb, mul_one] at h1
+    exact h1.trans ((H z).le_opNorm _ |>.trans (by rw [hb, mul_one]))
+  -- the mollified functions
+  set F : ℕ → Rd d → ℝ := fun n x => ∫ y, f y * ψ n (x - y) with hFdef
+  have hF2 := fun n => hessian_convolution hG hH (hψ n) (hψc n)
+  have hFc : ∀ n, ContDiff ℝ 1 (F n) := fun n => (theorem_2_1_first.contDiff_convolution hG (hψ n) (hψc n)).1
+  have hgradc : ∀ n, Continuous (gradient (F n)) := fun n =>
+    (InnerProductSpace.toDual ℝ (Rd d)).symm.continuous.comp ((hFc n).continuous_fderiv one_ne_zero)
+  set cv : ℕ → Fin d → Fin d → Rd d → ℝ := fun n i j z => ∫ y, Hc i j y * ψ n (z - y) with hcvdef
+  have hcvc : ∀ n i j, Continuous (cv n i j) := by
+    intro n i j
+    have : cv n i j = convolution (Hc i j) (ψ n) (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+      funext z; simp [hcvdef, convolution_def, smul_eq_mul]
+    rw [this]
+    exact (hψc n).continuous_convolution_right _ (hHi i j).locallyIntegrable (hψ n).continuous
+  set T : ℕ → Rd d → ℝ := fun n z => ∑ i, ∑ j, |cv n i j z - Hc' i j z| with hTdef
+  have hT0 : ∀ n z, 0 ≤ T n z := fun n z =>
+    Finset.sum_nonneg fun i _ => Finset.sum_nonneg fun j _ => abs_nonneg _
+  have hTm : ∀ n, Measurable (T n) := fun n =>
+    Finset.measurable_sum _ fun i _ => Finset.measurable_sum _ fun j _ =>
+      (((hcvc n i j).measurable.sub (hHc'm i j))).abs
+  set e : ℝ := (d : ℝ) - 2 with he
+  set P : ℕ → Rd d → ℝ≥0∞ := fun n y => ∫⁻ z in Q, ‖T n z‖ₑ / edist y z ^ e with hPdef
+  have hPm : ∀ n, Measurable (P n) := by
+    intro n
+    have hm : Measurable fun p : Rd d × Rd d => ‖T n p.2‖ₑ / edist p.1 p.2 ^ e :=
+      (((hTm n).enorm).comp measurable_snd).div ((continuous_edist.measurable).pow_const _)
+    exact hm.lintegral_prod_right'
+  set S : ℕ → Rd d → ℝ≥0∞ := fun n y => ‖F n y - f y‖ₑ + P n y with hSdef
+  have hSm : ∀ n, AEMeasurable (S n) (volume.restrict Q) := fun n =>
+    ((((hFc n).continuous.measurable.aemeasurable.sub hfi.aemeasurable).enorm).add
+      (hPm n).aemeasurable).restrict
+  -- `L¹` convergence
+  obtain ⟨CQ, hCQ⟩ := lintegral_potential2_le hd hQb hQm
+  have hA := theorem_2_1_first.tendsto_convolution hfi hψ0 (fun n => (hψ n).continuous) hψ1 hψs
+  have hB := theorem_2_1_first.tendsto_lintegral_gradient hf1 hG hψ hψc hψ0 hψ1 hψs
+  have hTlim : Tendsto (fun n => ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc i j z‖ₑ) atTop (𝓝 0) := by
+    have := tendsto_finsetSum (Finset.univ : Finset (Fin d)) fun i _ =>
+      tendsto_finsetSum (Finset.univ : Finset (Fin d)) fun j _ =>
+        theorem_2_1_first.tendsto_convolution (hHi i j) hψ0 (fun n => (hψ n).continuous) hψ1 hψs
+    simpa [hcvdef] using this
+  have hTle : ∀ n, ∫⁻ z, ‖T n z‖ₑ ≤ ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc i j z‖ₑ := by
+    intro n
+    calc ∫⁻ z, ‖T n z‖ₑ ≤ ∫⁻ z, ∑ i, ∑ j, ‖cv n i j z - Hc' i j z‖ₑ := by
+          refine lintegral_mono fun z => ?_
+          refine (enorm_sum_le _ _).trans (Finset.sum_le_sum fun i _ => ?_)
+          refine (enorm_sum_le _ _).trans (le_of_eq (Finset.sum_congr rfl fun j _ => ?_))
+          simp [Real.enorm_eq_ofReal_abs]
+      _ = ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc' i j z‖ₑ := by
+          rw [lintegral_finsetSum' Finset.univ (f := fun i z => ∑ j, ‖cv n i j z - Hc' i j z‖ₑ)
+            fun i _ => (Finset.measurable_sum _ fun j _ =>
+              (((hcvc n i j).measurable.sub (hHc'm i j)).enorm)).aemeasurable]
+          refine Finset.sum_congr rfl fun i _ => ?_
+          exact lintegral_finsetSum' _ fun j _ =>
+            (((hcvc n i j).measurable.sub (hHc'm i j)).enorm).aemeasurable
+      _ = ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc i j z‖ₑ := by
+          refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+          refine lintegral_congr_ae (hHcae.mono fun z hz => ?_)
+          simp only [hz]
+  have hSint : Tendsto (fun n => ∫⁻ y in Q, S n y) atTop (𝓝 0) := by
+    have hup : Tendsto (fun n => (∫⁻ x, ‖F n x - f x‖ₑ) +
+        CQ * ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc i j z‖ₑ) atTop (𝓝 (0 + (CQ : ℝ≥0∞) * 0)) :=
+      hA.add (ENNReal.Tendsto.const_mul hTlim (Or.inr ENNReal.coe_ne_top))
+    rw [mul_zero, add_zero] at hup
+    refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hup (fun n => zero_le)
+      fun n => ?_
+    have hpot := hCQ (T n) (hTm n).aestronglyMeasurable
+    calc ∫⁻ y in Q, S n y
+        = (∫⁻ y in Q, ‖F n y - f y‖ₑ) + ∫⁻ y in Q, P n y := by
+          have hm1 : AEMeasurable (fun y => ‖F n y - f y‖ₑ) (volume.restrict Q) :=
+            (((hFc n).continuous.measurable.aemeasurable.sub hfi.aemeasurable).enorm).restrict
+          simp only [hSdef]
+          rw [lintegral_add_left' hm1]
+      _ ≤ (∫⁻ x, ‖F n x - f x‖ₑ) + CQ * ∑ i, ∑ j, ∫⁻ z, ‖cv n i j z - Hc i j z‖ₑ := by
+          refine add_le_add (setLIntegral_le_lintegral _ _) ?_
+          exact hpot.trans (mul_le_mul' le_rfl ((setLIntegral_le_lintegral _ _).trans (hTle n)))
+  obtain ⟨φ, hφmono, hφ⟩ := theorem_2_1_first.exists_subseq_ae_tendsto_zero hSm hSint
+  -- convergence of the averaged Taylor polynomials
+  set D : ℝ := Metric.diam Q with hDdef
+  have hDQ : ∀ y ∈ Q, ∀ z ∈ Q, ‖y - z‖ ≤ D := fun y hy z hz => by
+    rw [← dist_eq_norm]; exact Metric.dist_le_diam_of_mem hQb hy hz
+  have hinnerG : ∀ y ∈ Q, IntegrableOn (fun z => ⟪G z, y - z⟫) Q := by
+    intro y hy
+    refine Integrable.mono' (hGint.integrableOn.norm.mul_const D)
+      ((hGint.aestronglyMeasurable.inner
+        (continuous_const.sub continuous_id).aestronglyMeasurable).restrict) ?_
+    refine (ae_restrict_iff' hQm).2 (Eventually.of_forall fun z hz => ?_)
+    rw [Real.norm_eq_abs]
+    exact (abs_real_inner_le_norm _ _).trans (mul_le_mul_of_nonneg_left (hDQ y hy z hz) (norm_nonneg _))
+  have hFi : ∀ n y, IntegrableOn (fun z => F n z + ⟪gradient (F n) z, y - z⟫) Q := by
+    intro n y
+    have hc : Continuous fun z => F n z + ⟪gradient (F n) z, y - z⟫ :=
+      (hFc n).continuous.add ((hgradc n).inner (continuous_const.sub continuous_id))
+    exact (hc.continuousOn.integrableOn_compact hQb.isCompact_closure).mono_set subset_closure
+  have hav : ∀ y ∈ Q, Tendsto (fun n => ⨍ z in Q, (F n z + ⟪gradient (F n) z, y - z⟫)) atTop
+      (𝓝 (⨍ z in Q, (f z + ⟪G z, y - z⟫))) := by
+    intro y hy
+    have hgi : IntegrableOn (fun z => f z + ⟪G z, y - z⟫) Q := hfi.integrableOn.add (hinnerG y hy)
+    rw [tendsto_iff_edist_tendsto_0]
+    have hlim : Tendsto (fun n => (volume Q)⁻¹ * ((∫⁻ x, ‖F n x - f x‖ₑ) +
+        ENNReal.ofReal D * ∫⁻ z, ‖gradient (F n) z - G z‖ₑ)) atTop
+        (𝓝 ((volume Q)⁻¹ * (0 + ENNReal.ofReal D * 0))) :=
+      ENNReal.Tendsto.const_mul (hA.add (ENNReal.Tendsto.const_mul hB (Or.inr ENNReal.ofReal_ne_top)))
+        (Or.inr (ENNReal.inv_ne_top.2 hQ0))
+    rw [mul_zero, add_zero, mul_zero] at hlim
+    refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hlim (fun n => zero_le)
+      fun n => ?_
+    rw [edist_dist, Real.dist_eq, setAverage_eq, setAverage_eq, smul_eq_mul, smul_eq_mul, ← mul_sub,
+      ← integral_sub (hFi n y) hgi, abs_mul, abs_inv, abs_of_nonneg measureReal_nonneg,
+      ENNReal.ofReal_mul (inv_nonneg.2 measureReal_nonneg), measureReal_def,
+      ENNReal.ofReal_inv_of_pos (ENNReal.toReal_pos hQ0 hQt), ENNReal.ofReal_toReal hQt]
+    refine mul_le_mul' le_rfl ?_
+    rw [← Real.enorm_eq_ofReal_abs]
+    refine (enorm_integral_le_lintegral_enorm _).trans ?_
+    have hm1 : AEMeasurable (fun x => ‖F n x - f x‖ₑ) (volume.restrict Q) :=
+      (((hFc n).continuous.measurable.aemeasurable.sub hfi.aemeasurable).enorm).restrict
+    calc ∫⁻ z in Q, ‖F n z + ⟪gradient (F n) z, y - z⟫ - (f z + ⟪G z, y - z⟫)‖ₑ
+        ≤ ∫⁻ z in Q, (‖F n z - f z‖ₑ + ENNReal.ofReal D * ‖gradient (F n) z - G z‖ₑ) := by
+          refine setLIntegral_mono_ae' hQm (Eventually.of_forall fun z hz => ?_)
+          have hsplit : F n z + ⟪gradient (F n) z, y - z⟫ - (f z + ⟪G z, y - z⟫) =
+              (F n z - f z) + ⟪gradient (F n) z - G z, y - z⟫ := by
+            rw [inner_sub_left]; ring
+          rw [hsplit]
+          refine (enorm_add_le _ _).trans (add_le_add le_rfl ?_)
+          rw [← ofReal_norm, ← ofReal_norm, ← ENNReal.ofReal_mul (by
+            exact Metric.diam_nonneg), mul_comm D]
+          refine ENNReal.ofReal_le_ofReal ?_
+          rw [Real.norm_eq_abs]
+          exact (abs_real_inner_le_norm _ _).trans
+            (mul_le_mul_of_nonneg_left (hDQ y hy z hz) (norm_nonneg _))
+      _ = (∫⁻ z in Q, ‖F n z - f z‖ₑ) + ENNReal.ofReal D * ∫⁻ z in Q, ‖gradient (F n) z - G z‖ₑ := by
+          rw [lintegral_add_left' hm1, lintegral_const_mul' _ _ ENNReal.ofReal_ne_top]
+      _ ≤ _ := add_le_add (setLIntegral_le_lintegral _ _)
+          (mul_le_mul' le_rfl (setLIntegral_le_lintegral _ _))
+  -- the constant of `poincare2_of_contDiff`
+  have hcQ : Metric.ediam Q ^ (d : ℝ) / (d * volume Q) ≤ K0 := by
+    refine ENNReal.div_le_of_le_mul (hQK.trans ?_)
+    rw [mul_comm (d : ℝ≥0∞), ← mul_assoc]
+    refine le_mul_of_one_le_right' ?_
+    exact_mod_cast hd
+  -- pointwise Hessian bound
+  have hHess : ∀ n z, (∀ i j, Hc i j z = Hc' i j z) →
+      ‖fderiv ℝ (fderiv ℝ (F n)) z‖ₑ ≤ (d : ℝ≥0∞) ^ 2 * ‖H z‖ₑ + ‖T n z‖ₑ := by
+    intro n z hz
+    have hreal : ‖fderiv ℝ (fderiv ℝ (F n)) z‖ ≤ (d : ℝ) ^ 2 * ‖H z‖ + T n z := by
+      refine (norm_le_sum_entries _).trans ?_
+      calc ∑ i, ∑ j, |fderiv ℝ (fderiv ℝ (F n)) z (Rd.basisVec i) (Rd.basisVec j)|
+          = ∑ i, ∑ j, |cv n i j z| := by
+            refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+            rw [(hF2 n).2 z i j]
+        _ ≤ ∑ i, ∑ j, (‖H z‖ + |cv n i j z - Hc' i j z|) := by
+            refine Finset.sum_le_sum fun i _ => Finset.sum_le_sum fun j _ => ?_
+            have h1 := hHnorm i j z
+            rw [hz i j] at h1
+            calc |cv n i j z| = |Hc' i j z + (cv n i j z - Hc' i j z)| := by ring_nf
+              _ ≤ |Hc' i j z| + |cv n i j z - Hc' i j z| := abs_add_le _ _
+              _ ≤ _ := add_le_add h1 le_rfl
+        _ = (d : ℝ) ^ 2 * ‖H z‖ + T n z := by
+            simp only [Finset.sum_add_distrib, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+              nsmul_eq_mul, hTdef]
+            ring
+    rw [← ofReal_norm, Real.enorm_of_nonneg (hT0 n z), ← ofReal_norm (H z)]
+    refine (ENNReal.ofReal_le_ofReal hreal).trans (le_of_eq ?_)
+    rw [ENNReal.ofReal_add (by positivity) (hT0 n z), ENNReal.ofReal_mul (by positivity),
+      ENNReal.ofReal_pow (Nat.cast_nonneg _), ENNReal.ofReal_natCast]
+  -- conclude
+  rw [ae_restrict_iff' hQm] at hφ
+  filter_upwards [hφ] with y hy hyQ
+  have hSy := hy hyQ
+  have h1 : Tendsto (fun k => ‖F (φ k) y - f y‖ₑ) atTop (𝓝 0) :=
+    tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hSy (fun k => zero_le)
+      fun k => le_self_add
+  have h2 : Tendsto (fun k => P (φ k) y) atTop (𝓝 0) :=
+    tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hSy (fun k => zero_le)
+      fun k => le_add_self
+  have hFy : Tendsto (fun k => F (φ k) y) atTop (𝓝 (f y)) := by
+    rw [tendsto_iff_edist_tendsto_0]
+    simpa [edist_eq_enorm_sub] using h1
+  have hav' := (hav y hyQ).comp hφmono.tendsto_atTop
+  set A : ℝ≥0∞ := ∫⁻ z in Q, ‖H z‖ₑ / edist y z ^ e with hA
+  have hlhs : Tendsto (fun k => ENNReal.ofReal |F (φ k) y -
+      ⨍ z in Q, (F (φ k) z + ⟪gradient (F (φ k)) z, y - z⟫)|) atTop
+      (𝓝 (ENNReal.ofReal |f y - ⨍ z in Q, (f z + ⟪G z, y - z⟫)|)) :=
+    ENNReal.tendsto_ofReal ((hFy.sub hav').abs)
+  have hrhs : Tendsto (fun k => (K0 : ℝ≥0∞) * ((d : ℝ≥0∞) ^ 2 * A + P (φ k) y)) atTop
+      (𝓝 ((K0 : ℝ≥0∞) * ((d : ℝ≥0∞) ^ 2 * A + 0))) :=
+    ENNReal.Tendsto.const_mul (tendsto_const_nhds.add h2) (Or.inr ENNReal.coe_ne_top)
+  rw [add_zero] at hrhs
+  have hfin : (K0 : ℝ≥0∞) * ((d : ℝ≥0∞) ^ 2 * A) = ((K0 * (d : ℝ≥0) ^ 2 : ℝ≥0) : ℝ≥0∞) * A := by
+    push_cast; ring
+  rw [hfin] at hrhs
+  refine le_of_tendsto_of_tendsto' hlhs hrhs fun k => ?_
+  have hp := poincare2_of_contDiff hd (hF2 (φ k)).1 hQc hQm hQb hQ0 hyQ
+  refine hp.trans (mul_le_mul' hcQ ?_)
+  have hPm' : AEMeasurable (fun z => ‖T (φ k) z‖ₑ / edist y z ^ e) (volume.restrict Q) :=
+    ((hTm (φ k)).enorm.div
+      ((continuous_const.edist continuous_id).measurable.pow_const _)).aemeasurable
+  calc ∫⁻ z in Q, ‖fderiv ℝ (fderiv ℝ (F (φ k))) z‖ₑ / edist y z ^ ((d : ℝ) - 2)
+      ≤ ∫⁻ z in Q, ((d : ℝ≥0∞) ^ 2 * (‖H z‖ₑ / edist y z ^ e) + ‖T (φ k) z‖ₑ / edist y z ^ e) := by
+        refine lintegral_mono_ae (ae_restrict_of_ae (hHcae.mono fun z hz => ?_))
+        rw [mul_div_assoc', ← ENNReal.add_div]
+        exact ENNReal.div_le_div_right (hHess (φ k) z hz) _
+    _ = (d : ℝ≥0∞) ^ 2 * A + P (φ k) y := by
+        rw [lintegral_add_right' _ hPm', lintegral_const_mul' _ _ (by simp)]
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the
 unified form `⨍_{B(x,r)} |y - z|^{2-d} ≤ C (r + |x - z|)^{2-d}`). -/

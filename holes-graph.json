@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:11:09Z",
+ "updated": "2026-11-27T03:14:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 19,
-  "done": 274
+  "done": 275
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 7,
-  "done": 219
+  "done": 220
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "poincare2_ae",
     "lintegral_ball_kernel2_le",
     "abs_sub_taylorAverage_le"
    ],
@@ -7931,10 +7930,9 @@
    ],
    "blockers": [
     "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae"
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le"
    ],
-   "detail": "3 sorry: poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "2 sorry: lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8220,24 +8218,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.poincare2_ae"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `m = 2` almost everywhere on `Q` for `W^{2,1}` functions, by mollification).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.poincare2_ae — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.poincare2_ae — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
