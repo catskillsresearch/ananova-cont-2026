@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T19:19:11Z",
+ "updated": "2026-11-27T19:20:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 404
+  "done": 405
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 341
+  "done": 342
  },
  "untagged": [],
  "legend": {
@@ -10293,7 +10293,7 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 6
+    "theorem": 7
    },
    "paperGoal": false,
    "verified": false,
@@ -10304,6 +10304,7 @@
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+    "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
     "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
     "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
     "Smooth.HasQuadraticVariation",
@@ -10345,6 +10346,40 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_4.integrable_mul_conj — subgoal of Remark 4.4, Hölder (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "label": "lintegral_le_eLpNorm_mul",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4 inclusion, Hölder",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4 inclusion, Hölder): for `ℓ ≥ 0`, `∫ |g| ℓ ≤ ‖g‖_{L^{r'}} ‖ℓ‖_{L^r}`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.lintegral_le_eLpNorm_mul — subgoal of Remark 4.4 inclusion, Hölder (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
@@ -16552,6 +16587,11 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "kind": "hard"
   },
@@ -20267,6 +20307,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "kind": "hard"
   },
@@ -21362,6 +21407,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "kind": "hard"
   },
@@ -21532,6 +21582,11 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
    "to": "Occupation.Remark44",
    "kind": "subgoal"
   },
@@ -21952,6 +22007,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "kind": "hard"
   },
@@ -22308,6 +22368,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
    "kind": "hard"
   },
   {
@@ -26980,6 +27045,10 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
   },
   {
@@ -29392,6 +29461,10 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
   },
   {
@@ -29832,6 +29905,10 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
   },
   {
@@ -29960,6 +30037,10 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "to": "Occupation.Remark44"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
    "to": "Occupation.Remark44"
   },
   {

@@ -117,6 +117,24 @@ theorem remark_4_4.tendsto_mollify_of_continuousAt {F : Rd d → ℝ} (hF : Loca
     _ = ε / 2 := by rw [integral_const_mul, hone n, mul_one]
     _ < ε := by linarith
 
+/-- **Subgoal** (Remark 4.4 inclusion, Hölder): for `ℓ ≥ 0`,
+`∫ |g| ℓ ≤ ‖g‖_{L^{r'}} ‖ℓ‖_{L^r}`. -/
+theorem remark_4_4.lintegral_le_eLpNorm_mul {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd d → ℝ} (hℓ0 : 0 ≤ ℓ)
+    (hℓm : AEStronglyMeasurable ℓ) {E : Type*} [NormedAddCommGroup E] {g : Rd d → E}
+    (hg : AEStronglyMeasurable g) :
+    ∫⁻ x, ‖g x‖ₑ * ENNReal.ofReal (ℓ x) ≤ eLpNorm g r.conjExponent volume * eLpNorm ℓ r volume := by
+  have := (ENNReal.HolderConjugate.conjExponent hr.le).symm
+  have h := eLpNorm_smul_le_mul_eLpNorm_of_pos (μ := volume) (φ := fun x => ‖g x‖) (f := ℓ)
+    (p := r.conjExponent) (q := r) (r := 1) one_pos
+  have hn : eLpNorm (fun x => ‖g x‖) r.conjExponent volume = eLpNorm g r.conjExponent volume :=
+    eLpNorm_norm g hg
+  rw [hn] at h
+  refine le_trans (le_of_eq ?_) h
+  rw [eLpNorm_one_eq_lintegral_enorm (hg.norm.smul hℓm)]
+  refine lintegral_congr fun x => ?_
+  change _ = ‖‖g x‖ * ℓ x‖ₑ
+  rw [enorm_mul, enorm_norm, Real.enorm_of_nonneg (hℓ0 x)]
+
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/
 theorem remark_4_4 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
