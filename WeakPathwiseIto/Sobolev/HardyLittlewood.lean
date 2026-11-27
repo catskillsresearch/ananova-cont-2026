@@ -335,7 +335,45 @@ theorem lintegral_truncate_eq {f : Rd d → ℝ} (hf : Measurable f) {p : ℝ} (
     ∫⁻ t in Ioi (0 : ℝ), ENNReal.ofReal (t ^ (p - 2)) *
         ∫⁻ y in {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ}, ‖f y‖ₑ =
       2 ^ (p - 1) / ENNReal.ofReal (p - 1) * ∫⁻ y, ‖f y‖ₑ ^ p := by
-  sorry
+  have hS : MeasurableSet {z : ℝ × Rd d | ENNReal.ofReal z.1 < 2 * ‖f z.2‖ₑ} :=
+    measurableSet_lt (ENNReal.measurable_ofReal.comp measurable_fst)
+      ((hf.comp measurable_snd).enorm.const_mul _)
+  have h1 : ∀ t : ℝ, ENNReal.ofReal (t ^ (p - 2)) *
+      ∫⁻ y in {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ}, ‖f y‖ₑ =
+      ∫⁻ y, {z : ℝ × Rd d | ENNReal.ofReal z.1 < 2 * ‖f z.2‖ₑ}.indicator
+        (fun z => ENNReal.ofReal (z.1 ^ (p - 2)) * ‖f z.2‖ₑ) (t, y) := fun t => by
+    have hSt : MeasurableSet {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ} :=
+      measurableSet_lt measurable_const (hf.enorm.const_mul _)
+    rw [← lintegral_const_mul' _ _ ENNReal.ofReal_ne_top, ← lintegral_indicator hSt]
+    refine lintegral_congr fun y => ?_
+    by_cases hy : ENNReal.ofReal t < 2 * ‖f y‖ₑ
+    · simp [indicator_of_mem, hy]
+    · simp [indicator_of_notMem, hy]
+  simp_rw [h1]
+  have hF : Measurable (Function.uncurry fun (t : ℝ) (y : Rd d) =>
+      {z : ℝ × Rd d | ENNReal.ofReal z.1 < 2 * ‖f z.2‖ₑ}.indicator
+        (fun z => ENNReal.ofReal (z.1 ^ (p - 2)) * ‖f z.2‖ₑ) (t, y)) :=
+    (((measurable_fst.pow_const (p - 2)).ennreal_ofReal).mul
+      (hf.comp measurable_snd).enorm).indicator hS
+  rw [lintegral_lintegral_swap hF.aemeasurable, ← lintegral_const_mul' _ _
+    (ENNReal.div_ne_top (by simp) (ENNReal.ofReal_pos.2 (by linarith)).ne')]
+  refine lintegral_congr fun y => ?_
+  have h2 : ∀ t : ℝ, {z : ℝ × Rd d | ENNReal.ofReal z.1 < 2 * ‖f z.2‖ₑ}.indicator
+      (fun z => ENNReal.ofReal (z.1 ^ (p - 2)) * ‖f z.2‖ₑ) (t, y) =
+      {t : ℝ | ENNReal.ofReal t < 2 * ‖f y‖ₑ}.indicator
+        (fun t => ENNReal.ofReal (t ^ (p - 1 - 1))) t * ‖f y‖ₑ := fun t => by
+    rw [show p - 1 - 1 = p - 2 by ring]
+    by_cases ht : ENNReal.ofReal t < 2 * ‖f y‖ₑ
+    · simp [indicator_of_mem, ht]
+    · simp [indicator_of_notMem, ht]
+  simp_rw [h2]
+  rw [lintegral_mul_const' _ _ enorm_ne_top, lintegral_Ioi_indicator_rpow (by linarith),
+    ENNReal.mul_rpow_of_nonneg _ _ (by linarith)]
+  have h3 : ‖f y‖ₑ ^ p = ‖f y‖ₑ ^ (p - 1) * ‖f y‖ₑ := by
+    conv_lhs => rw [show p = (p - 1) + 1 by ring]
+    rw [ENNReal.rpow_add_of_nonneg _ _ (by linarith) zero_le_one, ENNReal.rpow_one]
+  rw [h3, div_eq_mul_inv, div_eq_mul_inv]
+  ring
 
 /-- **Subgoal** (Hardy–Littlewood, strong type `(p, p)`, `p > 1`, for measurable `f`). -/
 theorem lintegral_rpow_le {f : Rd d → ℝ} (hf : Measurable f) {p : ℝ} (hp : 1 < p) :

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T12:46:22Z",
+ "updated": "2026-11-27T12:47:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 50,
-  "done": 312
+  "done": 313
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 39,
-  "done": 251
+  "done": 252
  },
  "untagged": [],
  "legend": {
@@ -8524,9 +8524,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "lintegral_truncate_eq",
     "lintegral_rpow_le",
     "congr_ae"
    ],
@@ -8557,10 +8556,9 @@
    ],
    "blockers": [
     "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq"
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le"
    ],
-   "detail": "3 sorry: lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
+   "detail": "2 sorry: lintegral_rpow_le, congr_ae"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8751,22 +8749,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.lintegral_truncate_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1) ‖f‖_p^p`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.lintegral_truncate_eq — subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.lintegral_truncate_eq — subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
