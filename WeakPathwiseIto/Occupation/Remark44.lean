@@ -9,6 +9,7 @@ public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Smooth.HasQuadraticVariation
 public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Basic.WeakLpTendsto
+public import WeakPathwiseIto.Occupation.Lemma42
 
 @[expose] public section
 
@@ -26,11 +27,14 @@ and `𝓛^{π_n}_ω ⇀ ℓ^{ω,π}_T` in `L^r(ℝ^d)`, `r ∈ (1, ∞]` (weak-*
 `ℓ` is the density of the quadratic-variation occupation measure:
 `∫ φ ℓ dx = ∫_0^T φ(ω(t)) d tr[ω]_π(t)` for `φ ∈ C_c(ℝ^d)`. -/
 theorem remark_4_4_density (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
-    (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (hr : 1 < r) {ℓ : Rd d → ℝ} (hℓ0 : 0 ≤ ℓ)
+    (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞} (_hr : 1 < r) {ℓ : Rd d → ℝ} (_hℓ0 : 0 ≤ ℓ)
     (hweak : WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ)
     {φ : Rd d → ℝ} (hφ : Continuous φ) (hφc : HasCompactSupport φ) :
     ∫ x, φ x * ℓ x = ∫ t in Icc 0 T, φ (ω t) ∂hQV.traceMeasure := by
-  sorry
+  have h1 := hweak.2.2 φ (hφ.memLp_of_hasCompactSupport hφc)
+  have h2 := lemma_4_2 hω hQV hosc hφ hφc
+  rw [weightedOccupationMeasure.integral_eq hω hQV hφ] at h2
+  exact tendsto_nhds_unique h1 h2
 
 /-- **Remark 4.4** (explicit seminorm). Under the hypotheses of `remark_4_4_density`, for every
 `h ∈ L^{r'}(ℝ^d)`, `‖h‖_{W^0_{ω,π}} = ∫ |h(x)| ℓ^{ω,π}_T(x) dx = ‖h‖_{L^1(μ^π_{ω,T})}`. -/

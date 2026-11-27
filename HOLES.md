@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T18:59:56Z  
-**`sorry` occurrences:** 17 · 6 open · 13 blocked · 401 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 3, 'blocked': 3, 'done': 338} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T19:15:51Z  
+**`sorry` occurrences:** 16 · 6 open · 13 blocked · 401 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 3, 'blocked': 3, 'done': 338} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,7 +27,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
+| `Occupation.Remark44` | Remark 4.4 | 2 | `remark_4_4_seminorm`, `remark_4_4` |
 
 ## Subgoals (helper lemmas/defs)
 
@@ -459,7 +459,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
 | done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
-| open | `Occupation.Remark44` | Remark 4.4 | 3 |  |
+| open | `Occupation.Remark44` | Remark 4.4 | 2 |  |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 3 | `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
