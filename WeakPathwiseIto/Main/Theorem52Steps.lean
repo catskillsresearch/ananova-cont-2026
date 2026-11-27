@@ -883,8 +883,9 @@ theorem measure_path_mem_null (x₀ : Rd d) {N : Set (Rd d)} (hN : volume N = 0)
 Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0`). -/
 theorem ae_forall_mem_not_mem_null {N : Set (Rd d)} (hN : volume N = 0) {S : Set ℝ}
     (hS : S.Countable) (hpos : ∀ t ∈ S, 0 < t ∧ t ≤ T) (x₀ : Rd d) :
-    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ S, CanonicalWienerSpace.path ω t ∉ N := by
-  sorry
+    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ S, CanonicalWienerSpace.path ω t ∉ N :=
+  (ae_ball_iff hS).2 fun t ht => measure_eq_zero_iff_ae_notMem.1
+    (measure_path_mem_null x₀ hN (hpos t ht).1 (hpos t ht).2)
 
 end theorem_5_2
 

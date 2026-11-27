@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T14:24:03Z",
+ "updated": "2026-11-27T14:24:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 26,
+ "sorryCount": 25,
  "counts": {
   "open": 7,
   "blocked": 62,
@@ -4031,11 +4031,10 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
     "isBrownianPolar_nonLebesgue",
-    "tendsto_mollify_hessian",
-    "ae_forall_mem_not_mem_null"
+    "tendsto_mollify_hessian"
    ],
    "declKinds": {
     "theorem": 37
@@ -4136,7 +4135,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "3 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian, ae_forall_mem_not_mem_null"
+   "detail": "2 sorry: isBrownianPolar_nonLebesgue, tendsto_mollify_hessian"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4265,10 +4264,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.ae_forall_mem_not_mem_null"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4294,7 +4291,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.ae_forall_mem_not_mem_null — subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.ae_forall_mem_not_mem_null — subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
