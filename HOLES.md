@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:50:59Z  
-**`sorry` occurrences:** 19 · 7 open · 14 blocked · 381 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 319} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:54:36Z  
+**`sorry` occurrences:** 19 · 7 open · 14 blocked · 384 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 322} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -281,6 +281,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self` | subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative | 0 |
+| done | `Occupation.Remark45::Rd.coord_one_apply` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
+| done | `Occupation.Remark45::Rd.coord_one_injective` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
+| done | `Occupation.Remark45::Rd.norm_one_eq` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
 | done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
 | done | `Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq` | subgoal of Corollary 3.2 proof, "by Proposition 3.1" | 0 |
 | done | `Smooth.FollmerItoFormula::follmer_ito_formula` | subgoal of Corollary 3.2 proof, [Föl81] | 0 |

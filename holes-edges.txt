@@ -878,6 +878,9 @@ Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq -hard-> Main.SmoothItoAt
 Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped -hard-> Main.SmoothItoAt
 Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid -hard-> Main.SmoothItoAt
 Main.Theorem51 -hard-> Occupation.Remark45
+Main.Theorem51 -hard-> Occupation.Remark45::Rd.coord_one_apply
+Main.Theorem51 -hard-> Occupation.Remark45::Rd.coord_one_injective
+Main.Theorem51 -hard-> Occupation.Remark45::Rd.norm_one_eq
 Main.Theorem51Steps -hard-> Main.Theorem51
 Main.Theorem51Steps -hard-> Main.Theorem52Steps
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -1089,6 +1092,9 @@ Occupation.ApproximatingSequence -hard-> Occupation.PathwiseSobolevSpace::Pathwi
 Occupation.ApproximatingSequence -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self
 Occupation.ApproximatingSequence -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single
 Occupation.DiscreteLocalTime -hard-> Occupation.Remark45
+Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::Rd.coord_one_apply
+Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::Rd.coord_one_injective
+Occupation.DiscreteLocalTime -hard-> Occupation.Remark45::Rd.norm_one_eq
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.DiscreteOccupationDensity -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le
@@ -1405,6 +1411,12 @@ Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessia
 Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self -hard-> Occupation.PathwiseSobolevSpace
 Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single -hard-> Occupation.PathwiseSobolevSpace
 Occupation.Remark44 -hard-> Occupation.Remark45
+Occupation.Remark44 -hard-> Occupation.Remark45::Rd.coord_one_apply
+Occupation.Remark44 -hard-> Occupation.Remark45::Rd.coord_one_injective
+Occupation.Remark44 -hard-> Occupation.Remark45::Rd.norm_one_eq
+Occupation.Remark45::Rd.coord_one_apply -hard-> Occupation.Remark45
+Occupation.Remark45::Rd.coord_one_injective -hard-> Occupation.Remark45
+Occupation.Remark45::Rd.norm_one_eq -hard-> Occupation.Remark45
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le
 Occupation.WeightedOccupationMeasure -hard-> Occupation.Lemma42::lemma_4_2.abs_integral_sub_le

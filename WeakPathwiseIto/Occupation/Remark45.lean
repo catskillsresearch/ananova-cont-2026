@@ -20,6 +20,21 @@ namespace WeakPathwiseIto
 
 variable {T : ℝ} {π : ℕ → Partition T} {ω : ℝ → Rd 1}
 
+/-- **Subgoal** (Remark 4.5, identifying `ℝ` with `ℝ^1`): the coordinate of `v ∈ ℝ^1` is `v 0`. -/
+theorem Rd.coord_one_apply (v : Rd 1) : Rd.coord 0 v = v 0 := by
+  simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+
+/-- **Subgoal** (Remark 4.5, identifying `ℝ` with `ℝ^1`): `|v| = |v^0|` on `ℝ^1`. -/
+theorem Rd.norm_one_eq (v : Rd 1) : ‖v‖ = |Rd.coord 0 v| := by
+  rw [Rd.coord_one_apply]
+  simp [EuclideanSpace.norm_eq, Real.sqrt_sq_eq_abs]
+
+/-- **Subgoal** (Remark 4.5, identifying `ℝ` with `ℝ^1`): the coordinate map `ℝ^1 → ℝ` is
+injective. -/
+theorem Rd.coord_one_injective : Function.Injective (Rd.coord (d := 1) 0) := fun v w h => by
+  rw [Rd.coord_one_apply, Rd.coord_one_apply] at h
+  ext i; fin_cases i; exact h
+
 /-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
 endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
 `λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed

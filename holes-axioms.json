@@ -1238,6 +1238,21 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::Rd.coord_one_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Remark45::Rd.coord_one_injective": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Remark45::Rd.norm_one_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq": [
    "propext",
    "Classical.choice",
@@ -1644,5 +1659,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:50:58Z"
+ "generated": "2026-11-27T17:54:36Z"
 }
