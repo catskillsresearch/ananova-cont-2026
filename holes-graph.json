@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T03:40:41Z",
+ "updated": "2026-11-27T03:41:57Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 26,
+ "sorryCount": 25,
  "counts": {
   "open": 4,
-  "blocked": 18,
-  "done": 289
+  "blocked": 17,
+  "done": 290
  },
  "goalCounts": {
   "open": 3,
-  "blocked": 11,
-  "done": 57
+  "blocked": 10,
+  "done": 58
  },
  "subgoalCounts": {
   "open": 1,
@@ -8283,9 +8283,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Theorem 2.3",
    "file": "WeakPathwiseIto/Sobolev/Theorem23.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "theorem_2_3_first",
     "theorem_2_3_second"
    ],
    "declKinds": {
@@ -8294,7 +8293,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Sobolev.IsWeakGradient",
     "Sobolev.IsWeakHessian",
@@ -8303,10 +8302,8 @@
     "Sobolev.PreciseRepresentative",
     "Sobolev.Theorem23Steps"
    ],
-   "blockers": [
-    "Sobolev.Theorem23Steps"
-   ],
-   "detail": "2 sorry: theorem_2_3_first, theorem_2_3_second"
+   "blockers": [],
+   "detail": "1 sorry: theorem_2_3_second"
   },
   {
    "id": "Sobolev.Theorem23Steps",
@@ -8321,9 +8318,9 @@
     "theorem": 9
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21",
@@ -8338,7 +8335,7 @@
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",

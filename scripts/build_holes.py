@@ -52,6 +52,7 @@ VERIFIED: set[str] = {
     "Sobolev.Theorem21First",
     "Sobolev.Theorem21Second",
     "Sobolev.Theorem21",
+    "Sobolev.Theorem23Steps",
     "Main.Theorem51",
     "Main.Theorem51Steps",
     "Main.SmoothItoAt",
