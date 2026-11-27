@@ -83,6 +83,29 @@ theorem incrementBall_one_iff (a b x : Rd 1) : x ∈ incrementBall a b ↔
       rw [abs_of_nonneg (by linarith : (0:ℝ) ≤ Rd.coord 0 a - Rd.coord 0 b)]
       rw [abs_le]; constructor <;> linarith
 
+/-- **Subgoal** (Remark 4.5, eq. (7) for `d = 1`): the single-increment density from `a` to `b`
+is `(|u - a| + |u - b|) 1_{[a ∧ b, a ∨ b]}(u)` at the level `u = x^0` (`c_1 = 1`). -/
+theorem discreteOccupationDensity.piece_one (a b x : Rd 1) : discreteOccupationDensity.piece a b x =
+    (Icc (min (Rd.coord 0 a) (Rd.coord 0 b)) (max (Rd.coord 0 a) (Rd.coord 0 b))).indicator
+      (fun u => |u - Rd.coord 0 a| + |u - Rd.coord 0 b|) (Rd.coord 0 x) := by
+  have hc : ∀ v w : Rd 1, Rd.coord 0 (v - w) = Rd.coord 0 v - Rd.coord 0 w := fun v w => by
+    simp [Rd.coord_one_apply]
+  unfold discreteOccupationDensity.piece
+  split_ifs with hab
+  · subst hab
+    by_cases hx : Rd.coord 0 x ∈
+        Icc (min (Rd.coord 0 a) (Rd.coord 0 a)) (max (Rd.coord 0 a) (Rd.coord 0 a))
+    · rw [indicator_of_mem hx]
+      rw [min_self, max_self, Icc_self, mem_singleton_iff] at hx
+      simp [hx]
+    · rw [indicator_of_notMem hx]
+  · by_cases hx : x ∈ incrementBall a b
+    · rw [indicator_of_mem hx, indicator_of_mem ((incrementBall_one_iff a b x).1 hx),
+        occupationConstant_one, Rd.norm_one_eq, Rd.norm_one_eq, hc, hc]
+      norm_num
+    · rw [indicator_of_notMem hx,
+        indicator_of_notMem (fun h => hx ((incrementBall_one_iff a b x).2 h))]
+
 /-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
 endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
 `λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed

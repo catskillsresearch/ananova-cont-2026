@@ -1253,6 +1253,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::discreteOccupationDensity.piece_one": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::incrementBall_one_iff": [
    "propext",
    "Classical.choice",
@@ -1669,5 +1674,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:54:56Z"
+ "generated": "2026-11-27T17:55:17Z"
 }

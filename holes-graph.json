@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:54:56Z",
+ "updated": "2026-11-27T17:55:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 19,
  "counts": {
   "open": 7,
   "blocked": 14,
-  "done": 386
+  "done": 387
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 4,
   "blocked": 4,
-  "done": 324
+  "done": 325
  },
  "untagged": [],
  "legend": {
@@ -10081,7 +10081,7 @@
     "remark_4_5_bounded"
    ],
    "declKinds": {
-    "theorem": 10
+    "theorem": 11
    },
    "paperGoal": false,
    "verified": false,
@@ -10094,6 +10094,7 @@
     "Occupation.Remark45::Rd.coord_one_apply",
     "Occupation.Remark45::Rd.coord_one_injective",
     "Occupation.Remark45::Rd.norm_one_eq",
+    "Occupation.Remark45::discreteOccupationDensity.piece_one",
     "Occupation.Remark45::incrementBall_one_iff",
     "Occupation.Remark45::occupationConstant_one"
    ],
@@ -10197,6 +10198,38 @@
    ],
    "blockers": [],
    "detail": "proved: Rd.norm_one_eq — subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark45::discreteOccupationDensity.piece_one",
+   "label": "piece_one",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.5, eq. (7",
+   "parentGoal": "Occupation.Remark45",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark45.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.5, eq. (7) for `d = 1`): the single-increment density from `a` to `b` is `(|u - a| + |u - b|) 1_{[a ∧ b, a ∨ b]}(u)` at the level `u = x^0` (`c_1 = 1`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Main.Theorem51",
+    "Occupation.DiscreteLocalTime",
+    "Occupation.Remark44"
+   ],
+   "blockers": [],
+   "detail": "proved: discreteOccupationDensity.piece_one — subgoal of Remark 4.5, eq. (7 (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45::incrementBall_one_iff",
@@ -18065,6 +18098,11 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::incrementBall_one_iff",
    "kind": "hard"
   },
@@ -19141,6 +19179,11 @@
   {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::Rd.norm_one_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one",
    "kind": "hard"
   },
   {
@@ -20750,6 +20793,11 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::incrementBall_one_iff",
    "kind": "hard"
   },
@@ -20770,6 +20818,11 @@
   },
   {
    "from": "Occupation.Remark45::Rd.norm_one_eq",
+   "to": "Occupation.Remark45",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark45::discreteOccupationDensity.piece_one",
    "to": "Occupation.Remark45",
    "kind": "subgoal"
   },
@@ -27406,6 +27459,10 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::incrementBall_one_iff"
   },
   {
@@ -28186,6 +28243,10 @@
   },
   {
    "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::incrementBall_one_iff"
   },
   {
@@ -28918,6 +28979,10 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::discreteOccupationDensity.piece_one"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::incrementBall_one_iff"
   },
   {
@@ -28934,6 +28999,10 @@
   },
   {
    "from": "Occupation.Remark45::Rd.norm_one_eq",
+   "to": "Occupation.Remark45"
+  },
+  {
+   "from": "Occupation.Remark45::discreteOccupationDensity.piece_one",
    "to": "Occupation.Remark45"
   },
   {
