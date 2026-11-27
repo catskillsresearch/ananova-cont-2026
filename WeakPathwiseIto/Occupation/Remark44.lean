@@ -10,7 +10,8 @@ public import WeakPathwiseIto.Smooth.HasQuadraticVariation
 public import WeakPathwiseIto.Smooth.PathOscillation
 public import WeakPathwiseIto.Basic.WeakLpTendsto
 public import WeakPathwiseIto.Occupation.Lemma42
-public import WeakPathwiseIto.Main.Theorem52PathSteps
+public import WeakPathwiseIto.Main.Theorem52Mollify
+public import WeakPathwiseIto.Sobolev.Theorem21First
 
 @[expose] public section
 

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T19:57:04Z  
-**`sorry` occurrences:** 15 · 5 open · 14 blocked · 406 done (goals + subgoals) · goals {'open': 2, 'blocked': 11, 'done': 63} · subgoals {'open': 3, 'blocked': 3, 'done': 343} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T20:00:34Z  
+**`sorry` occurrences:** 15 · 6 open · 13 blocked · 407 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 64} · subgoals {'open': 3, 'blocked': 3, 'done': 343} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,6 +27,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
+| `Occupation.Remark44` | Remark 4.4 | 1 | `remark_4_4` |
 
 ## Subgoals (helper lemmas/defs)
 
@@ -136,6 +137,26 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub` | subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.tendsto_covariation` | subgoal of Theorem 5.1 proof, (20 | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.tendsto_integral` | subgoal of Theorem 5.1 proof, (22 | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.abs_convolution_le` | subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.contDiffBounded_convolution` | subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.coord_toEuclideanCLM` | subgoal of Appendix C, mollification: the `(i, j | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.eLpNorm_mollify_sub_le` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: Minkowski's integral inequality, `‖ψ ⋆ f - f‖_p ≤ sup_{|z| < r} ‖f(· - z | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.exists_isWeakGradient` | subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.exists_isWeakGradient_of_memW` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 1: a `W^{k,q}` function, `k ≥ 1`, has a weak gradient, assembled from its first-order weak derivatives | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.exists_isWeakHessian` | subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.fderiv_convolution_apply` | subgoal of Appendix C, mollification: `∂_v (F * g | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff` | subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero` | subgoal of Appendix C, mollification: `D^0 f = f` weakly | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.le_one_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.memW_convolution` | subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.mollify_mem` | subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: `(ψ ⋆ f | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.norm_convolution_le_of_bound` | subgoal of Appendix C, mollification: `‖(F ⋆[L] g | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.order_le_two_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.smoothHessian_convolution` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 1: the Hessian of the mollification is the mollified weak Hessian, `∇²(F ⋆ ψ | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_comp_sub_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`, `‖f(· - z | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p` for continuous compactly supported functions | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_mollify_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: mollification converges in `L^p`, `‖ψ_n ⋆ f - f‖_p → 0` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem` | subgoal of Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of `(0, T]` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top` | subgoal of Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero` | subgoal of Appendix C, `B(0 | 0 |
@@ -161,30 +182,19 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal` | subgoal of Theorem 5.2, step 5: along one path, Appendix C (11 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.vanishes_path` | subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top` | subgoal of Theorem 5.2, step 5: for `u_k ∈ L^p`, `p > 1`, the points where some `M_1 u_k` is infinite form a Lebesgue-null set | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.abs_convolution_le` | subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le` | subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le` | subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the weak Hessian is unique a.e., entrywise by uniqueness of weak derivatives | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null` | subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem` | subgoal of Appendix C, Brownian motion does not enter a polar set at positive times | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top` | subgoal of Appendix C, `M_1 f < ∞` a.e. for `f ∈ L^p`, `p > 1` | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution` | subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞` | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM` | subgoal of Appendix C, mollification: the `(i, j | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le` | subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.eLpNorm_mollify_sub_le` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: Minkowski's integral inequality, `‖ψ ⋆ f - f‖_p ≤ sup_{|z| < r} ‖f(· - z | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le` | subgoal of Appendix C, `lintegral_rpow_sub_le`: mean value bound `|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1} | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le` | subgoal of Appendix C, sublinearity of `M_1` at two points: `|M_1 f(x | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient` | subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient_of_memW` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 1: a `W^{k,q}` function, `k ≥ 1`, has a weak gradient, assembled from its first-order weak derivatives | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian` | subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le` | subgoal of Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has uniformly bounded integrals over a compact set `K` | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply` | subgoal of Appendix C, mollification: `∂_v (F * g | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le` | subgoal of Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable` | subgoal of Appendix C, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` for measurable `f ∈ L^p`, with the Hardy–Littlewood constant of `hardyLittlewood.lintegral_rpow_le` | 0 |
 | blocked | `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` | subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff` | subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero` | subgoal of Appendix C, mollification: `D^0 f = f` weakly | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.le_one_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: the Gagliardo double integral in difference coordinates, `∫∫ ‖A x - A y‖^p / |x - y|^r = ∫ (∫ ‖A(x + h | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add` | subgoal of Appendix C, Tonelli in difference coordinates: `∫∫ Φ(x, y | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: Tonelli in difference coordinates for a.e.-measurable integrands, `∫∫ Φ(x, y | 0 |
@@ -195,18 +205,9 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add` | subgoal of Appendix C, `M_1` commutes with translations: `M_1(f(· + h | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.measure_path_mem_null` | subgoal of Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`, `ℙ_{x₀}(B(t | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}` function is in `L^p`, by uniqueness of weak derivatives | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.memW_convolution` | subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.mollify_mem` | subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.mollify_sub_eq` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: `(ψ ⋆ f | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add` | subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1 | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound` | subgoal of Appendix C, mollification: `‖(F ⋆[L] g | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.order_le_two_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous` | subgoal of Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely continuous measures on `ℝ` is absolutely continuous with respect to the product | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto` | subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.smoothHessian_convolution` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 1: the Hessian of the mollification is the mollified weak Hessian, `∇²(F ⋆ ψ | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_comp_sub_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`, `‖f(· - z | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p` for continuous compactly supported functions | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_mollify_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: mollification converges in `L^p`, `‖ψ_n ⋆ f - f‖_p → 0` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_lintegral_shift_mollify_sub` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: for a fixed shift `h`, the difference `a_n(x + h | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian` | subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` | subgoal of Appendix C, mollification: `F_m(x | 0 |
@@ -463,7 +464,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationConstant` | Eq. (7) c_d | 0 |  |
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
 | done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
-| blocked | `Occupation.Remark44` | Remark 4.4 | 1 | `Main.Theorem52PathSteps` |
+| open | `Occupation.Remark44` | Remark 4.4 | 1 |  |
 | blocked | `Occupation.Remark45` | Remark 4.5 | 3 | `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
@@ -481,6 +482,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 0 | `Appendix.LemmaB2`, `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
+| done | `Main.Theorem52Mollify` | Appendix C mollification steps | 0 |  |
 | blocked | `Main.Theorem52PathSteps` |  | 0 | `Appendix.LemmaB1`, `Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52Steps` |  | 0 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |

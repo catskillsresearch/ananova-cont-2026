@@ -9412,7 +9412,7 @@ end CanonicalWienerSpace
 
 end
 
-/-! ## `WeakPathwiseIto.Main.Theorem52Steps` -/
+/-! ## `WeakPathwiseIto.Main.Theorem52Mollify` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 
@@ -9423,7 +9423,7 @@ open scoped ENNReal NNReal RealInnerProductSpace Convolution
 
 namespace theorem_5_2
 
-variable {d : ℕ} {T : ℝ}
+variable {d : ℕ}
 
 /- [omitted from the Challenge: not used by the compared statements]
 /-- **Subgoal** (Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled
@@ -9683,144 +9683,6 @@ theorem mollify_mem {F : Rd d → ℝ} (hF : MemW 2 1 F) {ψ : Rd d → ℝ}
     ContDiffBounded 2 (fun x => ∫ y, F y * ψ (x - y)) ∧
       MemW 2 1 (fun x => ∫ y, F y * ψ (x - y)) := by
   exact ⟨contDiffBounded_convolution hF hψ hψc, memW_convolution hF hψ hψc⟩
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|`). -/
-theorem abs_setAverage_sub_le {f : Rd d → ℝ} {s : Set (Rd d)} (hf : IntegrableOn f s)
-    (hs0 : volume s ≠ 0) (hst : volume s ≠ ∞) (c : ℝ) :
-    |(⨍ y in s, f y) - c| ≤ ⨍ y in s, |f y - c| := by
-  have hm : 0 < volume.real s := ENNReal.toReal_pos hs0 hst
-  rw [setAverage_eq, setAverage_eq, smul_eq_mul, smul_eq_mul]
-  have h : (volume.real s)⁻¹ * (∫ y in s, f y) - c =
-      (volume.real s)⁻¹ * ∫ y in s, (f y - c) := by
-    rw [integral_sub hf (integrableOn_const hst), setIntegral_const, smul_eq_mul, mul_sub,
-      ← mul_assoc, inv_mul_cancel₀ hm.ne', one_mul]
-  rw [h, abs_mul, abs_of_pos (inv_pos.2 hm)]
-  gcongr
-  exact abs_integral_le_integral_abs
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x) = c`). -/
-theorem preciseRepresentative_eq_of_tendsto {F : Rd d → ℝ} (hF : LocallyIntegrable F)
-    {x : Rd d} {c : ℝ}
-    (hc : Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |F y - c|) (𝓝[>] 0) (𝓝 0)) :
-    preciseRepresentative F x = c := by
-  unfold preciseRepresentative
-  apply Tendsto.limsup_eq
-  rw [tendsto_iff_norm_sub_tendsto_zero]
-  refine squeeze_zero' (Eventually.of_forall fun _ => norm_nonneg _) ?_ hc
-  filter_upwards [self_mem_nhdsWithin] with r (hr : 0 < r)
-  rw [Real.norm_eq_abs]
-  exact abs_setAverage_sub_le ((hF.integrableOn_isCompact (isCompact_closedBall x r)).mono_set
-    Metric.ball_subset_closedBall) (Metric.measure_ball_pos _ _ hr).ne' measure_ball_lt_top.ne c
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, mollification at Lebesgue points: `|F * ψ(x) - c| ≤ K ∫_{B(x,r)} |F - c|` for a mollifier `0 ≤ ψ ≤ K`, `∫ ψ = 1`, `supp ψ ⊆ B(0,r)`). -/
-theorem abs_mollify_sub_le {F : Rd d → ℝ} (hF : LocallyIntegrable F) {ψ : Rd d → ℝ}
-    (hψ0 : ∀ x, 0 ≤ ψ x) (hψ1 : ∫ x, ψ x = 1) {r K : ℝ}
-    (hψs : Function.support ψ ⊆ Metric.ball 0 r) (hψb : ∀ x, ψ x ≤ K) (x : Rd d) (c : ℝ) :
-    |(∫ y, F y * ψ (x - y)) - c| ≤ K * ∫ y in Metric.ball x r, |F y - c| := by
-  have hψi : Integrable ψ := Integrable.of_integral_ne_zero (by rw [hψ1]; norm_num)
-  have hψx : Integrable (fun y => ψ (x - y)) := hψi.comp_sub_left x
-  have hψx1 : ∫ y, ψ (x - y) = 1 := by rw [integral_sub_left_eq_self]; exact hψ1
-  have hK : 0 ≤ K := (hψ0 0).trans (hψb 0)
-  have hsupp : ∀ y, y ∉ Metric.ball x r → ψ (x - y) = 0 := fun y hy => by
-    by_contra h
-    apply hy
-    have := hψs h
-    rw [mem_ball_zero_iff] at this
-    rw [Metric.mem_ball, dist_eq_norm, norm_sub_rev]
-    exact this
-  have hFb : IntegrableOn F (Metric.ball x r) :=
-    (hF.integrableOn_isCompact (isCompact_closedBall x r)).mono_set Metric.ball_subset_closedBall
-  have hG : ∀ c' : ℝ, Integrable ((Metric.ball x r).indicator fun y => |F y - c'|) := fun c' =>
-    (show IntegrableOn (fun y => |F y - c'|) (Metric.ball x r) volume from
-      (hFb.sub (integrableOn_const (C := c') measure_ball_lt_top.ne (by simp))).abs).integrable_indicator
-      measurableSet_ball
-  have hpt : ∀ c' y, ‖(F y - c') * ψ (x - y)‖ ≤
-      K * (Metric.ball x r).indicator (fun y => |F y - c'|) y := fun c' y => by
-    by_cases hy : y ∈ Metric.ball x r
-    · rw [indicator_of_mem hy, Real.norm_eq_abs, abs_mul, abs_of_nonneg (hψ0 _), mul_comm K]
-      exact mul_le_mul_of_nonneg_left (hψb _) (abs_nonneg _)
-    · rw [indicator_of_notMem hy, hsupp y hy]; simp
-  have hFψ : Integrable (fun y => F y * ψ (x - y)) := by
-    refine Integrable.mono' ((hG 0).const_mul K)
-      (hF.aestronglyMeasurable.mul hψx.aestronglyMeasurable) (ae_of_all _ fun y => ?_)
-    simpa using hpt 0 y
-  have heq : (∫ y, F y * ψ (x - y)) - c = ∫ y, (F y - c) * ψ (x - y) := by
-    have : (∫ y, F y * ψ (x - y)) - c = (∫ y, F y * ψ (x - y)) - ∫ y, c * ψ (x - y) := by
-      rw [integral_const_mul, hψx1, mul_one]
-    rw [this, ← integral_sub hFψ (hψx.const_mul c)]
-    simp_rw [sub_mul]
-  rw [heq, ← Real.norm_eq_abs]
-  refine (norm_integral_le_of_norm_le ((hG c).const_mul K) (ae_of_all _ (hpt c))).trans
-    (le_of_eq ?_)
-  rw [integral_const_mul, integral_indicator measurableSet_ball]
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, mollification: `F_m(x) → F̃(x)` at every Lebesgue point). -/
-theorem tendsto_mollify_of_isLebesguePoint {F : Rd d → ℝ} (hF : LocallyIntegrable F)
-    {ψ : ℕ → Rd d → ℝ} (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
-    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1)))
-    (hψb : ∃ C : ℝ, ∀ n x, ψ n x ≤ C * ((n : ℝ) + 1) ^ d) {x : Rd d}
-    (hx : IsLebesguePoint F x) :
-    Tendsto (fun n => ∫ y, F y * ψ n (x - y)) atTop (𝓝 (preciseRepresentative F x)) := by
-  obtain ⟨c, hc⟩ := hx
-  rw [preciseRepresentative_eq_of_tendsto hF hc]
-  obtain ⟨C, hC⟩ := hψb
-  set V : ℝ := volume.real (Metric.ball (0 : Rd d) 1)
-  have hr : Tendsto (fun n : ℕ => 1 / ((n : ℝ) + 1)) atTop (𝓝[>] 0) :=
-    tendsto_nhdsWithin_iff.2 ⟨tendsto_one_div_add_atTop_nhds_zero_nat,
-      Eventually.of_forall fun n => by simp only [mem_Ioi]; positivity⟩
-  have hlim := (hc.comp hr).const_mul (C * V)
-  rw [mul_zero] at hlim
-  rw [tendsto_iff_norm_sub_tendsto_zero]
-  refine squeeze_zero (fun _ => norm_nonneg _) (fun n => ?_) hlim
-  have hrn : (0 : ℝ) < 1 / ((n : ℝ) + 1) := by positivity
-  have hvol : volume.real (Metric.ball x (1 / ((n : ℝ) + 1))) =
-      (1 / ((n : ℝ) + 1)) ^ d * V := by
-    rw [measureReal_def, Measure.addHaar_ball_of_pos _ _ hrn, finrank_euclideanSpace_fin,
-      ENNReal.toReal_mul, ENNReal.toReal_ofReal (by positivity)]
-    rfl
-  have hint : ∫ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| =
-      volume.real (Metric.ball x (1 / ((n : ℝ) + 1))) *
-        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| := by
-    rw [setAverage_eq, smul_eq_mul, ← mul_assoc, mul_inv_cancel₀, one_mul]
-    exact (ENNReal.toReal_pos (Metric.measure_ball_pos _ _ hrn).ne' measure_ball_lt_top.ne).ne'
-  rw [Real.norm_eq_abs]
-  refine (abs_mollify_sub_le hF (hψ0 n) (hψ1 n) (hψs n) (hC n) x c).trans (le_of_eq ?_)
-  rw [hint, hvol, Function.comp_apply]
-  have h1 : ((n : ℝ) + 1) ^ d * (1 / ((n : ℝ) + 1)) ^ d = 1 := by
-    rw [← mul_pow, mul_one_div_cancel (by positivity), one_pow]
-  calc C * ((n : ℝ) + 1) ^ d * ((1 / ((n : ℝ) + 1)) ^ d * V *
-        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c|)
-      = C * (((n : ℝ) + 1) ^ d * (1 / ((n : ℝ) + 1)) ^ d) * V *
-        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| := by ring
-    _ = _ := by rw [h1, mul_one]
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93]). -/
-theorem isBrownianPolar_nonLebesgue (hT : 0 < T) {p : ℝ} (hp : 1 < p) {F : Rd d → ℝ}
-    (hF : MemW2Plus p F) : IsBrownianPolar d T {x | ¬ IsLebesguePoint F x} := by
-  obtain ⟨_, _, hFs⟩ := hF
-  have h29 := theorem_2_9 d 2 hp hFs.1
-  rw [Nat.cast_ofNat] at h29
-  exact (IsBrownianPolar.iff_isNull hT _).2 (besselCapacity.IsNull.one_two_of_two_p hp h29)
--/
-
-/- [omitted from the Challenge: not used by the compared statements]
-/-- **Subgoal** (Appendix C, Brownian motion does not enter a polar set at positive times). -/
-theorem ae_forall_path_not_mem {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (x₀ : Rd d) :
-    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ Ioc 0 T,
-      CanonicalWienerSpace.path ω t ∉ E := by
-  refine measure_eq_zero_iff_ae_notMem.1 (hE x₀) |>.mono fun ω hω t ht hmem => hω ?_
-  refine ⟨⟨t, ht.1.le, ht.2⟩, ht.1, ?_⟩
-  simpa [CanonicalWienerSpace.path, CanonicalWienerSpace.B, ht.1.le, ht.2] using hmem
 -/
 
 /- [omitted from the Challenge: not used by the compared statements]
@@ -10109,6 +9971,161 @@ theorem smoothHessian_convolution {F : Rd d → ℝ} {G : Rd d → Rd d}
     congr 1; funext y
     simp [real_inner_comm, real_inner_smul_right, mul_comm]
   rw [hL, hR]
+-/
+
+end theorem_5_2
+
+end
+
+/-! ## `WeakPathwiseIto.Main.Theorem52Steps` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace Convolution
+
+namespace theorem_5_2
+
+variable {d : ℕ} {T : ℝ}
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|`). -/
+theorem abs_setAverage_sub_le {f : Rd d → ℝ} {s : Set (Rd d)} (hf : IntegrableOn f s)
+    (hs0 : volume s ≠ 0) (hst : volume s ≠ ∞) (c : ℝ) :
+    |(⨍ y in s, f y) - c| ≤ ⨍ y in s, |f y - c| := by
+  have hm : 0 < volume.real s := ENNReal.toReal_pos hs0 hst
+  rw [setAverage_eq, setAverage_eq, smul_eq_mul, smul_eq_mul]
+  have h : (volume.real s)⁻¹ * (∫ y in s, f y) - c =
+      (volume.real s)⁻¹ * ∫ y in s, (f y - c) := by
+    rw [integral_sub hf (integrableOn_const hst), setIntegral_const, smul_eq_mul, mul_sub,
+      ← mul_assoc, inv_mul_cancel₀ hm.ne', one_mul]
+  rw [h, abs_mul, abs_of_pos (inv_pos.2 hm)]
+  gcongr
+  exact abs_integral_le_integral_abs
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x) = c`). -/
+theorem preciseRepresentative_eq_of_tendsto {F : Rd d → ℝ} (hF : LocallyIntegrable F)
+    {x : Rd d} {c : ℝ}
+    (hc : Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |F y - c|) (𝓝[>] 0) (𝓝 0)) :
+    preciseRepresentative F x = c := by
+  unfold preciseRepresentative
+  apply Tendsto.limsup_eq
+  rw [tendsto_iff_norm_sub_tendsto_zero]
+  refine squeeze_zero' (Eventually.of_forall fun _ => norm_nonneg _) ?_ hc
+  filter_upwards [self_mem_nhdsWithin] with r (hr : 0 < r)
+  rw [Real.norm_eq_abs]
+  exact abs_setAverage_sub_le ((hF.integrableOn_isCompact (isCompact_closedBall x r)).mono_set
+    Metric.ball_subset_closedBall) (Metric.measure_ball_pos _ _ hr).ne' measure_ball_lt_top.ne c
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, mollification at Lebesgue points: `|F * ψ(x) - c| ≤ K ∫_{B(x,r)} |F - c|` for a mollifier `0 ≤ ψ ≤ K`, `∫ ψ = 1`, `supp ψ ⊆ B(0,r)`). -/
+theorem abs_mollify_sub_le {F : Rd d → ℝ} (hF : LocallyIntegrable F) {ψ : Rd d → ℝ}
+    (hψ0 : ∀ x, 0 ≤ ψ x) (hψ1 : ∫ x, ψ x = 1) {r K : ℝ}
+    (hψs : Function.support ψ ⊆ Metric.ball 0 r) (hψb : ∀ x, ψ x ≤ K) (x : Rd d) (c : ℝ) :
+    |(∫ y, F y * ψ (x - y)) - c| ≤ K * ∫ y in Metric.ball x r, |F y - c| := by
+  have hψi : Integrable ψ := Integrable.of_integral_ne_zero (by rw [hψ1]; norm_num)
+  have hψx : Integrable (fun y => ψ (x - y)) := hψi.comp_sub_left x
+  have hψx1 : ∫ y, ψ (x - y) = 1 := by rw [integral_sub_left_eq_self]; exact hψ1
+  have hK : 0 ≤ K := (hψ0 0).trans (hψb 0)
+  have hsupp : ∀ y, y ∉ Metric.ball x r → ψ (x - y) = 0 := fun y hy => by
+    by_contra h
+    apply hy
+    have := hψs h
+    rw [mem_ball_zero_iff] at this
+    rw [Metric.mem_ball, dist_eq_norm, norm_sub_rev]
+    exact this
+  have hFb : IntegrableOn F (Metric.ball x r) :=
+    (hF.integrableOn_isCompact (isCompact_closedBall x r)).mono_set Metric.ball_subset_closedBall
+  have hG : ∀ c' : ℝ, Integrable ((Metric.ball x r).indicator fun y => |F y - c'|) := fun c' =>
+    (show IntegrableOn (fun y => |F y - c'|) (Metric.ball x r) volume from
+      (hFb.sub (integrableOn_const (C := c') measure_ball_lt_top.ne (by simp))).abs).integrable_indicator
+      measurableSet_ball
+  have hpt : ∀ c' y, ‖(F y - c') * ψ (x - y)‖ ≤
+      K * (Metric.ball x r).indicator (fun y => |F y - c'|) y := fun c' y => by
+    by_cases hy : y ∈ Metric.ball x r
+    · rw [indicator_of_mem hy, Real.norm_eq_abs, abs_mul, abs_of_nonneg (hψ0 _), mul_comm K]
+      exact mul_le_mul_of_nonneg_left (hψb _) (abs_nonneg _)
+    · rw [indicator_of_notMem hy, hsupp y hy]; simp
+  have hFψ : Integrable (fun y => F y * ψ (x - y)) := by
+    refine Integrable.mono' ((hG 0).const_mul K)
+      (hF.aestronglyMeasurable.mul hψx.aestronglyMeasurable) (ae_of_all _ fun y => ?_)
+    simpa using hpt 0 y
+  have heq : (∫ y, F y * ψ (x - y)) - c = ∫ y, (F y - c) * ψ (x - y) := by
+    have : (∫ y, F y * ψ (x - y)) - c = (∫ y, F y * ψ (x - y)) - ∫ y, c * ψ (x - y) := by
+      rw [integral_const_mul, hψx1, mul_one]
+    rw [this, ← integral_sub hFψ (hψx.const_mul c)]
+    simp_rw [sub_mul]
+  rw [heq, ← Real.norm_eq_abs]
+  refine (norm_integral_le_of_norm_le ((hG c).const_mul K) (ae_of_all _ (hpt c))).trans
+    (le_of_eq ?_)
+  rw [integral_const_mul, integral_indicator measurableSet_ball]
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, mollification: `F_m(x) → F̃(x)` at every Lebesgue point). -/
+theorem tendsto_mollify_of_isLebesguePoint {F : Rd d → ℝ} (hF : LocallyIntegrable F)
+    {ψ : ℕ → Rd d → ℝ} (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1)))
+    (hψb : ∃ C : ℝ, ∀ n x, ψ n x ≤ C * ((n : ℝ) + 1) ^ d) {x : Rd d}
+    (hx : IsLebesguePoint F x) :
+    Tendsto (fun n => ∫ y, F y * ψ n (x - y)) atTop (𝓝 (preciseRepresentative F x)) := by
+  obtain ⟨c, hc⟩ := hx
+  rw [preciseRepresentative_eq_of_tendsto hF hc]
+  obtain ⟨C, hC⟩ := hψb
+  set V : ℝ := volume.real (Metric.ball (0 : Rd d) 1)
+  have hr : Tendsto (fun n : ℕ => 1 / ((n : ℝ) + 1)) atTop (𝓝[>] 0) :=
+    tendsto_nhdsWithin_iff.2 ⟨tendsto_one_div_add_atTop_nhds_zero_nat,
+      Eventually.of_forall fun n => by simp only [mem_Ioi]; positivity⟩
+  have hlim := (hc.comp hr).const_mul (C * V)
+  rw [mul_zero] at hlim
+  rw [tendsto_iff_norm_sub_tendsto_zero]
+  refine squeeze_zero (fun _ => norm_nonneg _) (fun n => ?_) hlim
+  have hrn : (0 : ℝ) < 1 / ((n : ℝ) + 1) := by positivity
+  have hvol : volume.real (Metric.ball x (1 / ((n : ℝ) + 1))) =
+      (1 / ((n : ℝ) + 1)) ^ d * V := by
+    rw [measureReal_def, Measure.addHaar_ball_of_pos _ _ hrn, finrank_euclideanSpace_fin,
+      ENNReal.toReal_mul, ENNReal.toReal_ofReal (by positivity)]
+    rfl
+  have hint : ∫ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| =
+      volume.real (Metric.ball x (1 / ((n : ℝ) + 1))) *
+        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| := by
+    rw [setAverage_eq, smul_eq_mul, ← mul_assoc, mul_inv_cancel₀, one_mul]
+    exact (ENNReal.toReal_pos (Metric.measure_ball_pos _ _ hrn).ne' measure_ball_lt_top.ne).ne'
+  rw [Real.norm_eq_abs]
+  refine (abs_mollify_sub_le hF (hψ0 n) (hψ1 n) (hψs n) (hC n) x c).trans (le_of_eq ?_)
+  rw [hint, hvol, Function.comp_apply]
+  have h1 : ((n : ℝ) + 1) ^ d * (1 / ((n : ℝ) + 1)) ^ d = 1 := by
+    rw [← mul_pow, mul_one_div_cancel (by positivity), one_pow]
+  calc C * ((n : ℝ) + 1) ^ d * ((1 / ((n : ℝ) + 1)) ^ d * V *
+        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c|)
+      = C * (((n : ℝ) + 1) ^ d * (1 / ((n : ℝ) + 1)) ^ d) * V *
+        ⨍ y in Metric.ball x (1 / ((n : ℝ) + 1)), |F y - c| := by ring
+    _ = _ := by rw [h1, mul_one]
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93]). -/
+theorem isBrownianPolar_nonLebesgue (hT : 0 < T) {p : ℝ} (hp : 1 < p) {F : Rd d → ℝ}
+    (hF : MemW2Plus p F) : IsBrownianPolar d T {x | ¬ IsLebesguePoint F x} := by
+  obtain ⟨_, _, hFs⟩ := hF
+  have h29 := theorem_2_9 d 2 hp hFs.1
+  rw [Nat.cast_ofNat] at h29
+  exact (IsBrownianPolar.iff_isNull hT _).2 (besselCapacity.IsNull.one_two_of_two_p hp h29)
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Appendix C, Brownian motion does not enter a polar set at positive times). -/
+theorem ae_forall_path_not_mem {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (x₀ : Rd d) :
+    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ Ioc 0 T,
+      CanonicalWienerSpace.path ω t ∉ E := by
+  refine measure_eq_zero_iff_ae_notMem.1 (hE x₀) |>.mono fun ω hω t ht hmem => hω ?_
+  refine ⟨⟨t, ht.1.le, ht.2⟩, ht.1, ?_⟩
+  simpa [CanonicalWienerSpace.path, CanonicalWienerSpace.B, ht.1.le, ht.2] using hmem
 -/
 
 /- [omitted from the Challenge: not used by the compared statements]
