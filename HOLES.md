@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:47:52Z  
-**`sorry` occurrences:** 30 · 6 open · 21 blocked · 291 done (goals + subgoals) · goals {'open': 2, 'blocked': 11, 'done': 59} · subgoals {'open': 4, 'blocked': 10, 'done': 232} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:49:08Z  
+**`sorry` occurrences:** 29 · 5 open · 21 blocked · 292 done (goals + subgoals) · goals {'open': 2, 'blocked': 11, 'done': 59} · subgoals {'open': 3, 'blocked': 10, 'done': 233} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -104,7 +104,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le` | subgoal of Definition 2.5, Young for `p = ∞`: an a.e. bound on `F` passes through | 1 |
 | open | `Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul` | subgoal of Definition 2.5, Young: Tonelli and translation invariance, `∫∫ K(x - y | 1 |
 | open | `Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le` | subgoal of Definition 2.5, Young for `1 ≤ q < ∞` in integrated form, `∫ (∫ K(x - y | 1 |
-| open | `Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le` | subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v | 1 |
+| done | `Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le` | subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18` | subgoal of Theorem 5.1 proof, eq. (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le` | subgoal of Theorem 5.1 proof, (18 | 0 |
 | done | `Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral` | subgoal of Theorem 5.1 proof, (18 | 0 |
@@ -327,7 +327,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.Theorem26` | Theorem 2.6 | 1 | `Bessel.BesselSpace` |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
 | done | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 0 |  |
-| blocked | `Bessel.Young` |  | 4 | `Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le`, `Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul`, `Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le`, `Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le` |
+| blocked | `Bessel.Young` |  | 3 | `Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le`, `Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul`, `Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le` |
 
 ### §3 Smooth change of variable
 

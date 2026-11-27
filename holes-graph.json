@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:47:52Z",
+ "updated": "2026-11-27T03:49:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 29,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 21,
-  "done": 291
+  "done": 292
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 59
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 10,
-  "done": 232
+  "done": 233
  },
  "untagged": [],
  "legend": {
@@ -2462,9 +2462,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": null,
    "file": "WeakPathwiseIto/Bessel/Young.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "rpow_lintegral_mul_le",
     "lintegral_lintegral_sub_mul",
     "lintegral_rpow_conv_le",
     "lintegral_conv_le_of_ae_le"
@@ -2486,10 +2485,9 @@
    "blockers": [
     "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
     "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul",
-    "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le",
-    "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le"
+    "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le"
    ],
-   "detail": "4 sorry: rpow_lintegral_mul_le, lintegral_lintegral_sub_mul, lintegral_rpow_conv_le, lintegral_conv_le_of_ae_le"
+   "detail": "3 sorry: lintegral_lintegral_sub_mul, lintegral_rpow_conv_le, lintegral_conv_le_of_ae_le"
   },
   {
    "id": "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le",
@@ -2582,22 +2580,20 @@
    "parentGoal": "Bessel.Young",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/Young.lean",
-   "sorryCount": 1,
-   "holes": [
-    "BesselSpace.young.rpow_lintegral_mul_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v)^q ≤ (∫ u)^{q-1} ∫ u v^q` for `q ≥ 1`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.Rd"
    ],
    "blockers": [],
-   "detail": "sorry: BesselSpace.young.rpow_lintegral_mul_le — subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v (in Bessel.Young)"
+   "detail": "proved: BesselSpace.young.rpow_lintegral_mul_le — subgoal of Definition 2.5, Young: weighted Jensen via Hölder, `(∫ u v (in Bessel.Young)"
   },
   {
    "id": "Main.BalancedPartitions",
