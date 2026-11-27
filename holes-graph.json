@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T16:05:08Z",
+ "updated": "2026-11-27T16:08:19Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 24,
+ "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
@@ -3977,9 +3977,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Theorem 5.2",
    "file": "WeakPathwiseIto/Main/Theorem52.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "theorem_5_2",
     "theorem_5_2_deterministic"
    ],
    "declKinds": {
@@ -4003,7 +4002,7 @@
     "Main.Theorem52PathSteps",
     "Main.Theorem52Steps"
    ],
-   "detail": "2 sorry: theorem_5_2, theorem_5_2_deterministic"
+   "detail": "1 sorry: theorem_5_2_deterministic"
   },
   {
    "id": "Main.Theorem52PathSteps",

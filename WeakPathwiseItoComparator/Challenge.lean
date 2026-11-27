@@ -5080,19 +5080,6 @@ open scoped ENNReal NNReal RealInnerProductSpace
 
 variable {T : ℝ} {d : ℕ}
 
-/-- **Theorem 5.2.** Let `π` satisfy Assumptions 1 and 2 and
-`F ∈ W^{2+,p}(ℝ^d) ∩ W^{2,1}(ℝ^d)`, `1 < p < ∞`, with `F` equal to its precise
-representative `F̃` at every Lebesgue point (the paper's implicit convention; see
-`WeakPathwiseIto.md`, "Theorem 5.2 and Proposition 5.3: representative of F"). Then there is a polar set `E` such that for
-every starting point `x₀ ∉ E`, `ℙ_{x₀}(F ∈ 𝓦^2_{B,π}) = 1`. -/
-theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
-    (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
-    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F)
-    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
-    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
-      ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.path ω) := by
-  sorry
-
 /-- **Theorem 5.2** (equivalent form): for `x₀ ∉ E` a single deterministic sequence
 `F_m ∈ C^2_b ∩ W^{2,1}` works `ℙ_{x₀}`-almost surely. -/
 theorem theorem_5_2_deterministic {π : ℕ → Partition T}
@@ -5107,6 +5094,23 @@ theorem theorem_5_2_deterministic {π : ℕ → Partition T}
           Tendsto (fun m => occupationSeminorm π (CanonicalWienerSpace.path ω)
             (fun x => smoothHessian (Fm m) x - H x)) atTop (𝓝 0) := by
   sorry
+
+/-- **Theorem 5.2.** Let `π` satisfy Assumptions 1 and 2 and
+`F ∈ W^{2+,p}(ℝ^d) ∩ W^{2,1}(ℝ^d)`, `1 < p < ∞`, with `F` equal to its precise
+representative `F̃` at every Lebesgue point (the paper's implicit convention; see
+`WeakPathwiseIto.md`, "Theorem 5.2 and Proposition 5.3: representative of F"). Then there is a polar set `E` such that for
+every starting point `x₀ ∉ E`, `ℙ_{x₀}(F ∈ 𝓦^2_{B,π}) = 1`. -/
+theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
+    (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
+    {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F)
+    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
+      ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.path ω) := by
+  obtain ⟨E, hE, hdet⟩ := theorem_5_2_deterministic hT h1 h2 hp hF hF1 hFrep
+  refine ⟨E, hE, fun x₀ hx₀ => ?_⟩
+  obtain ⟨H, hH, Fm, hFm, hae⟩ := hdet x₀ hx₀
+  filter_upwards [hae] with ω hω
+  exact ⟨hF1, H, hH, ⟨⟨Fm, fun m hm => (hFm m hm).1, fun m hm => (hFm m hm).2, hω.1, hω.2⟩⟩⟩
 
 end
 
