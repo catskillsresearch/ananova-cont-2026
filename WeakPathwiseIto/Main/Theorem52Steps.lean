@@ -582,7 +582,26 @@ theorem gagliardo_maximal_le {s p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f :
       ∫⁻ x, ∫⁻ y, ‖(localMaximalFunction 1 f x).toReal - (localMaximalFunction 1 f y).toReal‖ₑ ^ p /
           edist x y ^ (s * p + d) ≤
         C * ∫⁻ x, ∫⁻ y, ‖f x - f y‖ₑ ^ p / edist x y ^ (s * p + d) := by
-  sorry
+  set K := ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1))
+  have hK : K ≠ ⊤ := by
+    refine ENNReal.mul_ne_top (ENNReal.mul_ne_top ENNReal.ofReal_ne_top
+      (ENNReal.mul_ne_top ENNReal.ofNat_ne_top
+        (ENNReal.pow_ne_top (ENNReal.pow_ne_top ENNReal.ofNat_ne_top)))) ?_
+    exact ENNReal.div_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofNat_ne_top)
+      (ENNReal.ofReal_pos.2 (by linarith)).ne'
+  refine ⟨K.toNNReal, fun f hfp => ?_⟩
+  rw [ENNReal.coe_toNNReal hK]
+  set g := hfp.aestronglyMeasurable.mk f
+  have hfg : f =ᵐ[volume] g := hfp.aestronglyMeasurable.ae_eq_mk
+  have hg : Measurable g := hfp.aestronglyMeasurable.stronglyMeasurable_mk.measurable
+  have hgp : MemLp g (ENNReal.ofReal p) := hfp.ae_eq hfg
+  rw [hardyLittlewood.congr_ae hfg]
+  have hR : ∫⁻ x, ∫⁻ y, ‖f x - f y‖ₑ ^ p / edist x y ^ (s * p + d) =
+      ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) :=
+    lintegral_congr_ae (hfg.mono fun x hx => lintegral_congr_ae (hfg.mono fun y hy => by
+      simp only [hx, hy]))
+  rw [hR]
+  exact gagliardo_maximal_le_of_measurable hp hg hgp
 
 /-- **Subgoal** (Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K`). -/
 theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d → ℝ}
