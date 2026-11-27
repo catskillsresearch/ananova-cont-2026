@@ -178,8 +178,8 @@ theorem indep_naturalSigma_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst 
     Indep (IsItoIntegral.naturalSigma d T s)
       (MeasurableSpace.comap (fun ω : CanonicalWienerSpace d T =>
         CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω) inferInstance)
-      (CanonicalWienerSpace.P (T := T) x) := by
-  sorry
+      (CanonicalWienerSpace.P (T := T) x) :=
+  (IndepFun_iff_Indep _ _ _).1 (indepFun_past_increment x hs hst ht)
 
 /-- **Subgoal** (P53.A, increment moments): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the increment
 `B(t) - B(s)` is square integrable, centred, with covariance `(t - s) I`. -/

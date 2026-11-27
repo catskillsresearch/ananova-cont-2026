@@ -489,7 +489,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1863,5 +1862,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:55:09Z"
+ "generated": "2026-11-27T20:58:12Z"
 }
