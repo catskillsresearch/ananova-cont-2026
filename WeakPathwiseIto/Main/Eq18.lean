@@ -252,7 +252,60 @@ theorem eq_18 {π : ℕ → Partition T} {ω : ℝ → Rd d} (hω : ContinuousOn
     ∃ C : ℝ≥0, ∀ (H : Rd d → ℝ), ContDiffBounded 2 H → ∀ t ∈ Icc 0 T,
       ENNReal.ofReal |pathwiseCovariation π (gradient H) ω t| ≤
         C * occupationSeminorm π ω (smoothHessian H) := by
-  sorry
+  have key : ∀ u v : ℕ → ℝ≥0∞, limsup (u + v) atTop ≤ limsup u atTop + limsup v atTop := by
+    intro u v
+    refine ENNReal.le_of_forall_pos_le_add fun ε hε hlt => ?_
+    have h2 : (ε : ℝ≥0∞) / 2 ≠ 0 := (ENNReal.half_pos (ENNReal.coe_ne_zero.2 hε.ne')).ne'
+    have hu : limsup u atTop < limsup u atTop + (ε : ℝ≥0∞) / 2 :=
+      ENNReal.lt_add_right (ENNReal.add_lt_top.1 hlt).1.ne h2
+    have hv : limsup v atTop < limsup v atTop + (ε : ℝ≥0∞) / 2 :=
+      ENNReal.lt_add_right (ENNReal.add_lt_top.1 hlt).2.ne h2
+    refine limsup_le_of_le (by isBoundedDefault) ?_
+    filter_upwards [eventually_lt_of_limsup_lt hu, eventually_lt_of_limsup_lt hv] with n h1 h3
+    calc (u + v) n = u n + v n := rfl
+      _ ≤ (limsup u atTop + (ε : ℝ≥0∞) / 2) + (limsup v atTop + (ε : ℝ≥0∞) / 2) :=
+          add_le_add h1.le h3.le
+      _ = limsup u atTop + limsup v atTop + ε := by
+          rw [add_add_add_comm, ENNReal.add_halves]
+  refine ⟨1, fun H hH t ht => ?_⟩
+  rw [ENNReal.coe_one, one_mul]
+  have hg := follmer_ito_formula.contDiffBounded_gradient hH
+  have hlim := proposition_3_1 hω hQV hosc hg t ht
+  rw [pathwiseCovariation, hlim.limUnder_eq]
+  set v := hQV.matrixIntegral
+    (fun u i j => Rd.coord i (fderiv ℝ (gradient H) (ω u) (Rd.basisVec j))) t with hv
+  obtain ⟨e, he, hRS⟩ := eq_18.abs_riemannSum_le (π := π) hω hosc hH ht
+  have hA : Tendsto (fun n => ENNReal.ofReal |pathwiseCovariation.riemannSum (π n) (gradient H) ω t|)
+      atTop (𝓝 (ENNReal.ofReal |v|)) :=
+    (ENNReal.continuous_ofReal.tendsto _).comp hlim.abs
+  have he' : Tendsto (fun n => ENNReal.ofReal (e n)) atTop (𝓝 0) := by
+    have h0 := (ENNReal.continuous_ofReal.tendsto 0).comp he
+    rw [ENNReal.ofReal_zero] at h0
+    exact h0
+  refine ENNReal.le_of_forall_pos_le_add fun ε hε _ => ?_
+  have hev := eq_18.eventually_sum_abs_le hω hQV hosc hH (ε := (ε : ℝ)) hε
+  calc ENNReal.ofReal |v|
+      = limsup (fun n => ENNReal.ofReal
+          |pathwiseCovariation.riemannSum (π n) (gradient H) ω t|) atTop := hA.limsup_eq.symm
+    _ ≤ limsup ((fun n => ∫⁻ x, ‖smoothHessian H x‖ₑ *
+          ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) +
+          fun n => ENNReal.ofReal (ε : ℝ) + ENNReal.ofReal (e n)) atTop := by
+        refine limsup_le_limsup ?_ (by isBoundedDefault) (by isBoundedDefault)
+        filter_upwards [hev] with n hn
+        rw [Pi.add_apply, ← add_assoc]
+        calc ENNReal.ofReal |pathwiseCovariation.riemannSum (π n) (gradient H) ω t|
+            ≤ ENNReal.ofReal ((∑ k : Fin (π n).m,
+                |⟪gradient H (ω ((π n).right k)) - gradient H (ω ((π n).left k)),
+                  ω ((π n).right k) - ω ((π n).left k)⟫|) + e n) :=
+              ENNReal.ofReal_le_ofReal (hRS n)
+          _ ≤ _ := ENNReal.ofReal_add_le
+          _ ≤ _ := add_le_add_left hn _
+    _ ≤ occupationSeminorm π ω (smoothHessian H) +
+          limsup (fun n => ENNReal.ofReal (ε : ℝ) + ENNReal.ofReal (e n)) atTop := key _ _
+    _ = occupationSeminorm π ω (smoothHessian H) + ε := by
+        rw [(by simpa using tendsto_const_nhds.add he' :
+          Tendsto (fun n => ENNReal.ofReal (ε : ℝ) + ENNReal.ofReal (e n)) atTop
+            (𝓝 (ENNReal.ofReal (ε : ℝ)))).limsup_eq, ENNReal.ofReal_coe_nnreal]
 
 end theorem_5_1
 

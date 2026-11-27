@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T01:11:39Z",
+ "updated": "2026-11-27T01:12:52Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 31,
  "counts": {
-  "open": 7,
-  "blocked": 18,
-  "done": 225
+  "open": 6,
+  "blocked": 17,
+  "done": 227
  },
  "goalCounts": {
   "open": 5,
-  "blocked": 11,
-  "done": 50
+  "blocked": 10,
+  "done": 51
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 175
+  "done": 176
  },
  "untagged": [],
  "legend": {
@@ -2413,17 +2413,15 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "eq_18"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 7
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Main.Eq18::theorem_5_1.eq_18",
     "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",
@@ -2440,10 +2438,8 @@
     "Smooth.Proposition31",
     "Sobolev.IsWeakHessian"
    ],
-   "blockers": [
-    "Main.Eq18::theorem_5_1.eq_18"
-   ],
-   "detail": "1 sorry: eq_18"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18",
@@ -2455,17 +2451,15 @@
    "parentGoal": "Main.Eq18",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Eq18.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.eq_18"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, eq. (18)): for `H ∈ C²_b(ℝ^d)`, `|[∇H(ω), ω]_π(t)| ≤ C_d ‖∇²H‖_{W^0_{ω,π}}` (proved directly; see `eq_18`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.WeakCovariation",
     "Occupation.Lemma42",
@@ -2476,7 +2470,7 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.eq_18 — subgoal of Theorem 5.1 proof, eq. (18 (in Main.Eq18)"
+   "detail": "proved: theorem_5_1.eq_18 — subgoal of Theorem 5.1 proof, eq. (18 (in Main.Eq18)"
   },
   {
    "id": "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le",

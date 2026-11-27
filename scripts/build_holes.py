@@ -49,6 +49,7 @@ DECL_RE = re.compile(
 # Short module ids (relative to WeakPathwiseIto/) that have been built, shaken and checked.
 # See AGENTS.md: add an id only after a successful `lake build` of that module.
 VERIFIED: set[str] = {
+    "Main.Eq18",
     "Sobolev.Lemma22",
     "Occupation.PathwiseSobolevSpace",
     "Occupation.OccupationSeminorm",
