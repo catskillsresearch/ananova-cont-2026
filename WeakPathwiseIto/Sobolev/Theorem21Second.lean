@@ -432,7 +432,51 @@ theorem hessian_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d →
     ContDiff ℝ 2 (fun x => ∫ y, f y * ψ (x - y)) ∧
       ∀ w i j, fderiv ℝ (fderiv ℝ (fun x => ∫ y, f y * ψ (x - y))) w (Rd.basisVec i)
           (Rd.basisVec j) = ∫ y, Rd.coord j (H y (Rd.basisVec i)) * ψ (w - y) := by
-  sorry
+  set F : Rd d → ℝ := fun x => ∫ y, f y * ψ (x - y) with hF
+  set c : Fin d → Rd d → ℝ := fun i x => ∫ y, Rd.coord i (G y) * ψ (x - y) with hc
+  obtain ⟨hF1, hFg⟩ := theorem_2_1_first.contDiff_convolution hG hψ hψc
+  have hfg : ∀ (g : Rd d → ℝ) w v, fderiv ℝ g w v = ⟪gradient g w, v⟫ := by
+    intro g w v
+    simp [gradient, InnerProductSpace.toDual_symm_apply]
+  have hcoordsum : ∀ (a : Fin d → ℝ) (v : Rd d),
+      ⟪∑ i, a i • Rd.basisVec i, v⟫ = ∑ i, a i * Rd.coord i v := by
+    intro a v
+    simp [sum_inner, inner_smul_left, Rd.coord, real_inner_comm]
+  have hFd : ∀ x v, fderiv ℝ F x v = ∑ i, c i x * Rd.coord i v := by
+    intro x v
+    rw [hfg, hFg x, hcoordsum]
+  have hci : ∀ j, ContDiff ℝ 1 (c j) ∧ ∀ x, gradient (c j) x =
+      ∑ k, (∫ y, Rd.coord k (∑ l, Rd.coord j (H y (Rd.basisVec l)) • Rd.basisVec l) *
+        ψ (x - y)) • Rd.basisVec k :=
+    fun j => theorem_2_1_first.contDiff_convolution (isWeakGradient_coord hG hH j) hψ hψc
+  have hcoord : ∀ (a : Fin d → ℝ) k, Rd.coord k (∑ l, a l • Rd.basisVec l) = a k := by
+    intro a k
+    simp [Rd.coord, Rd.basisVec, sum_inner, inner_smul_left, EuclideanSpace.inner_single_right]
+  have hbasis : ∀ i j : Fin d, Rd.coord i (Rd.basisVec j) = if i = j then 1 else 0 := by
+    intro i j
+    simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+  have hFe : ∀ j, (fun x => fderiv ℝ F x (Rd.basisVec j)) = c j := by
+    intro j; funext x
+    rw [hFd]
+    simp [hbasis]
+  have hC2 : ContDiff ℝ 2 F := by
+    rw [show (2 : WithTop ℕ∞) = 1 + 1 by norm_num, contDiff_succ_iff_fderiv_apply]
+    refine ⟨hF1.differentiable one_ne_zero, by simp, fun v => ?_⟩
+    have : (fun x => fderiv ℝ F x v) = fun x => ∑ i, c i x * Rd.coord i v := by
+      funext x; exact hFd x v
+    rw [this]
+    exact ContDiff.sum fun i _ => (hci i).1.mul contDiff_const
+  refine ⟨hC2, fun w i j => ?_⟩
+  · have hdiff : Differentiable ℝ (fderiv ℝ F) :=
+      (hC2.fderiv_right (m := 1) (by norm_num)).differentiable one_ne_zero
+    have happ := fderiv_clm_apply (𝕜 := ℝ) (c := fderiv ℝ F) (u := fun _ : Rd d => Rd.basisVec j)
+      (x := w) (hdiff w) (differentiableAt_const _)
+    have e1 : fderiv ℝ (fderiv ℝ F) w (Rd.basisVec i) (Rd.basisVec j) =
+        fderiv ℝ (fun y => fderiv ℝ F y (Rd.basisVec j)) w (Rd.basisVec i) := by
+      rw [happ]; simp
+    rw [e1, hFe j, hfg, (hci j).2 w, hcoordsum]
+    simp only [hcoord, hbasis]
+    simp
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of
 its entries in the standard basis). -/
