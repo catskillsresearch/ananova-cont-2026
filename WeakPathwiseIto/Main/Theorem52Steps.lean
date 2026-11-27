@@ -398,6 +398,103 @@ theorem ae_forall_path_not_mem {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (x�
   refine ⟨⟨t, ht.1.le, ht.2⟩, ht.1, ?_⟩
   simpa [CanonicalWienerSpace.path, CanonicalWienerSpace.B, ht.1.le, ht.2] using hmem
 
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`
+for continuous compactly supported functions). -/
+theorem tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {g : Rd d → E} (hg : Continuous g) (hgc : HasCompactSupport g) :
+    Tendsto (fun z : Rd d => eLpNorm (fun x => g (x - z) - g x) (ENNReal.ofReal p) volume)
+      (𝓝 0) (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`,
+`‖f(· - z) - f‖_p → 0` as `z → 0`, by density of `C_c` in `L^p`). -/
+theorem tendsto_eLpNorm_comp_sub_sub {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p)) :
+    Tendsto (fun z : Rd d => eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume)
+      (𝓝 0) (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: `(ψ ⋆ f)(x) - f(x)` as an average
+of the translation differences, `∫ ψ(z) (f(x - z) - f(x)) dz`, for `∫ ψ = 1`). -/
+theorem mollify_sub_eq {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p)) {ψ : Rd d → ℝ}
+    (hψc : Continuous ψ) (hψk : HasCompactSupport ψ) (hψ1 : ∫ x, ψ x = 1) (x : Rd d) :
+    (∫ y, ψ (x - y) • f y) - f x = ∫ z, ψ z • (f (x - z) - f x) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: Minkowski's integral inequality,
+`‖ψ ⋆ f - f‖_p ≤ sup_{|z| < r} ‖f(· - z) - f‖_p` for a mollifier `ψ ≥ 0`, `∫ ψ = 1`,
+supported in `B(0, r)`). -/
+theorem eLpNorm_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p)) {ψ : Rd d → ℝ}
+    (hψc : Continuous ψ) (hψ0 : ∀ x, 0 ≤ ψ x) (hψ1 : ∫ x, ψ x = 1) {r : ℝ}
+    (hψs : Function.support ψ ⊆ Metric.ball 0 r) :
+    eLpNorm (fun x => (∫ y, ψ (x - y) • f y) - f x) (ENNReal.ofReal p) volume ≤
+      ⨆ z ∈ Metric.ball (0 : Rd d) r,
+        eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: mollification converges in `L^p`,
+`‖ψ_n ⋆ f - f‖_p → 0`). -/
+theorem tendsto_eLpNorm_mollify_sub {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p))
+    {ψ : ℕ → Rd d → ℝ} (hψc : ∀ n, Continuous (ψ n)) (hψ0 : ∀ n x, 0 ≤ ψ n x)
+    (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
+    Tendsto (fun n => eLpNorm (fun x => (∫ y, ψ n (x - y) • f y) - f x) (ENNReal.ofReal p) volume)
+      atTop (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 1: a `W^{k,q}` function, `k ≥ 1`, has
+a weak gradient, assembled from its first-order weak derivatives). -/
+theorem exists_isWeakGradient_of_memW {k : ℕ} (hk : 1 ≤ k) {q : ℝ≥0∞} {F : Rd d → ℝ}
+    (hF : MemW k q F) : ∃ G : Rd d → Rd d, IsWeakGradient F G := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 1: the Hessian of the mollification is
+the mollified weak Hessian, `∇²(F ⋆ ψ) = H ⋆ ψ`). -/
+theorem smoothHessian_convolution {F : Rd d → ℝ} {G : Rd d → Rd d}
+    {H : Rd d → (Rd d →L[ℝ] Rd d)} (hG : IsWeakGradient F G) (hH : IsWeakHessian F H)
+    {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ)
+    (x : Rd d) :
+    smoothHessian (fun z => ∫ y, F y * ψ (z - y)) x = ∫ y, ψ (x - y) • H y := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}`
+function is in `L^p`, by uniqueness of weak derivatives). -/
+theorem memLp_of_isWeakHessian {p : ℝ} {F : Rd d → ℝ} (hF : MemW 2 (ENNReal.ofReal p) F)
+    {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) : MemLp H (ENNReal.ofReal p) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: Tonelli in difference coordinates
+for a.e.-measurable integrands, `∫∫ Φ(x, y) dy dx = ∫∫ Φ(x, x + h) dx dh`). -/
+theorem lintegral_lintegral_eq_add' {Φ : Rd d → Rd d → ℝ≥0∞}
+    (hΦ : AEMeasurable (fun q : Rd d × Rd d => Φ q.1 (q.1 + q.2)) (volume.prod volume)) :
+    ∫⁻ x, ∫⁻ y, Φ x y = ∫⁻ h, ∫⁻ x, Φ x (x + h) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: for a fixed shift `h`, the
+difference `a_n(x + h) - a_n(x)` of `a_n := ψ_n ⋆ f - f` tends to `0` in `L^p`). -/
+theorem tendsto_lintegral_shift_mollify_sub {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p))
+    {ψ : ℕ → Rd d → ℝ} (hψc : ∀ n, Continuous (ψ n)) (hψ0 : ∀ n x, 0 ≤ ψ n x)
+    (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) (h : Rd d) :
+    Tendsto (fun n => ∫⁻ x, ‖((∫ y, ψ n (x + h - y) • f y) - f (x + h)) -
+      ((∫ y, ψ n (x - y) • f y) - f x)‖ₑ ^ p) atTop (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: domination,
+`‖a_n(· + h) - a_n‖_p^p ≤ 2^p ‖f(· + h) - f‖_p^p`). -/
+theorem lintegral_shift_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p))
+    {ψ : ℕ → Rd d → ℝ} (hψc : ∀ n, Continuous (ψ n)) (hψ0 : ∀ n x, 0 ≤ ψ n x)
+    (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) (n : ℕ) (h : Rd d) :
+    ∫⁻ x, ‖((∫ y, ψ n (x + h - y) • f y) - f (x + h)) - ((∫ y, ψ n (x - y) • f y) - f x)‖ₑ ^ p ≤
+      2 ^ p * ∫⁻ x, ‖f (x + h) - f x‖ₑ ^ p := by
+  sorry
+
 /-- **Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in
 the Gagliardo seminorm `[·]_{W^{s,p}}`). -/
 theorem tendsto_mollify_hessian {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {F : Rd d → ℝ}
