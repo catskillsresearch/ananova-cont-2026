@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:07:30Z",
+ "updated": "2026-11-27T20:07:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 14,
  "counts": {
   "open": 6,
   "blocked": 12,
-  "done": 411
+  "done": 412
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 346
+  "done": 347
  },
  "untagged": [],
  "legend": {
@@ -10479,7 +10479,7 @@
     "remark_4_5_bounded"
    ],
    "declKinds": {
-    "theorem": 16
+    "theorem": 17
    },
    "paperGoal": false,
    "verified": false,
@@ -10499,6 +10499,7 @@
     "Occupation.Remark45::incrementBall_one_iff",
     "Occupation.Remark45::occupationConstant_one",
     "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
+    "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
     "Occupation.Remark45::remark_4_5_term_eq"
    ],
    "blockers": [],
@@ -10823,6 +10824,38 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_5.weakLpTendsto_congr — subgoal of Remark 4.5, weak convergence is a.e.-invariant (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
+   "label": "weakLpTendsto_half_add",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.5, averaging",
+   "parentGoal": "Occupation.Remark45",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark45.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.5, averaging): if `a_n ⇀ ℓ` and `b_n ⇀ ℓ` in `L^r`, `1 < r`, then `½ (a_n + b_n) ⇀ ℓ`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Main.Theorem51",
+    "Occupation.DiscreteLocalTime",
+    "Occupation.Remark44"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_5.weakLpTendsto_half_add — subgoal of Remark 4.5, averaging (in Occupation.Remark45) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45::remark_4_5_term_eq",
@@ -18574,6 +18607,11 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::remark_4_5_term_eq",
    "kind": "hard"
   },
@@ -19775,6 +19813,11 @@
   {
    "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
    "kind": "hard"
   },
   {
@@ -21389,6 +21432,11 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq",
    "kind": "hard"
   },
@@ -21474,6 +21522,11 @@
   },
   {
    "from": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
+   "to": "Occupation.Remark45",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
    "to": "Occupation.Remark45",
    "kind": "subgoal"
   },
@@ -27846,6 +27899,10 @@
   },
   {
    "from": "Main.Theorem51",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add"
+  },
+  {
+   "from": "Main.Theorem51",
    "to": "Occupation.Remark45::remark_4_5_term_eq"
   },
   {
@@ -28718,6 +28775,10 @@
   },
   {
    "from": "Occupation.DiscreteLocalTime",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add"
+  },
+  {
+   "from": "Occupation.DiscreteLocalTime",
    "to": "Occupation.Remark45::remark_4_5_term_eq"
   },
   {
@@ -29498,6 +29559,10 @@
   },
   {
    "from": "Occupation.Remark44",
+   "to": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add"
+  },
+  {
+   "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq"
   },
   {
@@ -29566,6 +29631,10 @@
   },
   {
    "from": "Occupation.Remark45::remark_4_5.weakLpTendsto_congr",
+   "to": "Occupation.Remark45"
+  },
+  {
+   "from": "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add",
    "to": "Occupation.Remark45"
   },
   {

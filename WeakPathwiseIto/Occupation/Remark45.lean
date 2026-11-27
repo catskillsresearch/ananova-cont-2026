@@ -175,6 +175,22 @@ theorem remark_4_5.weakLpTendsto_congr {d : ℕ} {r : ℝ≥0∞} {f f' : ℕ �
   simp_rw [← h1, ← h2]
   exact h.2.2 g hg
 
+/-- **Subgoal** (Remark 4.5, averaging): if `a_n ⇀ ℓ` and `b_n ⇀ ℓ` in `L^r`, `1 < r`, then
+`½ (a_n + b_n) ⇀ ℓ`. -/
+theorem remark_4_5.weakLpTendsto_half_add {d : ℕ} {r : ℝ≥0∞} (hr : 1 < r) {a b : ℕ → Rd d → ℝ}
+    {ℓ : Rd d → ℝ} (ha : WeakLpTendsto r a ℓ) (hb : WeakLpTendsto r b ℓ) :
+    WeakLpTendsto r (fun n x => 1 / 2 * (a n x + b n x)) ℓ := by
+  refine ⟨fun n => ((ha.1 n).add (hb.1 n)).const_mul _, ha.2.1, fun g hg => ?_⟩
+  have heq : ∀ n, ∫ x, g x * (1 / 2 * (a n x + b n x)) =
+      1 / 2 * ((∫ x, g x * a n x) + ∫ x, g x * b n x) := fun n => by
+    rw [← integral_add (remark_4_4.integrable_mul_conj hr (ha.1 n) hg)
+      (remark_4_4.integrable_mul_conj hr (hb.1 n) hg), ← integral_const_mul]
+    congr 1; funext x; ring
+  simp_rw [heq]
+  have := ((ha.2.2 g hg).add (hb.2.2 g hg)).const_mul (1 / 2 : ℝ)
+  convert this using 2
+  ring
+
 /-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
 discrete local-time sequences converge to the same terminal local time,
 `λ^{n,±}_T ⇀ ℓ_T` in `L^r(ℝ)`, then `𝓛^{π_n}_ω ⇀ ℓ_T` in `L^r(ℝ)` and

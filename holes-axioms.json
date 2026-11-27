@@ -1356,6 +1356,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::remark_4_5.weakLpTendsto_half_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::remark_4_5_term_eq": [
    "propext",
    "Classical.choice",
@@ -1767,5 +1772,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:07:30Z"
+ "generated": "2026-11-27T20:07:46Z"
 }
