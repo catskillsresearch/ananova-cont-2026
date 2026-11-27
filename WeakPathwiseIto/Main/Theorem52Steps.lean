@@ -63,7 +63,14 @@ theorem exists_isWeakHessian {F : Rd d → ℝ} (hF : MemW 2 1 F) :
 theorem abs_convolution_le {h ψ : Rd d → ℝ} (hh : Integrable h) {C : ℝ}
     (hC : ∀ x, |ψ x| ≤ C) (x : Rd d) :
     |∫ y, h y * ψ (x - y)| ≤ (∫ y, |h y|) * C := by
-  sorry
+  calc |∫ y, h y * ψ (x - y)| ≤ ∫ y, |h y * ψ (x - y)| := abs_integral_le_integral_abs
+    _ ≤ ∫ y, |h y| * C := by
+        refine integral_mono_of_nonneg (Eventually.of_forall fun y => abs_nonneg _)
+          (hh.abs.mul_const C) (Eventually.of_forall fun y => ?_)
+        show |h y * ψ (x - y)| ≤ |h y| * C
+        rw [abs_mul]
+        exact mul_le_mul_of_nonneg_left (hC _) (abs_nonneg _)
+    _ = _ := integral_mul_const _ _
 
 /-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of
 order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`). -/
