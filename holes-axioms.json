@@ -461,6 +461,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.increment_moments": [
    "propext",
    "sorryAx",
@@ -1850,5 +1855,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:50:17Z"
+ "generated": "2026-11-27T20:52:46Z"
 }

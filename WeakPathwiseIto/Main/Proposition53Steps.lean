@@ -34,6 +34,25 @@ namespace proposition_5_3
 
 variable {d : ℕ} {T : ℝ}
 
+/-- **Subgoal** (P53.A, helper): a two-member family indexed by `Bool` is mutually independent
+as soon as its two members are independent. -/
+theorem iIndepFun_bool {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
+    {β : Type*} [MeasurableSpace β] {f : Bool → Ω → β} (h : IndepFun (f false) (f true) μ) :
+    iIndepFun f μ := by
+  rw [iIndepFun_iff_measure_inter_preimage_eq_mul]
+  intro S sets hs
+  have key : ∀ S : Finset Bool, S = ∅ ∨ S = {false} ∨ S = {true} ∨ S = {false, true} := by
+    decide
+  have hS := key S
+  rcases hS with rfl | rfl | rfl | rfl
+  · simp
+  · simp
+  · simp
+  · simp only [Finset.mem_insert, Finset.mem_singleton, iInter_iInter_eq_or_left,
+      iInter_iInter_eq_left, Finset.prod_insert (by decide : false ∉ ({true} : Finset Bool)),
+      Finset.prod_singleton]
+    exact h.measure_inter_preimage_eq_mul _ _ (hs false (by simp)) (hs true (by simp))
+
 /-- **Subgoal** (P53.A, independent Brownian coordinates: the joint past is independent of the
 joint future increments). For independent real Brownian motions `W^1, …, W^d` and `s ≥ 0`, the
 past `(W^i_v)_{i, v ≤ s}` is independent of the shifted increments `(W^i_{s+u} - W^i_s)_{i, u}`. -/

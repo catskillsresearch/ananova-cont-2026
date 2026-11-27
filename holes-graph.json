@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:50:17Z",
+ "updated": "2026-11-27T20:52:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 19,
  "counts": {
   "open": 13,
   "blocked": 13,
-  "done": 419
+  "done": 420
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 11,
   "blocked": 3,
-  "done": 353
+  "done": 354
  },
  "untagged": [],
  "legend": {
@@ -3650,7 +3650,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 8
+    "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
@@ -3661,6 +3661,7 @@
     "Main.IsItoIntegral",
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+    "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
     "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
     "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
@@ -3747,6 +3748,37 @@
    ],
    "blockers": [],
    "detail": "sorry: proposition_5_3.elementary_localisation — subgoal of P53.B, localisation (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
+   "label": "iIndepFun_bool",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): a two-member family indexed by `Bool` is mutually independent as soon as its two members are independent.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.iIndepFun_bool — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.increment_moments",
@@ -18235,6 +18267,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.increment_moments",
    "kind": "hard"
   },
@@ -19055,6 +19092,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.increment_moments",
    "kind": "hard"
   },
@@ -19090,6 +19132,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28170,6 +28217,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.increment_moments"
   },
   {
@@ -28678,6 +28729,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.increment_moments"
   },
   {
@@ -28706,6 +28761,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.iIndepFun_bool",
    "to": "Main.Proposition53Steps"
   },
   {

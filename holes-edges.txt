@@ -684,6 +684,7 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
+Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_past_increment
@@ -848,6 +849,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53
 Main.IsItoIntegral -hard-> Main.Proposition53Steps
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
+Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.iIndepFun_bool
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.increment_moments
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indepFun_past_increment
@@ -856,6 +858,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inn
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
 Main.Proposition53Steps::proposition_5_3.elementary_isometry -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.elementary_localisation -hard-> Main.Proposition53Steps
+Main.Proposition53Steps::proposition_5_3.iIndepFun_bool -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.increment_moments -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.indepFun_past_increment -hard-> Main.Proposition53Steps
