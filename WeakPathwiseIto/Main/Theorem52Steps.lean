@@ -401,11 +401,49 @@ theorem ae_forall_path_not_mem {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (x�
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`
 for continuous compactly supported functions). -/
-theorem tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
-    {p : ℝ} (hp : 1 ≤ p) {g : Rd d → E} (hg : Continuous g) (hgc : HasCompactSupport g) :
+theorem tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [CompleteSpace E]
+    {p : ℝ} (_hp : 1 ≤ p) {g : Rd d → E} (hg : Continuous g) (hgc : HasCompactSupport g) :
     Tendsto (fun z : Rd d => eLpNorm (fun x => g (x - z) - g x) (ENNReal.ofReal p) volume)
       (𝓝 0) (𝓝 0) := by
-  sorry
+  set K : Set (Rd d) := Metric.cthickening 1 (tsupport g)
+  have hK : IsCompact K := hgc.cthickening
+  set C : ℝ≥0∞ := volume K ^ (ENNReal.ofReal p).toReal⁻¹
+  have hC : C ≠ ⊤ := ENNReal.rpow_ne_top_of_nonneg (by positivity) hK.measure_lt_top.ne
+  have huc := hgc.uniformContinuous_of_continuous hg
+  -- the bound for small translations
+  have hbound : ∀ η > 0, ∀ᶠ z in 𝓝 (0 : Rd d),
+      eLpNorm (fun x => g (x - z) - g x) (ENNReal.ofReal p) volume ≤ C * ENNReal.ofReal η := by
+    intro η hη
+    obtain ⟨δ, hδ, hδg⟩ := Metric.uniformContinuous_iff.1 huc η hη
+    filter_upwards [Metric.ball_mem_nhds (0 : Rd d) (lt_min hδ one_pos)] with z hz
+    rw [mem_ball_zero_iff] at hz
+    have hmeas : AEStronglyMeasurable (fun x => g (x - z) - g x) volume :=
+      ((hg.comp (continuous_id.sub continuous_const)).sub hg).aestronglyMeasurable
+    have hsupp : Function.support (fun x => g (x - z) - g x) ⊆ K := by
+      intro x hx
+      by_contra hxK
+      have h1 : x ∉ tsupport g := fun h => hxK (Metric.self_subset_cthickening _ h)
+      have h2 : x - z ∉ tsupport g := by
+        intro h
+        refine hxK (Metric.mem_cthickening_of_dist_le x (x - z) 1 _ h ?_)
+        rw [dist_eq_norm, sub_sub_cancel]; exact (hz.trans_le (min_le_right _ _)).le
+      exact hx (show g (x - z) - g x = 0 by rw [image_eq_zero_of_notMem_tsupport h1,
+        image_eq_zero_of_notMem_tsupport h2, sub_zero])
+    rw [← eLpNorm_restrict_eq_of_support_subset hmeas hsupp]
+    refine (eLpNorm_le_of_ae_bound hmeas.restrict (Eventually.of_forall fun x => ?_)).trans
+      (by rw [Measure.restrict_apply_univ])
+    rw [← dist_eq_norm]
+    refine (hδg ?_).le
+    rw [dist_eq_norm, sub_sub_cancel_left, norm_neg]; exact hz.trans_le (min_le_left _ _)
+  rw [ENNReal.tendsto_nhds_zero]
+  intro ε hε
+  have hlim : Tendsto (fun η : ℝ => C * ENNReal.ofReal η) (𝓝 0) (𝓝 0) := by
+    simpa using ENNReal.Tendsto.const_mul (ENNReal.continuous_ofReal.tendsto 0) (Or.inr hC)
+  have hev : ∀ᶠ η in 𝓝[>] (0 : ℝ), C * ENNReal.ofReal η < ε :=
+    nhdsWithin_le_nhds (hlim.eventually (gt_mem_nhds hε))
+  obtain ⟨η, hηε, hη0⟩ := (hev.and self_mem_nhdsWithin).exists
+  filter_upwards [hbound η hη0] with z hz using hz.trans hηε.le
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`,
 `‖f(· - z) - f‖_p → 0` as `z → 0`, by density of `C_c` in `L^p`). -/
