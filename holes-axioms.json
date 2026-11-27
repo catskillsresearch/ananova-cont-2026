@@ -211,7 +211,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1731,5 +1730,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:57:34Z"
+ "generated": "2026-11-27T18:58:21Z"
 }

@@ -70,7 +70,9 @@ theorem exists_feasible_lt {α : ℝ} {p : ℝ≥0∞} {S : Set (Rd d)} {c : ℝ
     (hc : besselCapacity d α p S < c) :
     ∃ h : Rd d → ℝ, Measurable h ∧ 0 ≤ h ∧ (∀ x ∈ S, 1 ≤ BesselSpace.nonnegPotential d α h x) ∧
       eLpNorm h p volume ^ p.toReal < c := by
-  sorry
+  simp only [besselCapacity, iInf_lt_iff] at hc
+  obtain ⟨h, hm, h0, hS, hlt⟩ := hc
+  exact ⟨h, hm, h0, hS, hlt⟩
 
 /-- **Subgoal** (Definition 2.7, countable subadditivity, step 6): the admissible function
 `sup_n h_n`, taken as `1` on the (null) set where the supremum is `∞`. -/
