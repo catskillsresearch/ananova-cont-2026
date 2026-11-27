@@ -12275,6 +12275,31 @@ theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
 
 end
 
+/-! ## `WeakPathwiseIto.Main.ExitTime` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace CanonicalWienerSpace
+
+variable {d : ℕ} {T : ℝ}
+
+/-- The exit time `τ_R := inf{t ≥ 0 : |B(t)| ≥ R}` of the canonical process from the ball `B_R`
+(proof of Proposition 5.3), with values in `[0, ∞]` and `inf ∅ = ∞`. Since `Ω = C([0, T], ℝ^d)`
+(Section 2.2), `B(t)` is a coordinate of `ω` only for `t ∈ [0, T]`; for `R > 0` the times
+`t > T` (where `B(t) = 0`) never enter the set, so `τ_R = ∞` exactly when the path stays in
+`B_R` on `[0, T]` (the paper's "`τ_R > T`"). -/
+def exitTime (R : ℝ) (ω : CanonicalWienerSpace d T) : ℝ≥0∞ :=
+  ⨅ (t : ℝ≥0) (_ : R ≤ ‖B (t : ℝ) ω‖), (t : ℝ≥0∞)
+
+end CanonicalWienerSpace
+
+end
+
 /-! ## `WeakPathwiseIto.Main.IsItoIntegral` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
@@ -12307,23 +12332,79 @@ def elementaryIntegral {k : ℕ} (s : Fin (k + 1) → ℝ)
 
 end IsItoIntegral
 
-/-- `I` is (a version of) the stochastic Itô integral `∫_0^t G(B(s)) · dB(s)` under `ℙ_x`
-(Proposition 5.3), for the `d`-dimensional Brownian motion `B` and its natural filtration: there
-are elementary predictable integrands `H_n` on `[0, t]` with `∫_0^t |H_n(s) - G(B(s))|² ds → 0`
-in `ℙ_x`-probability whose elementary integrals converge to `I` in `ℙ_x`-probability (the
-localised `L²_loc` Itô integral, [KS91, §3.2.D], [RY99, IV.2]). -/
-def IsItoIntegral {d : ℕ} {T : ℝ} (x : Rd d) (G : Rd d → Rd d) (t : ℝ)
-    (I : CanonicalWienerSpace d T → ℝ) : Prop :=
+end
+
+/-! ## `WeakPathwiseIto.Main.IsL2ItoIntegral` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+/-- `I` is (a version of) the `L²` stochastic integral `∫_0^t H(s) · dB(s)` under `ℙ_x` of an
+integrand `H` with `E ∫_0^t |H(s)|² ds < ∞` (the integral used for the stopped integrals
+`J^R(t)` in the proof of Proposition 5.3): there are elementary predictable integrands
+`H_n = ∑_j ξ_{n,j} 1_{(s_{n,j}, s_{n,j+1}]}` on grids `0 = s_{n,0} ≤ … ≤ s_{n,k_n} = t`, with
+`ξ_{n,j} ∈ L²(ℙ_x)` `𝓕_{s_{n,j}}`-measurable, such that `H_n → H` in `L²(dℙ_x ⊗ ds)` on
+`(0, t]` and `∫ H_n dB → I` in `L²(ℙ_x)` (the limit through the Itô isometry). -/
+def IsL2ItoIntegral {d : ℕ} {T : ℝ} (x : Rd d) (H : ℝ → CanonicalWienerSpace d T → Rd d)
+    (t : ℝ) (I : CanonicalWienerSpace d T → ℝ) : Prop :=
+  (∫⁻ ω, (∫⁻ u in Ioc 0 t, ‖H u ω‖ₑ ^ 2) ∂CanonicalWienerSpace.P (T := T) x) < ∞ ∧
   ∃ (k : ℕ → ℕ) (s : ∀ n, Fin (k n + 1) → ℝ)
     (ξ : ∀ n, Fin (k n) → CanonicalWienerSpace d T → Rd d),
     (∀ n, Monotone (s n) ∧ s n 0 = 0 ∧ s n (Fin.last (k n)) = t) ∧
     (∀ n j, Measurable[IsItoIntegral.naturalSigma d T (s n j.castSucc)] (ξ n j)) ∧
-    TendstoInMeasure (CanonicalWienerSpace.P x)
-      (fun n ω => ∫ u in (0 : ℝ)..t,
-        ‖IsItoIntegral.elementaryValue (s n) (ξ n) u ω - G (CanonicalWienerSpace.path ω u)‖ ^ 2)
-      atTop (fun _ => 0) ∧
-    TendstoInMeasure (CanonicalWienerSpace.P x)
-      (fun n => IsItoIntegral.elementaryIntegral (s n) (ξ n)) atTop I
+    (∀ n j, MemLp (ξ n j) 2 (CanonicalWienerSpace.P (T := T) x)) ∧
+    Tendsto (fun n => ∫⁻ ω, (∫⁻ u in Ioc 0 t,
+        ‖IsItoIntegral.elementaryValue (s n) (ξ n) u ω - H u ω‖ₑ ^ 2)
+        ∂CanonicalWienerSpace.P (T := T) x)
+      atTop (𝓝 0) ∧
+    Tendsto (fun n => eLpNorm (IsItoIntegral.elementaryIntegral (s n) (ξ n) - I) 2
+        (CanonicalWienerSpace.P (T := T) x)) atTop (𝓝 0)
+
+end
+
+/-! ## `WeakPathwiseIto.Main.IsLocalItoIntegral` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+/-- The integrand stopped at `τ_R`: `H(u) 1_{u ≤ τ_R}`, so that
+`∫_0^{t ∧ τ_R} H dB = ∫_0^t H(u) 1_{u ≤ τ_R} dB(u)`. -/
+def stoppedIntegrand {d : ℕ} {T : ℝ} (H : ℝ → CanonicalWienerSpace d T → Rd d) (R : ℝ)
+    (u : ℝ) (ω : CanonicalWienerSpace d T) : Rd d :=
+  if ENNReal.ofReal u ≤ CanonicalWienerSpace.exitTime R ω then H u ω else 0
+
+/-- `J` is the local Itô integral `J(t) = ∫_0^t H(s) · dB(s)`, `t ∈ [0, T]`, under `ℙ_x`, as
+constructed in the proof of Proposition 5.3: with the exit times `τ_R`,
+* `E ∫_0^{T ∧ τ_R} |H(s)|² ds < ∞` for every integer `R ≥ 1`;
+* the stopped integrals `J^R(t) := ∫_0^{t ∧ τ_R} H dB` are `L²` stochastic integrals
+  (`IsL2ItoIntegral`), taken in versions with continuous paths on `[0, T]`;
+* the family `(J^R)_{R ≥ 1}` is consistent under stopping;
+* `τ_R ↑ ∞` almost surely (on `Ω = C([0, T], ℝ^d)`: almost every path has `τ_R = ∞`, i.e.
+  stays in `B_R` on `[0, T]`, for some integer `R`);
+* `J` has continuous paths on `[0, T]` and `J(t) = J^R(t)` for `t ≤ τ_R`. -/
+def IsLocalItoIntegral {d : ℕ} {T : ℝ} (x : Rd d) (H : ℝ → CanonicalWienerSpace d T → Rd d)
+    (J : ℝ → CanonicalWienerSpace d T → ℝ) : Prop :=
+  ∃ JR : ℕ → ℝ → CanonicalWienerSpace d T → ℝ,
+    (∀ R : ℕ, 1 ≤ R → (∫⁻ ω, (∫⁻ u in Ioc 0 T, ‖stoppedIntegrand H R u ω‖ₑ ^ 2)
+      ∂CanonicalWienerSpace.P (T := T) x) < ∞) ∧
+    (∀ R : ℕ, 1 ≤ R → ∀ t ∈ Icc 0 T, IsL2ItoIntegral x (stoppedIntegrand H R) t (JR R t)) ∧
+    (∀ R : ℕ, 1 ≤ R → ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x,
+      ContinuousOn (fun t => JR R t ω) (Icc 0 T)) ∧
+    (∀ R R' : ℕ, 1 ≤ R → R ≤ R' → ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ∀ t ∈ Icc 0 T,
+      ENNReal.ofReal t ≤ CanonicalWienerSpace.exitTime R ω → JR R t ω = JR R' t ω) ∧
+    (∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ∃ R : ℕ, 1 ≤ R ∧
+      CanonicalWienerSpace.exitTime R ω = ⊤) ∧
+    (∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ContinuousOn (fun t => J t ω) (Icc 0 T)) ∧
+    (∀ R : ℕ, 1 ≤ R → ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ∀ t ∈ Icc 0 T,
+      ENNReal.ofReal t ≤ CanonicalWienerSpace.exitTime R ω → J t ω = JR R t ω)
 
 end
 
@@ -12358,11 +12439,12 @@ open scoped ENNReal NNReal RealInnerProductSpace
 variable {T : ℝ} {d : ℕ}
 
 /-- **Proposition 5.3** (pathwise Föllmer–Protter formula). Let `π` satisfy Assumptions 1 and 2
-and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradient `∇F`, and `F` equal to its precise representative `F̃` at every
-Lebesgue point (as in Theorem 5.2). Outside a
-polar set `E` of starting points, the pathwise integral of Theorem 5.1 agrees `ℙ_x`-a.s. with
-the stochastic Itô integral, and for every `t ∈ [0, T]`
-`F(B(t)) - F(B(0)) = ∫_0^t ∇F(B(s)) dB(s) + ½ [∇F(B), B]_π(t)`, `ℙ_x`-a.s. -/
+and `F ∈ W^{2+,p} ∩ W^{2,1} ∩ W^{1,2}_loc`, `1 < p < ∞`, with weak gradient `∇F`, and `F` equal to
+its precise representative `F̃` at every Lebesgue point (as in Theorem 5.2). Then, outside a
+polar set `E` of starting points, the pathwise integral constructed in Theorem 5.1 agrees
+`ℙ_x`-almost surely with the stochastic Itô integral `J(t) = ∫_0^t ∇F(B(s)) dB(s)` (the local Itô
+integral, `IsLocalItoIntegral`), and
+`ℙ_x(F(B(t)) - F(B(0)) = ∫_0^t ∇F(B(s)) dB(s) + ½ [∇F(B), B]_π(t) for every t ∈ [0, T]) = 1`. -/
 theorem proposition_5_3 {π : ℕ → Partition T} (hT : 0 < T)
     (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F) (hFloc : MemWLoc 1 2 F)
@@ -12370,10 +12452,13 @@ theorem proposition_5_3 {π : ℕ → Partition T} (hT : 0 < T)
     (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
     ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
-        ∀ t ∈ Icc 0 T, ∃ I : CanonicalWienerSpace d T → ℝ, IsItoIntegral x₀ G t I ∧
-          ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∃ A : ApproximatingSequence π (CanonicalWienerSpace.path ω) F H,
-            A.seq = Fm ∧ weakPathwiseIntegral A t = I ω ∧
-            F (CanonicalWienerSpace.path ω t) - F (CanonicalWienerSpace.path ω 0) = I ω + 1 / 2 * weakCovariation A t := by
+        ∃ J : ℝ → CanonicalWienerSpace d T → ℝ,
+          IsLocalItoIntegral x₀ (fun u ω => G (CanonicalWienerSpace.path ω u)) J ∧
+          ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀),
+            ∃ A : ApproximatingSequence π (CanonicalWienerSpace.path ω) F H, A.seq = Fm ∧
+              ∀ t ∈ Icc 0 T, weakPathwiseIntegral A t = J t ω ∧
+                F (CanonicalWienerSpace.path ω t) - F (CanonicalWienerSpace.path ω 0) =
+                  J t ω + 1 / 2 * weakCovariation A t := by
   sorry
 
 end

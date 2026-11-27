@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T21:54:03Z",
+ "updated": "2026-11-27T21:54:54Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 11,
  "counts": {
@@ -3608,7 +3608,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "def": 4
+    "def": 3
    },
    "paperGoal": false,
    "verified": true,
@@ -3684,7 +3684,7 @@
    "kind": "goal",
    "status": "blocked",
    "deps": [
-    "Main.IsItoIntegral",
+    "Main.IsLocalItoIntegral",
     "Main.Theorem52",
     "Main.WeakCovariation",
     "Main.WeakPathwiseIntegral",
@@ -19593,11 +19593,6 @@
   },
   {
    "from": "Main.IsItoIntegral",
-   "to": "Main.Proposition53",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps",
    "kind": "hard"
   },
@@ -19714,6 +19709,11 @@
   {
    "from": "Main.IsL2ItoIntegral",
    "to": "Main.IsLocalItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53",
    "kind": "hard"
   },
   {
@@ -29437,10 +29437,6 @@
   },
   {
    "from": "Main.IsItoIntegral",
-   "to": "Main.Proposition53"
-  },
-  {
-   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.coord_apply"
   },
   {
@@ -29530,6 +29526,10 @@
   {
    "from": "Main.IsL2ItoIntegral",
    "to": "Main.IsLocalItoIntegral"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53"
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.coord_apply",
