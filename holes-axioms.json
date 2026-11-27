@@ -206,7 +206,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1734,5 +1733,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:54:37Z"
+ "generated": "2026-11-27T18:55:22Z"
 }

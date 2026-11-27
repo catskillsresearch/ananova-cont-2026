@@ -44,7 +44,11 @@ theorem nonnegPotential_mono_ae {α : ℝ} (hα : α ≠ 0) {h₁ h₂ : Rd d �
 `‖h‖_p^p = ∫ |h|^p`. -/
 theorem eLpNorm_rpow_eq {p : ℝ≥0∞} (hp : 0 < p.toReal) {h : Rd d → ℝ} (hh : Measurable h) :
     eLpNorm h p volume ^ p.toReal = ∫⁻ y, ‖h y‖ₑ ^ p.toReal := by
-  sorry
+  have hp0 : p ≠ 0 := fun h0 => by simp [h0] at hp
+  have hpt : p ≠ ⊤ := fun ht => by simp [ht] at hp
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 hpt hh.aestronglyMeasurable, ← ENNReal.rpow_mul,
+    one_div,
+    inv_mul_cancel₀ hp.ne', ENNReal.rpow_one]
 
 /-- **Subgoal** (Definition 2.7, countable subadditivity, step 3): when `p.toReal = 0`
 (`p ∈ {0, ∞}`), every admissible value `‖h‖_p^0` is `1`, so `B_{α,p}(E) ≥ 1`. -/

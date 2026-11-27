@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T18:54:38Z  
-**`sorry` occurrences:** 23 · 12 open · 14 blocked · 394 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 9, 'blocked': 4, 'done': 331} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T18:55:23Z  
+**`sorry` occurrences:** 22 · 11 open · 14 blocked · 395 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 8, 'blocked': 4, 'done': 332} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -75,7 +75,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion` | subgoal of Definition 2.7, countable unions | 0 |
 | open | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one` | subgoal of Lemma B.1 proof, [AM71] | 1 |
 | open | `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p` | subgoal of Appendix C proof of Theorem 5.2, [AM71] | 1 |
-| open | `Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq` | subgoal of Definition 2.7, countable subadditivity, step 2 | 1 |
+| done | `Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq` | subgoal of Definition 2.7, countable subadditivity, step 2 | 0 |
 | open | `Bessel.BesselCapacity::besselCapacity.exists_feasible_lt` | subgoal of Definition 2.7, countable subadditivity, step 5 | 1 |
 | open | `Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum` | subgoal of Definition 2.7, countable subadditivity, step 4 | 1 |
 | open | `Bessel.BesselCapacity::besselCapacity.iUnion_le` | subgoal of Definition 2.7, countable subadditivity [Fuk93] | 1 |
@@ -420,7 +420,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Bessel.BesselCapacity` | Definition 2.7 | 8 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq`, `Bessel.BesselCapacity::besselCapacity.exists_feasible_lt`, `Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero`, `Bessel.BesselCapacity::besselCapacity.supFn_props` |
+| blocked | `Bessel.BesselCapacity` | Definition 2.7 | 7 | `Bessel.BesselCapacity::besselCapacity.IsNull.iUnion`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one`, `Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p`, `Bessel.BesselCapacity::besselCapacity.exists_feasible_lt`, `Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum`, `Bessel.BesselCapacity::besselCapacity.iUnion_le`, `Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero`, `Bessel.BesselCapacity::besselCapacity.supFn_props` |
 | done | `Bessel.BesselKernel` | Definition 2.4 | 0 |  |
 | done | `Bessel.BesselSpace` | Definition 2.5 | 0 |  |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |

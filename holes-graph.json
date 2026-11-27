@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:54:38Z",
+ "updated": "2026-11-27T18:55:23Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 23,
+ "sorryCount": 22,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 14,
-  "done": 394
+  "done": 395
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 4,
-  "done": 331
+  "done": 332
  },
  "untagged": [],
  "legend": {
@@ -1581,9 +1581,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "eLpNorm_rpow_eq",
     "one_le_of_toReal_eq_zero",
     "iSup_rpow_le_tsum",
     "exists_feasible_lt",
@@ -1619,14 +1618,13 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
-    "Bessel.BesselCapacity::besselCapacity.eLpNorm_rpow_eq",
     "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
     "Bessel.BesselCapacity::besselCapacity.iSup_rpow_le_tsum",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
     "Bessel.BesselCapacity::besselCapacity.one_le_of_toReal_eq_zero",
     "Bessel.BesselCapacity::besselCapacity.supFn_props"
    ],
-   "detail": "8 sorry: eLpNorm_rpow_eq, one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "7 sorry: one_le_of_toReal_eq_zero, iSup_rpow_le_tsum, exists_feasible_lt, supFn_props, iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1738,10 +1736,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.eLpNorm_rpow_eq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1750,17 +1746,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity, step 2): for `0 < p < ∞`, `‖h‖_p^p = ∫ |h|^p`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.eLpNorm_rpow_eq — subgoal of Definition 2.7, countable subadditivity, step 2 (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.eLpNorm_rpow_eq — subgoal of Definition 2.7, countable subadditivity, step 2 (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.exists_feasible_lt",
