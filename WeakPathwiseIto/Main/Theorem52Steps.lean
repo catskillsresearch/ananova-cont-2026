@@ -607,7 +607,38 @@ theorem gagliardo_maximal_le {s p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f :
 `|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1})` for `a, b ≥ 0`, `p ≥ 1`). -/
 theorem enorm_rpow_sub_rpow_le {p : ℝ} (hp : 1 ≤ p) {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) :
     ‖a ^ p - b ^ p‖ₑ ≤ ENNReal.ofReal p * ‖a - b‖ₑ * (‖a‖ₑ ^ (p - 1) + ‖b‖ₑ ^ (p - 1)) := by
-  sorry
+  have key : ∀ {x y : ℝ}, 0 ≤ y → y ≤ x → x ^ p - y ^ p ≤ p * x ^ (p - 1) * (x - y) := by
+    intro x y hy hyx
+    rcases (hy.trans hyx).eq_or_lt with hx0 | hx0
+    · have : y = 0 := le_antisymm (hx0 ▸ hyx) hy
+      subst this; rw [← hx0]; simp
+    have hB := one_add_mul_self_le_rpow_one_add (s := y / x - 1)
+      (by have := div_nonneg hy hx0.le; linarith) hp
+    rw [add_sub_cancel, Real.div_rpow hy hx0.le, le_div_iff₀ (by positivity)] at hB
+    have hxp : x ^ p = x ^ (p - 1) * x := by rw [Real.rpow_sub_one hx0.ne']; field_simp
+    have : (1 + p * (y / x - 1)) * x ^ p = x ^ p + p * x ^ (p - 1) * (y - x) := by
+      rw [hxp]; field_simp
+    nlinarith
+  have hpp : 0 ≤ p - 1 := by linarith
+  have hpos : 0 ≤ p := by linarith
+  have hR : |a ^ p - b ^ p| ≤ p * |a - b| * (a ^ (p - 1) + b ^ (p - 1)) := by
+    have h1 := Real.rpow_nonneg ha (p - 1)
+    have h2 := Real.rpow_nonneg hb (p - 1)
+    rcases le_total b a with hba | hab
+    · have := key hb hba
+      have hm : b ^ p ≤ a ^ p := Real.rpow_le_rpow hb hba (by linarith)
+      rw [abs_of_nonneg (by linarith), abs_of_nonneg (by linarith)]
+      nlinarith [mul_nonneg (mul_nonneg hpos (sub_nonneg.2 hba)) h2]
+    · have := key ha hab
+      have hm : a ^ p ≤ b ^ p := Real.rpow_le_rpow ha hab (by linarith)
+      rw [abs_of_nonpos (by linarith), abs_of_nonpos (by linarith)]
+      nlinarith [mul_nonneg (mul_nonneg hpos (sub_nonneg.2 hab)) h1]
+  rw [Real.enorm_eq_ofReal_abs, Real.enorm_eq_ofReal_abs, Real.enorm_eq_ofReal_abs,
+    Real.enorm_eq_ofReal_abs, abs_of_nonneg ha, abs_of_nonneg hb,
+    ENNReal.ofReal_rpow_of_nonneg ha hpp, ENNReal.ofReal_rpow_of_nonneg hb hpp,
+    ← ENNReal.ofReal_add (Real.rpow_nonneg ha _) (Real.rpow_nonneg hb _),
+    ← ENNReal.ofReal_mul hpos, ← ENNReal.ofReal_mul (by positivity)]
+  exact ENNReal.ofReal_le_ofReal hR
 
 /-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has
 uniformly bounded integrals over a compact set `K`). -/
