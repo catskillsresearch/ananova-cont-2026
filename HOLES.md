@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:01:46Z  
-**`sorry` occurrences:** 42 · 18 open · 19 blocked · 244 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 15, 'blocked': 7, 'done': 190} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:03:08Z  
+**`sorry` occurrences:** 41 · 17 open · 19 blocked · 245 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 14, 'blocked': 7, 'done': 191} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -232,7 +232,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_shell_le` | subgoal of Lemma 2.2 proof, `α < d`, one dyadic shell | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.subset_closedBall` | subgoal of Lemma 2.2 proof, `Q ⊂ B̄(x, diam Q | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le` | subgoal of Theorem 2.1 proof, the Lebesgue-point limit | 1 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment` | subgoal of Theorem 2.1 proof, (2 | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment` | subgoal of Theorem 2.1 proof, (2 | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution` | subgoal of Theorem 2.1 proof, mollification step 1 | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props` | subgoal of Theorem 2.1 proof: cubes and balls | 1 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le` | subgoal of Theorem 2.1 proof, (2 | 1 |
@@ -277,7 +277,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 14 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment`, `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
+| blocked | `Sobolev.Theorem21First` |  | 13 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets

@@ -36,7 +36,27 @@ variable {d : ℕ}
 theorem abs_sub_le_lintegral_segment {f : Rd d → ℝ} (hf : ContDiff ℝ 1 f) (x y : Rd d) :
     ENNReal.ofReal |f y - f x| ≤
       ∫⁻ s in Ioc (0 : ℝ) 1, ‖gradient f (x + s • (y - x))‖ₑ * ‖y - x‖ₑ := by
-  sorry
+  set v := y - x
+  have hcont : Continuous fun s : ℝ => fderiv ℝ f (x + s • v) v := by
+    have h1 : Continuous fun s : ℝ => fderiv ℝ f (x + s • v) :=
+      (hf.continuous_fderiv one_ne_zero).comp (continuous_const.add (continuous_id.smul continuous_const))
+    exact h1.clm_apply continuous_const
+  have hderiv : ∀ s ∈ uIcc (0 : ℝ) 1,
+      HasDerivAt (fun s : ℝ => f (x + s • v)) (fderiv ℝ f (x + s • v) v) s := by
+    intro s _
+    have hl : HasDerivAt (fun s : ℝ => x + s • v) v s := by
+      simpa using ((hasDerivAt_id s).smul_const v).const_add x
+    exact ((hf.differentiable one_ne_zero) (x + s • v)).hasFDerivAt.comp_hasDerivAt s hl
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv
+    (hcont.intervalIntegrable 0 1)
+  simp only [one_smul, zero_smul, add_zero, v, add_sub_cancel] at hftc
+  rw [← Real.enorm_eq_ofReal_abs, ← hftc, intervalIntegral.integral_of_le zero_le_one]
+  refine (enorm_integral_le_lintegral_enorm _).trans (lintegral_mono fun s => ?_)
+  have hg : ‖gradient f (x + s • v)‖ = ‖fderiv ℝ f (x + s • v)‖ :=
+    (InnerProductSpace.toDual ℝ (Rd d)).symm.norm_map _
+  rw [← ofReal_norm, ← ofReal_norm, ← ofReal_norm,
+    ← ENNReal.ofReal_mul (norm_nonneg _), hg]
+  exact ENNReal.ofReal_le_ofReal ((fderiv ℝ f (x + s • v)).le_opNorm v)
 
 /-- **Subgoal** (Theorem 2.1 proof, (2) for `C¹`, step 2: the homothety `y ↦ x + s(y - x)`):
 for convex `Q ∋ x` with `|z - x| ≤ D` on `Q` and `0 < s ≤ 1`,

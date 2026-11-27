@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:01:46Z",
+ "updated": "2026-11-27T02:03:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 42,
+ "sorryCount": 41,
  "counts": {
-  "open": 18,
+  "open": 17,
   "blocked": 19,
-  "done": 244
+  "done": 245
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 15,
+  "open": 14,
   "blocked": 7,
-  "done": 190
+  "done": 191
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 14,
+   "sorryCount": 13,
    "holes": [
-    "abs_sub_le_lintegral_segment",
     "lintegral_comp_homothety_le",
     "lintegral_Ioc_rpow_indicator_le",
     "poincare_of_contDiff",
@@ -7269,7 +7268,6 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
     "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le",
@@ -7283,7 +7281,7 @@
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "14 sorry: abs_sub_le_lintegral_segment, lintegral_comp_homothety_le, lintegral_Ioc_rpow_indicator_le, poincare_of_contDiff, isCubeOrBall_props, contDiff_convolution, lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "13 sorry: lintegral_comp_homothety_le, lintegral_Ioc_rpow_indicator_le, poincare_of_contDiff, isCubeOrBall_props, contDiff_convolution, lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7326,17 +7324,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.abs_sub_le_lintegral_segment"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, (2) for `C¹`, step 1: integrating along the segment): `|f(y) - f(x)| ≤ ∫_0^1 |∇f(x + s(y - x))| |y - x| ds`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7345,7 +7341,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.abs_sub_le_lintegral_segment — subgoal of Theorem 2.1 proof, (2 (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.abs_sub_le_lintegral_segment — subgoal of Theorem 2.1 proof, (2 (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
