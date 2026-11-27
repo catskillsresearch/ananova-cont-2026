@@ -694,7 +694,67 @@ theorem lintegral_shift_mollify_sub_le {E : Type*} [NormedAddCommGroup E] [Norme
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) (n : ℕ) (h : Rd d) :
     ∫⁻ x, ‖((∫ y, ψ n (x + h - y) • f y) - f (x + h)) - ((∫ y, ψ n (x - y) • f y) - f x)‖ₑ ^ p ≤
       2 ^ p * ∫⁻ x, ‖f (x + h) - f x‖ₑ ^ p := by
-  sorry
+  have hp0 : (0 : ℝ) < p := by linarith
+  have hp1 : (1 : ℝ≥0∞) ≤ ENNReal.ofReal p := ENNReal.one_le_ofReal.2 hp
+  have hpr : (ENNReal.ofReal p).toReal = p := ENNReal.toReal_ofReal hp0.le
+  have hpne : ENNReal.ofReal p ≠ 0 := (ENNReal.ofReal_pos.2 hp0).ne'
+  set g : Rd d → E := fun x => f (x + h) - f x
+  have hfh : MemLp (fun x => f (x + h)) (ENNReal.ofReal p) :=
+    hf.comp_measurePreserving (measurePreserving_add_right volume h)
+  have hg : MemLp g (ENNReal.ofReal p) := hfh.sub hf
+  have hgm : AEStronglyMeasurable g volume := hg.aestronglyMeasurable
+  -- the shifted difference is the mollifier defect of `g`
+  have hshift : ∀ x, ∫ y, ψ n (x + h - y) • f y = ∫ y, ψ n (x - y) • f (y + h) := by
+    intro x
+    rw [← integral_add_right_eq_self (fun y => ψ n (x + h - y) • f y) h]
+    congr 1; funext y; congr 2; abel
+  have hψk : HasCompactSupport (ψ n) :=
+    (isCompact_closedBall (0 : Rd d) _).of_isClosed_subset isClosed_closure
+      (closure_minimal ((hψs n).trans Metric.ball_subset_closedBall) Metric.isClosed_closedBall)
+  have hfl : LocallyIntegrable f volume := hf.locallyIntegrable hp1
+  have hfhl : LocallyIntegrable (fun x => f (x + h)) volume := hfh.locallyIntegrable hp1
+  have hI1 : ∀ x, Integrable (fun y => ψ n (x - y) • f (y + h)) := fun x =>
+    hfhl.integrable_smul_left_of_hasCompactSupport ((hψc n).comp (continuous_sub_left x))
+      (hψk.comp_homeomorph (Homeomorph.subLeft x))
+  have hI2 : ∀ x, Integrable (fun y => ψ n (x - y) • f y) := fun x =>
+    hfl.integrable_smul_left_of_hasCompactSupport ((hψc n).comp (continuous_sub_left x))
+      (hψk.comp_homeomorph (Homeomorph.subLeft x))
+  have hfun : ∀ x, ((∫ y, ψ n (x + h - y) • f y) - f (x + h)) -
+      ((∫ y, ψ n (x - y) • f y) - f x) = (∫ y, ψ n (x - y) • g y) - g x := by
+    intro x
+    rw [hshift x]
+    simp only [g, smul_sub]
+    rw [integral_sub (hI1 x) (hI2 x)]
+    abel
+  simp_rw [hfun]
+  -- measurability of the mollifier defect of `g`
+  have hconv : (fun x => ∫ y, ψ n (x - y) • g y) =
+      (ψ n ⋆[ContinuousLinearMap.lsmul ℝ ℝ, volume] g) := by
+    funext x; rw [convolution_lsmul_swap]
+  have hLm : AEStronglyMeasurable (fun x => (∫ y, ψ n (x - y) • g y) - g x) volume := by
+    have hc : Continuous fun x => ∫ y, ψ n (x - y) • g y := by
+      rw [hconv]; exact hψk.continuous_convolution_left _ (hψc n) (hg.locallyIntegrable hp1)
+    exact hc.aestronglyMeasurable.sub hgm
+  have hsup : ⨆ z ∈ Metric.ball (0 : Rd d) (1 / ((n : ℝ) + 1)),
+      eLpNorm (fun x => g (x - z) - g x) (ENNReal.ofReal p) volume ≤
+        2 * eLpNorm g (ENNReal.ofReal p) volume := by
+    refine iSup₂_le fun z _ => ?_
+    have hsub : (fun x => g (x - z) - g x) = (fun x => g (x - z)) + fun x => -g x := by
+      funext x; simp [sub_eq_add_neg]
+    rw [hsub, two_mul]
+    refine (eLpNorm_add_le hp1).trans ?_
+    have h1 : eLpNorm (fun x => g (x - z)) (ENNReal.ofReal p) volume =
+        eLpNorm g (ENNReal.ofReal p) volume :=
+      eLpNorm_comp_measurePreserving hgm (measurePreserving_sub_right volume z)
+    rw [h1, show (fun x => -g x) = -g from rfl, eLpNorm_neg]
+  have hle := (eLpNorm_mollify_sub_le hp hg (hψc n) (hψ0 n) (hψ1 n) (hψs n)).trans hsup
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hpne ENNReal.ofReal_ne_top hLm,
+    eLpNorm_eq_lintegral_rpow_enorm_toReal hpne ENNReal.ofReal_ne_top hgm, hpr] at hle
+  have := ENNReal.rpow_le_rpow hle hp0.le
+  rw [← ENNReal.rpow_mul, one_div, inv_mul_cancel₀ hp0.ne', ENNReal.rpow_one,
+    ENNReal.mul_rpow_of_nonneg _ _ hp0.le, ← ENNReal.rpow_mul, inv_mul_cancel₀ hp0.ne',
+    ENNReal.rpow_one] at this
+  exact this
 
 /-- **Subgoal** (Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in
 the Gagliardo seminorm `[·]_{W^{s,p}}`). -/
