@@ -76,7 +76,68 @@ theorem lintegral_ball_potential_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (c : Rd 
     ∀ g : Rd d → ℝ, AEStronglyMeasurable g →
       ∫⁻ y in Metric.ball c r, ∫⁻ z in Metric.ball c r, ‖g z‖ₑ / edist y z ^ ((d : ℝ) - 1) ≤
         C * ENNReal.ofReal r * ∫⁻ z in Metric.ball c r, ‖g z‖ₑ := by
-  sorry
+  obtain ⟨C0, -, hC0⟩ := lemma_2_2 d (α := 1) one_pos
+  refine ⟨C0 * 4, fun c r hr h hh => ?_⟩
+  set B := Metric.ball c r with hB
+  set C : ℝ≥0∞ := ((C0 * 4 : ℝ≥0) : ℝ≥0∞) * ENNReal.ofReal r with hCdef
+  have hD : 0 < 2 * r := by positivity
+  -- the kernel integral is uniformly bounded on `B`
+  have hK : ∀ z ∈ B, ∫⁻ y in B, 1 / edist y z ^ ((d : ℝ) - 1) ≤ C := by
+    intro z hz
+    have hsub : B ⊆ Metric.closedBall z (2 * r) := fun y hy => by
+      rw [Metric.mem_closedBall]
+      have := dist_triangle y c z
+      have h1 : dist y c < r := hy
+      have h2 : dist c z < r := by rw [dist_comm]; exact hz
+      linarith
+    have hball : IsCubeOrBall (Metric.closedBall z (2 * r)) := ⟨z, 2 * r, hD, Or.inr (Or.inl rfl)⟩
+    have hlem := hC0 (Metric.closedBall z (2 * r)) (fun _ => (1 : ℝ)) hball
+      (integrableOn_const measure_closedBall_lt_top.ne) z (Metric.mem_closedBall_self hD.le)
+    have hM : localMaximalFunction (Metric.ediam (Metric.closedBall z (2 * r)))
+        (fun _ : Rd d => (1 : ℝ)) z ≤ 1 := by
+      refine iSup_le fun r => iSup_le fun _ => iSup_le fun _ => ?_
+      rw [laverage_eq]
+      simp only [enorm_one, lintegral_const, one_mul, Measure.restrict_apply_univ]
+      exact ENNReal.div_self_le_one
+    have hdiam : Metric.ediam (Metric.closedBall z (2 * r)) ≤ ENNReal.ofReal (2 * (2 * r)) := by
+      rw [← ENNReal.ofReal_toReal Metric.isBounded_closedBall.ediam_ne_top]
+      exact ENNReal.ofReal_le_ofReal (Metric.diam_closedBall hD.le)
+    calc ∫⁻ y in B, 1 / edist y z ^ ((d : ℝ) - 1)
+        ≤ ∫⁻ y in Metric.closedBall z (2 * r), 1 / edist y z ^ ((d : ℝ) - 1) := lintegral_mono_set hsub
+      _ = ∫⁻ y in Metric.closedBall z (2 * r),
+            ‖(fun _ : Rd d => (1 : ℝ)) y‖ₑ / edist z y ^ ((d : ℝ) - 1) := by
+          simp only [enorm_one, edist_comm]
+      _ ≤ C0 * Metric.ediam (Metric.closedBall z (2 * r)) ^ (1 : ℝ) *
+            localMaximalFunction (Metric.ediam (Metric.closedBall z (2 * r))) (fun _ => (1 : ℝ)) z :=
+          hlem
+      _ ≤ C0 * ENNReal.ofReal (2 * (2 * r)) * 1 := by
+          rw [ENNReal.rpow_one]; gcongr
+      _ = C := by
+          rw [mul_one, hCdef, show 2 * (2 * r) = 4 * r by ring,
+            ENNReal.ofReal_mul (by norm_num : (0 : ℝ) ≤ 4), ENNReal.coe_mul, mul_assoc]
+          norm_num
+  have hm : AEMeasurable (Function.uncurry fun (y z : Rd d) => ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1))
+      ((volume.restrict B).prod (volume.restrict B)) := by
+    have h1 : AEMeasurable (fun p : Rd d × Rd d => ‖h p.2‖ₑ)
+        ((volume.restrict B).prod (volume.restrict B)) :=
+      hh.restrict.aemeasurable.enorm.comp_quasiMeasurePreserving Measure.quasiMeasurePreserving_snd
+    have h2 : Measurable fun p : Rd d × Rd d => edist p.1 p.2 ^ ((d : ℝ) - 1) :=
+      (continuous_edist.measurable).pow_const _
+    exact h1.div h2.aemeasurable
+  calc ∫⁻ y in B, ∫⁻ z in B, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1)
+      = ∫⁻ z in B, ∫⁻ y in B, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 1) := lintegral_lintegral_swap hm
+    _ = ∫⁻ z in B, ‖h z‖ₑ * ∫⁻ y in B, 1 / edist y z ^ ((d : ℝ) - 1) := by
+        refine lintegral_congr fun z => ?_
+        rw [← lintegral_const_mul' _ _ enorm_ne_top]
+        refine lintegral_congr fun y => ?_
+        rw [div_eq_mul_inv, one_div]
+    _ ≤ ∫⁻ z in B, ‖h z‖ₑ * C := by
+        refine lintegral_mono_ae ((ae_restrict_iff' measurableSet_ball).2
+          (Eventually.of_forall fun z hz => ?_))
+        exact mul_le_mul' le_rfl (hK z hz)
+    _ = C * ∫⁻ z in B, ‖h z‖ₑ := by
+        rw [lintegral_mul_const' _ _ (ENNReal.mul_ne_top ENNReal.coe_ne_top ENNReal.ofReal_ne_top),
+          mul_comm]
 
 /-- **Subgoal** (Theorem 2.3 proof, Poincaré on balls:
 `∫_B |f - f_B| ≤ C r ∫_B |∇f|`). -/

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:30:31Z",
+ "updated": "2026-11-27T03:31:16Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 19,
-  "done": 282
+  "done": 283
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 57
  },
  "subgoalCounts": {
-  "open": 8,
+  "open": 7,
   "blocked": 7,
-  "done": 225
+  "done": 226
  },
  "untagged": [],
  "legend": {
@@ -8315,9 +8315,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "lintegral_ball_potential_le",
     "lintegral_abs_sub_average_ball_le",
     "abs_average_sub_average_le",
     "abs_average_sub_average_le_maximal",
@@ -8350,11 +8349,10 @@
     "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
     "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
     "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
-    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
-   "detail": "7 sorry: lintegral_ball_potential_le, lintegral_abs_sub_average_ball_le, abs_average_sub_average_le, abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
+   "detail": "6 sorry: lintegral_abs_sub_average_ball_le, abs_average_sub_average_le, abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8504,23 +8502,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.lintegral_ball_potential_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B)` with constant `C r`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.lintegral_ball_potential_le — subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.lintegral_ball_potential_le — subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B (in Sobolev.Theorem23Steps)"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
