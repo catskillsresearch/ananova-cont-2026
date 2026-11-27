@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T12:49:03Z  
-**`sorry` occurrences:** 31 · 8 open · 50 blocked · 314 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 5, 'blocked': 39, 'done': 253} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T12:50:04Z  
+**`sorry` occurrences:** 30 · 8 open · 49 blocked · 315 done (goals + subgoals) · goals {'open': 4, 'blocked': 10, 'done': 61} · subgoals {'open': 4, 'blocked': 39, 'done': 254} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,6 +27,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | `Bessel.Theorem26` | Theorem 2.6 | 1 | `theorem_2_6` |
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
+| `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 | (review → VERIFIED) |
 
 ## Subgoals (helper lemmas/defs)
 
@@ -268,7 +269,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
-| open | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` | subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` | 1 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` | subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt` | subgoal of Hardy–Littlewood, `t < M_1 f(x | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.le_add` | subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` | 0 |
 | done | `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le` | subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` | 0 |
@@ -350,7 +351,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 1 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` |
+| open | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 0 |  |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |

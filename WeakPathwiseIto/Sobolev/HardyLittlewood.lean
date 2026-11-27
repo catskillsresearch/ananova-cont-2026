@@ -405,7 +405,10 @@ theorem lintegral_rpow_le {f : Rd d → ℝ} (hf : Measurable f) {p : ℝ} (hp :
 /-- **Subgoal** (Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`). -/
 theorem congr_ae {f g : Rd d → ℝ} (h : f =ᵐ[volume] g) :
     localMaximalFunction 1 f = localMaximalFunction 1 g := by
-  sorry
+  funext x
+  unfold localMaximalFunction
+  congr 1; funext r; congr 1; funext _; congr 1; funext _
+  exact laverage_congr (ae_restrict_of_ae (h.mono fun y hy => by simp only [hy]))
 
 end hardyLittlewood
 

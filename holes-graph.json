@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T12:49:03Z",
+ "updated": "2026-11-27T12:50:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 30,
  "counts": {
   "open": 8,
-  "blocked": 50,
-  "done": 314
+  "blocked": 49,
+  "done": 315
  },
  "goalCounts": {
-  "open": 3,
-  "blocked": 11,
+  "open": 4,
+  "blocked": 10,
   "done": 61
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 39,
-  "done": 253
+  "done": 254
  },
  "untagged": [],
  "legend": {
@@ -8524,17 +8524,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "congr_ae"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 15
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
     "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
@@ -8553,10 +8551,8 @@
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
     "Sobolev.LocalMaximalFunction"
    ],
-   "blockers": [
-    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae"
-   ],
-   "detail": "1 sorry: congr_ae"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8568,22 +8564,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.congr_ae"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.congr_ae — subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.congr_ae — subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
