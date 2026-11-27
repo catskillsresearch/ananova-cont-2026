@@ -35,6 +35,54 @@ theorem Rd.coord_one_injective : Function.Injective (Rd.coord (d := 1) 0) := fun
   rw [Rd.coord_one_apply, Rd.coord_one_apply] at h
   ext i; fin_cases i; exact h
 
+/-- **Subgoal** (Remark 4.5, eq. (7) for `d = 1`): `c_1 = 2 / |B(0,1)| = 1`. -/
+theorem occupationConstant_one : occupationConstant 1 = 1 := by
+  set e : Rd 1 ≃ᵐ ℝ := (MeasurableEquiv.toLp 2 (Fin 1 → ℝ)).symm.trans
+    (MeasurableEquiv.funUnique (Fin 1) ℝ) with he
+  have hmp : MeasurePreserving e :=
+    (EuclideanSpace.volume_preserving_symm_measurableEquiv_toLp (Fin 1)).trans
+      (volume_preserving_funUnique (Fin 1) ℝ)
+  have hnorm : ∀ x : Rd 1, ‖x‖ = |e x| := fun x => by
+    simp [he, EuclideanSpace.norm_eq, Real.sqrt_sq_eq_abs]
+  have hball : e.symm ⁻¹' Metric.ball 0 1 = Ioo (-1) 1 := by
+    ext t
+    simp only [Set.mem_preimage, Metric.mem_ball, dist_zero_right, hnorm,
+      MeasurableEquiv.apply_symm_apply, Set.mem_Ioo, abs_lt]
+  have hvol : volume (Metric.ball (0 : Rd 1) 1) = volume (Ioo (-1 : ℝ) 1) := by
+    rw [← hball, hmp.symm.measure_preimage measurableSet_ball.nullMeasurableSet]
+  rw [occupationConstant, hvol, Real.volume_Ioo]
+  norm_num
+
+/-- **Subgoal** (Remark 4.5, eq. (7) for `d = 1`): the increment ball `Q` from `a` to `b` in `ℝ^1`
+is the closed interval `[a ∧ b, a ∨ b]` (in coordinates). -/
+theorem incrementBall_one_iff (a b x : Rd 1) : x ∈ incrementBall a b ↔
+    Rd.coord 0 x ∈ Icc (min (Rd.coord 0 a) (Rd.coord 0 b)) (max (Rd.coord 0 a) (Rd.coord 0 b)) := by
+  have hc : ∀ v w : Rd 1, Rd.coord 0 (v - w) = Rd.coord 0 v - Rd.coord 0 w := fun v w => by
+    simp [Rd.coord_one_apply]
+  have hm : Rd.coord 0 (midpoint ℝ a b) = (Rd.coord 0 a + Rd.coord 0 b) / 2 := by
+    simp [Rd.coord_one_apply, midpoint_eq_smul_add]; ring
+  rw [incrementBall, Metric.mem_closedBall, dist_eq_norm, dist_eq_norm, Rd.norm_one_eq,
+    Rd.norm_one_eq,
+    hc, hc, hm, mem_Icc]
+  constructor
+  · intro h
+    obtain ⟨h1, h2⟩ := abs_le.1 h
+    rcases le_total (Rd.coord 0 a) (Rd.coord 0 b) with hab | hab
+    · rw [abs_sub_comm (Rd.coord 0 a),
+        abs_of_nonneg (by linarith : (0:ℝ) ≤ Rd.coord 0 b - Rd.coord 0 a)] at h1 h2
+      rw [min_eq_left hab, max_eq_right hab]; constructor <;> linarith
+    · rw [abs_of_nonneg (by linarith : (0:ℝ) ≤ Rd.coord 0 a - Rd.coord 0 b)] at h1 h2
+      rw [min_eq_right hab, max_eq_left hab]; constructor <;> linarith
+  · rintro ⟨h1, h2⟩
+    rcases le_total (Rd.coord 0 a) (Rd.coord 0 b) with hab | hab
+    · rw [min_eq_left hab] at h1; rw [max_eq_right hab] at h2
+      rw [abs_sub_comm (Rd.coord 0 a),
+        abs_of_nonneg (by linarith : (0:ℝ) ≤ Rd.coord 0 b - Rd.coord 0 a)]
+      rw [abs_le]; constructor <;> linarith
+    · rw [min_eq_right hab] at h1; rw [max_eq_left hab] at h2
+      rw [abs_of_nonneg (by linarith : (0:ℝ) ≤ Rd.coord 0 a - Rd.coord 0 b)]
+      rw [abs_le]; constructor <;> linarith
+
 /-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
 endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
 `λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed
