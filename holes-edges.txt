@@ -970,6 +970,7 @@ Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegr
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.riemannSum_path_eq_itoRiemannSum
 Main.IsLocalItoIntegral -hard-> Main.Proposition53Proof::proposition_5_3.summable_mesh
+Main.IsProgressive -hard-> Main.IsL2ItoIntegral
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq
 Main.ItoRiemannSum -hard-> Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub

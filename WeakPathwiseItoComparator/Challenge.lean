@@ -12337,6 +12337,26 @@ end IsItoIntegral
 
 end
 
+/-! ## `WeakPathwiseIto.Main.IsProgressive` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Set
+
+/-- A process `H : [0, ∞) × Ω → ℝ^d` is progressively measurable for the natural filtration
+`𝓕_r = σ(B(v) : v ≤ r)` of the canonical process: for every `r ≥ 0`, `(u, ω) ↦ H(u, ω)` on
+`[0, r] × Ω` is `𝓑([0, r]) ⊗ 𝓕_r`-measurable (the class of integrands of the standard Itô
+integral used in the proof of Proposition 5.3). -/
+def IsProgressive {d : ℕ} {T : ℝ} (H : ℝ → CanonicalWienerSpace d T → Rd d) : Prop :=
+  ∀ r : ℝ, 0 ≤ r →
+    Measurable[MeasurableSpace.prod (inferInstance : MeasurableSpace (Icc (0 : ℝ) r))
+      (IsItoIntegral.naturalSigma d T r)] (fun p : Icc (0 : ℝ) r × CanonicalWienerSpace d T =>
+        H p.1 p.2)
+
+end
+
 /-! ## `WeakPathwiseIto.Main.IsL2ItoIntegral` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
@@ -12346,14 +12366,15 @@ section
 open MeasureTheory Filter Topology Set
 open scoped ENNReal NNReal RealInnerProductSpace
 
-/-- `I` is (a version of) the `L²` stochastic integral `∫_0^t H(s) · dB(s)` under `ℙ_x` of an
-integrand `H` with `E ∫_0^t |H(s)|² ds < ∞` (the integral used for the stopped integrals
+/-- `I ∈ L²(ℙ_x)` is (a version of) the `L²` stochastic integral `∫_0^t H(s) · dB(s)` under `ℙ_x`
+of a progressively measurable integrand `H` with `E ∫_0^t |H(s)|² ds < ∞` (the integral used for the stopped integrals
 `J^R(t)` in the proof of Proposition 5.3): there are elementary predictable integrands
 `H_n = ∑_j ξ_{n,j} 1_{(s_{n,j}, s_{n,j+1}]}` on grids `0 = s_{n,0} ≤ … ≤ s_{n,k_n} = t`, with
 `ξ_{n,j} ∈ L²(ℙ_x)` `𝓕_{s_{n,j}}`-measurable, such that `H_n → H` in `L²(dℙ_x ⊗ ds)` on
 `(0, t]` and `∫ H_n dB → I` in `L²(ℙ_x)` (the limit through the Itô isometry). -/
 def IsL2ItoIntegral {d : ℕ} {T : ℝ} (x : Rd d) (H : ℝ → CanonicalWienerSpace d T → Rd d)
     (t : ℝ) (I : CanonicalWienerSpace d T → ℝ) : Prop :=
+  IsProgressive H ∧ MemLp I 2 (CanonicalWienerSpace.P (T := T) x) ∧
   (∫⁻ ω, (∫⁻ u in Ioc 0 t, ‖H u ω‖ₑ ^ 2) ∂CanonicalWienerSpace.P (T := T) x) < ∞ ∧
   ∃ (k : ℕ → ℕ) (s : ∀ n, Fin (k n + 1) → ℝ)
     (ξ : ∀ n, Fin (k n) → CanonicalWienerSpace d T → Rd d),

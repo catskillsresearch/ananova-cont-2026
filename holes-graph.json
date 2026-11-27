@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T22:16:04Z",
+ "updated": "2026-11-27T22:16:44Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 28,
  "counts": {
@@ -3637,7 +3637,8 @@
    "kind": "goal",
    "status": "done",
    "deps": [
-    "Main.IsItoIntegral"
+    "Main.IsItoIntegral",
+    "Main.IsProgressive"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
@@ -21117,6 +21118,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.IsProgressive",
+   "to": "Main.IsL2ItoIntegral",
+   "kind": "hard"
+  },
+  {
    "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof",
    "kind": "hard"
@@ -31692,10 +31698,6 @@
   },
   {
    "from": "Main.IsItoIntegral",
-   "to": "Main.IsL2ItoIntegral"
-  },
-  {
-   "from": "Main.IsItoIntegral",
    "to": "Main.IsProgressive"
   },
   {
@@ -31869,6 +31871,10 @@
   {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.IsProgressive",
+   "to": "Main.IsL2ItoIntegral"
   },
   {
    "from": "Main.ItoRiemannSum",

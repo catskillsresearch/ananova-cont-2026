@@ -2,7 +2,7 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:16:04Z  
+**Updated:** 2026-11-27T22:16:44Z  
 **`sorry` occurrences:** 28 · 22 open · 13 blocked · 450 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 73} · subgoals {'open': 20, 'blocked': 3, 'done': 377} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
