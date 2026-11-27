@@ -207,6 +207,22 @@ theorem remark_4_4 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariatio
     {F : Rd d → ℝ} (hF : MemW 2 1 F) (hFc : Continuous F) {H : Rd d → (Rd d →L[ℝ] Rd d)}
     (hH : IsWeakHessian F H) (hHr : MemLp H r.conjExponent) :
     F ∈ PathwiseSobolevSpace π ω := by
-  sorry
+  obtain ⟨ψ, hψs, hψk, hψ0, hψ1, hψb⟩ := theorem_2_1_first.exists_mollifier (d := d)
+  obtain ⟨G, hG⟩ := theorem_5_2.exists_isWeakGradient_of_memW (by norm_num) hF
+  have hψc : ∀ n, Continuous (ψ n) := fun n => (hψs n).continuous
+  have hFl : LocallyIntegrable F := hF.1.locallyIntegrable le_rfl
+  refine ⟨hF, H, hH, ⟨{
+    seq := fun m x => ∫ y, F y * ψ m (x - y)
+    smooth := fun m _ => (theorem_5_2.mollify_mem hF (hψs m) (hψk m)).1
+    sobolev := fun m _ => (theorem_5_2.mollify_mem hF (hψs m) (hψk m)).2
+    tendsto_path := fun t _ =>
+      remark_4_4.tendsto_mollify_of_continuousAt hFl hψc hψk hψ0 hψ1 hψb hFc.continuousAt
+    tendsto_hessian := ?_ }⟩⟩
+  have heq : ∀ m, (fun x => smoothHessian (fun z => ∫ y, F y * ψ m (z - y)) x - H x) =
+      fun x => (∫ y, ψ m (x - y) • H y) - H x := fun m => by
+    funext x; rw [theorem_5_2.smoothHessian_convolution hG hH (hψs m) (hψk m) x]
+  simp_rw [heq]
+  have : CompleteSpace (Rd d →L[ℝ] Rd d) := FiniteDimensional.complete ℝ _
+  exact remark_4_4.tendsto_seminorm_mollify_sub hω hQV hosc hr hℓ0 hweak hHr hψc hψk hψ0 hψ1 hψb
 
 end WeakPathwiseIto
