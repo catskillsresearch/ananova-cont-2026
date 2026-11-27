@@ -350,7 +350,28 @@ theorem isWeakGradient_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d �
 theorem coord_hessian_integrable {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d)}
     (hf : MemW 2 1 f) (hH : IsWeakHessian f H) (i j : Fin d) :
     Integrable fun z => Rd.coord i (H z (Rd.basisVec j)) := by
-  sorry
+  set α : Fin d → ℕ := Pi.single i 1 + Pi.single j 1 with hα
+  have hord : IsWeakDerivative.order α ≤ 2 := by
+    simp [hα, IsWeakDerivative.order, Finset.sum_add_distrib]
+  obtain ⟨g, hg, hgL⟩ := hf.2 _ hord
+  obtain ⟨_, hgl, hgi⟩ := hg
+  obtain ⟨_, hgl', hgi'⟩ := hH i j
+  have h0 := ae_eq_zero_of_integral_contDiff_smul_eq_zero (hgl.sub hgl') fun φ hφ hφc => by
+    have hne : ((-1 : ℝ) ^ IsWeakDerivative.order α) ≠ 0 := pow_ne_zero _ (by norm_num)
+    have heq : ∫ x, g x * φ x = ∫ x, Rd.coord i (H x (Rd.basisVec j)) * φ x :=
+      mul_left_cancel₀ hne ((hgi φ hφ hφc).symm.trans (hgi' φ hφ hφc))
+    have hi : Integrable (fun x => φ x • g x) :=
+      hgl.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    have hi' : Integrable (fun x => φ x • Rd.coord i (H x (Rd.basisVec j))) :=
+      hgl'.integrable_smul_left_of_hasCompactSupport hφ.continuous hφc
+    simp only [Pi.sub_apply, smul_sub]
+    rw [integral_sub hi hi']
+    simp only [smul_eq_mul, mul_comm (φ _)]
+    rw [heq, sub_self]
+  have hae : g =ᵐ[volume] fun z => Rd.coord i (H z (Rd.basisVec j)) := by
+    filter_upwards [h0] with x hx
+    exact sub_eq_zero.1 hx
+  exact (memLp_one_iff_integrable.1 hgL).congr hae
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}`). -/
 theorem memW_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d → (Rd d →L[ℝ] Rd d)}

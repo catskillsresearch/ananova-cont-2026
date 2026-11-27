@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:00:47Z",
+ "updated": "2026-11-27T03:01:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 19,
-  "done": 269
+  "done": 270
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 9,
+  "open": 8,
   "blocked": 7,
-  "done": 214
+  "done": 215
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
-    "coord_hessian_integrable",
     "memW_coord",
     "hessian_convolution",
     "norm_le_sum_entries",
@@ -7936,7 +7935,6 @@
    ],
    "blockers": [
     "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
     "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
@@ -7944,7 +7942,7 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae"
    ],
-   "detail": "8 sorry: coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "7 sorry: memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -8012,24 +8010,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.coord_hessian_integrable"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the Hessian entries are integrable).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.coord_hessian_integrable — subgoal of Theorem 2.1 proof, second estimate: the Hessian entries are integrable (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.coord_hessian_integrable — subgoal of Theorem 2.1 proof, second estimate: the Hessian entries are integrable (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
