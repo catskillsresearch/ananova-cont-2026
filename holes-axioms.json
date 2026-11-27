@@ -506,6 +506,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero": [
    "propext",
    "sorryAx",
@@ -1881,5 +1886,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:18:17Z"
+ "generated": "2026-11-27T21:18:34Z"
 }

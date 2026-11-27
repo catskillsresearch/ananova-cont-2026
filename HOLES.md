@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:18:17Z  
-**`sorry` occurrences:** 15 · 9 open · 13 blocked · 430 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 7, 'blocked': 3, 'done': 364} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:18:34Z  
+**`sorry` occurrences:** 15 · 9 open · 13 blocked · 431 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 7, 'blocked': 3, 'done': 365} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -134,6 +134,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_past_increment` | subgoal of P53.A, canonical space | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment` | subgoal of P53.A | 0 |
+| done | `Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord` | subgoal of P53.A, helper | 0 |
 | open | `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero` | subgoal of P53.A, cross terms | 1 |
 | open | `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq` | subgoal of P53.A, one-step isometry | 1 |
 | done | `Main.Proposition53Steps::proposition_5_3.measurable_B` | subgoal of P53.A, helper | 0 |
