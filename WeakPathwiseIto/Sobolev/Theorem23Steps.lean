@@ -178,7 +178,62 @@ theorem abs_average_sub_average_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (f : Rd d
         ENNReal.ofReal |(⨍ y in Metric.ball x s, f y) - ⨍ y in Metric.ball x r, f y| ≤
           C * ENNReal.ofReal r *
             laverage (volume.restrict (Metric.ball x r)) (fun y => ‖G y‖ₑ) := by
-  sorry
+  obtain ⟨C, hC⟩ := lintegral_abs_sub_average_ball_le hd
+  refine ⟨2 ^ d * C, fun f G hf hG x r s hs hsr hrs => ?_⟩
+  have hr : 0 < r := hs.trans_le hsr
+  have hfi : Integrable f := memLp_one_iff_integrable.1 hf.1
+  set Bs := Metric.ball x s with hBs
+  set Br := Metric.ball x r with hBr
+  set a : ℝ := ⨍ y in Br, f y with ha
+  have hVs0 : volume Bs ≠ 0 := (Metric.measure_ball_pos volume x hs).ne'
+  have hVst : volume Bs ≠ ⊤ := measure_ball_lt_top.ne
+  have hVr0 : volume Br ≠ 0 := (Metric.measure_ball_pos volume x hr).ne'
+  have hVrt : volume Br ≠ ⊤ := measure_ball_lt_top.ne
+  have hi : IntegrableOn f Bs := hfi.integrableOn
+  -- Step A: average bound on the small ball
+  have stepA : ENNReal.ofReal |(⨍ y in Bs, f y) - a| ≤
+      (volume Bs)⁻¹ * ∫⁻ y in Bs, ENNReal.ofReal |f y - a| := by
+    have hreal : volume.real Bs ≠ 0 := by
+      rw [measureReal_def]; exact ENNReal.toReal_ne_zero.2 ⟨hVs0, hVst⟩
+    have hint : IntegrableOn (fun y => f y - a) Bs := hi.sub (integrableOn_const hVst)
+    have e : (⨍ y in Bs, f y) - a = (volume.real Bs)⁻¹ * ∫ y in Bs, (f y - a) := by
+      rw [setAverage_eq, smul_eq_mul, integral_sub hi (integrableOn_const hVst), setIntegral_const,
+        smul_eq_mul]
+      field_simp
+    rw [e, abs_mul, abs_inv, abs_of_nonneg measureReal_nonneg]
+    calc ENNReal.ofReal ((volume.real Bs)⁻¹ * |∫ y in Bs, (f y - a)|)
+        ≤ ENNReal.ofReal ((volume.real Bs)⁻¹ * ∫ y in Bs, |f y - a|) :=
+          ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_left abs_integral_le_integral_abs
+            (inv_nonneg.2 measureReal_nonneg))
+      _ = (volume Bs)⁻¹ * ∫⁻ y in Bs, ENNReal.ofReal |f y - a| := by
+          rw [ENNReal.ofReal_mul (inv_nonneg.2 measureReal_nonneg),
+            ofReal_integral_eq_lintegral_ofReal hint.abs (Eventually.of_forall fun _ => abs_nonneg _),
+            measureReal_def, ENNReal.ofReal_inv_of_pos (ENNReal.toReal_pos hVs0 hVst),
+            ENNReal.ofReal_toReal hVst]
+  -- volume comparison
+  have hvol : volume Br ≤ 2 ^ d * volume Bs := by
+    rw [hBr, hBs, Measure.addHaar_ball_of_pos volume x hr, Measure.addHaar_ball_of_pos volume x hs,
+      finrank_euclideanSpace_fin, ← mul_assoc]
+    refine mul_le_mul' ?_ le_rfl
+    rw [show (2 : ℝ≥0∞) ^ d = ENNReal.ofReal (2 ^ d) by rw [ENNReal.ofReal_pow (by norm_num)]; simp,
+      ← ENNReal.ofReal_mul (by positivity), ← mul_pow]
+    exact ENNReal.ofReal_le_ofReal (pow_le_pow_left₀ hr.le hrs d)
+  have hinv : (volume Bs)⁻¹ ≤ 2 ^ d * (volume Br)⁻¹ := by
+    have h2 : (2 : ℝ≥0∞) ^ d ≠ 0 := pow_ne_zero _ two_ne_zero
+    have h2t : (2 : ℝ≥0∞) ^ d ≠ ⊤ := ENNReal.pow_ne_top ENNReal.ofNat_ne_top
+    calc (volume Bs)⁻¹ = 2 ^ d * (2 ^ d * volume Bs)⁻¹ := by
+          rw [ENNReal.mul_inv (Or.inl h2) (Or.inl h2t), ← mul_assoc,
+            ENNReal.mul_inv_cancel h2 h2t, one_mul]
+      _ ≤ 2 ^ d * (volume Br)⁻¹ := mul_le_mul' le_rfl (ENNReal.inv_le_inv.2 hvol)
+  have hlav : laverage (volume.restrict Br) (fun y => ‖G y‖ₑ) = (volume Br)⁻¹ * ∫⁻ y in Br, ‖G y‖ₑ := by
+    rw [laverage_eq, Measure.restrict_apply_univ, ENNReal.div_eq_inv_mul]
+  calc ENNReal.ofReal |(⨍ y in Bs, f y) - a|
+      ≤ (volume Bs)⁻¹ * ∫⁻ y in Bs, ENNReal.ofReal |f y - a| := stepA
+    _ ≤ (2 ^ d * (volume Br)⁻¹) * ∫⁻ y in Br, ENNReal.ofReal |f y - a| :=
+        mul_le_mul' hinv (lintegral_mono_set (Metric.ball_subset_ball hsr))
+    _ ≤ (2 ^ d * (volume Br)⁻¹) * (C * ENNReal.ofReal r * ∫⁻ z in Br, ‖G z‖ₑ) :=
+        mul_le_mul' le_rfl (hC f G hf hG x r hr)
+    _ = _ := by rw [hlav]; push_cast; ring
 
 /-- **Subgoal** (Theorem 2.3 proof: telescoping over dyadic radii,
 `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r M_R|∇f|(x)` for `0 < s ≤ r`, `r < R`). -/

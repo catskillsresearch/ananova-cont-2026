@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:31:53Z  
-**`sorry` occurrences:** 31 · 8 open · 19 blocked · 284 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 6, 'blocked': 7, 'done': 227} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:33:02Z  
+**`sorry` occurrences:** 30 · 7 open · 19 blocked · 285 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 5, 'blocked': 7, 'done': 228} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -264,7 +264,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries` | subgoal of Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of its entries in the standard basis | 0 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
-| open | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le` | subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s | 1 |
+| done | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le` | subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal` | subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s | 1 |
 | done | `Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint` | subgoal of Theorem 2.3 proof: the ball with diameter `[x, y]` | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top` | subgoal of Theorem 2.3 proof: if `M_R|∇f|(x | 1 |
@@ -307,7 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First` |  | 0 |  |
 | done | `Sobolev.Theorem21Second` |  | 0 |  |
 | blocked | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `Sobolev.Theorem23Steps` |
-| blocked | `Sobolev.Theorem23Steps` |  | 5 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le`, `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
+| blocked | `Sobolev.Theorem23Steps` |  | 4 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
 
 ### §2.2 Bessel potentials, capacity, polar sets
 

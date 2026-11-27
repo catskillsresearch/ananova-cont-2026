@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:31:53Z",
+ "updated": "2026-11-27T03:33:02Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 30,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 19,
-  "done": 284
+  "done": 285
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 57
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 7,
-  "done": 227
+  "done": 228
  },
  "untagged": [],
  "legend": {
@@ -8315,9 +8315,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "abs_average_sub_average_le",
     "abs_average_sub_average_le_maximal",
     "isLebesguePoint_of_maximal_lt_top",
     "maximal_lt_top_of_isLebesguePoint",
@@ -8344,13 +8343,12 @@
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
    "blockers": [
-    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
     "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
     "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
-   "detail": "5 sorry: abs_average_sub_average_le, abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
+   "detail": "4 sorry: abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8362,23 +8360,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.abs_average_sub_average_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r ⨍_{B(x,r)} |∇f|` for `r/2 ≤ s ≤ r`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.abs_average_sub_average_le — subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.abs_average_sub_average_le — subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
