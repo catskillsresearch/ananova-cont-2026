@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:55:49Z",
+ "updated": "2026-11-27T10:57:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 22,
-  "done": 311
+  "done": 312
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 12,
-  "done": 250
+  "done": 251
  },
  "untagged": [],
  "legend": {
@@ -3529,9 +3529,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "le_limsup_discreteSeminorm_first",
     "ae_localMaximalFunction_lt_top",
     "integrable_norm_hessian_sub"
    ],
@@ -3568,10 +3567,9 @@
    ],
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
-    "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-    "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+    "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
    ],
-   "detail": "3 sorry: le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
+   "detail": "2 sorry: ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3779,17 +3777,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.le_limsup_discreteSeminorm_first"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, (11) with the first increment kept explicit: Hölder and `sup_n ‖ρ_{n,ω}‖_{L^q} < ∞`). The constant depends only on `(π, ω, p)`, not on `f` or `g`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3801,7 +3797,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.le_limsup_discreteSeminorm_first — subgoal of Appendix C, (11 (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.le_limsup_discreteSeminorm_first — subgoal of Appendix C, (11 (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",

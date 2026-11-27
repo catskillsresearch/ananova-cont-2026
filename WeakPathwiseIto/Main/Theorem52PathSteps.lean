@@ -288,7 +288,38 @@ theorem le_limsup_discreteSeminorm_first {p q : ℝ} (hpq : p.HolderConjugate q)
       Tendsto (fun n => ∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω (π n)),
           ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ)))) atTop (𝓝 0) →
       occupationSeminorm π ω f ≤ C * limsup (fun n => discreteSeminorm (π n) p g ω) atTop := by
-  sorry
+  obtain ⟨C10, hC10⟩ := lintegral_le_maximal_first (T := T) d
+  obtain ⟨K, hKtop, hK⟩ := hρ
+  have hp1 : 1 < p := hpq.lt
+  have hq : 0 < q := hpq.symm.pos
+  have h2 : (2 : ℝ≥0∞) ^ ((p - 1) / p) < ⊤ :=
+    ENNReal.rpow_lt_top_of_nonneg (div_nonneg (by linarith) (by linarith)) ENNReal.ofNat_ne_top
+  have hCt : (C10 : ℝ≥0∞) * 2 ^ ((p - 1) / p) * K < ⊤ :=
+    ENNReal.mul_lt_top (ENNReal.mul_lt_top ENNReal.coe_lt_top h2) hKtop
+  refine ⟨(C10 : ℝ≥0∞) * 2 ^ ((p - 1) / p) * K, hCt, fun f g hf hg hJ => ?_⟩
+  have hev : ∀ᶠ n in atTop, pathOscillation ω (π n) ≤ 1 := hosc.eventually (Iic_mem_nhds one_pos)
+  set J := fun n => ∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω (π n)),
+    ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ))) with hJdef
+  unfold occupationSeminorm
+  calc limsup (fun n => ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity (π n) ω x)) atTop
+      ≤ limsup (fun n => (C10 : ℝ≥0∞) * J n +
+          (C10 : ℝ≥0∞) * 2 ^ ((p - 1) / p) * K * discreteSeminorm (π n) p g ω) atTop := by
+        refine limsup_le_limsup (hev.mono fun n hn => ?_)
+        calc _ ≤ (C10 : ℝ≥0∞) * (J n + ∑ i : Fin (π n).m, (g (ω ((π n).right i)) +
+              g (ω ((π n).left i))) *
+                ENNReal.ofReal (‖ω ((π n).right i) - ω ((π n).left i)‖ ^ 2)) :=
+              hC10 (π n) ω f g hω hf hn (hg n)
+          _ ≤ (C10 : ℝ≥0∞) * (J n + (2 ^ ((p - 1) / p) * discreteSeminorm (π n) p g ω) * K) := by
+              gcongr
+              exact (occupationSeminorm.eq_11.sum_le_holder hpq (π n) ω _).trans
+                (mul_le_mul' (occupationSeminorm.eq_11.sum_rpow_le hp1.le _ _ _)
+                  ((occupationSeminorm.eq_11.sum_rpow_le_eLpNorm hq _ _).trans (hK n)))
+          _ = _ := by ring
+    _ = _ := by
+        have hJ' : Tendsto (fun n => (C10 : ℝ≥0∞) * J n) atTop (𝓝 0) := by
+          simpa using ENNReal.Tendsto.const_mul hJ (Or.inr ENNReal.coe_ne_top)
+        exact (ENNReal.limsup_add_of_left_tendsto_zero hJ' _).trans
+          (ENNReal.limsup_const_mul_of_ne_top hCt.ne)
 
 /-- **Subgoal** (Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0`). -/
 theorem discreteSeminorm_enorm_rpow {p : ℝ} (hp : 0 < p) (π : Partition T) {g : Rd d → ℝ}
