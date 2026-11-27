@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:29:54Z  
-**`sorry` occurrences:** 34 · 11 open · 19 blocked · 281 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 9, 'blocked': 7, 'done': 224} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:30:31Z  
+**`sorry` occurrences:** 33 · 10 open · 19 blocked · 282 done (goals + subgoals) · goals {'open': 2, 'blocked': 12, 'done': 57} · subgoals {'open': 8, 'blocked': 7, 'done': 225} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -270,7 +270,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top` | subgoal of Theorem 2.3 proof: if `M_R|∇f|(x | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le` | subgoal of Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|` | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le` | subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B | 1 |
-| open | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal` | subgoal of Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q` | 1 |
+| done | `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal` | subgoal of Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q` | 0 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le` | subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian | 1 |
 | open | `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` | subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite | 1 |
 
@@ -307,7 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First` |  | 0 |  |
 | done | `Sobolev.Theorem21Second` |  | 0 |  |
 | blocked | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `Sobolev.Theorem23Steps` |
-| blocked | `Sobolev.Theorem23Steps` |  | 8 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le`, `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
+| blocked | `Sobolev.Theorem23Steps` |  | 7 | `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le`, `Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal`, `Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le`, `Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le`, `Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint` |
 
 ### §2.2 Bessel potentials, capacity, polar sets
 

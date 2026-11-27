@@ -57,7 +57,18 @@ theorem lintegral_kernel_le_maximal {F : Type*} [NormedAddCommGroup F] {α : ℝ
       ∀ x ∈ Q, ∀ R : ℝ≥0∞, Metric.ediam Q ≤ R →
         ∫⁻ z in Q, ‖g z‖ₑ / edist x z ^ ((d : ℝ) - α) ≤
           C * R ^ α * localMaximalFunction R g x := by
-  sorry
+  obtain ⟨C0, -, hC0⟩ := lemma_2_2 d hα
+  refine ⟨C0, fun Q g hQ hg x hx R hR => ?_⟩
+  have h := hC0 Q (fun z => ‖g z‖) hQ hg.norm.integrableOn x hx
+  have hM : localMaximalFunction (Metric.ediam Q) (fun z => ‖g z‖) x ≤
+      localMaximalFunction R g x := by
+    unfold localMaximalFunction
+    refine iSup_mono fun r => iSup_mono fun _ => iSup_le fun h => ?_
+    refine le_trans (le_of_eq ?_) (le_iSup (fun _ : ENNReal.ofReal r < R =>
+      laverage (volume.restrict (Metric.ball x r)) (fun y => ‖g y‖ₑ)) (h.trans_le hR))
+    simp only [enorm_norm]
+  simp only [enorm_norm] at h
+  refine h.trans (mul_le_mul' (mul_le_mul' le_rfl (ENNReal.rpow_le_rpow hR hα.le)) hM)
 
 /-- **Subgoal** (Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a
 ball `B` of radius `r` is bounded on `L¹(B)` with constant `C r`). -/
