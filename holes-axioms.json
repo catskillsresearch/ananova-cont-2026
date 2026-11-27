@@ -449,6 +449,30 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top": [
    "propext",
    "sorryAx",
@@ -462,6 +486,12 @@
    "Quot.sound"
   ],
   "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz": [
    "propext",
    "sorryAx",
    "Classical.choice",
@@ -485,6 +515,12 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top": [
    "propext",
    "sorryAx",
@@ -497,7 +533,19 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le": [
    "propext",
    "sorryAx",
    "Classical.choice",
@@ -1971,5 +2019,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T22:05:49Z"
+ "generated": "2026-11-27T22:06:47Z"
 }

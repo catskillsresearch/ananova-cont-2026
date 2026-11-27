@@ -134,6 +134,104 @@ theorem exists_isLocalItoIntegral (x₀ : Rd d) {G : Rd d → Rd d} (hG : Measur
       IsLocalItoIntegral x₀ (fun u ω => G (CanonicalWienerSpace.path ω u)) J := by
   sorry
 
+/-- **Subgoal** (P53.D, `S_n^m` is an elementary integral): since the integrand is a
+predictable step process, `S(t) = ∫_0^t g(B(η(s))) dB(s)` (the paper's
+`S_n^m(t) = ∫_0^t ∇F_m(B(η_n(s))) dB(s)`). -/
+theorem isL2ItoIntegral_itoRiemannSum (x : Rd d) (π : Partition T) {g : Rd d → Rd d}
+    (hg : Continuous g) (hgb : ∃ C, ∀ y, ‖g y‖ ≤ C) {t : ℝ} (ht : t ∈ Icc 0 T) :
+    IsL2ItoIntegral x (fun u ω => g (CanonicalWienerSpace.path ω (π.eta u))) t
+      (itoRiemannSum π g t) := by
+  sorry
+
+/-- **Subgoal** (P53.D, the last step of the BDG bound):
+`E ∫_0^T |B(η(s)) - B(s)|² ds ≤ d T |π|` (the source of `C_{d,T} |π_n|`). -/
+theorem lintegral_path_eta_sub_le (x : Rd d) (π : Partition T) :
+    ∫⁻ ω, (∫⁻ u in Ioc 0 T,
+        ‖CanonicalWienerSpace.path ω (π.eta u) - CanonicalWienerSpace.path ω u‖ₑ ^ 2)
+        ∂CanonicalWienerSpace.P (T := T) x ≤ ENNReal.ofReal (d * T * π.mesh) := by
+  sorry
+
+/-- **Subgoal** (P53.D, existence of `J_m`): for globally Lipschitz `g` (the paper's `∇F_m`,
+`F_m ∈ C^2_b`), `J_m(t) = ∫_0^t g(B(s)) dB(s)` exists as an `L²` stochastic integral with
+continuous paths on `[0, T]`. -/
+theorem exists_isL2ItoIntegral_of_lipschitz (x : Rd d) {g : Rd d → Rd d} {K : ℝ≥0}
+    (hg : LipschitzWith K g) :
+    ∃ J : ℝ → CanonicalWienerSpace d T → ℝ,
+      (∀ t ∈ Icc 0 T, IsL2ItoIntegral x (fun u ω => g (CanonicalWienerSpace.path ω u)) t (J t)) ∧
+      ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ContinuousOn (fun t => J t ω) (Icc 0 T) := by
+  sorry
+
+/-- **Subgoal** (P53.D, BDG bound for `S_n^m - J_m`): with `∇F_m` globally Lipschitz
+(constant `K`, the paper's `‖∇²F_m‖_∞`),
+`E sup_{t ≤ T} |S_n^m(t) - J_m(t)|² ≤ C E ∫_0^T |∇F_m(B(η_n(s))) - ∇F_m(B(s))|² ds
+≤ C K² E ∫_0^T |B(η_n(s)) - B(s)|² ds ≤ C K² d T |π_n|`. -/
+theorem lintegral_sup_itoRiemannSum_sub_le : ∃ C : ℝ≥0, ∀ (x : Rd d) (π : Partition T)
+    (g : Rd d → Rd d) (K : ℝ≥0), LipschitzWith K g →
+    ∀ J : ℝ → CanonicalWienerSpace d T → ℝ,
+    (∀ t ∈ Icc 0 T, IsL2ItoIntegral x (fun u ω => g (CanonicalWienerSpace.path ω u)) t (J t)) →
+    (∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ContinuousOn (fun t => J t ω) (Icc 0 T)) →
+    ∫⁻ ω, (⨆ t ∈ Icc 0 T, ‖itoRiemannSum π g t ω - J t ω‖ₑ ^ 2)
+        ∂CanonicalWienerSpace.P (T := T) x ≤
+      C * (K : ℝ≥0∞) ^ 2 * ENNReal.ofReal (d * T * π.mesh) := by
+  sorry
+
+/-- **Subgoal** (P53.D, Tonelli for `S_n^m`): by the BDG bound and `∑_n |π_n| < ∞`,
+`∑_n E sup_{t ≤ T} |S_n^m(t) - J_m(t)|² < ∞`, so by Tonelli
+`sup_{t ≤ T} |S_n^m(t) - J_m(t)| → 0` almost surely. -/
+theorem ae_tendsto_sup_itoRiemannSum_sub (hT : 0 < T) {π : ℕ → Partition T}
+    (h2 : GeometricMeshDecay π) (x : Rd d) {g : Rd d → Rd d} {K : ℝ≥0} (hg : LipschitzWith K g)
+    (J : ℝ → CanonicalWienerSpace d T → ℝ)
+    (hJ : ∀ t ∈ Icc 0 T, IsL2ItoIntegral x (fun u ω => g (CanonicalWienerSpace.path ω u)) t (J t))
+    (hJc : ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ContinuousOn (fun t => J t ω) (Icc 0 T)) :
+    ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x,
+      Tendsto (fun n => ⨆ t ∈ Icc 0 T, ‖itoRiemannSum (π n) g t ω - J t ω‖ₑ) atTop (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (P53.D, pathwise integral of `∇F_m` is `J_m`): if for every `m`,
+`sup_{t ≤ T} |S_n^m(t) - J_m(t)| → 0` almost surely, then outside one null set (countably many
+`m`), `∫_0^t ∇F_m(B(s)) d^π B(s) = J_m(t)` for every `m` and every `t ∈ [0, T]`. -/
+theorem ae_follmerIntegral_eq {π : ℕ → Partition T} (x : Rd d) (g : ℕ → Rd d → Rd d)
+    (J : ℕ → ℝ → CanonicalWienerSpace d T → ℝ)
+    (h : ∀ m, ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x,
+      Tendsto (fun n => ⨆ t ∈ Icc 0 T, ‖itoRiemannSum (π n) (g m) t ω - J m t ω‖ₑ) atTop
+        (𝓝 0)) :
+    ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x, ∀ m, ∀ t ∈ Icc 0 T,
+      follmerIntegral π (g m) (CanonicalWienerSpace.path ω) t = J m t ω := by
+  sorry
+
+/-- **Subgoal** (P53.D, `D_m^R → 0`): for `D_m^R(t) := ∫_0^{t∧τ_R} (g_m(B) - G(B)) dB`, BDG and
+Tonelli with `∑_m E ∫_0^{T∧τ_R} |g_m(B(s)) - G(B(s))|² ds < ∞` (bounded through `H_R`) give
+`sup_{t ≤ T} |D_m^R(t)| → 0` almost surely. -/
+theorem ae_tendsto_sup_stopped (x₀ : Rd d) (R : ℕ) (g : ℕ → Rd d → Rd d) (G : Rd d → Rd d)
+    (D : ℕ → ℝ → CanonicalWienerSpace d T → ℝ)
+    (hD : ∀ m, ∀ t ∈ Icc 0 T, IsL2ItoIntegral x₀ (stoppedIntegrand
+      (fun u ω => g m (CanonicalWienerSpace.path ω u) - G (CanonicalWienerSpace.path ω u)) R)
+        t (D m t))
+    (hDc : ∀ m, ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x₀,
+      ContinuousOn (fun t => D m t ω) (Icc 0 T))
+    (h : ∑' m, ∫⁻ ω, (∫⁻ u in Ioc 0 T, ‖stoppedIntegrand
+      (fun u ω => g m (CanonicalWienerSpace.path ω u) - G (CanonicalWienerSpace.path ω u)) R
+        u ω‖ₑ ^ 2) ∂CanonicalWienerSpace.P (T := T) x₀ < ∞) :
+    ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x₀,
+      Tendsto (fun m => ⨆ t ∈ Icc 0 T, ‖D m t ω‖ₑ) atTop (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (P53.D, `D_m^R = J_m - J` when `τ_R > T`): almost surely, on paths with
+`τ_R = ∞` (the path stays in `B_R` on `[0, T]`), `D_m^R(t) = J_m(t) - J(t)` for `t ∈ [0, T]`. -/
+theorem ae_stopped_eq_sub (x₀ : Rd d) {R : ℕ} (hR : 1 ≤ R) (g G : Rd d → Rd d)
+    (D Jm J : ℝ → CanonicalWienerSpace d T → ℝ)
+    (hD : ∀ t ∈ Icc 0 T, IsL2ItoIntegral x₀ (stoppedIntegrand
+      (fun u ω => g (CanonicalWienerSpace.path ω u) - G (CanonicalWienerSpace.path ω u)) R)
+        t (D t))
+    (hDc : ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x₀, ContinuousOn (fun t => D t ω) (Icc 0 T))
+    (hJm : ∀ t ∈ Icc 0 T,
+      IsL2ItoIntegral x₀ (fun u ω => g (CanonicalWienerSpace.path ω u)) t (Jm t))
+    (hJmc : ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x₀, ContinuousOn (fun t => Jm t ω) (Icc 0 T))
+    (hJ : IsLocalItoIntegral x₀ (fun u ω => G (CanonicalWienerSpace.path ω u)) J) :
+    ∀ᵐ ω ∂CanonicalWienerSpace.P (T := T) x₀, CanonicalWienerSpace.exitTime R ω = ⊤ →
+      ∀ t ∈ Icc 0 T, D t ω = Jm t ω - J t ω := by
+  sorry
+
 end proposition_5_3
 
 end WeakPathwiseIto

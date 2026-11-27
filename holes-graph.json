@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27T22:05:49Z",
+ "updated": "2026-11-27T22:06:47Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 20,
+ "sorryCount": 28,
  "counts": {
-  "open": 14,
+  "open": 22,
   "blocked": 13,
   "done": 448
  },
@@ -13,7 +13,7 @@
   "done": 72
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 20,
   "blocked": 3,
   "done": 376
  },
@@ -3750,7 +3750,7 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps C–E (per the paper)",
    "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
-   "sorryCount": 9,
+   "sorryCount": 17,
    "holes": [
     "exists_subseq_summable_L2_ball",
     "bdg_two",
@@ -3760,10 +3760,18 @@
     "lintegral_GR_lt_top",
     "exists_polar_E1",
     "lintegral_stopped_le_potential",
-    "exists_isLocalItoIntegral"
+    "exists_isLocalItoIntegral",
+    "isL2ItoIntegral_itoRiemannSum",
+    "lintegral_path_eta_sub_le",
+    "exists_isL2ItoIntegral_of_lipschitz",
+    "lintegral_sup_itoRiemannSum_sub_le",
+    "ae_tendsto_sup_itoRiemannSum_sub",
+    "ae_follmerIntegral_eq",
+    "ae_tendsto_sup_stopped",
+    "ae_stopped_eq_sub"
    ],
    "declKinds": {
-    "theorem": 10
+    "theorem": 18
    },
    "paperGoal": false,
    "verified": false,
@@ -3776,15 +3784,23 @@
     "Main.IsLocalItoIntegral",
     "Main.ItoRiemannSum",
     "Main.PartitionEta",
+    "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+    "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
     "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
     "Main.Proposition53Proof::proposition_5_3.bdg_two",
     "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+    "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
     "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral",
     "Main.Proposition53Proof::proposition_5_3.exists_polar_E1",
     "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+    "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
     "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
     "Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top",
+    "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
     "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+    "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
     "Main.Proposition53Proof::proposition_5_3.summable_mesh",
     "Main.Proposition53Steps",
     "Smooth.FollmerIntegral",
@@ -3793,17 +3809,201 @@
    ],
    "blockers": [
     "Appendix.LemmaB1",
+    "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+    "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
     "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
     "Main.Proposition53Proof::proposition_5_3.bdg_two",
     "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+    "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
     "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral",
     "Main.Proposition53Proof::proposition_5_3.exists_polar_E1",
     "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+    "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
     "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
     "Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top",
-    "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+    "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+    "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+    "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
    ],
-   "detail": "9 sorry: exists_subseq_summable_L2_ball, bdg_two, ae_tendsto_zero_of_tsum_lintegral_lt_top, exists_exitTime_eq_top, lintegral_HR_lt_top, lintegral_GR_lt_top, exists_polar_E1, lintegral_stopped_le_potential, exists_isLocalItoIntegral"
+   "detail": "17 sorry: exists_subseq_summable_L2_ball, bdg_two, ae_tendsto_zero_of_tsum_lintegral_lt_top, exists_exitTime_eq_top, lintegral_HR_lt_top, lintegral_GR_lt_top, exists_polar_E1, lintegral_stopped_le_potential, exists_isLocalItoIntegral, isL2ItoIntegral_itoRiemannSum, lintegral_path_eta_sub_le, exists_isL2ItoIntegral_of_lipschitz, lintegral_sup_itoRiemannSum_sub_le, ae_tendsto_sup_itoRiemannSum_sub, ae_follmerIntegral_eq, ae_tendsto_sup_stopped, ae_stopped_eq_sub"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "label": "ae_follmerIntegral_eq",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, pathwise integral of `∇F_m` is `J_m`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.ae_follmerIntegral_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, pathwise integral of `∇F_m` is `J_m`): if for every `m`, `sup_{t ≤ T} |S_n^m(t) - J_m(t)| → 0` almost surely, then outside one null set (countably many `m`), `∫_0^t ∇F_m(B(s)) d^π B(s) = J_m(t)` for every `m` and every `t ∈ [0, T]`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.ae_follmerIntegral_eq — subgoal of P53.D, pathwise integral of `∇F_m` is `J_m` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "label": "ae_stopped_eq_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, `D_m^R = J_m - J` when `τ_R > T`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.ae_stopped_eq_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, `D_m^R = J_m - J` when `τ_R > T`): almost surely, on paths with `τ_R = ∞` (the path stays in `B_R` on `[0, T]`), `D_m^R(t) = J_m(t) - J(t)` for `t ∈ [0, T]`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.ae_stopped_eq_sub — subgoal of P53.D, `D_m^R = J_m - J` when `τ_R > T` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "label": "ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, Tonelli for `S_n^m`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, Tonelli for `S_n^m`): by the BDG bound and `∑_n |π_n| < ∞`, `∑_n E sup_{t ≤ T} |S_n^m(t) - J_m(t)|² < ∞`, so by Tonelli `sup_{t ≤ T} |S_n^m(t) - J_m(t)| → 0` almost surely.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub — subgoal of P53.D, Tonelli for `S_n^m` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "label": "ae_tendsto_sup_stopped",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, `D_m^R → 0`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.ae_tendsto_sup_stopped"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, `D_m^R → 0`): for `D_m^R(t) := ∫_0^{t∧τ_R} (g_m(B) - G(B)) dB`, BDG and Tonelli with `∑_m E ∫_0^{T∧τ_R} |g_m(B(s)) - G(B(s))|² ds < ∞` (bounded through `H_R`) give `sup_{t ≤ T} |D_m^R(t)| → 0` almost surely.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.ae_tendsto_sup_stopped — subgoal of P53.D, `D_m^R → 0` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
@@ -3938,6 +4138,50 @@
    "detail": "sorry: proposition_5_3.exists_exitTime_eq_top — subgoal of P53.D, `τ_R > T` for some `R` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
+   "id": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
+   "label": "exists_isL2ItoIntegral_of_lipschitz",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, existence of `J_m`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, existence of `J_m`): for globally Lipschitz `g` (the paper's `∇F_m`, `F_m ∈ C^2_b`), `J_m(t) = ∫_0^t g(B(s)) dB(s)` exists as an `L²` stochastic integral with continuous paths on `[0, T]`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.exists_isL2ItoIntegral_of_lipschitz — subgoal of P53.D, existence of `J_m` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral",
    "label": "exists_isLocalItoIntegral",
    "kind": "subgoal",
@@ -4070,6 +4314,50 @@
    "detail": "sorry: proposition_5_3.exists_subseq_summable_L2_ball — subgoal of P53.C, deterministic subsequence (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
+   "id": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "label": "isL2ItoIntegral_itoRiemannSum",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, `S_n^m` is an elementary integral",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, `S_n^m` is an elementary integral): since the integrand is a predictable step process, `S(t) = ∫_0^t g(B(η(s))) dB(s)` (the paper's `S_n^m(t) = ∫_0^t ∇F_m(B(η_n(s))) dB(s)`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.isL2ItoIntegral_itoRiemannSum — subgoal of P53.D, `S_n^m` is an elementary integral (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "label": "lintegral_GR_lt_top",
    "kind": "subgoal",
@@ -4158,6 +4446,50 @@
    "detail": "sorry: proposition_5_3.lintegral_HR_lt_top — subgoal of P53.C, `H_R ∈ L¹` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
+   "id": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "label": "lintegral_path_eta_sub_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, the last step of the BDG bound",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.lintegral_path_eta_sub_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, the last step of the BDG bound): `E ∫_0^T |B(η(s)) - B(s)|² ds ≤ d T |π|` (the source of `C_{d,T} |π_n|`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.lintegral_path_eta_sub_le — subgoal of P53.D, the last step of the BDG bound (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
    "label": "lintegral_stopped_le_potential",
    "kind": "subgoal",
@@ -4200,6 +4532,50 @@
     "Appendix.LemmaB1"
    ],
    "detail": "sorry: proposition_5_3.lintegral_stopped_le_potential — subgoal of P53.C, stopped energy via the Brownian transition density and eq. (32 (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
+   "label": "lintegral_sup_itoRiemannSum_sub_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, BDG bound for `S_n^m - J_m`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, BDG bound for `S_n^m - J_m`): with `∇F_m` globally Lipschitz (constant `K`, the paper's `‖∇²F_m‖_∞`), `E sup_{t ≤ T} |S_n^m(t) - J_m(t)|² ≤ C E ∫_0^T |∇F_m(B(η_n(s))) - ∇F_m(B(s))|² ds ≤ C K² E ∫_0^T |B(η_n(s)) - B(s)|² ds ≤ C K² d T |π_n|`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Appendix.HeatKernel",
+    "Appendix.LemmaB1",
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.PartitionEta",
+    "Main.Proposition53Steps",
+    "Smooth.FollmerIntegral",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.MemWLoc"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1"
+   ],
+   "detail": "sorry: proposition_5_3.lintegral_sup_itoRiemannSum_sub_le — subgoal of P53.D, BDG bound for `S_n^m - J_m` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
@@ -15905,6 +16281,26 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -15916,6 +16312,11 @@
   {
    "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -15935,6 +16336,11 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -15945,7 +16351,17 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -16105,6 +16521,26 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -16116,6 +16552,11 @@
   {
    "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -16135,6 +16576,11 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -16145,7 +16591,17 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -20110,6 +20566,26 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -20121,6 +20597,11 @@
   {
    "from": "Main.GeometricMeshDecay",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -20140,6 +20621,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -20150,7 +20636,17 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -20445,6 +20941,26 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -20456,6 +20972,11 @@
   {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -20475,6 +20996,11 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -20485,7 +21011,17 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -20500,6 +21036,26 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -20511,6 +21067,11 @@
   {
    "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -20530,6 +21091,11 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -20540,7 +21106,17 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -20555,6 +21131,26 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -20566,6 +21162,11 @@
   {
    "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -20585,6 +21186,11 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -20595,13 +21201,43 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
    "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
    "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
   },
   {
    "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
@@ -20615,6 +21251,11 @@
   },
   {
    "from": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "to": "Main.Proposition53Proof",
    "kind": "subgoal"
   },
@@ -20634,6 +21275,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "to": "Main.Proposition53Proof",
    "kind": "subgoal"
@@ -20644,7 +21290,17 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "to": "Main.Proposition53Proof",
    "kind": "subgoal"
   },
@@ -20656,6 +21312,26 @@
   {
    "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
    "kind": "hard"
   },
   {
@@ -20675,6 +21351,11 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral",
    "kind": "hard"
   },
@@ -20690,6 +21371,11 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -20700,7 +21386,17 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -24170,6 +24866,26 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -24181,6 +24897,11 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -24200,6 +24921,11 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -24210,7 +24936,17 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -25780,6 +26516,26 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -25791,6 +26547,11 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -25810,6 +26571,11 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -25820,7 +26586,17 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -27390,6 +28166,26 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
    "kind": "hard"
   },
@@ -27401,6 +28197,11 @@
   {
    "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "kind": "hard"
   },
   {
@@ -27420,6 +28221,11 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "kind": "hard"
   },
@@ -27430,7 +28236,17 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "kind": "hard"
   },
   {
@@ -28558,6 +29374,22 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -28567,6 +29399,10 @@
   {
    "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Appendix.HeatKernel",
@@ -28582,6 +29418,10 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -28590,7 +29430,15 @@
   },
   {
    "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Appendix.HeatKernel",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Appendix.HeatKernel",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Appendix.HeatKernel",
@@ -28714,6 +29562,22 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -28723,6 +29587,10 @@
   {
    "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Appendix.LemmaB1",
@@ -28738,6 +29606,10 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -28746,7 +29618,15 @@
   },
   {
    "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Appendix.LemmaB1",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Appendix.LemmaB1",
@@ -30782,6 +31662,22 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -30791,6 +31687,10 @@
   {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Main.IsLocalItoIntegral",
@@ -30806,6 +31706,10 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -30814,11 +31718,35 @@
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
   },
   {
    "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
   },
   {
    "from": "Main.ItoRiemannSum",
@@ -30834,6 +31762,10 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral"
   },
   {
@@ -30846,6 +31778,10 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -30854,11 +31790,35 @@
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
   },
   {
    "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
    "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
   },
   {
    "from": "Main.PartitionEta",
@@ -30874,6 +31834,10 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral"
   },
   {
@@ -30886,6 +31850,10 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -30894,11 +31862,35 @@
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
   },
   {
    "from": "Main.PartitionEta",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
+  },
+  {
+   "from": "Main.PartitionEta",
    "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped",
+   "to": "Main.Proposition53Proof"
   },
   {
    "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
@@ -30910,6 +31902,10 @@
   },
   {
    "from": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz",
    "to": "Main.Proposition53Proof"
   },
   {
@@ -30925,6 +31921,10 @@
    "to": "Main.Proposition53Proof"
   },
   {
+   "from": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum",
+   "to": "Main.Proposition53Proof"
+  },
+  {
    "from": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top",
    "to": "Main.Proposition53Proof"
   },
@@ -30933,12 +31933,36 @@
    "to": "Main.Proposition53Proof"
   },
   {
+   "from": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le",
+   "to": "Main.Proposition53Proof"
+  },
+  {
    "from": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le",
    "to": "Main.Proposition53Proof"
   },
   {
    "from": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
    "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
   },
   {
    "from": "Main.Proposition53Steps",
@@ -30954,6 +31978,10 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral"
   },
   {
@@ -30966,6 +31994,10 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -30974,7 +32006,15 @@
   },
   {
    "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Main.Proposition53Steps",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Main.Proposition53Steps",
@@ -32986,6 +34026,22 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -32995,6 +34051,10 @@
   {
    "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Smooth.FollmerIntegral",
@@ -33010,6 +34070,10 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -33018,7 +34082,15 @@
   },
   {
    "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Smooth.FollmerIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Smooth.FollmerIntegral",
@@ -33626,6 +34698,22 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -33635,6 +34723,10 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -33650,6 +34742,10 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -33658,7 +34754,15 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -34238,6 +35342,22 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
   },
   {
@@ -34247,6 +35367,10 @@
   {
    "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz"
   },
   {
    "from": "Sobolev.MemWLoc",
@@ -34262,6 +35386,10 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top"
   },
   {
@@ -34270,7 +35398,15 @@
   },
   {
    "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
    "to": "Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential"
+  },
+  {
+   "from": "Sobolev.MemWLoc",
+   "to": "Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le"
   },
   {
    "from": "Sobolev.MemWLoc",

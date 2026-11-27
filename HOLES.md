@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:05:49Z  
-**`sorry` occurrences:** 20 · 14 open · 13 blocked · 448 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 12, 'blocked': 3, 'done': 376} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:06:47Z  
+**`sorry` occurrences:** 28 · 22 open · 13 blocked · 448 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 20, 'blocked': 3, 'done': 376} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -123,15 +123,23 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ` | subgoal of Assumption 2, eqs. (30 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le` | subgoal of Assumption 2, eq. (31 | 0 |
 | done | `Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh` | subgoal of Assumption 2, eq. (30 | 0 |
+| open | `Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq` | subgoal of P53.D, pathwise integral of `∇F_m` is `J_m` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub` | subgoal of P53.D, `D_m^R = J_m - J` when `τ_R > T` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub` | subgoal of P53.D, Tonelli for `S_n^m` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped` | subgoal of P53.D, `D_m^R → 0` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top` | subgoal of P53.D, Tonelli step | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.bdg_two` | subgoal of P53.D, Burkholder–Davis–Gundy inequality, `p = 2` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top` | subgoal of P53.D, `τ_R > T` for some `R` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz` | subgoal of P53.D, existence of `J_m` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral` | subgoal of P53.C, the local Itô integral `J` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_polar_E1` | subgoal of P53.C, the polar set `E_1` via Lemma B.1 | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball` | subgoal of P53.C, deterministic subsequence | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum` | subgoal of P53.D, `S_n^m` is an elementary integral | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top` | subgoal of P53.C, `G_R ∈ L¹` | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top` | subgoal of P53.C, `H_R ∈ L¹` | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le` | subgoal of P53.D, the last step of the BDG bound | 1 |
 | open | `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential` | subgoal of P53.C, stopped energy via the Brownian transition density and eq. (32 | 1 |
+| open | `Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le` | subgoal of P53.D, BDG bound for `S_n^m - J_m` | 1 |
 | done | `Main.Proposition53Proof::proposition_5_3.summable_mesh` | subgoal of P53.D, Assumption 2 ⇒ summable mesh | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_apply` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec` | subgoal of P53.A, helper | 0 |
@@ -523,7 +531,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.ItoRiemannSum` | S_n^m Riemann sums (proof of Prop. 5.3) | 0 |  |
 | done | `Main.PartitionEta` | η_n left grid point (proof of Prop. 5.3) | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
-| blocked | `Main.Proposition53Proof` | Proposition 5.3 proof steps C–E (per the paper) | 9 | `Appendix.LemmaB1`, `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top`, `Main.Proposition53Proof::proposition_5_3.bdg_two`, `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top`, `Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral`, `Main.Proposition53Proof::proposition_5_3.exists_polar_E1`, `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball`, `Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential` |
+| blocked | `Main.Proposition53Proof` | Proposition 5.3 proof steps C–E (per the paper) | 17 | `Appendix.LemmaB1`, `Main.Proposition53Proof::proposition_5_3.ae_follmerIntegral_eq`, `Main.Proposition53Proof::proposition_5_3.ae_stopped_eq_sub`, `Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_itoRiemannSum_sub`, `Main.Proposition53Proof::proposition_5_3.ae_tendsto_sup_stopped`, `Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top`, `Main.Proposition53Proof::proposition_5_3.bdg_two`, `Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top`, `Main.Proposition53Proof::proposition_5_3.exists_isL2ItoIntegral_of_lipschitz`, `Main.Proposition53Proof::proposition_5_3.exists_isLocalItoIntegral`, `Main.Proposition53Proof::proposition_5_3.exists_polar_E1`, `Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball`, `Main.Proposition53Proof::proposition_5_3.isL2ItoIntegral_itoRiemannSum`, `Main.Proposition53Proof::proposition_5_3.lintegral_GR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_HR_lt_top`, `Main.Proposition53Proof::proposition_5_3.lintegral_path_eta_sub_le`, `Main.Proposition53Proof::proposition_5_3.lintegral_stopped_le_potential`, `Main.Proposition53Proof::proposition_5_3.lintegral_sup_itoRiemannSum_sub_le` |
 | done | `Main.Proposition53Steps` | Proposition 5.3 proof steps (route A: P53.A–E) | 0 |  |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
