@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T20:04:02Z",
+ "updated": "2026-11-27T20:04:31Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 14,
  "counts": {
   "open": 6,
-  "blocked": 13,
-  "done": 409
+  "blocked": 12,
+  "done": 410
  },
  "goalCounts": {
   "open": 3,
-  "blocked": 10,
-  "done": 64
+  "blocked": 9,
+  "done": 65
  },
  "subgoalCounts": {
   "open": 3,
@@ -10191,9 +10191,9 @@
     "theorem": 10
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.WeakLpTendsto",
     "Main.Theorem52Mollify",
@@ -10211,7 +10211,7 @@
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
@@ -10484,7 +10484,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Main.Theorem51",
     "Occupation.DiscreteLocalTime",
@@ -10500,9 +10500,7 @@
     "Occupation.Remark45::occupationConstant_one",
     "Occupation.Remark45::remark_4_5_term_eq"
    ],
-   "blockers": [
-    "Occupation.Remark44"
-   ],
+   "blockers": [],
    "detail": "3 sorry: remark_4_5_seminorm, remark_4_5_subset, remark_4_5_bounded"
   },
   {

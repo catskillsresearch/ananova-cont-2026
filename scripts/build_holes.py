@@ -70,6 +70,7 @@ VERIFIED: set[str] = {
     "Main.Theorem51",
     "Main.Theorem51Steps",
     "Main.Theorem52Mollify",
+    "Occupation.Remark44",
     "Main.SmoothItoAt",
     "Main.Eq18",
     "Sobolev.Lemma22",
