@@ -191,6 +191,52 @@ theorem remark_4_5.weakLpTendsto_half_add {d : ℕ} {r : ℝ≥0∞} (hr : 1 < r
   convert this using 2
   ring
 
+/-- **Subgoal** (Remark 4.5, positivity of weak limits): a weak `L^r` limit, `1 < r`, of
+nonnegative functions is a.e. nonnegative. -/
+theorem remark_4_5.ae_nonneg_of_weakLpTendsto {d : ℕ} {r : ℝ≥0∞} (hr : 1 < r)
+    {f : ℕ → Rd d → ℝ} {ℓ : Rd d → ℝ} (hf : ∀ n x, 0 ≤ f n x) (h : WeakLpTendsto r f ℓ) :
+    0 ≤ᵐ[volume] ℓ := by
+  obtain ⟨hne, -, -⟩ := remark_4_4.conjExponent_facts hr
+  set ℓ' := h.2.1.aestronglyMeasurable.mk ℓ
+  have hℓ' : ℓ =ᵐ[volume] ℓ' := h.2.1.aestronglyMeasurable.ae_eq_mk
+  have hm : StronglyMeasurable ℓ' := h.2.1.aestronglyMeasurable.stronglyMeasurable_mk
+  have hk : ∀ k : ℕ, volume ({x | ℓ' x < 0} ∩ Metric.ball (0 : Rd d) k) = 0 := by
+    intro k
+    set S := {x | ℓ' x < 0} ∩ Metric.ball (0 : Rd d) k
+    have hS : MeasurableSet S := (hm.measurable measurableSet_Iio).inter Metric.isOpen_ball.measurableSet
+    have hSf : volume S ≠ ∞ := (measure_mono inter_subset_right).trans_lt measure_ball_lt_top |>.ne
+    have hg : MemLp (S.indicator fun _ => (1 : ℝ)) r.conjExponent := memLp_indicator_const _ hS.nullMeasurableSet 1 (Or.inr hSf)
+    have hlim := h.2.2 _ hg
+    have hge : 0 ≤ ∫ x, S.indicator (fun _ => (1 : ℝ)) x * ℓ x :=
+      ge_of_tendsto' hlim fun n => integral_nonneg fun x => by
+        by_cases hx : x ∈ S <;> simp [hx, hf n x]
+    have hI : ∫ x, S.indicator (fun _ => (1 : ℝ)) x * ℓ x = ∫ x in S, ℓ' x := by
+      rw [← integral_indicator hS]
+      refine integral_congr_ae (hℓ'.mono fun x hx => ?_)
+      by_cases hx' : x ∈ S <;> simp [hx', hx]
+    rw [hI] at hge
+    have hint : IntegrableOn ℓ' S := by
+      have := remark_4_4.integrable_mul_conj hr (h.2.1.ae_eq hℓ') hg
+      refine (this.integrableOn (s := S)).congr_fun (fun x hx => by simp [hx]) hS
+    have hneg : ∫ x in S, ℓ' x ≤ 0 := setIntegral_nonpos hS fun x hx => hx.1.le
+    have h0 : ∫ x in S, (-ℓ' x) = 0 := by rw [integral_neg]; linarith
+    have hpos := (setIntegral_eq_zero_iff_of_nonneg_ae (f := fun x => -ℓ' x)
+      ((ae_restrict_mem hS).mono fun x hx => by simpa using hx.1.le) hint.neg).1 h0
+    rw [EventuallyEq, ae_restrict_iff' hS] at hpos
+    refine measure_eq_zero_iff_ae_notMem.2 (hpos.mono fun x hx hxS => ?_)
+    have := hx hxS
+    have h2 := hxS.1
+    simp only [Pi.zero_apply, neg_eq_zero, mem_ofPred_eq] at this h2
+    linarith
+  have hU : volume {x | ℓ' x < 0} = 0 := by
+    have : {x | ℓ' x < 0} = ⋃ k : ℕ, ({x | ℓ' x < 0} ∩ Metric.ball (0 : Rd d) k) := by
+      ext x; simp only [mem_iUnion, mem_inter_iff, Metric.mem_ball, dist_zero_right]
+      exact ⟨fun hx => ⟨_, hx, (exists_nat_gt ‖x‖).choose_spec⟩, fun ⟨_, hx, _⟩ => hx⟩
+    rw [this]; exact measure_iUnion_null hk
+  filter_upwards [measure_eq_zero_iff_ae_notMem.1 hU, hℓ'] with x hx hxe
+  simp only [not_lt] at hx
+  simpa [hxe] using hx
+
 /-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
 discrete local-time sequences converge to the same terminal local time,
 `λ^{n,±}_T ⇀ ℓ_T` in `L^r(ℝ)`, then `𝓛^{π_n}_ω ⇀ ℓ_T` in `L^r(ℝ)` and
