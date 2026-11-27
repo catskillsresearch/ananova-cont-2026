@@ -2,7 +2,7 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T20:08:50Z  
+**Updated:** 2026-11-27T20:29:30Z  
 **`sorry` occurrences:** 12 · 6 open · 12 blocked · 414 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 65} · subgoals {'open': 3, 'blocked': 3, 'done': 349} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
@@ -148,6 +148,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff` | subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts | 0 |
 | done | `Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero` | subgoal of Appendix C, mollification: `D^0 f = f` weakly | 0 |
 | done | `Main.Theorem52Mollify::theorem_5_2.le_one_cases` | subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` | 0 |
+| done | `Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}` function is in `L^p`, by uniqueness of weak derivatives | 0 |
 | done | `Main.Theorem52Mollify::theorem_5_2.memW_convolution` | subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality | 0 |
 | done | `Main.Theorem52Mollify::theorem_5_2.mollify_mem` | subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` | 0 |
 | done | `Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 3: `(ψ ⋆ f | 0 |
@@ -204,7 +205,6 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 5: domination, `‖a_n(· + h | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add` | subgoal of Appendix C, `M_1` commutes with translations: `M_1(f(· + h | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.measure_path_mem_null` | subgoal of Appendix C, `ae_forall_mem_not_mem_null` at one time: for `0 < t ≤ T`, `ℙ_{x₀}(B(t | 0 |
-| done | `Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian` | subgoal of Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}` function is in `L^p`, by uniqueness of weak derivatives | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add` | subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1 | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous` | subgoal of Appendix C, `ae_forall_mem_not_mem_null`: a finite product of absolutely continuous measures on `ℝ` is absolutely continuous with respect to the product | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto` | subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x | 0 |

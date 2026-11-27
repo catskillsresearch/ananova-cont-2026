@@ -569,6 +569,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52Mollify::theorem_5_2.memW_convolution": [
    "propext",
    "Classical.choice",
@@ -847,11 +852,6 @@
    "Quot.sound"
   ],
   "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null": [
-   "propext",
-   "Classical.choice",
-   "Quot.sound"
-  ],
-  "Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian": [
    "propext",
    "Classical.choice",
    "Quot.sound"
@@ -1782,5 +1782,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:08:50Z"
+ "generated": "2026-11-27T20:29:29Z"
 }

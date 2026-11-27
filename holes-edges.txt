@@ -125,6 +125,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convolut
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
 Basic.ContDiffBounded -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
@@ -183,7 +184,6 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_su
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -400,6 +400,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convolutio
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
 Basic.SmoothHessian -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
@@ -458,7 +459,6 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -615,7 +615,6 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_s
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -660,7 +659,6 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -732,7 +730,6 @@ Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_s
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -869,6 +866,28 @@ Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_half_add
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5.weakLpTendsto_posPart
 Main.Theorem51 -hard-> Occupation.Remark45::remark_4_5_term_eq
 Main.Theorem51Steps -hard-> Main.Theorem51
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.abs_convolution_le
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.contDiffBounded_convolution
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.coord_toEuclideanCLM
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.eLpNorm_mollify_sub_le
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.exists_isWeakGradient
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.exists_isWeakGradient_of_memW
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.exists_isWeakHessian
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convolution_apply
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.norm_convolution_le_of_bound
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.order_le_two_cases
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.smoothHessian_convolution
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_comp_sub_sub
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport
+Main.Theorem51Steps -hard-> Main.Theorem52Mollify::theorem_5_2.tendsto_eLpNorm_mollify_sub
 Main.Theorem51Steps -hard-> Main.Theorem52Steps
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le
@@ -892,7 +911,6 @@ Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Main.Theorem51Steps -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -932,7 +950,6 @@ Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_su
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -959,6 +976,7 @@ Main.Theorem52Mollify::theorem_5_2.fderiv_convolution_apply -hard-> Main.Theorem
 Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff -hard-> Main.Theorem52Mollify
 Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero -hard-> Main.Theorem52Mollify
 Main.Theorem52Mollify::theorem_5_2.le_one_cases -hard-> Main.Theorem52Mollify
+Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian -hard-> Main.Theorem52Mollify
 Main.Theorem52Mollify::theorem_5_2.memW_convolution -hard-> Main.Theorem52Mollify
 Main.Theorem52Mollify::theorem_5_2.mollify_mem -hard-> Main.Theorem52Mollify
 Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq -hard-> Main.Theorem52Mollify
@@ -1043,7 +1061,6 @@ Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le -hard-> Main.Theorem52Ste
 Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.measure_path_mem_null -hard-> Main.Theorem52Steps
-Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto -hard-> Main.Theorem52Steps
@@ -1385,7 +1402,6 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegr
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -1715,7 +1731,6 @@ Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.HardyLittlewood -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -1750,7 +1765,6 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -1831,6 +1845,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convolut
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
 Sobolev.IsWeakHessian -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
@@ -1951,7 +1966,6 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -2001,6 +2015,7 @@ Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convolution_apply
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
 Sobolev.MemW -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
@@ -2087,7 +2102,6 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -2122,7 +2136,6 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
@@ -2220,6 +2233,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.fderiv_convol
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.isWeakDerivative_zero
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.le_one_cases
+Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.memW_convolution
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_mem
 Sobolev.Theorem21Second -hard-> Main.Theorem52Mollify::theorem_5_2.mollify_sub_eq
@@ -2278,7 +2292,6 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.measure_path_mem_null
-Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto
