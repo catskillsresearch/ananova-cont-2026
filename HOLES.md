@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T20:08:02Z  
-**`sorry` occurrences:** 14 · 6 open · 12 blocked · 413 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 65} · subgoals {'open': 3, 'blocked': 3, 'done': 348} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T20:08:18Z  
+**`sorry` occurrences:** 14 · 6 open · 12 blocked · 414 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 65} · subgoals {'open': 3, 'blocked': 3, 'done': 349} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -307,6 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.Remark45::remark_4_5.ae_nonneg_of_weakLpTendsto` | subgoal of Remark 4.5, positivity of weak limits | 0 |
 | done | `Occupation.Remark45::remark_4_5.weakLpTendsto_congr` | subgoal of Remark 4.5, weak convergence is a.e.-invariant | 0 |
 | done | `Occupation.Remark45::remark_4_5.weakLpTendsto_half_add` | subgoal of Remark 4.5, averaging | 0 |
+| done | `Occupation.Remark45::remark_4_5.weakLpTendsto_posPart` | subgoal of Remark 4.5, positive part | 0 |
 | done | `Occupation.Remark45::remark_4_5_term_eq` | subgoal of Remark 4.5, identity off the endpoints | 0 |
 | done | `Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq` | subgoal of Lemma 4.2 | 0 |
 | done | `Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq` | subgoal of Corollary 3.2 proof, "by Proposition 3.1" | 0 |

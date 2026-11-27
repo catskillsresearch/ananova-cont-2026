@@ -237,6 +237,14 @@ theorem remark_4_5.ae_nonneg_of_weakLpTendsto {d : ℕ} {r : ℝ≥0∞} (hr : 1
   simp only [not_lt] at hx
   simpa [hxe] using hx
 
+/-- **Subgoal** (Remark 4.5, positive part): a weak `L^r` limit `ℓ`, `1 < r`, of nonnegative
+functions is also the weak limit as `ℓ⁺ = max ℓ 0`. -/
+theorem remark_4_5.weakLpTendsto_posPart {d : ℕ} {r : ℝ≥0∞} (hr : 1 < r)
+    {f : ℕ → Rd d → ℝ} {ℓ : Rd d → ℝ} (hf : ∀ n x, 0 ≤ f n x) (h : WeakLpTendsto r f ℓ) :
+    WeakLpTendsto r f (fun x => max (ℓ x) 0) :=
+  remark_4_5.weakLpTendsto_congr (fun _ => EventuallyEq.rfl)
+    ((remark_4_5.ae_nonneg_of_weakLpTendsto hr hf h).mono fun _x hx => (max_eq_left hx).symm) h
+
 /-- **Remark 4.5** (convergence and seminorm). For `d = 1`, if for some `r ∈ (1, ∞]` both
 discrete local-time sequences converge to the same terminal local time,
 `λ^{n,±}_T ⇀ ℓ_T` in `L^r(ℝ)`, then `𝓛^{π_n}_ω ⇀ ℓ_T` in `L^r(ℝ)` and
