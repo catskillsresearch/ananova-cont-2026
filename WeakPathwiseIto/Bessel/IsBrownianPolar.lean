@@ -34,7 +34,18 @@ theorem iff_isNull (hT : 0 < T) (S : Set (Rd d)) :
 /-- **Subgoal** (Definition 2.8, countable unions). A countable union of polar sets is polar. -/
 theorem iUnion {S : ℕ → Set (Rd d)} (h : ∀ n, IsBrownianPolar d T (S n)) :
     IsBrownianPolar d T (⋃ n, S n) := by
-  sorry
+  intro x
+  have hset : {ω : CanonicalWienerSpace d T | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ ⋃ n, S n} =
+      ⋃ n, {ω | ∃ t : Icc (0 : ℝ) T, 0 < (t : ℝ) ∧ ω t ∈ S n} := by
+    ext ω
+    simp only [mem_ofPred_eq, mem_iUnion]
+    constructor
+    · rintro ⟨t, ht, n, hn⟩
+      exact ⟨n, t, ht, hn⟩
+    · rintro ⟨n, t, ht, hn⟩
+      exact ⟨t, ht, n, hn⟩
+  rw [hset]
+  exact measure_iUnion_null fun n => h n x
 
 end IsBrownianPolar
 

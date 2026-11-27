@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:35:28Z",
+ "updated": "2026-11-27T17:38:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 22,
+ "sorryCount": 21,
  "counts": {
-  "open": 10,
+  "open": 9,
   "blocked": 12,
-  "done": 380
+  "done": 381
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 62
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 2,
-  "done": 318
+  "done": 319
  },
  "untagged": [],
  "legend": {
@@ -2319,10 +2319,9 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.8",
    "file": "WeakPathwiseIto/Bessel/IsBrownianPolar.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "iff_isNull",
-    "iUnion"
+    "iff_isNull"
    ],
    "declKinds": {
     "def": 1,
@@ -2340,10 +2339,9 @@
    ],
    "blockers": [
     "Bessel.BesselCapacity",
-    "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
     "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull"
    ],
-   "detail": "2 sorry: iff_isNull, iUnion"
+   "detail": "1 sorry: iff_isNull"
   },
   {
    "id": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion",
@@ -2355,10 +2353,8 @@
    "parentGoal": "Bessel.IsBrownianPolar",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/IsBrownianPolar.lean",
-   "sorryCount": 1,
-   "holes": [
-    "IsBrownianPolar.iUnion"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -2367,19 +2363,16 @@
    "doc": "**Subgoal** (Definition 2.8, countable unions). A countable union of polar sets is polar.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselCapacity",
     "Bessel.CanonicalWienerSpace"
    ],
-   "blockers": [
-    "Bessel.BesselCapacity"
-   ],
-   "detail": "sorry: IsBrownianPolar.iUnion — subgoal of Definition 2.8, countable unions (in Bessel.IsBrownianPolar) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "blockers": [],
+   "detail": "proved: IsBrownianPolar.iUnion — subgoal of Definition 2.8, countable unions (in Bessel.IsBrownianPolar) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",

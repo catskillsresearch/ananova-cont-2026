@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:35:28Z  
-**`sorry` occurrences:** 22 · 10 open · 12 blocked · 380 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 318} · 11 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:38:17Z  
+**`sorry` occurrences:** 21 · 9 open · 12 blocked · 381 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 6, 'blocked': 2, 'done': 319} · 11 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -92,7 +92,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential` | subgoal of Definition 2.5, Young: `g_α ⋆ f` is a.e. strongly measurable | 0 |
 | done | `Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le` | subgoal of Definition 2.5, Young's inequality | 0 |
 | done | `Bessel.BesselSpace::BesselSpace.enorm_potential_le` | subgoal of Definition 2.5, Young: pointwise bound `|g_α ⋆ f(x | 0 |
-| open | `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion` | subgoal of Definition 2.8, countable unions | 1 |
+| done | `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion` | subgoal of Definition 2.8, countable unions | 0 |
 | open | `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` | subgoal of Definition 2.8, [Fuk93, p. 25] | 1 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval` | subgoal of Section 2.2 Wiener space, measurability of `ω' ↦ x + W(ω' | 0 |
 | done | `Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw` | subgoal of Section 2.2 Wiener space | 0 |
@@ -407,7 +407,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.BesselKernel` | Definition 2.4 | 0 |  |
 | done | `Bessel.BesselSpace` | Definition 2.5 | 0 |  |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
-| blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 2 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iUnion`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
+| blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 1 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
 | open | `Bessel.Theorem26` | Theorem 2.6 | 1 |  |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
 | done | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 0 |  |
