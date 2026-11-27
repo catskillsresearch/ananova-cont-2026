@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:55:29Z",
+ "updated": "2026-11-27T02:56:46Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
-  "open": 15,
+  "open": 14,
   "blocked": 19,
-  "done": 266
+  "done": 267
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 55
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 7,
-  "done": 211
+  "done": 212
  },
  "untagged": [],
  "legend": {
@@ -7899,9 +7899,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
-    "abs_taylor_le",
     "poincare2_of_contDiff",
     "isWeakGradient_coord",
     "coord_hessian_integrable",
@@ -7939,7 +7938,6 @@
    ],
    "blockers": [
     "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
-    "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
     "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
     "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
     "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
@@ -7950,7 +7948,7 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
-   "detail": "11 sorry: abs_taylor_le, poincare2_of_contDiff, isWeakGradient_coord, coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+   "detail": "10 sorry: poincare2_of_contDiff, isWeakGradient_coord, coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -7991,24 +7989,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.abs_taylor_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 2: Taylor's formula with integral remainder along the segment from `z` to `x`, reparametrised from `x`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.abs_taylor_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.abs_taylor_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",

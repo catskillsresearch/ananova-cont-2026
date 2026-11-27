@@ -97,7 +97,55 @@ theorem abs_taylor_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) (x z : Rd d) :
     ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫| ≤
       ∫⁻ t in Ioc (0 : ℝ) 1, ENNReal.ofReal t *
         ‖fderiv ℝ (fderiv ℝ f) (x + t • (z - x))‖ₑ * ‖z - x‖ₑ ^ 2 := by
-  sorry
+  set v := z - x
+  have hf1 : ContDiff ℝ 1 (fderiv ℝ f) := hf.fderiv_right (by norm_num)
+  have hD1 : Differentiable ℝ f := hf.differentiable (by norm_num)
+  have hD2 : Differentiable ℝ (fderiv ℝ f) := hf1.differentiable one_ne_zero
+  have hc2 : Continuous (fderiv ℝ (fderiv ℝ f)) := hf1.continuous_fderiv one_ne_zero
+  have hl : ∀ t : ℝ, HasDerivAt (fun s : ℝ => x + s • v) v t := fun t => by
+    simpa using ((hasDerivAt_id t).smul_const v).const_add x
+  -- φ' and φ''
+  have hφ : ∀ t : ℝ, HasDerivAt (fun s : ℝ => f (x + s • v)) (fderiv ℝ f (x + t • v) v) t :=
+    fun t => (hD1 (x + t • v)).hasFDerivAt.comp_hasDerivAt t (hl t)
+  have hφ' : ∀ t : ℝ, HasDerivAt (fun s : ℝ => fderiv ℝ f (x + s • v) v)
+      (fderiv ℝ (fderiv ℝ f) (x + t • v) v v) t := by
+    intro t
+    have h := (hD2 (x + t • v)).hasFDerivAt.comp_hasDerivAt t (hl t)
+    exact h.clm_apply (hasDerivAt_const t v) |>.congr_deriv (by simp)
+  set F : ℝ → ℝ := fun t => t * fderiv ℝ f (x + t • v) v - f (x + t • v) with hF
+  have hFd : ∀ t ∈ uIcc (0 : ℝ) 1, HasDerivAt F (t * fderiv ℝ (fderiv ℝ f) (x + t • v) v v) t := by
+    intro t _
+    have h := (((hasDerivAt_id t).mul (hφ' t)).sub (hφ t))
+    refine h.congr_deriv ?_
+    simp only [id]; ring
+  have hcont : Continuous fun t : ℝ => t * fderiv ℝ (fderiv ℝ f) (x + t • v) v v := by
+    have h1 : Continuous fun t : ℝ => fderiv ℝ (fderiv ℝ f) (x + t • v) :=
+      hc2.comp (continuous_const.add (continuous_id.smul continuous_const))
+    exact continuous_id.mul ((h1.clm_apply continuous_const).clm_apply continuous_const)
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt hFd (hcont.intervalIntegrable 0 1)
+  have hgrad : ⟪gradient f z, x - z⟫ = fderiv ℝ f z (x - z) := by
+    simp [gradient, InnerProductSpace.toDual_symm_apply]
+  have hxz : x - z = -v := by simp [v]
+  have hkey : f x - f z - ⟪gradient f z, x - z⟫ =
+      ∫ t in (0 : ℝ)..1, t * fderiv ℝ (fderiv ℝ f) (x + t • v) v v := by
+    rw [hftc, hgrad, hxz, map_neg]
+    simp only [hF, one_smul, zero_smul, add_zero, one_mul, zero_mul, zero_sub, v,
+      add_sub_cancel]
+    ring
+  rw [hkey, ← Real.enorm_eq_ofReal_abs, intervalIntegral.integral_of_le zero_le_one]
+  refine (enorm_integral_le_lintegral_enorm _).trans
+    (setLIntegral_mono' measurableSet_Ioc fun t ht => ?_)
+  have ht0 : 0 ≤ t := ht.1.le
+  rw [enorm_mul, Real.enorm_of_nonneg ht0, ← ofReal_norm, ← ofReal_norm, ← ofReal_norm,
+    ← ENNReal.ofReal_pow (norm_nonneg _), mul_assoc, ← ENNReal.ofReal_mul (norm_nonneg _)]
+  refine mul_le_mul' le_rfl (ENNReal.ofReal_le_ofReal ?_)
+  have h1 := (fderiv ℝ (fderiv ℝ f) (x + t • v) v).le_opNorm v
+  have h2 := (fderiv ℝ (fderiv ℝ f) (x + t • v)).le_opNorm v
+  calc ‖fderiv ℝ (fderiv ℝ f) (x + t • v) v v‖
+      ≤ ‖fderiv ℝ (fderiv ℝ f) (x + t • v) v‖ * ‖v‖ := h1
+    _ ≤ ‖fderiv ℝ (fderiv ℝ f) (x + t • v)‖ * ‖v‖ * ‖v‖ :=
+        mul_le_mul_of_nonneg_right h2 (norm_nonneg _)
+    _ = _ := by ring
 
 /-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²` on a convex `Q`). -/
 theorem poincare2_of_contDiff (hd : 0 < d) {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f)
