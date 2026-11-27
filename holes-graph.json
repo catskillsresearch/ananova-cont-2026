@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:13:08Z",
+ "updated": "2026-11-27T11:15:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
   "open": 7,
-  "blocked": 44,
+  "blocked": 45,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 34,
+  "blocked": 35,
   "done": 239
  },
  "untagged": [],
@@ -4109,9 +4109,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 17,
+   "sorryCount": 16,
    "holes": [
-    "exists_isWeakGradient",
     "exists_isWeakHessian",
     "abs_convolution_le",
     "contDiffBounded_convolution",
@@ -4130,7 +4129,7 @@
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 17
+    "theorem": 18
    },
    "paperGoal": false,
    "verified": false,
@@ -4152,6 +4151,7 @@
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+    "Main.Theorem52Steps::theorem_5_2.le_one_cases",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
@@ -4179,6 +4179,7 @@
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+    "Main.Theorem52Steps::theorem_5_2.le_one_cases",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
@@ -4186,7 +4187,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "17 sorry: exists_isWeakGradient, exists_isWeakHessian, abs_convolution_le, contDiffBounded_convolution, isWeakDerivative_zero, isWeakDerivative_single_of_contDiff, order_le_two_cases, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "16 sorry: exists_isWeakHessian, abs_convolution_le, contDiffBounded_convolution, isWeakDerivative_zero, isWeakDerivative_single_of_contDiff, order_le_two_cases, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4393,10 +4394,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.exists_isWeakGradient"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4420,7 +4419,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.exists_isWeakGradient — subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.exists_isWeakGradient — subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
@@ -4616,6 +4615,43 @@
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.isWeakDerivative_zero — subgoal of Appendix C, mollification: `D^0 f = f` weakly (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "label": "le_one_cases",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.le_one_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
@@ -10583,6 +10619,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -11713,6 +11754,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -12268,6 +12314,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -12364,6 +12415,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
    "kind": "hard"
   },
   {
@@ -13243,6 +13299,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14673,6 +14734,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -15988,6 +16054,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -16768,6 +16839,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -17188,6 +17264,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -17294,6 +17375,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
    "kind": "hard"
   },
   {
@@ -17809,6 +17895,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
    "kind": "hard"
   },
   {
@@ -19041,6 +19132,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -19114,6 +19209,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
   },
   {
    "from": "Bessel.Theorem29",
@@ -19773,6 +19872,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -21645,6 +21748,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -21978,6 +22085,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
   },
   {
    "from": "Sobolev.Theorem21Second",

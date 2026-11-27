@@ -43,7 +43,15 @@ variable {d : ℕ} {T : ℝ}
 from its first-order weak derivatives). -/
 theorem exists_isWeakGradient {k : ℕ} (hk : 1 ≤ k) {F : Rd d → ℝ} (hF : MemW k 1 F) :
     ∃ G : Rd d → Rd d, IsWeakGradient F G := by
-  sorry
+  have h : ∀ i : Fin d, ∃ g : Rd d → ℝ, IsWeakDerivative (Pi.single i 1) F g := by
+    intro i
+    have hord : IsWeakDerivative.order (Pi.single i 1 : Fin d → ℕ) ≤ k := by
+      simpa [IsWeakDerivative.order] using hk
+    obtain ⟨g, hg, -⟩ := hF.2 _ hord
+    exact ⟨g, hg⟩
+  choose g hg using h
+  refine ⟨fun x => WithLp.toLp 2 (fun i => g i x), fun i => ?_⟩
+  simpa [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right] using hg i
 
 /-- **Subgoal** (Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled
 from its second-order weak derivatives). -/
@@ -75,6 +83,25 @@ is its weak derivative, by integration by parts). -/
 theorem isWeakDerivative_single_of_contDiff {f : Rd d → ℝ} (hf : ContDiff ℝ 1 f) (i : Fin d) :
     IsWeakDerivative (Pi.single i 1) f (fun x => fderiv ℝ f x (Rd.basisVec i)) := by
   sorry
+
+/-- **Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i`). -/
+theorem le_one_cases {α : Fin d → ℕ} (hα : ∑ k, α k ≤ 1) :
+    α = 0 ∨ ∃ i, α = Pi.single i 1 := by
+  by_cases h : ∀ i, α i = 0
+  · exact Or.inl (funext h)
+  push Not at h
+  obtain ⟨i, hi⟩ := h
+  refine Or.inr ⟨i, funext fun j => ?_⟩
+  by_cases hj : j = i
+  · subst hj
+    have := Finset.single_le_sum (f := α) (fun k _ => Nat.zero_le _) (Finset.mem_univ j)
+    simp only [Pi.single_eq_same]
+    omega
+  · have hpair : α i + α j ≤ ∑ k, α k := by
+      rw [← Finset.sum_pair (f := α) (Ne.symm hj)]
+      exact Finset.sum_le_sum_of_subset (Finset.subset_univ _)
+    rw [Pi.single_eq_of_ne hj]
+    omega
 
 /-- **Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and
 `e_i + e_j`). -/

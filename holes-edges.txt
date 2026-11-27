@@ -101,6 +101,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -327,6 +328,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_l
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -438,6 +440,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maxima
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -458,6 +461,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -634,6 +638,7 @@ Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le -hard-> Main.Theorem52Step
 Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.le_one_cases -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.memW_convolution -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.mollify_mem -hard-> Main.Theorem52Steps
@@ -919,6 +924,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.gagliar
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -1182,6 +1188,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maxim
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -1338,6 +1345,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -1422,6 +1430,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -1444,6 +1453,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
@@ -1547,6 +1557,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maxim
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
