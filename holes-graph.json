@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T13:52:41Z",
+ "updated": "2026-11-27T13:54:30Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
   "open": 7,
   "blocked": 59,
@@ -4031,14 +4031,13 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
     "enorm_rpow_sub_rpow_le",
     "exists_lintegral_edist_rpow_le",
-    "mul_rpow_div_le_add",
     "lintegral_mul_rpow_div_lt_top",
     "lintegral_mul_rpow_div_lt_top'",
     "lintegral_rpow_sub_le",
@@ -4136,7 +4135,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "10 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, enorm_rpow_sub_rpow_le, exists_lintegral_edist_rpow_le, mul_rpow_div_le_add, lintegral_mul_rpow_div_lt_top, lintegral_mul_rpow_div_lt_top', lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "9 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, enorm_rpow_sub_rpow_le, exists_lintegral_edist_rpow_le, lintegral_mul_rpow_div_lt_top, lintegral_mul_rpow_div_lt_top', lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -5228,10 +5227,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.mul_rpow_div_le_add"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -5256,7 +5253,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.mul_rpow_div_le_add — subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1 (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.mul_rpow_div_le_add — subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1 (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",

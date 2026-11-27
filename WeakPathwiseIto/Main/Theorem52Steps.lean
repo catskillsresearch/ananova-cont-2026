@@ -620,7 +620,33 @@ theorem exists_lintegral_edist_rpow_le {β : ℝ} (hβ : β < d) {K : Set (Rd d)
 theorem mul_rpow_div_le_add {s p : ℝ} (hp : 1 < p) {a c e : ℝ≥0∞} (he0 : e ≠ 0) (het : e ≠ ⊤) :
     a * c ^ (p - 1) / e ^ (d : ℝ) ≤
       a ^ p / e ^ (s * p + d) + c ^ p / e ^ ((d : ℝ) - s * p / (p - 1)) := by
-  sorry
+  have hp0 : 0 < p := by linarith
+  have hp1 : 0 < p - 1 := by linarith
+  set u : ℝ := (s * p + d) / p
+  set v : ℝ := (d : ℝ) - u
+  have hpq : p.HolderConjugate (p / (p - 1)) := Real.HolderConjugate.conjExponent hp
+  have hY := ENNReal.young_inequality (a / e ^ u) (c ^ (p - 1) / e ^ v) hpq
+  have hed : e ^ (d : ℝ) = e ^ u * e ^ v := by
+    rw [← ENNReal.rpow_add _ _ he0 het]; congr 1; simp [v]
+  have hu0 : e ^ u ≠ 0 := (ENNReal.rpow_pos (pos_iff_ne_zero.2 he0) het).ne'
+  have hut : e ^ u ≠ ⊤ := ENNReal.rpow_ne_top_of_ne_zero he0 het
+  have hL : a * c ^ (p - 1) / e ^ (d : ℝ) = a / e ^ u * (c ^ (p - 1) / e ^ v) := by
+    rw [hed, ENNReal.mul_div_mul_comm (Or.inl hu0) (Or.inl hut)]
+  have hA : (a / e ^ u) ^ p = a ^ p / e ^ (s * p + d) := by
+    rw [ENNReal.div_rpow_of_nonneg _ _ hp0.le, ← ENNReal.rpow_mul]
+    congr 2; simp only [u]; field_simp
+  have hB : (c ^ (p - 1) / e ^ v) ^ (p / (p - 1)) = c ^ p / e ^ ((d : ℝ) - s * p / (p - 1)) := by
+    rw [ENNReal.div_rpow_of_nonneg _ _ (by positivity), ← ENNReal.rpow_mul, ← ENNReal.rpow_mul]
+    congr 2
+    · field_simp
+    · simp only [v, u]; field_simp; ring
+  rw [hL]
+  refine hY.trans (add_le_add ?_ ?_)
+  · rw [hA]
+    exact ENNReal.div_le_of_le_mul (le_mul_of_one_le_right' (by simp [hp.le]))
+  · rw [hB]
+    refine ENNReal.div_le_of_le_mul (le_mul_of_one_le_right' ?_)
+    rw [ENNReal.one_le_ofReal, one_le_div hp1]; linarith
 
 /-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(x)^{p-1}` is finite). -/
 theorem lintegral_mul_rpow_div_lt_top {s p : ℝ} (hd : 1 ≤ d) (hs : 0 < s) (hp : 1 < p)
