@@ -43,6 +43,15 @@ theorem remark_4_4.integrable_mul_conj {r : ℝ≥0∞} (hr : 1 < r) {f g : Rd d
   have := ENNReal.HolderConjugate.conjExponent hr.le
   exact hg.integrable_mul hf
 
+/-- **Subgoal** (Remark 4.4, lower vs. Bochner integral): for nonnegative `f, g` with `g f`
+integrable, `∫⁻ g f = ∫ g f`. -/
+theorem remark_4_4.lintegral_ofReal_mul_eq {f g : Rd d → ℝ} (hf : 0 ≤ f) (hg : 0 ≤ g)
+    (hi : Integrable (fun x => g x * f x)) :
+    ∫⁻ x, ENNReal.ofReal (g x) * ENNReal.ofReal (f x) = ENNReal.ofReal (∫ x, g x * f x) := by
+  rw [ofReal_integral_eq_lintegral_ofReal hi
+    (Eventually.of_forall fun x => mul_nonneg (hg x) (hf x))]
+  exact lintegral_congr fun x => (ENNReal.ofReal_mul (hg x)).symm
+
 /-- **Remark 4.4** (explicit seminorm). Under the hypotheses of `remark_4_4_density`, for every
 `h ∈ L^{r'}(ℝ^d)`, `‖h‖_{W^0_{ω,π}} = ∫ |h(x)| ℓ^{ω,π}_T(x) dx = ‖h‖_{L^1(μ^π_{ω,T})}`. -/
 theorem remark_4_4_seminorm (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)

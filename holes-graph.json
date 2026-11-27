@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T19:16:42Z",
+ "updated": "2026-11-27T19:16:59Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 16,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 402
+  "done": 403
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 339
+  "done": 340
  },
  "untagged": [],
  "legend": {
@@ -10294,7 +10294,7 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 4
+    "theorem": 5
    },
    "paperGoal": false,
    "verified": false,
@@ -10305,6 +10305,7 @@
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
     "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+    "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation"
    ],
@@ -10344,6 +10345,40 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_4.integrable_mul_conj — subgoal of Remark 4.4, Hölder (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "label": "lintegral_ofReal_mul_eq",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4, lower vs. Bochner integral",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4, lower vs. Bochner integral): for nonnegative `f, g` with `g f` integrable, `∫⁻ g f = ∫ g f`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.lintegral_ofReal_mul_eq — subgoal of Remark 4.4, lower vs. Bochner integral (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45",
@@ -16482,6 +16517,11 @@
    "kind": "hard"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar",
    "kind": "hard"
@@ -20188,6 +20228,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -21273,6 +21318,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second",
    "kind": "hard"
   },
@@ -21433,6 +21483,11 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "to": "Occupation.Remark44",
    "kind": "subgoal"
   },
@@ -21843,6 +21898,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.WeightedOccupationMeasure",
    "kind": "hard"
   },
@@ -22189,6 +22249,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "kind": "hard"
   },
   {
@@ -26850,6 +26915,10 @@
    "to": "Occupation.Remark44::remark_4_4.integrable_mul_conj"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
   },
@@ -29255,6 +29324,10 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
   },
   {
@@ -29687,6 +29760,10 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
   },
   {
@@ -29807,6 +29884,10 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.integrable_mul_conj",
+   "to": "Occupation.Remark44"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
    "to": "Occupation.Remark44"
   },
   {
