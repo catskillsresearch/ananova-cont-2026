@@ -682,6 +682,7 @@ Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.memLp_two
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance
 Bessel.WienerLawExists -hard-> Appendix.LemmaA1::lemma_A_1.variance_le
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps
+Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.exists_rep_increment
@@ -850,6 +851,7 @@ Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le -hard-> Main.Geometr
 Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh -hard-> Main.GeometricMeshDecay
 Main.IsItoIntegral -hard-> Main.Proposition53
 Main.IsItoIntegral -hard-> Main.Proposition53Steps
+Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_isometry
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.elementary_localisation
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.exists_rep_increment
@@ -862,6 +864,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indep_natura
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_B
+Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.elementary_isometry -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.elementary_localisation -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.exists_rep_increment -hard-> Main.Proposition53Steps

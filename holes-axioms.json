@@ -449,6 +449,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.elementary_isometry": [
    "propext",
    "sorryAx",
@@ -1867,5 +1872,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:58:29Z"
+ "generated": "2026-11-27T20:58:45Z"
 }
