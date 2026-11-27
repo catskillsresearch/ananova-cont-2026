@@ -266,7 +266,44 @@ theorem mul_measure_lt_le_truncate {f : Rd d → ℝ} (hf : Measurable f) (t : �
 theorem lintegral_Ioi_indicator_rpow {q : ℝ} (hq : 0 < q) (a : ℝ≥0∞) :
     ∫⁻ t in Ioi (0 : ℝ), {t : ℝ | ENNReal.ofReal t < a}.indicator
       (fun t => ENNReal.ofReal (t ^ (q - 1))) t = a ^ q / ENNReal.ofReal q := by
-  sorry
+  have hfin : ∀ b : ℝ, 0 ≤ b → ∫⁻ t in Ioi (0 : ℝ), {t : ℝ | ENNReal.ofReal t < ENNReal.ofReal b}.indicator
+      (fun t => ENNReal.ofReal (t ^ (q - 1))) t = ENNReal.ofReal b ^ q / ENNReal.ofReal q := by
+    intro b hb
+    have hS : MeasurableSet {t : ℝ | ENNReal.ofReal t < ENNReal.ofReal b} :=
+      measurableSet_lt ENNReal.measurable_ofReal measurable_const
+    rw [lintegral_indicator hS, Measure.restrict_restrict hS]
+    have hset : {t : ℝ | ENNReal.ofReal t < ENNReal.ofReal b} ∩ Ioi 0 = Ioo 0 b := by
+      ext t
+      simp only [mem_inter_iff, mem_ofPred_eq, mem_Ioi, mem_Ioo, ENNReal.ofReal_lt_ofReal_iff']
+      constructor
+      · rintro ⟨⟨h1, _⟩, h2⟩; exact ⟨h2, h1⟩
+      · rintro ⟨h1, h2⟩; exact ⟨⟨h2, h1.trans h2⟩, h1⟩
+    have hint : IntegrableOn (fun t : ℝ => t ^ (q - 1)) (Ioo 0 b) :=
+      ((intervalIntegral.intervalIntegrable_rpow' (a := 0) (b := b) (by linarith : (-1 : ℝ) < q - 1)).1).mono_set Ioo_subset_Ioc_self
+    rw [hset, ← ofReal_integral_eq_lintegral_ofReal hint
+      ((ae_restrict_mem measurableSet_Ioo).mono fun t ht => Real.rpow_nonneg ht.1.le _),
+      ← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le hb,
+      integral_rpow (Or.inl (by linarith : (-1 : ℝ) < q - 1)), sub_add_cancel,
+      Real.zero_rpow hq.ne', sub_zero, ENNReal.ofReal_div_of_pos hq,
+      ENNReal.ofReal_rpow_of_nonneg hb hq.le]
+  rcases eq_or_ne a ⊤ with rfl | ha
+  · rw [ENNReal.top_rpow_of_pos hq, ENNReal.top_div_of_ne_top ENNReal.ofReal_ne_top]
+    have hle : ∀ n : ℕ, ((n : ℝ≥0∞)) ^ q / ENNReal.ofReal q ≤
+        ∫⁻ t in Ioi (0 : ℝ), {t : ℝ | ENNReal.ofReal t < ⊤}.indicator
+          (fun t => ENNReal.ofReal (t ^ (q - 1))) t := fun n => by
+      rw [← ENNReal.ofReal_natCast, ← hfin n (Nat.cast_nonneg n)]
+      refine lintegral_mono fun t => indicator_le_indicator_of_subset
+        (fun t _ => ENNReal.ofReal_lt_top) (fun _ => bot_le) t
+    have ht : Tendsto (fun n : ℕ => ((n : ℝ≥0∞)) ^ q / ENNReal.ofReal q) atTop (𝓝 ⊤) := by
+      have h1 : Tendsto (fun n : ℕ => ((n : ℝ≥0∞)) ^ q) atTop (𝓝 ⊤) := by
+        have := ((ENNReal.continuous_rpow_const (y := q)).tendsto ⊤).comp
+          ENNReal.tendsto_nat_nhds_top
+        rwa [ENNReal.top_rpow_of_pos hq] at this
+      have := ENNReal.Tendsto.div_const h1 (Or.inr (ENNReal.ofReal_pos.2 hq).ne')
+      rwa [ENNReal.top_div_of_ne_top ENNReal.ofReal_ne_top] at this
+    exact top_unique (le_of_tendsto' ht hle)
+  · rw [← ENNReal.ofReal_toReal ha]
+    exact hfin _ ENNReal.toReal_nonneg
 
 /-- **Subgoal** (Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions). -/
 theorem lintegral_rpow_eq_lintegral_meas_lt {g : Rd d → ℝ≥0∞} (hg : Measurable g) {p : ℝ}
