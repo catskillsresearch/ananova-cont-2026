@@ -769,7 +769,43 @@ theorem tendsto_lintegral_gradient {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : 
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
     Tendsto (fun n => ∫⁻ z, ‖gradient (fun x => ∫ y, f y * ψ n (x - y)) z - G z‖ₑ) atTop
       (𝓝 0) := by
-  sorry
+  have hGi : ∀ i, Integrable fun z => Rd.coord i (G z) := coord_integrable hf hG
+  set T : ℕ → Fin d → Rd d → ℝ≥0∞ := fun n i z =>
+    ‖(∫ y, Rd.coord i (G y) * ψ n (z - y)) - Rd.coord i (G z)‖ₑ with hT
+  have hexpG : ∀ z, G z = ∑ i, Rd.coord i (G z) • Rd.basisVec i := by
+    intro z
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' (G z)]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  have hbound : ∀ n z, ‖gradient (fun x => ∫ y, f y * ψ n (x - y)) z - G z‖ₑ ≤ ∑ i, T n i z := by
+    intro n z
+    rw [(contDiff_convolution hG (hψ n) (hψc n)).2 z, hexpG z, ← Finset.sum_sub_distrib]
+    refine (enorm_sum_le _ _).trans (Finset.sum_le_sum fun i _ => ?_)
+    rw [← sub_smul, enorm_smul]
+    have : ‖Rd.basisVec i‖ₑ = 1 := by
+      have hn : ‖Rd.basisVec i‖ = 1 := by
+        have := (EuclideanSpace.basisFun (Fin d) ℝ).orthonormal.1 i
+        simpa [Rd.basisVec] using this
+      rw [← ofReal_norm, hn, ENNReal.ofReal_one]
+    rw [this, mul_one]
+  have hmeas : ∀ n i, AEMeasurable (T n i) volume := by
+    intro n i
+    have hc : Continuous fun z => ∫ y, Rd.coord i (G y) * ψ n (z - y) := by
+      have : (fun z => ∫ y, Rd.coord i (G y) * ψ n (z - y)) =
+          convolution (fun y => Rd.coord i (G y)) (ψ n) (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+        funext z; simp [convolution_def, smul_eq_mul]
+      rw [this]
+      exact (hψc n).continuous_convolution_right _ (hGi i).locallyIntegrable (hψ n).continuous
+    exact (hc.aemeasurable.sub (hGi i).aemeasurable).enorm
+  have hlim : Tendsto (fun n => ∑ i, ∫⁻ z, T n i z) atTop (𝓝 0) := by
+    have := tendsto_finsetSum (Finset.univ : Finset (Fin d)) fun i _ =>
+      tendsto_convolution (hGi i) hψ0 (fun n => (hψ n).continuous) hψ1 hψs
+    simpa [hT] using this
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hlim
+    (fun n => zero_le) fun n => ?_
+  calc ∫⁻ z, ‖gradient (fun x => ∫ y, f y * ψ n (x - y)) z - G z‖ₑ
+      ≤ ∫⁻ z, ∑ i, T n i z := lintegral_mono (hbound n)
+    _ = ∑ i, ∫⁻ z, T n i z := lintegral_finsetSum' _ fun i _ => hmeas n i
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a
 subsequence, for `ℝ≥0∞`-valued functions). -/
