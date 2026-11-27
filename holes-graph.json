@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:36:20Z",
+ "updated": "2026-11-27T10:38:26Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
-  "open": 15,
+  "open": 14,
   "blocked": 22,
-  "done": 305
+  "done": 307
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 12,
+  "open": 11,
   "blocked": 12,
-  "done": 244
+  "done": 246
  },
  "untagged": [],
  "legend": {
@@ -3529,19 +3529,18 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 8,
+   "sorryCount": 7,
    "holes": [
     "lintegral_piece_le_first",
     "lintegral_le_maximal_first",
     "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
-    "measurable_localMaximalFunction",
     "ae_localMaximalFunction_lt_top",
     "exists_mollifier",
     "integrable_norm_hessian_sub"
    ],
    "declKinds": {
-    "theorem": 13
+    "theorem": 14
    },
    "paperGoal": false,
    "verified": false,
@@ -3562,6 +3561,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+    "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
     "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
@@ -3577,10 +3577,9 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-    "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "8 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, exists_mollifier, integrable_norm_hessian_sub"
+   "detail": "7 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, exists_mollifier, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3883,26 +3882,24 @@
    "detail": "sorry: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps)"
   },
   {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "label": "measurable_localMaximalFunction",
+   "id": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "label": "lowerSemicontinuous_mul_measure_ball",
    "kind": "subgoal",
    "section": "Main",
    "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
+   "paper": "subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r",
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.measurable_localMaximalFunction"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
-   "status": "open",
+   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`).",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3914,7 +3911,39 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.measurable_localMaximalFunction — subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.lowerSemicontinuous_mul_measure_ball — subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "label": "measurable_localMaximalFunction",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.measurable_localMaximalFunction — subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
@@ -9979,6 +10008,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
@@ -10045,6 +10079,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "kind": "hard"
   },
   {
@@ -11134,6 +11173,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
@@ -11624,6 +11668,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
@@ -11895,6 +11944,11 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "kind": "hard"
   },
   {
@@ -12454,6 +12508,11 @@
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
   },
@@ -13685,6 +13744,11 @@
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "kind": "hard"
   },
   {
@@ -15414,6 +15478,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
@@ -15955,6 +16024,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "kind": "hard"
   },
   {
@@ -16979,6 +17053,10 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
@@ -17028,6 +17106,10 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -17643,6 +17725,10 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
@@ -18087,6 +18173,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
@@ -18503,6 +18593,10 @@
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
    "to": "Main.Theorem52PathSteps"
   },
   {
@@ -19296,6 +19390,10 @@
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
   },
   {
    "from": "Occupation.OccupationSeminorm",
@@ -20147,6 +20245,10 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
@@ -20448,6 +20550,10 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
   },
   {
    "from": "Sobolev.MemW",

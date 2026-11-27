@@ -69,6 +69,7 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.integrabl
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -83,6 +84,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_no
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -300,6 +302,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -398,6 +401,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.integra
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -453,6 +457,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_n
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -565,6 +570,7 @@ Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub -hard-> Main.Th
 Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one -hard-> Main.Theorem52PathSteps
@@ -811,6 +817,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.integ
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1156,6 +1163,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_no
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
@@ -1265,6 +1273,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessia
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
