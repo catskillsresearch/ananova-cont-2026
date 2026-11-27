@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:55:05Z  
-**`sorry` occurrences:** 23 · 7 open · 11 blocked · 300 done (goals + subgoals) · goals {'open': 3, 'blocked': 8, 'done': 61} · subgoals {'open': 4, 'blocked': 3, 'done': 239} · 11 file(s) with `sorry`.
+**Updated:** 2026-11-27T04:01:13Z  
+**`sorry` occurrences:** 32 · 7 open · 21 blocked · 300 done (goals + subgoals) · goals {'open': 3, 'blocked': 9, 'done': 61} · subgoals {'open': 4, 'blocked': 12, 'done': 239} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -129,6 +129,15 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub` | subgoal of Theorem 5.1 proof: linearity of the covariation on `C²_b` | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.tendsto_covariation` | subgoal of Theorem 5.1 proof, (20 | 0 |
 | done | `Main.Theorem51Steps::theorem_5_1.tendsto_integral` | subgoal of Theorem 5.1 proof, (22 | 0 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null` | subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem` | subgoal of Appendix C, Brownian motion does not enter a polar set at positive times | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le` | subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le` | subgoal of Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` | subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le` | subgoal of Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.mollify_mem` | subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian` | subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` | 1 |
+| blocked | `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` | subgoal of Appendix C, mollification: `F_m(x | 1 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece` | subgoal of Eq. (7 | 0 |
 | done | `Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine` | subgoal of Eq. (7 | 0 |
@@ -375,7 +384,8 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
-| blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
+| blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52Steps` |
+| blocked | `Main.Theorem52Steps` |  | 9 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 

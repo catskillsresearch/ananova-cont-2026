@@ -33,6 +33,7 @@ public import WeakPathwiseIto.Main.Remark54
 public import WeakPathwiseIto.Main.Eq18
 public import WeakPathwiseIto.Main.SmoothItoAt
 public import WeakPathwiseIto.Main.Theorem51Steps
+public import WeakPathwiseIto.Main.Theorem52Steps
 public import WeakPathwiseIto.Main.Theorem51
 public import WeakPathwiseIto.Main.Theorem52
 public import WeakPathwiseIto.Main.WeakCovariation

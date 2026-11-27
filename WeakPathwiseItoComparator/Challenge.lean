@@ -4209,6 +4209,74 @@ end GeometricMeshDecay
 
 end
 
+/-! ## `WeakPathwiseIto.Sobolev.IsLebesguePoint` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+/-- `x` is a Lebesgue point of `f`: `⨍_{B(x,r)} |f(y) - c| dy → 0` as `r → 0` for some `c`. -/
+def IsLebesguePoint {d : ℕ} (f : Rd d → ℝ) (x : Rd d) : Prop :=
+  ∃ c : ℝ, Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |f y - c|) (𝓝[>] 0) (𝓝 0)
+
+end
+
+/-! ## `WeakPathwiseIto.Bessel.Theorem29` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+
+
+end
+
+/-! ## `WeakPathwiseIto.Sobolev.PreciseRepresentative` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+/-- The natural (precise) representative of eq. (3):
+`g̃(x) := limsup_{r → 0} ⨍_{B(x,r)} g(y) dy`. -/
+def preciseRepresentative {d : ℕ} (g : Rd d → ℝ) (x : Rd d) : ℝ :=
+  limsup (fun r : ℝ => ⨍ y in Metric.ball x r, g y) (𝓝[>] 0)
+
+namespace preciseRepresentative
+
+variable {d : ℕ}
+
+/-- The limsup defining `g̃(x)` is finite (`|g̃(x)| < +∞` in the paper). -/
+def IsFinite (g : Rd d → ℝ) (x : Rd d) : Prop :=
+  IsBoundedUnder (· ≤ ·) (𝓝[>] (0 : ℝ)) (fun r : ℝ => ⨍ y in Metric.ball x r, g y) ∧
+    IsCoboundedUnder (· ≤ ·) (𝓝[>] (0 : ℝ)) (fun r : ℝ => ⨍ y in Metric.ball x r, g y)
+
+/-- Coordinatewise precise representative of a vector field `G : ℝ^d → ℝ^d`. -/
+def vec (G : Rd d → Rd d) (x : Rd d) : Rd d :=
+  ∑ i, preciseRepresentative (fun y => Rd.coord i (G y)) x • Rd.basisVec i
+
+/-- Every coordinate of `G̃(x)` is finite. -/
+def VecIsFinite (G : Rd d → Rd d) (x : Rd d) : Prop :=
+  ∀ i, IsFinite (fun y => Rd.coord i (G y)) x
+
+end preciseRepresentative
+
+end
+
+/-! ## `WeakPathwiseIto.Main.Theorem52Steps` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+namespace theorem_5_2
+
+variable {d : ℕ} {T : ℝ}
+
+end theorem_5_2
+
+end
+
 /-! ## `WeakPathwiseIto.Main.Theorem52` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}

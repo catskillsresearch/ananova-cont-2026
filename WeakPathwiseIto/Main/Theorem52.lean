@@ -10,6 +10,7 @@ public import WeakPathwiseIto.Sobolev.MemW2Plus
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
+public import WeakPathwiseIto.Main.Theorem52Steps
 
 @[expose] public section
 
