@@ -305,7 +305,99 @@ theorem abs_average_sub_average_le_maximal (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (
 theorem isLebesguePoint_of_maximal_lt_top (hd : 0 < d) {f : Rd d → ℝ} {G : Rd d → Rd d}
     (hf : MemW 1 1 f) (hG : IsWeakGradient f G) {x : Rd d} {R : ℝ≥0∞} (hR : 0 < R)
     (hM : localMaximalFunction R G x < ⊤) : IsLebesguePoint f x := by
-  sorry
+  obtain ⟨C, hC⟩ := abs_average_sub_average_le_maximal hd
+  obtain ⟨K, hK⟩ := lintegral_abs_sub_average_ball_le hd
+  obtain ⟨r0, -, hr0pos, hr0R⟩ := ENNReal.lt_iff_exists_real_btwn.1 hR
+  have hr0 : 0 < r0 := ENNReal.ofReal_pos.1 hr0pos
+  set M := localMaximalFunction R G x with hMdef
+  set m := M.toReal with hmdef
+  have hMm : M = ENNReal.ofReal m := (ENNReal.ofReal_toReal hM.ne).symm
+  have hm : 0 ≤ m := ENNReal.toReal_nonneg
+  set av : ℝ → ℝ := fun t => ⨍ y in Metric.ball x t, f y with hav
+  have hdiff : ∀ s t, 0 < s → s ≤ t → t ≤ r0 → |av s - av t| ≤ (C : ℝ) * t * m := by
+    intro s t hs hst ht
+    have htR : ENNReal.ofReal t < R := lt_of_le_of_lt (ENNReal.ofReal_le_ofReal ht) hr0R
+    have h : _ ≤ (C : ℝ≥0∞) * ENNReal.ofReal t * M := hC f G hf hG x R t s hs hst htR
+    rw [hMm, ← ENNReal.ofReal_coe_nnreal, ← ENNReal.ofReal_mul C.coe_nonneg,
+      ← ENNReal.ofReal_mul (mul_nonneg C.coe_nonneg (hs.le.trans hst))] at h
+    exact (ENNReal.ofReal_le_ofReal_iff (mul_nonneg (mul_nonneg C.coe_nonneg (hs.le.trans hst)) hm)).1 h
+  have hcau : Cauchy (map av (𝓝[>] (0 : ℝ))) := by
+    rw [Metric.cauchy_iff]
+    refine ⟨inferInstance, fun ε hε => ?_⟩
+    have hCm : 0 ≤ (C : ℝ) * m := mul_nonneg C.coe_nonneg hm
+    set δ := min r0 (ε / ((C : ℝ) * m + 1)) with hδdef
+    have hδ : 0 < δ := lt_min hr0 (by positivity)
+    refine ⟨av '' Ioo 0 δ, image_mem_map (Ioo_mem_nhdsGT hδ), ?_⟩
+    have key : ∀ a b, 0 < a → a ≤ b → b < δ → |av a - av b| < ε := by
+      intro a b ha hab hb
+      refine (hdiff a b ha hab (hb.le.trans (min_le_left _ _))).trans_lt ?_
+      have h1 : b < ε / ((C : ℝ) * m + 1) := hb.trans_le (min_le_right _ _)
+      have h2 : b * ((C : ℝ) * m + 1) < ε := (lt_div_iff₀ (by positivity)).1 h1
+      nlinarith [hab, ha]
+    rintro _ ⟨s, ⟨hs0, hsδ⟩, rfl⟩ _ ⟨t, ⟨ht0, htδ⟩, rfl⟩
+    rw [Real.dist_eq]
+    rcases le_total s t with h | h
+    · exact key s t hs0 h htδ
+    · rw [abs_sub_comm]; exact key t s ht0 h hsδ
+  obtain ⟨c, hc⟩ := cauchy_map_iff_exists_tendsto.1 hcau
+  have hsc : ∀ s, 0 < s → s ≤ r0 → |av s - c| ≤ (C : ℝ) * s * m := by
+    intro s hs hsr
+    have ht : Tendsto (fun t => |av t - av s|) (𝓝[>] 0) (𝓝 |c - av s|) := (hc.sub_const _).abs
+    have hle : ∀ᶠ t in 𝓝[>] (0 : ℝ), |av t - av s| ≤ (C : ℝ) * s * m := by
+      filter_upwards [Ioo_mem_nhdsGT hs] with t ht
+      exact hdiff t s ht.1 ht.2.le hsr
+    rw [abs_sub_comm]; exact le_of_tendsto ht hle
+  refine ⟨c, ?_⟩
+  have hfi : Integrable f := memLp_one_iff_integrable.1 hf.1
+  have hbound : ∀ s, 0 < s → s ≤ r0 →
+      ⨍ y in Metric.ball x s, |f y - c| ≤ ((K : ℝ) + C) * s * m := by
+    intro s hs hsr
+    set B := Metric.ball x s with hB
+    have hB0 : volume B ≠ 0 := (Metric.measure_ball_pos volume x hs).ne'
+    have hBt : volume B ≠ ⊤ := measure_ball_lt_top.ne
+    have hint : IntegrableOn (fun y => |f y - c|) B :=
+      (hfi.integrableOn.sub (integrableOn_const hBt)).abs
+    have hsR : ENNReal.ofReal s < R := lt_of_le_of_lt (ENNReal.ofReal_le_ofReal hsr) hr0R
+    have hlav : laverage (volume.restrict B) (fun y => ‖G y‖ₑ) ≤ M :=
+      le_iSup_of_le s (le_iSup_of_le hs (le_iSup_of_le hsR le_rfl))
+    have hKs := hK f G hf hG x s hs
+    have hE : ENNReal.ofReal (⨍ y in B, |f y - c|) ≤ ENNReal.ofReal (((K : ℝ) + C) * s * m) := by
+      rw [ofReal_setAverage hint (ae_of_all _ fun _ => abs_nonneg _)]
+      calc (∫⁻ y in B, ENNReal.ofReal |f y - c|) / volume B
+          ≤ (∫⁻ y in B, (ENNReal.ofReal |f y - av s| + ENNReal.ofReal |av s - c|)) / volume B := by
+            refine ENNReal.div_le_div_right (lintegral_mono fun y => ?_) _
+            rw [← ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _)]
+            exact ENNReal.ofReal_le_ofReal (abs_sub_le _ _ _)
+        _ = (∫⁻ y in B, ENNReal.ofReal |f y - av s|) / volume B + ENNReal.ofReal |av s - c| := by
+            rw [lintegral_add_right _ measurable_const, setLIntegral_const, ENNReal.add_div,
+              ENNReal.mul_div_cancel_right hB0 hBt]
+        _ ≤ K * ENNReal.ofReal s * M + ENNReal.ofReal ((C : ℝ) * s * m) := by
+            refine add_le_add ?_ (ENNReal.ofReal_le_ofReal (hsc s hs hsr))
+            calc (∫⁻ y in B, ENNReal.ofReal |f y - av s|) / volume B
+                ≤ (K * ENNReal.ofReal s * ∫⁻ z in B, ‖G z‖ₑ) / volume B :=
+                  ENNReal.div_le_div_right hKs _
+              _ = K * ENNReal.ofReal s * laverage (volume.restrict B) (fun y => ‖G y‖ₑ) := by
+                  rw [laverage_eq, Measure.restrict_apply_univ, mul_div_assoc]
+              _ ≤ K * ENNReal.ofReal s * M := mul_le_mul' le_rfl hlav
+        _ = ENNReal.ofReal (((K : ℝ) + C) * s * m) := by
+            rw [hMm, ← ENNReal.ofReal_coe_nnreal, ← ENNReal.ofReal_mul K.coe_nonneg,
+              ← ENNReal.ofReal_mul (mul_nonneg K.coe_nonneg hs.le),
+              ← ENNReal.ofReal_add (mul_nonneg (mul_nonneg K.coe_nonneg hs.le) hm)
+                (mul_nonneg (mul_nonneg C.coe_nonneg hs.le) hm)]
+            congr 1; ring
+    exact (ENNReal.ofReal_le_ofReal_iff
+      (mul_nonneg (mul_nonneg (add_nonneg K.coe_nonneg C.coe_nonneg) hs.le) hm)).1 hE
+  have hup : Tendsto (fun s : ℝ => ((K : ℝ) + C) * s * m) (𝓝[>] 0) (𝓝 0) := by
+    have : Tendsto (fun s : ℝ => ((K : ℝ) + C) * s * m) (𝓝 0) (𝓝 (((K : ℝ) + C) * 0 * m)) :=
+      ((continuous_const.mul continuous_id).mul continuous_const).tendsto 0
+    simpa using this.mono_left nhdsWithin_le_nhds
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le' tendsto_const_nhds hup ?_ ?_
+  · filter_upwards with s
+    rw [setAverage_eq]
+    exact smul_nonneg (inv_nonneg.2 measureReal_nonneg)
+      (setIntegral_nonneg measurableSet_ball fun _ _ => abs_nonneg _)
+  · filter_upwards [Ioo_mem_nhdsGT hr0] with s hs
+    exact hbound s hs.1 hs.2.le
 
 /-- **Subgoal** (Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally
 integrable `G`, some local maximal function of `G` is finite). -/

@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T03:38:37Z",
+ "updated": "2026-11-27T03:40:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 27,
+ "sorryCount": 26,
  "counts": {
   "open": 4,
-  "blocked": 19,
-  "done": 288
+  "blocked": 18,
+  "done": 289
  },
  "goalCounts": {
-  "open": 2,
-  "blocked": 12,
+  "open": 3,
+  "blocked": 11,
   "done": 57
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 231
+  "done": 232
  },
  "untagged": [],
  "legend": {
@@ -8315,17 +8315,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "isLebesguePoint_of_maximal_lt_top"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21",
@@ -8339,10 +8337,8 @@
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
-   "blockers": [
-    "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top"
-   ],
-   "detail": "1 sorry: isLebesguePoint_of_maximal_lt_top"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8432,23 +8428,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.isLebesguePoint_of_maximal_lt_top"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof: if `M_R|∇f|(x) < ∞` then `x` is a Lebesgue point of `f`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.isLebesguePoint_of_maximal_lt_top — subgoal of Theorem 2.3 proof: if `M_R|∇f|(x (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.isLebesguePoint_of_maximal_lt_top — subgoal of Theorem 2.3 proof: if `M_R|∇f|(x (in Sobolev.Theorem23Steps)"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
