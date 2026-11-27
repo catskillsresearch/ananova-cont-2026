@@ -537,6 +537,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord": [
    "propext",
    "Classical.choice",
@@ -1895,5 +1900,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:19:25Z"
+ "generated": "2026-11-27T21:19:43Z"
 }

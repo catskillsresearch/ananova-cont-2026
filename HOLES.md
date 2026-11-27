@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:19:26Z  
-**`sorry` occurrences:** 14 · 8 open · 13 blocked · 434 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 6, 'blocked': 3, 'done': 368} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:19:43Z  
+**`sorry` occurrences:** 14 · 8 open · 13 blocked · 435 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 6, 'blocked': 3, 'done': 369} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -140,6 +140,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq` | subgoal of P53.A, one-step isometry | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.measurable_B` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.measurable_coord` | subgoal of P53.A, helper | 0 |
+| done | `Main.Proposition53Steps::proposition_5_3.memLp_inner_increment` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord` | subgoal of P53.A, helper | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at` | subgoal of Theorem 5.1 proof, eq. (21 | 0 |
 | done | `Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le` | subgoal of Theorem 5.1 proof, (21 | 0 |

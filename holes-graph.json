@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:19:26Z",
+ "updated": "2026-11-27T21:19:43Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 14,
  "counts": {
   "open": 8,
   "blocked": 13,
-  "done": 434
+  "done": 435
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 6,
   "blocked": 3,
-  "done": 368
+  "done": 369
  },
  "untagged": [],
  "legend": {
@@ -3645,7 +3645,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 18
+    "theorem": 19
    },
    "paperGoal": false,
    "verified": false,
@@ -3671,6 +3671,7 @@
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
     "Main.Proposition53Steps::proposition_5_3.measurable_B",
     "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+    "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
     "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
    ],
    "blockers": [
@@ -4215,6 +4216,37 @@
    ],
    "blockers": [],
    "detail": "proved: proposition_5_3.measurable_coord — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+   "label": "memLp_inner_increment",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): for `ξ ∈ L²` `𝓕_s`-measurable, `⟨ξ, B(t) - B(s)⟩ ∈ L²(ℙ_x)`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.memLp_inner_increment — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
@@ -18605,6 +18637,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "kind": "hard"
   },
@@ -19475,6 +19512,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord",
    "kind": "hard"
   },
@@ -19560,6 +19602,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28675,6 +28722,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
   },
   {
@@ -29223,6 +29274,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord"
   },
   {
@@ -29291,6 +29346,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.measurable_coord",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.memLp_inner_increment",
    "to": "Main.Proposition53Steps"
   },
   {

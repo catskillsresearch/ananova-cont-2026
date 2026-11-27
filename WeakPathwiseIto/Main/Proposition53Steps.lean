@@ -340,6 +340,37 @@ theorem integral_inner_increment_sq (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst :
   rw [mul_comm]
   simp only [sq]
 
+/-- **Subgoal** (P53.A, helper): for `ξ ∈ L²` `𝓕_s`-measurable, `⟨ξ, B(t) - B(s)⟩ ∈ L²(ℙ_x)`. -/
+theorem memLp_inner_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t)
+    (ht : t ≤ T) {ξ : CanonicalWienerSpace d T → Rd d}
+    (hξ : Measurable[IsItoIntegral.naturalSigma d T s] ξ)
+    (hξ2 : MemLp ξ 2 (CanonicalWienerSpace.P (T := T) x)) :
+    MemLp (fun ω => ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫) 2
+      (CanonicalWienerSpace.P (T := T) x) := by
+  set P := CanonicalWienerSpace.P (T := T) x
+  have := CanonicalWienerSpace.isProbabilityMeasure_P (T := T) x
+  set D : CanonicalWienerSpace d T → Rd d :=
+    fun ω => CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω with hD
+  obtain ⟨hD2, -, -⟩ := increment_moments x hs hst ht
+  have ha2 : ∀ i, MemLp (fun ω => Rd.coord i (ξ ω)) 2 P := fun i => hξ2.inner_const _
+  have hb2 : ∀ i, MemLp (fun ω => Rd.coord i (D ω)) 2 P := fun i => hD2.inner_const _
+  have hint : ∀ i j, Integrable (fun ω => (Rd.coord i (ξ ω) * Rd.coord j (ξ ω)) *
+      (Rd.coord i (D ω) * Rd.coord j (D ω))) P := fun i j =>
+    (indepFun_naturalSigma_increment x hs hst ht
+      (((measurable_coord i).comp hξ).mul ((measurable_coord j).comp hξ))
+      ((measurable_coord i).mul (measurable_coord j))).integrable_mul
+      ((ha2 i).integrable_mul (ha2 j)) ((hb2 i).integrable_mul (hb2 j))
+  have hm : AEStronglyMeasurable (fun ω => ⟪ξ ω, D ω⟫) P :=
+    hξ2.aestronglyMeasurable.inner hD2.aestronglyMeasurable
+  refine (memLp_two_iff_integrable_sq hm).2 ?_
+  have hexp : (fun ω => ⟪ξ ω, D ω⟫ ^ 2) = fun ω => ∑ i, ∑ j,
+      (Rd.coord i (ξ ω) * Rd.coord j (ξ ω)) * (Rd.coord i (D ω) * Rd.coord j (D ω)) := by
+    funext ω
+    rw [inner_eq_sum_coord, sq, Finset.sum_mul_sum]
+    exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
+  rw [hexp]
+  exact integrable_finsetSum _ fun i _ => integrable_finsetSum _ fun j _ => hint i j
+
 /-- **Subgoal** (P53.A, cross terms): for `0 ≤ s ≤ t ≤ s' ≤ t' ≤ T`, `ξ ∈ L²` `𝓕_s`-measurable
 and `η ∈ L²` `𝓕_{s'}`-measurable, `E[⟨ξ, B(t) - B(s)⟩ ⟨η, B(t') - B(s')⟩] = 0`. -/
 theorem integral_inner_increment_mul_eq_zero (x : Rd d) {s t s' t' : ℝ} (hs : 0 ≤ s)
