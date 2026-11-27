@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T03:54:24Z",
+ "updated": "2026-11-27T03:55:05Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 24,
+ "sorryCount": 23,
  "counts": {
-  "open": 3,
-  "blocked": 17,
-  "done": 298
+  "open": 7,
+  "blocked": 11,
+  "done": 300
  },
  "goalCounts": {
-  "open": 2,
-  "blocked": 10,
-  "done": 60
+  "open": 3,
+  "blocked": 8,
+  "done": 61
  },
  "subgoalCounts": {
-  "open": 1,
-  "blocked": 7,
-  "done": 238
+  "open": 4,
+  "blocked": 3,
+  "done": 239
  },
  "untagged": [],
  "legend": {
@@ -1420,8 +1420,7 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
-    "Bessel.BesselCapacity::besselCapacity.iUnion_le",
-    "Bessel.BesselSpace"
+    "Bessel.BesselCapacity::besselCapacity.iUnion_le"
    ],
    "detail": "4 sorry: iUnion_le, IsNull.iUnion, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
@@ -1445,13 +1444,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselSpace"
    ],
-   "blockers": [
-    "Bessel.BesselSpace"
-   ],
+   "blockers": [],
    "detail": "sorry: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity)"
   },
   {
@@ -1474,13 +1471,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Lemma B.1 proof, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Lemma B.1: every `(2, 1)`-polar set is `(1, 2)`-polar.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselSpace"
    ],
-   "blockers": [
-    "Bessel.BesselSpace"
-   ],
+   "blockers": [],
    "detail": "sorry: besselCapacity.IsNull.one_two_of_two_one — subgoal of Lemma B.1 proof, [AM71] (in Bessel.BesselCapacity)"
   },
   {
@@ -1503,13 +1498,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C proof of Theorem 5.2, [AM71]). Inclusion of exceptional classes [AM71, Thm. 1], as used in Appendix C: for `p > 1`, every `(2, p)`-polar set is `(1, 2)`-polar.",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselSpace"
    ],
-   "blockers": [
-    "Bessel.BesselSpace"
-   ],
+   "blockers": [],
    "detail": "sorry: besselCapacity.IsNull.one_two_of_two_p — subgoal of Appendix C proof of Theorem 5.2, [AM71] (in Bessel.BesselCapacity)"
   },
   {
@@ -1532,13 +1525,11 @@
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93].",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselSpace"
    ],
-   "blockers": [
-    "Bessel.BesselSpace"
-   ],
+   "blockers": [],
    "detail": "sorry: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity)"
   },
   {
@@ -1909,18 +1900,16 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.5",
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "eLpNorm_potential_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "def": 3,
     "theorem": 3
    },
    "paperGoal": false,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
@@ -1928,10 +1917,8 @@
     "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
     "Bessel.Young"
    ],
-   "blockers": [
-    "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le"
-   ],
-   "detail": "1 sorry: eLpNorm_potential_le"
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential",
@@ -1969,23 +1956,21 @@
    "parentGoal": "Bessel.BesselSpace",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselSpace.lean",
-   "sorryCount": 1,
-   "holes": [
-    "BesselSpace.eLpNorm_potential_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Definition 2.5, Young's inequality). Young's inequality: `‖g_α ⋆ f‖_p ≤ ‖g_α‖_1 ‖f‖_p`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselKernel",
     "Bessel.Young"
    ],
    "blockers": [],
-   "detail": "sorry: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
+   "detail": "proved: BesselSpace.eLpNorm_potential_le — subgoal of Definition 2.5, Young's inequality (in Bessel.BesselSpace)"
   },
   {
    "id": "Bessel.BesselSpace::BesselSpace.enorm_potential_le",
@@ -2146,14 +2131,12 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Bessel.BesselSpace",
     "Sobolev.MemW"
    ],
-   "blockers": [
-    "Bessel.BesselSpace"
-   ],
+   "blockers": [],
    "detail": "1 sorry: theorem_2_6"
   },
   {

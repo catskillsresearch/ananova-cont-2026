@@ -60,7 +60,37 @@ theorem aestronglyMeasurable_potential {α : ℝ} (hα : 0 < α) {f : Rd d → �
 theorem eLpNorm_potential_le {α : ℝ} (hα : 0 < α) {p : ℝ≥0∞} (hp : 1 ≤ p) {f : Rd d → ℝ}
     (hf : MemLp f p) :
     eLpNorm (potential d α f) p volume ≤ eLpNorm (besselKernel d α) 1 volume * eLpNorm f p volume := by
-  sorry
+  have hfm : AEStronglyMeasurable f := hf.aestronglyMeasurable
+  have hpm := aestronglyMeasurable_potential hα hfm
+  have hk : AEStronglyMeasurable (besselKernel d α) := (besselKernel.integrable hα).aestronglyMeasurable
+  set K : Rd d → ℝ≥0∞ := fun z => ‖besselKernel d α z‖ₑ with hKdef
+  set F : Rd d → ℝ≥0∞ := fun y => ‖f y‖ₑ with hFdef
+  have hKm : AEMeasurable K := hk.enorm
+  have hFm : AEMeasurable F := hfm.enorm
+  have hpt : ∀ x, ‖potential d α f x‖ₑ ≤ ∫⁻ y, K (x - y) * F y := enorm_potential_le hα.ne' f
+  rw [eLpNorm_one_eq_lintegral_enorm hk]
+  by_cases htop : p = ∞
+  · subst htop
+    rw [eLpNorm_exponent_top hpm, eLpNorm_exponent_top hfm]
+    exact eLpNormEssSup_le_of_ae_enorm_bound (Eventually.of_forall fun x =>
+      (hpt x).trans (young.lintegral_conv_le_of_ae_le hKm ae_le_eLpNormEssSup x))
+  have hp0 : p ≠ 0 := (lt_of_lt_of_le one_pos hp).ne'
+  set q := p.toReal with hqdef
+  have hq : 1 ≤ q := by
+    have := ENNReal.toReal_mono htop hp
+    rwa [ENNReal.toReal_one] at this
+  have hq0 : 0 < q := by linarith
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 htop hpm,
+    eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 htop hfm]
+  calc (∫⁻ x, ‖potential d α f x‖ₑ ^ q) ^ (1 / q)
+      ≤ (∫⁻ x, (∫⁻ y, K (x - y) * F y) ^ q) ^ (1 / q) :=
+        ENNReal.rpow_le_rpow (lintegral_mono fun x => ENNReal.rpow_le_rpow (hpt x) hq0.le)
+          (by positivity)
+    _ ≤ ((∫⁻ z, K z) ^ q * ∫⁻ y, F y ^ q) ^ (1 / q) :=
+        ENNReal.rpow_le_rpow (young.lintegral_rpow_conv_le hq hKm hFm) (by positivity)
+    _ = (∫⁻ z, K z) * (∫⁻ y, F y ^ q) ^ (1 / q) := by
+        rw [ENNReal.mul_rpow_of_nonneg _ _ (by positivity), ← ENNReal.rpow_mul,
+          mul_one_div_cancel hq0.ne', ENNReal.rpow_one]
 
 end BesselSpace
 
