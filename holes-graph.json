@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:38:26Z",
+ "updated": "2026-11-27T10:40:25Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 39,
+ "sorryCount": 38,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 22,
-  "done": 307
+  "done": 308
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 12,
-  "done": 246
+  "done": 247
  },
  "untagged": [],
  "legend": {
@@ -3529,14 +3529,13 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
     "lintegral_piece_le_first",
     "lintegral_le_maximal_first",
     "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
     "ae_localMaximalFunction_lt_top",
-    "exists_mollifier",
     "integrable_norm_hessian_sub"
    ],
    "declKinds": {
@@ -3572,14 +3571,13 @@
    ],
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
-    "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "7 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, exists_mollifier, integrable_norm_hessian_sub"
+   "detail": "6 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3721,17 +3719,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.exists_mollifier"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, standard mollifier `η_m(x) = m^d η(m x)`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3743,7 +3739,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.exists_mollifier — subgoal of Appendix C, standard mollifier `η_m(x (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.exists_mollifier — subgoal of Appendix C, standard mollifier `η_m(x (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",

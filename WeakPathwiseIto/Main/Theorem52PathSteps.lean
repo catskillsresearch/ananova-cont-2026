@@ -191,7 +191,37 @@ theorem exists_mollifier (d : ℕ) : ∃ ψ : ℕ → Rd d → ℝ,
     (∀ n x, 0 ≤ ψ n x) ∧ (∀ n, ∫ x, ψ n x = 1) ∧
     (∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) ∧
     ∃ C : ℝ, ∀ n x, ψ n x ≤ C * ((n : ℝ) + 1) ^ d := by
-  sorry
+  let φ : ContDiffBump (0 : Rd d) := ⟨1 / 2, 1, by norm_num, by norm_num⟩
+  set η : Rd d → ℝ := φ.normed volume with hη
+  have hsupp : ∀ n : ℕ, ∀ x : Rd d, η (((n : ℝ) + 1) • x) ≠ 0 → ‖x‖ < 1 / ((n : ℝ) + 1) := by
+    intro n x hx
+    have hn : (0 : ℝ) < (n : ℝ) + 1 := by positivity
+    have : ((n : ℝ) + 1) • x ∈ Metric.ball (0 : Rd d) 1 := by
+      rw [← φ.support_normed_eq (μ := volume)]; exact hx
+    rw [Metric.mem_ball, dist_zero_right, norm_smul, Real.norm_eq_abs, abs_of_pos hn] at this
+    rw [lt_div_iff₀ hn]; linarith
+  refine ⟨fun n x => ((n : ℝ) + 1) ^ d * η (((n : ℝ) + 1) • x), fun n => ?_, fun n => ?_,
+    fun n x => ?_, fun n => ?_, fun n => ?_, ?_⟩
+  · exact contDiff_const.mul (φ.contDiff_normed.comp (contDiff_const_smul _))
+  · refine HasCompactSupport.intro' (isCompact_closedBall (0 : Rd d) (1 / ((n : ℝ) + 1)))
+      Metric.isClosed_closedBall fun x hx => ?_
+    by_contra h
+    have h2 : η (((n : ℝ) + 1) • x) ≠ 0 := fun h0 => h (by simp only [h0, mul_zero])
+    exact hx (Metric.mem_closedBall.2 (by rw [dist_zero_right]; exact (hsupp n x h2).le))
+  · exact mul_nonneg (by positivity) (φ.nonneg_normed _)
+  · have hn : (0 : ℝ) < (n : ℝ) + 1 := by positivity
+    rw [integral_const_mul, Measure.integral_comp_smul, finrank_euclideanSpace_fin,
+      φ.integral_normed, smul_eq_mul, mul_one, abs_inv, abs_of_pos (pow_pos hn d),
+      mul_inv_cancel₀ (pow_pos hn d).ne']
+  · intro x hx
+    have h2 : η (((n : ℝ) + 1) • x) ≠ 0 := fun h0 => hx (by simp only [h0, mul_zero])
+    rw [Metric.mem_ball, dist_zero_right]; exact hsupp n x h2
+  · refine ⟨1 / volume.real (Metric.closedBall (0 : Rd d) φ.rIn), fun n x => ?_⟩
+    calc ((n : ℝ) + 1) ^ d * η (((n : ℝ) + 1) • x)
+        ≤ ((n : ℝ) + 1) ^ d * (1 / volume.real (Metric.closedBall (0 : Rd d) φ.rIn)) :=
+          mul_le_mul_of_nonneg_left (φ.normed_le_div_measure_closedBall_rIn (μ := volume) _)
+            (pow_nonneg (by positivity : (0 : ℝ) ≤ (n : ℝ) + 1) d)
+      _ = _ := mul_comm _ _
 
 /-- **Subgoal** (Appendix C, `u_m ∈ L^1` for Lemma B.1): for `G ∈ C²_b ∩ W^{2,1}` and `F ∈ W^{2,1}`
 with weak Hessian `H`, `‖∇²G - H‖` is integrable. -/
