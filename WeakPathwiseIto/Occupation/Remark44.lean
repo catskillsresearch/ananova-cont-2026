@@ -164,6 +164,41 @@ theorem remark_4_4.aestronglyMeasurable_mollify_sub {E : Type*} [NormedAddCommGr
     rw [hconv]; exact hψk.continuous_convolution_left _ hψc hf
   exact hc.aestronglyMeasurable.sub hfm
 
+/-- **Subgoal** (Remark 4.4 inclusion, Hessian convergence): for `H ∈ L^{r'}` and a mollifier
+`ψ_n`, `‖ψ_n ⋆ H - H‖_{W^0_{ω,π}} → 0`. -/
+theorem remark_4_4.tendsto_seminorm_mollify_sub (hω : ContinuousOn ω (Icc 0 T))
+    (hQV : HasQuadraticVariation π ω) (hosc : pathOscillation.Vanishes ω π) {r : ℝ≥0∞}
+    (hr : 1 < r) {ℓ : Rd d → ℝ} (hℓ0 : 0 ≤ ℓ)
+    (hweak : WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ)
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E] {H : Rd d → E}
+    (hHr : MemLp H r.conjExponent) {ψ : ℕ → Rd d → ℝ} (hψc : ∀ n, Continuous (ψ n))
+    (hψk : ∀ n, HasCompactSupport (ψ n)) (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
+    Tendsto (fun n => occupationSeminorm π ω (fun x => (∫ y, ψ n (x - y) • H y) - H x)) atTop
+      (𝓝 0) := by
+  obtain ⟨hne, hof, h1⟩ := remark_4_4.conjExponent_facts hr
+  have hHp : MemLp H (ENNReal.ofReal r.conjExponent.toReal) := by rw [hof]; exact hHr
+  have hlim := theorem_5_2.tendsto_eLpNorm_mollify_sub h1 hHp hψc hψ0 hψ1 hψs
+  rw [hof] at hlim
+  have h1' : (1 : ℝ≥0∞) ≤ r.conjExponent := by
+    rw [← hof, ← ENNReal.ofReal_one]; exact ENNReal.ofReal_le_ofReal h1
+  have hHl : LocallyIntegrable H := hHr.locallyIntegrable h1'
+  have hm : ∀ n, AEStronglyMeasurable (fun x => (∫ y, ψ n (x - y) • H y) - H x) := fun n =>
+    remark_4_4.aestronglyMeasurable_mollify_sub hHl hHr.aestronglyMeasurable (hψc n) (hψk n)
+  have hℓ : eLpNorm ℓ r volume ≠ ∞ := hweak.2.1.eLpNorm_ne_top
+  have hprod : Tendsto (fun n => eLpNorm (fun x => (∫ y, ψ n (x - y) • H y) - H x)
+      r.conjExponent volume * eLpNorm ℓ r volume) atTop (𝓝 0) := by
+    simpa using ENNReal.Tendsto.mul_const hlim (Or.inr hℓ)
+  have hev : ∀ᶠ n in atTop,
+      eLpNorm (fun x => (∫ y, ψ n (x - y) • H y) - H x) r.conjExponent volume < ∞ :=
+    (ENNReal.tendsto_nhds_zero.1 hlim) 1 one_pos |>.mono fun n hn => lt_of_le_of_lt hn ENNReal.one_lt_top
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le' tendsto_const_nhds hprod
+    (Eventually.of_forall fun _ => zero_le) ?_
+  filter_upwards [hev] with n hn
+  have hM : MemLp (fun x => (∫ y, ψ n (x - y) • H y) - H x) r.conjExponent volume := hn
+  rw [remark_4_4_seminorm hω hQV hosc hr hℓ0 hweak hM]
+  exact remark_4_4.lintegral_le_eLpNorm_mul hr hℓ0 hweak.2.1.aestronglyMeasurable (hm n)
+
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/
 theorem remark_4_4 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)

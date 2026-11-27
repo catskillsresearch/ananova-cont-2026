@@ -1301,6 +1301,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::Partition.reverse_left": [
    "propext",
    "Classical.choice",
@@ -1757,5 +1762,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:03:14Z"
+ "generated": "2026-11-27T20:03:33Z"
 }

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T20:03:14Z  
-**`sorry` occurrences:** 15 · 6 open · 13 blocked · 408 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 64} · subgoals {'open': 3, 'blocked': 3, 'done': 344} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T20:03:33Z  
+**`sorry` occurrences:** 15 · 6 open · 13 blocked · 409 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 64} · subgoals {'open': 3, 'blocked': 3, 'done': 345} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -294,6 +294,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul` | subgoal of Remark 4.4 inclusion, Hölder | 0 |
 | done | `Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq` | subgoal of Remark 4.4, lower vs. Bochner integral | 0 |
 | done | `Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt` | subgoal of Remark 4.4 inclusion, path convergence | 0 |
+| done | `Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub` | subgoal of Remark 4.4 inclusion, Hessian convergence | 0 |
 | done | `Occupation.Remark45::Partition.reverse_left` | subgoal of Remarks 4.1 and 4.5 | 0 |
 | done | `Occupation.Remark45::Partition.reverse_right` | subgoal of Remarks 4.1 and 4.5 | 0 |
 | done | `Occupation.Remark45::Rd.coord_one_apply` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |

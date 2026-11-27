@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:03:14Z",
+ "updated": "2026-11-27T20:03:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 408
+  "done": 409
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 344
+  "done": 345
  },
  "untagged": [],
  "legend": {
@@ -10190,7 +10190,7 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 9
+    "theorem": 10
    },
    "paperGoal": false,
    "verified": false,
@@ -10207,6 +10207,7 @@
     "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
     "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
     "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+    "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation",
     "Sobolev.Theorem21First"
@@ -10429,6 +10430,42 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_4.tendsto_mollify_of_continuousAt — subgoal of Remark 4.4 inclusion, path convergence (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "label": "tendsto_seminorm_mollify_sub",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4 inclusion, Hessian convergence",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4 inclusion, Hessian convergence): for `H ∈ L^{r'}` and a mollifier `ψ_n`, `‖ψ_n ⋆ H - H‖_{W^0_{ω,π}} → 0`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Main.Theorem52Mollify",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.tendsto_seminorm_mollify_sub — subgoal of Remark 4.4 inclusion, Hessian convergence (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45",
@@ -16602,6 +16639,11 @@
    "kind": "hard"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar",
    "kind": "hard"
@@ -18897,6 +18939,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.Theorem52Mollify",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Theorem52Mollify::theorem_5_2.abs_convolution_le",
    "to": "Main.Theorem52Mollify",
    "kind": "subgoal"
@@ -20123,6 +20170,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -21133,6 +21185,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second",
    "kind": "hard"
   },
@@ -21318,6 +21375,11 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
    "to": "Occupation.Remark44",
    "kind": "subgoal"
   },
@@ -21753,6 +21815,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.WeightedOccupationMeasure",
    "kind": "hard"
   },
@@ -22124,6 +22191,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
    "kind": "hard"
   },
   {
@@ -24928,6 +25000,11 @@
   },
   {
    "from": "Sobolev.Theorem21First",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
    "to": "Sobolev.Theorem21",
    "kind": "hard"
   },
@@ -26555,6 +26632,10 @@
    "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
   },
@@ -28019,6 +28100,10 @@
    "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
   },
   {
+   "from": "Main.Theorem52Mollify",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub"
+  },
+  {
    "from": "Main.Theorem52Mollify::theorem_5_2.abs_convolution_le",
    "to": "Main.Theorem52Mollify"
   },
@@ -28804,6 +28889,10 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
   },
   {
@@ -29372,6 +29461,10 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "to": "Occupation.Remark44"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.tendsto_seminorm_mollify_sub",
    "to": "Occupation.Remark44"
   },
   {
