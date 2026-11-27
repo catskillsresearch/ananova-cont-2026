@@ -75,7 +75,30 @@ theorem lintegral_Ioc_rpow_indicator_le (hd : 0 < d) {D r : ℝ} (hD : 0 < D) (h
     ∫⁻ s in Ioc (0 : ℝ) 1, {s : ℝ | r ≤ s * D}.indicator
         (fun s => ENNReal.ofReal (s ^ (-(d : ℝ) - 1))) s ≤
       ENNReal.ofReal (D ^ d / d * r ^ (-(d : ℝ))) := by
-  sorry
+  set a := r / D with ha_def
+  have ha : 0 < a := div_pos hr hD
+  have hset : {s : ℝ | r ≤ s * D} = Ici a := by
+    ext s; simp [a, div_le_iff₀ hD]
+  have hexp : -(d : ℝ) - 1 < -1 := by
+    have : (0 : ℝ) < d := by exact_mod_cast hd
+    linarith
+  rw [hset, lintegral_indicator measurableSet_Ici]
+  calc ∫⁻ s in Ici a, ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) ∂(volume.restrict (Ioc (0 : ℝ) 1))
+      ≤ ∫⁻ s in Ici a, ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) :=
+        lintegral_mono' (Measure.restrict_mono subset_rfl Measure.restrict_le_self) le_rfl
+    _ = ∫⁻ s in Ioi a, ENNReal.ofReal (s ^ (-(d : ℝ) - 1)) :=
+        (setLIntegral_congr Ioi_ae_eq_Ici).symm
+    _ = ENNReal.ofReal (∫ s in Ioi a, s ^ (-(d : ℝ) - 1)) := by
+        rw [ofReal_integral_eq_lintegral_ofReal (integrableOn_Ioi_rpow_of_lt hexp ha)]
+        filter_upwards [self_mem_ae_restrict measurableSet_Ioi] with s hs
+        exact Real.rpow_nonneg (ha.trans hs).le _
+    _ = ENNReal.ofReal (D ^ d / d * r ^ (-(d : ℝ))) := by
+        rw [integral_Ioi_rpow_of_lt hexp ha]
+        congr 1
+        have hd' : (d : ℝ) ≠ 0 := by exact_mod_cast hd.ne'
+        have e1 : -(d : ℝ) - 1 + 1 = -(d : ℝ) := by ring
+        rw [e1, ha_def, Real.div_rpow hr.le hD.le, Real.rpow_neg hD.le, Real.rpow_natCast]
+        field_simp
 
 /-- **Subgoal** (Theorem 2.1 proof, eq. (2) of [BH93] for `C¹`, [GT, Lemma 7.16]): for convex
 bounded `Q` of positive measure and `x ∈ Q`,
