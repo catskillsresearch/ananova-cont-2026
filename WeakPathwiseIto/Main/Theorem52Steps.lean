@@ -515,7 +515,10 @@ for a.e.-measurable integrands, `∫∫ Φ(x, y) dy dx = ∫∫ Φ(x, x + h) dx 
 theorem lintegral_lintegral_eq_add' {Φ : Rd d → Rd d → ℝ≥0∞}
     (hΦ : AEMeasurable (fun q : Rd d × Rd d => Φ q.1 (q.1 + q.2)) (volume.prod volume)) :
     ∫⁻ x, ∫⁻ y, Φ x y = ∫⁻ h, ∫⁻ x, Φ x (x + h) := by
-  sorry
+  have h1 : ∀ x, ∫⁻ y, Φ x y = ∫⁻ h, Φ x (x + h) := fun x =>
+    (lintegral_add_left_eq_self (fun y => Φ x y) x).symm
+  simp_rw [h1]
+  exact lintegral_lintegral_swap hΦ
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: for a fixed shift `h`, the
 difference `a_n(x + h) - a_n(x)` of `a_n := ψ_n ⋆ f - f` tends to `0` in `L^p`). -/
