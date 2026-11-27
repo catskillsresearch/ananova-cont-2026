@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:00:34Z",
+ "updated": "2026-11-27T20:03:14Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 407
+  "done": 408
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 343
+  "done": 344
  },
  "untagged": [],
  "legend": {
@@ -10190,7 +10190,7 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 8
+    "theorem": 9
    },
    "paperGoal": false,
    "verified": false,
@@ -10201,6 +10201,7 @@
     "Main.Theorem52Mollify",
     "Occupation.Lemma42",
     "Occupation.PathwiseSobolevSpace",
+    "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
     "Occupation.Remark44::remark_4_4.conjExponent_facts",
     "Occupation.Remark44::remark_4_4.integrable_mul_conj",
     "Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul",
@@ -10212,6 +10213,42 @@
    ],
    "blockers": [],
    "detail": "1 sorry: remark_4_4"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "label": "aestronglyMeasurable_mollify_sub",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4 inclusion, measurability",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4 inclusion, measurability): `ψ ⋆ H - H` is a.e. strongly measurable for a continuous compactly supported `ψ` and a locally integrable `H`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Main.Theorem52Mollify",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.aestronglyMeasurable_mollify_sub — subgoal of Remark 4.4 inclusion, measurability (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark44::remark_4_4.conjExponent_facts",
@@ -16536,6 +16573,11 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -18826,6 +18868,11 @@
   },
   {
    "from": "Main.Theorem52Mollify",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Mollify",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -20046,6 +20093,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -21051,6 +21103,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -21233,6 +21290,11 @@
    "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq",
    "kind": "hard"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
   },
   {
    "from": "Occupation.Remark44::remark_4_4.conjExponent_facts",
@@ -21661,6 +21723,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -22027,6 +22094,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
    "kind": "hard"
   },
   {
@@ -24826,6 +24898,11 @@
   },
   {
    "from": "Sobolev.Theorem21First",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts",
    "kind": "hard"
   },
@@ -26455,6 +26532,10 @@
   },
   {
    "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub"
+  },
+  {
+   "from": "Basic.WeakLpTendsto",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts"
   },
   {
@@ -27915,6 +27996,10 @@
   },
   {
    "from": "Main.Theorem52Mollify",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub"
+  },
+  {
+   "from": "Main.Theorem52Mollify",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts"
   },
   {
@@ -28695,6 +28780,10 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Occupation.Remark44::remark_4_4.conjExponent_facts"
   },
   {
@@ -29260,6 +29349,10 @@
   {
    "from": "Occupation.Remark44",
    "to": "Occupation.Remark45::remark_4_5_term_eq"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub",
+   "to": "Occupation.Remark44"
   },
   {
    "from": "Occupation.Remark44::remark_4_4.conjExponent_facts",

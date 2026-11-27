@@ -477,6 +477,7 @@ Basic.SmoothHessian -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq
 Basic.SmoothHessian -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left
 Basic.SmoothHessian -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder
 Basic.WeakLpTendsto -hard-> Occupation.Remark44
+Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -935,6 +936,7 @@ Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_h
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
 Main.Theorem52Mollify -hard-> Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null
 Main.Theorem52Mollify -hard-> Occupation.Remark44
+Main.Theorem52Mollify -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Main.Theorem52Mollify -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Main.Theorem52Mollify -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Main.Theorem52Mollify -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -1179,6 +1181,7 @@ Occupation.Lemma42 -hard-> Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_
 Occupation.Lemma42 -hard-> Main.Theorem51Steps::theorem_5_1.tendsto_covariation
 Occupation.Lemma42 -hard-> Main.Theorem51Steps::theorem_5_1.tendsto_integral
 Occupation.Lemma42 -hard-> Occupation.Remark44
+Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -1380,6 +1383,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.tendsto
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44
+Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -1417,6 +1421,7 @@ Occupation.Remark44 -hard-> Occupation.Remark45::discreteOccupationDensity.piece
 Occupation.Remark44 -hard-> Occupation.Remark45::incrementBall_one_iff
 Occupation.Remark44 -hard-> Occupation.Remark45::occupationConstant_one
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5_term_eq
+Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub -hard-> Occupation.Remark44
 Occupation.Remark44::remark_4_4.conjExponent_facts -hard-> Occupation.Remark44
 Occupation.Remark44::remark_4_4.integrable_mul_conj -hard-> Occupation.Remark44
 Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul -hard-> Occupation.Remark44
@@ -1502,6 +1507,7 @@ Smooth.HasQuadraticVariation -hard-> Main.Eq18::theorem_5_1.eq_18.eventually_sum
 Smooth.HasQuadraticVariation -hard-> Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece
 Smooth.HasQuadraticVariation -hard-> Main.Theorem51
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44
+Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -1576,6 +1582,7 @@ Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm
 Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal
 Smooth.PathOscillation -hard-> Occupation.Remark44
+Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul
@@ -2135,6 +2142,7 @@ Sobolev.Theorem21 -hard-> Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_l
 Sobolev.Theorem21 -hard-> Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le
 Sobolev.Theorem21 -hard-> Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint
 Sobolev.Theorem21First -hard-> Occupation.Remark44
+Sobolev.Theorem21First -hard-> Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub
 Sobolev.Theorem21First -hard-> Occupation.Remark44::remark_4_4.conjExponent_facts
 Sobolev.Theorem21First -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Sobolev.Theorem21First -hard-> Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul

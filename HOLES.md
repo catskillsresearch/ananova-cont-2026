@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T20:00:34Z  
-**`sorry` occurrences:** 15 · 6 open · 13 blocked · 407 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 64} · subgoals {'open': 3, 'blocked': 3, 'done': 343} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T20:03:14Z  
+**`sorry` occurrences:** 15 · 6 open · 13 blocked · 408 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 64} · subgoals {'open': 3, 'blocked': 3, 'done': 344} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -288,6 +288,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self` | subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative | 0 |
+| done | `Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub` | subgoal of Remark 4.4 inclusion, measurability | 0 |
 | done | `Occupation.Remark44::remark_4_4.conjExponent_facts` | subgoal of Remark 4.4 inclusion, conjugate exponent | 0 |
 | done | `Occupation.Remark44::remark_4_4.integrable_mul_conj` | subgoal of Remark 4.4, Hölder | 0 |
 | done | `Occupation.Remark44::remark_4_4.lintegral_le_eLpNorm_mul` | subgoal of Remark 4.4 inclusion, Hölder | 0 |

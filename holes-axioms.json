@@ -1271,6 +1271,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark44::remark_4_4.aestronglyMeasurable_mollify_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark44::remark_4_4.conjExponent_facts": [
    "propext",
    "Classical.choice",
@@ -1752,5 +1757,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:00:34Z"
+ "generated": "2026-11-27T20:03:14Z"
 }

@@ -150,6 +150,20 @@ theorem remark_4_4.conjExponent_facts {r : ℝ≥0∞} (hr : 1 < r) :
   have h1 : (1 : ℝ≥0∞) ≤ r.conjExponent := by unfold ENNReal.conjExponent; exact le_self_add
   simpa using ENNReal.toReal_mono hne h1
 
+/-- **Subgoal** (Remark 4.4 inclusion, measurability): `ψ ⋆ H - H` is a.e. strongly measurable for
+a continuous compactly supported `ψ` and a locally integrable `H`. -/
+theorem remark_4_4.aestronglyMeasurable_mollify_sub {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [CompleteSpace E] {f : Rd d → E} (hf : LocallyIntegrable f)
+    (hfm : AEStronglyMeasurable f) {ψ : Rd d → ℝ} (hψc : Continuous ψ)
+    (hψk : HasCompactSupport ψ) :
+    AEStronglyMeasurable (fun x => (∫ y, ψ (x - y) • f y) - f x) := by
+  have hconv : (fun x => ∫ y, ψ (x - y) • f y) =
+      (ψ ⋆[ContinuousLinearMap.lsmul ℝ ℝ, volume] f) := by
+    funext x; rw [convolution_lsmul_swap]
+  have hc : Continuous fun x => ∫ y, ψ (x - y) • f y := by
+    rw [hconv]; exact hψk.continuous_convolution_left _ hψc hf
+  exact hc.aestronglyMeasurable.sub hfm
+
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/
 theorem remark_4_4 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
