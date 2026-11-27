@@ -449,6 +449,54 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.elementary_isometry": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.elementary_localisation": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.increment_moments": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.SmoothItoAt::theorem_5_1.ito_at": [
    "propext",
    "Classical.choice",
@@ -1802,5 +1850,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:32:21Z"
+ "generated": "2026-11-27T20:50:17Z"
 }

@@ -146,6 +146,7 @@ PAPER_LABEL: dict[str, str] = {
     "Bessel.Theorem26": "Theorem 2.6",
     "Bessel.NonnegPotential": "Definition 2.7 g_α ⋆ h",
     "Main.Theorem52Mollify": "Appendix C mollification steps",
+    "Main.Proposition53Steps": "Proposition 5.3 proof steps (route A: P53.A–E)",
     "Bessel.BesselCapacity": "Definition 2.7",
     "Bessel.CanonicalWienerSpace": "Section 2.2 Wiener space",
     "Bessel.IsBrownianPolar": "Definition 2.8",

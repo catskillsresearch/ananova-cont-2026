@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T20:32:21Z",
+ "updated": "2026-11-27T20:50:17Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 11,
+ "sorryCount": 19,
  "counts": {
-  "open": 5,
-  "blocked": 12,
+  "open": 13,
+  "blocked": 13,
   "done": 419
  },
  "goalCounts": {
   "open": 2,
-  "blocked": 9,
+  "blocked": 10,
   "done": 66
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 11,
   "blocked": 3,
   "done": 353
  },
@@ -3630,6 +3630,327 @@
     "Main.Theorem52"
    ],
    "detail": "1 sorry: proposition_5_3"
+  },
+  {
+   "id": "Main.Proposition53Steps",
+   "label": "Proposition53Steps",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 8,
+   "holes": [
+    "indepFun_coords_past_shift",
+    "indepFun_past_increment",
+    "indep_naturalSigma_increment",
+    "increment_moments",
+    "integral_inner_increment_sq",
+    "integral_inner_increment_mul_eq_zero",
+    "elementary_isometry",
+    "elementary_localisation"
+   ],
+   "declKinds": {
+    "theorem": 8
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral",
+    "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+    "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+    "Main.Proposition53Steps::proposition_5_3.increment_moments",
+    "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+    "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+    "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+   ],
+   "blockers": [
+    "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+    "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+    "Main.Proposition53Steps::proposition_5_3.increment_moments",
+    "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+    "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+    "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+   ],
+   "detail": "8 sorry: indepFun_coords_past_shift, indepFun_past_increment, indep_naturalSigma_increment, increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+   "label": "elementary_isometry",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.B, elementary Itô isometry",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.elementary_isometry"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`, `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.elementary_isometry — subgoal of P53.B, elementary Itô isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "label": "elementary_localisation",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.B, localisation",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.elementary_localisation"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.B, localisation): for an adapted elementary integrand on `0 = s_0 ≤ … ≤ s_k ≤ T` and `ε, δ > 0`, `ℙ(|∫ H dB| ≥ ε) ≤ δ / ε² + ℙ(∫ |H|² ≥ δ)`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.elementary_localisation — subgoal of P53.B, localisation (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.increment_moments",
+   "label": "increment_moments",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, increment moments",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.increment_moments"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, increment moments): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the increment `B(t) - B(s)` is square integrable, centred, with covariance `(t - s) I`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.increment_moments — subgoal of P53.A, increment moments (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+   "label": "indepFun_coords_past_shift",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.indepFun_coords_past_shift"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments). For independent real Brownian motions `W^1, …, W^d` and `s ≥ 0`, the past `(W^i_v)_{i, v ≤ s}` is independent of the shifted increments `(W^i_{s+u} - W^i_s)_{i, u}`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.indepFun_coords_past_shift — subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+   "label": "indepFun_past_increment",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, canonical space",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.indepFun_past_increment"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, canonical space): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the past path `(B(v))_{v ≤ s}` is independent of the increment `B(t) - B(s)`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.indepFun_past_increment — subgoal of P53.A, canonical space (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+   "label": "indep_naturalSigma_increment",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.indep_naturalSigma_increment"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, `B(t) - B(s)` is independent of the natural `σ`-algebra `𝓕_s`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.indep_naturalSigma_increment — subgoal of P53.A (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+   "label": "integral_inner_increment_mul_eq_zero",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, cross terms",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.integral_inner_increment_mul_eq_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, cross terms): for `0 ≤ s ≤ t ≤ s' ≤ t' ≤ T`, `ξ ∈ L²` `𝓕_s`-measurable and `η ∈ L²` `𝓕_{s'}`-measurable, `E[⟨ξ, B(t) - B(s)⟩ ⟨η, B(t') - B(s')⟩] = 0`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.integral_inner_increment_mul_eq_zero — subgoal of P53.A, cross terms (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "label": "integral_inner_increment_sq",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, one-step isometry",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.integral_inner_increment_sq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)` `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.integral_inner_increment_sq — subgoal of P53.A, one-step isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Remark54",
@@ -17899,6 +18220,51 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.increment_moments",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps",
    "kind": "hard"
   },
@@ -18671,6 +19037,91 @@
    "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53",
    "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.increment_moments",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.increment_moments",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
   },
   {
    "from": "Main.SmoothItoAt",
@@ -27711,6 +28162,38 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_isometry"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.increment_moments"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
   },
   {
@@ -28184,6 +28667,70 @@
   {
    "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_isometry"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.increment_moments"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.increment_moments",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps"
   },
   {
    "from": "Main.SmoothItoAt",

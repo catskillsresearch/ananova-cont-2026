@@ -30,6 +30,7 @@ public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.IsItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
+public import WeakPathwiseIto.Main.Proposition53Steps
 public import WeakPathwiseIto.Main.Remark54
 public import WeakPathwiseIto.Main.Eq18
 public import WeakPathwiseIto.Main.SmoothItoAt
