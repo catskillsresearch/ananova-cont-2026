@@ -587,7 +587,75 @@ theorem tendsto_convolution {h : Rd d → ℝ} (hh : Integrable h) {ψ : ℕ →
     (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψc : ∀ n, Continuous (ψ n)) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
     Tendsto (fun n => ∫⁻ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ) atTop (𝓝 0) := by
-  sorry
+  have hψcs : ∀ n, HasCompactSupport (ψ n) := fun n =>
+    (isCompact_closedBall (0 : Rd d) (1 / ((n : ℝ) + 1))).of_isClosed_subset (isClosed_tsupport _)
+      (closure_minimal ((hψs n).trans Metric.ball_subset_closedBall) Metric.isClosed_closedBall)
+  have hψint : ∀ n, Integrable (ψ n) := fun n => integrable_of_integral_eq_one (hψ1 n)
+  have hψL : ∀ n, ∫⁻ y, ‖ψ n y‖ₑ = 1 := by
+    intro n
+    rw [← ofReal_integral_norm_eq_lintegral_enorm (hψint n)]
+    simp_rw [Real.norm_of_nonneg (hψ0 n _)]
+    rw [hψ1 n, ENNReal.ofReal_one]
+  -- integrability of `y ↦ k y * ψ n (x - y)` for integrable `k`
+  have hint : ∀ {k : Rd d → ℝ}, Integrable k → ∀ n x, Integrable fun y => k y * ψ n (x - y) := by
+    intro k hk n x
+    obtain ⟨C, hC⟩ := (hψc n).bounded_above_of_compact_support (hψcs n)
+    exact hk.mul_bdd ((hψc n).comp (continuous_const.sub continuous_id)).aestronglyMeasurable
+      (Eventually.of_forall fun y => hC _)
+  rw [ENNReal.tendsto_atTop_zero]
+  intro ε' hε'
+  obtain ⟨r, hr0, hr, hrε⟩ := ENNReal.lt_iff_exists_real_btwn.1 hε'
+  have hrpos : 0 < r := by
+    rcases hr0.lt_or_eq with h | h
+    · exact h
+    · rw [← h, ENNReal.ofReal_zero] at hr; exact absurd hr (lt_irrefl _)
+  set ε : ℝ := r / 3 with hεdef
+  have hε0 : 0 < ε := by positivity
+  obtain ⟨g, hgc, hgL, hgcont, hgm⟩ := (memLp_one_iff_integrable.2 hh).exists_hasCompactSupport_eLpNorm_sub_le
+    ENNReal.one_ne_top (ENNReal.ofReal_pos.2 hε0).ne'
+  have hgi : Integrable g := memLp_one_iff_integrable.1 hgm
+  rw [eLpNorm_one_eq_lintegral_enorm (hh.sub hgi).aestronglyMeasurable] at hgL
+  have hT := tendsto_convolution_of_hasCompactSupport hgcont hgc hψ0 hψc hψ1 hψs
+  obtain ⟨N, hN⟩ := (ENNReal.tendsto_atTop_zero.1 hT) (ENNReal.ofReal ε) (ENNReal.ofReal_pos.2 hε0)
+  refine ⟨N, fun n hn => ?_⟩
+  have hgconvc : Continuous fun x => ∫ y, g y * ψ n (x - y) := by
+    have : (fun x => ∫ y, g y * ψ n (x - y)) =
+        convolution g (ψ n) (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+      funext x; simp [convolution_def, smul_eq_mul]
+    rw [this]
+    exact hgc.continuous_convolution_left _ hgcont (hψint n).locallyIntegrable
+  have hpt : ∀ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ ≤
+      (‖∫ y, (h - g) y * ψ n (x - y)‖ₑ + ‖(∫ y, g y * ψ n (x - y)) - g x‖ₑ) + ‖(g - h) x‖ₑ := by
+    intro x
+    have e : (∫ y, h y * ψ n (x - y)) - h x =
+        (∫ y, (h - g) y * ψ n (x - y)) + ((∫ y, g y * ψ n (x - y)) - g x) + (g - h) x := by
+      have : ∫ y, (h - g) y * ψ n (x - y) = (∫ y, h y * ψ n (x - y)) - ∫ y, g y * ψ n (x - y) := by
+        rw [← integral_sub (hint hh n x) (hint hgi n x)]
+        congr 1; funext y; simp [sub_mul]
+      rw [this]; simp only [Pi.sub_apply]; ring
+    rw [e]
+    exact (enorm_add_le _ _).trans (add_le_add (enorm_add_le _ _) le_rfl)
+  have hmeas3 : AEMeasurable (fun x => ‖(g - h) x‖ₑ) volume :=
+    (hgi.sub hh).aemeasurable.enorm
+  have hmeas2 : AEMeasurable (fun x => ‖(∫ y, g y * ψ n (x - y)) - g x‖ₑ) volume :=
+    ((hgconvc.sub hgcont).enorm).measurable.aemeasurable
+  calc ∫⁻ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ
+      ≤ ∫⁻ x, (‖∫ y, (h - g) y * ψ n (x - y)‖ₑ + ‖(∫ y, g y * ψ n (x - y)) - g x‖ₑ) +
+          ‖(g - h) x‖ₑ := lintegral_mono hpt
+    _ = (∫⁻ x, ‖∫ y, (h - g) y * ψ n (x - y)‖ₑ) + (∫⁻ x, ‖(∫ y, g y * ψ n (x - y)) - g x‖ₑ) +
+          ∫⁻ x, ‖(g - h) x‖ₑ := by
+        rw [lintegral_add_right' _ hmeas3, lintegral_add_right' _ hmeas2]
+    _ ≤ ENNReal.ofReal ε * 1 + ENNReal.ofReal ε + ENNReal.ofReal ε := by
+        refine add_le_add (add_le_add ?_ (hN n hn)) ?_
+        · rw [← hψL n]
+          exact (lintegral_convolution_le (hh.sub hgi) (hψint n)).trans (mul_le_mul' hgL le_rfl)
+        · calc ∫⁻ x, ‖(g - h) x‖ₑ = ∫⁻ x, ‖(h - g) x‖ₑ := by
+                congr 1; funext x; rw [← enorm_neg]; simp
+            _ ≤ _ := hgL
+    _ = ENNReal.ofReal r := by
+        rw [mul_one, ← ENNReal.ofReal_add hε0.le hε0.le, ← ENNReal.ofReal_add (by positivity) hε0.le]
+        congr 1; rw [hεdef]; ring
+    _ ≤ ε' := hrε.le
 
 /-- **Subgoal** (Theorem 2.1 proof: the Riesz potential `I¹_Q` is bounded on `L¹(Q)`):
 `∫_Q ∫_Q |h(z)| / |y - z|^{d-1} dz dy ≤ C_Q ∫_Q |h|` for bounded `Q`. -/

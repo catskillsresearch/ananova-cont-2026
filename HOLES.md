@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:22:01Z  
-**`sorry` occurrences:** 34 · 10 open · 19 blocked · 253 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 7, 'blocked': 7, 'done': 199} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:24:35Z  
+**`sorry` occurrences:** 33 · 9 open · 19 blocked · 254 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 54} · subgoals {'open': 6, 'blocked': 7, 'done': 200} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -243,7 +243,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae` | subgoal of Theorem 2.1 proof, eq. (2 | 1 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff` | subgoal of Theorem 2.1 proof, eq. (2 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq` | subgoal of Theorem 2.1 proof: at a Lebesgue point the precise representative is the Lebesgue value | 0 |
-| open | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution` | subgoal of Theorem 2.1 proof, mollification step 4 | 1 |
+| done | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution` | subgoal of Theorem 2.1 proof, mollification step 4 | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport` | subgoal of Theorem 2.1 proof, mollification step 3: continuous compactly supported case | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single` | subgoal of Theorem 2.1 proof, mollification step 1, first-order test derivative | 0 |
 | open | `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` | subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points | 1 |
@@ -278,7 +278,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
-| blocked | `Sobolev.Theorem21First` |  | 6 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
+| blocked | `Sobolev.Theorem21First` |  | 5 | `Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le`, `Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le`, `Sobolev.Theorem21First::theorem_2_1_first.poincare_ae`, `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets
