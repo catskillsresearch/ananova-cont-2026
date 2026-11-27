@@ -43,6 +43,28 @@ Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.memLp_two -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.variance_le -hard-> Appendix.LemmaA1
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
+Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Appendix.LemmaB2::lemma_B_2_literal -hard-> Appendix.LemmaB2
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.div_scaling
@@ -68,6 +90,7 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendst
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -89,6 +112,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mo
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -358,6 +382,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_moll
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -504,6 +529,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tend
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -648,6 +674,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_m
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -789,6 +816,7 @@ Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -890,6 +918,7 @@ Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path -hard-> Main.Theore
 Main.Theorem52PathSteps::theorem_5_2.continuousOn_path -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.exists_mollifier -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal -hard-> Main.Theorem52PathSteps
@@ -912,6 +941,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_moll
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -1205,6 +1235,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_te
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -1241,6 +1272,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -1723,6 +1755,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mo
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -1887,6 +1920,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_pat
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal
@@ -2112,6 +2146,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal

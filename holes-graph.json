@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T17:18:13Z",
+ "updated": "2026-11-27T17:19:05Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
-  "blocked": 11,
+  "blocked": 12,
   "done": 376
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 7,
-  "blocked": 1,
+  "blocked": 2,
   "done": 314
  },
  "untagged": [],
@@ -4015,13 +4015,14 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 20
+    "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
    "status": "blocked",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4035,6 +4036,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
     "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+    "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal",
@@ -4056,6 +4058,8 @@
     "Sobolev.Theorem21Second"
    ],
    "blockers": [
+    "Appendix.LemmaB1",
+    "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
     "Main.Theorem52Steps"
    ],
    "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
@@ -4085,6 +4089,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4126,6 +4131,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4167,6 +4173,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4208,6 +4215,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4249,6 +4257,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4290,6 +4299,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4331,6 +4341,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4346,6 +4357,52 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.exists_mollifier — subgoal of Appendix C, standard mollifier `η_m(x (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "label": "exists_polar_forall_potential_lt_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar sets is polar, give one polar set off which every `u_k` has finite potential `∫ |u_k(x",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar sets is polar, give one polar set off which every `u_k` has finite potential `∫ |u_k(x)| G(|x - x₀|) dx < ∞`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "blocked",
+   "deps": [
+    "Appendix.LemmaB1",
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Appendix.LemmaB1",
+    "Main.Theorem52Steps"
+   ],
+   "detail": "proved: theorem_5_2.exists_polar_forall_potential_lt_top — subgoal of Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar sets is polar, give one polar set off which every `u_k` has finite potential `∫ |u_k(x (in Main.Theorem52PathSteps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
@@ -4372,6 +4429,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4413,6 +4471,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4454,6 +4513,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4495,6 +4555,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4536,6 +4597,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4577,6 +4639,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4618,6 +4681,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4659,6 +4723,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4700,6 +4765,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4741,6 +4807,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4782,6 +4849,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4823,6 +4891,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -4864,6 +4933,7 @@
    ],
    "status": "done",
    "deps": [
+    "Appendix.LemmaB1",
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
     "Basic.SmoothHessian",
@@ -13481,6 +13551,116 @@
    "kind": "subgoal"
   },
   {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
+   "kind": "hard"
+  },
+  {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
    "to": "Appendix.LemmaB2",
    "kind": "subgoal"
@@ -13607,6 +13787,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -13708,6 +13893,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
    "kind": "hard"
   },
   {
@@ -15057,6 +15247,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -15787,6 +15982,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -16507,6 +16707,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -17212,6 +17417,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -17716,6 +17926,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -17823,6 +18038,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
    "kind": "hard"
   },
   {
@@ -19292,6 +19512,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -19468,6 +19693,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
    "kind": "hard"
   },
   {
@@ -21882,6 +22112,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -22698,6 +22933,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
    "kind": "hard"
   },
   {
@@ -23827,6 +24067,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "kind": "hard"
   },
@@ -24440,6 +24685,90 @@
    "to": "Appendix.LemmaA1"
   },
   {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal"
+  },
+  {
+   "from": "Appendix.LemmaB1",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
+  },
+  {
    "from": "Appendix.LemmaB2::lemma_B_2_literal",
    "to": "Appendix.LemmaB2"
   },
@@ -24502,86 +24831,6 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Appendix.LemmaB1"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lemma_B_2_hyps_maximal"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.memLp_maximal_toReal"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
    "from": "Basic.ContDiffBounded",
@@ -26281,6 +26530,10 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
   },
   {
@@ -26676,6 +26929,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
    "to": "Main.Theorem52PathSteps"
   },
@@ -26754,6 +27011,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top"
   },
   {
    "from": "Main.Theorem52Steps",

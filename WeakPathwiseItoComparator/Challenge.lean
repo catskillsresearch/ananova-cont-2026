@@ -10797,6 +10797,26 @@ def potentialProfile (d : ℕ) (r : ℝ) : ℝ :=
 
 end
 
+/-! ## `WeakPathwiseIto.Appendix.LemmaB1` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Lemma B.1.** For `h ∈ L^1(ℝ^d)` there is a polar set `E` such that
+`∫ |h(x)| ν(|x - x₀|) dx < ∞` for every `x₀ ∉ E`. -/
+theorem lemma_B_1 {d : ℕ} (T : ℝ) {h : Rd d → ℝ} (hh : Integrable h) :
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
+      ∫⁻ x, ‖h x‖ₑ * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ⊤ := by
+  sorry
+-/
+
+end
+
 /-! ## `WeakPathwiseIto.Main.Theorem52PathSteps` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
@@ -11409,6 +11429,19 @@ theorem ae_tendsto_mollify_path (hT : 0 ≤ T) {F : Rd d → ℝ} (hF : LocallyI
     by_contra hc; exact hnot (hEL hc)
   rw [hFrep _ hL]
   exact (tendsto_mollify_of_isLebesguePoint hF hψ0 hψ1 hψs hψb hL).comp hφ.tendsto_atTop
+-/
+
+/- [omitted from the Challenge: not used by the compared statements]
+/-- **Subgoal** (Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar
+sets is polar, give one polar set off which every `u_k` has finite potential
+`∫ |u_k(x)| G(|x - x₀|) dx < ∞`). -/
+theorem exists_polar_forall_potential_lt_top (T : ℝ) {u : ℕ → Rd d → ℝ}
+    (hu : ∀ k, Integrable (u k)) :
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E, ∀ k,
+      ∫⁻ x, ‖u k x‖ₑ * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ⊤ := by
+  choose E hE hfin using fun k => lemma_B_1 T (hu k)
+  exact ⟨⋃ k, E k, IsBrownianPolar.iUnion hE, fun x₀ hx₀ k =>
+    hfin k x₀ fun hk => hx₀ (mem_iUnion.2 ⟨k, hk⟩)⟩
 -/
 
 end theorem_5_2

@@ -17,6 +17,7 @@ public import WeakPathwiseIto.Main.Theorem52Steps
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Sobolev.Theorem21Second
 public import WeakPathwiseIto.Main.GeometricMeshDecay
+public import WeakPathwiseIto.Appendix.LemmaB1
 
 /-! # Path-side steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -599,6 +600,17 @@ theorem ae_tendsto_mollify_path (hT : 0 ≤ T) {F : Rd d → ℝ} (hF : LocallyI
     by_contra hc; exact hnot (hEL hc)
   rw [hFrep _ hL]
   exact (tendsto_mollify_of_isLebesguePoint hF hψ0 hψ1 hψs hψb hL).comp hφ.tendsto_atTop
+
+/-- **Subgoal** (Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar
+sets is polar, give one polar set off which every `u_k` has finite potential
+`∫ |u_k(x)| G(|x - x₀|) dx < ∞`). -/
+theorem exists_polar_forall_potential_lt_top (T : ℝ) {u : ℕ → Rd d → ℝ}
+    (hu : ∀ k, Integrable (u k)) :
+    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E, ∀ k,
+      ∫⁻ x, ‖u k x‖ₑ * ENNReal.ofReal (potentialProfile d ‖x - x₀‖) < ⊤ := by
+  choose E hE hfin using fun k => lemma_B_1 T (hu k)
+  exact ⟨⋃ k, E k, IsBrownianPolar.iUnion hE, fun x₀ hx₀ k =>
+    hfin k x₀ fun hk => hx₀ (mem_iUnion.2 ⟨k, hk⟩)⟩
 
 end theorem_5_2
 
