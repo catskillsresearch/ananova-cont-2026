@@ -222,10 +222,45 @@ theorem le_of_enorm_le {g : Rd d → ℝ} {c : ℝ≥0∞} (hg : ∀ y, ‖g y�
 
 /-- **Subgoal** (Hardy–Littlewood, truncated weak bound:
 `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`). -/
-theorem mul_measure_lt_le_truncate {f : Rd d → ℝ} (hf : Measurable f) {t : ℝ} (ht : 0 < t) :
+theorem mul_measure_lt_le_truncate {f : Rd d → ℝ} (hf : Measurable f) (t : ℝ) :
     ENNReal.ofReal t * volume {x | ENNReal.ofReal t < localMaximalFunction 1 f x} ≤
       2 * (2 ^ d) ^ 2 * ∫⁻ y in {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ}, ‖f y‖ₑ := by
-  sorry
+  set S : Set (Rd d) := {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ} with hS_def
+  have hS : MeasurableSet S := measurableSet_lt measurable_const (hf.enorm.const_mul _)
+  set a : ℝ≥0∞ := ENNReal.ofReal t / 2 with ha_def
+  have h2a : 2 * a = ENNReal.ofReal t := ENNReal.mul_div_cancel two_ne_zero ENNReal.ofNat_ne_top
+  have haa : a + a = ENNReal.ofReal t := ENNReal.add_halves _
+  have hg : Measurable (S.indicator f) := hf.indicator hS
+  have hsplit : ∀ y, ‖f y‖ₑ ≤ ‖S.indicator f y‖ₑ + ‖Sᶜ.indicator f y‖ₑ := fun y => by
+    by_cases hy : y ∈ S
+    · simp [hy]
+    · simp [hy]
+  have hh : ∀ y, ‖Sᶜ.indicator f y‖ₑ ≤ a := fun y => by
+    by_cases hy : y ∈ S
+    · simp [hy]
+    · rw [indicator_of_mem (show y ∈ Sᶜ from hy)]
+      simp only [hS_def, mem_ofPred_eq, not_lt] at hy
+      rw [ha_def, ENNReal.le_div_iff_mul_le (Or.inl two_ne_zero) (Or.inl ENNReal.ofNat_ne_top),
+        mul_comm]
+      exact hy
+  have hsub : {x | ENNReal.ofReal t < localMaximalFunction 1 f x} ⊆
+      {x | a < localMaximalFunction 1 (S.indicator f) x} := fun x hx => by
+    simp only [mem_ofPred_eq] at hx ⊢
+    by_contra hle
+    push Not at hle
+    have := (le_add hg hsplit x).trans (add_le_add hle (le_of_enorm_le hh x))
+    rw [haa] at this
+    exact absurd hx (not_lt.2 this)
+  calc ENNReal.ofReal t * volume {x | ENNReal.ofReal t < localMaximalFunction 1 f x}
+      ≤ 2 * (a * volume {x | a < localMaximalFunction 1 (S.indicator f) x}) := by
+        rw [← mul_assoc, h2a]; gcongr
+    _ ≤ 2 * ((2 ^ d) ^ 2 * ∫⁻ y, ‖S.indicator f y‖ₑ) := by
+        exact mul_right_mono (mul_measure_lt_le _ a)
+    _ = 2 * (2 ^ d) ^ 2 * ∫⁻ y in S, ‖f y‖ₑ := by
+        rw [← mul_assoc]
+        congr 1
+        simp_rw [enorm_indicator_eq_indicator_enorm]
+        exact lintegral_indicator hS _
 
 /-- **Subgoal** (Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞`). -/
 theorem lintegral_Ioi_indicator_rpow {q : ℝ} (hq : 0 < q) (a : ℝ≥0∞) :
