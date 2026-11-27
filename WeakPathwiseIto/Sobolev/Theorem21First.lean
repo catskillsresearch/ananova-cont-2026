@@ -1019,7 +1019,59 @@ points): `|Q ∩ B(x,r)| ≥ κ_d |B(x,r)|` for `x ∈ Q` and small `r`. -/
 theorem volume_inter_ball_ge (hd : 0 < d) : ∃ κ : ℝ≥0, 0 < κ ∧ ∀ Q : Set (Rd d), IsCubeOrBall Q →
     ∀ x ∈ Q, ∀ᶠ r in 𝓝[>] (0 : ℝ),
       (κ : ℝ≥0∞) * volume (Metric.ball x r) ≤ volume (Q ∩ Metric.ball x r) := by
-  sorry
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
+  have hd1 : (1 : ℝ) ≤ d := by exact_mod_cast hd
+  refine ⟨Real.toNNReal (((4 * d : ℝ) ^ d)⁻¹), Real.toNNReal_pos.2 (by positivity),
+    fun Q hQ x hx => ?_⟩
+  obtain ⟨c, ρ, hρ, hQc, -, hin, hout⟩ := ball_subset_subset hd hQ
+  have hxc : ‖x - c‖ ≤ d * ρ := by
+    have := hout hx; rwa [Metric.mem_closedBall, dist_eq_norm] at this
+  filter_upwards [Ioo_mem_nhdsGT (by positivity : (0 : ℝ) < 4 * d * ρ)] with r hr
+  obtain ⟨hr0, hr1⟩ := hr
+  set t : ℝ := r / (4 * d * ρ) with htdef
+  have ht0 : 0 < t := by positivity
+  have ht1 : t ≤ 1 := by rw [htdef, div_le_one (by positivity)]; exact hr1.le
+  set c' : Rd d := x + t • (c - x) with hc'
+  have hsub : Metric.ball c' (t * ρ) ⊆ Q ∩ Metric.ball x r := by
+    intro z hz
+    rw [Metric.mem_ball, dist_eq_norm] at hz
+    set y : Rd d := x + t⁻¹ • (z - x) with hy
+    have hyc : y - c = t⁻¹ • (z - c') := by
+      have h1 : t⁻¹ • (t • (c - x)) = c - x := by
+        rw [smul_smul, inv_mul_cancel₀ ht0.ne', one_smul]
+      rw [hy, hc', sub_add_eq_sub_sub, smul_sub (t⁻¹) (z - x), h1]; abel
+    have hyQ : y ∈ Q := by
+      apply hin
+      rw [Metric.mem_ball, dist_eq_norm, hyc, norm_smul, Real.norm_of_nonneg (inv_nonneg.2 ht0.le)]
+      calc t⁻¹ * ‖z - c'‖ < t⁻¹ * (t * ρ) := mul_lt_mul_of_pos_left hz (inv_pos.2 ht0)
+        _ = ρ := by field_simp
+    have hzeq : z = x + t • (y - x) := by
+      simp only [hy, add_sub_cancel_left, smul_smul, mul_inv_cancel₀ ht0.ne', one_smul]; abel
+    refine ⟨hzeq ▸ hQc.add_smul_sub_mem hx hyQ ⟨ht0.le, ht1⟩, ?_⟩
+    rw [Metric.mem_ball, dist_eq_norm, hzeq, add_sub_cancel_left, norm_smul,
+      Real.norm_of_nonneg ht0.le]
+    have hyx : ‖y - x‖ < 2 * d * ρ := by
+      calc ‖y - x‖ = ‖(y - c) + (c - x)‖ := by rw [sub_add_sub_cancel]
+        _ ≤ ‖y - c‖ + ‖c - x‖ := norm_add_le _ _
+        _ < ρ + d * ρ := by
+            refine add_lt_add_of_lt_of_le ?_ (by rw [norm_sub_rev]; exact hxc)
+            have := hin.trans_eq rfl
+            rw [hyc, norm_smul, Real.norm_of_nonneg (inv_nonneg.2 ht0.le)]
+            calc t⁻¹ * ‖z - c'‖ < t⁻¹ * (t * ρ) := mul_lt_mul_of_pos_left hz (inv_pos.2 ht0)
+              _ = ρ := by field_simp
+        _ ≤ 2 * d * ρ := by nlinarith
+    calc t * ‖y - x‖ ≤ t * (2 * d * ρ) := mul_le_mul_of_nonneg_left hyx.le ht0.le
+      _ = r / 2 := by rw [htdef]; field_simp; ring
+      _ < r := by linarith
+  refine le_trans (le_of_eq ?_) (measure_mono hsub)
+  rw [Measure.addHaar_ball_of_pos volume x hr0, Measure.addHaar_ball_of_pos volume c' (by positivity),
+    finrank_euclideanSpace_fin, ← mul_assoc, ENNReal.ofReal.eq_def, ← ENNReal.coe_mul]
+  congr 2
+  rw [← Real.toNNReal_mul (by positivity)]
+  congr 1
+  have htr : r / (4 * d * ρ) * ρ = r / (4 * d) := by field_simp
+  rw [htdef, htr, div_pow]
+  field_simp
 
 /-- **Subgoal** (Theorem 2.1 proof, [BH93, Lemma 2] with `α = 1`):
 `∫_{B(x,r)} |y - z|^{1-d} dy ≤ C |B(x,r)| |x - z|^{1-d}`. -/

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:41:22Z",
+ "updated": "2026-11-27T02:43:01Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 31,
+ "sorryCount": 30,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 19,
-  "done": 261
+  "done": 262
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 3,
   "blocked": 7,
-  "done": 207
+  "done": 208
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
     "abs_sub_average_le"
    ],
@@ -7265,10 +7264,9 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
+    "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le"
    ],
-   "detail": "3 sorry: volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "2 sorry: lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7884,17 +7882,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.volume_inter_ball_ge"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof: cubes and balls have positive density at each of their points): `|Q ∩ B(x,r)| ≥ κ_d |B(x,r)|` for `x ∈ Q` and small `r`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7904,7 +7900,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.volume_inter_ball_ge — subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.volume_inter_ball_ge — subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem23",
