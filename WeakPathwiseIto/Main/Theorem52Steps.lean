@@ -117,7 +117,25 @@ theorem isWeakDerivative_zero {f : Rd d → ℝ} (hf : LocallyIntegrable f) :
 is its weak derivative, by integration by parts). -/
 theorem isWeakDerivative_single_of_contDiff {f : Rd d → ℝ} (hf : ContDiff ℝ 1 f) (i : Fin d) :
     IsWeakDerivative (Pi.single i 1) f (fun x => fderiv ℝ f x (Rd.basisVec i)) := by
-  sorry
+  have hdc : Continuous (fun x => fderiv ℝ f x (Rd.basisVec i)) :=
+    (hf.continuous_fderiv one_ne_zero).clm_apply continuous_const
+  refine ⟨hf.continuous.locallyIntegrable, hdc.locallyIntegrable, fun φ hφ hφc => ?_⟩
+  have hφ1 : ContDiff ℝ 1 φ := hφ.of_le (by exact_mod_cast le_top)
+  have hφd : Continuous (fun x => fderiv ℝ φ x (Rd.basisVec i)) :=
+    (hφ1.continuous_fderiv one_ne_zero).clm_apply continuous_const
+  have hord : IsWeakDerivative.order (Pi.single i 1 : Fin d → ℕ) = 1 := by
+    simp [IsWeakDerivative.order]
+  simp_rw [theorem_2_1_first.testDeriv_single, hord, pow_one, neg_one_mul]
+  have hc1 : HasCompactSupport (fun x => f x * fderiv ℝ φ x (Rd.basisVec i)) :=
+    (hφc.fderiv_apply (𝕜 := ℝ) _).mul_left
+  have hc2 : HasCompactSupport (fun x => fderiv ℝ f x (Rd.basisVec i) * φ x) := hφc.mul_left
+  have hc3 : HasCompactSupport (fun x => f x * φ x) := hφc.mul_left
+  exact integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable
+    ((hdc.mul hφ.continuous).integrable_of_hasCompactSupport hc2)
+    ((hf.continuous.mul hφd).integrable_of_hasCompactSupport hc1)
+    ((hf.continuous.mul hφ.continuous).integrable_of_hasCompactSupport hc3)
+    (fun x _ => (hf.differentiable one_ne_zero).differentiableAt)
+    (fun x _ => (hφ1.differentiable one_ne_zero).differentiableAt)
 
 /-- **Subgoal** (Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i`). -/
 theorem le_one_cases {α : Fin d → ℕ} (hα : ∑ k, α k ≤ 1) :
