@@ -6,6 +6,7 @@ module
 
 public import Mathlib
 public import WeakPathwiseIto.Bessel.BesselSpace
+public import WeakPathwiseIto.Bessel.NonnegPotential
 
 @[expose] public section
 
@@ -17,9 +18,11 @@ open scoped ENNReal NNReal RealInnerProductSpace
 namespace WeakPathwiseIto
 
 /-- The Bessel `(α, p)`-capacity (Definition 2.7):
-`B_{α,p}(E) := inf {‖h‖_p^p : g_α ⋆ h ≥ 1_E, h ≥ 0}`. -/
+`B_{α,p}(E) := inf {‖h‖_p^p : g_α ⋆ h ≥ 1_E, h ≥ 0}`, over measurable `h ≥ 0` (elements of
+`L^p`), with `g_α ⋆ h ∈ [0, ∞]` the extended-real potential `BesselSpace.nonnegPotential`. -/
 def besselCapacity (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : ℝ≥0∞ :=
-  ⨅ (h : Rd d → ℝ) (_ : 0 ≤ h) (_ : ∀ x ∈ S, 1 ≤ BesselSpace.potential d α h x),
+  ⨅ (h : Rd d → ℝ) (_ : Measurable h) (_ : 0 ≤ h)
+    (_ : ∀ x ∈ S, 1 ≤ BesselSpace.nonnegPotential d α h x),
     eLpNorm h p volume ^ p.toReal
 
 namespace besselCapacity

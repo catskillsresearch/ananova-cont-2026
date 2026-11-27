@@ -487,6 +487,7 @@ Bessel.BesselKernel -hard-> Bessel.BesselSpace
 Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential
 Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le
 Bessel.BesselKernel -hard-> Bessel.BesselSpace::BesselSpace.enorm_potential_le
+Bessel.BesselKernel -hard-> Bessel.NonnegPotential
 Bessel.BesselKernel::besselKernel.asymptotic_origin -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.fourier_eq -hard-> Bessel.BesselKernel
 Bessel.BesselKernel::besselKernel.fourier_fubini -hard-> Bessel.BesselKernel
@@ -621,6 +622,11 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null
 Bessel.IsBrownianPolar::IsBrownianPolar.iUnion -hard-> Bessel.IsBrownianPolar
 Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull -hard-> Bessel.IsBrownianPolar
+Bessel.NonnegPotential -hard-> Bessel.BesselCapacity
+Bessel.NonnegPotential -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.iUnion
+Bessel.NonnegPotential -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one
+Bessel.NonnegPotential -hard-> Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p
+Bessel.NonnegPotential -hard-> Bessel.BesselCapacity::besselCapacity.iUnion_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le

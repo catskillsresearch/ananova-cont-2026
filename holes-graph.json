@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T17:56:20Z",
+ "updated": "2026-11-27T18:50:40Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 18,
  "counts": {
   "open": 7,
   "blocked": 14,
-  "done": 391
+  "done": 392
  },
  "goalCounts": {
   "open": 3,
   "blocked": 10,
-  "done": 62
+  "done": 63
  },
  "subgoalCounts": {
   "open": 4,
@@ -1600,7 +1600,8 @@
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
     "Bessel.BesselCapacity::besselCapacity.iUnion_le",
-    "Bessel.BesselSpace"
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
    ],
    "blockers": [
     "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1636,7 +1637,8 @@
    ],
    "status": "blocked",
    "deps": [
-    "Bessel.BesselSpace"
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
    ],
    "blockers": [],
    "detail": "proved: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
@@ -1669,7 +1671,8 @@
    ],
    "status": "open",
    "deps": [
-    "Bessel.BesselSpace"
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
    ],
    "blockers": [],
    "detail": "sorry: besselCapacity.IsNull.one_two_of_two_one — subgoal of Lemma B.1 proof, [AM71] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
@@ -1702,7 +1705,8 @@
    ],
    "status": "open",
    "deps": [
-    "Bessel.BesselSpace"
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
    ],
    "blockers": [],
    "detail": "sorry: besselCapacity.IsNull.one_two_of_two_p — subgoal of Appendix C proof of Theorem 5.2, [AM71] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
@@ -1735,7 +1739,8 @@
    ],
    "status": "open",
    "deps": [
-    "Bessel.BesselSpace"
+    "Bessel.BesselSpace",
+    "Bessel.NonnegPotential"
    ],
    "blockers": [],
    "detail": "sorry: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
@@ -2406,6 +2411,28 @@
     "Bessel.BesselCapacity"
    ],
    "detail": "sorry: IsBrownianPolar.iff_isNull — subgoal of Definition 2.8, [Fuk93, p. 25] (in Bessel.IsBrownianPolar) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Bessel.NonnegPotential",
+   "label": "NonnegPotential",
+   "section": "Bessel",
+   "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
+   "paper": "Definition 2.7 g_α ⋆ h",
+   "file": "WeakPathwiseIto/Bessel/NonnegPotential.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Bessel.BesselKernel"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Bessel.Theorem26",
@@ -16258,6 +16285,11 @@
    "kind": "hard"
   },
   {
+   "from": "Bessel.BesselKernel",
+   "to": "Bessel.NonnegPotential",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
    "to": "Bessel.BesselKernel",
    "kind": "subgoal"
@@ -16926,6 +16958,31 @@
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar",
    "kind": "subgoal"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le",
+   "kind": "hard"
   },
   {
    "from": "Bessel.Theorem29",
@@ -26441,6 +26498,10 @@
    "to": "Bessel.BesselSpace::BesselSpace.enorm_potential_le"
   },
   {
+   "from": "Bessel.BesselKernel",
+   "to": "Bessel.NonnegPotential"
+  },
+  {
    "from": "Bessel.BesselKernel::besselKernel.asymptotic_origin",
    "to": "Bessel.BesselKernel"
   },
@@ -26787,6 +26848,22 @@
   {
    "from": "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull",
    "to": "Bessel.IsBrownianPolar"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p"
+  },
+  {
+   "from": "Bessel.NonnegPotential",
+   "to": "Bessel.BesselCapacity::besselCapacity.iUnion_le"
   },
   {
    "from": "Bessel.Theorem29",

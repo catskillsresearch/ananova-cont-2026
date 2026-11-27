@@ -5556,6 +5556,28 @@ end BesselSpace
 
 end
 
+/-! ## `WeakPathwiseIto.Bessel.NonnegPotential` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace BesselSpace
+
+/-- The Bessel potential `g_α ⋆ h ∈ [0, ∞]` of a nonnegative function `h` (Definition 2.7),
+as an extended-real (lower Lebesgue) integral, so that it takes the value `∞` where the
+integral diverges; with the convention `g_0 ⋆ h = h`. -/
+def nonnegPotential (d : ℕ) (α : ℝ) (h : Rd d → ℝ) : Rd d → ℝ≥0∞ :=
+  if α = 0 then fun x => ENNReal.ofReal (h x) else
+    fun x => ∫⁻ y, ENNReal.ofReal (besselKernel d α (x - y)) * ENNReal.ofReal (h y)
+
+end BesselSpace
+
+end
+
 /-! ## `WeakPathwiseIto.Bessel.BesselCapacity` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
@@ -5566,9 +5588,11 @@ open MeasureTheory Filter Topology Set
 open scoped ENNReal NNReal RealInnerProductSpace
 
 /-- The Bessel `(α, p)`-capacity (Definition 2.7):
-`B_{α,p}(E) := inf {‖h‖_p^p : g_α ⋆ h ≥ 1_E, h ≥ 0}`. -/
+`B_{α,p}(E) := inf {‖h‖_p^p : g_α ⋆ h ≥ 1_E, h ≥ 0}`, over measurable `h ≥ 0` (elements of
+`L^p`), with `g_α ⋆ h ∈ [0, ∞]` the extended-real potential `BesselSpace.nonnegPotential`. -/
 def besselCapacity (d : ℕ) (α : ℝ) (p : ℝ≥0∞) (S : Set (Rd d)) : ℝ≥0∞ :=
-  ⨅ (h : Rd d → ℝ) (_ : 0 ≤ h) (_ : ∀ x ∈ S, 1 ≤ BesselSpace.potential d α h x),
+  ⨅ (h : Rd d → ℝ) (_ : Measurable h) (_ : 0 ≤ h)
+    (_ : ∀ x ∈ S, 1 ≤ BesselSpace.nonnegPotential d α h x),
     eLpNorm h p volume ^ p.toReal
 
 namespace besselCapacity

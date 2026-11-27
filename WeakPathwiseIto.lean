@@ -17,6 +17,7 @@ public import WeakPathwiseIto.Basic.Rd
 public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Basic.WeakLpTendsto
 public import WeakPathwiseIto.Bessel.BesselCapacity
+public import WeakPathwiseIto.Bessel.NonnegPotential
 public import WeakPathwiseIto.Bessel.BesselKernel
 public import WeakPathwiseIto.Bessel.BesselSpace
 public import WeakPathwiseIto.Bessel.CanonicalWienerSpace

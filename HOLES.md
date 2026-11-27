@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:56:20Z  
-**`sorry` occurrences:** 18 · 7 open · 14 blocked · 391 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 329} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T18:50:40Z  
+**`sorry` occurrences:** 18 · 7 open · 14 blocked · 392 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 63} · subgoals {'open': 4, 'blocked': 4, 'done': 329} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -418,6 +418,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Bessel.BesselSpace` | Definition 2.5 | 0 |  |
 | done | `Bessel.CanonicalWienerSpace` | Section 2.2 Wiener space | 0 |  |
 | blocked | `Bessel.IsBrownianPolar` | Definition 2.8 | 1 | `Bessel.BesselCapacity`, `Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull` |
+| done | `Bessel.NonnegPotential` | Definition 2.7 g_α ⋆ h | 0 |  |
 | open | `Bessel.Theorem26` | Theorem 2.6 | 1 |  |
 | blocked | `Bessel.Theorem29` | Theorem 2.9 | 1 | `Bessel.BesselCapacity` |
 | done | `Bessel.WienerLawExists` | Section 2.2 ℙ_x exists (subgoals) | 0 |  |
