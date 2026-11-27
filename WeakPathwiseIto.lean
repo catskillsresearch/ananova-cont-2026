@@ -35,6 +35,7 @@ public import WeakPathwiseIto.Main.IsLocalItoIntegral
 public import WeakPathwiseIto.Main.IsL2ItoIntegral
 public import WeakPathwiseIto.Main.Proposition53
 public import WeakPathwiseIto.Main.Proposition53Steps
+public import WeakPathwiseIto.Main.Proposition53Proof
 public import WeakPathwiseIto.Main.Remark54
 public import WeakPathwiseIto.Main.Eq18
 public import WeakPathwiseIto.Main.SmoothItoAt

@@ -449,6 +449,36 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.bdg_two": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Proposition53Proof::proposition_5_3.summable_mesh": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.coord_apply": [
    "propext",
    "Classical.choice",
@@ -1912,5 +1942,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:55:44Z"
+ "generated": "2026-11-27T21:56:30Z"
 }

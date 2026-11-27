@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T21:55:44Z",
+ "updated": "2026-11-27T21:56:30Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 11,
+ "sorryCount": 16,
  "counts": {
-  "open": 5,
-  "blocked": 12,
+  "open": 10,
+  "blocked": 13,
   "done": 446
  },
  "goalCounts": {
   "open": 2,
-  "blocked": 9,
+  "blocked": 10,
   "done": 71
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 8,
   "blocked": 3,
   "done": 375
  },
@@ -3720,6 +3720,228 @@
     "Main.Theorem52"
    ],
    "detail": "1 sorry: proposition_5_3"
+  },
+  {
+   "id": "Main.Proposition53Proof",
+   "label": "Proposition53Proof",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "Proposition 5.3 proof steps C–E (per the paper)",
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 5,
+   "holes": [
+    "exists_subseq_summable_L2_ball",
+    "summable_mesh",
+    "bdg_two",
+    "ae_tendsto_zero_of_tsum_lintegral_lt_top",
+    "exists_exitTime_eq_top"
+   ],
+   "declKinds": {
+    "theorem": 5
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+    "Main.Proposition53Proof::proposition_5_3.bdg_two",
+    "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+    "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+    "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [
+    "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+    "Main.Proposition53Proof::proposition_5_3.bdg_two",
+    "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+    "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+    "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+   ],
+   "detail": "5 sorry: exists_subseq_summable_L2_ball, summable_mesh, bdg_two, ae_tendsto_zero_of_tsum_lintegral_lt_top, exists_exitTime_eq_top"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "label": "ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, Tonelli step",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, Tonelli step): if `∑_n E X_n < ∞` for nonnegative `X_n`, then `∑_n X_n < ∞` almost surely, hence `X_n → 0` almost surely.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top — subgoal of P53.D, Tonelli step (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "label": "bdg_two",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, Burkholder–Davis–Gundy inequality, `p = 2`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.bdg_two"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, Burkholder–Davis–Gundy inequality, `p = 2`): there is a universal constant `C` such that for every `L²` stochastic integral process `I(t) = ∫_0^t H dB`, `t ∈ [0, T]`, with continuous paths, `E sup_{t ≤ T} |I(t)|² ≤ C E ∫_0^T |H(s)|² ds`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.bdg_two — subgoal of P53.D, Burkholder–Davis–Gundy inequality, `p = 2` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "label": "exists_exitTime_eq_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, `τ_R > T` for some `R`",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.exists_exitTime_eq_top"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, `τ_R > T` for some `R`): Brownian paths are bounded on `[0, T]`, so every path has `τ_R = ∞` for some integer `R ≥ 1`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.exists_exitTime_eq_top — subgoal of P53.D, `τ_R > T` for some `R` (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "label": "exists_subseq_summable_L2_ball",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.C, deterministic subsequence",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.exists_subseq_summable_L2_ball"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.C, deterministic subsequence): if `g_m → G` in `L²_loc`, a subsequence satisfies `∑_m ‖g_m - G‖²_{L²(B_R)} < ∞` for every integer `R ≥ 1` (chosen inductively with `‖g_m - G‖²_{L²(B_j)} ≤ 2^{-m}`, `1 ≤ j ≤ m`).",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.exists_subseq_summable_L2_ball — subgoal of P53.C, deterministic subsequence (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "label": "summable_mesh",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.D, Assumption 2 ⇒ summable mesh",
+   "parentGoal": "Main.Proposition53Proof",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Proof.lean",
+   "sorryCount": 1,
+   "holes": [
+    "proposition_5_3.summable_mesh"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.D, Assumption 2 ⇒ summable mesh): `∑_n |π_n| < ∞`.",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "open",
+   "deps": [
+    "Main.GeometricMeshDecay",
+    "Main.IsLocalItoIntegral",
+    "Main.ItoRiemannSum",
+    "Main.Proposition53Steps"
+   ],
+   "blockers": [],
+   "detail": "sorry: proposition_5_3.summable_mesh — subgoal of P53.D, Assumption 2 ⇒ summable mesh (in Main.Proposition53Proof) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps",
@@ -19471,6 +19693,36 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52",
    "kind": "hard"
   },
@@ -19747,6 +19999,121 @@
   {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "to": "Main.Proposition53Proof",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
    "kind": "hard"
   },
   {
@@ -29362,6 +29729,26 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem"
   },
   {
@@ -29571,6 +29958,86 @@
   {
    "from": "Main.IsLocalItoIntegral",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball"
+  },
+  {
+   "from": "Main.IsLocalItoIntegral",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball"
+  },
+  {
+   "from": "Main.ItoRiemannSum",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.bdg_two",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Proof::proposition_5_3.summable_mesh",
+   "to": "Main.Proposition53Proof"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.ae_tendsto_zero_of_tsum_lintegral_lt_top"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.bdg_two"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_exitTime_eq_top"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.exists_subseq_summable_L2_ball"
+  },
+  {
+   "from": "Main.Proposition53Steps",
+   "to": "Main.Proposition53Proof::proposition_5_3.summable_mesh"
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.coord_apply",

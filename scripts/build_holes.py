@@ -185,6 +185,7 @@ PAPER_LABEL: dict[str, str] = {
     "Sobolev.HardyLittlewood": "Hardy–Littlewood bound for M_1 (Appendix C; bridge to Carleson project)",
     "Main.IsItoIntegral": "Itô integral (elementary integrands, natural filtration)",
     "Main.ExitTime": "τ_R exit time (proof of Prop. 5.3)",
+    "Main.Proposition53Proof": "Proposition 5.3 proof steps C–E (per the paper)",
     "Main.ItoRiemannSum": "S_n^m Riemann sums (proof of Prop. 5.3)",
     "Main.IsLocalItoIntegral": "local Itô integral J (proof of Prop. 5.3)",
     "Main.IsL2ItoIntegral": "L² Itô integral (stopped integrals J^R)",
