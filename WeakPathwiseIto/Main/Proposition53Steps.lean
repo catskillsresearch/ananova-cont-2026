@@ -210,6 +210,10 @@ theorem coord_sum_smul_basisVec (a : Fin d → ℝ) (i : Fin d) :
     Rd.coord i (∑ j, a j • Rd.basisVec j) = a i := by
   simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right, Pi.single_apply]
 
+/-- **Subgoal** (P53.A, helper): each coordinate map `v ↦ v^i` is measurable. -/
+theorem measurable_coord (i : Fin d) : Measurable (Rd.coord (d := d) i) :=
+  (continuous_id.inner continuous_const).measurable
+
 /-- **Subgoal** (P53.A, increment moments): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the increment
 `B(t) - B(s)` is square integrable, centred, with covariance `(t - s) I`. -/
 theorem increment_moments (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) (ht : t ≤ T) :
