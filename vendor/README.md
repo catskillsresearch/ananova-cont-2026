@@ -13,5 +13,10 @@ repository lives in the main body of this repository instead, with its origin re
   `../xodarev2026/vendor/brownian-motion` (itself lyasoff2016's pruned pin of
   RemyDegenne/brownian-motion). Import concrete modules only; do **not**
   `lake build BrownianMotion` as an umbrella.
+- `formal-mathfin/`: compiled as this package's `lean_lib MathFin`
+  (`srcDir = "vendor/formal-mathfin"`), same layout. Unchanged copy of the import closure of
+  `MathFin/Probability/Brownian/Ito` (94 modules) from formal-applied-math/formal-mathfin
+  `9f1c0ab` (Apache-2.0): the sorry-free one-dimensional Itô integral, isometry and Itô formula
+  built on the same brownian-motion revision we vendor.
 - `palomar-policy/` + `PALOMAR_POLICY_PIN`: the Palomar editorial policy snapshot
   (PalomarRegistry/PalomarPolicy), copied from `../xodarev2026/vendor/`.

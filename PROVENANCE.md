@@ -47,8 +47,10 @@ Apache-2.0, F. van Doorn et al. and contributors) is a Lake git dependency, not 
 `globalMaximalFunction`, `laverage_le_globalMaximalFunction`, `hasStrongType_maximalFunction_one`,
 `CMB_eq_of_one_lt_q`, `measurable_maximalFunction`.
 
-formal-mathfin (previously `vendor/formal-mathfin/`, xodarev2026 copy of
-formal-applied-math/formal-mathfin `c47908e`) was never imported and was removed on 2026-11-27.
+formal-mathfin (an earlier xodarev2026 copy at `c47908e` was never imported and was removed on
+2026-11-27) is vendored again, unchanged, as `vendor/formal-mathfin/` at upstream `9f1c0ab`
+(import closure of `MathFin/Probability/Brownian/Ito`, 94 modules, Apache-2.0; see
+`vendor/FROZEN.txt`), as the base for the Itô integral needed by Proposition 5.3.
 
 ### Where vendored and upstream code is used
 
@@ -57,7 +59,7 @@ formal-applied-math/formal-mathfin `c47908e`) was never imported and was removed
 | Brownian motion predicate in `CanonicalWienerSpace.IsLaw` | Mathlib `ProbabilityTheory.IsBrownianReal` (upstreamed from RemyDegenne/brownian-motion) | imported from Mathlib |
 | Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged by the library (`Solution.lean`); the Mathlib-only Challenge does not need it |
 | Hardy–Littlewood maximal theorem (`Sobolev/HardyLittlewood.lean`) | Carleson project `Carleson/ToMathlib/HardyLittlewood.lean` @ `f7487cc` | imported unchanged (Lake dependency); our file only bridges the paper's `M_1` to `globalMaximalFunction` |
-| Itô integral | formal-mathfin (formerly vendored) `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
+| Itô integral (planned, Proposition 5.3) | `vendor/formal-mathfin` @ `9f1c0ab`: one-dimensional L² Itô integral (`ItoIntegralCLM`), isometry, continuous modification, Itô formula | vendored unchanged (lean_lib `MathFin`); not yet imported. It is scalar (one Brownian motion); Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand, to be built on it in the main body |
 
 ## Borrowed unchanged tooling (kept at the path the tooling requires)
 

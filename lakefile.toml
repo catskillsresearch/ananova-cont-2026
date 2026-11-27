@@ -1,5 +1,5 @@
 name = "WeakPathwiseIto"
-defaultTargets = ["WeakPathwiseIto", "WeakPathwiseItoChallenge", "WeakPathwiseItoSolution"]
+defaultTargets = ["WeakPathwiseIto", "WeakPathwiseItoChallenge", "WeakPathwiseItoSolution", "MathFin"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -32,6 +32,14 @@ rev = "c20f168ed693537c78111ffeabc2ab5f384e35d6"
 [[lean_lib]]
 name = "BrownianMotion"
 srcDir = "vendor/brownian-motion"
+
+# formal-mathfin (Itô integral for Brownian motion, Apache-2.0): verbatim copy of the import
+# closure of MathFin/Probability/Brownian/Ito at formal-applied-math/formal-mathfin 9f1c0ab
+# (see vendor/FROZEN.txt). Built on the same brownian-motion revision we vendor (497e5e2).
+[[lean_lib]]
+name = "MathFin"
+srcDir = "vendor/formal-mathfin"
+globs = ["MathFin.+"]
 
 [[lean_lib]]
 name = "WeakPathwiseIto"

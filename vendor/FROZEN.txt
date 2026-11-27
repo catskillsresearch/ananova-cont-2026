@@ -27,6 +27,24 @@ vendor/brownian-motion   (lean_lib BrownianMotion)
   requires: kolmogorov_extension4 @ c20f168ed693537c78111ffeabc2ab5f384e35d6 (root git require)
   used by:  WeakPathwiseIto/Bessel/WienerLawExists.lean (proof of CanonicalWienerSpace.exists_isLaw)
 
+vendor/formal-mathfin   (lean_lib MathFin, srcDir = "vendor/formal-mathfin", globs MathFin.+)
+  origin:   https://github.com/formal-applied-math/formal-mathfin   (Apache-2.0; LICENSE copied)
+  rev:      9f1c0ab5814f8f4be3863c43c11e9cbebf645cc4 (2026-11-27 00:26:52 -0300)
+  upstream toolchain: leanprover/lean4:v4.35.0, Mathlib e91b128, BrownianMotion 497e5e2
+            (the same brownian-motion revision as vendor/brownian-motion), kolmogorov c20f168
+  date:     2026-11-27 (copied into this repository)
+  contents: the import closure of MathFin/Probability/Brownian/Ito/*.lean (94 modules,
+            ~30k lines: MathFin/Init, Probability/{Analysis,Brownian,Discrete,Gaussian,Jumps,
+            Martingales}); files byte-identical to upstream; the other ~715 MathFin modules
+            (Markets, Pricing, Insurance, Risk, ...) are not copied.
+  in-tree edits: none. Builds unchanged on v4.36.0-rc1 / Mathlib d888143 against our
+            vendor/brownian-motion (one upstream deprecation warning,
+            StochasticIntegralCharacterisation.lean:672 SimpleFunc.coe_add, left verbatim).
+  checked:  #print axioms MathFin.ito_formula_unrestricted and
+            MathFin.ItoFormulaAdapted.tendstoInMeasure_riemannStieltjes_itoIntegral:
+            [propext, Classical.choice, Quot.sound].
+  used by:  nothing yet (Proposition 5.3 plan pending approval).
+
 vendor/palomar-policy     (not Lean; editorial policy snapshot)
   origin:   https://github.com/PalomarRegistry/PalomarPolicy
   rev:      5bd35cddcfc940532bb5f55e399d68b49b0986a5 (vendor/PALOMAR_POLICY_PIN)

@@ -12,6 +12,12 @@ brownian-motion
     Carleson/ToMathlib/RealInterpolation/InterpolatedExponents.lean:45 (carleson @ f7487cc).
     No other change.
 
+formal-mathfin
+  path:   vendor/formal-mathfin (built as root lean_lib MathFin, srcDir; not a path require)
+  upstream: https://github.com/formal-applied-math/formal-mathfin.git (Apache-2.0)
+  upstream_commit: 9f1c0ab5814f8f4be3863c43c11e9cbebf645cc4
+  subset: import closure of MathFin/Probability/Brownian/Ito (94 files, unchanged)
+
 kolmogorov_extension4
   url:    https://github.com/RemyDegenne/kolmogorov_extension4.git
   commit: c20f168ed693537c78111ffeabc2ab5f384e35d6
