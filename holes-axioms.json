@@ -506,6 +506,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.measurable_B": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.SmoothItoAt::theorem_5_1.ito_at": [
    "propext",
    "Classical.choice",
@@ -1859,5 +1864,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:54:37Z"
+ "generated": "2026-11-27T20:54:52Z"
 }

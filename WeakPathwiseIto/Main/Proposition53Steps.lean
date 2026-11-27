@@ -125,6 +125,13 @@ theorem indepFun_map_of_comp {Ω Ω' β β' : Type*} [MeasurableSpace Ω] [Measu
     Measure.map_apply_of_aemeasurable hG (hf hA), Measure.map_apply_of_aemeasurable hG (hg hC)]
   exact h A C hA hC
 
+/-- **Subgoal** (P53.A, helper): the canonical coordinate `B(t)` is measurable on `Ω`. -/
+theorem measurable_B (t : ℝ) : Measurable (CanonicalWienerSpace.B (d := d) (T := T) t) := by
+  unfold CanonicalWienerSpace.B
+  by_cases h : t ∈ Icc 0 T
+  · simp only [h, dite_true]; exact ContinuousMap.measurable_eval _
+  · simp only [h, dite_false]; exact measurable_const
+
 /-- **Subgoal** (P53.A, canonical space): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the past path
 `(B(v))_{v ≤ s}` is independent of the increment `B(t) - B(s)`. -/
 theorem indepFun_past_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t) (ht : t ≤ T) :

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:54:38Z",
+ "updated": "2026-11-27T20:54:53Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 18,
  "counts": {
   "open": 12,
   "blocked": 13,
-  "done": 422
+  "done": 423
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 10,
   "blocked": 3,
-  "done": 356
+  "done": 357
  },
  "untagged": [],
  "legend": {
@@ -3649,7 +3649,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 10
+    "theorem": 11
    },
    "paperGoal": false,
    "verified": false,
@@ -3667,7 +3667,8 @@
     "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
     "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
-    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+    "Main.Proposition53Steps::proposition_5_3.measurable_B"
    ],
    "blockers": [
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
@@ -4010,6 +4011,37 @@
    ],
    "blockers": [],
    "detail": "sorry: proposition_5_3.integral_inner_increment_sq — subgoal of P53.A, one-step isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.measurable_B",
+   "label": "measurable_B",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): the canonical coordinate `B(t)` is measurable on `Ω`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.measurable_B — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Remark54",
@@ -18334,6 +18366,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.measurable_B",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps",
    "kind": "hard"
   },
@@ -19163,6 +19200,11 @@
    "kind": "hard"
   },
   {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.measurable_B",
+   "kind": "hard"
+  },
+  {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
@@ -19209,6 +19251,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.measurable_B",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28291,6 +28338,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.measurable_B"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
   },
   {
@@ -28806,6 +28857,10 @@
    "to": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
   },
   {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.measurable_B"
+  },
+  {
    "from": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
    "to": "Main.Proposition53Steps"
   },
@@ -28843,6 +28898,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.measurable_B",
    "to": "Main.Proposition53Steps"
   },
   {
