@@ -166,7 +166,14 @@ theorem exists_ball_of_lt {f : Rd d → ℝ} {x : Rd d} {t : ℝ≥0∞}
     (h : t < localMaximalFunction 1 f x) :
     ∃ r : ℝ, 0 < r ∧ r < 1 ∧
       t * volume (Metric.ball x r) ≤ ∫⁻ y in Metric.ball x r, ‖f y‖ₑ := by
-  sorry
+  unfold localMaximalFunction at h
+  simp only [lt_iSup_iff] at h
+  obtain ⟨r, hr, hr1, ht⟩ := h
+  refine ⟨r, hr, ENNReal.ofReal_lt_one.1 hr1, ?_⟩
+  rw [laverage_eq, Measure.restrict_apply_univ] at ht
+  have hV0 : volume (Metric.ball x r) ≠ 0 := (Metric.measure_ball_pos _ _ hr).ne'
+  have hVt : volume (Metric.ball x r) ≠ ⊤ := measure_ball_lt_top.ne
+  exact (ENNReal.lt_div_iff_mul_lt (Or.inl hV0) (Or.inl hVt) |>.1 ht).le
 
 /-- **Subgoal** (Hardy–Littlewood, weak type `(1, 1)`: `t |{M_1 f > t}| ≤ 4^d ‖f‖_1`). -/
 theorem mul_measure_lt_le (f : Rd d → ℝ) (t : ℝ≥0∞) :

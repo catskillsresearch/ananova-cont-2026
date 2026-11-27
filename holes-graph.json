@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T12:30:38Z",
+ "updated": "2026-11-27T12:31:45Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 40,
+ "sorryCount": 39,
  "counts": {
-  "open": 17,
+  "open": 16,
   "blocked": 50,
-  "done": 305
+  "done": 306
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 14,
+  "open": 13,
   "blocked": 39,
-  "done": 244
+  "done": 245
  },
  "untagged": [],
  "legend": {
@@ -8524,9 +8524,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
-    "exists_ball_of_lt",
     "mul_measure_lt_le",
     "le_add",
     "le_of_enorm_le",
@@ -8564,7 +8563,6 @@
    ],
    "blockers": [
     "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-    "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
     "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
     "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
@@ -8574,7 +8572,7 @@
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
     "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
    ],
-   "detail": "10 sorry: exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
+   "detail": "9 sorry: mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8613,22 +8611,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.exists_ball_of_lt"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, `t < M_1 f(x)` is witnessed by a ball `B(x, r)`, `r < 1`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.exists_ball_of_lt — subgoal of Hardy–Littlewood, `t < M_1 f(x (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.exists_ball_of_lt — subgoal of Hardy–Littlewood, `t < M_1 f(x (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",

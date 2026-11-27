@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T12:30:38Z  
-**`sorry` occurrences:** 40 · 17 open · 50 blocked · 305 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 14, 'blocked': 39, 'done': 244} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T12:31:45Z  
+**`sorry` occurrences:** 39 · 16 open · 50 blocked · 306 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 13, 'blocked': 39, 'done': 245} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -269,7 +269,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
 | open | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` | subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` | 1 |
-| open | `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt` | subgoal of Hardy–Littlewood, `t < M_1 f(x | 1 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt` | subgoal of Hardy–Littlewood, `t < M_1 f(x | 0 |
 | open | `Sobolev.HardyLittlewood::hardyLittlewood.le_add` | subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` | 1 |
 | open | `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le` | subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` | 1 |
 | open | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow` | subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞` | 1 |
@@ -350,7 +350,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
-| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 10 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae`, `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.le_add`, `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` |
+| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 9 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae`, `Sobolev.HardyLittlewood::hardyLittlewood.le_add`, `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
