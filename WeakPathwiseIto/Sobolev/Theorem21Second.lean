@@ -1,0 +1,134 @@
+/-
+Copyright (c) 2026 Lars Warren Ericson. All rights reserved.
+Released under Apache-2.0 license as described in file LICENSE.
+-/
+module
+
+public import Mathlib
+public import WeakPathwiseIto.Sobolev.IsWeakHessian
+public import WeakPathwiseIto.Sobolev.Theorem21First
+public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
+
+/-! # Steps of the proof of Theorem 2.1, second estimate ([BH93, Thm 2], `m = 2`)
+
+Following [BH93, §2]: with the averaged Taylor polynomial
+`T_Q f (w) = ⨍_{z ∈ Q} (f z + ⟪∇f z, w - z⟫)`, the bound [BH93, (5)] for `m = 2`
+(`|f x - T_Q f x| ≤ C ∫_Q |∇²f| / |x - z|^{d-2}`) is proved for `C²` functions by Taylor's
+formula along segments and a homothety change of variables, extended a.e. to `W^{2,1}` by
+mollification, and passed to Lebesgue points by averaging over `Q ∩ B(x,r)`
+([BH93, Lemma 2]).  The splitting [BH93, (8)] then reduces the estimate to this bound at `x`
+and `y` plus the first estimate applied to the coordinates `∂_i f`. -/
+
+@[expose] public section
+
+noncomputable section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal RealInnerProductSpace
+
+namespace WeakPathwiseIto
+
+namespace theorem_2_1_second
+
+variable {d : ℕ}
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 1: homothety with
+quadratic weight): the substitution `z = x + s (y - x)` on a convex `Q ∋ x`. -/
+theorem lintegral_comp_homothety_sq_le {Q : Set (Rd d)} (hQ : Convex ℝ Q)
+    (hQm : MeasurableSet Q) {x : Rd d} (hx : x ∈ Q) {D : ℝ} (hD : ∀ z ∈ Q, dist z x ≤ D)
+    {g : Rd d → ℝ≥0∞} (hg : Measurable g) {s : ℝ} (hs : s ∈ Ioc (0 : ℝ) 1) :
+    ∫⁻ y in Q, g (x + s • (y - x)) * ‖y - x‖ₑ ^ 2 ≤
+      ENNReal.ofReal (s ^ (-(d : ℝ) - 2)) *
+        ∫⁻ z in Q, {z | dist z x ≤ s * D}.indicator (fun z => g z * ‖z - x‖ₑ ^ 2) z := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 2: Taylor's formula
+with integral remainder along the segment from `z` to `x`, reparametrised from `x`). -/
+theorem abs_taylor_le {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f) (x z : Rd d) :
+    ENNReal.ofReal |f x - f z - ⟪gradient f z, x - z⟫| ≤
+      ∫⁻ t in Ioc (0 : ℝ) 1, ENNReal.ofReal t *
+        ‖fderiv ℝ (fderiv ℝ f) (x + t • (z - x))‖ₑ * ‖z - x‖ₑ ^ 2 := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²` on a convex `Q`). -/
+theorem poincare2_of_contDiff (hd : 0 < d) {f : Rd d → ℝ} (hf : ContDiff ℝ 2 f)
+    {Q : Set (Rd d)} (hQ : Convex ℝ Q) (hQm : MeasurableSet Q) (hQb : Bornology.IsBounded Q)
+    (hQ0 : volume Q ≠ 0) {x : Rd d} (hx : x ∈ Q) :
+    ENNReal.ofReal |f x - ⨍ z in Q, (f z + ⟪gradient f z, x - z⟫)| ≤
+      Metric.ediam Q ^ (d : ℝ) / (d * volume Q) *
+        ∫⁻ z in Q, ‖fderiv ℝ (fderiv ℝ f) z‖ₑ / edist x z ^ ((d : ℝ) - 2) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: the coordinates `∂_i f` of the weak
+gradient have weak gradient `(∂_j ∂_i f)_j` read off the weak Hessian). -/
+theorem isWeakGradient_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hG : IsWeakGradient f G) (hH : IsWeakHessian f H) (i : Fin d) :
+    IsWeakGradient (fun z => Rd.coord i (G z))
+      (fun z => ∑ j, Rd.coord i (H z (Rd.basisVec j)) • Rd.basisVec j) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: the Hessian entries are integrable). -/
+theorem coord_hessian_integrable {f : Rd d → ℝ} {H : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hf : MemW 2 1 f) (hH : IsWeakHessian f H) (i j : Fin d) :
+    Integrable fun z => Rd.coord i (H z (Rd.basisVec j)) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}`). -/
+theorem memW_coord {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hf : MemW 2 1 f) (hG : IsWeakGradient f G) (hH : IsWeakHessian f H) (i : Fin d) :
+    MemW 1 1 (fun z => Rd.coord i (G z)) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}`
+function is `C²`, with second derivatives the mollified weak Hessian entries). -/
+theorem hessian_convolution {f : Rd d → ℝ} {G : Rd d → Rd d} {H : Rd d → (Rd d →L[ℝ] Rd d)}
+    (hG : IsWeakGradient f G) (hH : IsWeakHessian f H) {ψ : Rd d → ℝ}
+    (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
+    ContDiff ℝ 2 (fun x => ∫ y, f y * ψ (x - y)) ∧
+      ∀ w i j, fderiv ℝ (fderiv ℝ (fun x => ∫ y, f y * ψ (x - y))) w (Rd.basisVec i)
+          (Rd.basisVec j) = ∫ y, Rd.coord j (H y (Rd.basisVec i)) * ψ (w - y) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of
+its entries in the standard basis). -/
+theorem norm_le_sum_entries (A : Rd d →L[ℝ] Rd d →L[ℝ] ℝ) :
+    ‖A‖ ≤ ∑ i, ∑ j, |A (Rd.basisVec i) (Rd.basisVec j)| := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: the local Riesz potential of order `2`
+is bounded on `L¹(Q)`). -/
+theorem lintegral_potential2_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.IsBounded Q)
+    (hQm : MeasurableSet Q) :
+    ∃ C : ℝ≥0, ∀ h : Rd d → ℝ, AEStronglyMeasurable h →
+      ∫⁻ y in Q, ∫⁻ z in Q, ‖h z‖ₑ / edist y z ^ ((d : ℝ) - 2) ≤ C * ∫⁻ z in Q, ‖h z‖ₑ := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate, (5) for `m = 2` almost everywhere on `Q`
+for `W^{2,1}` functions, by mollification). -/
+theorem poincare2_ae (hd : 0 < d) : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d)
+    (H : Rd d → (Rd d →L[ℝ] Rd d)), MemW 2 1 f → IsWeakGradient f G → IsWeakHessian f H →
+      ∀ Q : Set (Rd d), IsCubeOrBall Q →
+        ∀ᵐ y ∂volume, y ∈ Q → ENNReal.ofReal |f y - ⨍ z in Q, (f z + ⟪G z, y - z⟫)| ≤
+          K * ∫⁻ z in Q, ‖H z‖ₑ / edist y z ^ ((d : ℝ) - 2) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the
+unified form `⨍_{B(x,r)} |y - z|^{2-d} ≤ C (r + |x - z|)^{2-d}`). -/
+theorem lintegral_ball_kernel2_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (x z : Rd d) {r : ℝ}, 0 < r →
+    ∫⁻ y in Metric.ball x r, 1 / edist y z ^ ((d : ℝ) - 2) ≤
+      C * volume (Metric.ball x r) / (ENNReal.ofReal r + edist x z) ^ ((d : ℝ) - 2) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5)] with `m = 2` at a
+Lebesgue point). -/
+theorem abs_sub_taylorAverage_le (hd : 0 < d) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d)
+    (H : Rd d → (Rd d →L[ℝ] Rd d)) (Q : Set (Rd d)) (x : Rd d) (c : ℝ), MemW 2 1 f →
+      IsWeakGradient f G → IsWeakHessian f H → IsCubeOrBall Q → x ∈ Q →
+        Tendsto (fun r : ℝ => ⨍ y in Metric.ball x r, |f y - c|) (𝓝[>] 0) (𝓝 0) →
+          ENNReal.ofReal |c - ⨍ z in Q, (f z + ⟪G z, x - z⟫)| ≤
+            C * ∫⁻ z in Q, ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 2) := by
+  sorry
+
+end theorem_2_1_second
+
+end WeakPathwiseIto

@@ -12,6 +12,7 @@ public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.IsLebesguePoint
 public import WeakPathwiseIto.Sobolev.Theorem21First
+public import WeakPathwiseIto.Sobolev.Theorem21Second
 
 @[expose] public section
 

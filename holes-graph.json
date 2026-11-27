@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T02:48:15Z",
+ "updated": "2026-11-27T02:54:21Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 27,
+ "sorryCount": 39,
  "counts": {
-  "open": 5,
-  "blocked": 17,
+  "open": 16,
+  "blocked": 19,
   "done": 265
  },
  "goalCounts": {
-  "open": 4,
-  "blocked": 10,
+  "open": 3,
+  "blocked": 12,
   "done": 55
  },
  "subgoalCounts": {
-  "open": 1,
+  "open": 13,
   "blocked": 7,
   "done": 210
  },
@@ -7198,7 +7198,7 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "open",
+   "status": "blocked",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7206,9 +7206,12 @@
     "Sobolev.IsWeakHessian",
     "Sobolev.MemW",
     "Sobolev.PreciseRepresentative",
-    "Sobolev.Theorem21First"
+    "Sobolev.Theorem21First",
+    "Sobolev.Theorem21Second"
    ],
-   "blockers": [],
+   "blockers": [
+    "Sobolev.Theorem21Second"
+   ],
    "detail": "1 sorry: theorem_2_1_second"
   },
   {
@@ -7888,6 +7891,416 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_2_1_first.volume_inter_ball_ge — subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second",
+   "label": "Theorem21Second",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": null,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 12,
+   "holes": [
+    "lintegral_comp_homothety_sq_le",
+    "abs_taylor_le",
+    "poincare2_of_contDiff",
+    "isWeakGradient_coord",
+    "coord_hessian_integrable",
+    "memW_coord",
+    "hessian_convolution",
+    "norm_le_sum_entries",
+    "lintegral_potential2_le",
+    "poincare2_ae",
+    "lintegral_ball_kernel2_le",
+    "abs_sub_taylorAverage_le"
+   ],
+   "declKinds": {
+    "theorem": 12
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First",
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+    "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+    "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+    "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+    "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+    "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
+   ],
+   "blockers": [
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+    "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+    "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+    "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+    "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+    "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+    "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
+   ],
+   "detail": "12 sorry: lintegral_comp_homothety_sq_le, abs_taylor_le, poincare2_of_contDiff, isWeakGradient_coord, coord_hessian_integrable, memW_coord, hessian_convolution, norm_le_sum_entries, lintegral_potential2_le, poincare2_ae, lintegral_ball_kernel2_le, abs_sub_taylorAverage_le"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "label": "abs_sub_taylorAverage_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.abs_sub_taylorAverage_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5)] with `m = 2` at a Lebesgue point).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.abs_sub_taylorAverage_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5 (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "label": "abs_taylor_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate, (5",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.abs_taylor_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 2: Taylor's formula with integral remainder along the segment from `z` to `x`, reparametrised from `x`).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.abs_taylor_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "label": "coord_hessian_integrable",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: the Hessian entries are integrable",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.coord_hessian_integrable"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the Hessian entries are integrable).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.coord_hessian_integrable — subgoal of Theorem 2.1 proof, second estimate: the Hessian entries are integrable (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "label": "hessian_convolution",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}` function is `C²`, with second derivatives the mollified weak Hessian entries",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.hessian_convolution"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}` function is `C²`, with second derivatives the mollified weak Hessian entries).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.hessian_convolution — subgoal of Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}` function is `C²`, with second derivatives the mollified weak Hessian entries (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "label": "isWeakGradient_coord",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: the coordinates `∂_i f` of the weak gradient have weak gradient `(∂_j ∂_i f",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.isWeakGradient_coord"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the coordinates `∂_i f` of the weak gradient have weak gradient `(∂_j ∂_i f)_j` read off the weak Hessian).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.isWeakGradient_coord — subgoal of Theorem 2.1 proof, second estimate: the coordinates `∂_i f` of the weak gradient have weak gradient `(∂_j ∂_i f (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "label": "lintegral_ball_kernel2_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.lintegral_ball_kernel2_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r)} |y - z|^{2-d} ≤ C (r + |x - z|)^{2-d}`).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.lintegral_ball_kernel2_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Lemma 2] with `α = 2`, in the unified form `⨍_{B(x,r (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "label": "lintegral_comp_homothety_sq_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate, (5",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.lintegral_comp_homothety_sq_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²`, step 1: homothety with quadratic weight): the substitution `z = x + s (y - x)` on a convex `Q ∋ x`.",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.lintegral_comp_homothety_sq_le — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "label": "lintegral_potential2_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: the local Riesz potential of order `2` is bounded on `L¹(Q",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.lintegral_potential2_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: the local Riesz potential of order `2` is bounded on `L¹(Q)`).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.lintegral_potential2_le — subgoal of Theorem 2.1 proof, second estimate: the local Riesz potential of order `2` is bounded on `L¹(Q (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "label": "memW_coord",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}`",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.memW_coord"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}`).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.memW_coord — subgoal of Theorem 2.1 proof, second estimate: `∂_i f ∈ W^{1,1}` (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "label": "norm_le_sum_entries",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of its entries in the standard basis",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.norm_le_sum_entries"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of its entries in the standard basis).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.norm_le_sum_entries — subgoal of Theorem 2.1 proof, second estimate: a bilinear form is bounded by the sum of its entries in the standard basis (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "label": "poincare2_ae",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate, (5",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.poincare2_ae"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `m = 2` almost everywhere on `Q` for `W^{2,1}` functions, by mollification).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.poincare2_ae — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
+  },
+  {
+   "id": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "label": "poincare2_of_contDiff",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, second estimate, (5",
+   "parentGoal": "Sobolev.Theorem21Second",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_second.poincare2_of_contDiff"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, second estimate, (5) for `C²` on a convex `Q`).",
+   "status": "open",
+   "deps": [
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.Theorem21First"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_second.poincare2_of_contDiff — subgoal of Theorem 2.1 proof, second estimate, (5 (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem23",
@@ -11256,6 +11669,71 @@
    "kind": "hard"
   },
   {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "kind": "hard"
+  },
+  {
    "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
    "to": "Occupation.PathwiseSobolevSpace",
    "kind": "subgoal"
@@ -12757,6 +13235,71 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.Theorem23",
    "kind": "hard"
   },
@@ -13291,6 +13834,71 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "kind": "hard"
+  },
+  {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
    "to": "Sobolev.Theorem21First",
    "kind": "subgoal"
@@ -13393,6 +14001,71 @@
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Sobolev.Theorem21",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "to": "Sobolev.Theorem21Second",
    "kind": "subgoal"
   }
  ],
@@ -15510,6 +16183,54 @@
    "to": "Occupation.Remark44"
   },
   {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
+  },
+  {
    "from": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset",
    "to": "Occupation.PathwiseSobolevSpace"
   },
@@ -16227,10 +16948,6 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
-   "to": "Sobolev.Theorem21"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.Theorem23"
   },
   {
@@ -16627,7 +17344,51 @@
   },
   {
    "from": "Sobolev.Theorem21First",
-   "to": "Sobolev.Theorem21"
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae"
+  },
+  {
+   "from": "Sobolev.Theorem21First",
+   "to": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -16712,6 +17473,58 @@
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Sobolev.Theorem21"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
+   "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
+   "to": "Sobolev.Theorem21Second"
   }
  ]
 }
