@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T16:44:37Z",
+ "updated": "2026-11-27T16:49:16Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
-  "done": 368
+  "done": 370
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 1,
-  "done": 306
+  "done": 308
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 12
+    "theorem": 14
    },
    "paperGoal": false,
    "verified": false,
@@ -4036,8 +4036,10 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+    "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
@@ -4412,6 +4414,46 @@
    "detail": "proved: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "label": "occupationSeminorm_norm",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: `‖f‖_{B,π}` only sees `|f|`, so the matrix-valued Hessian error can be replaced by its pointwise norm `u_m = ‖∇²F_m - H‖`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: `‖f‖_{B,π}` only sees `|f|`, so the matrix-valued Hessian error can be replaced by its pointwise norm `u_m = ‖∇²F_m - H‖`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.occupationSeminorm_norm — subgoal of Theorem 5.2, step 5: `‖f‖_{B,π}` only sees `|f|`, so the matrix-valued Hessian error can be replaced by its pointwise norm `u_m = ‖∇²F_m - H‖` (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
    "id": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "label": "rpow_le_potentialProfile",
    "kind": "subgoal",
@@ -4490,6 +4532,46 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.tendsto_eLpNorm_rpow_one — subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
+   "label": "tendsto_limsup_discreteSeminorm_of_rpow",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm; this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the `limsup` commutes with the continuous increasing map `a ↦ a^{1/p}`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm; this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the `limsup` commutes with the continuous increasing map `a ↦ a^{1/p}`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow — subgoal of Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm; this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the `limsup` commutes with the continuous increasing map `a ↦ a^{1/p}` (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
@@ -13268,12 +13350,22 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -13333,12 +13425,22 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -14638,12 +14740,22 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -15328,12 +15440,22 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -16008,12 +16130,22 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -17072,12 +17204,22 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
   },
@@ -17143,12 +17285,22 @@
   },
   {
    "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -18568,12 +18720,22 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -18708,12 +18870,22 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -21078,12 +21250,22 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -21858,12 +22040,22 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -22943,12 +23135,22 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "kind": "hard"
   },
   {
@@ -23607,11 +23809,19 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
   },
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -25642,11 +25852,19 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "to": "Main.Theorem52PathSteps"
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
    "to": "Main.Theorem52PathSteps"
   },
   {
@@ -25691,11 +25909,19 @@
   },
   {
    "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm"
+  },
+  {
+   "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
   },
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow"
   },
   {
    "from": "Main.Theorem52Steps",

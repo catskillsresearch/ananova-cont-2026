@@ -453,6 +453,35 @@ theorem continuousOn_path (ω : CanonicalWienerSpace d T) :
   rw [h]
   exact ω.continuous
 
+/-- **Subgoal** (Theorem 5.2, step 5: `‖f‖_{B,π}` only sees `|f|`, so the matrix-valued
+Hessian error can be replaced by its pointwise norm `u_m = ‖∇²F_m - H‖`). -/
+theorem occupationSeminorm_norm {F : Type*} [NormedAddCommGroup F] (π : ℕ → Partition T)
+    (ω : ℝ → Rd d) (f : Rd d → F) :
+    occupationSeminorm π ω f = occupationSeminorm π ω (fun x => ‖f x‖) := by
+  simp only [occupationSeminorm, enorm_norm]
+
+/-- **Subgoal** (Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm;
+this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the
+`limsup` commutes with the continuous increasing map `a ↦ a^{1/p}`). -/
+theorem tendsto_limsup_discreteSeminorm_of_rpow {p : ℝ} (hp : 0 < p) (π : ℕ → Partition T)
+    (ω : ℝ → Rd d) {g : ℕ → Rd d → ℝ} (hg : ∀ k, 0 ≤ g k)
+    (h : Tendsto (fun k => limsup (fun n => discreteSeminorm (π n) 1 (fun x => ‖g k x ^ p‖ₑ) ω)
+      atTop) atTop (𝓝 0)) :
+    Tendsto (fun k => limsup (fun n => discreteSeminorm (π n) p (fun x => ‖g k x‖ₑ) ω) atTop)
+      atTop (𝓝 0) := by
+  have hp' : 0 < 1 / p := by positivity
+  have hmono : Monotone fun a : ℝ≥0∞ => a ^ (1 / p) := fun a b hab =>
+    ENNReal.rpow_le_rpow hab hp'.le
+  have hcont : Continuous fun a : ℝ≥0∞ => a ^ (1 / p) := ENNReal.continuous_rpow_const
+  simp_rw [discreteSeminorm_enorm_rpow hp _ (hg _)]
+  have heq : ∀ k, limsup (fun n => discreteSeminorm (π n) 1 (fun x => ‖g k x ^ p‖ₑ) ω ^ (1 / p))
+      atTop = (limsup (fun n => discreteSeminorm (π n) 1 (fun x => ‖g k x ^ p‖ₑ) ω) atTop) ^
+        (1 / p) := fun k =>
+    (hmono.map_limsup_of_continuousAt _ hcont.continuousAt).symm
+  simp_rw [heq]
+  have := (hcont.tendsto 0).comp h
+  rwa [Function.comp_def, ENNReal.zero_rpow_of_pos hp'] at this
+
 end theorem_5_2
 
 end WeakPathwiseIto

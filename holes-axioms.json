@@ -527,12 +527,22 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.occupationSeminorm_norm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile": [
    "propext",
    "Classical.choice",
    "Quot.sound"
   ],
   "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow": [
    "propext",
    "Classical.choice",
    "Quot.sound"
@@ -1579,5 +1589,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T16:44:37Z"
+ "generated": "2026-11-27T16:49:15Z"
 }
