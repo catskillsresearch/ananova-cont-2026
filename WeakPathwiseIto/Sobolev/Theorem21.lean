@@ -35,9 +35,13 @@ theorem theorem_2_1_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G
           ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1)) := by
   sorry
 
-/-- **Theorem 2.1** (second estimate). For `f ∈ W^{2,1}(ℝ^d)` and `x, y ∈ Q` with
-`f̃(x), f̃(y), ∇̃f(x)` finite, `x, y` Lebesgue points of `f` and `x` a Lebesgue point of `∇f`,
-`|f̃(y) - f̃(x) - ∇̃f(x)(y - x)| ≤ C_d (∫_Q |∇²f(z)| / |x - z|^{d-2} dz + ∫_Q |∇²f(z)| / |y - z|^{d-2} dz)`. -/
+/-- **Theorem 2.1** (second estimate, stated as [BH93, Thm. 2] with `m = 2`). For
+`f ∈ W^{2,1}(ℝ^d)` and `x, y ∈ Q` with `f̃(x), f̃(y), ∇̃f(x)` finite, `x, y` Lebesgue points of
+`f` and `x` a Lebesgue point of `∇f`,
+`|f̃(y) - f̃(x) - ∇̃f(x)(y - x)| ≤ C_d (I²_Q(|∇²f|)(x) + I²_Q(|∇²f|)(y) + diam Q · I¹_Q(|∇²f|)(x))`
+with `I^k_Q(g)(x) = ∫_Q g(z) / |x - z|^{d-k} dz`. The paper omits the last term; without it the
+estimate is false for `d ≥ 2` even for smooth `f` (see WeakPathwiseIto.md, "Theorem 2.1:
+second estimate"). -/
 theorem theorem_2_1_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d)
     (H : Rd d → (Rd d →L[ℝ] Rd d)),
     MemW 2 1 f → IsWeakGradient f G → IsWeakHessian f H →
@@ -49,7 +53,8 @@ theorem theorem_2_1_second (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (
       ENNReal.ofReal |preciseRepresentative f y - preciseRepresentative f x -
           ⟪preciseRepresentative.vec G x, y - x⟫| ≤
         C * ((∫⁻ z in Q, ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 2)) +
-          ∫⁻ z in Q, ‖H z‖ₑ / edist y z ^ ((d : ℝ) - 2)) := by
+          (∫⁻ z in Q, ‖H z‖ₑ / edist y z ^ ((d : ℝ) - 2)) +
+          Metric.ediam Q * ∫⁻ z in Q, ‖H z‖ₑ / edist x z ^ ((d : ℝ) - 1)) := by
   sorry
 
 end WeakPathwiseIto

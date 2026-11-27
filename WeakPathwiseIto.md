@@ -93,6 +93,18 @@ own text.
   the second estimate with $d = 3$). At a Lebesgue point the averages over $Q \cap B(x,r)$ also
   converge to $\tilde f(x)$, which restores the argument; for the $C^2$ functions to which
   Theorem 5.1 applies it, every point is a Lebesgue point.
+* **Theorem 2.1: second estimate (departure from the paper).** The paper's second estimate,
+  $|\tilde f(y)-\tilde f(x)-\nabla\tilde f(x)(y-x)| \le C_d(I^2_Q(|\nabla^2 f|)(x)+I^2_Q(|\nabla^2 f|)(y))$
+  with $I^k_Q(g)(x)=\int_Q g(z)|x-z|^{k-d}\,dz$, is false for $d \ge 2$ even for smooth $f$:
+  for $d = 3$, $Q = B(0,1)$, $x = 0$, $y = (\tfrac12,0,0)$ and $f(z) = z_1\varphi(|z|/\varepsilon)$
+  with $\varphi$ a smooth cutoff ($\varphi = 1$ near $0$, $\varphi = 0$ on $[1,\infty)$), the left
+  side is $|0 - 0 - \tfrac12| = \tfrac12$ while $|\nabla^2 f| = O(\varepsilon^{-1})$ is supported in
+  $B(0,\varepsilon)$, so the right side is $O(\varepsilon)$. We therefore state it as
+  [BH93, Thm. 2] with $m = 2$, which has the extra term $\operatorname{diam} Q \cdot
+  I^1_Q(|\nabla^2 f|)(x)$ (`Metric.ediam Q * ∫⁻ z in Q, ‖H z‖ₑ / edist x z ^ (d - 1)`), keeping the
+  Lebesgue-point hypotheses above. The paper uses this estimate only in the proof of (18) in
+  Theorem 5.1; that step is replaced by a direct proof for $C^2_b$ functions (see "Theorem 5.1:
+  proof of (18)").
 * **Theorem 2.6** states both the equality of spaces and the equivalence of the norms.
 * **Quadratic variation** (eq. (5)): the limit exists for every $t \in [0,T]$ and
   $t \mapsto [x]_\pi(t)$ is continuous and increasing **on $[0,T]$** (`ContinuousOn`,
