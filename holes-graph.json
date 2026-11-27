@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:29:13Z",
+ "updated": "2026-11-27T11:33:08Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
   "open": 7,
-  "blocked": 47,
+  "blocked": 48,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 37,
+  "blocked": 38,
   "done": 239
  },
  "untagged": [],
@@ -4109,9 +4109,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
-    "memW_convolution",
     "mollify_mem",
     "tendsto_mollify_of_isLebesguePoint",
     "isBrownianPolar_nonLebesgue",
@@ -4123,7 +4122,7 @@
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 20
+    "theorem": 21
    },
    "paperGoal": false,
    "verified": false,
@@ -4142,6 +4141,7 @@
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+    "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
@@ -4172,6 +4172,7 @@
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+    "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
@@ -4185,7 +4186,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "10 sorry: memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "9 sorry: mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4490,6 +4491,43 @@
    "detail": "proved: theorem_5_2.exists_isWeakHessian — subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives (in Main.Theorem52Steps)"
   },
   {
+   "id": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "label": "fderiv_convolution_apply",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `∂_v (F * g",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `∂_v (F * g) = F * ∂_v g` for `g ∈ C¹_c`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.fderiv_convolution_apply — subgoal of Appendix C, mollification: `∂_v (F * g (in Main.Theorem52Steps)"
+  },
+  {
    "id": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "label": "gagliardo_maximal_le",
    "kind": "subgoal",
@@ -4723,20 +4761,18 @@
    "kind": "subgoal",
    "section": "Main",
    "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives",
+   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality",
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.memW_convolution"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives).",
+   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality).",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -4754,7 +4790,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.memW_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.memW_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
@@ -10664,6 +10700,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -11809,6 +11850,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -12379,6 +12425,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -12490,6 +12541,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
    "kind": "hard"
   },
   {
@@ -13384,6 +13440,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14829,6 +14890,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -16159,6 +16225,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -16954,6 +17025,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -17389,6 +17465,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
    "kind": "hard"
   },
@@ -17510,6 +17591,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
    "kind": "hard"
   },
   {
@@ -18040,6 +18126,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
    "kind": "hard"
   },
   {
@@ -19290,6 +19381,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
   },
   {
@@ -19375,6 +19470,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
   },
   {
    "from": "Bessel.Theorem29",
@@ -20046,6 +20145,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -21930,6 +22033,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
   },
   {
@@ -22275,6 +22382,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
   },
   {
    "from": "Sobolev.Theorem21Second",

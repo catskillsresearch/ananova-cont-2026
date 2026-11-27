@@ -98,6 +98,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclidean
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -327,6 +328,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCL
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -441,6 +443,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclidea
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -464,6 +467,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -643,6 +647,7 @@ Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM -hard-> Main.Theorem52Step
 Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff -hard-> Main.Theorem52Steps
@@ -931,6 +936,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.coord_t
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -1197,6 +1203,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclide
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -1356,6 +1363,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEu
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -1443,6 +1451,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -1468,6 +1477,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.coord_toE
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff
@@ -1574,6 +1584,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.coord_toEuclide
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff

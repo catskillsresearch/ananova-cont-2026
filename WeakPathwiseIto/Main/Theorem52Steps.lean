@@ -219,13 +219,52 @@ theorem order_le_two_cases {α : Fin d → ℕ} (hα : IsWeakDerivative.order α
   · exact Or.inr (Or.inl ⟨i, by rw [hαβ, h0, add_zero]⟩)
   · exact Or.inr (Or.inr ⟨i, j, by rw [hαβ, hj]⟩)
 
-/-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: Young's inequality
-for `F * ψ`, `∇F * ψ`, `∇²F * ψ`, which are its classical, hence weak, derivatives). -/
-theorem memW_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F) {G : Rd d → Rd d}
-    (hG : IsWeakGradient F G) {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H)
+/-- **Subgoal** (Appendix C, mollification: `∂_v (F * g) = F * ∂_v g` for `g ∈ C¹_c`). -/
+theorem fderiv_convolution_apply {F : Rd d → ℝ} (hF : LocallyIntegrable F) {g : Rd d → ℝ}
+    (hg : ContDiff ℝ 1 g) (hgc : HasCompactSupport g) (v : Rd d) :
+    (fun x => fderiv ℝ (F ⋆[ContinuousLinearMap.mul ℝ ℝ, volume] g) x v) =
+      F ⋆[ContinuousLinearMap.mul ℝ ℝ, volume] (fun y => fderiv ℝ g y v) := by
+  funext x
+  rw [(hgc.hasFDerivAt_convolution_right _ hF hg x).fderiv, convolution_def, convolution_def,
+    ContinuousLinearMap.integral_apply (show Integrable (fun t => (ContinuousLinearMap.precompR (Rd d)
+        (ContinuousLinearMap.mul ℝ ℝ)) (F t) (fderiv ℝ g (x - t))) volume from
+      (hgc.fderiv (𝕜 := ℝ)).convolutionExists_right
+        (ContinuousLinearMap.precompR (Rd d) (ContinuousLinearMap.mul ℝ ℝ)) hF
+        (hg.continuous_fderiv one_ne_zero) x)]
+  rfl
+
+/-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence
+weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality). -/
+theorem memW_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F)
     {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
     MemW 2 1 (fun x => ∫ y, F y * ψ (x - y)) := by
-  sorry
+  set L := ContinuousLinearMap.mul ℝ ℝ
+  have hu : (fun x => ∫ y, F y * ψ (x - y)) = F ⋆[L, volume] ψ := rfl
+  have hu2 : ContDiff ℝ 2 (F ⋆[L, volume] ψ) := (contDiffBounded_convolution hF hψ hψc).1
+  rw [hu]
+  have hF1 : Integrable F := memLp_one_iff_integrable.1 hF.1
+  have hFl : LocallyIntegrable F := hF1.locallyIntegrable
+  have hψ1 : ContDiff ℝ 1 ψ := hψ.of_le (WithTop.coe_le_coe.2 le_top)
+  have hI : ∀ g : Rd d → ℝ, Continuous g → HasCompactSupport g →
+      MemLp (F ⋆[L, volume] g) 1 := fun g hg hgc =>
+    memLp_one_iff_integrable.2 (hF1.integrable_convolution L (hg.integrable_of_hasCompactSupport hgc))
+  have hψi : ∀ i : Fin d, ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (fun y => fderiv ℝ ψ y (Rd.basisVec i)) :=
+    fun i => (hψ.fderiv_right le_rfl).clm_apply contDiff_const
+  have hψic : ∀ i : Fin d, HasCompactSupport (fun y => fderiv ℝ ψ y (Rd.basisVec i)) :=
+    fun i => hψc.fderiv_apply (𝕜 := ℝ) (Rd.basisVec i)
+  refine ⟨hI ψ hψ.continuous hψc, fun α hα => ?_⟩
+  rcases order_le_two_cases hα with rfl | ⟨i, rfl⟩ | ⟨i, j, rfl⟩
+  · exact ⟨_, isWeakDerivative_zero ((hI ψ hψ.continuous hψc).locallyIntegrable le_rfl),
+      hI ψ hψ.continuous hψc⟩
+  · refine ⟨_, isWeakDerivative_single_of_contDiff (hu2.of_le (by norm_num)) i, ?_⟩
+    rw [fderiv_convolution_apply hFl hψ1 hψc]
+    exact hI _ (hψi i).continuous (hψic i)
+  · refine ⟨_, PathwiseSobolevSpace.isWeakHessian_smoothHessian hu2 i j, ?_⟩
+    simp_rw [PathwiseSobolevSpace.coord_smoothHessian hu2]
+    rw [fderiv_convolution_apply hFl hψ1 hψc,
+      fderiv_convolution_apply hFl ((hψi i).of_le (WithTop.coe_le_coe.2 le_top)) (hψic i)]
+    exact hI _ (((hψi i).continuous_fderiv (by simp)).clm_apply continuous_const)
+      ((hψic i).fderiv_apply (𝕜 := ℝ) (Rd.basisVec j))
 
 /-- **Subgoal** (Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}`). -/
 theorem mollify_mem {F : Rd d → ℝ} (hF : MemW 2 1 F) {ψ : Rd d → ℝ}
