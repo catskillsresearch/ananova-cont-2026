@@ -17,6 +17,7 @@ public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Sobolev.Theorem21Second
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Bessel.WienerLawExists
+public import WeakPathwiseIto.Main.Theorem51Steps
 
 /-! # Steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -449,7 +450,15 @@ theorem tendsto_eLpNorm_mollify_sub {E : Type*} [NormedAddCommGroup E] [NormedSp
 a weak gradient, assembled from its first-order weak derivatives). -/
 theorem exists_isWeakGradient_of_memW {k : ℕ} (hk : 1 ≤ k) {q : ℝ≥0∞} {F : Rd d → ℝ}
     (hF : MemW k q F) : ∃ G : Rd d → Rd d, IsWeakGradient F G := by
-  sorry
+  have h : ∀ i : Fin d, ∃ g : Rd d → ℝ, IsWeakDerivative (Pi.single i 1) F g := by
+    intro i
+    have hord : IsWeakDerivative.order (Pi.single i 1 : Fin d → ℕ) ≤ k := by
+      simpa [IsWeakDerivative.order] using hk
+    obtain ⟨g, hg, -⟩ := hF.2 _ hord
+    exact ⟨g, hg⟩
+  choose g hg using h
+  refine ⟨fun x => WithLp.toLp 2 (fun i => g i x), fun i => ?_⟩
+  simpa [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right] using hg i
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 1: the Hessian of the mollification is
 the mollified weak Hessian, `∇²(F ⋆ ψ) = H ⋆ ψ`). -/
