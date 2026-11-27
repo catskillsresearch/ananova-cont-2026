@@ -218,7 +218,49 @@ theorem tendsto_covariation {π : ℕ → Partition T} {ω : ℝ → Rd d}
     (hH : IsWeakHessian F H) (A : ApproximatingSequence π ω F H) {t : ℝ} (ht : t ∈ Icc 0 T) :
     Tendsto (fun m => pathwiseCovariation π (gradient (A.seq m)) ω t) atTop
       (𝓝 (weakCovariation A t)) := by
-  sorry
+  obtain ⟨hHm, -⟩ := isWeakHessian_ae hH hH
+  obtain ⟨C, hC⟩ := abs_covariation_sub_le hω hQV hosc
+  set s : ℕ → ℝ≥0∞ := fun m =>
+    occupationSeminorm π ω (fun x => smoothHessian (A.seq m) x - H x) with hs
+  set u : ℕ → ℝ := fun m => pathwiseCovariation π (gradient (A.seq m)) ω t with hu
+  have hs0 : Tendsto s atTop (𝓝 0) := A.tendsto_hessian
+  have hfin : ∀ᶠ m in atTop, s m ≠ ⊤ :=
+    (hs0.eventually (gt_mem_nhds zero_lt_one)).mono fun m h => ne_top_of_lt h
+  have hr : Tendsto (fun m => (s m).toReal) atTop (𝓝 0) := by
+    have := (ENNReal.tendsto_toReal ENNReal.zero_ne_top).comp hs0
+    rw [ENNReal.toReal_zero] at this
+    exact this
+  have hbound : ∀ m k, 1 ≤ m → 1 ≤ k → s m ≠ ⊤ → s k ≠ ⊤ →
+      |u m - u k| ≤ C * ((s m).toReal + (s k).toReal) := by
+    intro m k hm hk hsm hsk
+    have h := hC (A.seq m) (A.seq k) H H (A.smooth m hm) (A.smooth k hk) hHm
+      (Filter.EventuallyEq.refl _ _) t ht
+    have hne : (C : ℝ≥0∞) * (s m + s k) ≠ ⊤ :=
+      ENNReal.mul_ne_top ENNReal.coe_ne_top (ENNReal.add_ne_top.2 ⟨hsm, hsk⟩)
+    have := (ENNReal.ofReal_le_iff_le_toReal hne).1 h
+    rwa [ENNReal.toReal_mul, ENNReal.toReal_add hsm hsk, ENNReal.coe_toReal] at this
+  have hcauchy : CauchySeq u := by
+    refine Metric.cauchySeq_iff.2 fun ε hε => ?_
+    have hη : 0 < ε / (2 * ((C : ℝ) + 1)) := by positivity
+    obtain ⟨N, hN⟩ := eventually_atTop.1 ((hfin.and (hr.eventually (gt_mem_nhds hη))).and
+      (eventually_ge_atTop 1))
+    refine ⟨N, fun m hm k hk => ?_⟩
+    obtain ⟨⟨hsm, hrm⟩, hm1⟩ := hN m hm
+    obtain ⟨⟨hsk, hrk⟩, hk1⟩ := hN k hk
+    rw [Real.dist_eq]
+    have hC0 : (0 : ℝ) ≤ C := C.2
+    have h0m : 0 ≤ (s m).toReal := ENNReal.toReal_nonneg
+    have h0k : 0 ≤ (s k).toReal := ENNReal.toReal_nonneg
+    calc |u m - u k| ≤ C * ((s m).toReal + (s k).toReal) := hbound m k hm1 hk1 hsm hsk
+      _ ≤ C * (2 * (ε / (2 * ((C : ℝ) + 1)))) := by
+          apply mul_le_mul_of_nonneg_left _ hC0; linarith
+      _ = ε * (C / ((C : ℝ) + 1)) := by field_simp
+      _ < ε := by
+          have : (C : ℝ) / ((C : ℝ) + 1) < 1 := (div_lt_one (by positivity)).2 (by linarith)
+          nlinarith
+  obtain ⟨a, ha⟩ := cauchySeq_tendsto_of_complete hcauchy
+  rw [weakCovariation, ha.limUnder_eq]
+  exact ha
 
 /-- **Subgoal** (Theorem 5.1 proof, (22) and (14)): the pathwise integrals along an approximating
 sequence converge to `F(ω(t)) - F(ω(0)) - ½ [∇F(ω), ω]_π(t)`. -/

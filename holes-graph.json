@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T01:49:28Z",
+ "updated": "2026-11-27T01:50:27Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 7,
+  "open": 6,
   "blocked": 19,
-  "done": 239
+  "done": 240
  },
  "goalCounts": {
   "open": 4,
@@ -13,9 +13,9 @@
   "done": 52
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 187
+  "done": 188
  },
  "untagged": [],
  "legend": {
@@ -3049,9 +3049,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "tendsto_covariation",
     "tendsto_integral"
    ],
    "declKinds": {
@@ -3079,10 +3078,9 @@
     "Smooth.Proposition31"
    ],
    "blockers": [
-    "Main.Theorem51Steps::theorem_5_1.tendsto_covariation",
     "Main.Theorem51Steps::theorem_5_1.tendsto_integral"
    ],
-   "detail": "2 sorry: tendsto_covariation, tendsto_integral"
+   "detail": "1 sorry: tendsto_integral"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le",
@@ -3280,17 +3278,15 @@
    "parentGoal": "Main.Theorem51Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem51Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_1.tendsto_covariation"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 5.1 proof, (20) and (15)): the covariations along an approximating sequence form a Cauchy sequence, hence converge to `[∇F(ω), ω]_π(t)`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Eq18",
     "Main.SmoothItoAt",
@@ -3301,7 +3297,7 @@
     "Smooth.Proposition31"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_1.tendsto_covariation — subgoal of Theorem 5.1 proof, (20 (in Main.Theorem51Steps)"
+   "detail": "proved: theorem_5_1.tendsto_covariation — subgoal of Theorem 5.1 proof, (20 (in Main.Theorem51Steps)"
   },
   {
    "id": "Main.Theorem51Steps::theorem_5_1.tendsto_integral",
