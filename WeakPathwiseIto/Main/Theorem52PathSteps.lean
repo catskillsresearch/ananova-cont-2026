@@ -13,6 +13,7 @@ public import WeakPathwiseIto.Sobolev.MemW
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
+public import WeakPathwiseIto.Main.Theorem52Steps
 
 /-! # Path-side steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -390,7 +391,18 @@ theorem measurable_localMaximalFunction (f : Rd d → ℝ) :
 /-- **Subgoal** (Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p`). -/
 theorem ae_localMaximalFunction_lt_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
     (hf : MemLp f (ENNReal.ofReal p)) : ∀ᵐ x, localMaximalFunction 1 f x < ⊤ := by
-  sorry
+  obtain ⟨C, hC⟩ := eLpNorm_maximal_le (d := d) hp
+  have hp0 : ENNReal.ofReal p ≠ 0 := by rw [Ne, ENNReal.ofReal_eq_zero, not_le]; linarith
+  have hm := measurable_localMaximalFunction (d := d) f
+  have hlt : eLpNorm (localMaximalFunction 1 f) (ENNReal.ofReal p) volume < ⊤ :=
+    (hC f).trans_lt (ENNReal.mul_lt_top ENNReal.coe_lt_top hf.eLpNorm_lt_top)
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 ENNReal.ofReal_ne_top hm.aestronglyMeasurable,
+    ENNReal.toReal_ofReal (by linarith)] at hlt
+  have hint : ∫⁻ x, ‖localMaximalFunction 1 f x‖ₑ ^ p ≠ ⊤ :=
+    ((ENNReal.rpow_lt_top_iff_of_pos (by positivity : (0 : ℝ) < 1 / p)).1 hlt).ne
+  filter_upwards [ae_lt_top' (hm.enorm.pow_const p).aemeasurable hint] with x hx
+  rw [enorm_eq_self] at hx
+  exact (ENNReal.rpow_lt_top_iff_of_pos (by linarith)).1 hx
 
 /-- **Subgoal** (Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0`). -/
 theorem tendsto_eLpNorm_rpow_one {p : ℝ} (hp : 0 < p) {g : ℕ → Rd d → ℝ} (hg : ∀ m, 0 ≤ g m)
