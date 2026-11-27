@@ -11,6 +11,7 @@ public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
 public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.Theorem52Steps
+public import WeakPathwiseIto.Main.Theorem52PathSteps
 
 @[expose] public section
 

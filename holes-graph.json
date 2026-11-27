@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T10:19:05Z",
+ "updated": "2026-11-27T10:24:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 45,
  "counts": {
-  "open": 7,
-  "blocked": 21,
+  "open": 20,
+  "blocked": 22,
   "done": 300
  },
  "goalCounts": {
   "open": 3,
-  "blocked": 9,
+  "blocked": 10,
   "done": 61
  },
  "subgoalCounts": {
-  "open": 4,
+  "open": 17,
   "blocked": 12,
   "done": 239
  },
@@ -3510,15 +3510,515 @@
     "Bessel.IsBrownianPolar",
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay",
+    "Main.Theorem52PathSteps",
     "Main.Theorem52Steps",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.MemW2Plus"
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
+    "Main.Theorem52PathSteps",
     "Main.Theorem52Steps"
    ],
    "detail": "2 sorry: theorem_5_2, theorem_5_2_deterministic"
+  },
+  {
+   "id": "Main.Theorem52PathSteps",
+   "label": "Theorem52PathSteps",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": null,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 13,
+   "holes": [
+    "lintegral_piece_le_first",
+    "lintegral_le_maximal_first",
+    "rpow_le_potentialProfile",
+    "tendsto_lintegral_closedBall_kernel",
+    "le_limsup_discreteSeminorm_first",
+    "discreteSeminorm_enorm_rpow",
+    "measurable_localMaximalFunction",
+    "ae_localMaximalFunction_lt_top",
+    "tendsto_eLpNorm_rpow_one",
+    "exists_mollifier",
+    "integrable_norm_hessian_sub",
+    "ae_path_zero",
+    "continuousOn_path"
+   ],
+   "declKinds": {
+    "theorem": 13
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+    "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+    "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+    "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+    "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+    "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+    "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+    "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+    "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+    "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+    "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [
+    "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+    "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+    "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+    "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+    "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+    "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+    "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+    "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+    "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+    "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+    "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+   ],
+   "detail": "13 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, rpow_le_potentialProfile, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, discreteSeminorm_enorm_rpow, measurable_localMaximalFunction, ae_localMaximalFunction_lt_top, tendsto_eLpNorm_rpow_one, exists_mollifier, integrable_norm_hessian_sub, ae_path_zero, continuousOn_path"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "label": "ae_localMaximalFunction_lt_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.ae_localMaximalFunction_lt_top"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.ae_localMaximalFunction_lt_top — subgoal of Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p` (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "label": "ae_path_zero",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `B(0",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.ae_path_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `B(0) = x₀`, `ℙ_{x₀}`-almost surely).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.ae_path_zero — subgoal of Appendix C, `B(0 (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "label": "continuousOn_path",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, Brownian paths are continuous on `[0, T]`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.continuousOn_path"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, Brownian paths are continuous on `[0, T]`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.continuousOn_path — subgoal of Appendix C, Brownian paths are continuous on `[0, T]` (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "label": "discreteSeminorm_enorm_rpow",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.discreteSeminorm_enorm_rpow"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.discreteSeminorm_enorm_rpow — subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "label": "exists_mollifier",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, standard mollifier `η_m(x",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.exists_mollifier"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, standard mollifier `η_m(x) = m^d η(m x)`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.exists_mollifier — subgoal of Appendix C, standard mollifier `η_m(x (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "label": "integrable_norm_hessian_sub",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.integrable_norm_hessian_sub"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `u_m ∈ L^1` for Lemma B.1): for `G ∈ C²_b ∩ W^{2,1}` and `F ∈ W^{2,1}` with weak Hessian `H`, `‖∇²G - H‖` is integrable.",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.integrable_norm_hessian_sub — subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "label": "le_limsup_discreteSeminorm_first",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, (11",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.le_limsup_discreteSeminorm_first"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, (11) with the first increment kept explicit: Hölder and `sup_n ‖ρ_{n,ω}‖_{L^q} < ∞`). The constant depends only on `(π, ω, p)`, not on `f` or `g`.",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.le_limsup_discreteSeminorm_first — subgoal of Appendix C, (11 (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "label": "lintegral_le_maximal_first",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, (10",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.lintegral_le_maximal_first"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, (10) with the first increment kept explicit): if `g ≥ M_1 f` at the path's partition points `ω(t_j)`, `j ≥ 1`, then `∫ |f| 𝓛^π_ω ≤ C (J + ∑_i (g(ω(t_{i+1})) + g(ω(t_i))) |Δω_i|²)`, `J` the kernel integral at `ω(0)` over the ball of radius `osc(ω, π)`.",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.lintegral_le_maximal_first — subgoal of Appendix C, (10 (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "label": "lintegral_piece_le_first",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a|",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.lintegral_piece_le_first"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a|)} |f| |z - a|^{2-d} dz + M_1 f(b) |b - a|²)`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "label": "measurable_localMaximalFunction",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.measurable_localMaximalFunction"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.measurable_localMaximalFunction — subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "label": "rpow_le_potentialProfile",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.rpow_le_potentialProfile"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖)` on small balls).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.rpow_le_potentialProfile — subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "label": "tendsto_eLpNorm_rpow_one",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.tendsto_eLpNorm_rpow_one"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0`).",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.tendsto_eLpNorm_rpow_one — subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` (in Main.Theorem52PathSteps)"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "label": "tendsto_lintegral_closedBall_kernel",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `J_{m,n}(x₀",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.tendsto_lintegral_closedBall_kernel"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `J_{m,n}(x₀) → 0`): if `∫ |f(z)| ν(|z - x₀|) dz < ∞` and the radii shrink to `0`, the kernel integrals over `B̄(x₀, ρ_n)` tend to `0`.",
+   "status": "open",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Occupation.OccupationSeminorm",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_5_2.tendsto_lintegral_closedBall_kernel — subgoal of Appendix C, `J_{m,n}(x₀ (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52Steps",
@@ -9434,6 +9934,146 @@
    "kind": "hard"
   },
   {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps",
    "kind": "hard"
@@ -10450,6 +11090,76 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps",
    "kind": "hard"
   },
@@ -10866,6 +11576,76 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.IsItoIntegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
    "kind": "hard"
   },
   {
@@ -11562,6 +12342,76 @@
    "from": "Main.Theorem52",
    "to": "Main.Proposition53",
    "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Main.Theorem52",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
   },
   {
    "from": "Main.Theorem52Steps",
@@ -12722,6 +13572,76 @@
    "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
    "to": "Occupation.OccupationConstant",
    "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
   },
   {
    "from": "Occupation.OccupationSeminorm",
@@ -14380,6 +15300,76 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Occupation.PathwiseSobolevSpace",
    "kind": "hard"
   },
@@ -14851,6 +15841,76 @@
   {
    "from": "Sobolev.MemW",
    "to": "Bessel.Theorem29",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
    "kind": "hard"
   },
   {
@@ -15818,6 +16878,110 @@
    "to": "Appendix.LemmaB1"
   },
   {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
@@ -16379,6 +17543,58 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
   },
   {
@@ -16624,6 +17840,58 @@
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.IsItoIntegral"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -17132,6 +18400,62 @@
   {
    "from": "Main.Theorem52",
    "to": "Main.Proposition53"
+  },
+  {
+   "from": "Main.Theorem52PathSteps",
+   "to": "Main.Theorem52"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "to": "Main.Theorem52PathSteps"
   },
   {
    "from": "Main.Theorem52Steps",
@@ -17872,6 +19196,58 @@
   {
    "from": "Occupation.OccupationConstant::occupationConstant.volume_ball_half",
    "to": "Occupation.OccupationConstant"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
    "from": "Occupation.OccupationSeminorm",
@@ -18671,6 +20047,58 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset"
   },
   {
@@ -18920,6 +20348,58 @@
   {
    "from": "Sobolev.MemW",
    "to": "Bessel.Theorem29"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
    "from": "Sobolev.MemW",
