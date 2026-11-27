@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:20:02Z  
-**`sorry` occurrences:** 23 · 10 open · 12 blocked · 377 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 315} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:33:27Z  
+**`sorry` occurrences:** 23 · 10 open · 12 blocked · 378 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 316} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -136,6 +136,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path` | subgoal of Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of `F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits at `x₀` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path` | subgoal of Appendix C, Brownian paths are continuous on `[0, T]` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow` | subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.exists_index_memLp_gagliardo` | subgoal of Theorem 5.2, step 1: since `‖A_n‖_p → 0` and the Gagliardo seminorms of `u_n = |A_n|` tend to `0`, from some index `N` on every `u_n` is in `L^p` with finite Gagliardo seminorm; the sequence is then re-indexed from `N` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier` | subgoal of Appendix C, standard mollifier `η_m(x | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top` | subgoal of Theorem 5.2, step 3: Lemma B.1 for each `u_k`, and a countable union of polar sets is polar, give one polar set off which every `u_k` has finite potential `∫ |u_k(x | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub` | subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 | 0 |

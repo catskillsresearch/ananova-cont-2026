@@ -512,6 +512,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.exists_index_memLp_gagliardo": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier": [
    "propext",
    "Classical.choice",
@@ -1630,5 +1635,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:20:02Z"
+ "generated": "2026-11-27T17:33:27Z"
 }

@@ -631,6 +631,21 @@ theorem tendsto_eLpNorm_maximal_rpow {p : ℝ} (hp : 1 < p) {u : ℕ → Rd d �
   rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg]
   exact ENNReal.ofReal_toReal_le
 
+/-- **Subgoal** (Theorem 5.2, step 1: since `‖A_n‖_p → 0` and the Gagliardo seminorms of
+`u_n = |A_n|` tend to `0`, from some index `N` on every `u_n` is in `L^p` with finite Gagliardo
+seminorm; the sequence is then re-indexed from `N`). -/
+theorem exists_index_memLp_gagliardo {s p : ℝ} {A : ℕ → Rd d → (Rd d →L[ℝ] Rd d)}
+    (hA : Tendsto (fun n => eLpNorm (A n) (ENNReal.ofReal p) volume) atTop (𝓝 0))
+    (hG : Tendsto (fun n => ∫⁻ x, ∫⁻ y, ‖‖A n x‖ - ‖A n y‖‖ₑ ^ p / edist x y ^ (s * p + d))
+      atTop (𝓝 0)) :
+    ∃ N, ∀ n, N ≤ n → MemLp (fun x => ‖A n x‖) (ENNReal.ofReal p) ∧
+      ∫⁻ x, ∫⁻ y, ‖‖A n x‖ - ‖A n y‖‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤ := by
+  obtain ⟨N, hN⟩ := eventually_atTop.1 ((hA.eventually (gt_mem_nhds ENNReal.zero_lt_top)).and
+    (hG.eventually (gt_mem_nhds ENNReal.zero_lt_top)))
+  refine ⟨N, fun n hn => ⟨?_, (hN n hn).2⟩⟩
+  have h : MemLp (A n) (ENNReal.ofReal p) := (hN n hn).1
+  exact h.norm
+
 end theorem_5_2
 
 end WeakPathwiseIto
