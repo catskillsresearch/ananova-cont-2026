@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T10:40:25Z  
-**`sorry` occurrences:** 38 · 13 open · 22 blocked · 308 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 10, 'blocked': 12, 'done': 247} · 13 file(s) with `sorry`.
+**Updated:** 2026-11-27T10:42:33Z  
+**`sorry` occurrences:** 37 · 12 open · 22 blocked · 309 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 9, 'blocked': 12, 'done': 248} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -137,7 +137,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | open | `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub` | subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 | 1 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` | subgoal of Appendix C, (11 | 1 |
 | open | `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first` | subgoal of Appendix C, (10 | 1 |
-| open | `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first` | subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| | 1 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first` | subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball` | subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction` | subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile` | subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ | 0 |
@@ -399,7 +399,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52PathSteps` |  | 6 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` |
+| blocked | `Main.Theorem52PathSteps` |  | 5 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` |
 | blocked | `Main.Theorem52Steps` |  | 9 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |

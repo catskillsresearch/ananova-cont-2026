@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T10:40:25Z",
+ "updated": "2026-11-27T10:42:33Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
-  "open": 13,
+  "open": 12,
   "blocked": 22,
-  "done": 308
+  "done": 309
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 12,
-  "done": 247
+  "done": 248
  },
  "untagged": [],
  "legend": {
@@ -3529,9 +3529,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 6,
+   "sorryCount": 5,
    "holes": [
-    "lintegral_piece_le_first",
     "lintegral_le_maximal_first",
     "tendsto_lintegral_closedBall_kernel",
     "le_limsup_discreteSeminorm_first",
@@ -3574,10 +3573,9 @@
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
-    "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
    ],
-   "detail": "6 sorry: lintegral_piece_le_first, lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
+   "detail": "5 sorry: lintegral_le_maximal_first, tendsto_lintegral_closedBall_kernel, le_limsup_discreteSeminorm_first, ae_localMaximalFunction_lt_top, integrable_norm_hessian_sub"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
@@ -3853,17 +3851,15 @@
    "parentGoal": "Main.Theorem52PathSteps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.lintegral_piece_le_first"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a|)} |f| |z - a|^{2-d} dz + M_1 f(b) |b - a|²)`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Appendix.PotentialProfile",
     "Basic.ContDiffBounded",
@@ -3875,7 +3871,7 @@
     "Sobolev.MemW"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps)"
+   "detail": "proved: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",

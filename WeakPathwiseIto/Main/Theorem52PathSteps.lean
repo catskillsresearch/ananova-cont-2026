@@ -40,9 +40,85 @@ variable {d : ℕ} {T : ℝ}
 theorem lintegral_piece_le_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (a b : Rd d),
     AEStronglyMeasurable f → ‖b - a‖ ≤ 1 →
     ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) ≤
-      C * (∫⁻ x in Metric.closedBall a ‖b - a‖, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) +
+      C * ((∫⁻ x in Metric.closedBall a ‖b - a‖, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
         localMaximalFunction 1 f b * ENNReal.ofReal (‖b - a‖ ^ 2)) := by
-  sorry
+  have hK : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (a : Rd d) {ρ : ℝ}, 0 < ρ → ρ ≤ 1 →
+      ∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) ≤
+        K * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f a := by
+    rcases le_or_gt d 2 with h | h
+    · exact occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two h
+    · exact occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le (by omega)
+  obtain ⟨K, hK⟩ := hK
+  refine ⟨(occupationConstant d).toNNReal * (1 + K), fun f a b hf hab => ?_⟩
+  by_cases h : a = b
+  · subst h; simp [discreteOccupationDensity.piece]
+  set ρ := ‖b - a‖ with hρdef
+  have hρ : 0 < ρ := norm_pos_iff.2 (sub_ne_zero.2 (Ne.symm h))
+  have hc : 0 ≤ occupationConstant d := by unfold occupationConstant; positivity
+  have hρd : dist a b = ρ := by rw [hρdef, dist_comm, dist_eq_norm]
+  have hQ : MeasurableSet (incrementBall a b) := measurableSet_closedBall
+  have hQa : incrementBall a b ⊆ Metric.closedBall a ρ := by
+    intro x hx
+    simp only [incrementBall, Metric.mem_closedBall] at hx ⊢
+    calc dist x a ≤ dist x (midpoint ℝ a b) + dist (midpoint ℝ a b) a := dist_triangle _ _ _
+      _ ≤ dist a b / 2 + dist a b / 2 := by
+          gcongr
+          rw [dist_midpoint_left]; norm_num; ring_nf; rfl
+      _ = ρ := by rw [hρd]; ring
+  have hQb : incrementBall a b ⊆ Metric.closedBall b ρ := by
+    intro x hx
+    simp only [incrementBall, Metric.mem_closedBall] at hx ⊢
+    calc dist x b ≤ dist x (midpoint ℝ a b) + dist (midpoint ℝ a b) b := dist_triangle _ _ _
+      _ ≤ dist a b / 2 + dist a b / 2 := by
+          gcongr
+          rw [dist_midpoint_right]; norm_num; ring_nf; rfl
+      _ = ρ := by rw [hρd]; ring
+  have hpt : ∀ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x) =
+      (incrementBall a b).indicator (fun x => ENNReal.ofReal (occupationConstant d) *
+        (‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) +
+          ‖f x‖ₑ * ENNReal.ofReal (‖x - b‖ ^ (2 - (d : ℝ))))) x := by
+    intro x
+    simp only [discreteOccupationDensity.piece, h, ite_false]
+    by_cases hx : x ∈ incrementBall a b
+    · rw [indicator_of_mem hx, indicator_of_mem hx, ENNReal.ofReal_mul hc,
+        ENNReal.ofReal_add (by positivity) (by positivity)]
+      ring
+    · rw [indicator_of_notMem hx, indicator_of_notMem hx]; simp
+  have hma : AEMeasurable (fun x => ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) :=
+    hf.enorm.mul (by fun_prop)
+  calc ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity.piece a b x)
+      = ∫⁻ x in incrementBall a b, ENNReal.ofReal (occupationConstant d) *
+          (‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ))) +
+            ‖f x‖ₑ * ENNReal.ofReal (‖x - b‖ ^ (2 - (d : ℝ)))) := by
+        simp_rw [hpt]; exact lintegral_indicator hQ _
+    _ = ENNReal.ofReal (occupationConstant d) *
+          ((∫⁻ x in incrementBall a b, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
+            ∫⁻ x in incrementBall a b, ‖f x‖ₑ * ENNReal.ofReal (‖x - b‖ ^ (2 - (d : ℝ)))) := by
+        rw [lintegral_const_mul' _ _ ENNReal.ofReal_ne_top, lintegral_add_left' hma.restrict]
+    _ ≤ ENNReal.ofReal (occupationConstant d) *
+          ((∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
+            ∫⁻ x in Metric.closedBall b ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - b‖ ^ (2 - (d : ℝ)))) := by
+        exact mul_le_mul_right (add_le_add (lintegral_mono_set hQa) (lintegral_mono_set hQb)) _
+    _ ≤ ENNReal.ofReal (occupationConstant d) *
+          ((∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
+            K * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f b) := by
+        gcongr
+        exact hK f b hρ hab
+    _ ≤ ENNReal.ofReal (occupationConstant d) * ((1 + K) *
+          ((∫⁻ x in Metric.closedBall a ρ, ‖f x‖ₑ * ENNReal.ofReal (‖x - a‖ ^ (2 - (d : ℝ)))) +
+            localMaximalFunction 1 f b * ENNReal.ofReal (ρ ^ 2))) := by
+        gcongr
+        rw [mul_add]
+        refine add_le_add ?_ ?_
+        · exact le_mul_of_one_le_left zero_le le_self_add
+        · calc ↑K * ENNReal.ofReal (ρ ^ 2) * localMaximalFunction 1 f b
+              = ↑K * (localMaximalFunction 1 f b * ENNReal.ofReal (ρ ^ 2)) := by ring
+            _ ≤ _ := mul_le_mul' le_add_self le_rfl
+    _ = _ := by
+        rw [ENNReal.coe_mul, show (((occupationConstant d).toNNReal : ℝ≥0) : ℝ≥0∞) =
+          ENNReal.ofReal (occupationConstant d) from rfl]
+        push_cast
+        ring
 
 /-- **Subgoal** (Appendix C, (10) with the first increment kept explicit): if `g ≥ M_1 f` at the
 path's partition points `ω(t_j)`, `j ≥ 1`, then
@@ -53,8 +129,8 @@ theorem lintegral_le_maximal_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (π : Partit
     pathOscillation ω π ≤ 1 →
     (∀ j : Fin (π.m + 1), j ≠ 0 → localMaximalFunction 1 f (ω (π.t j)) ≤ g (ω (π.t j))) →
     ∫⁻ x, ‖f x‖ₑ * ENNReal.ofReal (discreteOccupationDensity π ω x) ≤
-      C * (∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω π),
-          ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ))) +
+      C * ((∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω π),
+          ‖f x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ)))) +
         ∑ i : Fin π.m, (g (ω (π.right i)) + g (ω (π.left i))) *
           ENNReal.ofReal (‖ω (π.right i) - ω (π.left i)‖ ^ 2)) := by
   sorry
