@@ -1281,6 +1281,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::Partition.reverse_left": [
    "propext",
    "Classical.choice",
@@ -1737,5 +1742,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T19:17:19Z"
+ "generated": "2026-11-27T19:19:11Z"
 }

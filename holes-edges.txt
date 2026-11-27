@@ -477,6 +477,7 @@ Basic.SmoothHessian -hard-> Smooth.FollmerItoFormula::follmer_ito_formula.tendst
 Basic.WeakLpTendsto -hard-> Occupation.Remark44
 Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq
+Basic.WeakLpTendsto -hard-> Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt
 Bessel.BesselCapacity -hard-> Bessel.IsBrownianPolar
 Bessel.BesselCapacity -hard-> Bessel.IsBrownianPolar::IsBrownianPolar.iUnion
 Bessel.BesselCapacity -hard-> Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull
@@ -1219,6 +1220,7 @@ Occupation.Lemma42 -hard-> Main.Theorem51Steps::theorem_5_1.tendsto_integral
 Occupation.Lemma42 -hard-> Occupation.Remark44
 Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq
+Occupation.Lemma42 -hard-> Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt
 Occupation.Lemma42 -hard-> Smooth.Proposition31
 Occupation.Lemma42 -hard-> Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le
 Occupation.Lemma42 -hard-> Smooth.Proposition31::proposition_3_1.inner_apply_eq
@@ -1437,6 +1439,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.volume_
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq
+Occupation.PathwiseSobolevSpace -hard-> Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le
 Occupation.PathwiseSobolevSpace -hard-> Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le
@@ -1471,6 +1474,7 @@ Occupation.Remark44 -hard-> Occupation.Remark45::occupationConstant_one
 Occupation.Remark44 -hard-> Occupation.Remark45::remark_4_5_term_eq
 Occupation.Remark44::remark_4_4.integrable_mul_conj -hard-> Occupation.Remark44
 Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq -hard-> Occupation.Remark44
+Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt -hard-> Occupation.Remark44
 Occupation.Remark45::Partition.reverse_left -hard-> Occupation.Remark45
 Occupation.Remark45::Partition.reverse_right -hard-> Occupation.Remark45
 Occupation.Remark45::Rd.coord_one_apply -hard-> Occupation.Remark45
@@ -1553,6 +1557,7 @@ Smooth.HasQuadraticVariation -hard-> Main.Theorem51
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq
+Smooth.HasQuadraticVariation -hard-> Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt
 Smooth.HasQuadraticVariation -hard-> Occupation.WeightedOccupationMeasure
 Smooth.HasQuadraticVariation -hard-> Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq
 Smooth.HasQuadraticVariation -hard-> Smooth.Corollary32
@@ -1624,6 +1629,7 @@ Smooth.PathOscillation -hard-> Occupation.OccupationSeminorm::occupationSeminorm
 Smooth.PathOscillation -hard-> Occupation.Remark44
 Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.integrable_mul_conj
 Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq
+Smooth.PathOscillation -hard-> Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt
 Smooth.PathOscillation -hard-> Smooth.Corollary32
 Smooth.PathOscillation -hard-> Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq
 Smooth.PathOscillation -hard-> Smooth.FollmerItoFormula

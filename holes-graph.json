@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T19:17:20Z",
+ "updated": "2026-11-27T19:19:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 6,
   "blocked": 13,
-  "done": 403
+  "done": 404
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 3,
   "blocked": 3,
-  "done": 340
+  "done": 341
  },
  "untagged": [],
  "legend": {
@@ -10293,7 +10293,7 @@
     "remark_4_4"
    ],
    "declKinds": {
-    "theorem": 5
+    "theorem": 6
    },
    "paperGoal": false,
    "verified": false,
@@ -10305,6 +10305,7 @@
     "Occupation.PathwiseSobolevSpace",
     "Occupation.Remark44::remark_4_4.integrable_mul_conj",
     "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+    "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
     "Smooth.HasQuadraticVariation",
     "Smooth.PathOscillation"
    ],
@@ -10378,6 +10379,40 @@
    ],
    "blockers": [],
    "detail": "proved: remark_4_4.lintegral_ofReal_mul_eq — subgoal of Remark 4.4, lower vs. Bochner integral (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "label": "tendsto_mollify_of_continuousAt",
+   "kind": "subgoal",
+   "section": "Occupation",
+   "sectionTitle": "§4 Occupation measures and 𝓦²_{ω,π}",
+   "paper": "subgoal of Remark 4.4 inclusion, path convergence",
+   "parentGoal": "Occupation.Remark44",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Occupation/Remark44.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Remark 4.4 inclusion, path convergence): mollifications `F ⋆ ψ_n` of a locally integrable `F` converge to `F(x)` at every point of continuity `x`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Basic.WeakLpTendsto",
+    "Occupation.Lemma42",
+    "Occupation.PathwiseSobolevSpace",
+    "Smooth.HasQuadraticVariation",
+    "Smooth.PathOscillation"
+   ],
+   "blockers": [],
+   "detail": "proved: remark_4_4.tendsto_mollify_of_continuousAt — subgoal of Remark 4.4 inclusion, path convergence (in Occupation.Remark44) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Occupation.Remark45",
@@ -16521,6 +16556,11 @@
    "kind": "hard"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar",
    "kind": "hard"
@@ -20232,6 +20272,11 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31",
    "kind": "hard"
   },
@@ -21322,6 +21367,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second",
    "kind": "hard"
   },
@@ -21487,6 +21537,11 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "to": "Occupation.Remark44",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
    "to": "Occupation.Remark44",
    "kind": "subgoal"
   },
@@ -21902,6 +21957,11 @@
   },
   {
    "from": "Smooth.HasQuadraticVariation",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.HasQuadraticVariation",
    "to": "Occupation.WeightedOccupationMeasure",
    "kind": "hard"
   },
@@ -22253,6 +22313,11 @@
   {
    "from": "Smooth.PathOscillation",
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Smooth.PathOscillation",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
    "kind": "hard"
   },
   {
@@ -26918,6 +26983,10 @@
    "to": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq"
   },
   {
+   "from": "Basic.WeakLpTendsto",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
+  },
+  {
    "from": "Bessel.BesselCapacity",
    "to": "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion"
   },
@@ -29327,6 +29396,10 @@
   },
   {
    "from": "Occupation.Lemma42",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
+  },
+  {
+   "from": "Occupation.Lemma42",
    "to": "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le"
   },
   {
@@ -29763,6 +29836,10 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
   },
   {
@@ -29887,6 +29964,10 @@
   },
   {
    "from": "Occupation.Remark44::remark_4_4.lintegral_ofReal_mul_eq",
+   "to": "Occupation.Remark44"
+  },
+  {
+   "from": "Occupation.Remark44::remark_4_4.tendsto_mollify_of_continuousAt",
    "to": "Occupation.Remark44"
   },
   {

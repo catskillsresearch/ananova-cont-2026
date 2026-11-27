@@ -76,6 +76,47 @@ theorem remark_4_4_seminorm (_hω : ContinuousOn ω (Icc 0 T)) (_hQV : HasQuadra
   simp_rw [hseq, hlim]
   exact ((ENNReal.continuous_ofReal.tendsto _).comp (hweak.2.2 _ hn)).limsup_eq
 
+/-- **Subgoal** (Remark 4.4 inclusion, path convergence): mollifications `F ⋆ ψ_n` of a locally
+integrable `F` converge to `F(x)` at every point of continuity `x`. -/
+theorem remark_4_4.tendsto_mollify_of_continuousAt {F : Rd d → ℝ} (hF : LocallyIntegrable F)
+    {ψ : ℕ → Rd d → ℝ} (hψc : ∀ n, Continuous (ψ n)) (hψk : ∀ n, HasCompactSupport (ψ n))
+    (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) {x : Rd d}
+    (hx : ContinuousAt F x) :
+    Tendsto (fun n => ∫ y, F y * ψ n (x - y)) atTop (𝓝 (F x)) := by
+  have hcs : ∀ n, Continuous fun y => ψ n (x - y) := fun n => (hψc n).comp (continuous_sub_left x)
+  have hks : ∀ n, HasCompactSupport fun y => ψ n (x - y) := fun n =>
+    (hψk n).comp_homeomorph (Homeomorph.subLeft x)
+  have hint : ∀ n, Integrable fun y => F y * ψ n (x - y) := fun n =>
+    hF.integrable_smul_right_of_hasCompactSupport (hcs n) (hks n)
+  have hψi : ∀ n, Integrable fun y => ψ n (x - y) := fun n =>
+    (hcs n).integrable_of_hasCompactSupport (hks n)
+  have hone : ∀ n, ∫ y, ψ n (x - y) = 1 := fun n => by
+    rw [integral_sub_left_eq_self (fun z => ψ n z) volume x, hψ1 n]
+  refine Metric.tendsto_atTop.2 fun ε hε => ?_
+  obtain ⟨δ, hδ, hδF⟩ := Metric.continuousAt_iff.1 hx (ε / 2) (by positivity)
+  obtain ⟨N, hN⟩ := exists_nat_one_div_lt hδ
+  refine ⟨N, fun n hn => ?_⟩
+  have hsub : (∫ y, F y * ψ n (x - y)) - F x = ∫ y, (F y - F x) * ψ n (x - y) := by
+    simp_rw [sub_mul]
+    rw [integral_sub (hint n) ((hψi n).const_mul _), integral_const_mul, hone n, mul_one]
+  rw [Real.dist_eq, hsub]
+  have hbound : ∀ y, ‖(F y - F x) * ψ n (x - y)‖ ≤ ε / 2 * ψ n (x - y) := fun y => by
+    rw [norm_mul, Real.norm_of_nonneg (hψ0 n _)]
+    by_cases hy : ψ n (x - y) = 0
+    · rw [hy]; simp
+    · refine mul_le_mul_of_nonneg_right ?_ (hψ0 n _)
+      have hm := hψs n (Function.mem_support.2 hy)
+      rw [Metric.mem_ball, dist_zero_right, norm_sub_rev] at hm
+      have hn' : 1 / ((n : ℝ) + 1) ≤ 1 / ((N : ℝ) + 1) :=
+        one_div_le_one_div_of_le (by positivity) (by exact_mod_cast Nat.add_le_add_right hn 1)
+      exact (le_of_lt (hδF (by rw [dist_eq_norm]; linarith)))
+  calc |∫ y, (F y - F x) * ψ n (x - y)|
+      ≤ ∫ y, ε / 2 * ψ n (x - y) :=
+        norm_integral_le_of_norm_le ((hψi n).const_mul _) (Eventually.of_forall hbound)
+    _ = ε / 2 := by rw [integral_const_mul, hone n, mul_one]
+    _ < ε := by linarith
+
 /-- **Remark 4.4** (inclusion). Under the hypotheses of `remark_4_4_density`,
 `{F ∈ W^{2,1}(ℝ^d) ∩ C(ℝ^d) : ∇²F ∈ L^{r'}(ℝ^d)} ⊆ 𝓦^2_{ω,π}`, `r' = r/(r-1)`. -/
 theorem remark_4_4 (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadraticVariation π ω)
