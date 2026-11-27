@@ -524,7 +524,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1896,5 +1895,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:19:08Z"
+ "generated": "2026-11-27T21:19:25Z"
 }

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:19:09Z",
+ "updated": "2026-11-27T21:19:26Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 15,
+ "sorryCount": 14,
  "counts": {
-  "open": 9,
+  "open": 8,
   "blocked": 13,
-  "done": 433
+  "done": 434
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 7,
+  "open": 6,
   "blocked": 3,
-  "done": 367
+  "done": 368
  },
  "untagged": [],
  "legend": {
@@ -3638,9 +3638,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 4,
+   "sorryCount": 3,
    "holes": [
-    "integral_inner_increment_sq",
     "integral_inner_increment_mul_eq_zero",
     "elementary_isometry",
     "elementary_localisation"
@@ -3677,10 +3676,9 @@
    "blockers": [
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
-    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
+    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero"
    ],
-   "detail": "4 sorry: integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+   "detail": "3 sorry: integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.coord_apply",
@@ -4135,10 +4133,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.integral_inner_increment_sq"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4147,17 +4143,16 @@
    "doc": "**Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)` `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.integral_inner_increment_sq — subgoal of P53.A, one-step isometry (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.integral_inner_increment_sq — subgoal of P53.A, one-step isometry (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.measurable_B",

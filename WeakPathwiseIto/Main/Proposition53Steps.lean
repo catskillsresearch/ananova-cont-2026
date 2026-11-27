@@ -304,7 +304,41 @@ theorem integral_inner_increment_sq (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst :
     ∫ ω, ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ ^ 2
         ∂CanonicalWienerSpace.P (T := T) x =
       (t - s) * ∫ ω, ‖ξ ω‖ ^ 2 ∂CanonicalWienerSpace.P (T := T) x := by
-  sorry
+  set P := CanonicalWienerSpace.P (T := T) x
+  have := CanonicalWienerSpace.isProbabilityMeasure_P (T := T) x
+  set D : CanonicalWienerSpace d T → Rd d :=
+    fun ω => CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω with hD
+  obtain ⟨hD2, -, hcov⟩ := increment_moments x hs hst ht
+  have ha2 : ∀ i, MemLp (fun ω => Rd.coord i (ξ ω)) 2 P := fun i => hξ2.inner_const _
+  have hb2 : ∀ i, MemLp (fun ω => Rd.coord i (D ω)) 2 P := fun i => hD2.inner_const _
+  have hξm : ∀ i j, Measurable[IsItoIntegral.naturalSigma d T s]
+      (fun ω => Rd.coord i (ξ ω) * Rd.coord j (ξ ω)) := fun i j =>
+    ((measurable_coord i).comp hξ).mul ((measurable_coord j).comp hξ)
+  have hind : ∀ i j, IndepFun (fun ω => Rd.coord i (ξ ω) * Rd.coord j (ξ ω))
+      (fun ω => Rd.coord i (D ω) * Rd.coord j (D ω)) P := fun i j =>
+    indepFun_naturalSigma_increment x hs hst ht (hξm i j)
+      ((measurable_coord i).mul (measurable_coord j))
+  have hint : ∀ i j, Integrable (fun ω => (Rd.coord i (ξ ω) * Rd.coord j (ξ ω)) *
+      (Rd.coord i (D ω) * Rd.coord j (D ω))) P := fun i j =>
+    (hind i j).integrable_mul ((ha2 i).integrable_mul (ha2 j)) ((hb2 i).integrable_mul (hb2 j))
+  have hexp : ∀ ω, ⟪ξ ω, D ω⟫ ^ 2 = ∑ i, ∑ j, (Rd.coord i (ξ ω) * Rd.coord j (ξ ω)) *
+      (Rd.coord i (D ω) * Rd.coord j (D ω)) := fun ω => by
+    rw [inner_eq_sum_coord, sq, Finset.sum_mul_sum]
+    refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
+  simp_rw [show ∀ ω, ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ ^ 2 =
+    ⟪ξ ω, D ω⟫ ^ 2 from fun _ => rfl, hexp, norm_sq_eq_sum_coord]
+  rw [integral_finsetSum _ fun i _ => integrable_finsetSum _ fun j _ => hint i j,
+    integral_finsetSum _ fun i _ => (ha2 i).integrable_sq,
+    Finset.mul_sum]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [integral_finsetSum _ fun j _ => hint i j]
+  have hcov' : ∀ i j, ∫ ω, Rd.coord i (D ω) * Rd.coord j (D ω) ∂P =
+      if i = j then t - s else 0 := hcov
+  rw [Finset.sum_congr rfl fun j _ => (hind i j).integral_fun_mul_eq_mul_integral
+    ((ha2 i).integrable_mul (ha2 j)).1 ((hb2 i).integrable_mul (hb2 j)).1]
+  simp only [hcov', mul_ite, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, ite_true]
+  rw [mul_comm]
+  simp only [sq]
 
 /-- **Subgoal** (P53.A, cross terms): for `0 ≤ s ≤ t ≤ s' ≤ t' ≤ T`, `ξ ∈ L²` `𝓕_s`-measurable
 and `η ∈ L²` `𝓕_{s'}`-measurable, `E[⟨ξ, B(t) - B(s)⟩ ⟨η, B(t') - B(s')⟩] = 0`. -/
