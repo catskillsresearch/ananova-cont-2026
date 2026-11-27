@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T02:47:01Z  
-**`sorry` occurrences:** 28 · 5 open · 18 blocked · 264 done (goals + subgoals) · goals {'open': 4, 'blocked': 11, 'done': 54} · subgoals {'open': 1, 'blocked': 7, 'done': 210} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T02:47:58Z  
+**`sorry` occurrences:** 27 · 5 open · 18 blocked · 264 done (goals + subgoals) · goals {'open': 4, 'blocked': 11, 'done': 54} · subgoals {'open': 1, 'blocked': 7, 'done': 210} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -283,7 +283,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.MemW2PlusS` | Section 5.2 W^{2+s,p} | 0 |  |
 | done | `Sobolev.MemWLoc` | W^{1,2}_loc | 0 |  |
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
-| blocked | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `Sobolev.Theorem21First` |
+| blocked | `Sobolev.Theorem21` | Theorem 2.1 | 1 | `Sobolev.Theorem21First` |
 | open | `Sobolev.Theorem21First` |  | 0 |  |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 

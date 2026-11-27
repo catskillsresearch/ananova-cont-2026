@@ -34,7 +34,30 @@ theorem theorem_2_1_first (d : ℕ) : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (G
       ENNReal.ofReal |preciseRepresentative f y - preciseRepresentative f x| ≤
         C * ((∫⁻ z in Q, ‖G z‖ₑ / edist x z ^ ((d : ℝ) - 1)) +
           ∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1)) := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · refine ⟨0, fun f G _ _ Q _ x y _ _ _ _ _ _ => ?_⟩
+    rw [Subsingleton.elim x y, sub_self, abs_zero, ENNReal.ofReal_zero]
+    exact zero_le
+  obtain ⟨C, hC⟩ := theorem_2_1_first.abs_sub_average_le hd
+  refine ⟨C, fun f G hf hG Q hQ x y hx hy _ _ hLx hLy => ?_⟩
+  have hfl : LocallyIntegrable f := (memLp_one_iff_integrable.1 hf.1).locallyIntegrable
+  obtain ⟨cx, hcx⟩ := hLx
+  obtain ⟨cy, hcy⟩ := hLy
+  rw [theorem_2_1_first.preciseRepresentative_eq hfl hcx,
+    theorem_2_1_first.preciseRepresentative_eq hfl hcy]
+  have h1 := hC f G Q x cx hf hG hQ hx hcx
+  have h2 := hC f G Q y cy hf hG hQ hy hcy
+  calc ENNReal.ofReal |cy - cx|
+      ≤ ENNReal.ofReal (|cy - ⨍ z in Q, f z| + |cx - ⨍ z in Q, f z|) := by
+        refine ENNReal.ofReal_le_ofReal ?_
+        calc |cy - cx| ≤ |cy - ⨍ z in Q, f z| + |(⨍ z in Q, f z) - cx| :=
+            abs_sub_le cy (⨍ z in Q, f z) cx
+          _ = _ := by rw [abs_sub_comm (⨍ z in Q, f z) cx]
+    _ = ENNReal.ofReal |cy - ⨍ z in Q, f z| + ENNReal.ofReal |cx - ⨍ z in Q, f z| :=
+        ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _)
+    _ ≤ C * (∫⁻ z in Q, ‖G z‖ₑ / edist y z ^ ((d : ℝ) - 1)) +
+          C * ∫⁻ z in Q, ‖G z‖ₑ / edist x z ^ ((d : ℝ) - 1) := add_le_add h2 h1
+    _ = _ := by rw [← mul_add, add_comm]
 
 /-- **Theorem 2.1** (second estimate, stated as [BH93, Thm. 2] with `m = 2`). For
 `f ∈ W^{2,1}(ℝ^d)` and `x, y ∈ Q` with `f̃(x), f̃(y), ∇̃f(x)` finite, `x, y` Lebesgue points of
