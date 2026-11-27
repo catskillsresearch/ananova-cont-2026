@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T01:54:57Z  
-**`sorry` occurrences:** 28 · 6 open · 17 blocked · 242 done (goals + subgoals) · goals {'open': 5, 'blocked': 10, 'done': 53} · subgoals {'open': 1, 'blocked': 7, 'done': 189} · 14 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:55:06Z  
+**`sorry` occurrences:** 28 · 5 open · 17 blocked · 243 done (goals + subgoals) · goals {'open': 4, 'blocked': 10, 'done': 54} · subgoals {'open': 1, 'blocked': 7, 'done': 189} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -16,7 +16,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | Status | Module | Paper | `sorry` | Holes |
 |---|---|---|---|---|
-| open | `Main.Theorem51` | Theorem 5.1 | 0 |  |
+| done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `theorem_5_2`, `theorem_5_2_deterministic` |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `proposition_5_3` |
 
@@ -25,7 +25,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Module | Paper | `sorry` | Holes |
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
-| `Main.Theorem51` | Theorem 5.1 | 0 | (review → VERIFIED) |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
@@ -308,7 +307,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.OccupationSeminorm` | Section 4.2 seminorm, (10), (11) | 0 |  |
 | done | `Occupation.PathwiseSobolevSpace` | Definition 4.3 | 0 |  |
 | open | `Occupation.Remark44` | Remark 4.4 | 3 |  |
-| blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Main.Theorem51`, `Occupation.Remark44` |
+| blocked | `Occupation.Remark45` | Remark 4.5 | 4 | `Occupation.Remark44` |
 | done | `Occupation.WeightedOccupationMeasure` | Lemma 4.2 μ^T_ω | 0 |  |
 
 ### §5 Main results
@@ -322,7 +321,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
 | open | `Main.Remark54` | Remark 5.4 | 3 |  |
 | done | `Main.SmoothItoAt` |  | 0 |  |
-| open | `Main.Theorem51` | Theorem 5.1 | 0 |  |
+| done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |

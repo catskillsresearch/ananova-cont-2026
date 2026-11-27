@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T01:54:57Z",
+ "updated": "2026-11-27T01:55:06Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 28,
  "counts": {
-  "open": 6,
+  "open": 5,
   "blocked": 17,
-  "done": 242
+  "done": 243
  },
  "goalCounts": {
-  "open": 5,
+  "open": 4,
   "blocked": 10,
-  "done": 53
+  "done": 54
  },
  "subgoalCounts": {
   "open": 1,
@@ -3022,9 +3022,9 @@
     "theorem": 3
    },
    "paperGoal": true,
-   "verified": false,
+   "verified": true,
    "kind": "goal",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Main.Theorem51Steps",
     "Main.WeakCovariation",
@@ -3034,7 +3034,7 @@
     "Sobolev.IsWeakHessian"
    ],
    "blockers": [],
-   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
+   "detail": "Verified (builds, no sorry)."
   },
   {
    "id": "Main.Theorem51Steps",
@@ -5760,7 +5760,6 @@
     "Occupation.Remark44"
    ],
    "blockers": [
-    "Main.Theorem51",
     "Occupation.Remark44"
    ],
    "detail": "4 sorry: remark_4_5_identity, remark_4_5_seminorm, remark_4_5_subset, remark_4_5_bounded"
