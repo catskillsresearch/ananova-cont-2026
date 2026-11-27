@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-27T22:07:18Z",
+ "updated": "2026-11-27T22:16:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 28,
  "counts": {
   "open": 22,
   "blocked": 13,
-  "done": 449
+  "done": 450
  },
  "goalCounts": {
   "open": 2,
   "blocked": 10,
-  "done": 72
+  "done": 73
  },
  "subgoalCounts": {
   "open": 20,
@@ -3661,6 +3661,28 @@
    "deps": [
     "Main.ExitTime",
     "Main.IsL2ItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "Verified (builds, no sorry)."
+  },
+  {
+   "id": "Main.IsProgressive",
+   "label": "IsProgressive",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "progressively measurable integrands (proof of Prop. 5.3)",
+   "file": "WeakPathwiseIto/Main/IsProgressive.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "def": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "kind": "goal",
+   "status": "done",
+   "deps": [
+    "Main.IsItoIntegral"
    ],
    "blockers": [],
    "detail": "Verified (builds, no sorry)."
@@ -20866,6 +20888,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.IsProgressive",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps",
    "kind": "hard"
   },
@@ -31666,6 +31693,10 @@
   {
    "from": "Main.IsItoIntegral",
    "to": "Main.IsL2ItoIntegral"
+  },
+  {
+   "from": "Main.IsItoIntegral",
+   "to": "Main.IsProgressive"
   },
   {
    "from": "Main.IsItoIntegral",

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T22:07:18Z  
-**`sorry` occurrences:** 28 · 22 open · 13 blocked · 449 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 72} · subgoals {'open': 20, 'blocked': 3, 'done': 377} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T22:16:04Z  
+**`sorry` occurrences:** 28 · 22 open · 13 blocked · 450 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 73} · subgoals {'open': 20, 'blocked': 3, 'done': 377} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -529,6 +529,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.IsItoIntegral` | Itô integral (elementary integrands, natural filtration) | 0 |  |
 | done | `Main.IsL2ItoIntegral` | L² Itô integral (stopped integrals J^R) | 0 |  |
 | done | `Main.IsLocalItoIntegral` | local Itô integral J (proof of Prop. 5.3) | 0 |  |
+| done | `Main.IsProgressive` | progressively measurable integrands (proof of Prop. 5.3) | 0 |  |
 | done | `Main.ItoRiemannSum` | S_n^m Riemann sums (proof of Prop. 5.3) | 0 |  |
 | done | `Main.PartitionEta` | η_n left grid point (proof of Prop. 5.3) | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `Main.Theorem52` |
