@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T00:59:35Z  
-**`sorry` occurrences:** 32 · 7 open · 17 blocked · 218 done (goals + subgoals) · goals {'open': 6, 'blocked': 10, 'done': 49} · subgoals {'open': 1, 'blocked': 7, 'done': 169} · 16 file(s) with `sorry`.
+**Updated:** 2026-11-27T01:00:29Z  
+**`sorry` occurrences:** 31 · 6 open · 17 blocked · 219 done (goals + subgoals) · goals {'open': 5, 'blocked': 10, 'done': 50} · subgoals {'open': 1, 'blocked': 7, 'done': 169} · 15 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -27,7 +27,6 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Main.Theorem51` | Theorem 5.1 | 3 | `theorem_5_1_tendsto`, `theorem_5_1_unique`, `theorem_5_1` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
-| `Sobolev.Lemma22` | Lemma 2.2 | 1 | `lemma_2_2` |
 | `Sobolev.Theorem21` | Theorem 2.1 | 2 | `theorem_2_1_first`, `theorem_2_1_second` |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
 
@@ -237,7 +236,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
 | done | `Sobolev.IsWeakHessian` |  | 0 |  |
-| open | `Sobolev.Lemma22` | Lemma 2.2 | 1 |  |
+| done | `Sobolev.Lemma22` | Lemma 2.2 | 0 |  |
 | done | `Sobolev.LocalMaximalFunction` | Section 2.1 M_R f | 0 |  |
 | done | `Sobolev.MemW` | Section 2.1 W^{k,p} | 0 |  |
 | done | `Sobolev.MemW2Plus` | Section 2.1 W^{2+,p} | 0 |  |

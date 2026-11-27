@@ -342,6 +342,30 @@ theorem lemma_2_2 (d : ℕ) {α : ℝ} (hα : 0 < α) : ∃ C : ℝ≥0, 0 < C �
         ∫⁻ y in Q, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
           C * Metric.ediam Q ^ α *
             localMaximalFunction (Metric.ediam Q) f x := by
-  sorry
+  obtain ⟨C0, hC0⟩ : ∃ C : ℝ≥0, ∀ (f : Rd d → ℝ) (x : Rd d) {ρ : ℝ}, 0 < ρ →
+      ∫⁻ y in Metric.closedBall x ρ, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) ≤
+        C * ENNReal.ofReal ρ ^ α * localMaximalFunction (ENNReal.ofReal ρ) f x := by
+    by_cases h : α < d
+    · exact lemma_2_2.lintegral_closedBall_kernel_le_of_lt hα h
+    · exact lemma_2_2.lintegral_closedBall_kernel_le_of_ge hα (le_of_not_gt h)
+  refine ⟨max C0 1, lt_of_lt_of_le one_pos (le_max_right _ _), fun Q f hQ _ x hx => ?_⟩
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · have hz : ∀ y : Rd 0, ‖f y‖ₑ / edist x y ^ (((0 : ℕ) : ℝ) - α) = 0 := fun y => by
+      rw [Subsingleton.elim y x, edist_self, Nat.cast_zero, zero_sub,
+        ENNReal.zero_rpow_of_neg (neg_neg_of_pos hα), ENNReal.div_top]
+    simp only [hz, lintegral_zero]
+    exact zero_le
+  obtain ⟨hfin, -, hsub⟩ := lemma_2_2.subset_closedBall hd hQ hx
+  have hρ : ENNReal.ofReal (Metric.ediam Q).toReal = Metric.ediam Q := ENNReal.ofReal_toReal hfin
+  have hpos : 0 < (Metric.ediam Q).toReal := (lemma_2_2.subset_closedBall hd hQ hx).2.1
+  calc ∫⁻ y in Q, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α)
+      ≤ ∫⁻ y in Metric.closedBall x (Metric.ediam Q).toReal, ‖f y‖ₑ / edist x y ^ ((d : ℝ) - α) :=
+        lintegral_mono_set hsub
+    _ ≤ C0 * ENNReal.ofReal (Metric.ediam Q).toReal ^ α *
+          localMaximalFunction (ENNReal.ofReal (Metric.ediam Q).toReal) f x := hC0 f x hpos
+    _ = C0 * Metric.ediam Q ^ α * localMaximalFunction (Metric.ediam Q) f x := by rw [hρ]
+    _ ≤ _ := by
+        gcongr
+        exact le_max_left _ _
 
 end WeakPathwiseIto
