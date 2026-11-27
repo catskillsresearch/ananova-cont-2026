@@ -291,7 +291,111 @@ bounded, of positive measure, and `(diam Q)^d ≤ K_d |Q|`. -/
 theorem isCubeOrBall_props (hd : 0 < d) : ∃ K : ℝ≥0, ∀ Q : Set (Rd d), IsCubeOrBall Q →
     Convex ℝ Q ∧ MeasurableSet Q ∧ Bornology.IsBounded Q ∧ volume Q ≠ 0 ∧
       Metric.ediam Q ^ (d : ℝ) ≤ K * volume Q := by
-  sorry
+  have hcoord : ∀ (i : Fin d) (v : Rd d), Rd.coord i v = v i := by
+    intro i v; simp [Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right]
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast hd
+  have hd1 : (1 : ℝ) ≤ d := by exact_mod_cast hd
+  have hco : ∀ (i : Fin d) (v : Rd d), |Rd.coord i v| ≤ ‖v‖ := by
+    intro i v; rw [hcoord, ← Real.norm_eq_abs]; exact PiLp.norm_apply_le v i
+  have hnorm : ∀ (v : Rd d) {r : ℝ}, 0 < r → (∀ i, |Rd.coord i v| ≤ r) → ‖v‖ ≤ d * r := by
+    intro v r hr h
+    rw [EuclideanSpace.norm_eq, Real.sqrt_le_iff]
+    refine ⟨by positivity, ?_⟩
+    calc ∑ i, ‖v i‖ ^ 2 ≤ ∑ _i : Fin d, r ^ 2 := by
+          refine Finset.sum_le_sum fun i _ => ?_
+          have := h i
+          rw [hcoord, ← Real.norm_eq_abs] at this
+          exact pow_le_pow_left₀ (norm_nonneg _) this 2
+      _ = d * r ^ 2 := by simp
+      _ ≤ (d * r) ^ 2 := by nlinarith [sq_nonneg r]
+  have hcc : ∀ (c : Rd d) (i : Fin d), Continuous fun y : Rd d => |Rd.coord i (y - c)| := by
+    intro c i; unfold Rd.coord; fun_prop
+  have hlin : ∀ (c y z : Rd d) (a b : ℝ), a + b = 1 → ∀ i,
+      Rd.coord i (a • y + b • z - c) = a * Rd.coord i (y - c) + b * Rd.coord i (z - c) := by
+    intro c y z a b hab i
+    simp only [hcoord, PiLp.sub_apply, PiLp.add_apply, PiLp.smul_apply, smul_eq_mul]
+    linear_combination (c i) * hab
+  -- Per-shape facts: convex, measurable, ball c r ⊆ Q ⊆ closedBall c (d * r).
+  have shape : ∀ Q : Set (Rd d), IsCubeOrBall Q → ∃ (c : Rd d) (r : ℝ), 0 < r ∧
+      Convex ℝ Q ∧ MeasurableSet Q ∧ Metric.ball c r ⊆ Q ∧ Q ⊆ Metric.closedBall c (d * r) := by
+    rintro Q ⟨c, r, hr, hQ | hQ | hQ | hQ⟩ <;> refine ⟨c, r, hr, ?_⟩ <;> subst hQ
+    · refine ⟨convex_ball c r, measurableSet_ball, subset_rfl,
+        Metric.ball_subset_closedBall.trans (Metric.closedBall_subset_closedBall ?_)⟩
+      nlinarith
+    · refine ⟨convex_closedBall c r, measurableSet_closedBall, Metric.ball_subset_closedBall,
+        Metric.closedBall_subset_closedBall ?_⟩
+      nlinarith
+    · refine ⟨?_, ?_, ?_, ?_⟩
+      · intro y hy z hz a b ha hb hab i
+        rw [hlin c y z a b hab i]
+        have h1 := hy i; have h2 := hz i
+        calc |a * Rd.coord i (y - c) + b * Rd.coord i (z - c)|
+            ≤ a * |Rd.coord i (y - c)| + b * |Rd.coord i (z - c)| := by
+              refine (abs_add_le _ _).trans ?_
+              rw [abs_mul, abs_mul, abs_of_nonneg ha, abs_of_nonneg hb]
+          _ < r := by
+              rcases ha.lt_or_eq with ha' | ha'
+              · nlinarith [abs_nonneg (Rd.coord i (z - c))]
+              · subst ha'; simp at hab; subst hab; simpa using h2
+      · have : IsCubeOrBall.openCube c r = ⋂ i, {y | |Rd.coord i (y - c)| < r} := by
+          ext; simp [IsCubeOrBall.openCube]
+        rw [this]
+        exact MeasurableSet.iInter fun i => measurableSet_lt (hcc c i).measurable measurable_const
+      · intro y hy i
+        exact (hco i _).trans_lt (by simpa [dist_eq_norm] using hy)
+      · intro y hy
+        rw [Metric.mem_closedBall, dist_eq_norm]
+        exact hnorm _ hr fun i => (hy i).le
+    · refine ⟨?_, ?_, ?_, ?_⟩
+      · intro y hy z hz a b ha hb hab i
+        rw [hlin c y z a b hab i]
+        have h1 := hy i; have h2 := hz i
+        calc |a * Rd.coord i (y - c) + b * Rd.coord i (z - c)|
+            ≤ a * |Rd.coord i (y - c)| + b * |Rd.coord i (z - c)| := by
+              refine (abs_add_le _ _).trans ?_
+              rw [abs_mul, abs_mul, abs_of_nonneg ha, abs_of_nonneg hb]
+          _ ≤ r := by nlinarith [abs_nonneg (Rd.coord i (z - c))]
+      · have : IsCubeOrBall.closedCube c r = ⋂ i, {y | |Rd.coord i (y - c)| ≤ r} := by
+          ext; simp [IsCubeOrBall.closedCube]
+        rw [this]
+        exact MeasurableSet.iInter fun i => measurableSet_le (hcc c i).measurable measurable_const
+      · intro y hy i
+        exact (hco i _).trans (by simpa [dist_eq_norm] using (Metric.mem_ball.1 hy).le)
+      · intro y hy
+        rw [Metric.mem_closedBall, dist_eq_norm]
+        exact hnorm _ hr hy
+  -- The constant.
+  set B := volume (Metric.ball (0 : Rd d) 1) with hBdef
+  have hB0 : B ≠ 0 := (Metric.measure_ball_pos volume _ one_pos).ne'
+  have hBt : B ≠ ⊤ := measure_ball_lt_top.ne
+  refine ⟨((2 * d : ℝ≥0) ^ d) / B.toNNReal, fun Q hQ => ?_⟩
+  obtain ⟨c, r, hr, hcv, hm, hin, hout⟩ := shape Q hQ
+  have hb : Bornology.IsBounded Q := Metric.isBounded_closedBall.subset hout
+  have hball : volume (Metric.ball c r) = ENNReal.ofReal (r ^ d) * B := by
+    rw [Measure.addHaar_ball_of_pos volume c hr, finrank_euclideanSpace_fin]
+  refine ⟨hcv, hm, hb, ?_, ?_⟩
+  · refine ne_of_gt (lt_of_lt_of_le ?_ (measure_mono hin))
+    exact Metric.measure_ball_pos volume c hr
+  · have hdiam : Metric.diam Q ≤ 2 * (d * r) :=
+      (Metric.diam_mono hout Metric.isBounded_closedBall).trans
+        (Metric.diam_closedBall (by positivity))
+    have hed : Metric.ediam Q = ENNReal.ofReal (Metric.diam Q) := by
+      rw [Metric.diam, ENNReal.ofReal_toReal hb.ediam_ne_top]
+    calc Metric.ediam Q ^ (d : ℝ)
+        ≤ ENNReal.ofReal (2 * (d * r)) ^ (d : ℝ) := by
+          rw [hed]; exact ENNReal.rpow_le_rpow (ENNReal.ofReal_le_ofReal hdiam) hdpos.le
+      _ = ((2 * d : ℝ≥0) ^ d : ℝ≥0∞) * ENNReal.ofReal (r ^ d) := by
+          rw [ENNReal.ofReal_rpow_of_nonneg (by positivity) hdpos.le, Real.rpow_natCast,
+            ← mul_assoc, mul_pow, ENNReal.ofReal_mul (by positivity)]
+          congr 1
+          rw [← ENNReal.ofReal_coe_nnreal]
+          push_cast
+          exact ENNReal.ofReal_pow (by positivity) _
+      _ = (((2 * d : ℝ≥0) ^ d / B.toNNReal : ℝ≥0) : ℝ≥0∞) * (ENNReal.ofReal (r ^ d) * B) := by
+          rw [ENNReal.coe_div (ENNReal.toNNReal_ne_zero.2 ⟨hB0, hBt⟩), ENNReal.coe_toNNReal hBt,
+            mul_comm (ENNReal.ofReal (r ^ d)) B, ← mul_assoc, ENNReal.div_mul_cancel hB0 hBt]
+          push_cast; rfl
+      _ ≤ _ := by rw [← hball]; exact mul_le_mul' le_rfl (measure_mono hin)
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification step 1): for `f` with weak gradient `G` and a
 smooth compactly supported `ψ`, `f * ψ` is `C¹` with `∇(f * ψ) = G * ψ`. -/

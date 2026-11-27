@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:10:25Z",
+ "updated": "2026-11-27T02:15:03Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 38,
+ "sorryCount": 37,
  "counts": {
-  "open": 14,
+  "open": 13,
   "blocked": 19,
-  "done": 248
+  "done": 249
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 11,
+  "open": 10,
   "blocked": 7,
-  "done": 194
+  "done": 195
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 10,
+   "sorryCount": 9,
    "holes": [
-    "isCubeOrBall_props",
     "contDiff_convolution",
     "lintegral_convolution_le",
     "tendsto_convolution_of_hasCompactSupport",
@@ -7266,7 +7265,6 @@
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
-    "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le",
@@ -7275,7 +7273,7 @@
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "10 sorry: isCubeOrBall_props, contDiff_convolution, lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "9 sorry: contDiff_convolution, lintegral_convolution_le, tendsto_convolution_of_hasCompactSupport, tendsto_convolution, lintegral_potential_le, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7378,17 +7376,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.isCubeOrBall_props"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof: cubes and balls): a cube or ball is convex, measurable, bounded, of positive measure, and `(diam Q)^d ≤ K_d |Q|`.",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7397,7 +7393,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.isCubeOrBall_props — subgoal of Theorem 2.1 proof: cubes and balls (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.isCubeOrBall_props — subgoal of Theorem 2.1 proof: cubes and balls (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le",
