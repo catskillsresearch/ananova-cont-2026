@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T03:37:00Z",
+ "updated": "2026-11-27T03:38:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 27,
  "counts": {
-  "open": 5,
+  "open": 4,
   "blocked": 19,
-  "done": 287
+  "done": 288
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 57
  },
  "subgoalCounts": {
-  "open": 3,
+  "open": 2,
   "blocked": 7,
-  "done": 230
+  "done": 231
  },
  "untagged": [],
  "legend": {
@@ -8315,10 +8315,9 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "isLebesguePoint_of_maximal_lt_top",
-    "maximal_lt_top_of_isLebesguePoint"
+    "isLebesguePoint_of_maximal_lt_top"
    ],
    "declKinds": {
     "theorem": 9
@@ -8341,10 +8340,9 @@
     "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
    ],
    "blockers": [
-    "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
-    "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
+    "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top"
    ],
-   "detail": "2 sorry: isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint"
+   "detail": "1 sorry: isLebesguePoint_of_maximal_lt_top"
   },
   {
    "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
@@ -8566,23 +8564,21 @@
    "parentGoal": "Sobolev.Theorem23Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_3.maximal_lt_top_of_isLebesguePoint"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.Lemma22",
     "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_3.maximal_lt_top_of_isLebesguePoint — subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite (in Sobolev.Theorem23Steps)"
+   "detail": "proved: theorem_2_3.maximal_lt_top_of_isLebesguePoint — subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite (in Sobolev.Theorem23Steps)"
   }
  ],
  "edges": [

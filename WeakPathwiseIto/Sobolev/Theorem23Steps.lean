@@ -313,7 +313,62 @@ theorem maximal_lt_top_of_isLebesguePoint {G : Rd d → Rd d}
     (hG : ∀ i, LocallyIntegrable fun z => Rd.coord i (G z)) {x : Rd d}
     (hx : ∀ i, IsLebesguePoint (fun z => Rd.coord i (G z)) x) :
     ∃ R : ℝ≥0∞, 0 < R ∧ localMaximalFunction R G x < ⊤ := by
-  sorry
+  have hexp : ∀ w : Rd d, w = ∑ i, Rd.coord i w • Rd.basisVec i := by
+    intro w
+    conv_lhs => rw [← (EuclideanSpace.basisFun (Fin d) ℝ).sum_repr' w]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    simp [Rd.coord, Rd.basisVec, real_inner_comm]
+  choose c hc using hx
+  have hev : ∀ᶠ r in 𝓝[>] (0 : ℝ), ∀ i,
+      ⨍ y in Metric.ball x r, |Rd.coord i (G y) - c i| < 1 :=
+    eventually_all.2 fun i => (tendsto_order.1 (hc i)).2 1 one_pos
+  obtain ⟨u, hu, hsub⟩ := mem_nhdsGT_iff_exists_Ioo_subset.1 hev
+  refine ⟨ENNReal.ofReal u, ENNReal.ofReal_pos.2 hu, ?_⟩
+  have hfin : ∑ i, (1 + ENNReal.ofReal |c i|) ≠ ⊤ :=
+    ENNReal.sum_ne_top.2 fun i _ => ENNReal.add_ne_top.2 ⟨ENNReal.one_ne_top, ENNReal.ofReal_ne_top⟩
+  refine lt_of_le_of_lt ?_ (lt_top_iff_ne_top.2 hfin)
+  refine iSup_le fun r => iSup_le fun hr => iSup_le fun hrR => ?_
+  have hru : r < u := (ENNReal.ofReal_lt_ofReal_iff hu).1 hrR
+  have hbi : ∀ i, ⨍ y in Metric.ball x r, |Rd.coord i (G y) - c i| < 1 := hsub ⟨hr, hru⟩
+  set B := Metric.ball x r with hB
+  have hB0 : volume B ≠ 0 := (Metric.measure_ball_pos volume x hr).ne'
+  have hBt : volume B ≠ ⊤ := measure_ball_lt_top.ne
+  have hint : ∀ i, IntegrableOn (fun y => |Rd.coord i (G y) - c i|) B := fun i =>
+    ((((hG i).integrableOn_isCompact (isCompact_closedBall x r)).mono_set
+      Metric.ball_subset_closedBall).sub (integrableOn_const hBt)).abs
+  have hae : ∀ i, AEMeasurable (fun y => ENNReal.ofReal |Rd.coord i (G y) - c i| +
+      ENNReal.ofReal |c i|) (volume.restrict B) := fun i =>
+    ((continuous_abs.measurable.comp_aemeasurable
+      ((hG i).aestronglyMeasurable.aemeasurable.sub_const (c i))).ennreal_ofReal.add
+        aemeasurable_const).restrict
+  have hb : ∀ i : Fin d, ‖Rd.basisVec i‖ₑ = 1 := fun i => by
+    rw [← ofReal_norm, show ‖Rd.basisVec i‖ = 1 by simp [Rd.basisVec], ENNReal.ofReal_one]
+  have hpt : ∀ y, ‖G y‖ₑ ≤ ∑ i, (ENNReal.ofReal |Rd.coord i (G y) - c i| + ENNReal.ofReal |c i|) := by
+    intro y
+    calc ‖G y‖ₑ = ‖∑ i, Rd.coord i (G y) • Rd.basisVec i‖ₑ := by rw [← hexp (G y)]
+      _ ≤ ∑ i, ‖Rd.coord i (G y) • Rd.basisVec i‖ₑ := enorm_sum_le _ _
+      _ ≤ _ := Finset.sum_le_sum fun i _ => by
+          rw [enorm_smul, hb i, mul_one, Real.enorm_eq_ofReal_abs,
+            ← ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _)]
+          refine ENNReal.ofReal_le_ofReal ?_
+          have := abs_add_le (Rd.coord i (G y) - c i) (c i)
+          simpa using this
+  rw [laverage_eq, Measure.restrict_apply_univ]
+  calc (∫⁻ y in B, ‖G y‖ₑ) / volume B
+      ≤ (∫⁻ y in B, ∑ i, (ENNReal.ofReal |Rd.coord i (G y) - c i| + ENNReal.ofReal |c i|)) /
+          volume B := ENNReal.div_le_div_right (lintegral_mono hpt) _
+    _ = (∑ i, ∫⁻ y in B, (ENNReal.ofReal |Rd.coord i (G y) - c i| + ENNReal.ofReal |c i|)) /
+          volume B := by rw [lintegral_finsetSum' _ (fun i _ => hae i)]
+    _ = ∑ i, (∫⁻ y in B, (ENNReal.ofReal |Rd.coord i (G y) - c i| + ENNReal.ofReal |c i|)) /
+          volume B := by simp only [ENNReal.div_eq_inv_mul, Finset.mul_sum]
+    _ = ∑ i, ((∫⁻ y in B, ENNReal.ofReal |Rd.coord i (G y) - c i|) / volume B +
+          ENNReal.ofReal |c i|) := Finset.sum_congr rfl fun i _ => by
+            rw [lintegral_add_right _ measurable_const, setLIntegral_const, ENNReal.add_div,
+              ENNReal.mul_div_cancel_right hB0 hBt]
+    _ ≤ ∑ i, (1 + ENNReal.ofReal |c i|) := Finset.sum_le_sum fun i _ => by
+        refine add_le_add ?_ le_rfl
+        rw [← ofReal_setAverage (hint i) (ae_of_all _ fun _ => abs_nonneg _)]
+        exact (ENNReal.ofReal_le_ofReal (hbi i).le).trans ENNReal.ofReal_one.le
 
 /-- **Subgoal** (Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian). -/
 theorem maximal_coord_hessian_le {H : Rd d → (Rd d →L[ℝ] Rd d)} (i : Fin d) (R : ℝ≥0∞)
