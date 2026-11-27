@@ -27,15 +27,18 @@ namespace WeakPathwiseIto
 
 variable {T : ℝ} {d : ℕ}
 
-/-- **Theorem 5.2** (equivalent form): for `x₀ ∉ E` a single deterministic sequence
-`F_m ∈ C^2_b ∩ W^{2,1}` works `ℙ_{x₀}`-almost surely. -/
+/-- **Theorem 5.2** (equivalent form, as constructed in the paper's proof): there are a weak
+Hessian `H` and a single deterministic sequence `F_m ∈ C^2_b ∩ W^{2,1}`, chosen before the
+starting point, and a polar set `E` such that for every `x₀ ∉ E` the sequence `F_m` works
+`ℙ_{x₀}`-almost surely. -/
 theorem theorem_5_2_deterministic {π : ℕ → Partition T}
     (hT : 0 < T) (h1 : BalancedPartitions π) (h2 : GeometricMeshDecay π) {p : ℝ} (hp : 1 < p)
     {F : Rd d → ℝ} (hF : MemW2Plus p F) (hF1 : MemW 2 1 F)
     (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
-    ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
-      ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
-        (∀ m, 1 ≤ m → ContDiffBounded 2 (Fm m) ∧ MemW 2 1 (Fm m)) ∧ ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀),
+    ∃ H : Rd d → (Rd d →L[ℝ] Rd d), IsWeakHessian F H ∧ ∃ Fm : ℕ → Rd d → ℝ,
+      (∀ m, 1 ≤ m → ContDiffBounded 2 (Fm m) ∧ MemW 2 1 (Fm m)) ∧
+      ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
+        ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀),
           (∀ t ∈ Icc 0 T, Tendsto (fun m => Fm m (CanonicalWienerSpace.path ω t)) atTop
             (𝓝 (F (CanonicalWienerSpace.path ω t)))) ∧
           Tendsto (fun m => occupationSeminorm π (CanonicalWienerSpace.path ω)
@@ -67,11 +70,11 @@ theorem theorem_5_2_deterministic {π : ℕ → Partition T}
     (tendsto_eLpNorm_maximal_rpow hp hvlim) (fun m _ => (hhyp m).2.2.2)
   -- step 3: the polar set
   obtain ⟨E1, hE1, hpot⟩ := exists_polar_forall_potential_lt_top T hvint
-  refine ⟨({x | ¬ IsLebesguePoint F x} ∪ E2) ∪ E1, isBrownianPolar_union (isBrownianPolar_union
+  refine ⟨H, hH, fun m => Fn (φ m + N), fun m _ => hmem _, ({x | ¬ IsLebesguePoint F x} ∪ E2) ∪ E1,
+    isBrownianPolar_union (isBrownianPolar_union
     (isBrownianPolar_nonLebesgue hT hp ⟨s, hs, hFs⟩) hE2) hE1, fun x₀ hx₀ => ?_⟩
   have hx₂ : x₀ ∉ E2 := fun h => hx₀ (Or.inl (Or.inr h))
   have hx₁ : x₀ ∉ E1 := fun h => hx₀ (Or.inr h)
-  refine ⟨H, hH, fun m => Fn (φ m + N), fun m _ => hmem _, ?_⟩
   have hpq : p.HolderConjugate (Real.conjExponent p) := Real.HolderConjugate.conjExponent hp
   have hφN : StrictMono fun m => φ m + N := fun a b hab => Nat.add_lt_add_right (hφ hab) N
   have hFl : LocallyIntegrable F := (memLp_one_iff_integrable.1 hF1.1).locallyIntegrable
@@ -106,10 +109,9 @@ theorem theorem_5_2 {π : ℕ → Partition T} (hT : 0 < T)
     (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x) :
     ∃ E : Set (Rd d), IsBrownianPolar d T E ∧ ∀ x₀ ∉ E,
       ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), F ∈ PathwiseSobolevSpace π (CanonicalWienerSpace.path ω) := by
-  obtain ⟨E, hE, hdet⟩ := theorem_5_2_deterministic hT h1 h2 hp hF hF1 hFrep
+  obtain ⟨H, hH, Fm, hFm, E, hE, hdet⟩ := theorem_5_2_deterministic hT h1 h2 hp hF hF1 hFrep
   refine ⟨E, hE, fun x₀ hx₀ => ?_⟩
-  obtain ⟨H, hH, Fm, hFm, hae⟩ := hdet x₀ hx₀
-  filter_upwards [hae] with ω hω
+  filter_upwards [hdet x₀ hx₀] with ω hω
   exact ⟨hF1, H, hH, ⟨⟨Fm, fun m hm => (hFm m hm).1, fun m hm => (hFm m hm).2, hω.1, hω.2⟩⟩⟩
 
 end WeakPathwiseIto
