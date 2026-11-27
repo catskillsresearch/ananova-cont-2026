@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T18:59:09Z",
+ "updated": "2026-11-27T18:59:56Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 18,
+ "sorryCount": 17,
  "counts": {
-  "open": 7,
-  "blocked": 14,
-  "done": 399
+  "open": 6,
+  "blocked": 13,
+  "done": 401
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 63
  },
  "subgoalCounts": {
-  "open": 4,
-  "blocked": 4,
-  "done": 336
+  "open": 3,
+  "blocked": 3,
+  "done": 338
  },
  "untagged": [],
  "legend": {
@@ -1581,9 +1581,8 @@
    "sectionTitle": "§2.2 Bessel potentials, capacity, polar sets",
    "paper": "Definition 2.7",
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "iUnion_le",
     "IsNull.one_two_of_two_one",
     "IsNull.one_two_of_two_p"
    ],
@@ -1611,12 +1610,10 @@
     "Bessel.NonnegPotential"
    ],
    "blockers": [
-    "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
     "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
-    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p",
-    "Bessel.BesselCapacity::besselCapacity.iUnion_le"
+    "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p"
    ],
-   "detail": "3 sorry: iUnion_le, IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
+   "detail": "2 sorry: IsNull.one_two_of_two_one, IsNull.one_two_of_two_p"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion",
@@ -1638,17 +1635,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "blocked",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "proved: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.IsNull.iUnion — subgoal of Definition 2.7, countable unions (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one",
@@ -1821,10 +1817,8 @@
    "parentGoal": "Bessel.BesselCapacity",
    "tagged": true,
    "file": "WeakPathwiseIto/Bessel/BesselCapacity.lean",
-   "sorryCount": 1,
-   "holes": [
-    "besselCapacity.iUnion_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -1833,17 +1827,16 @@
    "doc": "**Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93].",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.BesselSpace",
     "Bessel.NonnegPotential"
    ],
    "blockers": [],
-   "detail": "sorry: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: besselCapacity.iUnion_le — subgoal of Definition 2.7, countable subadditivity [Fuk93] (in Bessel.BesselCapacity) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Bessel.BesselCapacity::besselCapacity.nonnegPotential_mono_ae",

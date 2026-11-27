@@ -188,7 +188,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -221,7 +220,6 @@
   ],
   "Bessel.BesselCapacity::besselCapacity.iUnion_le": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1729,5 +1727,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T18:59:08Z"
+ "generated": "2026-11-27T18:59:56Z"
 }

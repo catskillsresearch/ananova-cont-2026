@@ -102,7 +102,53 @@ theorem supFn_props {h : ℕ → Rd d → ℝ} (hm : ∀ n, Measurable (h n)) :
 /-- **Subgoal** (Definition 2.7, countable subadditivity [Fuk93]). Countable subadditivity of the Bessel capacity [Fuk93]. -/
 theorem iUnion_le (α : ℝ) (p : ℝ≥0∞) (S : ℕ → Set (Rd d)) :
     besselCapacity d α p (⋃ n, S n) ≤ ∑' n, besselCapacity d α p (S n) := by
-  sorry
+  rcases (ENNReal.toReal_nonneg (a := p)).eq_or_lt with hp | hp
+  · calc _ ≤ ⊤ := le_top
+      _ = ∑' _ : ℕ, (1 : ℝ≥0∞) := (ENNReal.tsum_const_eq_top_of_ne_zero one_ne_zero).symm
+      _ ≤ _ := ENNReal.tsum_le_tsum fun n => one_le_of_toReal_eq_zero hp.symm _
+  by_cases htop : ∑' n, besselCapacity d α p (S n) = ⊤
+  · rw [htop]; exact le_top
+  refine ENNReal.le_of_forall_pos_le_add fun ε hε _ => ?_
+  obtain ⟨δ, hδ, hδε⟩ := ENNReal.exists_pos_sum_of_countable (ENNReal.coe_ne_zero.2 hε.ne') ℕ
+  have hlt : ∀ n, besselCapacity d α p (S n) < besselCapacity d α p (S n) + δ n := fun n =>
+    ENNReal.lt_add_right (ne_top_of_le_ne_top htop
+      (ENNReal.le_tsum (f := fun n => besselCapacity d α p (S n)) n))
+      (ENNReal.coe_ne_zero.2 (hδ n).ne')
+  choose h hm h0 hS hval using fun n => exists_feasible_lt (hlt n)
+  obtain ⟨hFm, hF0, hFge, hFle⟩ := supFn_props hm
+  have hsum : ∫⁻ y, ∑' n, ENNReal.ofReal (h n y) ^ p.toReal ≤
+      ∑' n, besselCapacity d α p (S n) + ε := by
+    calc ∫⁻ y, ∑' n, ENNReal.ofReal (h n y) ^ p.toReal
+        = ∑' n, ∫⁻ y, ENNReal.ofReal (h n y) ^ p.toReal :=
+          lintegral_tsum fun n => ((hm n).ennreal_ofReal.pow_const _).aemeasurable
+      _ = ∑' n, eLpNorm (h n) p volume ^ p.toReal := by
+          congr 1; funext n; rw [eLpNorm_rpow_eq hp (hm n)]
+          congr 1; funext y; rw [Real.enorm_eq_ofReal (h0 n y)]
+      _ ≤ ∑' n, (besselCapacity d α p (S n) + δ n) := ENNReal.tsum_le_tsum fun n => (hval n).le
+      _ = ∑' n, besselCapacity d α p (S n) + ∑' n, (δ n : ℝ≥0∞) := ENNReal.tsum_add
+      _ ≤ _ := by gcongr
+  have hint : ∫⁻ y, ‖supFn h y‖ₑ ^ p.toReal ≤ ∑' n, besselCapacity d α p (S n) + ε :=
+    (lintegral_mono fun y => hFle hp y).trans hsum
+  have hfin : ∀ᵐ y, ⨆ n, ENNReal.ofReal (h n y) ≠ ⊤ := by
+    have hlt' : ∫⁻ y, (⨆ n, ENNReal.ofReal (h n y)) ^ p.toReal < ⊤ := by
+      refine lt_of_le_of_lt ?_ (lt_of_le_of_lt hsum (ENNReal.add_lt_top.2
+        ⟨Ne.lt_top htop, ENNReal.coe_lt_top⟩))
+      exact lintegral_mono fun y => iSup_rpow_le_tsum hp _
+    filter_upwards [ae_lt_top' (((Measurable.iSup fun n => (hm n).ennreal_ofReal).pow_const
+      p.toReal).aemeasurable) hlt'.ne] with y hy
+    exact fun h' => by rw [h', ENNReal.top_rpow_of_pos hp] at hy; exact lt_irrefl _ hy
+  refine (iInf_le_of_le (supFn h) (iInf_le_of_le hFm (iInf_le_of_le hF0 (iInf_le_of_le
+    (fun x hx => ?_) ?_))))
+  · obtain ⟨n, hn⟩ := mem_iUnion.1 hx
+    by_cases hα : α = 0
+    · subst hα
+      have := hS n x hn
+      simp only [BesselSpace.nonnegPotential, ↓reduceIte] at this ⊢
+      by_cases hy : ⨆ n, ENNReal.ofReal (h n x) = ⊤
+      · simp [supFn, hy]
+      · exact this.trans (hFge n x hy)
+    · exact (hS n x hn).trans (nonnegPotential_mono_ae hα (hfin.mono fun y hy => hFge n y hy) x)
+  · rw [eLpNorm_rpow_eq hp hFm]; exact hint
 
 /-- **Subgoal** (Definition 2.7, countable unions). A countable union of `(α, p)`-polar sets is `(α, p)`-polar. -/
 theorem IsNull.iUnion {α : ℝ} {p : ℝ≥0∞} {S : ℕ → Set (Rd d)} (h : ∀ n, IsNull d α (p) (S n)) :
