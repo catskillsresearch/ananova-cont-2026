@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T03:18:45Z",
+ "updated": "2026-11-27T03:22:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 27,
  "counts": {
   "open": 5,
-  "blocked": 19,
-  "done": 277
+  "blocked": 18,
+  "done": 278
  },
  "goalCounts": {
-  "open": 3,
-  "blocked": 12,
+  "open": 4,
+  "blocked": 11,
   "done": 55
  },
  "subgoalCounts": {
-  "open": 2,
+  "open": 1,
   "blocked": 7,
-  "done": 222
+  "done": 223
  },
  "untagged": [],
  "legend": {
@@ -7899,17 +7899,15 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "abs_sub_taylorAverage_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 13
    },
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "blocked",
+   "status": "open",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
@@ -7928,10 +7926,8 @@
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae",
     "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff"
    ],
-   "blockers": [
-    "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le"
-   ],
-   "detail": "1 sorry: abs_sub_taylorAverage_le"
+   "blockers": [],
+   "detail": "No sorry; not yet in VERIFIED (build + review, then add)."
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le",
@@ -7943,24 +7939,22 @@
    "parentGoal": "Sobolev.Theorem21Second",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21Second.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_second.abs_sub_taylorAverage_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5)] with `m = 2` at a Lebesgue point).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
     "Sobolev.Theorem21First"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_second.abs_sub_taylorAverage_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5 (in Sobolev.Theorem21Second)"
+   "detail": "proved: theorem_2_1_second.abs_sub_taylorAverage_le — subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5 (in Sobolev.Theorem21Second)"
   },
   {
    "id": "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le",

@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T03:18:45Z  
-**`sorry` occurrences:** 28 · 5 open · 19 blocked · 277 done (goals + subgoals) · goals {'open': 3, 'blocked': 12, 'done': 55} · subgoals {'open': 2, 'blocked': 7, 'done': 222} · 15 file(s) with `sorry`.
+**Updated:** 2026-11-27T03:22:13Z  
+**`sorry` occurrences:** 27 · 5 open · 18 blocked · 278 done (goals + subgoals) · goals {'open': 4, 'blocked': 11, 'done': 55} · subgoals {'open': 1, 'blocked': 7, 'done': 223} · 14 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -26,6 +26,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 |---|---|---|---|
 | `Main.Remark54` | Remark 5.4 | 3 | `remark_5_4_dim_one`, `remark_5_4_not_implied`, `remark_5_4_sufficient` |
 | `Occupation.Remark44` | Remark 4.4 | 3 | `remark_4_4_density`, `remark_4_4_seminorm`, `remark_4_4` |
+| `Sobolev.Theorem21Second` |  | 0 | (review → VERIFIED) |
 | `Sobolev.Theorem23` | Theorem 2.3 | 2 | `theorem_2_3_first`, `theorem_2_3_second` |
 
 ## Subgoals (helper lemmas/defs)
@@ -252,7 +253,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient` | subgoal of Theorem 2.1 proof, mollification: `∇(f * ψ_n | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single` | subgoal of Theorem 2.1 proof, mollification step 1, first-order test derivative | 0 |
 | done | `Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge` | subgoal of Theorem 2.1 proof: cubes and balls have positive density at each of their points | 0 |
-| open | `Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le` | subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5 | 1 |
+| done | `Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le` | subgoal of Theorem 2.1 proof, second estimate: [BH93, Thm 1, (5 | 0 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le` | subgoal of Theorem 2.1 proof, second estimate, (5 | 0 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable` | subgoal of Theorem 2.1 proof, second estimate: the Hessian entries are integrable | 0 |
 | done | `Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution` | subgoal of Theorem 2.1 proof, second estimate: the mollification of a `W^{2,1}` function is `C²`, with second derivatives the mollified weak Hessian entries | 0 |
@@ -297,7 +298,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Sobolev.PreciseRepresentative` | Eq. (3) | 0 |  |
 | blocked | `Sobolev.Theorem21` | Theorem 2.1 | 1 | `Sobolev.Theorem21Second` |
 | done | `Sobolev.Theorem21First` |  | 0 |  |
-| blocked | `Sobolev.Theorem21Second` |  | 1 | `Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le` |
+| open | `Sobolev.Theorem21Second` |  | 0 |  |
 | open | `Sobolev.Theorem23` | Theorem 2.3 | 2 |  |
 
 ### §2.2 Bessel potentials, capacity, polar sets
