@@ -447,11 +447,38 @@ theorem tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport {E : Type*} [NormedAdd
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 2: translation is continuous in `L^p`,
 `‖f(· - z) - f‖_p → 0` as `z → 0`, by density of `C_c` in `L^p`). -/
-theorem tendsto_eLpNorm_comp_sub_sub {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+theorem tendsto_eLpNorm_comp_sub_sub {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [CompleteSpace E]
     {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p)) :
     Tendsto (fun z : Rd d => eLpNorm (fun x => f (x - z) - f x) (ENNReal.ofReal p) volume)
       (𝓝 0) (𝓝 0) := by
-  sorry
+  have hp1 : (1 : ℝ≥0∞) ≤ ENNReal.ofReal p := ENNReal.one_le_ofReal.2 hp
+  rw [ENNReal.tendsto_nhds_zero]
+  intro ε hε
+  have hε3 : ε / 3 ≠ 0 := (ENNReal.div_pos hε.ne' ENNReal.ofNat_ne_top).ne'
+  obtain ⟨g, hgc, hfg, hgcont, -⟩ :=
+    hf.exists_hasCompactSupport_eLpNorm_sub_le ENNReal.ofReal_ne_top hε3
+  have hfm : AEStronglyMeasurable f volume := hf.aestronglyMeasurable
+  have hfgm : AEStronglyMeasurable (f - g) volume := hfm.sub hgcont.aestronglyMeasurable
+  have hgf : eLpNorm (g - f) (ENNReal.ofReal p) volume ≤ ε / 3 := by
+    rw [← neg_sub, eLpNorm_neg]; exact hfg
+  filter_upwards [(ENNReal.tendsto_nhds_zero.1
+    (tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport hp hgcont hgc)) (ε / 3)
+      (pos_iff_ne_zero.2 hε3)] with z hz
+  have hshift : eLpNorm (fun x => (f - g) (x - z)) (ENNReal.ofReal p) volume =
+      eLpNorm (f - g) (ENNReal.ofReal p) volume :=
+    eLpNorm_comp_measurePreserving hfgm (measurePreserving_sub_right _ z)
+  have hsplit : (fun x => f (x - z) - f x) =
+      ((fun x => (f - g) (x - z)) + fun x => g (x - z) - g x) + (g - f) := by
+    funext x; simp only [Pi.add_apply, Pi.sub_apply]; abel
+  rw [hsplit]
+  calc _ ≤ eLpNorm ((fun x => (f - g) (x - z)) + fun x => g (x - z) - g x) (ENNReal.ofReal p)
+          volume + eLpNorm (g - f) (ENNReal.ofReal p) volume := eLpNorm_add_le hp1
+    _ ≤ (eLpNorm (fun x => (f - g) (x - z)) (ENNReal.ofReal p) volume +
+          eLpNorm (fun x => g (x - z) - g x) (ENNReal.ofReal p) volume) +
+          eLpNorm (g - f) (ENNReal.ofReal p) volume := by gcongr; exact eLpNorm_add_le hp1
+    _ ≤ ε / 3 + ε / 3 + ε / 3 := by rw [hshift]; gcongr
+    _ = ε := ENNReal.add_thirds ε
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: `(ψ ⋆ f)(x) - f(x)` as an average
 of the translation differences, `∫ ψ(z) (f(x - z) - f(x)) dz`, for `∫ ψ = 1`). -/
