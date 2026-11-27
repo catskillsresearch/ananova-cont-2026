@@ -94,6 +94,9 @@ Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -105,6 +108,7 @@ Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.poincare_of
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Basic.IsCubeOrBall -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Basic.Partition -hard-> Appendix.HeatKernel
@@ -895,6 +899,9 @@ Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -906,6 +913,7 @@ Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.poinca
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Sobolev.IsLebesguePoint -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Sobolev.IsWeakDerivative -hard-> Sobolev.IsWeakGradient
@@ -918,6 +926,9 @@ Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -929,6 +940,7 @@ Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.poincar
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Sobolev.IsWeakGradient -hard-> Sobolev.Theorem23
@@ -956,6 +968,9 @@ Sobolev.Lemma22 -hard-> Sobolev.Theorem21First
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -967,6 +982,7 @@ Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.poincare_of_co
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Sobolev.Lemma22 -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge -hard-> Sobolev.Lemma22
@@ -1004,6 +1020,9 @@ Sobolev.MemW -hard-> Sobolev.Theorem21First
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -1015,6 +1034,7 @@ Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contD
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Sobolev.MemW -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Sobolev.MemW -hard-> Sobolev.Theorem23
@@ -1028,6 +1048,9 @@ Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution
+Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.coord_integrable
+Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier
+Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le
@@ -1039,6 +1062,7 @@ Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport
+Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge
 Sobolev.PreciseRepresentative -hard-> Sobolev.Theorem23
@@ -1046,6 +1070,9 @@ Sobolev.Theorem21First -hard-> Sobolev.Theorem21
 Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution -hard-> Sobolev.Theorem21First
+Sobolev.Theorem21First::theorem_2_1_first.coord_integrable -hard-> Sobolev.Theorem21First
+Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier -hard-> Sobolev.Theorem21First
+Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le -hard-> Sobolev.Theorem21First
@@ -1057,5 +1084,6 @@ Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff -hard-> Sobolev.T
 Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport -hard-> Sobolev.Theorem21First
+Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single -hard-> Sobolev.Theorem21First
 Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge -hard-> Sobolev.Theorem21First

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27T02:28:37Z",
+ "updated": "2026-11-27T02:29:50Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 36,
  "counts": {
-  "open": 8,
+  "open": 12,
   "blocked": 19,
   "done": 255
  },
@@ -13,7 +13,7 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 5,
+  "open": 9,
   "blocked": 7,
   "done": 201
  },
@@ -7221,15 +7221,19 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 4,
+   "sorryCount": 8,
    "holes": [
+    "coord_integrable",
+    "exists_mollifier",
+    "tendsto_lintegral_gradient",
+    "exists_subseq_ae_tendsto_zero",
     "poincare_ae",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
     "abs_sub_average_le"
    ],
    "declKinds": {
-    "theorem": 16
+    "theorem": 20
    },
    "paperGoal": false,
    "verified": false,
@@ -7245,6 +7249,9 @@
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment",
     "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
+    "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+    "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+    "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
     "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
@@ -7256,16 +7263,21 @@
     "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution",
     "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+    "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
     "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
+    "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+    "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+    "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
+    "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "4 sorry: poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "8 sorry: coord_integrable, exists_mollifier, tendsto_lintegral_gradient, exists_subseq_ae_tendsto_zero, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7358,6 +7370,102 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_2_1_first.contDiff_convolution — subgoal of Theorem 2.1 proof, mollification step 1 (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "label": "coord_integrable",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}`",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_first.coord_integrable"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}`).",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_first.coord_integrable — subgoal of Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}` (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "label": "exists_mollifier",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, mollification: a smooth approximate identity exists",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_first.exists_mollifier"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, mollification: a smooth approximate identity exists).",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_first.exists_mollifier — subgoal of Theorem 2.1 proof, mollification: a smooth approximate identity exists (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "label": "exists_subseq_ae_tendsto_zero",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions).",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_first.exists_subseq_ae_tendsto_zero — subgoal of Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
@@ -7692,6 +7800,38 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_2_1_first.tendsto_convolution_of_hasCompactSupport — subgoal of Theorem 2.1 proof, mollification step 3: continuous compactly supported case (in Sobolev.Theorem21First)"
+  },
+  {
+   "id": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
+   "label": "tendsto_lintegral_gradient",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.1 proof, mollification: `∇(f * ψ_n",
+   "parentGoal": "Sobolev.Theorem21First",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_1_first.tendsto_lintegral_gradient"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.1 proof, mollification: `∇(f * ψ_n) → ∇f` in `L¹`).",
+   "status": "open",
+   "deps": [
+    "Basic.IsCubeOrBall",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.IsWeakGradient",
+    "Sobolev.Lemma22",
+    "Sobolev.MemW",
+    "Sobolev.PreciseRepresentative"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_1_first.tendsto_lintegral_gradient — subgoal of Theorem 2.1 proof, mollification: `∇(f * ψ_n (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
@@ -8263,6 +8403,21 @@
   },
   {
    "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -8314,6 +8469,11 @@
   {
    "from": "Basic.IsCubeOrBall",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.IsCubeOrBall",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "kind": "hard"
   },
   {
@@ -12268,6 +12428,21 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -12319,6 +12494,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "kind": "hard"
   },
   {
@@ -12383,6 +12563,21 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -12434,6 +12629,11 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "kind": "hard"
   },
   {
@@ -12573,6 +12773,21 @@
   },
   {
    "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -12624,6 +12839,11 @@
   {
    "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "kind": "hard"
   },
   {
@@ -12813,6 +13033,21 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -12864,6 +13099,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "kind": "hard"
   },
   {
@@ -12933,6 +13173,21 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",
    "kind": "hard"
   },
@@ -12988,6 +13243,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single",
    "kind": "hard"
   },
@@ -13018,6 +13278,21 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
    "to": "Sobolev.Theorem21First",
    "kind": "subgoal"
   },
@@ -13073,6 +13348,11 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "to": "Sobolev.Theorem21First",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "to": "Sobolev.Theorem21First",
    "kind": "subgoal"
   },
@@ -15678,6 +15958,18 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
   },
   {
@@ -15719,6 +16011,10 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient"
   },
   {
    "from": "Sobolev.IsLebesguePoint",
@@ -15762,6 +16058,18 @@
   },
   {
    "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
   },
   {
@@ -15803,6 +16111,10 @@
   {
    "from": "Sobolev.IsWeakGradient",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.IsWeakGradient",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -15898,6 +16210,18 @@
   },
   {
    "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+  },
+  {
+   "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
   },
   {
@@ -15939,6 +16263,10 @@
   {
    "from": "Sobolev.Lemma22",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient"
   },
   {
    "from": "Sobolev.Lemma22",
@@ -16074,6 +16402,18 @@
   },
   {
    "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+  },
+  {
+   "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
   },
   {
@@ -16115,6 +16455,10 @@
   {
    "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient"
   },
   {
    "from": "Sobolev.MemW",
@@ -16162,6 +16506,18 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props"
   },
   {
@@ -16206,6 +16562,10 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single"
   },
   {
@@ -16230,6 +16590,18 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
    "to": "Sobolev.Theorem21First"
   },
   {
@@ -16274,6 +16646,10 @@
   },
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport",
+   "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient",
    "to": "Sobolev.Theorem21First"
   },
   {

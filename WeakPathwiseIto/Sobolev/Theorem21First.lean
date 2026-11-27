@@ -718,6 +718,36 @@ theorem lintegral_potential_le (hd : 0 < d) {Q : Set (Rd d)} (hQb : Bornology.Is
     _ = C * ∫⁻ z in Q, ‖h z‖ₑ := by
         rw [lintegral_mul_const' _ _ ENNReal.coe_ne_top, mul_comm]
 
+/-- **Subgoal** (Theorem 2.1 proof, mollification: the weak gradient of `f ∈ W^{1,1}` is
+integrable, since it agrees a.e. with the `L¹` weak derivatives given by `W^{1,1}`). -/
+theorem coord_integrable {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : MemW 1 1 f)
+    (hG : IsWeakGradient f G) (i : Fin d) : Integrable fun z => Rd.coord i (G z) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, mollification: a smooth approximate identity exists). -/
+theorem exists_mollifier : ∃ ψ : ℕ → Rd d → ℝ,
+    (∀ n, ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (ψ n)) ∧ (∀ n, HasCompactSupport (ψ n)) ∧
+      (∀ n x, 0 ≤ ψ n x) ∧ (∀ n, ∫ x, ψ n x = 1) ∧
+        ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1)) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, mollification: `∇(f * ψ_n) → ∇f` in `L¹`). -/
+theorem tendsto_lintegral_gradient {f : Rd d → ℝ} {G : Rd d → Rd d} (hf : MemW 1 1 f)
+    (hG : IsWeakGradient f G) {ψ : ℕ → Rd d → ℝ}
+    (hψ : ∀ n, ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (ψ n)) (hψc : ∀ n, HasCompactSupport (ψ n))
+    (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
+    Tendsto (fun n => ∫⁻ z, ‖gradient (fun x => ∫ y, f y * ψ n (x - y)) z - G z‖ₑ) atTop
+      (𝓝 0) := by
+  sorry
+
+/-- **Subgoal** (Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a
+subsequence, for `ℝ≥0∞`-valued functions). -/
+theorem exists_subseq_ae_tendsto_zero {μ : Measure (Rd d)} {S : ℕ → Rd d → ℝ≥0∞}
+    (hS : ∀ n, AEMeasurable (S n) μ) (h : Tendsto (fun n => ∫⁻ y, S n y ∂μ) atTop (𝓝 0)) :
+    ∃ φ : ℕ → ℕ, StrictMono φ ∧ ∀ᵐ y ∂μ, Tendsto (fun k => S (φ k) y) atTop (𝓝 0) := by
+  sorry
+
 /-- **Subgoal** (Theorem 2.1 proof, eq. (2) of [BH93] a.e. for `W^{1,1}`, by mollification): for
 a cube or ball `Q`, for a.e. `y ∈ Q`, `|f(y) - f_Q| ≤ K ∫_Q |∇f(z)| / |y - z|^{d-1} dz`. -/
 theorem poincare_ae (hd : 0 < d) : ∃ K : ℝ≥0, ∀ (f : Rd d → ℝ) (G : Rd d → Rd d),
