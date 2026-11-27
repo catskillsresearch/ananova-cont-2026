@@ -812,6 +812,7 @@ Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le -hard-> Main.Eq18
 Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close -hard-> Main.Eq18
 Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le -hard-> Main.Eq18
 Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece -hard-> Main.Eq18
+Main.ExitTime -hard-> Main.IsLocalItoIntegral
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.div_scaling
 Main.GeometricMeshDecay -hard-> Appendix.HeatKernel::heatKernel.integrableOn_Ioc
@@ -884,6 +885,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_c
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.memLp_inner_increment
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.norm_sq_elementaryValue
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.norm_sq_eq_sum_coord
+Main.IsL2ItoIntegral -hard-> Main.IsLocalItoIntegral
 Main.Proposition53Steps::proposition_5_3.coord_apply -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.coord_sum_smul_basisVec -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.disjoint_Ioc_grid -hard-> Main.Proposition53Steps
