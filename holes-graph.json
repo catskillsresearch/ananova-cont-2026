@@ -1,19 +1,19 @@
 {
- "updated": "2026-11-27T03:25:01Z",
+ "updated": "2026-11-27T03:29:11Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 26,
+ "sorryCount": 35,
  "counts": {
-  "open": 4,
-  "blocked": 17,
+  "open": 12,
+  "blocked": 19,
   "done": 280
  },
  "goalCounts": {
-  "open": 3,
-  "blocked": 10,
+  "open": 2,
+  "blocked": 12,
   "done": 57
  },
  "subgoalCounts": {
-  "open": 1,
+  "open": 10,
   "blocked": 7,
   "done": 223
  },
@@ -8294,16 +8294,323 @@
    "paperGoal": false,
    "verified": false,
    "kind": "goal",
-   "status": "open",
+   "status": "blocked",
    "deps": [
     "Sobolev.IsWeakGradient",
     "Sobolev.IsWeakHessian",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW",
-    "Sobolev.PreciseRepresentative"
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem23Steps"
+   ],
+   "blockers": [
+    "Sobolev.Theorem23Steps"
+   ],
+   "detail": "2 sorry: theorem_2_3_first, theorem_2_3_second"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps",
+   "label": "Theorem23Steps",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": null,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 9,
+   "holes": [
+    "closedBall_midpoint",
+    "lintegral_kernel_le_maximal",
+    "lintegral_ball_potential_le",
+    "lintegral_abs_sub_average_ball_le",
+    "abs_average_sub_average_le",
+    "abs_average_sub_average_le_maximal",
+    "isLebesguePoint_of_maximal_lt_top",
+    "maximal_lt_top_of_isLebesguePoint",
+    "maximal_coord_hessian_le"
+   ],
+   "declKinds": {
+    "theorem": 9
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21",
+    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+    "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+    "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+    "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
+   ],
+   "blockers": [
+    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+    "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+    "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+    "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+    "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
+   ],
+   "detail": "9 sorry: closedBall_midpoint, lintegral_kernel_le_maximal, lintegral_ball_potential_le, lintegral_abs_sub_average_ball_le, abs_average_sub_average_le, abs_average_sub_average_le_maximal, isLebesguePoint_of_maximal_lt_top, maximal_lt_top_of_isLebesguePoint, maximal_coord_hessian_le"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+   "label": "abs_average_sub_average_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.abs_average_sub_average_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r ⨍_{B(x,r)} |∇f|` for `r/2 ≤ s ≤ r`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
    ],
    "blockers": [],
-   "detail": "2 sorry: theorem_2_3_first, theorem_2_3_second"
+   "detail": "sorry: theorem_2_3.abs_average_sub_average_le — subgoal of Theorem 2.3 proof: averages over comparable concentric balls are close, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+   "label": "abs_average_sub_average_le_maximal",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.abs_average_sub_average_le_maximal"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s)} - f_{B(x,r)}| ≤ C r M_R|∇f|(x)` for `0 < s ≤ r`, `r < R`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.abs_average_sub_average_le_maximal — subgoal of Theorem 2.3 proof: telescoping over dyadic radii, `|f_{B(x,s (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+   "label": "closedBall_midpoint",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: the ball with diameter `[x, y]`",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.closedBall_midpoint"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: the ball with diameter `[x, y]`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.closedBall_midpoint — subgoal of Theorem 2.3 proof: the ball with diameter `[x, y]` (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+   "label": "isLebesguePoint_of_maximal_lt_top",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: if `M_R|∇f|(x",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.isLebesguePoint_of_maximal_lt_top"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: if `M_R|∇f|(x) < ∞` then `x` is a Lebesgue point of `f`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.isLebesguePoint_of_maximal_lt_top — subgoal of Theorem 2.3 proof: if `M_R|∇f|(x (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+   "label": "lintegral_abs_sub_average_ball_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|`",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.lintegral_abs_sub_average_ball_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.lintegral_abs_sub_average_ball_le — subgoal of Theorem 2.3 proof, Poincaré on balls: `∫_B |f - f_B| ≤ C r ∫_B |∇f|` (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+   "label": "lintegral_ball_potential_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.lintegral_ball_potential_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B)` with constant `C r`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.lintegral_ball_potential_le — subgoal of Theorem 2.3 proof, Poincaré on balls, step 1: the Riesz potential `I¹` on a ball `B` of radius `r` is bounded on `L¹(B (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+   "label": "lintegral_kernel_le_maximal",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q`",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.lintegral_kernel_le_maximal"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.lintegral_kernel_le_maximal — subgoal of Theorem 2.3 proof: Lemma 2.2 for vector- or operator-valued integrands, with the maximal radius enlarged to any `R ≥ diam Q` (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+   "label": "maximal_coord_hessian_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.maximal_coord_hessian_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.maximal_coord_hessian_le — subgoal of Theorem 2.3 proof: the gradient of `∂_i f` is dominated by the Hessian (in Sobolev.Theorem23Steps)"
+  },
+  {
+   "id": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",
+   "label": "maximal_lt_top_of_isLebesguePoint",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite",
+   "parentGoal": "Sobolev.Theorem23Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/Theorem23Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_2_3.maximal_lt_top_of_isLebesguePoint"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite).",
+   "status": "open",
+   "deps": [
+    "Sobolev.Lemma22",
+    "Sobolev.Theorem21"
+   ],
+   "blockers": [],
+   "detail": "sorry: theorem_2_3.maximal_lt_top_of_isLebesguePoint — subgoal of Theorem 2.3 proof: at a common Lebesgue point of the coordinates of a locally integrable `G`, some local maximal function of `G` is finite (in Sobolev.Theorem23Steps)"
   }
  ],
  "edges": [
@@ -13398,6 +13705,56 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Lemma22",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
    "from": "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge",
    "to": "Sobolev.Lemma22",
    "kind": "subgoal"
@@ -13813,6 +14170,56 @@
    "kind": "hard"
   },
   {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
    "from": "Sobolev.Theorem21First",
    "to": "Sobolev.Theorem21",
    "kind": "hard"
@@ -14060,6 +14467,56 @@
   {
    "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
    "to": "Sobolev.Theorem21Second",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps",
+   "to": "Sobolev.Theorem23",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+   "to": "Sobolev.Theorem23Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",
+   "to": "Sobolev.Theorem23Steps",
    "kind": "subgoal"
   }
  ],
@@ -16881,10 +17338,6 @@
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
-   "from": "Sobolev.IsWeakGradient",
-   "to": "Sobolev.Theorem23"
-  },
-  {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Eq18::theorem_5_1.eq_18"
   },
@@ -16943,10 +17396,6 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Sobolev.MemW2PlusS"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Sobolev.Theorem23"
   },
   {
    "from": "Sobolev.Lemma22",
@@ -17125,10 +17574,6 @@
    "to": "Sobolev.Lemma22::lemma_2_2.subset_closedBall"
   },
   {
-   "from": "Sobolev.LocalMaximalFunction",
-   "to": "Sobolev.Theorem23"
-  },
-  {
    "from": "Sobolev.MemW",
    "to": "Bessel.Theorem26"
   },
@@ -17227,10 +17672,6 @@
   {
    "from": "Sobolev.MemW",
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
-  },
-  {
-   "from": "Sobolev.MemW",
-   "to": "Sobolev.Theorem23"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -17337,8 +17778,40 @@
    "to": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
   },
   {
-   "from": "Sobolev.PreciseRepresentative",
-   "to": "Sobolev.Theorem23"
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le"
+  },
+  {
+   "from": "Sobolev.Theorem21",
+   "to": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint"
   },
   {
    "from": "Sobolev.Theorem21First",
@@ -17531,6 +18004,46 @@
   {
    "from": "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff",
    "to": "Sobolev.Theorem21Second"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps",
+   "to": "Sobolev.Theorem23"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le",
+   "to": "Sobolev.Theorem23Steps"
+  },
+  {
+   "from": "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint",
+   "to": "Sobolev.Theorem23Steps"
   }
  ]
 }

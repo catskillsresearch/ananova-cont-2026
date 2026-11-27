@@ -73,4 +73,5 @@ public import WeakPathwiseIto.Sobolev.Theorem21First
 public import WeakPathwiseIto.Sobolev.Theorem21Second
 public import WeakPathwiseIto.Sobolev.Theorem21
 public import WeakPathwiseIto.Sobolev.Theorem23
+public import WeakPathwiseIto.Sobolev.Theorem23Steps
 

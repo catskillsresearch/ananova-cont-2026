@@ -10,6 +10,7 @@ public import WeakPathwiseIto.Sobolev.IsWeakGradient
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
+public import WeakPathwiseIto.Sobolev.Theorem23Steps
 
 @[expose] public section
 
