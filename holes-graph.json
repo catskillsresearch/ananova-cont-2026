@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T13:48:56Z",
+ "updated": "2026-11-27T13:52:41Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 28,
+ "sorryCount": 33,
  "counts": {
   "open": 7,
-  "blocked": 54,
+  "blocked": 59,
   "done": 307
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 44,
+  "blocked": 49,
   "done": 245
  },
  "untagged": [],
@@ -4031,16 +4031,21 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 5,
+   "sorryCount": 10,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "ae_forall_path_not_mem",
     "tendsto_mollify_hessian",
+    "enorm_rpow_sub_rpow_le",
+    "exists_lintegral_edist_rpow_le",
+    "mul_rpow_div_le_add",
+    "lintegral_mul_rpow_div_lt_top",
+    "lintegral_mul_rpow_div_lt_top'",
     "lintegral_rpow_sub_le",
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 29
+    "theorem": 34
    },
    "paperGoal": false,
    "verified": false,
@@ -4060,9 +4065,11 @@
     "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
     "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM",
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+    "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
     "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+    "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
     "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable",
@@ -4071,10 +4078,13 @@
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.le_one_cases",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
@@ -4100,9 +4110,11 @@
     "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
     "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM",
     "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+    "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
     "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
     "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+    "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
     "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
     "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable",
@@ -4111,17 +4123,20 @@
     "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
     "Main.Theorem52Steps::theorem_5_2.le_one_cases",
     "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+    "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
     "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "5 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "10 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, enorm_rpow_sub_rpow_le, exists_lintegral_edist_rpow_le, mul_rpow_div_le_add, lintegral_mul_rpow_div_lt_top, lintegral_mul_rpow_div_lt_top', lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4470,6 +4485,46 @@
    "detail": "proved: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
   },
   {
+   "id": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "label": "enorm_rpow_sub_rpow_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `lintegral_rpow_sub_le`: mean value bound `|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1}",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.enorm_rpow_sub_rpow_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `lintegral_rpow_sub_le`: mean value bound `|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1})` for `a, b ≥ 0`, `p ≥ 1`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.enorm_rpow_sub_rpow_le — subgoal of Appendix C, `lintegral_rpow_sub_le`: mean value bound `|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1} (in Main.Theorem52Steps)"
+  },
+  {
    "id": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "label": "enorm_toReal_sub_le",
    "kind": "subgoal",
@@ -4582,6 +4637,46 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.exists_isWeakHessian — subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
+   "label": "exists_lintegral_edist_rpow_le",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has uniformly bounded integrals over a compact set `K`",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.exists_lintegral_edist_rpow_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has uniformly bounded integrals over a compact set `K`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.exists_lintegral_edist_rpow_le — subgoal of Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has uniformly bounded integrals over a compact set `K` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
@@ -4890,6 +4985,86 @@
    "detail": "proved: theorem_5_2.lintegral_lintegral_eq_add — subgoal of Appendix C, Tonelli in difference coordinates: `∫∫ Φ(x, y (in Main.Theorem52Steps)"
   },
   {
+   "id": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "label": "lintegral_mul_rpow_div_lt_top",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `lintegral_rpow_sub_le`: the piece with `g(x",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.lintegral_mul_rpow_div_lt_top"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(x)^{p-1}` is finite).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.lintegral_mul_rpow_div_lt_top — subgoal of Appendix C, `lintegral_rpow_sub_le`: the piece with `g(x (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "label": "lintegral_mul_rpow_div_lt_top'",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `lintegral_rpow_sub_le`: the piece with `g(y",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(y)^{p-1}` is finite, by symmetry and Tonelli).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.lintegral_mul_rpow_div_lt_top' — subgoal of Appendix C, `lintegral_rpow_sub_le`: the piece with `g(y (in Main.Theorem52Steps)"
+  },
+  {
    "id": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "label": "lintegral_rpow_sub_le",
    "kind": "subgoal",
@@ -5042,6 +5217,46 @@
     "Bessel.Theorem29"
    ],
    "detail": "proved: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
+   "label": "mul_rpow_div_le_add",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 1,
+   "holes": [
+    "theorem_5_2.mul_rpow_div_le_add"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1)}`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "sorry: theorem_5_2.mul_rpow_div_le_add — subgoal of Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal, `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1 (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
@@ -11116,6 +11331,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -11127,6 +11347,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -11171,6 +11396,16 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -11187,6 +11422,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -12316,6 +12556,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -12327,6 +12572,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -12371,6 +12621,16 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -12387,6 +12647,11 @@
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -12921,6 +13186,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -12932,6 +13202,11 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -12976,6 +13251,16 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -12992,6 +13277,11 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -13081,6 +13371,11 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -13092,6 +13387,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -13136,6 +13436,16 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -13152,6 +13462,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -13990,6 +14305,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -14001,6 +14321,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14045,6 +14370,16 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
@@ -14061,6 +14396,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -15456,6 +15796,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -15467,6 +15812,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -15511,6 +15861,16 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -15527,6 +15887,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -16821,6 +17186,11 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -16832,6 +17202,11 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -16876,6 +17251,16 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -16892,6 +17277,11 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -16991,6 +17381,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -17002,6 +17397,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -17046,6 +17446,16 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -17062,6 +17472,11 @@
   {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -17821,6 +18236,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -17832,6 +18252,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -17876,6 +18301,16 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -17892,6 +18327,11 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -18326,6 +18766,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -18337,6 +18782,11 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -18381,6 +18831,16 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -18397,6 +18857,11 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -18496,6 +18961,11 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -18507,6 +18977,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -18551,6 +19026,16 @@
   },
   {
    "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -18567,6 +19052,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -19061,6 +19551,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "kind": "hard"
   },
@@ -19072,6 +19567,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "kind": "hard"
   },
   {
@@ -19116,6 +19616,16 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "kind": "hard"
   },
@@ -19132,6 +19642,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "kind": "hard"
   },
   {
@@ -20355,6 +20870,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
@@ -20364,6 +20883,10 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -20399,6 +20922,14 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -20412,6 +20943,10 @@
   {
    "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
   },
   {
    "from": "Bessel.IsBrownianPolar",
@@ -20479,6 +21014,10 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
@@ -20488,6 +21027,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
   },
   {
    "from": "Bessel.Theorem29",
@@ -20523,6 +21066,14 @@
   },
   {
    "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -20536,6 +21087,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
   },
   {
    "from": "Bessel.Theorem29",
@@ -21162,6 +21717,10 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le",
    "to": "Main.Theorem52Steps"
   },
@@ -21171,6 +21730,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -21206,6 +21769,14 @@
    "to": "Main.Theorem52Steps"
   },
   {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'",
+   "to": "Main.Theorem52Steps"
+  },
+  {
    "from": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
    "to": "Main.Theorem52Steps"
   },
@@ -21219,6 +21790,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -22551,6 +23126,10 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
@@ -22560,6 +23139,10 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
   },
   {
    "from": "Sobolev.HardyLittlewood",
@@ -22595,6 +23178,14 @@
   },
   {
    "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -22608,6 +23199,10 @@
   {
    "from": "Sobolev.HardyLittlewood",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
   },
   {
    "from": "Sobolev.HardyLittlewood",
@@ -23227,6 +23822,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
@@ -23236,6 +23835,10 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -23271,6 +23874,14 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -23284,6 +23895,10 @@
   {
    "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
   },
   {
    "from": "Sobolev.MemW2Plus",
@@ -23611,6 +24226,10 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le"
   },
   {
@@ -23620,6 +24239,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le"
   },
   {
    "from": "Sobolev.Theorem21Second",
@@ -23655,6 +24278,14 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
   },
   {
@@ -23668,6 +24299,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add"
   },
   {
    "from": "Sobolev.Theorem21Second",

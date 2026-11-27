@@ -603,6 +603,42 @@ theorem gagliardo_maximal_le {s p : ℝ} (hp : 1 < p) : ∃ C : ℝ≥0, ∀ f :
   rw [hR]
   exact gagliardo_maximal_le_of_measurable hp hg hgp
 
+/-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: mean value bound
+`|a^p - b^p| ≤ p |a - b| (a^{p-1} + b^{p-1})` for `a, b ≥ 0`, `p ≥ 1`). -/
+theorem enorm_rpow_sub_rpow_le {p : ℝ} (hp : 1 ≤ p) {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) :
+    ‖a ^ p - b ^ p‖ₑ ≤ ENNReal.ofReal p * ‖a - b‖ₑ * (‖a‖ₑ ^ (p - 1) + ‖b‖ₑ ^ (p - 1)) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the kernel `|x - y|^{-β}`, `β < d`, has
+uniformly bounded integrals over a compact set `K`). -/
+theorem exists_lintegral_edist_rpow_le {β : ℝ} (hβ : β < d) {K : Set (Rd d)} (hK : IsCompact K) :
+    ∃ C : ℝ≥0∞, C ≠ ⊤ ∧ ∀ x ∈ K, ∫⁻ y in K, edist x y ^ (-β) ≤ C := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal,
+`a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1)}`). -/
+theorem mul_rpow_div_le_add {s p : ℝ} (hp : 1 < p) {a c e : ℝ≥0∞} (he0 : e ≠ 0) (het : e ≠ ⊤) :
+    a * c ^ (p - 1) / e ^ (d : ℝ) ≤
+      a ^ p / e ^ (s * p + d) + c ^ p / e ^ ((d : ℝ) - s * p / (p - 1)) := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(x)^{p-1}` is finite). -/
+theorem lintegral_mul_rpow_div_lt_top {s p : ℝ} (hd : 1 ≤ d) (hs : 0 < s) (hp : 1 < p)
+    {g : Rd d → ℝ} (hgm : Measurable g) (hgp : MemLp g (ENNReal.ofReal p))
+    (hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤)
+    {K : Set (Rd d)} (hK : IsCompact K) :
+    ∫⁻ x in K, ∫⁻ y in K, ‖g x - g y‖ₑ * ‖g x‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ) < ⊤ := by
+  sorry
+
+/-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: the piece with `g(y)^{p-1}` is finite, by
+symmetry and Tonelli). -/
+theorem lintegral_mul_rpow_div_lt_top' {s p : ℝ} (hd : 1 ≤ d) (hs : 0 < s) (hp : 1 < p)
+    {g : Rd d → ℝ} (hgm : Measurable g) (hgp : MemLp g (ENNReal.ofReal p))
+    (hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤)
+    {K : Set (Rd d)} (hK : IsCompact K) :
+    ∫⁻ x in K, ∫⁻ y in K, ‖g x - g y‖ₑ * ‖g y‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ) < ⊤ := by
+  sorry
+
 /-- **Subgoal** (Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K`). -/
 theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d → ℝ}
     (hg0 : 0 ≤ g) (hgm : Measurable g) (hgp : MemLp g (ENNReal.ofReal p))
