@@ -697,6 +697,7 @@ Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.indep_na
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
+Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.integral_sq_elementaryIntegral
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.measurable_B
 Bessel.WienerLawExists -hard-> Main.Proposition53Steps::proposition_5_3.measurable_coord
@@ -874,6 +875,7 @@ Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.indep_natura
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq
+Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.integral_sq_elementaryIntegral
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_B
 Main.IsItoIntegral -hard-> Main.Proposition53Steps::proposition_5_3.measurable_coord
@@ -895,6 +897,7 @@ Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment -hard-> Ma
 Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq -hard-> Main.Proposition53Steps
+Main.Proposition53Steps::proposition_5_3.integral_sq_elementaryIntegral -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.measurable_B -hard-> Main.Proposition53Steps
 Main.Proposition53Steps::proposition_5_3.measurable_coord -hard-> Main.Proposition53Steps

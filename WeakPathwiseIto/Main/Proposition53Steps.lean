@@ -484,6 +484,48 @@ theorem intervalIntegral_norm_sq_elementaryValue {k : ℕ} {s : Fin (k + 1) → 
     Ioc_inter_Ioc, max_eq_left hj0, min_eq_left hjl, Real.volume_real_Ioc_of_le hjj,
     smul_eq_mul]
 
+/-- **Subgoal** (P53.B, helper): `E[(∑_j ⟨ξ_j, B(s_{j+1}) - B(s_j)⟩)²] = ∑_j (s_{j+1} - s_j) E|ξ_j|²`
+(diagonal terms by the one-step isometry, off-diagonal terms vanish). -/
+theorem integral_sq_elementaryIntegral (x : Rd d) {k : ℕ} {s : Fin (k + 1) → ℝ}
+    (hs : Monotone s) (hs0 : s 0 = 0) (hsT : s (Fin.last k) ≤ T)
+    {ξ : Fin k → CanonicalWienerSpace d T → Rd d}
+    (hξ : ∀ j, Measurable[IsItoIntegral.naturalSigma d T (s j.castSucc)] (ξ j))
+    (hξ2 : ∀ j, MemLp (ξ j) 2 (CanonicalWienerSpace.P (T := T) x)) :
+    ∫ ω, IsItoIntegral.elementaryIntegral s ξ ω ^ 2 ∂CanonicalWienerSpace.P (T := T) x =
+      ∑ j : Fin k, (s j.succ - s j.castSucc) *
+        ∫ ω, ‖ξ j ω‖ ^ 2 ∂CanonicalWienerSpace.P (T := T) x := by
+  set P := CanonicalWienerSpace.P (T := T) x
+  have h0 : ∀ j : Fin k, 0 ≤ s j.castSucc := fun j => hs0 ▸ hs (Fin.zero_le _)
+  have hjj : ∀ j : Fin k, s j.castSucc ≤ s j.succ := fun j => hs (Fin.castSucc_le_succ j)
+  have hjT : ∀ j : Fin k, s j.succ ≤ T := fun j => (hs (Fin.le_last _)).trans hsT
+  set X : Fin k → CanonicalWienerSpace d T → ℝ := fun j ω =>
+    ⟪ξ j ω, CanonicalWienerSpace.B (s j.succ) ω - CanonicalWienerSpace.B (s j.castSucc) ω⟫
+    with hXdef
+  have hX2 : ∀ j, MemLp (X j) 2 P := fun j =>
+    memLp_inner_increment x (h0 j) (hjj j) (hjT j) (hξ j) (hξ2 j)
+  have hI : ∀ ω, IsItoIntegral.elementaryIntegral s ξ ω = ∑ j, X j ω := fun _ => rfl
+  have hint : ∀ j l, Integrable (fun ω => X j ω * X l ω) P := fun j l =>
+    (hX2 j).integrable_mul (hX2 l)
+  have hcross : ∀ j l, j < l → ∫ ω, X j ω * X l ω ∂P = 0 := fun j l hjl =>
+    integral_inner_increment_mul_eq_zero x (h0 j) (hjj j) (hs (Fin.succ_le_castSucc_iff.2 hjl))
+      (hjj l) (hjT l) (hξ j) (hξ l) (hξ2 j) (hξ2 l)
+  have hpair : ∀ j l, ∫ ω, X j ω * X l ω ∂P =
+      if j = l then (s j.succ - s j.castSucc) * ∫ ω, ‖ξ j ω‖ ^ 2 ∂P else 0 := by
+    intro j l
+    split_ifs with h
+    · subst h
+      simp_rw [← sq]
+      exact integral_inner_increment_sq x (h0 j) (hjj j) (hjT j) (hξ j) (hξ2 j)
+    · rcases lt_or_gt_of_ne h with hjl | hlj
+      · exact hcross j l hjl
+      · simp_rw [mul_comm (X j _)]
+        exact hcross l j hlj
+  simp_rw [hI, sq, Finset.sum_mul_sum]
+  rw [integral_finsetSum _ fun j _ => integrable_finsetSum _ fun l _ => hint j l]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  rw [integral_finsetSum _ fun l _ => hint j l]
+  simp only [hpair, Finset.sum_ite_eq, Finset.mem_univ, ite_true, sq]
+
 /-- **Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with
 `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`,
 `E[(∫ H dB)²] = E ∫_0^t |H(u)|² du`. -/

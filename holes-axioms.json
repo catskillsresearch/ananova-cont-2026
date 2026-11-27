@@ -525,6 +525,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.integral_sq_elementaryIntegral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.intervalIntegral_norm_sq_elementaryValue": [
    "propext",
    "Classical.choice",
@@ -1908,5 +1913,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:36:01Z"
+ "generated": "2026-11-27T21:36:18Z"
 }
