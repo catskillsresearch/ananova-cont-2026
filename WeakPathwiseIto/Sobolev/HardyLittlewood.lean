@@ -194,7 +194,21 @@ theorem mul_measure_lt_le (f : Rd d → ℝ) (t : ℝ≥0∞) :
 theorem le_add {f g h : Rd d → ℝ} (hg : Measurable g)
     (hfgh : ∀ y, ‖f y‖ₑ ≤ ‖g y‖ₑ + ‖h y‖ₑ) (x : Rd d) :
     localMaximalFunction 1 f x ≤ localMaximalFunction 1 g x + localMaximalFunction 1 h x := by
-  sorry
+  have hmem : ∀ (φ : Rd d → ℝ) (r : ℝ), 0 < r → ENNReal.ofReal r < 1 →
+      laverage (volume.restrict (Metric.ball x r)) (fun y => ‖φ y‖ₑ) ≤
+        localMaximalFunction 1 φ x := fun φ r hr hr1 => by
+    unfold localMaximalFunction
+    apply le_iSup_of_le r; apply le_iSup_of_le hr; apply le_iSup_of_le hr1; exact le_rfl
+  conv_lhs => unfold localMaximalFunction
+  refine iSup_le fun r => iSup_le fun hr => iSup_le fun hr1 => ?_
+  calc laverage (volume.restrict (Metric.ball x r)) (fun y => ‖f y‖ₑ)
+      ≤ laverage (volume.restrict (Metric.ball x r)) (fun y => ‖g y‖ₑ + ‖h y‖ₑ) :=
+        laverage_mono_ae (ae_of_all _ hfgh)
+    _ = laverage (volume.restrict (Metric.ball x r)) (fun y => ‖g y‖ₑ) +
+          laverage (volume.restrict (Metric.ball x r)) (fun y => ‖h y‖ₑ) := by
+        simp only [laverage_eq]
+        rw [lintegral_add_left hg.enorm, ENNReal.add_div]
+    _ ≤ _ := add_le_add (hmem g r hr hr1) (hmem h r hr hr1)
 
 /-- **Subgoal** (Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`). -/
 theorem le_of_enorm_le {g : Rd d → ℝ} {c : ℝ≥0∞} (hg : ∀ y, ‖g y‖ₑ ≤ c) (x : Rd d) :
