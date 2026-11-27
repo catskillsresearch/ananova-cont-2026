@@ -644,7 +644,49 @@ theorem enorm_rpow_sub_rpow_le {p : ℝ} (hp : 1 ≤ p) {a b : ℝ} (ha : 0 ≤ 
 uniformly bounded integrals over a compact set `K`). -/
 theorem exists_lintegral_edist_rpow_le {β : ℝ} (hβ : β < d) {K : Set (Rd d)} (hK : IsCompact K) :
     ∃ C : ℝ≥0∞, C ≠ ⊤ ∧ ∀ x ∈ K, ∫⁻ y in K, edist x y ^ (-β) ≤ C := by
-  sorry
+  obtain ⟨R, hR0, hKR⟩ : ∃ R : ℝ, 0 < R ∧ K ⊆ Metric.closedBall 0 R := by
+    obtain ⟨R, hR⟩ := hK.isBounded.subset_closedBall 0
+    exact ⟨max R 1, by positivity, hR.trans (Metric.closedBall_subset_closedBall (le_max_left _ _))⟩
+  have hdist : ∀ x ∈ K, ∀ y ∈ K, dist x y ≤ 2 * R := fun x hx y hy => by
+    have := dist_triangle x 0 y
+    have h1 := Metric.mem_closedBall.1 (hKR hx); have h2 := Metric.mem_closedBall.1 (hKR hy)
+    rw [dist_comm 0 y] at this; linarith
+  have hKf : volume K ≠ ⊤ := hK.measure_lt_top.ne
+  rcases le_or_gt β 0 with hb | hb
+  · refine ⟨ENNReal.ofReal (2 * R) ^ (-β) * volume K,
+      ENNReal.mul_ne_top (ENNReal.rpow_ne_top_of_nonneg (by linarith) ENNReal.ofReal_ne_top) hKf,
+      fun x hx => ?_⟩
+    rw [← setLIntegral_const]
+    refine setLIntegral_mono measurable_const fun y hy => ?_
+    refine ENNReal.rpow_le_rpow ?_ (by linarith)
+    rw [edist_dist]; exact ENNReal.ofReal_le_ofReal (hdist x hx y hy)
+  · have hd : 1 ≤ Module.finrank ℝ (Rd d) := by
+      rw [finrank_euclideanSpace_fin]; exact_mod_cast (show (0 : ℝ) < d by linarith)
+    have : Nontrivial (Rd d) := Module.nontrivial_of_finrank_pos (R := ℝ) (M := Rd d) (lt_of_lt_of_le zero_lt_one hd)
+    set r : ℝ := 2 * R + 1
+    set G : Rd d → ℝ≥0∞ := fun z => ‖z‖ₑ ^ (-β)
+    refine ⟨∫⁻ z in Metric.ball 0 r, G z, ?_, fun x hx => ?_⟩
+    · have hI : IntegrableOn (fun z : Rd d => ‖z‖ ^ (-β)) (Metric.ball 0 r) volume :=
+        integrableOn_ball_of_norm_le_rpow (C := 1) hd (by rwa [finrank_euclideanSpace_fin])
+          (Filter.Eventually.of_forall fun z => by
+            rw [one_mul, Real.norm_of_nonneg (Real.rpow_nonneg (norm_nonneg _) _)])
+          (continuous_norm.measurable.pow_const (-β)).aestronglyMeasurable
+      refine ne_of_lt (lt_of_eq_of_lt (lintegral_congr_ae ?_) hI.2)
+      have hne : ∀ᵐ z ∂(volume.restrict (Metric.ball (0 : Rd d) r)), z ≠ 0 :=
+        ae_restrict_of_ae (ae_iff.2 (by simp))
+      filter_upwards [hne] with z hz
+      rw [Real.enorm_of_nonneg (Real.rpow_nonneg (norm_nonneg _) _),
+        ← ENNReal.ofReal_rpow_of_pos (norm_pos_iff.2 hz), ofReal_norm]
+    · calc ∫⁻ y in K, edist x y ^ (-β)
+          ≤ ∫⁻ y, (Metric.ball 0 r).indicator G (x - y) := by
+            rw [← lintegral_indicator hK.measurableSet]
+            refine lintegral_mono fun y => ?_
+            by_cases hy : y ∈ K
+            · rw [indicator_of_mem hy, indicator_of_mem, edist_eq_enorm_sub]
+              rw [mem_ball_zero_iff, ← dist_eq_norm]; linarith [hdist x hx y hy]
+            · rw [indicator_of_notMem hy]; exact bot_le
+        _ = ∫⁻ z in Metric.ball 0 r, G z := by
+            rw [lintegral_sub_left_eq_self, lintegral_indicator measurableSet_ball]
 
 /-- **Subgoal** (Appendix C, `lintegral_rpow_sub_le`: Young's inequality off the diagonal,
 `a c^{p-1} / e^d ≤ a^p / e^{sp+d} + c^p / e^{d - sp/(p-1)}`). -/
