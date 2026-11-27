@@ -195,6 +195,14 @@ own text.
   sufficient condition $1 + s > d(1/p - 1/2)$ and the case $p \ge 2$ (proved from the
   sufficient condition). The comparison with the hypotheses of [FP00] is informal and not
   formalised.
+* Hardy–Littlewood maximal theorem (used in Appendix C, `M_1` bounded on `L^p`, `p > 1`):
+  not in Mathlib at our pin. `Sobolev/HardyLittlewood.lean` builds on the Carleson project
+  [Carleson]: its Vitali-type covering lemmas `measure_biUnion_le_lintegral(_aux)` are adapted
+  to Lebesgue measure on $\mathbb R^d$ (doubling constant $2^d$), giving the weak type $(1,1)$
+  bound for the truncated maximal function. Carleson derives the strong type $(p,p)$ bound from
+  its real interpolation theorem (about 14.6k further lines on a newer Lean/Mathlib); we instead
+  prove it directly by truncation and the layer-cake formula. Unchanged reference copy:
+  `vendor/carleson/`.
 * Section 3 defines the mesh as $\sup\{|t_{i+1}-t_i|, i = 1,\dots,m(n)-1\}$ (omitting the first
   interval), while Assumption 1 uses $\max_i$; we use $\max_i$ throughout (the Section 3 mesh
   is only used in the remark that $|\pi_n|\to 0$ implies (6)).
@@ -205,3 +213,8 @@ own text.
 
 * [BH93]: B. Bojarski and P. Hajłasz, *Pointwise inequalities for Sobolev functions and some applications*, Studia Math. 106 (1993), 77–92, doi:10.4064/sm-106-1-77-92, <https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf>. Source of Theorem 2.1 / Lemma 2.2 (its Lemma 3) / Theorem 2.3 (its Theorem 3) and of the
   precise representative (its (1), (4)); followed for the proofs. Not redistributed here.
+* [Carleson]: F. van Doorn et al., *Formalization of a generalized Carleson's theorem* (Lean 4),
+  <https://github.com/fpvandoorn/carleson>, commit `f7487cc9da4d1e73f009dc0280cd5b958f3e2c78`,
+  Apache-2.0. Source of the covering lemmas in `Sobolev/HardyLittlewood.lean` (adapted, see
+  Modelling choices); file `Carleson/ToMathlib/HardyLittlewood.lean` copied unchanged to
+  `vendor/carleson/`.

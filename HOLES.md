@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`.
 
-**Updated:** 2026-11-27T11:36:46Z  
-**`sorry` occurrences:** 30 · 7 open · 51 blocked · 300 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 61} · subgoals {'open': 4, 'blocked': 41, 'done': 239} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T12:27:13Z  
+**`sorry` occurrences:** 43 · 20 open · 50 blocked · 302 done (goals + subgoals) · goals {'open': 3, 'blocked': 11, 'done': 61} · subgoals {'open': 17, 'blocked': 39, 'done': 241} · 13 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -138,8 +138,6 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first` | subgoal of Appendix C, (11 | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first` | subgoal of Appendix C, (10 | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first` | subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| | 0 |
-| blocked | `Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball` | subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r | 0 |
-| blocked | `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction` | subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile` | subgoal of Appendix C, `‖z - x₀‖^{2-d} ≤ ν(‖z - x₀‖ | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one` | subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` | 0 |
 | blocked | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 0 |
@@ -270,6 +268,21 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_main` | subgoal of Proposition 3.1 proof: `I_1^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_remainder` | subgoal of Proposition 3.1 proof: `I_2^n(t | 0 |
 | done | `Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes` | subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] | 0 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae` | subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt` | subgoal of Hardy–Littlewood, `t < M_1 f(x | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.le_add` | subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le` | subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow` | subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt` | subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le` | subgoal of Hardy–Littlewood, strong type `(p, p | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq` | subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 | 1 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball` | subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r | 0 |
+| done | `Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction` | subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages | 0 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le` | subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral` | subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux` | subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux` | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le` | subgoal of Hardy–Littlewood, weak type `(1, 1 | 1 |
+| open | `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` | subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|` | 1 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge` | subgoal of Lemma 2.2 proof, `d ≤ α` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt` | subgoal of Lemma 2.2 proof, `α < d` | 0 |
 | done | `Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le` | subgoal of Lemma 2.2 proof, maximal function on a closed ball | 0 |
@@ -337,6 +350,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 
 | Status | Module | Paper | `sorry` | Blocked by |
 |---|---|---|---|---|
+| blocked | `Sobolev.HardyLittlewood` | Hardy–Littlewood maximal theorem (Appendix C; after Carleson project) | 13 | `Sobolev.HardyLittlewood::hardyLittlewood.congr_ae`, `Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.le_add`, `Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le`, `Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq`, `Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le`, `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral`, `Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le`, `Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate` |
 | done | `Sobolev.IsLebesguePoint` |  | 0 |  |
 | done | `Sobolev.IsWeakDerivative` | Section 2.1 weak derivative | 0 |  |
 | done | `Sobolev.IsWeakGradient` |  | 0 |  |
@@ -414,8 +428,8 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
 | blocked | `Main.Theorem52` | Theorem 5.2 | 2 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52PathSteps` |  | 0 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero`, `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path`, `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow`, `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball`, `Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction`, `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel`, `Main.Theorem52Steps` |
-| blocked | `Main.Theorem52Steps` |  | 7 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.abs_convolution_le`, `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le`, `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution`, `Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian`, `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero`, `Main.Theorem52Steps::theorem_5_2.le_one_cases`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.memW_convolution`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound`, `Main.Theorem52Steps::theorem_5_2.order_le_two_cases`, `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint` |
+| blocked | `Main.Theorem52PathSteps` |  | 0 | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top`, `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero`, `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path`, `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow`, `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier`, `Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub`, `Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first`, `Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first`, `Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one`, `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel`, `Main.Theorem52Steps` |
+| blocked | `Main.Theorem52Steps` |  | 7 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.abs_convolution_le`, `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le`, `Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le`, `Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null`, `Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem`, `Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution`, `Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM`, `Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient`, `Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian`, `Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply`, `Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff`, `Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero`, `Main.Theorem52Steps::theorem_5_2.le_one_cases`, `Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le`, `Main.Theorem52Steps::theorem_5_2.memW_convolution`, `Main.Theorem52Steps::theorem_5_2.mollify_mem`, `Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound`, `Main.Theorem52Steps::theorem_5_2.order_le_two_cases`, `Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian`, `Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint`, `Sobolev.HardyLittlewood` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |
 | done | `Main.WeakPathwiseIntegral` | Eq. (16) | 0 |  |
 

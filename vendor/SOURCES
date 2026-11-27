@@ -23,6 +23,13 @@ palomar-policy
   upstream: https://github.com/PalomarRegistry/PalomarPolicy
   upstream_commit: 5bd35cddcfc940532bb5f55e399d68b49b0986a5
 
+carleson
+  path:   vendor/carleson (reference copy only, not a Lake dependency)
+  upstream: https://github.com/fpvandoorn/carleson
+  upstream_commit: f7487cc9da4d1e73f009dc0280cd5b958f3e2c78 (2026-11-17)
+  files:  Carleson/ToMathlib/HardyLittlewood.lean, LICENSE (Apache-2.0), unchanged; copied 2026-11-27
+  use:    covering lemmas adapted in WeakPathwiseIto/Sobolev/HardyLittlewood.lean
+
 mathlib
   url:    https://github.com/leanprover-community/mathlib4
   commit: e91b128082cc221d6432a6a5aadcd3243af8e76c

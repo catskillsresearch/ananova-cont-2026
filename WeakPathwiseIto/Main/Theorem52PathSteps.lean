@@ -335,67 +335,12 @@ theorem discreteSeminorm_enorm_rpow {p : ℝ} (hp : 0 < p) (π : Partition T) {g
       ENNReal.ofReal_rpow_of_nonneg (hg x) hp.le]
   simp only [discreteSeminorm, he, ENNReal.rpow_one, div_one]
 
-/-- **Subgoal** (Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a
-measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`). -/
-theorem lowerSemicontinuous_mul_measure_ball (ν : Measure (Rd d)) {r : ℝ} (hr : 0 < r) (c : ℝ≥0∞) (hc : c ≠ ⊤) :
-    LowerSemicontinuous fun x => c * ν (Metric.ball x r) := by
-  intro x y hy
-  set s : ℕ → Set (Rd d) := fun n => Metric.ball x (r - r / ((n : ℝ) + 2)) with hs
-  have hmono : Monotone s := by
-    intro m n hmn
-    refine Metric.ball_subset_ball ?_
-    have hm : (0 : ℝ) < (m : ℝ) + 2 := by positivity
-    have : r / ((n : ℝ) + 2) ≤ r / ((m : ℝ) + 2) :=
-      div_le_div_of_nonneg_left hr.le hm (by linarith [show (m : ℝ) ≤ n from by exact_mod_cast hmn])
-    linarith
-  have hU : (⋃ n, s n) = Metric.ball x r := by
-    ext z
-    simp only [mem_iUnion, hs, Metric.mem_ball]
-    constructor
-    · rintro ⟨n, hn⟩
-      have : 0 < r / ((n : ℝ) + 2) := by positivity
-      linarith
-    · intro hz
-      have hpos : 0 < r - dist z x := by linarith
-      obtain ⟨n, hn⟩ := exists_nat_gt (r / (r - dist z x))
-      refine ⟨n, ?_⟩
-      have h2 : (0 : ℝ) < (n : ℝ) + 2 := by positivity
-      have : r / ((n : ℝ) + 2) < r - dist z x := by
-        rw [div_lt_iff₀ h2]
-        rw [div_lt_iff₀ hpos] at hn
-        nlinarith
-      linarith
-  have ht : Tendsto (fun n => c * ν (s n)) atTop (𝓝 (c * ν (Metric.ball x r))) := by
-    rw [← hU]
-    exact ENNReal.Tendsto.const_mul (tendsto_measure_iUnion_atTop hmono) (Or.inr hc)
-  obtain ⟨n, hn⟩ := (ht.eventually (lt_mem_nhds hy)).exists
-  have hδ : 0 < r / ((n : ℝ) + 2) := by positivity
-  filter_upwards [Metric.ball_mem_nhds x hδ] with x' hx'
-  refine lt_of_lt_of_le hn (mul_le_mul_right (measure_mono fun z hz => ?_) c)
-  simp only [hs, Metric.mem_ball] at hz hx' ⊢
-  linarith [dist_triangle z x x', dist_comm x x']
-
-/-- **Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages). -/
-theorem measurable_localMaximalFunction (f : Rd d → ℝ) :
-    Measurable (localMaximalFunction 1 f) := by
-  unfold localMaximalFunction
-  refine LowerSemicontinuous.measurable (lowerSemicontinuous_iSup fun r =>
-    lowerSemicontinuous_iSup fun hr => lowerSemicontinuous_iSup fun _ => ?_)
-  have h : ∀ x, laverage (volume.restrict (Metric.ball x r)) (fun y => ‖f y‖ₑ) =
-      (volume (Metric.ball (0 : Rd d) r))⁻¹ *
-        (volume.withDensity fun y => ‖f y‖ₑ) (Metric.ball x r) := by
-    intro x
-    rw [laverage_eq, withDensity_apply _ Metric.isOpen_ball.measurableSet,
-      Measure.restrict_apply_univ, Measure.addHaar_ball_center, ENNReal.div_eq_inv_mul]
-  simp_rw [h]
-  exact lowerSemicontinuous_mul_measure_ball _ hr _ (ENNReal.inv_ne_top.2 (Metric.measure_ball_pos volume _ hr).ne')
-
 /-- **Subgoal** (Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p`). -/
 theorem ae_localMaximalFunction_lt_top {p : ℝ} (hp : 1 < p) {f : Rd d → ℝ}
     (hf : MemLp f (ENNReal.ofReal p)) : ∀ᵐ x, localMaximalFunction 1 f x < ⊤ := by
   obtain ⟨C, hC⟩ := eLpNorm_maximal_le (d := d) hp
   have hp0 : ENNReal.ofReal p ≠ 0 := by rw [Ne, ENNReal.ofReal_eq_zero, not_le]; linarith
-  have hm := measurable_localMaximalFunction (d := d) f
+  have hm := hardyLittlewood.measurable_localMaximalFunction (d := d) f
   have hlt : eLpNorm (localMaximalFunction 1 f) (ENNReal.ofReal p) volume < ⊤ :=
     (hC f).trans_lt (ENNReal.mul_lt_top ENNReal.coe_lt_top hf.eLpNorm_lt_top)
   rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp0 ENNReal.ofReal_ne_top hm.aestronglyMeasurable,

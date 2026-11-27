@@ -4487,6 +4487,23 @@ end preciseRepresentative
 
 end
 
+/-! ## `WeakPathwiseIto.Sobolev.HardyLittlewood` -/
+
+run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
+
+section
+
+open MeasureTheory Filter Topology Set
+open scoped ENNReal NNReal
+
+namespace hardyLittlewood
+
+variable {d : ℕ}
+
+end hardyLittlewood
+
+end
+
 /-! ## `WeakPathwiseIto.Basic.IsCubeOrBall` -/
 
 run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}

@@ -11,6 +11,7 @@ public import WeakPathwiseIto.Sobolev.MemW2Plus
 public import WeakPathwiseIto.Sobolev.PreciseRepresentative
 public import WeakPathwiseIto.Sobolev.IsLebesguePoint
 public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
+public import WeakPathwiseIto.Sobolev.HardyLittlewood
 public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Sobolev.Theorem21Second

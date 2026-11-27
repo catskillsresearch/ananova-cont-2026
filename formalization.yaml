@@ -31,7 +31,7 @@ status:
   scope: >-
     Blueprint: every paper definition is stated as a Lean def/structure and every numbered
     result as a theorem with a sorry proof. Proofs not started.
-  sorry_count: 30
+  sorry_count: 43
   sorry_in_definitions: 0
   axioms:
   - propext
@@ -65,3 +65,10 @@ references:
   - Piotr Hajłasz
   journal: Studia Mathematica 106 (1993) 77-92
   url: https://sites.pitt.edu/~hajlasz/OriginalPublications/BojarskiH-Pointwise-StudiaMath-106-1993-77-92.pdf
+- title: Formalization of a generalized Carleson's theorem (Lean 4; Hardy-Littlewood covering lemmas adapted)
+  authors:
+  - Floris van Doorn
+  - Carleson project contributors
+  url: https://github.com/fpvandoorn/carleson
+  commit: f7487cc9da4d1e73f009dc0280cd5b958f3e2c78
+  license: Apache-2.0

@@ -67,6 +67,7 @@ public import WeakPathwiseIto.Sobolev.IsWeakGradient
 public import WeakPathwiseIto.Sobolev.IsWeakHessian
 public import WeakPathwiseIto.Sobolev.Lemma22
 public import WeakPathwiseIto.Sobolev.LocalMaximalFunction
+public import WeakPathwiseIto.Sobolev.HardyLittlewood
 public import WeakPathwiseIto.Sobolev.MemW
 public import WeakPathwiseIto.Sobolev.MemW2Plus
 public import WeakPathwiseIto.Sobolev.MemW2PlusS

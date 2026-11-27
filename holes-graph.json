@@ -1,21 +1,21 @@
 {
- "updated": "2026-11-27T11:36:46Z",
+ "updated": "2026-11-27T12:27:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 30,
+ "sorryCount": 43,
  "counts": {
-  "open": 7,
-  "blocked": 51,
-  "done": 300
+  "open": 20,
+  "blocked": 50,
+  "done": 302
  },
  "goalCounts": {
   "open": 3,
-  "blocked": 10,
+  "blocked": 11,
   "done": 61
  },
  "subgoalCounts": {
-  "open": 4,
-  "blocked": 41,
-  "done": 239
+  "open": 17,
+  "blocked": 39,
+  "done": 241
  },
  "untagged": [],
  "legend": {
@@ -3532,7 +3532,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 14
+    "theorem": 12
    },
    "paperGoal": false,
    "verified": false,
@@ -3553,8 +3553,6 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-    "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-    "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
@@ -3575,8 +3573,6 @@
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-    "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-    "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
     "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
@@ -3918,80 +3914,6 @@
    "detail": "proved: theorem_5_2.lintegral_piece_le_first — subgoal of Appendix C, `i = 0` increment: the kernel centred at `a = x₀` is kept explicit, `∫ |f| 𝓛^{n,0} ≤ C (∫_{B̄(a,|b-a| (in Main.Theorem52PathSteps)"
   },
   {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "label": "lowerSemicontinuous_mul_measure_ball",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r",
-   "parentGoal": "Main.Theorem52PathSteps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`).",
-   "status": "blocked",
-   "deps": [
-    "Appendix.PotentialProfile",
-    "Basic.ContDiffBounded",
-    "Basic.SmoothHessian",
-    "Bessel.CanonicalWienerSpace",
-    "Bessel.WienerLawExists",
-    "Main.Theorem52Steps",
-    "Occupation.OccupationSeminorm",
-    "Occupation.PathwiseSobolevSpace",
-    "Sobolev.IsWeakHessian",
-    "Sobolev.MemW",
-    "Sobolev.Theorem21Second"
-   ],
-   "blockers": [
-    "Main.Theorem52Steps"
-   ],
-   "detail": "proved: theorem_5_2.lowerSemicontinuous_mul_measure_ball — subgoal of Appendix C, `M_1 f` is Borel: `x ↦ c ν(B(x, r (in Main.Theorem52PathSteps)"
-  },
-  {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "label": "measurable_localMaximalFunction",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
-   "parentGoal": "Main.Theorem52PathSteps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
-   "status": "blocked",
-   "deps": [
-    "Appendix.PotentialProfile",
-    "Basic.ContDiffBounded",
-    "Basic.SmoothHessian",
-    "Bessel.CanonicalWienerSpace",
-    "Bessel.WienerLawExists",
-    "Main.Theorem52Steps",
-    "Occupation.OccupationSeminorm",
-    "Occupation.PathwiseSobolevSpace",
-    "Sobolev.IsWeakHessian",
-    "Sobolev.MemW",
-    "Sobolev.Theorem21Second"
-   ],
-   "blockers": [
-    "Main.Theorem52Steps"
-   ],
-   "detail": "proved: theorem_5_2.measurable_localMaximalFunction — subgoal of Appendix C, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Main.Theorem52PathSteps)"
-  },
-  {
    "id": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "label": "rpow_le_potentialProfile",
    "kind": "subgoal",
@@ -4156,6 +4078,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4188,7 +4111,8 @@
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
-    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+    "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "7 sorry: isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
@@ -4217,6 +4141,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4225,7 +4150,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.abs_convolution_le — subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
   },
@@ -4254,6 +4180,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4262,7 +4189,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.abs_mollify_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x (in Main.Theorem52Steps)"
   },
@@ -4291,6 +4219,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4299,7 +4228,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.abs_setAverage_sub_le — subgoal of Appendix C, mollification at Lebesgue points: `|⨍_s f - c| ≤ ⨍_s |f - c|` (in Main.Theorem52Steps)"
   },
@@ -4330,6 +4260,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4338,7 +4269,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.ae_forall_mem_not_mem_null — subgoal of Appendix C, Brownian motion has a density at positive times: it a.s. avoids a Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0` (in Main.Theorem52Steps)"
   },
@@ -4369,6 +4301,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4377,7 +4310,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.ae_forall_path_not_mem — subgoal of Appendix C, Brownian motion does not enter a polar set at positive times (in Main.Theorem52Steps)"
   },
@@ -4406,6 +4340,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4414,7 +4349,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.contDiffBounded_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞` (in Main.Theorem52Steps)"
   },
@@ -4443,6 +4379,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4451,7 +4388,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.coord_toEuclideanCLM — subgoal of Appendix C, mollification: the `(i, j (in Main.Theorem52Steps)"
   },
@@ -4482,6 +4420,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4490,7 +4429,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.eLpNorm_maximal_le — subgoal of Appendix C, Hardy–Littlewood: `M_1` is bounded on `L^p`, `p > 1` (in Main.Theorem52Steps)"
   },
@@ -4519,6 +4459,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4527,7 +4468,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.exists_isWeakGradient — subgoal of Appendix C, mollification: a `W^{1,1}` function has a weak gradient, assembled from its first-order weak derivatives (in Main.Theorem52Steps)"
   },
@@ -4556,6 +4498,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4564,7 +4507,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.exists_isWeakHessian — subgoal of Appendix C, mollification: a `W^{2,1}` function has a weak Hessian, assembled from its second-order weak derivatives (in Main.Theorem52Steps)"
   },
@@ -4593,6 +4537,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4601,7 +4546,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.fderiv_convolution_apply — subgoal of Appendix C, mollification: `∂_v (F * g (in Main.Theorem52Steps)"
   },
@@ -4632,6 +4578,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4640,7 +4587,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.gagliardo_maximal_le — subgoal of Appendix C, `M_1` is bounded on `W^{s,p}`: translation invariance and sublinearity, `[M_1 f]_{W^{s,p}} ≤ C_p [f]_{W^{s,p}}` (in Main.Theorem52Steps)"
   },
@@ -4671,6 +4619,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4679,7 +4628,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.isBrownianPolar_nonLebesgue — subgoal of Appendix C, `E₁` is polar: Theorem 2.9, [AM71, Thm. 1], [Fuk93] (in Main.Theorem52Steps)"
   },
@@ -4708,6 +4658,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4716,7 +4667,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.isWeakDerivative_single_of_contDiff — subgoal of Appendix C, mollification: the classical partial derivative of a `C¹` function is its weak derivative, by integration by parts (in Main.Theorem52Steps)"
   },
@@ -4745,6 +4697,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4753,7 +4706,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.isWeakDerivative_zero — subgoal of Appendix C, mollification: `D^0 f = f` weakly (in Main.Theorem52Steps)"
   },
@@ -4782,6 +4736,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4790,7 +4745,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.le_one_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 1` are `0` and `e_i` (in Main.Theorem52Steps)"
   },
@@ -4821,6 +4777,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4829,7 +4786,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.lintegral_rpow_sub_le — subgoal of Appendix C, second hypothesis of Lemma B.2 for `h = g^p`: Hölder on `K × K` (in Main.Theorem52Steps)"
   },
@@ -4858,6 +4816,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4866,7 +4825,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.memW_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ W^{2,1}` for `F ∈ W^{2,1}`: its classical, hence weak, derivatives of order `≤ 2` are `F * D^α ψ`, integrable by Young's inequality (in Main.Theorem52Steps)"
   },
@@ -4895,6 +4855,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4903,7 +4864,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
   },
@@ -4932,6 +4894,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4940,7 +4903,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.norm_convolution_le_of_bound — subgoal of Appendix C, mollification: `‖(F ⋆[L] g (in Main.Theorem52Steps)"
   },
@@ -4969,6 +4933,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -4977,7 +4942,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.order_le_two_cases — subgoal of Appendix C, mollification: the multi-indices of order `≤ 2` are `0`, `e_i` and `e_i + e_j` (in Main.Theorem52Steps)"
   },
@@ -5006,6 +4972,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -5014,7 +4981,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.preciseRepresentative_eq_of_tendsto — subgoal of Appendix C, mollification at Lebesgue points: at a Lebesgue point with value `c`, `F̃(x (in Main.Theorem52Steps)"
   },
@@ -5045,6 +5013,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -5053,7 +5022,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "sorry: theorem_5_2.tendsto_mollify_hessian — subgoal of Appendix C, mollification converges in `W^{2+s,p}`: `u_m → 0` in `L^p` and in the Gagliardo seminorm `[·]_{W^{s,p}}` (in Main.Theorem52Steps)"
   },
@@ -5082,6 +5052,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29",
     "Occupation.PathwiseSobolevSpace",
+    "Sobolev.HardyLittlewood",
     "Sobolev.IsLebesguePoint",
     "Sobolev.LocalMaximalFunction",
     "Sobolev.MemW2Plus",
@@ -5090,7 +5061,8 @@
    ],
    "blockers": [
     "Bessel.IsBrownianPolar",
-    "Bessel.Theorem29"
+    "Bessel.Theorem29",
+    "Sobolev.HardyLittlewood"
    ],
    "detail": "proved: theorem_5_2.tendsto_mollify_of_isLebesguePoint — subgoal of Appendix C, mollification: `F_m(x (in Main.Theorem52Steps)"
   },
@@ -8546,6 +8518,472 @@
    "detail": "proved: proposition_3_1.tendsto_riemannStieltjes — subgoal of Proposition 3.1 proof, convergence of `I_1^n`, [CF10] (in Smooth.Proposition31)"
   },
   {
+   "id": "Sobolev.HardyLittlewood",
+   "label": "HardyLittlewood",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 13,
+   "holes": [
+    "measure_ball_two_le",
+    "measure_biUnion_le_lintegral_aux",
+    "measure_biUnion_le_lintegral",
+    "exists_ball_of_lt",
+    "mul_measure_lt_le",
+    "le_add",
+    "le_of_enorm_le",
+    "mul_measure_lt_le_truncate",
+    "lintegral_Ioi_indicator_rpow",
+    "lintegral_rpow_eq_lintegral_meas_lt",
+    "lintegral_truncate_eq",
+    "lintegral_rpow_le",
+    "congr_ae"
+   ],
+   "declKinds": {
+    "theorem": 15
+   },
+   "paperGoal": false,
+   "verified": false,
+   "kind": "goal",
+   "status": "blocked",
+   "deps": [
+    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+    "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+    "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+    "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [
+    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+    "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+    "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+    "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+    "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+    "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
+   ],
+   "detail": "13 sorry: measure_ball_two_le, measure_biUnion_le_lintegral_aux, measure_biUnion_le_lintegral, exists_ball_of_lt, mul_measure_lt_le, le_add, le_of_enorm_le, mul_measure_lt_le_truncate, lintegral_Ioi_indicator_rpow, lintegral_rpow_eq_lintegral_meas_lt, lintegral_truncate_eq, lintegral_rpow_le, congr_ae"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+   "label": "congr_ae",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.congr_ae"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.congr_ae — subgoal of Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+   "label": "exists_ball_of_lt",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `t < M_1 f(x",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.exists_ball_of_lt"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `t < M_1 f(x)` is witnessed by a ball `B(x, r)`, `r < 1`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.exists_ball_of_lt — subgoal of Hardy–Littlewood, `t < M_1 f(x (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+   "label": "le_add",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.le_add"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.le_add — subgoal of Hardy–Littlewood, sublinearity: `|f| ≤ |g| + |h|` gives `M_1 f ≤ M_1 g + M_1 h` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+   "label": "le_of_enorm_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.le_of_enorm_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.le_of_enorm_le — subgoal of Hardy–Littlewood, `|g| ≤ c` gives `M_1 g ≤ c` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+   "label": "lintegral_Ioi_indicator_rpow",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.lintegral_Ioi_indicator_rpow"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.lintegral_Ioi_indicator_rpow — subgoal of Hardy–Littlewood, `∫_0^a q t^{q-1} dt = a^q` in `ℝ≥0∞` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "label": "lintegral_rpow_eq_lintegral_meas_lt",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt — subgoal of Hardy–Littlewood, layer-cake formula for `ℝ≥0∞`-valued functions (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+   "label": "lintegral_rpow_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, strong type `(p, p",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.lintegral_rpow_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, strong type `(p, p)`, `p > 1`, for measurable `f`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.lintegral_rpow_le — subgoal of Hardy–Littlewood, strong type `(p, p (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+   "label": "lintegral_truncate_eq",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.lintegral_truncate_eq"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1) ‖f‖_p^p`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.lintegral_truncate_eq — subgoal of Hardy–Littlewood, Tonelli for the truncated bound: `∫_0^∞ t^{p-2} ∫_{2|f| > t} |f| dt = 2^{p-1}/(p-1 (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
+   "label": "lowerSemicontinuous_mul_measure_ball",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r))` is lower semicontinuous for a measure `ν`, since `B(x, r - δ) ⊆ B(x', r)` for `x'` near `x` and `ν(B(x, r - δ)) → ν(B(x, r))`).",
+   "status": "done",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "proved: hardyLittlewood.lowerSemicontinuous_mul_measure_ball — subgoal of Hardy–Littlewood, `M_1 f` is Borel: `x ↦ c ν(B(x, r (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
+   "label": "measurable_localMaximalFunction",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages).",
+   "status": "done",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "proved: hardyLittlewood.measurable_localMaximalFunction — subgoal of Hardy–Littlewood, `M_1 f` is Borel: a supremum of lower semicontinuous ball averages (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+   "label": "measure_ball_two_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.measure_ball_two_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r)| ≤ 2^d |B(x, r)|`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.measure_ball_two_le — subgoal of Hardy–Littlewood, Lebesgue measure is doubling: `|B(x, 2r (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+   "label": "measure_biUnion_le_lintegral",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.measure_biUnion_le_lintegral"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.measure_biUnion_le_lintegral — subgoal of Hardy–Littlewood, Vitali covering for arbitrary balls; adapted from Carleson `measure_biUnion_le_lintegral` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+   "label": "measure_biUnion_le_lintegral_aux",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.measure_biUnion_le_lintegral_aux"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.measure_biUnion_le_lintegral_aux — subgoal of Hardy–Littlewood, Vitali covering for balls of bounded radius; adapted from Carleson `measure_biUnion_le_lintegral_aux` (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+   "label": "mul_measure_lt_le",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, weak type `(1, 1",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.mul_measure_lt_le"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, weak type `(1, 1)`: `t |{M_1 f > t}| ≤ 4^d ‖f‖_1`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.mul_measure_lt_le — subgoal of Hardy–Littlewood, weak type `(1, 1 (in Sobolev.HardyLittlewood)"
+  },
+  {
+   "id": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
+   "label": "mul_measure_lt_le_truncate",
+   "kind": "subgoal",
+   "section": "Sobolev",
+   "sectionTitle": "§2.1 Sobolev spaces",
+   "paper": "subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`",
+   "parentGoal": "Sobolev.HardyLittlewood",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
+   "sorryCount": 1,
+   "holes": [
+    "hardyLittlewood.mul_measure_lt_le_truncate"
+   ],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|`).",
+   "status": "open",
+   "deps": [
+    "Sobolev.LocalMaximalFunction"
+   ],
+   "blockers": [],
+   "detail": "sorry: hardyLittlewood.mul_measure_lt_le_truncate — subgoal of Hardy–Littlewood, truncated weak bound: `t |{M_1 f > t}| ≤ 2 · 4^d ∫_{2|f| > t} |f|` (in Sobolev.HardyLittlewood)"
+  },
+  {
    "id": "Sobolev.IsLebesguePoint",
    "label": "IsLebesguePoint",
    "section": "Sobolev",
@@ -10666,16 +11104,6 @@
   },
   {
    "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
@@ -10737,16 +11165,6 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -11906,16 +12324,6 @@
   },
   {
    "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
@@ -12476,16 +12884,6 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
@@ -12902,16 +13300,6 @@
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -13470,16 +13858,6 @@
    "kind": "subgoal"
   },
   {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "to": "Main.Theorem52PathSteps",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "to": "Main.Theorem52PathSteps",
-   "kind": "subgoal"
-  },
-  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -13547,16 +13925,6 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -14856,16 +15224,6 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.OccupationSeminorm",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
@@ -15002,16 +15360,6 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -16370,6 +16718,206 @@
    "kind": "subgoal"
   },
   {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "subgoal"
+  },
+  {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Bessel.Theorem29",
    "kind": "hard"
@@ -16857,16 +17405,6 @@
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -17391,6 +17929,86 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Sobolev.Lemma22",
    "kind": "hard"
   },
@@ -17482,16 +18100,6 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.MemW",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.MemW",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
    "kind": "hard"
   },
   {
@@ -18321,16 +18929,6 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.Theorem21Second",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "kind": "hard"
   },
@@ -18858,14 +19456,6 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -19917,14 +20507,6 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
   },
   {
@@ -20340,14 +20922,6 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
-   "to": "Main.Theorem52PathSteps"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
-   "to": "Main.Theorem52PathSteps"
-  },
-  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
    "to": "Main.Theorem52PathSteps"
   },
@@ -20394,14 +20968,6 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
   },
   {
    "from": "Main.Theorem52Steps",
@@ -21784,6 +22350,162 @@
    "to": "Smooth.Proposition31"
   },
   {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.le_one_cases"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.memW_convolution"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood",
+   "to": "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_add",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
+   "from": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate",
+   "to": "Sobolev.HardyLittlewood"
+  },
+  {
    "from": "Sobolev.IsLebesguePoint",
    "to": "Bessel.Theorem29"
   },
@@ -22186,6 +22908,66 @@
   {
    "from": "Sobolev.LocalMaximalFunction",
    "to": "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.exists_ball_of_lt"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_add"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.le_of_enorm_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_Ioi_indicator_rpow"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_eq_lintegral_meas_lt"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_ball_two_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.measure_biUnion_le_lintegral_aux"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
+   "to": "Sobolev.HardyLittlewood::hardyLittlewood.mul_measure_lt_le_truncate"
   },
   {
    "from": "Sobolev.LocalMaximalFunction",

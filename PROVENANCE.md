@@ -27,6 +27,7 @@ references) from other formalizations was copied.
 |------|--------|--------|
 | `vendor/brownian-motion/` | `catskillsresearch/xodarev2026` `vendor/brownian-motion` (pruned RemyDegenne/brownian-motion `497e5e2`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
 | `vendor/formal-mathfin/` | `catskillsresearch/xodarev2026` `vendor/formal-mathfin` (formal-applied-math/formal-mathfin `c47908e`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
+| `vendor/carleson/` (reference copy, not built) | `fpvandoorn/carleson` `Carleson/ToMathlib/HardyLittlewood.lean` + `LICENSE` (Apache-2.0; F. van Doorn et al. and contributors) | `f7487cc9da4d1e73f009dc0280cd5b958f3e2c78` |
 | `vendor/palomar-policy/`, `vendor/PALOMAR_POLICY_PIN` | `catskillsresearch/xodarev2026` `vendor/` (PalomarRegistry/PalomarPolicy `5bd35cddcfc940532bb5f55e399d68b49b0986a5`) | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` |
 
 Details: `vendor/SOURCES`.
@@ -37,6 +38,7 @@ Details: `vendor/SOURCES`.
 |---|---|---|
 | Brownian motion predicate in `CanonicalWienerSpace.IsLaw` | Mathlib `ProbabilityTheory.IsBrownianReal` (upstreamed from RemyDegenne/brownian-motion) | imported from Mathlib |
 | Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged (outside the Mathlib-only Challenge closure) |
+| Covering lemmas `hardyLittlewood.measure_biUnion_le_lintegral(_aux)` (`Sobolev/HardyLittlewood.lean`) | Carleson project `Carleson/ToMathlib/HardyLittlewood.lean` @ `f7487cc` | adapted to our pin (Lebesgue measure, doubling constant `2^d`, `def tr` inlined); provenance header in the file |
 | Itô integral | `vendor/formal-mathfin` `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
 
 ## Borrowed unchanged tooling (kept at the path the tooling requires)
