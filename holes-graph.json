@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T20:54:53Z",
+ "updated": "2026-11-27T20:55:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 18,
+ "sorryCount": 17,
  "counts": {
-  "open": 12,
+  "open": 11,
   "blocked": 13,
-  "done": 423
+  "done": 424
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 10,
+  "open": 9,
   "blocked": 3,
-  "done": 357
+  "done": 358
  },
  "untagged": [],
  "legend": {
@@ -3638,9 +3638,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 7,
+   "sorryCount": 6,
    "holes": [
-    "indepFun_past_increment",
     "indep_naturalSigma_increment",
     "increment_moments",
     "integral_inner_increment_sq",
@@ -3674,12 +3673,11 @@
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
     "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
-    "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
     "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero",
     "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq"
    ],
-   "detail": "7 sorry: indepFun_past_increment, indep_naturalSigma_increment, increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+   "detail": "6 sorry: indep_naturalSigma_increment, increment_moments, integral_inner_increment_sq, integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
@@ -3886,10 +3884,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.indepFun_past_increment"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -3898,17 +3894,16 @@
    "doc": "**Subgoal** (P53.A, canonical space): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, the past path `(B(v))_{v ≤ s}` is independent of the increment `B(t) - B(s)`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.indepFun_past_increment — subgoal of P53.A, canonical space (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.indepFun_past_increment — subgoal of P53.A, canonical space (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",

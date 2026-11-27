@@ -484,7 +484,6 @@
   ],
   "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment": [
    "propext",
-   "sorryAx",
    "Classical.choice",
    "Quot.sound"
   ],
@@ -1864,5 +1863,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T20:54:52Z"
+ "generated": "2026-11-27T20:55:09Z"
 }

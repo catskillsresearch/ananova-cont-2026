@@ -138,7 +138,38 @@ theorem indepFun_past_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s �
     IndepFun (fun (ω : CanonicalWienerSpace d T) (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s}) => ω v)
       (fun ω => CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω)
       (CanonicalWienerSpace.P (T := T) x) := by
-  sorry
+  obtain ⟨Ω', _, Q, W, hW, hQ, hB, hind, hP⟩ := CanonicalWienerSpace.isLaw_P (T := T) x
+  set G : Ω' → CanonicalWienerSpace d T :=
+    fun ω' => CanonicalWienerSpace.ofCoords x (fun i t => W i t ω') fun i => hW i ω' with hGdef
+  have hG : AEMeasurable G Q := by
+    refine CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval fun r => ?_
+    simp only [G, CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk]
+    exact aemeasurable_const.add (Finset.aemeasurable_fun_sum _ fun i _ =>
+      ((hB i).toIsPreBrownianReal.aemeasurable _).smul_const _)
+  rw [hP]
+  refine indepFun_map_of_comp hG
+    (measurable_pi_iff.2 fun v => ContinuousMap.measurable_eval _)
+    ((measurable_B t).sub (measurable_B s)) ?_
+  have hA := indepFun_coords_past_shift hB hind s.toNNReal
+  set s' := s.toNNReal
+  set t' := t.toNNReal
+  have hss : s' ≤ t' := Real.toNNReal_le_toNNReal hst
+  have hc := hA.comp
+    (φ := fun (f : Fin d → Iic s' → ℝ) (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s}) =>
+      x + ∑ i, f i ⟨((v : Icc (0 : ℝ) T) : ℝ).toNNReal,
+        mem_Iic.2 (Real.toNNReal_le_toNNReal v.2)⟩ • Rd.basisVec i)
+    (ψ := fun (f : Fin d → ℝ≥0 → ℝ) => ∑ i, f i (t' - s') • Rd.basisVec i)
+    (by fun_prop) (by fun_prop)
+  refine hc.congr (Eventually.of_forall fun ω' => ?_) (Eventually.of_forall fun ω' => ?_)
+  · funext v
+    simp [G, CanonicalWienerSpace.ofCoords]
+  · have htI : t ∈ Icc 0 T := ⟨hs.trans hst, ht⟩
+    have hsI : s ∈ Icc 0 T := ⟨hs, hst.trans ht⟩
+    simp only [Function.comp_apply, CanonicalWienerSpace.B, htI, hsI, dite_true, G,
+      CanonicalWienerSpace.ofCoords, ContinuousMap.coe_mk, add_tsub_cancel_of_le hss]
+    rw [add_sub_add_left_eq_sub, ← Finset.sum_sub_distrib]
+    simp_rw [sub_smul]
+    rfl
 
 /-- **Subgoal** (P53.A): under `ℙ_x`, for `0 ≤ s ≤ t ≤ T`, `B(t) - B(s)` is independent of the
 natural `σ`-algebra `𝓕_s`. -/
