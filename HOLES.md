@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:34:11Z  
-**`sorry` occurrences:** 23 · 10 open · 12 blocked · 380 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 318} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:35:28Z  
+**`sorry` occurrences:** 22 · 10 open · 12 blocked · 380 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 2, 'done': 318} · 11 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -18,7 +18,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 | Status | Module | Paper | `sorry` | Holes |
 |---|---|---|---|---|
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
-| blocked | `Main.Theorem52` | Theorem 5.2 | 1 | `theorem_5_2_deterministic` |
+| blocked | `Main.Theorem52` | Theorem 5.2 | 0 |  |
 | blocked | `Main.Proposition53` | Proposition 5.3 | 1 | `proposition_5_3` |
 
 ## Open now
@@ -458,7 +458,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.SmoothItoAt` |  | 0 |  |
 | done | `Main.Theorem51` | Theorem 5.1 | 0 |  |
 | done | `Main.Theorem51Steps` |  | 0 |  |
-| blocked | `Main.Theorem52` | Theorem 5.2 | 1 | `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
+| blocked | `Main.Theorem52` | Theorem 5.2 | 0 | `Appendix.LemmaB2`, `Bessel.IsBrownianPolar`, `Main.Theorem52PathSteps`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52PathSteps` |  | 0 | `Appendix.LemmaB1`, `Main.Theorem52PathSteps::theorem_5_2.exists_polar_forall_potential_lt_top`, `Main.Theorem52Steps` |
 | blocked | `Main.Theorem52Steps` |  | 1 | `Bessel.IsBrownianPolar`, `Bessel.Theorem29`, `Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue` |
 | done | `Main.WeakCovariation` | Eq. (15) | 0 |  |

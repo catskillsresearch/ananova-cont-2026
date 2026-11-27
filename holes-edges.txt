@@ -69,6 +69,7 @@ Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_
 Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Appendix.LemmaB1 -hard-> Main.Theorem52PathSteps::theorem_5_2.volume_iUnion_maximal_eq_top
+Appendix.LemmaB2 -hard-> Main.Theorem52
 Appendix.LemmaB2::lemma_B_2_literal -hard-> Appendix.LemmaB2
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel
 Appendix.PotentialProfile -hard-> Appendix.HeatKernel::heatKernel.div_scaling
