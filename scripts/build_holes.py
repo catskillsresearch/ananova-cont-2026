@@ -13,11 +13,19 @@ declares it (the parent goal depends on it). Label a subgoal by opening its docs
 `**Subgoal** (<paper item>)`; untagged helpers are still put on the board (labelled from their
 module) and listed as warnings, so nothing a goal depends on is ever missing from the board.
 
-Status rules:
+Status rules for goals (modules):
   * done    = listed in VERIFIED, file has no `sorry`, and every direct import is done;
   * open    = not done, and every direct import is done (work on it next);
   * blocked = some direct import is not done.
 Any `sorry` forces open/blocked regardless of VERIFIED.
+
+Status rules for subgoals, from the axiom check (`scripts/axioms_check.py`, run after
+`lake build`; it records `#print axioms` for every subgoal in `holes-axioms.json`):
+  * done    = `sorryAx` is not among the subgoal's axioms (its proof uses no `sorry`, directly
+              or through any lemma it cites);
+  * open    = `sorryAx` is among its axioms and its own body contains `sorry`;
+  * blocked = `sorryAx` is among its axioms only through lemmas it cites.
+A subgoal missing from `holes-axioms.json` falls back to the goal rules above.
 
 Outputs: HOLES.md, holes-graph.json, holes-edges.txt, and the JSON embedded into holes.html.
 
@@ -38,6 +46,7 @@ OUT_JSON = ROOT / "holes-graph.json"
 OUT_HTML = ROOT / "holes.html"
 OUT_MD = ROOT / "HOLES.md"
 OUT_EDGES = ROOT / "holes-edges.txt"
+AXIOMS_JSON = ROOT / "holes-axioms.json"
 HTML_EMBED_MARKER = "/*HOLES_GRAPH_JSON*/"
 
 IMPORT_RE = re.compile(r"^\s*(?:public\s+|meta\s+)*import\s+" + LIB + r"\.([A-Za-z0-9_.]+)", re.M)
@@ -346,6 +355,16 @@ def build():
     for a, b in edges:
         deps[b].add(a)
     status: dict[str, str] = {}
+    axioms: dict[str, list[str]] = {}
+    if AXIOMS_JSON.exists():
+        axioms = json.loads(AXIOMS_JSON.read_text(encoding="utf-8")).get("axioms", {})
+    for m, n in nodes.items():
+        if n["kind"] == "subgoal" and m in axioms:
+            n["axioms"] = axioms[m]
+            if "sorryAx" not in axioms[m]:
+                status[m] = "done"
+            else:
+                status[m] = "open" if n["sorryCount"] else "blocked"
 
     def done(m, stack=()):
         if m in status:
@@ -358,16 +377,19 @@ def build():
     for m in nodes:
         done(m)
     for m in nodes:
-        if status[m] != "done":
+        if status[m] == "?":
             status[m] = "open" if all(status[d] == "done" for d in deps[m]) else "blocked"
     for m, n in nodes.items():
         n["status"] = status[m]
         n["deps"] = sorted(deps[m])
-        n["blockers"] = sorted(d for d in deps[m] if status[d] != "done")
+        n["blockers"] = ([] if status[m] == "done" else
+                         sorted(d for d in deps[m] if status[d] != "done"))
         if n["kind"] == "subgoal":
             n["detail"] = (("sorry: " if n["sorryCount"] else "proved: ") + n["id"].split("::")[1]
                            + f" — {n['paper']} (in {n['parentGoal']})"
-                           + ("" if n["tagged"] else " [UNTAGGED: add **Subgoal** (…) to its docstring]"))
+                           + ("" if n["tagged"] else " [UNTAGGED: add **Subgoal** (…) to its docstring]")
+                           + ("" if "axioms" not in n else
+                              " · axioms: " + (", ".join(n["axioms"]) or "none")))
         elif n["sorryCount"]:
             n["detail"] = f"{n['sorryCount']} sorry: " + ", ".join(n["holes"])
         elif not n["verified"]:
@@ -392,17 +414,21 @@ def build():
         "untagged": sorted(n["id"] for n in nodes.values() if n["kind"] == "subgoal" and not n["tagged"]),
         "legend": {
             "open": "All imported modules done — prove / verify next",
-            "blocked": "Waiting on unfinished imported modules",
-            "done": "Verified (listed in VERIFIED, no sorry, deps done)",
+            "blocked": "Waiting on unfinished imported modules (subgoals: proof cites a lemma "
+                       "that still uses sorry)",
+            "done": "Verified (goals: listed in VERIFIED, no sorry, deps done; subgoals: "
+                    "sorryAx not among its #print axioms)",
         },
         "notes": [
             "Goals: one node per WeakPathwiseIto .lean module (root barrel omitted). Subgoals: one "
             "node per helper lemma/def (Module::Name), with a dashed outline and an edge into "
             "the goal that depends on it.",
             "Hard edge B→A: A directly imports B. Drawn edges are transitively reduced; "
-            "status uses all direct imports.",
+            "goal status uses all direct imports.",
+            "Subgoal status comes from the axiom check (scripts/axioms_check.py → "
+            "holes-axioms.json): done exactly when sorryAx is not among its #print axioms.",
             "Paper goals: " + ", ".join(PAPER_GOALS) + ".",
-            "Regenerate with: python3 scripts/build_holes.py",
+            "Regenerate with: python3 scripts/axioms_check.py && python3 scripts/build_holes.py",
         ],
         "paperGoals": PAPER_GOALS,
         "nodes": [nodes[m] for m in sorted(nodes)],
@@ -420,7 +446,10 @@ def write_md(data):
         "",
         "File-level inventory of Lean modules. A module is **done** only if it is listed in "
         "`VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file "
-        "contains no `sorry`.",
+        "contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its "
+        "`#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is "
+        "**open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through "
+        "lemmas it cites.",
         "",
         f"**Updated:** {data['updated']}  ",
         f"**`sorry` occurrences:** {data['sorryCount']} · {c['open']} open · {c['blocked']} blocked · "
@@ -430,6 +459,7 @@ def write_md(data):
         "**Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).",
         "",
         "```bash",
+        "python3 scripts/axioms_check.py  # after lake build: #print axioms per subgoal -> holes-axioms.json",
         "python3 scripts/build_holes.py   # refreshes HOLES.md, holes-graph.json, holes-edges.txt, holes.html",
         "scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html",
         "```",

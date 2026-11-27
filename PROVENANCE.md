@@ -74,7 +74,7 @@ must live in `scripts/`; they are byte-for-byte copies of
 | File | Derived from |
 |------|--------------|
 | `lakefile.toml`, `lean-toolchain`, `lake-manifest.json` | xodarev2026 `0e1f1f3b0739fdf472511da2207599ab11085660` (structure; toolchain and Mathlib pin since moved to the Carleson project's, formal-mathfin dropped, Carleson added; renamed package) |
-| `scripts/build_holes.py`, `holes.html`, `scripts/serve_holes.sh` | Board design of xodarev2026 `scripts/build_holes.py` / `holes.html` / `scripts/serve_holes.sh` at `0e1f1f3b0739fdf472511da2207599ab11085660` (same status rules, file formats and embed marker; code rewritten, no data copied) |
+| `scripts/build_holes.py`, `holes.html`, `scripts/serve_holes.sh` | Board design of xodarev2026 `scripts/build_holes.py` / `holes.html` / `scripts/serve_holes.sh` at `0e1f1f3b0739fdf472511da2207599ab11085660` (same goal status rules, file formats and embed marker; code rewritten, no data copied). The subgoal axiom check (`scripts/axioms_check.py`, `holes-axioms.json`) is new in this project |
 | `scripts/gen_challenge.py` | Technique of xodarev2026 `scripts/gen_challenge.py` at `0e1f1f3b0739fdf472511da2207599ab11085660` (verbatim flattening, per-module `auxLemmasExt` reset); code rewritten |
 | `scripts/palomar_preflight.sh` | `catskillsresearch/palomar-preflight` `examples/project-wrapper.sh` at `cd89b1336ad1f189f44dd6facd2634ce8a9a4447`, and lyasoff2016 `scripts/palomar_preflight.sh` at `3376bd2b8c18cab4322ca5b1db46d7fc477eed1a` |
 | `AGENTS.md`, `README.md`, `NOTICE`, `COMPARATOR.md`, `formalization.yaml`, `.gitignore` | Structure of the xodarev2026 files at `0e1f1f3b0739fdf472511da2207599ab11085660`; content rewritten for this paper |

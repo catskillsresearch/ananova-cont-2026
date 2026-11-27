@@ -46,6 +46,7 @@ Toolchain: Lean `v4.36.0-rc1` (see `lean-toolchain`), Mathlib pin in `lakefile.t
 ## Board
 
 ```bash
+python3 scripts/axioms_check.py  # after lake build: #print axioms per subgoal -> holes-axioms.json
 python3 scripts/build_holes.py   # refresh HOLES.md, holes-graph.json, holes-edges.txt, holes.html
 scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 ```

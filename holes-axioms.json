@@ -1,0 +1,1584 @@
+{
+ "axioms": {
+  "Appendix.HeatKernel::heatKernel.div_scaling": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integrableOn_Ioc": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integrableOn_unitKernel": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integrableOn_unitProfile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integral_div_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_of_two_lt": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_one": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.integral_le_potentialProfile_two": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.le_inv_two_mul_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.le_rpow_mul": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.riemannSum_le_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.HeatKernel::heatKernel.scaling": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.B_ofCoords": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.hasLaw_increment": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.hasLaw_sum_smul_basisVec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.iIndepFun_increments": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.iIndepFun_map_of_comp": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.integral_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.integral_rpow_eq_sum_norm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.memLp_norm_rpow_stdGaussian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.memLp_two": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.tendsto_ae_of_summable_variance": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaA1::lemma_A_1.variance_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Appendix.LemmaB2::lemma_B_2_literal": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.FunctionOscillation::functionOscillation.tendsto_zero": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.gap_le_mesh": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.left_lt_right": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.mesh_nonneg": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.nonneg": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.right_le_mul_left": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.sum_gap": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Basic.Partition::Partition.t_mem": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.IsNull.iUnion": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_one": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.IsNull.one_two_of_two_p": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselCapacity::besselCapacity.iUnion_le": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.asymptotic_origin": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.fourier_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.fourier_fubini": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.fourier_slice": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integrable": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integrableOn_profile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integrable_uncurry": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integral_comp_div": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integral_exp_slice": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.integral_profile_exp": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.mul_eq_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.nonneg": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselKernel::besselKernel.tendsto_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselSpace::BesselSpace.aestronglyMeasurable_potential": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselSpace::BesselSpace.eLpNorm_potential_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.BesselSpace::BesselSpace.enorm_potential_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.IsBrownianPolar::IsBrownianPolar.iUnion": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.IsBrownianPolar::IsBrownianPolar.iff_isNull": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.aemeasurable_of_aemeasurable_eval": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.exists_isLaw": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.ext_of_map_coe": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_P": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.isLaw_unique": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.isProbabilityMeasure_P": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.map_coords_restrict": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.map_restrict_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.WienerLawExists::CanonicalWienerSpace.measurableSpace_eq_comap_coe": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.Young::BesselSpace.young.lintegral_conv_le_of_ae_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.Young::BesselSpace.young.lintegral_lintegral_sub_mul": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.Young::BesselSpace.young.lintegral_rpow_conv_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Bessel.Young::BesselSpace.young.rpow_lintegral_mul_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.abs_inner_increment_le_lintegral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.abs_riemannSum_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.eventually_hessian_close": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.eventually_sum_abs_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Eq18::theorem_5_1.eq_18.le_lintegral_piece": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.GeometricMeshDecay::GeometricMeshDecay.summable_mesh": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.SmoothItoAt::theorem_5_1.ito_at": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.SmoothItoAt::theorem_5_1.ito_at.abs_trapezoid_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.SmoothItoAt::theorem_5_1.ito_at.stopped_sum_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.SmoothItoAt::theorem_5_1.ito_at.sub_eq_sum_stopped": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.SmoothItoAt::theorem_5_1.ito_at.tendsto_trapezoid": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.abs_covariation_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.contDiffBounded_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.gradient_smoothHessian_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.isWeakDerivative_ae_unique": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.isWeakHessian_ae": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.pathwiseCovariation_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.tendsto_covariation": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem51Steps::theorem_5_1.tendsto_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.abs_convolution_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.abs_setAverage_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.ae_eq_of_isWeakHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.ae_forall_mem_not_mem_null": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.ae_forall_path_not_mem": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.ae_localMaximalFunction_ne_top": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.contDiffBounded_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.eLpNorm_maximal_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.eLpNorm_mollify_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.enorm_rpow_sub_rpow_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.enorm_toReal_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.exists_isWeakGradient_of_memW": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.exists_isWeakHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.exists_lintegral_edist_rpow_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.fderiv_convolution_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.gagliardo_maximal_le_of_measurable": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.isBrownianPolar_nonLebesgue": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_single_of_contDiff": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.isWeakDerivative_zero": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.le_one_cases": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_gagliardo_eq_shift": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_lintegral_eq_add'": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_mul_rpow_div_lt_top'": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.lintegral_shift_mollify_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.localMaximalFunction_comp_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.measure_path_mem_null": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.memLp_of_isWeakHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.memW_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.mollify_mem": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.mollify_sub_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.mul_rpow_div_le_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.order_le_two_cases": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.pi_absolutelyContinuous": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.preciseRepresentative_eq_of_tendsto": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.smoothHessian_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_comp_sub_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_eLpNorm_mollify_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_lintegral_shift_mollify_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.exists_isometry_basisVec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integrable_piece": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_closedBall_affine": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.integral_piece": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.piece_nonneg": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.DiscreteOccupationDensity::discreteOccupationDensity.setIntegral_closedBall_eq_ball": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.abs_integral_sub_grid_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.abs_integral_sub_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.abs_sum_sub_grid_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.norm_increment_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.tendsto_discreteTrace": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.tendsto_riemannStieltjes": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.tendsto_sum_left": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.tendsto_sum_sq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Lemma42::lemma_4_2.traceMeasure_Ioc": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.NormalizedQuadraticDensity::normalizedQuadraticDensity.memLp": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.clm_integral_sphere": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.contDiffOn_norm_rpow": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.continuousOn_fderiv_fderiv_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.continuousOn_integral_sphere": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.eq_inv_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_comp_norm_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_rpow_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.fderiv_fderiv_norm_sub_rpow_apply": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.harmonicAt_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_comp_norm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_fderiv_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_integral_sphere": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_norm_rpow_of_ne": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.hasFDerivAt_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integrableOn_term": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integral_Ioo_pow_mul": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integral_ball_polar": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integral_reflect": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integral_sphere_eq_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.integral_toSphere_isometry": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.laplacian_comp_norm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.laplacian_newtonKernel": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.newton_ball": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_one": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.newton_ball_dim_two": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.newton_ball_of_three_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.radial_eq_profile": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.radial_harmonic_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.radial_ode_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sphereMean_bounds": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sphereMean_eq_integral": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sphereMean_outside": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sphereMean_radial": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.sum_fderiv_fderiv_newtonKernel_sub": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.tendsto_sphereMean": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.toSphere_real_univ": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.volume_ball_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationConstant::occupationConstant.volume_ball_half": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.add_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_closedBall_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_le_two": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_kernel_le_of_three_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_piece_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.lintegral_shell_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.norm_increment_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_10.volume_ball_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_le_holder": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.eq_11.sum_rpow_le_eLpNorm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.le_limsup_discreteSeminorm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.OccupationSeminorm::occupationSeminorm.lintegral_le_maximal": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.coord_smoothHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.directions_single_add_single": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.integral_mul_fderiv_fderiv": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.WeightedOccupationMeasure::weightedOccupationMeasure.integral_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Corollary32::corollary_3_2.pathwiseCovariation_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.abs_taylor2_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.contDiffBounded_gradient": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.hessian_symm": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.riemannSum_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.sub_eq_sum": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_hessian_left": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.FollmerItoFormula::follmer_ito_formula.tendsto_remainder": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasQuadraticVariation::HasQuadraticVariation.tendsto_cross": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasQuadraticVariation::HasQuadraticVariation.traceExt_monotone": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasQuadraticVariation::HasQuadraticVariation.trace_monotoneOn": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.HasScalarQuadraticVariation::HasScalarQuadraticVariation.qvExt_monotone": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.PathOscillation::pathOscillation.vanishes_of_mesh": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.abs_integral_sub_grid_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.inner_apply_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.norm_sub_left_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.norm_taylor_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.riemannSum_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.stieltjesMeasure_Ioc": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.tendsto_boundary": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.tendsto_main": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.tendsto_remainder": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Smooth.Proposition31::proposition_3_1.tendsto_riemannStieltjes": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.HardyLittlewood::hardyLittlewood.le_globalMaximalFunction": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_ge": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_kernel_le_of_lt": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Lemma22::lemma_2_2.lintegral_closedBall_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Lemma22::lemma_2_2.lintegral_shell_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Lemma22::lemma_2_2.subset_closedBall": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.LocalMaximalFunction::localMaximalFunction.congr_ae": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.LocalMaximalFunction::localMaximalFunction.le_add": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.LocalMaximalFunction::localMaximalFunction.lowerSemicontinuous_mul_measure_ball": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.LocalMaximalFunction::localMaximalFunction.measurable": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_le_lintegral_segment": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.ball_subset_subset": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.contDiff_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.coord_integrable": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.exists_mollifier": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.lintegral_Ioc_rpow_indicator_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.lintegral_comp_homothety_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.lintegral_convolution_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.lintegral_potential_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.poincare_of_contDiff": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.preciseRepresentative_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.tendsto_convolution_of_hasCompactSupport": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.tendsto_lintegral_gradient": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.testDeriv_single": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.abs_sub_taylorAverage_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.abs_taylor_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.coord_hessian_integrable": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.hessian_convolution": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.integrable_hessian": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.isWeakGradient_coord": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_ball_kernel2_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_comp_homothety_sq_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.lintegral_potential2_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.memW_coord": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.norm_le_sum_entries": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_ae": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem21Second::theorem_2_1_second.poincare2_of_contDiff": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.abs_average_sub_average_le_maximal": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.closedBall_midpoint": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.isLebesguePoint_of_maximal_lt_top": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.lintegral_abs_sub_average_ball_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.lintegral_ball_potential_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.lintegral_kernel_le_maximal": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.maximal_coord_hessian_le": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Sobolev.Theorem23Steps::theorem_2_3.maximal_lt_top_of_isLebesguePoint": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ },
+ "generated": "2026-11-27T15:47:42Z"
+}
