@@ -486,7 +486,21 @@ theorem mollify_sub_eq {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [C
     {p : ℝ} (hp : 1 ≤ p) {f : Rd d → E} (hf : MemLp f (ENNReal.ofReal p)) {ψ : Rd d → ℝ}
     (hψc : Continuous ψ) (hψk : HasCompactSupport ψ) (hψ1 : ∫ x, ψ x = 1) (x : Rd d) :
     (∫ y, ψ (x - y) • f y) - f x = ∫ z, ψ z • (f (x - z) - f x) := by
-  sorry
+  have hfl : LocallyIntegrable f volume := hf.locallyIntegrable (ENNReal.one_le_ofReal.2 hp)
+  have hψx : HasCompactSupport fun y => ψ (x - y) :=
+    hψk.comp_homeomorph (Homeomorph.subLeft x)
+  have hI : Integrable (fun y => ψ (x - y) • f y) :=
+    hfl.integrable_smul_left_of_hasCompactSupport (hψc.comp (continuous_sub_left x)) hψx
+  have hI' : Integrable (fun z => ψ z • f (x - z)) := by
+    have := hI.comp_sub_left x
+    simpa only [sub_sub_cancel] using this
+  have hψi : Integrable ψ := integrable_of_integral_eq_one hψ1
+  have h1 : ∫ y, ψ (x - y) • f y = ∫ z, ψ z • f (x - z) := by
+    rw [← integral_sub_left_eq_self (fun y => ψ (x - y) • f y) volume x]
+    simp only [sub_sub_cancel]
+  have h2 : f x = ∫ z, ψ z • f x := by rw [integral_smul_const, hψ1, one_smul]
+  simp_rw [smul_sub]
+  rw [integral_sub hI' (hψi.smul_const _), h1, ← h2]
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 3: Minkowski's integral inequality,
 `‖ψ ⋆ f - f‖_p ≤ sup_{|z| < r} ‖f(· - z) - f‖_p` for a mollifier `ψ ≥ 0`, `∫ ψ = 1`,
