@@ -473,7 +473,42 @@ theorem smoothHessian_convolution {F : Rd d → ℝ} {G : Rd d → Rd d}
 function is in `L^p`, by uniqueness of weak derivatives). -/
 theorem memLp_of_isWeakHessian {p : ℝ} {F : Rd d → ℝ} (hF : MemW 2 (ENNReal.ofReal p) F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) : MemLp H (ENNReal.ofReal p) := by
-  sorry
+  set M : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j =>
+    (EuclideanSpace.proj j : Rd d →L[ℝ] ℝ).smulRight (Rd.basisVec i)
+  have hrep : ∀ A : Rd d →L[ℝ] Rd d, A = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) • M i j := by
+    intro A
+    apply ContinuousLinearMap.coe_injective
+    refine (EuclideanSpace.basisFun (Fin d) ℝ).toBasis.ext fun k => ?_
+    ext l
+    simp [M, Rd.coord, Rd.basisVec, EuclideanSpace.inner_single_right, Pi.single_apply]
+  have hent : ∀ i j, MemLp (fun z => Rd.coord i (H z (Rd.basisVec j))) (ENNReal.ofReal p) := by
+    intro i j
+    have hord : IsWeakDerivative.order (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) ≤ 2 := by
+      simp [IsWeakDerivative.order, Finset.sum_add_distrib]
+    obtain ⟨g, hg, hgL⟩ := hF.2 _ hord
+    exact hgL.ae_eq (theorem_5_1.isWeakDerivative_ae_unique hg (hH i j))
+  have hterm : ∀ i j, MemLp (fun z => Rd.coord i (H z (Rd.basisVec j)) • M i j)
+      (ENNReal.ofReal p) := by
+    intro i j
+    have hfun : (fun z => Rd.coord i (H z (Rd.basisVec j)) • M i j) =
+        ((ContinuousLinearMap.id ℝ ℝ).smulRight (M i j)) ∘
+          fun z => Rd.coord i (H z (Rd.basisVec j)) := by
+      funext z; simp only [Function.comp_apply, ContinuousLinearMap.smulRight_apply,
+        ContinuousLinearMap.id_apply]
+    rw [hfun]
+    exact ((ContinuousLinearMap.id ℝ ℝ).smulRight (M i j)).comp_memLp' (hent i j)
+  have hrow : ∀ i, MemLp (fun z => ∑ j, Rd.coord i (H z (Rd.basisVec j)) • M i j)
+      (ENNReal.ofReal p) := fun i =>
+    memLp_finsetSum (f := fun j z => Rd.coord i (H z (Rd.basisVec j)) • M i j) Finset.univ
+      fun j _ => hterm i j
+  have hall : MemLp (fun z => ∑ i, ∑ j, Rd.coord i (H z (Rd.basisVec j)) • M i j)
+      (ENNReal.ofReal p) :=
+    memLp_finsetSum (f := fun i z => ∑ j, Rd.coord i (H z (Rd.basisVec j)) • M i j)
+      Finset.univ fun i _ => hrow i
+  have hH' : H = fun z => ∑ i, ∑ j, Rd.coord i (H z (Rd.basisVec j)) • M i j :=
+    funext fun z => hrep (H z)
+  rw [hH']
+  exact hall
 
 /-- **Subgoal** (Appendix C, `tendsto_mollify_hessian`, step 5: Tonelli in difference coordinates
 for a.e.-measurable integrands, `∫∫ Φ(x, y) dy dx = ∫∫ Φ(x, x + h) dx dh`). -/

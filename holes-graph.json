@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-27T15:12:30Z",
+ "updated": "2026-11-27T15:13:04Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 35,
+ "sorryCount": 34,
  "counts": {
   "open": 7,
   "blocked": 73,
@@ -4031,7 +4031,7 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 12,
+   "sorryCount": 11,
    "holes": [
     "isBrownianPolar_nonLebesgue",
     "tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport",
@@ -4040,7 +4040,6 @@
     "eLpNorm_mollify_sub_le",
     "tendsto_eLpNorm_mollify_sub",
     "smoothHessian_convolution",
-    "memLp_of_isWeakHessian",
     "lintegral_lintegral_eq_add'",
     "tendsto_lintegral_shift_mollify_sub",
     "lintegral_shift_mollify_sub_le",
@@ -4168,7 +4167,7 @@
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
     "Main.Theorem52Steps::theorem_5_2.volume_coords_preimage_null"
    ],
-   "detail": "12 sorry: isBrownianPolar_nonLebesgue, tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport, tendsto_eLpNorm_comp_sub_sub, mollify_sub_eq, eLpNorm_mollify_sub_le, tendsto_eLpNorm_mollify_sub, smoothHessian_convolution, memLp_of_isWeakHessian, lintegral_lintegral_eq_add', tendsto_lintegral_shift_mollify_sub, lintegral_shift_mollify_sub_le, tendsto_mollify_hessian"
+   "detail": "11 sorry: isBrownianPolar_nonLebesgue, tendsto_eLpNorm_comp_sub_sub_of_hasCompactSupport, tendsto_eLpNorm_comp_sub_sub, mollify_sub_eq, eLpNorm_mollify_sub_le, tendsto_eLpNorm_mollify_sub, smoothHessian_convolution, lintegral_lintegral_eq_add', tendsto_lintegral_shift_mollify_sub, lintegral_shift_mollify_sub_le, tendsto_mollify_hessian"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -5428,10 +5427,8 @@
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.memLp_of_isWeakHessian"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -5458,7 +5455,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.memLp_of_isWeakHessian — subgoal of Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}` function is in `L^p`, by uniqueness of weak derivatives (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.memLp_of_isWeakHessian — subgoal of Appendix C, `tendsto_mollify_hessian`, step 4: the weak Hessian of a `W^{2,p}` function is in `L^p`, by uniqueness of weak derivatives (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.memW_convolution",
