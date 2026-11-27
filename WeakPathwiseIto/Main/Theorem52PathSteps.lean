@@ -552,6 +552,31 @@ theorem lemma_B_2_hyps_maximal {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {u : Rd d �
   refine hint.congr (ae_of_all _ fun x => ?_)
   simp only [Real.norm_eq_abs, abs_of_nonneg (hg0 x), g]
 
+/-- **Subgoal** (Theorem 5.2, step 5: along one path, Appendix C (11) with `g_k = M_1 u_k`
+finite at the partition points, plus Lemma B.2's control of `(M_1 u_k)^p`, gives
+`‖u_k‖_{B,π} → 0`). -/
+theorem tendsto_occupationSeminorm_of_maximal {p q : ℝ} (hpq : p.HolderConjugate q)
+    (π : ℕ → Partition T) (ω : ℝ → Rd d) (hω : ContinuousOn ω (Icc 0 T))
+    (hosc : pathOscillation.Vanishes ω π)
+    (hρ : ∃ K : ℝ≥0∞, K < ⊤ ∧ ∀ n,
+      eLpNorm (normalizedQuadraticDensity (π n) ω) (ENNReal.ofReal q) (volume.restrict (Icc 0 T)) ≤ K)
+    {u : ℕ → Rd d → ℝ} (hu : ∀ k, LocallyIntegrable (u k))
+    (hfin : ∀ k n, ∀ j : Fin ((π n).m + 1), j ≠ 0 → localMaximalFunction 1 (u k) (ω ((π n).t j)) ≠ ⊤)
+    (hball : ∀ k, Tendsto (fun n => ∫⁻ x in Metric.closedBall (ω 0) (pathOscillation ω (π n)),
+      ‖u k x‖ₑ * ENNReal.ofReal (‖x - ω 0‖ ^ (2 - (d : ℝ)))) atTop (𝓝 0))
+    (hB2 : Tendsto (fun k => limsup (fun n => discreteSeminorm (π n) 1
+      (fun x => ‖(localMaximalFunction 1 (u k) x).toReal ^ p‖ₑ) ω) atTop) atTop (𝓝 0)) :
+    Tendsto (fun k => occupationSeminorm π ω (u k)) atTop (𝓝 0) := by
+  obtain ⟨C, hCt, hC⟩ := le_limsup_discreteSeminorm_first hpq π ω hω hosc hρ
+  have hp0 : 0 < p := hpq.pos
+  have hL := tendsto_limsup_discreteSeminorm_of_rpow hp0 π ω
+    (g := fun k x => (localMaximalFunction 1 (u k) x).toReal) (fun k x => ENNReal.toReal_nonneg) hB2
+  have hCL := ENNReal.Tendsto.const_mul hL (Or.inr hCt.ne)
+  rw [mul_zero] at hCL
+  refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hCL (fun _ => zero_le)
+    fun k => hC (u k) _ (hu k) (fun n j hj => ?_) (hball k)
+  rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg, ENNReal.ofReal_toReal (hfin k n j hj)]
+
 end theorem_5_2
 
 end WeakPathwiseIto

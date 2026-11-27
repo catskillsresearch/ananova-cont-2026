@@ -78,6 +78,7 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_p
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
@@ -97,6 +98,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_poten
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -364,6 +366,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potenti
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Basic.SmoothHessian -hard-> Main.Theorem52Steps
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -508,6 +511,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB1
 Bessel.IsBrownianPolar -hard-> Appendix.LemmaB2
@@ -650,6 +654,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_pote
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps
 Bessel.WienerLawExists -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -789,6 +794,7 @@ Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_pot
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Main.GeometricMeshDecay::GeometricMeshDecay.mesh_succ -hard-> Main.GeometricMeshDecay
 Main.GeometricMeshDecay::GeometricMeshDecay.sum_inv_mesh_le -hard-> Main.GeometricMeshDecay
@@ -888,6 +894,7 @@ Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile -hard-> Main.Theor
 Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.vanishes_path -hard-> Main.Theorem52PathSteps
 Main.Theorem52Steps -hard-> Main.Theorem52
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps
@@ -908,6 +915,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potenti
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Main.Theorem52Steps::theorem_5_2.abs_convolution_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le -hard-> Main.Theorem52Steps
@@ -1199,6 +1207,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Occupation.OccupationSeminorm -hard-> Occupation.ApproximatingSequence
 Occupation.OccupationSeminorm::occupationSeminorm.add_le -hard-> Occupation.OccupationSeminorm
@@ -1233,6 +1242,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.rpo
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le
@@ -1713,6 +1723,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_poten
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace
 Sobolev.IsWeakHessian -hard-> Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.contDiffBounded_subset
@@ -1875,6 +1886,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfi
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.MemW -hard-> Occupation.ApproximatingSequence
 Sobolev.MemW -hard-> Sobolev.MemW2PlusS
@@ -2098,6 +2110,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.rpow_le_pot
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.vanishes_path
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.abs_convolution_le

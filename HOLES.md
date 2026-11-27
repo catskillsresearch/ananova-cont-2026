@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:16:34Z  
-**`sorry` occurrences:** 23 · 10 open · 11 blocked · 374 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 312} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:17:38Z  
+**`sorry` occurrences:** 23 · 10 open · 11 blocked · 375 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 313} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -147,6 +147,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one` | subgoal of Appendix C, `‖h_m‖_{L^1} = ‖g_m‖^p_{L^p} → 0` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow` | subgoal of Theorem 5.2, step 5: Lemma B.2 controls `h_m = g_m^p` in the `n,1` seminorm; this transfers to `g_m` in the `n,p` seminorm, `‖g‖_{n,p} = ‖g^p‖_{n,1}^{1/p}`, and the `limsup` commutes with the continuous increasing map `a ↦ a^{1/p}` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel` | subgoal of Appendix C, `J_{m,n}(x₀ | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal` | subgoal of Theorem 5.2, step 5: along one path, Appendix C (11 | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.vanishes_path` | subgoal of Theorem 5.2, step 5: under Assumption 2 the mesh tends to `0`, so every Brownian path satisfies the oscillation condition (6 | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_convolution_le` | subgoal of Appendix C, mollification: `|h * ψ| ≤ ‖h‖_1 ‖ψ‖_∞` | 0 |
 | done | `Main.Theorem52Steps::theorem_5_2.abs_mollify_sub_le` | subgoal of Appendix C, mollification at Lebesgue points: `|F * ψ(x | 0 |

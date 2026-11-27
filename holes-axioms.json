@@ -567,6 +567,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.vanishes_path": [
    "propext",
    "Classical.choice",
@@ -1609,5 +1614,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:16:33Z"
+ "generated": "2026-11-27T17:17:38Z"
 }

@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:16:34Z",
+ "updated": "2026-11-27T17:17:38Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
-  "done": 374
+  "done": 375
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 1,
-  "done": 312
+  "done": 313
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 18
+    "theorem": 19
    },
    "paperGoal": false,
    "verified": false,
@@ -4045,6 +4045,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_limsup_discreteSeminorm_of_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+    "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
     "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
     "Main.Theorem52Steps",
     "Occupation.OccupationSeminorm",
@@ -4754,6 +4755,47 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.tendsto_lintegral_closedBall_kernel — subgoal of Appendix C, `J_{m,n}(x₀ (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "label": "tendsto_occupationSeminorm_of_maximal",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 5: along one path, Appendix C (11",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 5: along one path, Appendix C (11) with `g_k = M_1 u_k` finite at the partition points, plus Lemma B.2's control of `(M_1 u_k)^p`, gives `‖u_k‖_{B,π} → 0`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.tendsto_occupationSeminorm_of_maximal — subgoal of Theorem 5.2, step 5: along one path, Appendix C (11 (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
@@ -13573,6 +13615,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -13664,6 +13711,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
    "kind": "hard"
   },
   {
@@ -15003,6 +15055,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -15723,6 +15780,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -16433,6 +16495,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -17128,6 +17195,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -17622,6 +17694,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -17719,6 +17796,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
    "kind": "hard"
   },
   {
@@ -19178,6 +19260,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -19344,6 +19431,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
    "kind": "hard"
   },
   {
@@ -21748,6 +21840,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -22554,6 +22651,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
    "kind": "hard"
   },
   {
@@ -23673,6 +23775,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "kind": "hard"
   },
@@ -24356,6 +24463,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -26099,6 +26210,10 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path"
   },
   {
@@ -26486,6 +26601,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.vanishes_path",
    "to": "Main.Theorem52PathSteps"
   },
@@ -26556,6 +26675,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_occupationSeminorm_of_maximal"
   },
   {
    "from": "Main.Theorem52Steps",
