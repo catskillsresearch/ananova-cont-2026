@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:19:43Z",
+ "updated": "2026-11-27T21:20:00Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 14,
+ "sorryCount": 13,
  "counts": {
-  "open": 8,
+  "open": 7,
   "blocked": 13,
-  "done": 435
+  "done": 436
  },
  "goalCounts": {
   "open": 2,
@@ -13,9 +13,9 @@
   "done": 66
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 3,
-  "done": 369
+  "done": 370
  },
  "untagged": [],
  "legend": {
@@ -3638,9 +3638,8 @@
    "sectionTitle": "§5 Main results",
    "paper": "Proposition 5.3 proof steps (route A: P53.A–E)",
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 3,
+   "sorryCount": 2,
    "holes": [
-    "integral_inner_increment_mul_eq_zero",
     "elementary_isometry",
     "elementary_localisation"
    ],
@@ -3676,10 +3675,9 @@
    ],
    "blockers": [
     "Main.Proposition53Steps::proposition_5_3.elementary_isometry",
-    "Main.Proposition53Steps::proposition_5_3.elementary_localisation",
-    "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_mul_eq_zero"
+    "Main.Proposition53Steps::proposition_5_3.elementary_localisation"
    ],
-   "detail": "3 sorry: integral_inner_increment_mul_eq_zero, elementary_isometry, elementary_localisation"
+   "detail": "2 sorry: elementary_isometry, elementary_localisation"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.coord_apply",
@@ -4100,10 +4098,8 @@
    "parentGoal": "Main.Proposition53Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "proposition_5_3.integral_inner_increment_mul_eq_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
@@ -4112,17 +4108,16 @@
    "doc": "**Subgoal** (P53.A, cross terms): for `0 ≤ s ≤ t ≤ s' ≤ t' ≤ T`, `ξ ∈ L²` `𝓕_s`-measurable and `η ∈ L²` `𝓕_{s'}`-measurable, `E[⟨ξ, B(t) - B(s)⟩ ⟨η, B(t') - B(s')⟩] = 0`.",
    "axioms": [
     "propext",
-    "sorryAx",
     "Classical.choice",
     "Quot.sound"
    ],
-   "status": "open",
+   "status": "done",
    "deps": [
     "Bessel.WienerLawExists",
     "Main.IsItoIntegral"
    ],
    "blockers": [],
-   "detail": "sorry: proposition_5_3.integral_inner_increment_mul_eq_zero — subgoal of P53.A, cross terms (in Main.Proposition53Steps) · axioms: propext, sorryAx, Classical.choice, Quot.sound"
+   "detail": "proved: proposition_5_3.integral_inner_increment_mul_eq_zero — subgoal of P53.A, cross terms (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.integral_inner_increment_sq",

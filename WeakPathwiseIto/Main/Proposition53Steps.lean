@@ -382,7 +382,62 @@ theorem integral_inner_increment_mul_eq_zero (x : Rd d) {s t s' t' : ℝ} (hs : 
     ∫ ω, ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ *
         ⟪η ω, CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω⟫
         ∂CanonicalWienerSpace.P (T := T) x = 0 := by
-  sorry
+  set P := CanonicalWienerSpace.P (T := T) x
+  have := CanonicalWienerSpace.isProbabilityMeasure_P (T := T) x
+  have hs' : 0 ≤ s' := hs.trans (hst.trans hts')
+  have hle : IsItoIntegral.naturalSigma d T s ≤ IsItoIntegral.naturalSigma d T s' := by
+    have hr : Measurable fun (g : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s'} → Rd d)
+        (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s}) => g ⟨v.1, v.2.trans (hst.trans hts')⟩ :=
+      measurable_pi_iff.2 fun _ => measurable_pi_apply _
+    exact (hr.comp (comap_measurable (m := (inferInstance : MeasurableSpace
+      ({v : Icc (0 : ℝ) T // (v : ℝ) ≤ s'} → Rd d)))
+      (fun (ω : CanonicalWienerSpace d T) (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s'}) =>
+        ω v))).comap_le
+  have hBm : ∀ r, 0 ≤ r → r ≤ s' → r ≤ T →
+      Measurable[IsItoIntegral.naturalSigma d T s'] (CanonicalWienerSpace.B (d := d) (T := T) r) := by
+    intro r hr0 hrs hrT
+    have hr : r ∈ Icc 0 T := ⟨hr0, hrT⟩
+    have hpm : Measurable[IsItoIntegral.naturalSigma d T s']
+        (fun (ω : CanonicalWienerSpace d T) (v : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s'}) => ω v) :=
+      comap_measurable _
+    have h2 := (measurable_pi_apply
+      (⟨⟨r, hr⟩, hrs⟩ : {v : Icc (0 : ℝ) T // (v : ℝ) ≤ s'})).comp hpm
+    convert h2 using 1
+    funext ω
+    simp [CanonicalWienerSpace.B, hr]
+  have hT : t ≤ T := hts'.trans (hst'.trans ht')
+  have hDm : Measurable[IsItoIntegral.naturalSigma d T s']
+      (fun ω => CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω) :=
+    (hBm t (hs.trans hst) hts' hT).sub (hBm s hs (hst.trans hts') (hst.trans hT))
+  have hI2 := memLp_inner_increment x hs hst hT hξ hξ2
+  obtain ⟨hD'2, hmean, -⟩ := increment_moments x hs' hst' ht'
+  have hexp : (fun ω => ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ *
+      ⟪η ω, CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω⟫) = fun ω => ∑ j,
+      (⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ * Rd.coord j (η ω)) *
+        Rd.coord j (CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω) := by
+    funext ω
+    rw [inner_eq_sum_coord (η ω), Finset.mul_sum]
+    exact Finset.sum_congr rfl fun j _ => by ring
+  have hXm : ∀ j, Measurable[IsItoIntegral.naturalSigma d T s'] (fun ω =>
+      ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ * Rd.coord j (η ω)) :=
+    fun j => ((hξ.mono hle le_rfl).inner hDm).mul ((measurable_coord j).comp hη)
+  have hind : ∀ j, IndepFun (fun ω =>
+      ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ * Rd.coord j (η ω))
+      (fun ω => Rd.coord j (CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω)) P :=
+    fun j => indepFun_naturalSigma_increment x hs' hst' ht' (hXm j) (measurable_coord j)
+  have hXint : ∀ j, Integrable (fun ω =>
+      ⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ * Rd.coord j (η ω)) P :=
+    fun j => hI2.integrable_mul (hη2.inner_const _)
+  have hYint : ∀ j, Integrable
+      (fun ω => Rd.coord j (CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω)) P :=
+    fun j => (hD'2.inner_const _).integrable one_le_two
+  have hTint : ∀ j, Integrable (fun ω =>
+      (⟪ξ ω, CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω⟫ * Rd.coord j (η ω)) *
+        Rd.coord j (CanonicalWienerSpace.B t' ω - CanonicalWienerSpace.B s' ω)) P :=
+    fun j => (hind j).integrable_mul (hXint j) (hYint j)
+  rw [hexp, integral_finsetSum _ fun j _ => hTint j]
+  refine Finset.sum_eq_zero fun j _ => ?_
+  rw [(hind j).integral_fun_mul_eq_mul_integral (hXint j).1 (hYint j).1, hmean j, mul_zero]
 
 /-- **Subgoal** (P53.B, elementary Itô isometry): for an adapted elementary integrand with
 `L²` values on a grid `0 = s_0 ≤ … ≤ s_k = t ≤ T`,
