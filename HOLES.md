@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:55:17Z  
-**`sorry` occurrences:** 19 · 7 open · 14 blocked · 387 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 325} · 10 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:55:33Z  
+**`sorry` occurrences:** 19 · 7 open · 14 blocked · 390 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 4, 'blocked': 4, 'done': 328} · 10 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -281,9 +281,12 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.isWeakHessian_smoothHessian` | subgoal of Definition 4.3 proof | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.occupationSeminorm_sub_self` | subgoal of Definition 4.3 proof, the constant approximating sequence `F_m = F` | 0 |
 | done | `Occupation.PathwiseSobolevSpace::PathwiseSobolevSpace.testDeriv_single_add_single` | subgoal of Definition 4.3 proof, `C²` functions have a weak Hessian: the test derivative | 0 |
+| done | `Occupation.Remark45::Partition.reverse_left` | subgoal of Remarks 4.1 and 4.5 | 0 |
+| done | `Occupation.Remark45::Partition.reverse_right` | subgoal of Remarks 4.1 and 4.5 | 0 |
 | done | `Occupation.Remark45::Rd.coord_one_apply` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
 | done | `Occupation.Remark45::Rd.coord_one_injective` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
 | done | `Occupation.Remark45::Rd.norm_one_eq` | subgoal of Remark 4.5, identifying `ℝ` with `ℝ^1` | 0 |
+| done | `Occupation.Remark45::discreteLocalTime.reversed_eq` | subgoal of Remark 4.5, `λ^{n,-}_T` | 0 |
 | done | `Occupation.Remark45::discreteOccupationDensity.piece_one` | subgoal of Remark 4.5, eq. (7 | 0 |
 | done | `Occupation.Remark45::incrementBall_one_iff` | subgoal of Remark 4.5, eq. (7 | 0 |
 | done | `Occupation.Remark45::occupationConstant_one` | subgoal of Remark 4.5, eq. (7 | 0 |

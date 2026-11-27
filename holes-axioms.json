@@ -1238,6 +1238,16 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Occupation.Remark45::Partition.reverse_left": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Remark45::Partition.reverse_right": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Occupation.Remark45::Rd.coord_one_apply": [
    "propext",
    "Classical.choice",
@@ -1249,6 +1259,11 @@
    "Quot.sound"
   ],
   "Occupation.Remark45::Rd.norm_one_eq": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "Occupation.Remark45::discreteLocalTime.reversed_eq": [
    "propext",
    "Classical.choice",
    "Quot.sound"
@@ -1674,5 +1689,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:55:17Z"
+ "generated": "2026-11-27T17:55:32Z"
 }

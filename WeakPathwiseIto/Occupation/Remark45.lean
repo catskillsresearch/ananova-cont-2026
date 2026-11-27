@@ -106,6 +106,29 @@ theorem discreteOccupationDensity.piece_one (a b x : Rd 1) : discreteOccupationD
     · rw [indicator_of_notMem hx,
         indicator_of_notMem (fun h => hx ((incrementBall_one_iff a b x).2 h))]
 
+/-- **Subgoal** (Remarks 4.1 and 4.5): the `j`-th left endpoint of `←π` is `T - t_{m-j}`. -/
+theorem Partition.reverse_left {T : ℝ} (π : Partition T) (j : Fin π.m) :
+    π.reverse.left j = T - π.right (Fin.rev j) := by
+  simp [Partition.left, Partition.right, Partition.reverse, Fin.rev_castSucc]
+
+/-- **Subgoal** (Remarks 4.1 and 4.5): the `j`-th right endpoint of `←π` is `T - t_{m-j-1}`. -/
+theorem Partition.reverse_right {T : ℝ} (π : Partition T) (j : Fin π.m) :
+    π.reverse.right j = T - π.left (Fin.rev j) := by
+  simp [Partition.left, Partition.right, Partition.reverse, Fin.rev_succ]
+
+/-- **Subgoal** (Remark 4.5, `λ^{n,-}_T`): reindexing `j ↦ m-1-j`, the reversed increment from
+`b = x(t_{i+1})` to `a = x(t_i)` contributes `2 |a - u| 1_{[a ∧ b, a ∨ b)}(u)`. -/
+theorem discreteLocalTime.reversed_eq {T : ℝ} (π : Partition T) (x : ℝ → ℝ) (u : ℝ) :
+    discreteLocalTime.reversed π x u = ∑ i : Fin π.m,
+      (Ico (min (x (π.left i)) (x (π.right i))) (max (x (π.left i)) (x (π.right i)))).indicator
+        (fun u => 2 * |x (π.left i) - u|) u := by
+  simp only [discreteLocalTime.reversed, discreteLocalTime, discreteLocalTime.reversePath]
+  refine Fintype.sum_equiv Fin.revPerm _ _ fun j => ?_
+  rw [Fin.revPerm_apply, Partition.reverse_left π j, Partition.reverse_right π j, sub_sub_cancel,
+    sub_sub_cancel,
+    min_comm, max_comm]
+  rfl
+
 /-- **Remark 4.5** (one-dimensional case, identity). For `d = 1`, up to the choice of interval
 endpoints (i.e. for a.e. level `u`), `𝓛^{π_n}_ω(u) = ½ (λ^{n,+}_T(u) + λ^{n,-}_T(u))`, where
 `λ^{n,+}_T` is the discrete local time of `ω` along `π_n` and `λ^{n,-}_T` that of the reversed
