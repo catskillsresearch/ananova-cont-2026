@@ -4935,7 +4935,7 @@ run_cmd Lean.modifyEnv fun env => Lean.Meta.auxLemmasExt.setState env {}
 section
 
 open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
+open scoped ENNReal NNReal RealInnerProductSpace Convolution
 
 namespace theorem_5_2
 

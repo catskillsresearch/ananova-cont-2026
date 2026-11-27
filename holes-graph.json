@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:25:24Z",
+ "updated": "2026-11-27T11:29:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 34,
+ "sorryCount": 33,
  "counts": {
   "open": 7,
-  "blocked": 46,
+  "blocked": 47,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 36,
+  "blocked": 37,
   "done": 239
  },
  "untagged": [],
@@ -4109,9 +4109,8 @@
    "sectionTitle": "§5 Main results",
    "paper": null,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 11,
+   "sorryCount": 10,
    "holes": [
-    "contDiffBounded_convolution",
     "memW_convolution",
     "mollify_mem",
     "tendsto_mollify_of_isLebesguePoint",
@@ -4124,7 +4123,7 @@
     "ae_forall_mem_not_mem_null"
    ],
    "declKinds": {
-    "theorem": 19
+    "theorem": 20
    },
    "paperGoal": false,
    "verified": false,
@@ -4151,6 +4150,7 @@
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint",
@@ -4180,11 +4180,12 @@
     "Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le",
     "Main.Theorem52Steps::theorem_5_2.memW_convolution",
     "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+    "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
     "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian",
     "Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint"
    ],
-   "detail": "11 sorry: contDiffBounded_convolution, memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
+   "detail": "10 sorry: memW_convolution, mollify_mem, tendsto_mollify_of_isLebesguePoint, isBrownianPolar_nonLebesgue, ae_forall_path_not_mem, tendsto_mollify_hessian, eLpNorm_maximal_le, gagliardo_maximal_le, lintegral_rpow_sub_le, ae_forall_mem_not_mem_null"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.abs_convolution_le",
@@ -4307,20 +4308,18 @@
    "kind": "subgoal",
    "section": "Main",
    "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`",
+   "paper": "subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞`",
    "parentGoal": "Main.Theorem52Steps",
    "tagged": true,
    "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_5_2.contDiffBounded_convolution"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
-   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`).",
+   "doc": "**Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞`).",
    "status": "blocked",
    "deps": [
     "Basic.ContDiffBounded",
@@ -4338,7 +4337,7 @@
     "Bessel.IsBrownianPolar",
     "Bessel.Theorem29"
    ],
-   "detail": "sorry: theorem_5_2.contDiffBounded_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞` (in Main.Theorem52Steps)"
+   "detail": "proved: theorem_5_2.contDiffBounded_convolution — subgoal of Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞` (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.coord_toEuclideanCLM",
@@ -4795,6 +4794,43 @@
     "Bessel.Theorem29"
    ],
    "detail": "sorry: theorem_5_2.mollify_mem — subgoal of Appendix C, mollification: `F_m ∈ C²_b ∩ W^{2,1}` (in Main.Theorem52Steps)"
+  },
+  {
+   "id": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "label": "norm_convolution_le_of_bound",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Appendix C, mollification: `‖(F ⋆[L] g",
+   "parentGoal": "Main.Theorem52Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Appendix C, mollification: `‖(F ⋆[L] g)(x)‖ ≤ ‖L‖ ‖g‖_∞ ‖F‖_1`).",
+   "status": "blocked",
+   "deps": [
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsLebesguePoint",
+    "Sobolev.LocalMaximalFunction",
+    "Sobolev.MemW2Plus",
+    "Sobolev.PreciseRepresentative",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [
+    "Bessel.IsBrownianPolar",
+    "Bessel.Theorem29"
+   ],
+   "detail": "proved: theorem_5_2.norm_convolution_le_of_bound — subgoal of Appendix C, mollification: `‖(F ⋆[L] g (in Main.Theorem52Steps)"
   },
   {
    "id": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
@@ -10668,6 +10704,11 @@
   },
   {
    "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -11808,6 +11849,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -12373,6 +12419,11 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -12479,6 +12530,11 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
    "kind": "hard"
   },
   {
@@ -13368,6 +13424,11 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
    "to": "Main.Theorem52Steps",
    "kind": "subgoal"
   },
@@ -14808,6 +14869,11 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -16133,6 +16199,11 @@
   },
   {
    "from": "Sobolev.IsLebesguePoint",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsLebesguePoint",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -16923,6 +16994,11 @@
   },
   {
    "from": "Sobolev.LocalMaximalFunction",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.LocalMaximalFunction",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -17353,6 +17429,11 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases",
    "kind": "hard"
   },
@@ -17469,6 +17550,11 @@
   {
    "from": "Sobolev.PreciseRepresentative",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.PreciseRepresentative",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
    "kind": "hard"
   },
   {
@@ -17994,6 +18080,11 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
    "kind": "hard"
   },
   {
@@ -19231,6 +19322,10 @@
   },
   {
    "from": "Bessel.IsBrownianPolar",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
+  },
+  {
+   "from": "Bessel.IsBrownianPolar",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
   },
   {
@@ -19312,6 +19407,10 @@
   {
    "from": "Bessel.Theorem29",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Bessel.Theorem29",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
   },
   {
    "from": "Bessel.Theorem29",
@@ -19979,6 +20078,10 @@
   },
   {
    "from": "Main.Theorem52Steps::theorem_5_2.mollify_mem",
+   "to": "Main.Theorem52Steps"
+  },
+  {
+   "from": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound",
    "to": "Main.Theorem52Steps"
   },
   {
@@ -21859,6 +21962,10 @@
   },
   {
    "from": "Sobolev.MemW2Plus",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
+  },
+  {
+   "from": "Sobolev.MemW2Plus",
    "to": "Main.Theorem52Steps::theorem_5_2.order_le_two_cases"
   },
   {
@@ -22200,6 +22307,10 @@
   {
    "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52Steps::theorem_5_2.mollify_mem"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound"
   },
   {
    "from": "Sobolev.Theorem21Second",

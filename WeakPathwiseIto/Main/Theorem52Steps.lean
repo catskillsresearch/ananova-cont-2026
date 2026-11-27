@@ -31,7 +31,7 @@ steps are stubbed here; the path-side steps are stubbed after the plan is approv
 noncomputable section
 
 open MeasureTheory Filter Topology Set
-open scoped ENNReal NNReal RealInnerProductSpace
+open scoped ENNReal NNReal RealInnerProductSpace Convolution
 
 namespace WeakPathwiseIto
 
@@ -92,13 +92,52 @@ theorem abs_convolution_le {h ψ : Rd d → ℝ} (hh : Integrable h) {C : ℝ}
         exact mul_le_mul_of_nonneg_left (hC _) (abs_nonneg _)
     _ = _ := integral_mul_const _ _
 
+/-- **Subgoal** (Appendix C, mollification: `‖(F ⋆[L] g)(x)‖ ≤ ‖L‖ ‖g‖_∞ ‖F‖_1`). -/
+theorem norm_convolution_le_of_bound {E E' : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [NormedAddCommGroup E'] [NormedSpace ℝ E'] (L : ℝ →L[ℝ] E →L[ℝ] E') {F : Rd d → ℝ}
+    (hF : Integrable F) {g : Rd d → E} {C : ℝ} (hC : ∀ x, ‖g x‖ ≤ C) (x : Rd d) :
+    ‖(F ⋆[L, volume] g) x‖ ≤ ‖L‖ * C * ∫ y, |F y| := by
+  rw [convolution_def, ← integral_const_mul]
+  refine norm_integral_le_of_norm_le ((hF.norm.const_mul (‖L‖ * C)).congr
+    (ae_of_all _ fun y => by simp [Real.norm_eq_abs])) (ae_of_all _ fun y => ?_)
+  calc ‖L (F y) (g (x - y))‖ ≤ ‖L‖ * ‖F y‖ * ‖g (x - y)‖ := L.le_opNorm₂ _ _
+    _ ≤ ‖L‖ * ‖F y‖ * C := by gcongr; exact hC _
+    _ = ‖L‖ * C * |F y| := by rw [Real.norm_eq_abs]; ring
+
 /-- **Subgoal** (Appendix C, mollification: `F * ψ ∈ C²_b` for `F ∈ W^{2,1}`: its derivatives of
-order `≤ 2` are `F * ψ`, `∇F * ψ`, `∇²F * ψ`, bounded by `‖·‖_1 ‖ψ‖_∞`). -/
-theorem contDiffBounded_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F) {G : Rd d → Rd d}
-    (hG : IsWeakGradient F G) {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H)
+order `≤ 2` are `F * ψ`, `F * Dψ`, `F * D²ψ`, bounded by `‖F‖_1 ‖D^k ψ‖_∞`). -/
+theorem contDiffBounded_convolution {F : Rd d → ℝ} (hF : MemW 2 1 F)
     {ψ : Rd d → ℝ} (hψ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) ψ) (hψc : HasCompactSupport ψ) :
     ContDiffBounded 2 (fun x => ∫ y, F y * ψ (x - y)) := by
-  sorry
+  set L := ContinuousLinearMap.mul ℝ ℝ
+  have hu : (fun x => ∫ y, F y * ψ (x - y)) = F ⋆[L, volume] ψ := rfl
+  have hF1 : Integrable F := memLp_one_iff_integrable.1 hF.1
+  have hFl : LocallyIntegrable F := hF1.locallyIntegrable
+  have hψ2 : ContDiff ℝ 2 ψ := hψ.of_le (WithTop.coe_le_coe.2 le_top)
+  have hψ1 : ContDiff ℝ 1 ψ := hψ.of_le (by exact_mod_cast le_top)
+  have hψ'1 : ContDiff ℝ 1 (fderiv ℝ ψ) := hψ2.fderiv_right (by norm_num)
+  have hψ'c : HasCompactSupport (fderiv ℝ ψ) := hψc.fderiv (𝕜 := ℝ)
+  have hψ''c : HasCompactSupport (fderiv ℝ (fderiv ℝ ψ)) := hψ'c.fderiv (𝕜 := ℝ)
+  set L1 : ℝ →L[ℝ] (Rd d →L[ℝ] ℝ) →L[ℝ] (Rd d →L[ℝ] ℝ) := L.precompR (Rd d)
+  have hd1 : fderiv ℝ (F ⋆[L, volume] ψ) = F ⋆[L1, volume] fderiv ℝ ψ :=
+    funext fun x => (hψc.hasFDerivAt_convolution_right L hFl hψ1 x).fderiv
+  obtain ⟨C0, hC0⟩ := hψ.continuous.bounded_above_of_compact_support hψc
+  obtain ⟨C1, hC1⟩ := (hψ'1.continuous).bounded_above_of_compact_support hψ'c
+  obtain ⟨C2, hC2⟩ := (hψ'1.continuous_fderiv one_ne_zero).bounded_above_of_compact_support
+    hψ''c
+  rw [hu]
+  refine ⟨hψc.contDiff_convolution_right (n := 2) L hFl hψ2, fun i hi => ?_⟩
+  interval_cases i
+  · exact ⟨_, fun x => by
+      rw [norm_iteratedFDeriv_zero]; exact norm_convolution_le_of_bound L hF1 hC0 x⟩
+  · exact ⟨_, fun x => by
+      rw [show (1 : ℕ) = 0 + 1 from rfl, ← norm_iteratedFDeriv_fderiv, norm_iteratedFDeriv_zero, hd1]
+      exact norm_convolution_le_of_bound _ hF1 hC1 x⟩
+  · exact ⟨_, fun x => by
+      rw [show (2 : ℕ) = 0 + 1 + 1 from rfl, ← norm_iteratedFDeriv_fderiv,
+        ← norm_iteratedFDeriv_fderiv, norm_iteratedFDeriv_zero, hd1,
+        (hψ'c.hasFDerivAt_convolution_right L1 hFl hψ'1 x).fderiv]
+      exact norm_convolution_le_of_bound _ hF1 hC2 x⟩
 
 /-- **Subgoal** (Appendix C, mollification: `D^0 f = f` weakly). -/
 theorem isWeakDerivative_zero {f : Rd d → ℝ} (hf : LocallyIntegrable f) :

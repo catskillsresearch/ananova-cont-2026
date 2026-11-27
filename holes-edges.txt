@@ -106,6 +106,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Basic.ContDiffBounded -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -334,6 +335,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Basic.SmoothHessian -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -447,6 +449,7 @@ Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Bessel.IsBrownianPolar -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -469,6 +472,7 @@ Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Bessel.Theorem29 -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -647,6 +651,7 @@ Main.Theorem52Steps::theorem_5_2.le_one_cases -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.memW_convolution -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.mollify_mem -hard-> Main.Theorem52Steps
+Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.order_le_two_cases -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian -hard-> Main.Theorem52Steps
 Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint -hard-> Main.Theorem52Steps
@@ -934,6 +939,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.le_one_
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -1199,6 +1205,7 @@ Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Sobolev.IsLebesguePoint -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -1357,6 +1364,7 @@ Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cas
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Sobolev.LocalMaximalFunction -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -1443,6 +1451,7 @@ Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Sobolev.MemW2Plus -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -1467,6 +1476,7 @@ Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.le_one_ca
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Sobolev.PreciseRepresentative -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
@@ -1572,6 +1582,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.le_one_cases
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.lintegral_rpow_sub_le
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.memW_convolution
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.mollify_mem
+Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.norm_convolution_le_of_bound
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.order_le_two_cases
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_hessian
 Sobolev.Theorem21Second -hard-> Main.Theorem52Steps::theorem_5_2.tendsto_mollify_of_isLebesguePoint
