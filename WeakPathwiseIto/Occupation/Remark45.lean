@@ -258,7 +258,19 @@ theorem remark_4_5_seminorm (hω : ContinuousOn ω (Icc 0 T)) (hQV : HasQuadrati
     WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ ∧
       ∀ (h : Rd 1 → Rd 1 →L[ℝ] Rd 1), MemLp h r.conjExponent →
         occupationSeminorm π ω h = ∫⁻ v, ‖h v‖ₑ * ENNReal.ofReal (ℓ v) := by
-  sorry
+  have hweak : WeakLpTendsto r (fun n => discreteOccupationDensity (π n) ω) ℓ :=
+    remark_4_5.weakLpTendsto_congr (fun n => (remark_4_5_identity (π n) ω).symm) EventuallyEq.rfl
+      (remark_4_5.weakLpTendsto_half_add hr hplus hminus)
+  refine ⟨hweak, fun h hh => ?_⟩
+  have hL0 : ∀ n x, 0 ≤ discreteOccupationDensity (π n) ω x := fun n x =>
+    Finset.sum_nonneg fun i _ => discreteOccupationDensity.piece_nonneg _ _ _
+  rw [remark_4_4_seminorm hω hQV hosc hr (fun x => le_max_right (ℓ x) 0)
+    (remark_4_5.weakLpTendsto_posPart hr hL0 hweak) hh]
+  refine lintegral_congr fun v => ?_
+  congr 1
+  rcases le_total 0 (ℓ v) with h0 | h0
+  · rw [max_eq_left h0]
+  · rw [max_eq_right h0, ENNReal.ofReal_zero, ENNReal.ofReal_of_nonpos h0]
 
 /-- **Remark 4.5** (inclusion). Under the hypotheses of `remark_4_5_seminorm`,
 `{F ∈ W^{2,1}(ℝ) : F'' ∈ L^{r'}(ℝ)} ⊆ 𝓦^2_{ω,π}`; `F` is taken to be its continuous
