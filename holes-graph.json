@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T21:18:52Z",
+ "updated": "2026-11-27T21:19:09Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 15,
  "counts": {
   "open": 9,
   "blocked": 13,
-  "done": 432
+  "done": 433
  },
  "goalCounts": {
   "open": 2,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 3,
-  "done": 366
+  "done": 367
  },
  "untagged": [],
  "legend": {
@@ -3646,7 +3646,7 @@
     "elementary_localisation"
    ],
    "declKinds": {
-    "theorem": 17
+    "theorem": 18
    },
    "paperGoal": false,
    "verified": false,
@@ -3664,6 +3664,7 @@
     "Main.Proposition53Steps::proposition_5_3.increment_moments",
     "Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift",
     "Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp",
+    "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
     "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
     "Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment",
     "Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord",
@@ -3965,6 +3966,37 @@
    ],
    "blockers": [],
    "detail": "proved: proposition_5_3.indepFun_map_of_comp — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
+   "label": "indepFun_naturalSigma_increment",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of P53.A, helper",
+   "parentGoal": "Main.Proposition53Steps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Proposition53Steps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (P53.A, helper): an `𝓕_s`-measurable real variable is independent of any measurable function of `B(t) - B(s)` under `ℙ_x`.",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Bessel.WienerLawExists",
+    "Main.IsItoIntegral"
+   ],
+   "blockers": [],
+   "detail": "proved: proposition_5_3.indepFun_naturalSigma_increment — subgoal of P53.A, helper (in Main.Proposition53Steps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
@@ -18538,6 +18570,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
    "kind": "hard"
   },
@@ -19403,6 +19440,11 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment",
    "kind": "hard"
   },
@@ -19483,6 +19525,11 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp",
+   "to": "Main.Proposition53Steps",
+   "kind": "subgoal"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
    "to": "Main.Proposition53Steps",
    "kind": "subgoal"
   },
@@ -28601,6 +28648,10 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment"
   },
   {
@@ -29145,6 +29196,10 @@
   },
   {
    "from": "Main.IsItoIntegral",
+   "to": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment"
+  },
+  {
+   "from": "Main.IsItoIntegral",
    "to": "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment"
   },
   {
@@ -29209,6 +29264,10 @@
   },
   {
    "from": "Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp",
+   "to": "Main.Proposition53Steps"
+  },
+  {
+   "from": "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment",
    "to": "Main.Proposition53Steps"
   },
   {

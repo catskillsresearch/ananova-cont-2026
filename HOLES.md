@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T21:18:52Z  
-**`sorry` occurrences:** 15 · 9 open · 13 blocked · 432 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 7, 'blocked': 3, 'done': 366} · 9 file(s) with `sorry`.
+**Updated:** 2026-11-27T21:19:09Z  
+**`sorry` occurrences:** 15 · 9 open · 13 blocked · 433 done (goals + subgoals) · goals {'open': 2, 'blocked': 10, 'done': 66} · subgoals {'open': 7, 'blocked': 3, 'done': 367} · 9 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -132,6 +132,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Proposition53Steps::proposition_5_3.increment_moments` | subgoal of P53.A, increment moments | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_coords_past_shift` | subgoal of P53.A, independent Brownian coordinates: the joint past is independent of the joint future increments | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_map_of_comp` | subgoal of P53.A, helper | 0 |
+| done | `Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment` | subgoal of P53.A, helper | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indepFun_past_increment` | subgoal of P53.A, canonical space | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.indep_naturalSigma_increment` | subgoal of P53.A | 0 |
 | done | `Main.Proposition53Steps::proposition_5_3.inner_eq_sum_coord` | subgoal of P53.A, helper | 0 |

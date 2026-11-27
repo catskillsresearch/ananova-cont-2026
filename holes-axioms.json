@@ -496,6 +496,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Proposition53Steps::proposition_5_3.indepFun_naturalSigma_increment": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Proposition53Steps::proposition_5_3.indepFun_past_increment": [
    "propext",
    "Classical.choice",
@@ -1891,5 +1896,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T21:18:51Z"
+ "generated": "2026-11-27T21:19:08Z"
 }

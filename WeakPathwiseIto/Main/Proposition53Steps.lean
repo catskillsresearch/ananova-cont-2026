@@ -279,6 +279,22 @@ theorem inner_eq_sum_coord (v w : Rd d) : ⟪v, w⟫ = ∑ i, Rd.coord i v * Rd.
 theorem norm_sq_eq_sum_coord (v : Rd d) : ‖v‖ ^ 2 = ∑ i, Rd.coord i v ^ 2 := by
   simp [EuclideanSpace.norm_sq_eq, coord_apply]
 
+/-- **Subgoal** (P53.A, helper): an `𝓕_s`-measurable real variable is independent of any
+measurable function of `B(t) - B(s)` under `ℙ_x`. -/
+theorem indepFun_naturalSigma_increment (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t)
+    (ht : t ≤ T) {f : CanonicalWienerSpace d T → ℝ}
+    (hf : Measurable[IsItoIntegral.naturalSigma d T s] f) {g : Rd d → ℝ} (hg : Measurable g) :
+    IndepFun f (fun ω => g (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω))
+      (CanonicalWienerSpace.P (T := T) x) := by
+  rw [IndepFun_iff_Indep]
+  refine indep_of_indep_of_le_left (indep_of_indep_of_le_right
+    (indep_naturalSigma_increment x hs hst ht) ?_) hf.comap_le
+  rw [show (fun ω => g (CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω)) =
+    g ∘ (fun ω : CanonicalWienerSpace d T =>
+      CanonicalWienerSpace.B t ω - CanonicalWienerSpace.B s ω) from rfl,
+    ← MeasurableSpace.comap_comp]
+  exact MeasurableSpace.comap_mono hg.comap_le
+
 /-- **Subgoal** (P53.A, one-step isometry): for `0 ≤ s ≤ t ≤ T` and `ξ ∈ L²(ℙ_x)`
 `𝓕_s`-measurable, `E⟨ξ, B(t) - B(s)⟩² = (t - s) E|ξ|²`. -/
 theorem integral_inner_increment_sq (x : Rd d) {s t : ℝ} (hs : 0 ≤ s) (hst : s ≤ t)
