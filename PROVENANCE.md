@@ -55,7 +55,7 @@ formal-applied-math/formal-mathfin `c47908e`) was never imported and was removed
 | Use | Source | How |
 |---|---|---|
 | Brownian motion predicate in `CanonicalWienerSpace.IsLaw` | Mathlib `ProbabilityTheory.IsBrownianReal` (upstreamed from RemyDegenne/brownian-motion) | imported from Mathlib |
-| Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged (outside the Mathlib-only Challenge closure) |
+| Proof of `CanonicalWienerSpace.exists_isLaw` (`Bessel/WienerLawExists.lean`) | `vendor/brownian-motion`: `ProbabilityTheory.brownian`, `gaussianLimit`, `isBrownianReal_brownian`, `continuous_brownian`, `measurable_brownian` | imported unchanged (the Challenge imports the vendored module alongside Mathlib) |
 | Hardy–Littlewood maximal theorem (`Sobolev/HardyLittlewood.lean`) | Carleson project `Carleson/ToMathlib/HardyLittlewood.lean` @ `f7487cc` | imported unchanged (Lake dependency); our file only bridges the paper's `M_1` to `globalMaximalFunction` |
 | Itô integral | formal-mathfin (formerly vendored) `ItoIntegralCLM` / `localItoIntegral` / `predItoIntegral` were reviewed and **not** used: scalar, single-motion natural filtration, bounded or path-continuous integrands; Proposition 5.3 needs a d-dimensional integral of an `L²_loc` integrand (see `WeakPathwiseIto.md`, Modelling choices) | — |
 

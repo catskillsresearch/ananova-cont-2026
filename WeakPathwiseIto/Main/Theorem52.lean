@@ -12,6 +12,7 @@ public import WeakPathwiseIto.Main.BalancedPartitions
 public import WeakPathwiseIto.Main.GeometricMeshDecay
 public import WeakPathwiseIto.Main.Theorem52Steps
 public import WeakPathwiseIto.Main.Theorem52PathSteps
+public import WeakPathwiseIto.Appendix.LemmaA1
 
 @[expose] public section
 

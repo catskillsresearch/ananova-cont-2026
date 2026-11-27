@@ -28,6 +28,7 @@ Appendix.HeatKernel::heatKernel.le_rpow_mul -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.riemannSum_le_integral -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.riemannSum_le_potentialProfile -hard-> Appendix.HeatKernel
 Appendix.HeatKernel::heatKernel.scaling -hard-> Appendix.HeatKernel
+Appendix.LemmaA1 -hard-> Main.Theorem52
 Appendix.LemmaA1::lemma_A_1.B_ofCoords -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.covariance_coordIncrements_eq_zero -hard-> Appendix.LemmaA1
 Appendix.LemmaA1::lemma_A_1.hasGaussianLaw_coordIncrements -hard-> Appendix.LemmaA1

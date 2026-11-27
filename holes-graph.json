@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T16:08:19Z",
+ "updated": "2026-11-27T16:44:37Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
@@ -3989,6 +3989,7 @@
    "kind": "goal",
    "status": "blocked",
    "deps": [
+    "Appendix.LemmaA1",
     "Bessel.IsBrownianPolar",
     "Main.BalancedPartitions",
     "Main.GeometricMeshDecay",
@@ -13054,6 +13055,11 @@
    "from": "Appendix.HeatKernel::heatKernel.scaling",
    "to": "Appendix.HeatKernel",
    "kind": "subgoal"
+  },
+  {
+   "from": "Appendix.LemmaA1",
+   "to": "Main.Theorem52",
+   "kind": "hard"
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",
@@ -23438,6 +23444,10 @@
   {
    "from": "Appendix.HeatKernel::heatKernel.scaling",
    "to": "Appendix.HeatKernel"
+  },
+  {
+   "from": "Appendix.LemmaA1",
+   "to": "Main.Theorem52"
   },
   {
    "from": "Appendix.LemmaA1::lemma_A_1.B_ofCoords",

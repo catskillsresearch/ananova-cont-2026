@@ -60,7 +60,7 @@ scripts/serve_holes.sh           # http://127.0.0.1:8770/holes.html
 
 | File | Role |
 |------|------|
-| [`WeakPathwiseItoComparator/Challenge.lean`](WeakPathwiseItoComparator/Challenge.lean) | Mathlib-only statement of record (`python3 scripts/gen_challenge.py`) |
+| [`WeakPathwiseItoComparator/Challenge.lean`](WeakPathwiseItoComparator/Challenge.lean) | statement of record: Mathlib + vendored `BrownianMotion` (`python3 scripts/gen_challenge.py`) |
 | [`WeakPathwiseItoComparator/Solution.lean`](WeakPathwiseItoComparator/Solution.lean) | Imports the library |
 | [`comparator.json`](comparator.json) | Compared theorems (Theorem 5.1, Theorem 5.2, Proposition 5.3) |
 | [`formalization.yaml`](formalization.yaml) | Palomar project metadata |
