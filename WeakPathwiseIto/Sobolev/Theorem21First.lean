@@ -525,7 +525,61 @@ theorem tendsto_convolution_of_hasCompactSupport {h : Rd d → ℝ} (hh : Contin
     (hψc : ∀ n, Continuous (ψ n)) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
     (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1))) :
     Tendsto (fun n => ∫⁻ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ) atTop (𝓝 0) := by
-  sorry
+  -- rewrite the convolution with `ψ` on the left
+  have hconv : ∀ n x, ∫ y, h y * ψ n (x - y) =
+      convolution (ψ n) h (ContinuousLinearMap.lsmul ℝ ℝ) volume x := by
+    intro n x
+    rw [convolution_def]
+    simp only [ContinuousLinearMap.lsmul_apply, smul_eq_mul]
+    rw [← integral_sub_left_eq_self (fun t => ψ n t * h (x - t)) volume x]
+    simp [mul_comm]
+  have hR : ∀ n : ℕ, 0 < 1 / ((n : ℝ) + 1) := fun n => by positivity
+  have hR1 : ∀ n : ℕ, 1 / ((n : ℝ) + 1) ≤ 1 := fun n => by
+    rw [div_le_one (by positivity)]; linarith [n.cast_nonneg (α := ℝ)]
+  set M := Metric.cthickening 1 (tsupport h) with hM
+  have hMc : IsCompact M := hhc.isCompact.cthickening
+  have hMt : volume M ≠ ⊤ := hMc.measure_lt_top.ne
+  have hmeas : AEStronglyMeasurable h volume := hh.aestronglyMeasurable
+  -- uniform bound
+  have hbound : ∀ (n : ℕ) (η : ℝ), 0 ≤ η →
+      (∀ a b : Rd d, dist a b < 1 / ((n : ℝ) + 1) → dist (h a) (h b) ≤ η) →
+      ∫⁻ x, ‖(∫ y, h y * ψ n (x - y)) - h x‖ₑ ≤ ENNReal.ofReal η * volume M := by
+    intro n η hη hδ
+    rw [← lintegral_indicator_const hMc.isClosed.measurableSet]
+    refine lintegral_mono fun x => ?_
+    rw [hconv]
+    by_cases hx : x ∈ M
+    · rw [indicator_of_mem hx, ← ofReal_norm, ← dist_eq_norm]
+      refine ENNReal.ofReal_le_ofReal (dist_convolution_le hη (hψs n) (hψ0 n) (hψ1 n) hmeas ?_)
+      intro y hy
+      exact hδ y x (Metric.mem_ball.1 hy)
+    · rw [indicator_of_notMem hx]
+      have hz : ∀ y ∈ Metric.ball x (1 / ((n : ℝ) + 1)), h y = 0 := by
+        intro y hy
+        by_contra hne
+        exact hx (Metric.mem_cthickening_of_dist_le x y 1 _ (subset_tsupport _ hne)
+          (by rw [dist_comm]; exact (Metric.mem_ball.1 hy).le.trans (hR1 n)))
+      have h0 := dist_convolution_le (μ := volume) (z₀ := (0 : ℝ)) le_rfl (hψs n) (hψ0 n) (hψ1 n)
+        hmeas (fun y hy => by rw [hz y hy, dist_self])
+      have hx0 : h x = 0 := hz x (Metric.mem_ball_self (hR n))
+      rw [dist_le_zero] at h0
+      rw [h0, hx0, sub_zero, enorm_zero]
+  rw [ENNReal.tendsto_atTop_zero]
+  intro ε hε
+  -- choose η with ofReal η * vol M < ε
+  have hlim : Tendsto (fun η : ℝ => ENNReal.ofReal η * volume M) (𝓝[>] 0) (𝓝 0) := by
+    have : Tendsto (fun η : ℝ => ENNReal.ofReal η * volume M) (𝓝 0) (𝓝 (ENNReal.ofReal 0 * volume M)) :=
+      ENNReal.Tendsto.mul_const (ENNReal.continuous_ofReal.tendsto 0) (Or.inr hMt)
+    rw [ENNReal.ofReal_zero, zero_mul] at this
+    exact this.mono_left nhdsWithin_le_nhds
+  obtain ⟨η, hηε, hη0⟩ := ((hlim.eventually (gt_mem_nhds hε)).and self_mem_nhdsWithin).exists
+  replace hη0 : 0 < η := hη0
+  obtain ⟨δ, hδ0, hδ⟩ := Metric.uniformContinuous_iff.1
+    (hhc.uniformContinuous_of_continuous hh) η hη0
+  obtain ⟨N, hN⟩ := exists_nat_one_div_lt hδ0
+  refine ⟨N, fun n hn => (hbound n η (le_of_lt hη0) fun a b hab => (hδ ?_).le).trans hηε.le⟩
+  refine hab.trans_le ((one_div_le_one_div_of_le (by positivity) ?_).trans hN.le)
+  exact_mod_cast Nat.add_le_add_right hn 1
 
 /-- **Subgoal** (Theorem 2.1 proof, mollification step 4): for `h ∈ L¹` and an approximate
 identity `ψ_n` as above, `h * ψ_n → h` in `L¹`. -/
