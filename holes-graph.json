@@ -1,10 +1,10 @@
 {
- "updated": "2026-11-27T11:09:05Z",
+ "updated": "2026-11-27T11:10:47Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 32,
  "counts": {
   "open": 7,
-  "blocked": 39,
+  "blocked": 36,
   "done": 300
  },
  "goalCounts": {
@@ -14,7 +14,7 @@
  },
  "subgoalCounts": {
   "open": 4,
-  "blocked": 29,
+  "blocked": 26,
   "done": 239
  },
  "untagged": [],
@@ -3532,7 +3532,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 17
+    "theorem": 14
    },
    "paperGoal": false,
    "verified": false,
@@ -3548,11 +3548,8 @@
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
     "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
-    "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-    "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-    "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
@@ -3565,18 +3562,16 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
     "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
-    "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
     "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-    "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-    "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
     "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
     "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
@@ -3618,7 +3613,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -3654,7 +3650,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -3690,7 +3687,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -3726,48 +3724,13 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
    ],
    "detail": "proved: theorem_5_2.discreteSeminorm_enorm_rpow — subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` (in Main.Theorem52PathSteps)"
-  },
-  {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "label": "eq_sum_coord_smul",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `u_m ∈ L^1`: a linear map of `ℝ^d` is the sum of its matrix entries times the elementary maps `v ↦ ⟨e_j, v⟩ e_i`",
-   "parentGoal": "Main.Theorem52PathSteps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Appendix C, `u_m ∈ L^1`: a linear map of `ℝ^d` is the sum of its matrix entries times the elementary maps `v ↦ ⟨e_j, v⟩ e_i`).",
-   "status": "blocked",
-   "deps": [
-    "Appendix.PotentialProfile",
-    "Basic.ContDiffBounded",
-    "Basic.SmoothHessian",
-    "Bessel.CanonicalWienerSpace",
-    "Bessel.WienerLawExists",
-    "Main.Theorem52Steps",
-    "Occupation.OccupationSeminorm",
-    "Occupation.PathwiseSobolevSpace",
-    "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
-   ],
-   "blockers": [
-    "Main.Theorem52Steps"
-   ],
-   "detail": "proved: theorem_5_2.eq_sum_coord_smul — subgoal of Appendix C, `u_m ∈ L^1`: a linear map of `ℝ^d` is the sum of its matrix entries times the elementary maps `v ↦ ⟨e_j, v⟩ e_i` (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
@@ -3798,7 +3761,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -3834,84 +3798,13 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
    ],
    "detail": "proved: theorem_5_2.integrable_norm_hessian_sub — subgoal of Appendix C, `u_m ∈ L^1` for Lemma B.1 (in Main.Theorem52PathSteps)"
-  },
-  {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "label": "integrable_of_isWeakHessian",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `u_m ∈ L^1`: for `F ∈ W^{2,1}` a weak Hessian is integrable, since its entries agree a.e. with the `L^1` weak derivatives `∂_i∂_j F`",
-   "parentGoal": "Main.Theorem52PathSteps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Appendix C, `u_m ∈ L^1`: for `F ∈ W^{2,1}` a weak Hessian is integrable, since its entries agree a.e. with the `L^1` weak derivatives `∂_i∂_j F`).",
-   "status": "blocked",
-   "deps": [
-    "Appendix.PotentialProfile",
-    "Basic.ContDiffBounded",
-    "Basic.SmoothHessian",
-    "Bessel.CanonicalWienerSpace",
-    "Bessel.WienerLawExists",
-    "Main.Theorem52Steps",
-    "Occupation.OccupationSeminorm",
-    "Occupation.PathwiseSobolevSpace",
-    "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
-   ],
-   "blockers": [
-    "Main.Theorem52Steps"
-   ],
-   "detail": "proved: theorem_5_2.integrable_of_isWeakHessian — subgoal of Appendix C, `u_m ∈ L^1`: for `F ∈ W^{2,1}` a weak Hessian is integrable, since its entries agree a.e. with the `L^1` weak derivatives `∂_i∂_j F` (in Main.Theorem52PathSteps)"
-  },
-  {
-   "id": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
-   "label": "isWeakDerivative_ae_eq",
-   "kind": "subgoal",
-   "section": "Main",
-   "sectionTitle": "§5 Main results",
-   "paper": "subgoal of Appendix C, `u_m ∈ L^1`: weak derivatives are unique a.e., by `ae_eq_of_integral_contDiff_smul_eq`",
-   "parentGoal": "Main.Theorem52PathSteps",
-   "tagged": true,
-   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
-   "sorryCount": 0,
-   "holes": [],
-   "declKinds": {
-    "theorem": 1
-   },
-   "paperGoal": false,
-   "verified": true,
-   "doc": "**Subgoal** (Appendix C, `u_m ∈ L^1`: weak derivatives are unique a.e., by `ae_eq_of_integral_contDiff_smul_eq`).",
-   "status": "blocked",
-   "deps": [
-    "Appendix.PotentialProfile",
-    "Basic.ContDiffBounded",
-    "Basic.SmoothHessian",
-    "Bessel.CanonicalWienerSpace",
-    "Bessel.WienerLawExists",
-    "Main.Theorem52Steps",
-    "Occupation.OccupationSeminorm",
-    "Occupation.PathwiseSobolevSpace",
-    "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
-   ],
-   "blockers": [
-    "Main.Theorem52Steps"
-   ],
-   "detail": "proved: theorem_5_2.isWeakDerivative_ae_eq — subgoal of Appendix C, `u_m ∈ L^1`: weak derivatives are unique a.e., by `ae_eq_of_integral_contDiff_smul_eq` (in Main.Theorem52PathSteps)"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
@@ -3942,7 +3835,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -3978,7 +3872,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4014,7 +3909,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4050,7 +3946,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4086,7 +3983,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4122,7 +4020,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4158,7 +4057,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -4194,7 +4094,8 @@
     "Occupation.OccupationSeminorm",
     "Occupation.PathwiseSobolevSpace",
     "Sobolev.IsWeakHessian",
-    "Sobolev.MemW"
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
    ],
    "blockers": [
     "Main.Theorem52Steps"
@@ -10141,27 +10042,12 @@
   },
   {
    "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -10231,27 +10117,12 @@
   },
   {
    "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.ContDiffBounded",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -11336,27 +11207,12 @@
   },
   {
    "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Basic.SmoothHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -11846,27 +11702,12 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.CanonicalWienerSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -12141,27 +11982,12 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -12720,27 +12546,12 @@
    "kind": "subgoal"
   },
   {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "to": "Main.Theorem52PathSteps",
-   "kind": "subgoal"
-  },
-  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "to": "Main.Theorem52PathSteps",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "to": "Main.Theorem52PathSteps",
-   "kind": "subgoal"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
   },
@@ -12816,27 +12627,12 @@
   },
   {
    "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -14061,27 +13857,12 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.OccupationSeminorm",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.OccupationSeminorm",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -14226,27 +14007,12 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -15896,27 +15662,12 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.IsWeakHessian",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -16461,27 +16212,12 @@
   },
   {
    "from": "Sobolev.MemW",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "kind": "hard"
   },
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.MemW",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "kind": "hard"
-  },
-  {
-   "from": "Sobolev.MemW",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "kind": "hard"
   },
   {
@@ -17136,6 +16872,81 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Sobolev.Theorem21",
    "kind": "hard"
   },
@@ -17506,23 +17317,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
   },
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian"
-  },
-  {
-   "from": "Appendix.PotentialProfile",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -18526,23 +18325,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
   },
   {
    "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian"
-  },
-  {
-   "from": "Bessel.WienerLawExists",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq"
   },
   {
    "from": "Bessel.WienerLawExists",
@@ -18961,23 +18748,11 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul",
-   "to": "Main.Theorem52PathSteps"
-  },
-  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
    "to": "Main.Theorem52PathSteps"
   },
   {
    "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub",
-   "to": "Main.Theorem52PathSteps"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian",
-   "to": "Main.Theorem52PathSteps"
-  },
-  {
-   "from": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq",
    "to": "Main.Theorem52PathSteps"
   },
   {
@@ -19030,23 +18805,11 @@
   },
   {
    "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul"
-  },
-  {
-   "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
   },
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian"
-  },
-  {
-   "from": "Main.Theorem52Steps",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq"
   },
   {
    "from": "Main.Theorem52Steps",
@@ -19874,74 +19637,6 @@
   },
   {
    "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.eq_sum_coord_smul"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_of_isWeakHessian"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.isWeakDerivative_ae_eq"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
-   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
-  },
-  {
-   "from": "Occupation.PathwiseSobolevSpace",
    "to": "Occupation.Remark44"
   },
   {
@@ -20559,10 +20254,6 @@
   {
    "from": "Sobolev.IsWeakDerivative",
    "to": "Sobolev.MemWLoc"
-  },
-  {
-   "from": "Sobolev.IsWeakGradient",
-   "to": "Main.Proposition53"
   },
   {
    "from": "Sobolev.IsWeakGradient",
@@ -21363,6 +21054,62 @@
   {
    "from": "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge",
    "to": "Sobolev.Theorem21First"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.integrable_norm_hessian_sub"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.le_limsup_discreteSeminorm_first"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_le_maximal_first"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lintegral_piece_le_first"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.lowerSemicontinuous_mul_measure_ball"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.measurable_localMaximalFunction"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.rpow_le_potentialProfile"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_eLpNorm_rpow_one"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.tendsto_lintegral_closedBall_kernel"
   },
   {
    "from": "Sobolev.Theorem21Second",

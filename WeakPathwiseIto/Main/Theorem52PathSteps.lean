@@ -15,6 +15,7 @@ public import WeakPathwiseIto.Basic.ContDiffBounded
 public import WeakPathwiseIto.Basic.SmoothHessian
 public import WeakPathwiseIto.Main.Theorem52Steps
 public import WeakPathwiseIto.Occupation.PathwiseSobolevSpace
+public import WeakPathwiseIto.Sobolev.Theorem21Second
 
 /-! # Path-side steps of the proof of Theorem 5.2 (Appendix C)
 
@@ -464,63 +465,14 @@ theorem exists_mollifier (d : ℕ) : ∃ ψ : ℕ → Rd d → ℝ,
             (pow_nonneg (by positivity : (0 : ℝ) ≤ (n : ℝ) + 1) d)
       _ = _ := mul_comm _ _
 
-/-- **Subgoal** (Appendix C, `u_m ∈ L^1`: weak derivatives are unique a.e., by
-`ae_eq_of_integral_contDiff_smul_eq`). -/
-theorem isWeakDerivative_ae_eq {α : Fin d → ℕ} {f g₁ g₂ : Rd d → ℝ} (h₁ : IsWeakDerivative α f g₁)
-    (h₂ : IsWeakDerivative α f g₂) : g₁ =ᵐ[volume] g₂ := by
-  refine ae_eq_of_integral_contDiff_smul_eq h₁.2.1 h₂.2.1 fun φ hφ hφc => ?_
-  have e₁ := h₁.2.2 φ hφ hφc
-  have e₂ := h₂.2.2 φ hφ hφc
-  have hne : ((-1 : ℝ) ^ IsWeakDerivative.order α) ≠ 0 := pow_ne_zero _ (by norm_num)
-  have : ∫ x, g₁ x * φ x = ∫ x, g₂ x * φ x := mul_left_cancel₀ hne (e₁.symm.trans e₂)
-  simpa [smul_eq_mul, mul_comm] using this
-
-/-- **Subgoal** (Appendix C, `u_m ∈ L^1`: a linear map of `ℝ^d` is the sum of its matrix entries
-times the elementary maps `v ↦ ⟨e_j, v⟩ e_i`). -/
-theorem eq_sum_coord_smul (A : Rd d →L[ℝ] Rd d) :
-    A = ∑ i, ∑ j, Rd.coord i (A (Rd.basisVec j)) •
-      (innerSL ℝ (Rd.basisVec j)).smulRight (Rd.basisVec i) := by
-  set b := EuclideanSpace.basisFun (Fin d) ℝ
-  have hb : ∀ i, b i = Rd.basisVec i := fun i => by simp [b, Rd.basisVec]
-  apply ContinuousLinearMap.coe_injective
-  refine b.toBasis.ext fun k => ?_
-  simp only [OrthonormalBasis.coe_toBasis, ContinuousLinearMap.coe_coe, hb,
-    FunLike.coe_sum, Finset.sum_apply, FunLike.coe_smul, Pi.smul_apply,
-    ContinuousLinearMap.smulRight_apply, innerSL_apply_apply]
-  have hδ : ∀ j : Fin d, ⟪Rd.basisVec j, Rd.basisVec k⟫ = if j = k then 1 else 0 := by
-    intro j
-    rw [← hb, ← hb]
-    exact orthonormal_iff_ite.1 b.orthonormal j k
-  simp only [hδ, ite_smul, one_smul, zero_smul, smul_ite, smul_zero, Finset.sum_ite_eq',
-    Finset.mem_univ, ite_true]
-  conv_lhs => rw [← b.sum_repr' (A (Rd.basisVec k))]
-  refine Finset.sum_congr rfl fun i _ => ?_
-  rw [hb]
-  unfold Rd.coord
-  rw [real_inner_comm]
-
-/-- **Subgoal** (Appendix C, `u_m ∈ L^1`: for `F ∈ W^{2,1}` a weak Hessian is integrable, since its
-entries agree a.e. with the `L^1` weak derivatives `∂_i∂_j F`). -/
-theorem integrable_of_isWeakHessian {F : Rd d → ℝ} (hF : MemW 2 1 F) {H : Rd d → (Rd d →L[ℝ] Rd d)}
-    (hH : IsWeakHessian F H) : Integrable H := by
-  have hent : ∀ i j : Fin d, Integrable fun x => Rd.coord i (H x (Rd.basisVec j)) := by
-    intro i j
-    have hord : IsWeakDerivative.order (Pi.single i 1 + Pi.single j 1 : Fin d → ℕ) ≤ 2 := by
-      simp [IsWeakDerivative.order, Finset.sum_add_distrib]
-    obtain ⟨g, hg, hgL⟩ := hF.2 _ hord
-    exact (memLp_one_iff_integrable.1 hgL).congr (isWeakDerivative_ae_eq hg (hH i j))
-  set B : Fin d → Fin d → (Rd d →L[ℝ] Rd d) := fun i j =>
-    (innerSL ℝ (Rd.basisVec j)).smulRight (Rd.basisVec i) with hB
-  have hI : Integrable (fun x => ∑ i, ∑ j, Rd.coord i (H x (Rd.basisVec j)) • B i j) :=
-    integrable_finsetSum _ fun i _ => integrable_finsetSum _ fun j _ => (hent i j).smul_const (B i j)
-  exact hI.congr (Eventually.of_forall fun x => (eq_sum_coord_smul (H x)).symm)
-
 /-- **Subgoal** (Appendix C, `u_m ∈ L^1` for Lemma B.1): for `G ∈ C²_b ∩ W^{2,1}` and `F ∈ W^{2,1}`
 with weak Hessian `H`, `‖∇²G - H‖` is integrable. -/
 theorem integrable_norm_hessian_sub {F G : Rd d → ℝ} (hF : MemW 2 1 F)
     {H : Rd d → (Rd d →L[ℝ] Rd d)} (hH : IsWeakHessian F H) (hG : ContDiffBounded 2 G)
     (hG1 : MemW 2 1 G) : Integrable fun x => ‖smoothHessian G x - H x‖ := by
-  exact ((integrable_of_isWeakHessian hG1 (PathwiseSobolevSpace.isWeakHessian_smoothHessian hG.1)).sub (integrable_of_isWeakHessian hF hH)).norm
+  exact ((theorem_2_1_second.integrable_hessian hG1
+    (PathwiseSobolevSpace.isWeakHessian_smoothHessian hG.1)).sub
+      (theorem_2_1_second.integrable_hessian hF hH)).norm
 
 /-- **Subgoal** (Appendix C, `B(0) = x₀`, `ℙ_{x₀}`-almost surely). -/
 theorem ae_path_zero (hT : 0 ≤ T) (x₀ : Rd d) :
