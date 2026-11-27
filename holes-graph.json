@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T02:33:16Z",
+ "updated": "2026-11-27T02:34:39Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 33,
+ "sorryCount": 32,
  "counts": {
-  "open": 9,
+  "open": 8,
   "blocked": 19,
-  "done": 258
+  "done": 259
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 54
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 7,
-  "done": 204
+  "done": 205
  },
  "untagged": [],
  "legend": {
@@ -7221,9 +7221,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": null,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 5,
+   "sorryCount": 4,
    "holes": [
-    "exists_subseq_ae_tendsto_zero",
     "poincare_ae",
     "volume_inter_ball_ge",
     "lintegral_ball_kernel_le",
@@ -7266,12 +7265,11 @@
    ],
    "blockers": [
     "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
-    "Sobolev.Theorem21First::theorem_2_1_first.exists_subseq_ae_tendsto_zero",
     "Sobolev.Theorem21First::theorem_2_1_first.lintegral_ball_kernel_le",
     "Sobolev.Theorem21First::theorem_2_1_first.poincare_ae",
     "Sobolev.Theorem21First::theorem_2_1_first.volume_inter_ball_ge"
    ],
-   "detail": "5 sorry: exists_subseq_ae_tendsto_zero, poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
+   "detail": "4 sorry: poincare_ae, volume_inter_ball_ge, lintegral_ball_kernel_le, abs_sub_average_le"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.abs_sub_average_le",
@@ -7435,17 +7433,15 @@
    "parentGoal": "Sobolev.Theorem21First",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/Theorem21First.lean",
-   "sorryCount": 1,
-   "holes": [
-    "theorem_2_1_first.exists_subseq_ae_tendsto_zero"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Basic.IsCubeOrBall",
     "Sobolev.IsLebesguePoint",
@@ -7455,7 +7451,7 @@
     "Sobolev.PreciseRepresentative"
    ],
    "blockers": [],
-   "detail": "sorry: theorem_2_1_first.exists_subseq_ae_tendsto_zero — subgoal of Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions (in Sobolev.Theorem21First)"
+   "detail": "proved: theorem_2_1_first.exists_subseq_ae_tendsto_zero — subgoal of Theorem 2.1 proof, mollification: `L¹` convergence gives a.e. convergence of a subsequence, for `ℝ≥0∞`-valued functions (in Sobolev.Theorem21First)"
   },
   {
    "id": "Sobolev.Theorem21First::theorem_2_1_first.isCubeOrBall_props",

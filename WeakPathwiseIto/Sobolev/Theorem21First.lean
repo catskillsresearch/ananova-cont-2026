@@ -812,7 +812,20 @@ subsequence, for `ℝ≥0∞`-valued functions). -/
 theorem exists_subseq_ae_tendsto_zero {μ : Measure (Rd d)} {S : ℕ → Rd d → ℝ≥0∞}
     (hS : ∀ n, AEMeasurable (S n) μ) (h : Tendsto (fun n => ∫⁻ y, S n y ∂μ) atTop (𝓝 0)) :
     ∃ φ : ℕ → ℕ, StrictMono φ ∧ ∀ᵐ y ∂μ, Tendsto (fun k => S (φ k) y) atTop (𝓝 0) := by
-  sorry
+  have hev : ∀ k : ℕ, ∀ᶠ n in atTop, ∫⁻ y, S n y ∂μ ≤ (2⁻¹ : ℝ≥0∞) ^ k := by
+    intro k
+    obtain ⟨N, hN⟩ := ENNReal.tendsto_atTop_zero.1 h _
+      (ENNReal.pow_pos (ENNReal.inv_pos.2 (ENNReal.ofNat_ne_top (n := 2))) k)
+    exact eventually_atTop.2 ⟨N, hN⟩
+  obtain ⟨φ, hφ, hφk⟩ := Filter.extraction_forall_of_eventually hev
+  refine ⟨φ, hφ, ?_⟩
+  have hsum : ∫⁻ y, ∑' k, S (φ k) y ∂μ ≠ ⊤ := by
+    rw [lintegral_tsum fun k => hS (φ k)]
+    refine ne_top_of_le_ne_top ?_ (ENNReal.tsum_le_tsum hφk)
+    rw [ENNReal.tsum_geometric, ENNReal.one_sub_inv_two, inv_inv]
+    exact ENNReal.ofNat_ne_top
+  filter_upwards [ae_lt_top' (AEMeasurable.tsum fun k => hS (φ k)) hsum] with y hy
+  exact ENNReal.tendsto_atTop_zero_of_tsum_ne_top hy.ne
 
 /-- **Subgoal** (Theorem 2.1 proof, eq. (2) of [BH93] a.e. for `W^{1,1}`, by mollification): for
 a cube or ball `Q`, for a.e. `y ∈ Q`, `|f(y) - f_Q| ≤ K ∫_Q |∇f(z)| / |y - z|^{d-1} dz`. -/
