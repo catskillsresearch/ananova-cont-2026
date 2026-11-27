@@ -779,7 +779,34 @@ theorem lintegral_rpow_sub_le {s p : ℝ} (hs : 0 < s) (hp : 1 < p) {g : Rd d �
     (hgs : ∫⁻ x, ∫⁻ y, ‖g x - g y‖ₑ ^ p / edist x y ^ (s * p + d) < ⊤)
     {K : Set (Rd d)} (hK : IsCompact K) :
     ∫⁻ x in K, ∫⁻ y in K, ‖g x ^ p - g y ^ p‖ₑ / edist x y ^ (d : ℝ) < ⊤ := by
-  sorry
+  rcases Nat.eq_zero_or_pos d with rfl | hd
+  · have h : ∀ x y : Rd 0, ‖g x ^ p - g y ^ p‖ₑ = 0 := fun x y => by
+      rw [Subsingleton.elim x y, sub_self, enorm_zero]
+    simp [h]
+  set f₁ : Rd d → Rd d → ℝ≥0∞ := fun x y => ‖g x - g y‖ₑ * ‖g x‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ)
+  set f₂ : Rd d → Rd d → ℝ≥0∞ := fun x y => ‖g x - g y‖ₑ * ‖g y‖ₑ ^ (p - 1) / edist x y ^ (d : ℝ)
+  have hpt : ∀ x y, ‖g x ^ p - g y ^ p‖ₑ / edist x y ^ (d : ℝ) ≤
+      ENNReal.ofReal p * (f₁ x y + f₂ x y) := fun x y => by
+    calc _ ≤ ENNReal.ofReal p * ‖g x - g y‖ₑ * (‖g x‖ₑ ^ (p - 1) + ‖g y‖ₑ ^ (p - 1)) /
+          edist x y ^ (d : ℝ) := by
+          gcongr; exact enorm_rpow_sub_rpow_le hp.le (hg0 x) (hg0 y)
+      _ = _ := by simp only [f₁, f₂]; rw [← ENNReal.add_div, ← mul_div_assoc, mul_assoc, mul_add]
+  have hm₁ : Measurable (Function.uncurry f₁) := by fun_prop
+  have hm₂ : Measurable (Function.uncurry f₂) := by fun_prop
+  calc _ ≤ ∫⁻ x in K, ∫⁻ y in K, ENNReal.ofReal p * (f₁ x y + f₂ x y) := by
+        gcongr with x y; exact hpt x y
+    _ = ∫⁻ x in K, ENNReal.ofReal p * ((∫⁻ y in K, f₁ x y) + ∫⁻ y in K, f₂ x y) :=
+        lintegral_congr fun x => by
+          rw [← lintegral_add_left (by fun_prop : Measurable (f₁ x)),
+            ← lintegral_const_mul _ (by fun_prop : Measurable fun y => f₁ x y + f₂ x y)]
+    _ = ENNReal.ofReal p * ((∫⁻ x in K, ∫⁻ y in K, f₁ x y) + ∫⁻ x in K, ∫⁻ y in K, f₂ x y) := by
+        have h₁ : Measurable fun x => ∫⁻ y in K, f₁ x y := hm₁.lintegral_prod_right'
+        have h₂ : Measurable fun x => ∫⁻ y in K, f₂ x y := hm₂.lintegral_prod_right'
+        rw [← lintegral_add_left h₁]
+        exact lintegral_const_mul _ (h₁.add h₂)
+    _ < ⊤ := ENNReal.mul_lt_top ENNReal.ofReal_lt_top (ENNReal.add_lt_top.2
+        ⟨lintegral_mul_rpow_div_lt_top hd hs hp hgm hgp hgs hK,
+          lintegral_mul_rpow_div_lt_top' hd hs hp hgm hgp hgs hK⟩)
 
 /-- **Subgoal** (Appendix C, Brownian motion has a density at positive times: it a.s. avoids a
 Lebesgue-null set at countably many positive times, e.g. the partition points `t^n_i > 0`). -/
