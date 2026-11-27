@@ -497,6 +497,11 @@
    "Classical.choice",
    "Quot.sound"
   ],
+  "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path": [
    "propext",
    "Classical.choice",
@@ -1614,5 +1619,5 @@
    "Quot.sound"
   ]
  },
- "generated": "2026-11-27T17:17:38Z"
+ "generated": "2026-11-27T17:18:13Z"
 }

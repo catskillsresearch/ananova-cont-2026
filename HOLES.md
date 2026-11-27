@@ -2,8 +2,8 @@
 
 File-level inventory of Lean modules. A module is **done** only if it is listed in `VERIFIED` in `scripts/build_holes.py`, all hard import-deps are done, **and** the file contains no `sorry`. A subgoal is **done** exactly when `sorryAx` is not among its `#print axioms` (recorded by `scripts/axioms_check.py` in `holes-axioms.json`); it is **open** if its own body has `sorry`, and **blocked** if it uses `sorry` only through lemmas it cites.
 
-**Updated:** 2026-11-27T17:17:38Z  
-**`sorry` occurrences:** 23 · 10 open · 11 blocked · 375 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 313} · 12 file(s) with `sorry`.
+**Updated:** 2026-11-27T17:18:13Z  
+**`sorry` occurrences:** 23 · 10 open · 11 blocked · 376 done (goals + subgoals) · goals {'open': 3, 'blocked': 10, 'done': 62} · subgoals {'open': 7, 'blocked': 1, 'done': 314} · 12 file(s) with `sorry`.
 
 **Live board:** [`holes.html`](holes.html) (graph embedded; open the file directly).
 
@@ -133,6 +133,7 @@ Each helper a goal depends on is its own board node `Module::Name`. Label it by 
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem` | subgoal of Theorem 5.2, step 5: a Lebesgue-null set `N` is almost surely never visited at the positive partition points `t_j`, `j ≠ 0`, of any `π_n`; these form a countable subset of `(0, T]` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top` | subgoal of Appendix C, `N_m = {M_1 u_m = ∞}` is Lebesgue-null: `M_1 u_m ∈ L^p` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.ae_path_zero` | subgoal of Appendix C, `B(0 | 0 |
+| done | `Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path` | subgoal of Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of `F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits at `x₀` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.continuousOn_path` | subgoal of Appendix C, Brownian paths are continuous on `[0, T]` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow` | subgoal of Appendix C, `‖g‖_{n,p,B} = ‖g^p‖^{1/p}_{n,1,B}` for `g ≥ 0` | 0 |
 | done | `Main.Theorem52PathSteps::theorem_5_2.exists_mollifier` | subgoal of Appendix C, standard mollifier `η_m(x | 0 |

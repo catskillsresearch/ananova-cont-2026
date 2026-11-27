@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T17:17:38Z",
+ "updated": "2026-11-27T17:18:13Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
  "sorryCount": 23,
  "counts": {
   "open": 10,
   "blocked": 11,
-  "done": 375
+  "done": 376
  },
  "goalCounts": {
   "open": 3,
@@ -15,7 +15,7 @@
  "subgoalCounts": {
   "open": 7,
   "blocked": 1,
-  "done": 313
+  "done": 314
  },
  "untagged": [],
  "legend": {
@@ -4015,7 +4015,7 @@
    "sorryCount": 0,
    "holes": [],
    "declKinds": {
-    "theorem": 19
+    "theorem": 20
    },
    "paperGoal": false,
    "verified": false,
@@ -4031,6 +4031,7 @@
     "Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem",
     "Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top",
     "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+    "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
     "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
     "Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow",
     "Main.Theorem52PathSteps::theorem_5_2.exists_mollifier",
@@ -4181,6 +4182,47 @@
    ],
    "blockers": [],
    "detail": "proved: theorem_5_2.ae_path_zero — subgoal of Appendix C, `B(0 (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
+  },
+  {
+   "id": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "label": "ae_tendsto_mollify_path",
+   "kind": "subgoal",
+   "section": "Main",
+   "sectionTitle": "§5 Main results",
+   "paper": "subgoal of Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of `F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits at `x₀`",
+   "parentGoal": "Main.Theorem52PathSteps",
+   "tagged": true,
+   "file": "WeakPathwiseIto/Main/Theorem52PathSteps.lean",
+   "sorryCount": 0,
+   "holes": [],
+   "declKinds": {
+    "theorem": 1
+   },
+   "paperGoal": false,
+   "verified": true,
+   "doc": "**Subgoal** (Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of `F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits at `x₀`), so along any subsequence the mollified `F_m(B_t) → F̃(B_t) = F(B_t)`).",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "status": "done",
+   "deps": [
+    "Appendix.PotentialProfile",
+    "Basic.ContDiffBounded",
+    "Basic.SmoothHessian",
+    "Bessel.CanonicalWienerSpace",
+    "Bessel.WienerLawExists",
+    "Main.GeometricMeshDecay",
+    "Main.Theorem52Steps",
+    "Occupation.OccupationSeminorm",
+    "Occupation.PathwiseSobolevSpace",
+    "Sobolev.IsWeakHessian",
+    "Sobolev.MemW",
+    "Sobolev.Theorem21Second"
+   ],
+   "blockers": [],
+   "detail": "proved: theorem_5_2.ae_tendsto_mollify_path — subgoal of Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of `F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits at `x₀` (in Main.Theorem52PathSteps) · axioms: propext, Classical.choice, Quot.sound"
   },
   {
    "id": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
@@ -13545,6 +13587,11 @@
   },
   {
    "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -13641,6 +13688,11 @@
   {
    "from": "Basic.ContDiffBounded",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.ContDiffBounded",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
    "kind": "hard"
   },
   {
@@ -14985,6 +15037,11 @@
   },
   {
    "from": "Basic.SmoothHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Basic.SmoothHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -15710,6 +15767,11 @@
   },
   {
    "from": "Bessel.CanonicalWienerSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.CanonicalWienerSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -16425,6 +16487,11 @@
   },
   {
    "from": "Bessel.WienerLawExists",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Bessel.WienerLawExists",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -17125,6 +17192,11 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -17624,6 +17696,11 @@
    "kind": "subgoal"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "to": "Main.Theorem52PathSteps",
+   "kind": "subgoal"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "to": "Main.Theorem52PathSteps",
    "kind": "subgoal"
@@ -17726,6 +17803,11 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
    "kind": "hard"
   },
   {
@@ -19190,6 +19272,11 @@
   },
   {
    "from": "Occupation.OccupationSeminorm",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.OccupationSeminorm",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -19361,6 +19448,11 @@
   {
    "from": "Occupation.PathwiseSobolevSpace",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Occupation.PathwiseSobolevSpace",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
    "kind": "hard"
   },
   {
@@ -21770,6 +21862,11 @@
   },
   {
    "from": "Sobolev.IsWeakHessian",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.IsWeakHessian",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -22581,6 +22678,11 @@
   {
    "from": "Sobolev.MemW",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.MemW",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
    "kind": "hard"
   },
   {
@@ -23705,6 +23807,11 @@
   },
   {
    "from": "Sobolev.Theorem21Second",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "kind": "hard"
+  },
+  {
+   "from": "Sobolev.Theorem21Second",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "kind": "hard"
   },
@@ -24407,6 +24514,10 @@
   {
    "from": "Appendix.PotentialProfile",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Appendix.PotentialProfile",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path"
   },
   {
    "from": "Appendix.PotentialProfile",
@@ -26154,6 +26265,10 @@
   },
   {
    "from": "Main.GeometricMeshDecay",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path"
+  },
+  {
+   "from": "Main.GeometricMeshDecay",
    "to": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path"
   },
   {
@@ -26545,6 +26660,10 @@
    "to": "Main.Theorem52PathSteps"
   },
   {
+   "from": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path",
+   "to": "Main.Theorem52PathSteps"
+  },
+  {
    "from": "Main.Theorem52PathSteps::theorem_5_2.continuousOn_path",
    "to": "Main.Theorem52PathSteps"
   },
@@ -26619,6 +26738,10 @@
   {
    "from": "Main.Theorem52Steps",
    "to": "Main.Theorem52PathSteps::theorem_5_2.ae_path_zero"
+  },
+  {
+   "from": "Main.Theorem52Steps",
+   "to": "Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path"
   },
   {
    "from": "Main.Theorem52Steps",

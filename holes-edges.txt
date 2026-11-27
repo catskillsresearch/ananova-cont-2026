@@ -64,6 +64,7 @@ Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Appendix.PotentialProfile -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -84,6 +85,7 @@ Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Basic.ContDiffBounded -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -352,6 +354,7 @@ Basic.SmoothHessian -hard-> Main.Theorem52PathSteps
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Basic.SmoothHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -497,6 +500,7 @@ Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Bessel.CanonicalWienerSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -640,6 +644,7 @@ Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Bessel.WienerLawExists -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -780,6 +785,7 @@ Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Main.GeometricMeshDecay -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -880,6 +886,7 @@ Main.Theorem52PathSteps -hard-> Main.Theorem52
 Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.ae_path_zero -hard-> Main.Theorem52PathSteps
+Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.continuousOn_path -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow -hard-> Main.Theorem52PathSteps
 Main.Theorem52PathSteps::theorem_5_2.exists_mollifier -hard-> Main.Theorem52PathSteps
@@ -901,6 +908,7 @@ Main.Theorem52Steps -hard-> Main.Theorem52PathSteps
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Main.Theorem52Steps -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -1193,6 +1201,7 @@ Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Occupation.OccupationSeminorm -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -1228,6 +1237,7 @@ Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Occupation.PathwiseSobolevSpace -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -1709,6 +1719,7 @@ Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.IsWeakHessian -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -1872,6 +1883,7 @@ Sobolev.MemW -hard-> Main.Theorem52PathSteps
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.MemW -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier
@@ -2096,6 +2108,7 @@ Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_forall_partition_not_mem
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_localMaximalFunction_lt_top
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_path_zero
+Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.ae_tendsto_mollify_path
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.continuousOn_path
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.discreteSeminorm_enorm_rpow
 Sobolev.Theorem21Second -hard-> Main.Theorem52PathSteps::theorem_5_2.exists_mollifier

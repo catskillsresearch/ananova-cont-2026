@@ -577,6 +577,29 @@ theorem tendsto_occupationSeminorm_of_maximal {p q : ℝ} (hpq : p.HolderConjuga
     fun k => hC (u k) _ (hu k) (fun n j hj => ?_) (hball k)
   rw [Real.enorm_eq_ofReal ENNReal.toReal_nonneg, ENNReal.ofReal_toReal (hfin k n j hj)]
 
+/-- **Subgoal** (Theorem 5.2, step 4: if the polar set `E` contains every non-Lebesgue point of
+`F` and `x₀ ∉ E`, then a.s. the path stays at Lebesgue points on `[0, T]` (at `t = 0` it sits
+at `x₀`), so along any subsequence the mollified `F_m(B_t) → F̃(B_t) = F(B_t)`). -/
+theorem ae_tendsto_mollify_path (hT : 0 ≤ T) {F : Rd d → ℝ} (hF : LocallyIntegrable F)
+    (hFrep : ∀ x, IsLebesguePoint F x → F x = preciseRepresentative F x)
+    {ψ : ℕ → Rd d → ℝ} (hψ0 : ∀ n x, 0 ≤ ψ n x) (hψ1 : ∀ n, ∫ x, ψ n x = 1)
+    (hψs : ∀ n, Function.support (ψ n) ⊆ Metric.ball 0 (1 / ((n : ℝ) + 1)))
+    (hψb : ∃ C : ℝ, ∀ n x, ψ n x ≤ C * ((n : ℝ) + 1) ^ d)
+    {E : Set (Rd d)} (hE : IsBrownianPolar d T E) (hEL : {x | ¬ IsLebesguePoint F x} ⊆ E)
+    {x₀ : Rd d} (hx₀ : x₀ ∉ E) {φ : ℕ → ℕ} (hφ : StrictMono φ) :
+    ∀ᵐ ω ∂(CanonicalWienerSpace.P (T := T) x₀), ∀ t ∈ Icc 0 T,
+      Tendsto (fun k => ∫ y, F y * ψ (φ k) (CanonicalWienerSpace.path ω t - y)) atTop
+        (𝓝 (F (CanonicalWienerSpace.path ω t))) := by
+  filter_upwards [ae_path_zero hT x₀, ae_forall_path_not_mem hE x₀] with ω h0 hpos t ht
+  have hnot : CanonicalWienerSpace.path ω t ∉ E := by
+    rcases ht.1.eq_or_lt with h | h
+    · rw [← h, h0]; exact hx₀
+    · exact hpos t ⟨h, ht.2⟩
+  have hL : IsLebesguePoint F (CanonicalWienerSpace.path ω t) := by
+    by_contra hc; exact hnot (hEL hc)
+  rw [hFrep _ hL]
+  exact (tendsto_mollify_of_isLebesguePoint hF hψ0 hψ1 hψs hψb hL).comp hφ.tendsto_atTop
+
 end theorem_5_2
 
 end WeakPathwiseIto
