@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-27T12:47:17Z",
+ "updated": "2026-11-27T12:49:03Z",
  "paper": "A. Ananova and R. Cont, A pathwise Ito formula for weakly differentiable functions, arXiv:2608.07365v2",
- "sorryCount": 32,
+ "sorryCount": 31,
  "counts": {
-  "open": 9,
+  "open": 8,
   "blocked": 50,
-  "done": 313
+  "done": 314
  },
  "goalCounts": {
   "open": 3,
@@ -13,9 +13,9 @@
   "done": 61
  },
  "subgoalCounts": {
-  "open": 6,
+  "open": 5,
   "blocked": 39,
-  "done": 252
+  "done": 253
  },
  "untagged": [],
  "legend": {
@@ -8524,9 +8524,8 @@
    "sectionTitle": "§2.1 Sobolev spaces",
    "paper": "Hardy–Littlewood maximal theorem (Appendix C; after Carleson project)",
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 2,
+   "sorryCount": 1,
    "holes": [
-    "lintegral_rpow_le",
     "congr_ae"
    ],
    "declKinds": {
@@ -8555,10 +8554,9 @@
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [
-    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
-    "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_rpow_le"
+    "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae"
    ],
-   "detail": "2 sorry: lintegral_rpow_le, congr_ae"
+   "detail": "1 sorry: congr_ae"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.congr_ae",
@@ -8722,22 +8720,20 @@
    "parentGoal": "Sobolev.HardyLittlewood",
    "tagged": true,
    "file": "WeakPathwiseIto/Sobolev/HardyLittlewood.lean",
-   "sorryCount": 1,
-   "holes": [
-    "hardyLittlewood.lintegral_rpow_le"
-   ],
+   "sorryCount": 0,
+   "holes": [],
    "declKinds": {
     "theorem": 1
    },
    "paperGoal": false,
    "verified": true,
    "doc": "**Subgoal** (Hardy–Littlewood, strong type `(p, p)`, `p > 1`, for measurable `f`).",
-   "status": "open",
+   "status": "done",
    "deps": [
     "Sobolev.LocalMaximalFunction"
    ],
    "blockers": [],
-   "detail": "sorry: hardyLittlewood.lintegral_rpow_le — subgoal of Hardy–Littlewood, strong type `(p, p (in Sobolev.HardyLittlewood)"
+   "detail": "proved: hardyLittlewood.lintegral_rpow_le — subgoal of Hardy–Littlewood, strong type `(p, p (in Sobolev.HardyLittlewood)"
   },
   {
    "id": "Sobolev.HardyLittlewood::hardyLittlewood.lintegral_truncate_eq",

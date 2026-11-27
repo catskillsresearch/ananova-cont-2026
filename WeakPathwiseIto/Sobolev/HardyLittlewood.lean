@@ -380,7 +380,27 @@ theorem lintegral_rpow_le {f : Rd d → ℝ} (hf : Measurable f) {p : ℝ} (hp :
     ∫⁻ x, localMaximalFunction 1 f x ^ p ≤
       ENNReal.ofReal p * (2 * (2 ^ d) ^ 2) * (2 ^ (p - 1) / ENNReal.ofReal (p - 1)) *
         ∫⁻ y, ‖f y‖ₑ ^ p := by
-  sorry
+  set C : ℝ≥0∞ := 2 * (2 ^ d) ^ 2
+  have hC : C ≠ ⊤ := ENNReal.mul_ne_top ENNReal.ofNat_ne_top
+    (ENNReal.pow_ne_top (ENNReal.pow_ne_top ENNReal.ofNat_ne_top))
+  rw [lintegral_rpow_eq_lintegral_meas_lt (measurable_localMaximalFunction f) (by linarith),
+    mul_assoc (ENNReal.ofReal p * C), ← lintegral_truncate_eq hf hp, mul_assoc,
+    ← lintegral_const_mul' _ _ hC]
+  gcongr ENNReal.ofReal p * ?_
+  refine setLIntegral_mono' measurableSet_Ioi fun t (ht : 0 < t) => ?_
+  have hsplit : ENNReal.ofReal (t ^ (p - 1)) = ENNReal.ofReal t * ENNReal.ofReal (t ^ (p - 2)) := by
+    rw [← ENNReal.ofReal_mul ht.le, show p - 1 = 1 + (p - 2) by ring, Real.rpow_add ht,
+      Real.rpow_one]
+  rw [hsplit]
+  calc volume {x | ENNReal.ofReal t < localMaximalFunction 1 f x} *
+        (ENNReal.ofReal t * ENNReal.ofReal (t ^ (p - 2)))
+      = (ENNReal.ofReal t * volume {x | ENNReal.ofReal t < localMaximalFunction 1 f x}) *
+        ENNReal.ofReal (t ^ (p - 2)) := by ring
+    _ ≤ (C * ∫⁻ y in {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ}, ‖f y‖ₑ) *
+        ENNReal.ofReal (t ^ (p - 2)) := by
+      exact mul_left_mono (mul_measure_lt_le_truncate hf t)
+    _ = C * (ENNReal.ofReal (t ^ (p - 2)) *
+        ∫⁻ y in {y | ENNReal.ofReal t < 2 * ‖f y‖ₑ}, ‖f y‖ₑ) := by ring
 
 /-- **Subgoal** (Hardy–Littlewood, `M_1 f` depends only on the a.e. class of `f`). -/
 theorem congr_ae {f g : Rd d → ℝ} (h : f =ᵐ[volume] g) :
